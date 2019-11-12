@@ -5,7 +5,7 @@
         "bootstrap": "lerna bootstrap --hoist",
         "clean": "lerna run clean",
         "build": "lerna run build",
-        "publish:ci": "lerna publish -y --canary --preid ci --npm-tag=ci --force-publish=*",
+        "publish:ci": "lerna publish -y --canary --force-publish=*",
         "publish": "lerna publish"
     },
     "husky": {
