@@ -1,0 +1,24 @@
+{
+    "name": "familie-felles-frontend",
+    "private": false,
+    "scripts": {
+        "bootstrap": "lerna bootstrap --hoist",
+        "clean": "lerna run clean",
+        "build": "lerna run build",
+        "publish:ci": "lerna publish -y --canary --preid ci --npm-tag=ci --force-publish=*",
+        "publish": "lerna publish"
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "pre-commit": "pretty-quick --staged"
+        }
+    },
+    "devDependencies": {
+        "lerna": "^3.18.4",
+        "prettier": "^1.19.1",
+        "pretty-quick": "^2.0.1",
+        "typescript": "^3.7.2"
+    },
+    "version": "1.0.1"
+}
