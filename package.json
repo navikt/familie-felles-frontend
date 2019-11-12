@@ -2,7 +2,7 @@
     "name": "familie-felles-frontend",
     "private": false,
     "scripts": {
-        "bootstrap": "lerna bootstrap --hoist",
+        "bootstrap": "lerna bootstrap --no-ci",
         "clean": "lerna run clean",
         "build": "lerna run build",
         "publish:ci": "lerna publish -y --canary --force-publish=*",

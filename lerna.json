@@ -3,8 +3,7 @@
         "publish": {
             "allowBranch": "master",
             "conventionalCommits": true,
-            "ignoreChanges": ["ignored-file", "*.md"],
-            "message": "chore(release): publish"
+            "ignoreChanges": ["ignored-file", "*.md"]
         },
         "bootstrap": {
             "ignore": "component-*",
