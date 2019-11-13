@@ -24,6 +24,6 @@ export interface ITokenRequest {
     clientId: string;
     clientSecret: string;
     redirectUrl: string;
-    tokenUri: string;
     scope: string;
+    tokenUri: string;
 }

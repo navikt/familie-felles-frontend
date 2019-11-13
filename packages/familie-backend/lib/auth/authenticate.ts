@@ -2,7 +2,7 @@ import { NextFunction, Response } from 'express';
 import passport from 'passport';
 import { validerEllerOppdaterAccessToken } from './token';
 import { logError } from '../customLoglevel';
-import { SessionRequest } from '../typer';
+import { SessionRequest, ITokenRequest } from '../typer';
 
 export const authenticateAzure = (req: SessionRequest, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);
@@ -34,10 +34,13 @@ export const authenticateAzureCallback = () => {
     };
 };
 
-export const ensureAuthenticated = (sendUnauthorized: boolean) => {
+export const ensureAuthenticated = (
+    sendUnauthorized: boolean,
+    saksbehandlerTokenConfig: ITokenRequest,
+) => {
     return async (req: SessionRequest, res: Response, next: NextFunction) => {
         if (req.isAuthenticated()) {
-            validerEllerOppdaterAccessToken(req, null);
+            validerEllerOppdaterAccessToken(req, saksbehandlerTokenConfig);
             return next();
         }
 
