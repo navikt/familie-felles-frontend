@@ -5,7 +5,6 @@ if (process.env.NODE_ENV === 'production') {
     dotenv.config();
 }
 
-import morgan from 'morgan';
 import passport from 'passport';
 import { IOIDCStrategyOptionWithRequest } from 'passport-azure-ad';
 import express, { Request, Response } from 'express';
@@ -21,6 +20,7 @@ import {
 } from './auth/authenticate';
 import { hentBrukerprofil } from './auth/bruker';
 import { validerEllerOppdaterOnBehalfOfToken } from './auth/token';
+import { getLogTimestamp, logInfo, logError } from './customLoglevel';
 
 const konfigurerBackend = (
     passportConfig: IOIDCStrategyOptionWithRequest,
@@ -29,7 +29,6 @@ const konfigurerBackend = (
     konfigurerPassport(passport, passportConfig);
 
     const app = express();
-    app.use(morgan('combined'));
     app.get('/isAlive', (req: Request, res: Response) => res.status(200).end());
     app.get('/isReady', (req: Request, res: Response) => res.status(200).end());
 
@@ -46,6 +45,9 @@ export {
     authenticateAzureCallback,
     ensureAuthenticated,
     hentBrukerprofil,
+    getLogTimestamp,
+    logInfo,
+    logError,
     konfigurerBackend,
     logout,
     validerEllerOppdaterOnBehalfOfToken,
