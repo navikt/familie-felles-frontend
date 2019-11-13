@@ -12,6 +12,9 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v1
 
+            - name: Installer lerna
+              run: npm install --g lerna
+
             - name: Lerna bootstrap
               run: lerna bootstrap
 
