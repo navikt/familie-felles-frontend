@@ -5,8 +5,7 @@
     "author": "Henning Håkonsen <henninghaakonsen@me.com>",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
     "license": "ISC",
-    "main": "lib/backend.ts",
-    "types": "types/backend.d.ts",
+    "main": "dist/backend.js",
     "sideEffects": false,
     "publishConfig": {
         "access": "public"
