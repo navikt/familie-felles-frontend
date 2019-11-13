@@ -1,0 +1,26 @@
+name: Build-Deploy
+on:
+    push:
+        branches-ignore:
+            - master
+
+jobs:
+    build-and-deploy-artifact:
+        name: Build and deploy to npm
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+                uses: actions/checkout@v1
+
+            - name: Tilgjengeligjør NPM_TOKEN
+                run: export NPM_TOKEN=${{ secrets.NPM_TOKEN }}
+
+            - name: Lerna bootstrap
+                run: lerna bootstrap
+        
+            - name: Lerna compile
+                run: lerna run compile
+            
+            - name: Lerna publish
+                run: lerna publish:ci
+

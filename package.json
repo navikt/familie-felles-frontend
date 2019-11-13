@@ -2,22 +2,33 @@
     "name": "familie-felles-frontend",
     "private": false,
     "scripts": {
+        "ct": "git-cz",
+        "commitmsg": "commitlint -e $GIT_PARAMS",
         "bootstrap": "lerna bootstrap --no-ci",
-        "clean": "lerna run clean",
-        "build": "lerna run build",
-        "publish:ci": "lerna publish -y --canary --force-publish=*",
+        "publish:ci": "lerna publish -y",
         "publish": "lerna publish"
     },
     "husky": {
         "hooks": {
-            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+            "commit-msg": "commitlint -e $GIT_PARAMS",
             "pre-commit": "pretty-quick --staged"
         }
     },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-lerna-changelog"
+        }
+    },
     "devDependencies": {
+        "@commitlint/cli": "^8.2.0",
+        "@commitlint/config-conventional": "^8.2.0",
+        "commitizen": "^4.0.3",
+        "cz-lerna-changelog": "^2.0.2",
         "lerna": "^3.18.4",
+        "lint-staged": "^9.4.2",
         "prettier": "^1.19.1",
         "pretty-quick": "^2.0.1",
         "typescript": "^3.7.2"
-    }
+    },
+    "dependencies": {}
 }
