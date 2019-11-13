@@ -16,16 +16,11 @@ jobs:
               with:
                   node-version: '10.x'
 
-            - name: NPM install
-              run: npm install
-
-            - name: Lerna bootstrap
-              run: lerna bootstrap
-
-            - name: Lerna compile
-              run: lerna run compile
-
-            - name: Lerna publish
-              run: lerna publish:ci
+            - name: Installer og publiser
+              run: |
+                  npm install
+                  lerna bootstrap
+                  lerna run compile
+                  lerna publish:ci
               env:
                   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
