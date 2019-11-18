@@ -53,7 +53,7 @@ class Backend {
     };
 
     authenticateAzureCallback = () => {
-        authenticateAzureCallback();
+        return authenticateAzureCallback();
     };
 
     ensureAuthenticated = (sendUnauthorized: boolean, saksbehandlerTokenConfig: ITokenRequest) => {
