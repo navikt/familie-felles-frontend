@@ -5,6 +5,7 @@
         "ct": "git-cz",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "bootstrap": "lerna bootstrap --no-ci",
+        "compile": "lerna run compile",
         "publish:ci": "lerna publish -y",
         "publish": "lerna publish"
     },
