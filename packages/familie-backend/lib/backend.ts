@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === 'production') {
 
 import passport from 'passport';
 import { IOIDCStrategyOptionWithRequest } from 'passport-azure-ad';
-import express, { Express, Request, Response, RequestHandler, NextFunction } from 'express';
+import express, { Express, Request, Response, NextFunction } from 'express';
 import konfigurerPassport from './auth/passport';
 import konfigurerSession from './auth/session';
 import { konfigurerMetrikker } from './metrikker';
