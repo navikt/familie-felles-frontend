@@ -1,8 +1,8 @@
 import {
+    IOIDCStrategyOptionWithRequest,
     IProfile,
     OIDCStrategy,
     VerifyCallback,
-    IOIDCStrategyOptionWithRequest,
 } from 'passport-azure-ad';
 import { SessionRequest } from '../typer';
 

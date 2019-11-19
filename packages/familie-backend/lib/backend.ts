@@ -5,31 +5,28 @@ if (process.env.NODE_ENV === 'production') {
     dotenv.config();
 }
 
+import express, { Express, Request, Response, Router } from 'express';
 import passport from 'passport';
 import { IOIDCStrategyOptionWithRequest } from 'passport-azure-ad';
-import express, { Express, Request, Response, NextFunction } from 'express';
+import { Registry } from 'prom-client';
+import { ensureAuthenticated } from './auth/authenticate';
 import konfigurerPassport from './auth/passport';
 import konfigurerSession from './auth/session';
-import { konfigurerMetrikker } from './metrikker';
-import { ISessionKonfigurasjon, ITokenRequest, SessionRequest } from './typer';
-import {
-    ensureAuthenticated,
-    authenticateAzure,
-    authenticateAzureCallback,
-    logout,
-} from './auth/authenticate';
-import { hentBrukerprofil } from './auth/bruker';
 import { validerEllerOppdaterOnBehalfOfToken } from './auth/token';
-import { Registry } from 'prom-client';
 import { getLogTimestamp } from './customLoglevel';
+import { konfigurerMetrikker } from './metrikker';
+import konfigurerRouter from './router';
+import { ISessionKonfigurasjon, ITokenRequest, SessionRequest } from './typer';
 
 class Backend {
-    app: Express;
-    prometheusRegistry: Registry;
+    private app: Express;
+    private router: Router;
+    private prometheusRegistry: Registry;
 
     constructor(
         passportConfig: IOIDCStrategyOptionWithRequest,
         sessionKonfigurasjon: ISessionKonfigurasjon,
+        saksbehandlerTokenConfig: ITokenRequest,
     ) {
         konfigurerPassport(passport, passportConfig);
 
@@ -37,30 +34,36 @@ class Backend {
         this.app.get('/isAlive', (req: Request, res: Response) => res.status(200).end());
         this.app.get('/isReady', (req: Request, res: Response) => res.status(200).end());
 
-        const prometheusRegistry = konfigurerMetrikker();
+        this.prometheusRegistry = konfigurerMetrikker();
 
         konfigurerSession(this.app, passport, sessionKonfigurasjon);
+
+        this.router = konfigurerRouter(saksbehandlerTokenConfig);
     }
 
     // Express
-    getApp = () => {
+    public getApp = () => {
         return this.app;
     };
 
+    public getRouter = () => {
+        return this.router;
+    };
+
+    // Metrics
+    public getPrometheusRegistry = () => {
+        return this.prometheusRegistry;
+    };
+
     // Azure
-    authenticateAzure = (req: SessionRequest, res: Response, next: NextFunction) => {
-        authenticateAzure(req, res, next);
-    };
-
-    authenticateAzureCallback = () => {
-        return authenticateAzureCallback();
-    };
-
-    ensureAuthenticated = (sendUnauthorized: boolean, saksbehandlerTokenConfig: ITokenRequest) => {
+    public ensureAuthenticated = (
+        sendUnauthorized: boolean,
+        saksbehandlerTokenConfig: ITokenRequest,
+    ) => {
         return ensureAuthenticated(sendUnauthorized, saksbehandlerTokenConfig);
     };
 
-    validerEllerOppdaterOnBehalfOfToken = (
+    public validerEllerOppdaterOnBehalfOfToken = (
         req: SessionRequest,
         saksbehandlerTokenConfig: ITokenRequest,
         oboTokenConfig: ITokenRequest,
@@ -68,16 +71,8 @@ class Backend {
         return validerEllerOppdaterOnBehalfOfToken(req, saksbehandlerTokenConfig, oboTokenConfig);
     };
 
-    logout = (req: SessionRequest, res: Response, logoutUri: string) => {
-        logout(req, res, logoutUri);
-    };
-
-    hentBrukerprofil = () => {
-        return hentBrukerprofil();
-    };
-
     // Utils
-    getLogTimestamp = () => {
+    public getLogTimestamp = () => {
         return getLogTimestamp();
     };
 }

@@ -1,6 +1,8 @@
 {
     "name": "familie-felles-frontend",
     "private": false,
+    "repository": "https://github.com/navikt/familie-felles-frontend.git",
+    "license": "MIT",
     "scripts": {
         "ct": "git-cz",
         "commitmsg": "commitlint -e $GIT_PARAMS",
@@ -28,7 +30,9 @@
         "lint-staged": "^9.4.2",
         "prettier": "^1.19.1",
         "pretty-quick": "^2.0.1",
+        "tslint": "^5.20.1",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-loader": "^3.5.4",
         "typescript": "^3.7.2"
-    },
-    "dependencies": {}
+    }
 }

@@ -1,5 +1,6 @@
 import { Express, Request } from 'express';
 import { Registry } from 'prom-client';
+import { IOIDCStrategyOptionWithRequest } from 'passport-azure-ad';
 
 export interface IFamilieBackend {
     app: Express;
@@ -27,3 +28,5 @@ export interface ITokenRequest {
     scope: string;
     tokenUri: string;
 }
+
+export { IOIDCStrategyOptionWithRequest };

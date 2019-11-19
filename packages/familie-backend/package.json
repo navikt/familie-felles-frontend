@@ -37,6 +37,8 @@
         "passport-azure-ad": "^4.1.0",
         "prom-client": "^11.5.3",
         "redis": "^2.8.0",
-        "request-promise": "^4.2.5"
+        "request-promise": "^4.2.5",
+        "tslint": "^5.20.1",
+        "tslint-config-prettier": "^1.18.0"
     }
 }

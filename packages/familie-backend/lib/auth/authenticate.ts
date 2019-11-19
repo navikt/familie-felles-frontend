@@ -1,8 +1,8 @@
 import { NextFunction, Response } from 'express';
 import passport from 'passport';
-import { validerEllerOppdaterAccessToken } from './token';
 import { logError } from '../customLoglevel';
-import { SessionRequest, ITokenRequest } from '../typer';
+import { ITokenRequest, SessionRequest } from '../typer';
+import { validerEllerOppdaterAccessToken } from './token';
 
 export const authenticateAzure = (req: SessionRequest, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);

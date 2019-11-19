@@ -9,4 +9,4 @@ Ved lokal utvikling:
 3. npm link i pakken man ønsker å teste lokalt
 
 Pakkene publiseres automatisk til npm ved push til master og man skal lage PR før publisering.
-Hver commit skal genereres ved å kjøre `npm run-script ct` som vil gi oss god historikk.
+Hver commit bør genereres ved å kjøre `npm run-script ct` som vil gi oss god historikk.

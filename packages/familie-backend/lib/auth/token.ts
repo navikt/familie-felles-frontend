@@ -1,7 +1,7 @@
 import moment from 'moment-timezone';
 import request from 'request-promise';
 import { logError, logInfo } from '../customLoglevel';
-import { SessionRequest, ITokenRequest } from '../typer';
+import { ITokenRequest, SessionRequest } from '../typer';
 
 // Hent eller oppdater OBO token
 export const validerEllerOppdaterOnBehalfOfToken = async (
