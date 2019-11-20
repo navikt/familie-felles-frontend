@@ -1,0 +1,23 @@
+name: Build-Deploy-Npm
+on:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build-and-push-to-npm:
+    name: Bygg og push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Installer dependencies
+        run: |
+          npm install
+          npm run-script bootstrap
+      - name: Bygg
+        run: npm run-script compile
+      - name: Push
+        run: npm run-script publish:ci
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
