@@ -5,48 +5,76 @@ if (process.env.NODE_ENV === 'production') {
     dotenv.config();
 }
 
-import morgan from 'morgan';
+import express, { Express, Request, Response, Router } from 'express';
 import passport from 'passport';
 import { IOIDCStrategyOptionWithRequest } from 'passport-azure-ad';
-import express, { Request, Response } from 'express';
+import { Registry } from 'prom-client';
+import { ensureAuthenticated } from './auth/authenticate';
 import konfigurerPassport from './auth/passport';
 import konfigurerSession from './auth/session';
-import { konfigurerMetrikker } from './metrikker';
-import { IFamilieBackend, ISessionKonfigurasjon } from './typer';
-import {
-    ensureAuthenticated,
-    authenticateAzure,
-    authenticateAzureCallback,
-    logout,
-} from './auth/authenticate';
-import { hentBrukerprofil } from './auth/bruker';
 import { validerEllerOppdaterOnBehalfOfToken } from './auth/token';
+import { getLogTimestamp } from './customLoglevel';
+import { konfigurerMetrikker } from './metrikker';
+import konfigurerRouter from './router';
+import { ISessionKonfigurasjon, ITokenRequest, SessionRequest } from './typer';
 
-const konfigurerBackend = (
-    passportConfig: IOIDCStrategyOptionWithRequest,
-    sessionKonfigurasjon: ISessionKonfigurasjon,
-): IFamilieBackend => {
-    konfigurerPassport(passport, passportConfig);
+class Backend {
+    private app: Express;
+    private router: Router;
+    private prometheusRegistry: Registry;
 
-    const app = express();
-    app.use(morgan('combined'));
-    app.get('/isAlive', (req: Request, res: Response) => res.status(200).end());
-    app.get('/isReady', (req: Request, res: Response) => res.status(200).end());
+    constructor(
+        passportConfig: IOIDCStrategyOptionWithRequest,
+        sessionKonfigurasjon: ISessionKonfigurasjon,
+        saksbehandlerTokenConfig: ITokenRequest,
+    ) {
+        konfigurerPassport(passport, passportConfig);
 
-    const prometheusRegistry = konfigurerMetrikker();
+        this.app = express();
+        this.app.get('/isAlive', (req: Request, res: Response) => res.status(200).end());
+        this.app.get('/isReady', (req: Request, res: Response) => res.status(200).end());
 
-    konfigurerSession(app, passport, sessionKonfigurasjon);
+        this.prometheusRegistry = konfigurerMetrikker();
 
-    return { app, prometheusRegistry };
-};
+        konfigurerSession(this.app, passport, sessionKonfigurasjon);
 
-export {
-    IOIDCStrategyOptionWithRequest,
-    authenticateAzure,
-    authenticateAzureCallback,
-    ensureAuthenticated,
-    hentBrukerprofil,
-    konfigurerBackend,
-    logout,
-    validerEllerOppdaterOnBehalfOfToken,
-};
+        this.router = konfigurerRouter(saksbehandlerTokenConfig);
+    }
+
+    // Express
+    public getApp = () => {
+        return this.app;
+    };
+
+    public getRouter = () => {
+        return this.router;
+    };
+
+    // Metrics
+    public getPrometheusRegistry = () => {
+        return this.prometheusRegistry;
+    };
+
+    // Azure
+    public ensureAuthenticated = (
+        sendUnauthorized: boolean,
+        saksbehandlerTokenConfig: ITokenRequest,
+    ) => {
+        return ensureAuthenticated(sendUnauthorized, saksbehandlerTokenConfig);
+    };
+
+    public validerEllerOppdaterOnBehalfOfToken = (
+        req: SessionRequest,
+        saksbehandlerTokenConfig: ITokenRequest,
+        oboTokenConfig: ITokenRequest,
+    ) => {
+        return validerEllerOppdaterOnBehalfOfToken(req, saksbehandlerTokenConfig, oboTokenConfig);
+    };
+
+    // Utils
+    public getLogTimestamp = () => {
+        return getLogTimestamp();
+    };
+}
+
+export default Backend;

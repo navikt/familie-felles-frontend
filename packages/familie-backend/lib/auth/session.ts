@@ -27,12 +27,16 @@ export default (
 
         app.use(
             session({
-                cookie: { maxAge: sessionKonfigurasjon.sessionMaxAgeSekunder, secure: true },
+                cookie: { maxAge: sessionKonfigurasjon.sessionMaxAgeSekunder * 1000, secure: true },
                 name: sessionKonfigurasjon.navn,
                 resave: false,
                 saveUninitialized: true,
                 secret: sessionKonfigurasjon.sessionSecret,
-                store: new RedisStore({ client }),
+                store: new RedisStore({
+                    client,
+                    ttl: sessionKonfigurasjon.sessionMaxAgeSekunder,
+                    disableTouch: true,
+                }),
             }),
         );
     } else {

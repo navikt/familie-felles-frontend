@@ -2,6 +2,7 @@ import loglevel from 'loglevel';
 import momenttz from 'moment-timezone';
 import { SessionRequest } from './typer';
 
+loglevel.setDefaultLevel(loglevel.levels.INFO);
 export const getLogTimestamp = () => {
     return `${momenttz()
         .tz('Europe/Oslo')

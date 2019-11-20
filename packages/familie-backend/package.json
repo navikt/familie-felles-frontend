@@ -1,12 +1,11 @@
 {
     "name": "@navikt/familie-backend",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "description": "Skall for familieytelsenes frontend",
     "author": "Henning Håkonsen <henninghaakonsen@me.com>",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
     "license": "ISC",
-    "main": "lib/backend.ts",
-    "types": "types/backend.d.ts",
+    "main": "dist/backend.js",
     "sideEffects": false,
     "publishConfig": {
         "access": "public"
@@ -27,17 +26,19 @@
         "@types/passport-azure-ad": "^4.0.3",
         "@types/redis": "^2.8.14",
         "@types/request-promise": "^4.1.44",
+        "connect-redis": "^4.0.3",
         "cookie-parser": "^1.4.4",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "express-session": "^1.17.0",
         "loglevel": "^1.6.6",
         "moment-timezone": "^0.5.27",
-        "morgan": "^1.9.1",
         "passport": "^0.4.0",
         "passport-azure-ad": "^4.1.0",
         "prom-client": "^11.5.3",
         "redis": "^2.8.0",
-        "request-promise": "^4.2.5"
+        "request-promise": "^4.2.5",
+        "tslint": "^5.20.1",
+        "tslint-config-prettier": "^1.18.0"
     }
 }

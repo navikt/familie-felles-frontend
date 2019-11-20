@@ -2,7 +2,6 @@
     "hoist": true,
     "command": {
         "publish": {
-            "allowBranch": "master",
             "conventionalCommits": true,
             "ignoreChanges": ["ignored-file", "*.md"],
             "message": "chore(release): publish"
