@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v1
-      - uses: Installer dependencies
+      - name: Installer dependencies
         run: |
           npm install
           npm run-script bootstrap
