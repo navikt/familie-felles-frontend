@@ -21,8 +21,8 @@ jobs:
         run: npm run-script compile
       - name: Push
         run: |
-          git config --global user.email "teamfamilie@nav.no"
-          git config --global user.name "Team Familie CI"
+          git config --global user.email "team.familie@nav.no"
+          git config --global user.name "teamfamilie"
           npm run-script publish:ci
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
