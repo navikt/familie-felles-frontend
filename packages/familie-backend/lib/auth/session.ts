@@ -34,8 +34,8 @@ export default (
                 secret: sessionKonfigurasjon.sessionSecret,
                 store: new RedisStore({
                     client,
-                    ttl: sessionKonfigurasjon.sessionMaxAgeSekunder,
                     disableTouch: true,
+                    ttl: sessionKonfigurasjon.sessionMaxAgeSekunder,
                 }),
             }),
         );

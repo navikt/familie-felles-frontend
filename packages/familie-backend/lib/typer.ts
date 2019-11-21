@@ -1,6 +1,6 @@
 import { Express, Request } from 'express';
-import { Registry } from 'prom-client';
 import { IOIDCStrategyOptionWithRequest } from 'passport-azure-ad';
+import { Registry } from 'prom-client';
 
 export interface IFamilieBackend {
     app: Express;
@@ -18,7 +18,7 @@ export interface ISessionKonfigurasjon {
     navn: string;
     sessionMaxAgeSekunder?: number;
     sessionSecret: string | string[];
-    cookieSecret: string;
+    cookieSecret: string | string[];
 }
 
 export interface ITokenRequest {

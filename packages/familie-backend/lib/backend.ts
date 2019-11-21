@@ -13,7 +13,7 @@ import { ensureAuthenticated } from './auth/authenticate';
 import konfigurerPassport from './auth/passport';
 import konfigurerSession from './auth/session';
 import { validerEllerOppdaterOnBehalfOfToken } from './auth/token';
-import { getLogTimestamp } from './customLoglevel';
+import { getLogTimestamp, logError, logInfo } from './customLoglevel';
 import { konfigurerMetrikker } from './metrikker';
 import konfigurerRouter from './router';
 import { ISessionKonfigurasjon, ITokenRequest, SessionRequest } from './typer';
@@ -74,6 +74,14 @@ class Backend {
     // Utils
     public getLogTimestamp = () => {
         return getLogTimestamp();
+    };
+
+    public logInfo = (req: SessionRequest, message: string) => {
+        logInfo(req, message);
+    };
+
+    public logError = (req: SessionRequest, message: string) => {
+        logError(req, message);
     };
 }
 
