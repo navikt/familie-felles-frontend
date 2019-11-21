@@ -23,7 +23,6 @@ jobs:
         run: |
           git config --global user.email "henninghaakonsen@users.noreply.github.com"
           git config --global user.name "Team Familie"
-          git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/navikt/familie-felles-frontend
           npm run-script publish:ci
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
