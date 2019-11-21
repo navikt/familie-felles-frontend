@@ -9,6 +9,8 @@ jobs:
     name: Bygg og push
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
       - name: Prepare repository
         run: git checkout "${GITHUB_REF:11}"
       - name: Installer dependencies
