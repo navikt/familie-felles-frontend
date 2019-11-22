@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - '**'
+    paths-ignore:
+      - package.json
 
 jobs:
   build-and-push-to-npm:
@@ -20,10 +22,10 @@ jobs:
       - name: Bygg
         run: npm run-script compile
       - name: Push
-        run: |
-          git config --global user.email "henninghaakonsen@users.noreply.github.com"
-          git config --global user.name "Team Familie"
+          git config user.email "teamfamilie@nav.no"
+          git config user.name "Team familie"
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm run-script publish:ci
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
