@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-backend",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "Skall for familieytelsenes frontend",
     "author": "Henning Håkonsen <henninghaakonsen@me.com>",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
