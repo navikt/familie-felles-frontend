@@ -21,6 +21,10 @@ jobs:
           npm run-script bootstrap
       - name: Bygg
         run: npm run-script compile
+      - name: Authenticate with Registry
+        run: echo "registry=//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Push
         run: |
           git config user.email "teamfamilie@nav.no"
@@ -28,5 +32,4 @@ jobs:
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
           npm run-script publish:ci
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
