@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@1.1.0...@navikt/familie-backend@1.2.0) (2019-11-22)
+
+
+### Features
+
+* **backend:** eksponerer logging. Mindre opprydding. ([c86828c](https://github.com/navikt/familie-felles-frontend/commit/c86828c97842ce0008805d6acd3ca62cac5c03b2))
+
+
+
+
+
 # [1.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@1.0.9...@navikt/familie-backend@1.1.0) (2019-11-19)
 
 
