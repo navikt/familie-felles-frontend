@@ -8,7 +8,7 @@
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "bootstrap": "lerna bootstrap --no-ci",
         "compile": "lerna run compile",
-        "publish:ci": "lerna publish -y",
+        "publish:ci": "lerna publish -y --registry https://registry.npmjs.org/:_authToken=${NPM_TOKEN}",
         "publish": "lerna publish"
     },
     "husky": {
