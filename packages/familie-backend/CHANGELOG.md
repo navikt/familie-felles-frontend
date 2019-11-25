@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@1.2.9...@navikt/familie-backend@1.3.0) (2019-11-25)
+
+
+### Features
+
+* **backend:** legger til promethues før sesjonen konfigureres. ([609c996](https://github.com/navikt/familie-felles-frontend/commit/609c996e062563934007114d9f9ec6a47957a4c6))
+
+
+### Reverts
+
+* **backend:** legger tilbake cookieparser med cookie secret. ([3dd3e8a](https://github.com/navikt/familie-felles-frontend/commit/3dd3e8a63ec89a5ef2226aa9ff172f2d8bfbefc8))
+
+
+
+
+
 ## [1.2.9](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@1.2.8...@navikt/familie-backend@1.2.9) (2019-11-25)
 
 
