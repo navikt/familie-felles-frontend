@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.9](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@1.2.8...@navikt/familie-backend@1.2.9) (2019-11-25)
+
+
+### Bug Fixes
+
+* **backend:** tekstendring for å trigge bygg. ([f8d5481](https://github.com/navikt/familie-felles-frontend/commit/f8d5481e5d0a8f867b9d481ea13fbf73dda25fe6))
+
+
+
+
+
 ## [1.2.8](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@1.2.6...@navikt/familie-backend@1.2.8) (2019-11-22)
 
 **Note:** Version bump only for package @navikt/familie-backend
