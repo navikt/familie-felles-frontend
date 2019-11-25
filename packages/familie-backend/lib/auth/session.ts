@@ -13,6 +13,7 @@ export default (
     passport: PassportStatic,
     sessionKonfigurasjon?: ISessionKonfigurasjon,
 ) => {
+    app.use(cookieParser(sessionKonfigurasjon.cookieSecret));
     app.set('trust proxy', 1);
 
     if (process.env.NODE_ENV === 'production' && sessionKonfigurasjon.redisUrl) {
