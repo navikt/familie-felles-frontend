@@ -15,7 +15,7 @@ export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) =
         done(undefined, oid);
     });
 
-    // AZURE AD LOGIN STRATEGY
+    // Azure AD strategi
     passport.use(
         'azuread-openidconnect',
         new OIDCStrategy(
