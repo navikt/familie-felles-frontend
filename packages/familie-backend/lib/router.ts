@@ -20,7 +20,7 @@ export default (saksbehandlerTokenConfig: ITokenRequest) => {
         logout(req, res, saksbehandlerTokenConfig.redirectUrl),
     );
 
-    // User
+    // Bruker
     router.get(
         '/user/profile',
         ensureAuthenticated(true, saksbehandlerTokenConfig),
