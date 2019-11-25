@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'production') {
 import express, { Express, Request, Response, Router } from 'express';
 import passport from 'passport';
 import { IOIDCStrategyOptionWithRequest } from 'passport-azure-ad';
-import { Registry } from 'prom-client';
+import { Counter, Registry } from 'prom-client';
 import { ensureAuthenticated } from './auth/authenticate';
 import konfigurerPassport from './auth/passport';
 import konfigurerSession from './auth/session';
@@ -27,6 +27,7 @@ class Backend {
         passportConfig: IOIDCStrategyOptionWithRequest,
         sessionKonfigurasjon: ISessionKonfigurasjon,
         saksbehandlerTokenConfig: ITokenRequest,
+        prometheusTellere?: { [key: string]: Counter },
     ) {
         konfigurerPassport(passport, passportConfig);
 
@@ -34,11 +35,11 @@ class Backend {
         this.app.get('/isAlive', (req: Request, res: Response) => res.status(200).end());
         this.app.get('/isReady', (req: Request, res: Response) => res.status(200).end());
 
-        this.prometheusRegistry = konfigurerMetrikker();
+        this.prometheusRegistry = konfigurerMetrikker(this.app, prometheusTellere);
 
         konfigurerSession(this.app, passport, sessionKonfigurasjon);
 
-        this.router = konfigurerRouter(saksbehandlerTokenConfig);
+        this.router = konfigurerRouter(saksbehandlerTokenConfig, prometheusTellere);
     }
 
     // Express

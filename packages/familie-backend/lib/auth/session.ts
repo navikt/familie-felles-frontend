@@ -13,7 +13,6 @@ export default (
     passport: PassportStatic,
     sessionKonfigurasjon?: ISessionKonfigurasjon,
 ) => {
-    app.use(cookieParser(sessionKonfigurasjon.cookieSecret));
     app.set('trust proxy', 1);
 
     if (process.env.NODE_ENV === 'production' && sessionKonfigurasjon.redisUrl) {
@@ -25,6 +24,12 @@ export default (
         });
         client.unref();
 
+        const store = new RedisStore({
+            client,
+            disableTouch: true,
+            ttl: sessionKonfigurasjon.sessionMaxAgeSekunder,
+        });
+
         app.use(
             session({
                 cookie: { maxAge: sessionKonfigurasjon.sessionMaxAgeSekunder * 1000, secure: true },
@@ -32,9 +37,7 @@ export default (
                 resave: false,
                 saveUninitialized: true,
                 secret: sessionKonfigurasjon.sessionSecret,
-                store: new RedisStore({
-                    client,
-                }),
+                store,
             }),
         );
     } else {
