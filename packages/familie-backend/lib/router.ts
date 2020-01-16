@@ -13,11 +13,11 @@ const router = express.Router();
 
 export default (
     saksbehandlerTokenConfig: ITokenRequest,
-    prometheusTellere: { [key: string]: Counter },
+    prometheusTellere?: { [key: string]: Counter },
 ) => {
     // Authentication
     router.get('/login', (req: SessionRequest, res: Response, next: NextFunction) => {
-        if (prometheusTellere.login_route) {
+        if (prometheusTellere && prometheusTellere.login_route) {
             prometheusTellere.login_route.inc();
         }
 

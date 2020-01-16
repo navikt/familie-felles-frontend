@@ -17,7 +17,11 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
         return '';
     }
 
-    if (!req.session.oboAccessToken) {
+    if (req.session.oboAccessTokens === undefined) {
+        req.session.oboAccessTokens = {};
+    }
+
+    if (req.session.oboAccessTokens[oboTokenConfig.scope] === undefined) {
         logInfo(req, 'Mangler OBO access token i session, henter nytt.');
 
         const newOboAccessToken = await hentOnBehalfOfToken(
@@ -26,7 +30,7 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
             oboTokenConfig,
         );
 
-        req.session.oboAccessToken = newOboAccessToken;
+        req.session.oboAccessTokens[oboTokenConfig.scope] = newOboAccessToken;
     } else if (moment().isAfter(moment(req.session.oboExpiryDate))) {
         logInfo(req, 'OBO token har utgått, henter nytt.');
 
@@ -37,13 +41,14 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
         );
 
         if (req.session) {
-            req.session.oboAccessToken = newOboAccessToken;
+            req.session.oboAccessTokens[oboTokenConfig.scope] = newOboAccessToken;
         }
     } else {
         logInfo(req, 'Gyldig OBO access token i cache.');
-        return req.session.oboAccessToken;
+        return req.session.oboAccessTokens[oboTokenConfig.scope];
     }
-    req.session.oboExpiryDate = JSON.parse(decodeToken(req.session.oboAccessToken)).exp * 1000;
+    req.session.oboExpiryDate =
+        JSON.parse(decodeToken(req.session.oboAccessTokens[oboTokenConfig.scope])).exp * 1000;
 
     req.session.save((error: Error) => {
         if (error) {
@@ -51,7 +56,7 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
         }
     });
 
-    return req.session.oboAccessToken;
+    return req.session.oboAccessTokens[oboTokenConfig.scope];
 };
 
 // Hent eller oppdater access token
@@ -127,7 +132,7 @@ const hentAccessTokenForSaksbehandler = async (
                     logError(req, `Feilet ved nedbrytning av session: ${error}`);
                 }
             });
-            return '';
+            throw Error(`Feilet ved hentAccessTokenForSaksbehandler: ${err}`);
         });
 };
 
@@ -163,7 +168,7 @@ const hentOnBehalfOfToken = async (
                     logError(req, `Feilet ved nedbrytning av session: ${error}`);
                 }
             });
-            return '';
+            throw Error(`Feilet ved hentOnBehalfOfToken: ${err}`);
         });
 };
 
