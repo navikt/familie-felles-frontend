@@ -3,7 +3,7 @@ import prom_client, { Counter } from 'prom-client';
 
 export const konfigurerMetrikker = (
     app: Express,
-    prometheusTellere: { [key: string]: Counter },
+    prometheusTellere?: { [key: string]: Counter },
 ) => {
     const collectDefaultMetrics = prom_client.collectDefaultMetrics;
     const Registry = prom_client.Registry;
@@ -11,9 +11,11 @@ export const konfigurerMetrikker = (
 
     collectDefaultMetrics({ register });
 
-    Object.values(prometheusTellere).map(counter => {
-        register.registerMetric(counter);
-    });
+    if (prometheusTellere) {
+        Object.values(prometheusTellere).map(counter => {
+            register.registerMetric(counter);
+        });
+    }
 
     app.get('/metrics', (req: Request, res) => {
         res.set('Content-Type', register.contentType);

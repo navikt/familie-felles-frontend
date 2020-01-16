@@ -40,7 +40,10 @@ export const ensureAuthenticated = (
 ) => {
     return async (req: SessionRequest, res: Response, next: NextFunction) => {
         if (req.isAuthenticated()) {
-            validerEllerOppdaterAccessToken(req, saksbehandlerTokenConfig);
+            validerEllerOppdaterAccessToken(req, saksbehandlerTokenConfig).catch((error: Error) => {
+                logError(req, `Feil ved henting av accessToken: ${error.message}`);
+                res.status(500).send(`Feil ved autentisering`);
+            });
             return next();
         }
 
