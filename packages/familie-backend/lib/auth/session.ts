@@ -44,6 +44,7 @@ export default (
     } else {
         app.use(
             session({
+                cookie: { secure: true },
                 name: sessionKonfigurasjon.navn,
                 resave: false,
                 saveUninitialized: true,
