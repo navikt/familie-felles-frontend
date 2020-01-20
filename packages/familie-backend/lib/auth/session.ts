@@ -33,7 +33,10 @@ export default (
 
         app.use(
             session({
-                cookie: { maxAge: sessionKonfigurasjon.sessionMaxAgeSekunder * 1000, secure: true },
+                cookie: {
+                    maxAge: sessionKonfigurasjon.sessionMaxAgeSekunder * 1000,
+                    secure: sessionKonfigurasjon.secure,
+                },
                 name: sessionKonfigurasjon.navn,
                 resave: false,
                 saveUninitialized: true,
@@ -44,7 +47,7 @@ export default (
     } else {
         app.use(
             session({
-                cookie: { secure: true },
+                cookie: { secure: sessionKonfigurasjon.secure },
                 name: sessionKonfigurasjon.navn,
                 resave: false,
                 saveUninitialized: true,
