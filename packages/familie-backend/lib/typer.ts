@@ -16,6 +16,7 @@ export interface ISessionKonfigurasjon {
     redisUrl?: string;
     redisPassord?: string;
     navn: string;
+    secureCookie: boolean;
     sessionMaxAgeSekunder?: number;
     sessionSecret: string | string[];
     cookieSecret: string | string[];
