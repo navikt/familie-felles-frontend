@@ -21,6 +21,10 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
         req.session.oboAccessTokens = {};
     }
 
+    if (req.session.oboExpiryDates === undefined) {
+        req.session.oboExpiryDates = {};
+    }
+
     if (req.session.oboAccessTokens[oboTokenConfig.scope] === undefined) {
         logInfo(req, 'Mangler OBO access token i session, henter nytt.');
 
@@ -31,7 +35,7 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
         );
 
         req.session.oboAccessTokens[oboTokenConfig.scope] = newOboAccessToken;
-    } else if (moment().isAfter(moment(req.session.oboExpiryDate))) {
+    } else if (moment().isAfter(moment(req.session.oboExpiryDates[oboTokenConfig.scope]))) {
         logInfo(req, 'OBO token har utgått, henter nytt.');
 
         const newOboAccessToken = await hentOnBehalfOfToken(
@@ -47,7 +51,7 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
         logInfo(req, 'Gyldig OBO access token i cache.');
         return req.session.oboAccessTokens[oboTokenConfig.scope];
     }
-    req.session.oboExpiryDate =
+    req.session.oboExpiryDates[oboTokenConfig.scope] =
         JSON.parse(decodeToken(req.session.oboAccessTokens[oboTokenConfig.scope])).exp * 1000;
 
     req.session.save((error: Error) => {
