@@ -7,6 +7,8 @@
         "ct": "git-cz",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "bootstrap": "lerna bootstrap --no-ci",
+        "docz:build": "docz build",
+        "docz:dev": "docz dev",
         "compile": "lerna run compile",
         "publish:ci": "lerna publish -y",
         "publish": "lerna publish"
@@ -34,5 +36,9 @@
         "tslint-config-prettier": "^1.18.0",
         "tslint-loader": "^3.5.4",
         "typescript": "^3.7.2"
+    },
+    "dependencies": {
+        "docz": "^2.2.0",
+        "react-dom": "^16.12.0"
     }
 }

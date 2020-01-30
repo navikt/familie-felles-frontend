@@ -1,18 +1,20 @@
-# `@familie-felles/backend`
+---
+name: familie-backend
+menu: Backend
+---
 
 Node.js backend med express for familie frontend apper.
 Setter opp en express app med azure autentisering og logging.
 Kan konfigureres til å bruke redis gjennom egen konfigurasjon.
 
-## Brukes slik
-
-```
+```js
 const passportConfig: IOIDCStrategyOptionWithRequest = se interface i oidc-strategy.d.ts
 const sessionConfig: ISessionKonfigurasjon = {
-    cookieSecret: string | string[]  ,
+    cookieSecret: string | string[],
     navn: string,
     redisPassord?: string;
     redisUrl?: string; // Settes denne prøver modulen å koble seg til redis
+    secret?: boolean; // Settes til true dersom man aktiverer secret flagget på sesjonen
     sessionMaxAgeSekunder?: number;
     sessionSecret: string | string[],
 };
