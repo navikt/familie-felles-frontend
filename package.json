@@ -8,6 +8,7 @@
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "bootstrap": "lerna bootstrap --no-ci",
         "docz:build": "docz build",
+        "docz:serve": "docz serve",
         "docz:dev": "docz dev",
         "compile": "lerna run compile",
         "publish:ci": "lerna publish -y",
