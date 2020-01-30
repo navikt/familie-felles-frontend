@@ -21,16 +21,16 @@ jobs:
         run: git checkout "${GITHUB_REF:11}"
       - name: Installer dependencies
         run: |
-          npm install
-          npm run-script bootstrap
+          yarn
+          yarn bootstrap
       - name: Bygg
-        run: npm run-script compile
+        run: yarn compile
       - name: Push
         run: |
           git config user.email "teamfamilie@nav.no"
           git config user.name "Team familie"
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run-script publish:ci
+          yarn publish:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

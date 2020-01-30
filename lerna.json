@@ -1,16 +1,6 @@
 {
-    "hoist": true,
-    "command": {
-        "publish": {
-            "conventionalCommits": true,
-            "ignoreChanges": ["ignored-file", "*.md"],
-            "message": "chore(release): publish"
-        },
-        "bootstrap": {
-            "ignore": "component-*",
-            "npmClientArgs": ["--no-package-lock"]
-        }
-    },
-    "packages": ["packages/@navikt/*"],
-    "version": "independent"
+    "packages": ["packages/*"],
+    "version": "independent",
+    "npmClient": "yarn",
+    "useWorkspaces": true
 }
