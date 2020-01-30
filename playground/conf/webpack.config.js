@@ -3,11 +3,14 @@ const path = require('path');
 const GlobalWebpackConfig = {
     devServer: {
         historyApiFallback: true,
-        contentBase: [path.join(__dirname, './../app'), path.join(__dirname, './../../packages/')],
+        contentBase: [
+            path.join(__dirname, './../app/'),
+            path.join(__dirname, './../../packages/@navikt/'),
+        ],
         watchContentBase: true,
     },
     entry: {
-        scripts: './playground/app/bootstrap.js',
+        scripts: './playground/app/index.js',
         vendors: ['react', 'react-dom'],
     },
     module: {
@@ -25,6 +28,7 @@ const GlobalWebpackConfig = {
                 ],
                 query: {
                     presets: ['@babel/preset-env', '@babel/preset-react'],
+                    plugins: ['module:react-docgen', 'transform-object-rest-spread'],
                 },
             },
             {
@@ -44,7 +48,7 @@ const GlobalWebpackConfig = {
     },
     resolve: {
         alias: {
-            Modules: path.resolve(__dirname, './../../packages/node_modules'),
+            Modules: path.resolve(__dirname, './../../packages/@navikt'),
         },
     },
 };

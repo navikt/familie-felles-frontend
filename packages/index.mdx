@@ -20,3 +20,19 @@ Hver commit bør genereres ved å kjøre `npm run-script ct` som vil gi oss god 
 
 Vi dokumenterer prosjektet med docz. Hver komponent skal ha en docz.mdx fil som inneholder en beskrivelse av pakken. 
 Det er fint om det legges ved eksempler på bruk av pakken.
+
+## Begynn å utvikle
+
+For å gjøre endringer på eksisterende komponenter er det bare å lage en branch, utvikle featuren og lage en PR. 
+Dersom du skal lage en ny komponent kopierer du react-template inn i `/packages/@navikt` og bruker denne som utgangspunkt. 
+Du må endre på følgende punkter:
+1. Navn på mappen
+2. Navn på komponenten i package.json
+
+## Bruk playground
+
+Vi har laget en react app som kan brukes for lokal utvikling av komponenter. Vi ønsker at man bruker playground fremfor å linke inn komponentene
+til egne applikasjoner. Det er fordi komponentene skal være generelle og man skal legge til rette for at klienten kan dra inn komponenten
+og tilpasse den til sitt behov. 
+
+For å starte playground kjører du `npm run-script start` fra rootmappen. 
