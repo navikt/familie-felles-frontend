@@ -1,12 +1,13 @@
 {
     "name": "familie-felles-frontend",
-    "private": false,
+    "private": true,
     "repository": "https://github.com/navikt/familie-felles-frontend.git",
     "license": "MIT",
     "scripts": {
         "ct": "git-cz",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "bootstrap": "lerna bootstrap --no-ci",
+        "create": "lerna create",
         "docz:build": "docz build",
         "docz:dev": "docz dev",
         "compile": "lerna run compile",
@@ -34,9 +35,15 @@
         "prettier": "^1.19.1",
         "pretty-quick": "^2.0.1",
         "react-dom": "^16.12.0",
+        "ts-loader": "^6.2.1",
         "tslint": "^5.20.1",
         "tslint-config-prettier": "^1.18.0",
-        "tslint-loader": "^3.5.4",
-        "typescript": "^3.7.2"
-    }
+        "typescript": "^3.7.2",
+        "webpack": "^4.41.5",
+        "webpack-cli": "^3.3.10",
+        "webpack-dev-server": "^3.10.1"
+    },
+    "workspaces": [
+        "packages/@navikt/familie-backend"
+    ]
 }

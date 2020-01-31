@@ -1,16 +1,6 @@
 {
-    "hoist": true,
-    "command": {
-        "publish": {
-            "conventionalCommits": true,
-            "ignoreChanges": ["ignored-file", "*.md"],
-            "message": "chore(release): publish"
-        },
-        "bootstrap": {
-            "ignore": "component-*",
-            "npmClientArgs": ["--no-package-lock"]
-        }
-    },
     "packages": ["packages/*"],
-    "version": "independent"
+    "version": "independent",
+    "npmClient": "yarn",
+    "useWorkspaces": true
 }

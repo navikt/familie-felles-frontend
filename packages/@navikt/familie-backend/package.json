@@ -2,7 +2,7 @@
     "name": "@navikt/familie-backend",
     "version": "1.3.6",
     "description": "Skall for familieytelsenes frontend",
-    "author": "Henning Håkonsen <henninghaakonsen@me.com>",
+    "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
     "license": "ISC",
     "main": "dist/backend.js",
