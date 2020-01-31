@@ -5,14 +5,14 @@
     "license": "MIT",
     "scripts": {
         "ct": "git-cz",
+        "build": "yarn build:packages && yarn build:docz",
+        "build:packages": "lerna run build",
+        "build:docz": "docz build",
+        "start:docz": "docz dev",
         "commitmsg": "commitlint -e $GIT_PARAMS",
         "bootstrap": "lerna bootstrap --no-ci",
-        "create": "lerna create",
-        "docz:build": "docz build",
-        "docz:dev": "docz dev",
         "compile": "lerna run compile",
-        "publish:ci": "lerna publish -y",
-        "publish": "lerna publish"
+        "publish:ci": "lerna publish -y"
     },
     "husky": {
         "hooks": {
@@ -31,11 +31,14 @@
         "cz-lerna-changelog": "^2.0.2",
         "docz": "^2.2.0",
         "lerna": "^3.18.4",
+        "less": "^3.10.3",
         "lint-staged": "^9.4.2",
         "prettier": "^1.19.1",
         "pretty-quick": "^2.0.1",
         "react-dom": "^16.12.0",
+        "rollup-plugin-less": "^1.1.2",
         "ts-loader": "^6.2.1",
+        "tsdx": "^0.12.3",
         "tslint": "^5.20.1",
         "tslint-config-prettier": "^1.18.0",
         "typescript": "^3.7.2",
@@ -44,6 +47,7 @@
         "webpack-dev-server": "^3.10.1"
     },
     "workspaces": [
-        "packages/@navikt/familie-backend"
+        "packages/familie-backend",
+        "packages/visittkort"
     ]
 }

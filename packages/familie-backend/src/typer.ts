@@ -1,4 +1,4 @@
-import { Express, Request } from 'express';
+import { Express } from 'express';
 import { IOIDCStrategyOptionWithRequest } from 'passport-azure-ad';
 import { Registry } from 'prom-client';
 
@@ -6,11 +6,6 @@ export interface IFamilieBackend {
     app: Express;
     prometheusRegistry: Registry;
 }
-
-export type SessionRequest = Request & {
-    session: Express.Session;
-    sessionID: string;
-};
 
 export interface ISessionKonfigurasjon {
     redisUrl?: string;

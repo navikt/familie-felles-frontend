@@ -1,6 +1,6 @@
 export default {
     typescript: true,
-    src: './packages/@navikt',
+    src: './packages',
     files: '**/*.mdx',
     dest: '/docs',
 };

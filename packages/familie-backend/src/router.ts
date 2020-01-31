@@ -1,4 +1,4 @@
-import express, { NextFunction, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { Counter } from 'prom-client';
 import {
     authenticateAzure,
@@ -7,7 +7,7 @@ import {
     logout,
 } from './auth/authenticate';
 import { hentBrukerprofil } from './auth/bruker';
-import { ITokenRequest, SessionRequest } from './typer';
+import { ITokenRequest } from './typer';
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ export default (
     prometheusTellere?: { [key: string]: Counter },
 ) => {
     // Authentication
-    router.get('/login', (req: SessionRequest, res: Response, next: NextFunction) => {
+    router.get('/login', (req: Request, res: Response, next: NextFunction) => {
         if (prometheusTellere && prometheusTellere.login_route) {
             prometheusTellere.login_route.inc();
         }
@@ -24,7 +24,7 @@ export default (
         authenticateAzure(req, res, next);
     });
     router.post('/auth/openid/callback', authenticateAzureCallback());
-    router.get('/auth/logout', (req: SessionRequest, res: Response) =>
+    router.get('/auth/logout', (req: Request, res: Response) =>
         logout(req, res, saksbehandlerTokenConfig.redirectUrl),
     );
 

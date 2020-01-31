@@ -1,10 +1,10 @@
+import { Request } from 'express';
 import {
     IOIDCStrategyOptionWithRequest,
     IProfile,
     OIDCStrategy,
     VerifyCallback,
 } from 'passport-azure-ad';
-import { SessionRequest } from '../typer';
 
 export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) => {
     passport.serializeUser((user: any, done: any) => {
@@ -21,7 +21,7 @@ export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) =
         new OIDCStrategy(
             passportConfig,
             (
-                req: SessionRequest,
+                req: Request,
                 _iss: string,
                 _sub: string,
                 profile: IProfile,
@@ -33,6 +33,10 @@ export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) =
                     return done(new Error('No oid found'), undefined);
                 }
                 process.nextTick(() => {
+                    if (!req.session) {
+                        throw Error('Mangler sesjon på kall');
+                    }
+
                     req.session.oid = profile.oid;
                     req.session.upn = profile._json.preferred_username;
                     req.session.displayName = profile.displayName;

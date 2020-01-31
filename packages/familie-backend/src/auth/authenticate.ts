@@ -1,14 +1,18 @@
-import { NextFunction, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 import { logError } from '../customLoglevel';
-import { ITokenRequest, SessionRequest } from '../typer';
+import { ITokenRequest } from '../typer';
 import { validerEllerOppdaterAccessToken } from './token';
 
-export const authenticateAzure = (req: SessionRequest, res: Response, next: NextFunction) => {
+export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);
     const redirectUrl = regex ? regex[1] : 'invalid';
 
     const successRedirect = regex ? redirectUrl : '/';
+
+    if (!req.session) {
+        throw Error('Mangler sesjon på kall');
+    }
 
     req.session.redirectUrl = successRedirect;
     try {
@@ -22,8 +26,12 @@ export const authenticateAzure = (req: SessionRequest, res: Response, next: Next
 };
 
 export const authenticateAzureCallback = () => {
-    return (req: SessionRequest, res: Response, next: NextFunction) => {
+    return (req: Request, res: Response, next: NextFunction) => {
         try {
+            if (!req.session) {
+                throw Error('Mangler sesjon på kall');
+            }
+
             passport.authenticate('azuread-openidconnect', {
                 failureRedirect: '/error',
                 successRedirect: req.session.redirectUrl || '/',
@@ -38,7 +46,7 @@ export const ensureAuthenticated = (
     sendUnauthorized: boolean,
     saksbehandlerTokenConfig: ITokenRequest,
 ) => {
-    return async (req: SessionRequest, res: Response, next: NextFunction) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
         if (req.isAuthenticated()) {
             validerEllerOppdaterAccessToken(req, saksbehandlerTokenConfig).catch((error: Error) => {
                 logError(req, `Feil ved henting av accessToken: ${error.message}`);
@@ -56,7 +64,11 @@ export const ensureAuthenticated = (
     };
 };
 
-export const logout = (req: SessionRequest, res: Response, logoutUri: string) => {
+export const logout = (req: Request, res: Response, logoutUri: string) => {
+    if (!req.session) {
+        throw Error('Mangler sesjon på kall');
+    }
+
     res.redirect(logoutUri);
     req.session.destroy((error: Error) => {
         if (error) {

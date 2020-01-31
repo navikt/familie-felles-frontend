@@ -11,7 +11,7 @@ const RedisStore = require('connect-redis')(session);
 export default (
     app: any,
     passport: PassportStatic,
-    sessionKonfigurasjon?: ISessionKonfigurasjon,
+    sessionKonfigurasjon: ISessionKonfigurasjon,
 ) => {
     app.use(cookieParser(sessionKonfigurasjon.cookieSecret));
     app.set('trust proxy', 1);
@@ -34,7 +34,9 @@ export default (
         app.use(
             session({
                 cookie: {
-                    maxAge: sessionKonfigurasjon.sessionMaxAgeSekunder * 1000,
+                    maxAge: sessionKonfigurasjon.sessionMaxAgeSekunder
+                        ? sessionKonfigurasjon.sessionMaxAgeSekunder * 1000
+                        : undefined,
                     secure: sessionKonfigurasjon.secureCookie,
                 },
                 name: sessionKonfigurasjon.navn,

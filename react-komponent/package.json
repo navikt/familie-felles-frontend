@@ -5,7 +5,7 @@
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
     "license": "MIT",
     "main": "dist/index.js",
-    "module": "lib/index.tsx",
+    "module": "src/index.tsx",
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "npm run clean && npm run compile",

@@ -1,6 +1,6 @@
+import { Request } from 'express';
 import loglevel from 'loglevel';
 import momenttz from 'moment-timezone';
-import { SessionRequest } from './typer';
 
 loglevel.setDefaultLevel(loglevel.levels.INFO);
 export const getLogTimestamp = () => {
@@ -9,16 +9,16 @@ export const getLogTimestamp = () => {
         .format('YYYY-MM-DD HH:mm:ss')}`;
 };
 
-const prefix = (req: SessionRequest, level: string) => {
+const prefix = (req: Request, level: string) => {
     return `[${getLogTimestamp()}, ${level} - ${
         req.session ? `${req.session.displayName} -` : 'ugyldig sesjon -'
     } ${req.method}: ${req.originalUrl}]`;
 };
 
-export const logInfo = (req: SessionRequest, message: string) => {
+export const logInfo = (req: Request, message: string) => {
     loglevel.info(`${prefix(req, 'INFO')}: ${message}`);
 };
 
-export const logError = (req: SessionRequest, message: string) => {
+export const logError = (req: Request, message: string) => {
     loglevel.error(`${prefix(req, 'ERROR')}: ${message}`);
 };

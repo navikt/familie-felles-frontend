@@ -1,9 +1,12 @@
-import { Response } from 'express';
-import { SessionRequest } from '../typer';
+import { Request, Response } from 'express';
 
 // Hent brukerprofil
 export const hentBrukerprofil = () => {
-    return async (req: SessionRequest, res: Response) => {
+    return async (req: Request, res: Response) => {
+        if (!req.session) {
+            throw Error('Mangler sesjon på kall');
+        }
+
         const user = {
             displayName: req.session.displayName,
             email: req.session.upn,

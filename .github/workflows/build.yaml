@@ -22,9 +22,7 @@ jobs:
       - name: Installer dependencies
         run: |
           yarn
-          yarn bootstrap
-      - name: Bygg
-        run: yarn compile
+          yarn build
       - name: Push
         run: |
           git config user.email "teamfamilie@nav.no"

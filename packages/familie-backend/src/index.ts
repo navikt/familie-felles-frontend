@@ -16,7 +16,7 @@ import { validerEllerOppdaterOnBehalfOfToken } from './auth/token';
 import { getLogTimestamp, logError, logInfo } from './customLoglevel';
 import { konfigurerMetrikker } from './metrikker';
 import konfigurerRouter from './router';
-import { ISessionKonfigurasjon, ITokenRequest, SessionRequest } from './typer';
+import { ISessionKonfigurasjon, ITokenRequest } from './typer';
 
 class Backend {
     private app: Express;
@@ -32,8 +32,8 @@ class Backend {
         konfigurerPassport(passport, passportConfig);
 
         this.app = express();
-        this.app.get('/isAlive', (req: Request, res: Response) => res.status(200).end());
-        this.app.get('/isReady', (req: Request, res: Response) => res.status(200).end());
+        this.app.get('/isAlive', (_req: Request, res: Response) => res.status(200).end());
+        this.app.get('/isReady', (_req: Request, res: Response) => res.status(200).end());
 
         this.prometheusRegistry = konfigurerMetrikker(this.app, prometheusTellere);
 
@@ -65,7 +65,7 @@ class Backend {
     };
 
     public validerEllerOppdaterOnBehalfOfToken = (
-        req: SessionRequest,
+        req: Request,
         saksbehandlerTokenConfig: ITokenRequest,
         oboTokenConfig: ITokenRequest,
     ) => {
@@ -77,11 +77,11 @@ class Backend {
         return getLogTimestamp();
     };
 
-    public logInfo = (req: SessionRequest, message: string) => {
+    public logInfo = (req: Request, message: string) => {
         logInfo(req, message);
     };
 
-    public logError = (req: SessionRequest, message: string) => {
+    public logError = (req: Request, message: string) => {
         logError(req, message);
     };
 }

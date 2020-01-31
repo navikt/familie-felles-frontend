@@ -4,16 +4,19 @@
     "description": "Skall for familieytelsenes frontend",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
-    "license": "ISC",
-    "main": "dist/backend.js",
-    "sideEffects": false,
+    "license": "MIT",
     "publishConfig": {
         "access": "public"
     },
+    "main": "dist/index.js",
+    "module": "dist/visittkort.esm.js",
+    "typings": "dist/index.d.ts",
+    "files": [
+      "dist"
+    ],
     "scripts": {
-        "build": "npm run clean && npm run compile",
-        "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo",
-        "compile": "tsc -b tsconfig.json"
+        "start": "tsdx watch",
+        "build": "tsdx build"
     },
     "dependencies": {
         "@types/cookie-parser": "^1.4.2",

@@ -1,20 +1,19 @@
+import { Request } from 'express';
 import moment from 'moment-timezone';
 import request from 'request-promise';
 import { logError, logInfo } from '../customLoglevel';
-import { ITokenRequest, SessionRequest } from '../typer';
+import { ITokenRequest } from '../typer';
 
 // Hent eller oppdater OBO token
 export const validerEllerOppdaterOnBehalfOfToken = async (
-    req: SessionRequest,
+    req: Request,
     saksbehandlerTokenConfig: ITokenRequest,
     oboTokenConfig: ITokenRequest,
 ) => {
     if (!req.session) {
-        logError(
-            req,
+        throw Error(
             'Mangler session i validateRefreshAndGetOboToken. Returnerer ugyldig access token.',
         );
-        return '';
     }
 
     if (req.session.oboAccessTokens === undefined) {
@@ -65,15 +64,13 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
 
 // Hent eller oppdater access token
 export const validerEllerOppdaterAccessToken = async (
-    req: SessionRequest,
+    req: Request,
     saksbehandlerTokenConfig: ITokenRequest,
 ) => {
     if (!req.session) {
-        logError(
-            req,
+        throw Error(
             'Mangler session i validerEllerOppdaterAccessToken. Returnerer ugyldig access token.',
         );
-        return '';
     }
 
     if (!req.session.accessToken) {
@@ -107,9 +104,13 @@ export const validerEllerOppdaterAccessToken = async (
 
 // Hent access token for saksbehandler
 const hentAccessTokenForSaksbehandler = async (
-    req: SessionRequest,
+    req: Request,
     saksbehandlerTokenConfig: ITokenRequest,
 ) => {
+    if (!req.session) {
+        throw Error('Mangler sesjon på kall');
+    }
+
     const data = {
         client_id: saksbehandlerTokenConfig.clientId,
         client_secret: saksbehandlerTokenConfig.clientSecret,
@@ -122,7 +123,7 @@ const hentAccessTokenForSaksbehandler = async (
     return request
         .post(
             { url: saksbehandlerTokenConfig.tokenUri, formData: data },
-            (err, httpResponse, body) => {
+            (_err, _httpResponse, body) => {
                 return body;
             },
         )
@@ -131,6 +132,10 @@ const hentAccessTokenForSaksbehandler = async (
         })
         .catch(err => {
             logError(req, `Feilet ved hentAccessTokenForSaksbehandler: ${err}`);
+
+            if (!req.session) {
+                throw Error('Mangler sesjon på kall');
+            }
             req.session.destroy((error: Error) => {
                 if (error) {
                     logError(req, `Feilet ved nedbrytning av session: ${error}`);
@@ -142,7 +147,7 @@ const hentAccessTokenForSaksbehandler = async (
 
 // Hent OBO token for saksbehandler
 const hentOnBehalfOfToken = async (
-    req: SessionRequest,
+    req: Request,
     saksbehandlerTokenConfig: ITokenRequest,
     oboTokenConfig: ITokenRequest,
 ) => {
@@ -159,7 +164,7 @@ const hentOnBehalfOfToken = async (
     };
 
     return request
-        .post({ url: oboTokenConfig.tokenUri, formData: data }, (err, httpResponse, body) => {
+        .post({ url: oboTokenConfig.tokenUri, formData: data }, (_err, _httpResponse, body) => {
             return body;
         })
         .then(result => {
@@ -167,6 +172,10 @@ const hentOnBehalfOfToken = async (
         })
         .catch(err => {
             logError(req, `Feilet ved hentOnBehalfOfToken: ${err}`);
+
+            if (!req.session) {
+                throw Error('Mangler sesjon på kall');
+            }
             req.session.destroy((error: Error) => {
                 if (error) {
                     logError(req, `Feilet ved nedbrytning av session: ${error}`);
