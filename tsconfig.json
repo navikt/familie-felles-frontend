@@ -5,5 +5,6 @@
     "paths": {
       "@navikt/*": ["packages/*/src"],
     }
-  }
+  },
+  "exclude": ["**/*.stories.tsx", "node_modules", "dist"]
 }

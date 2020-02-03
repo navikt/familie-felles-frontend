@@ -2,10 +2,6 @@
     "extends": "../../tsconfig.base.json",
     "include": ["src", "types"],
     "compilerOptions": {
-        "paths": {
-          "@navikt/*": ["../*/src"]
-        },
-        "baseUrl": "..",
-        "rootDir": "."
+        "outDir": "./dist",
     }
 }

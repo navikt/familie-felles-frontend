@@ -9,14 +9,15 @@
         "access": "public"
     },
     "main": "dist/index.js",
-    "module": "dist/visittkort.esm.js",
+    "module": "dist/index.js",
     "typings": "dist/index.d.ts",
     "files": [
       "dist"
     ],
     "scripts": {
-        "start": "tsdx watch",
-        "build": "tsdx build"
+        "build": "yarn run clean && yarn run compile",
+        "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo",
+        "compile": "tsc -b tsconfig.json"
     },
     "dependencies": {
         "@types/cookie-parser": "^1.4.2",
