@@ -11,14 +11,18 @@
     "module": "dist/visittkort.esm.js",
     "typings": "dist/index.d.ts",
     "files": [
-      "dist"
+        "dist"
     ],
     "scripts": {
         "start": "tsdx watch",
         "build": "tsdx build"
     },
     "dependencies": {
-        "nav-frontend-core": "^4.0.11"
+        "classnames": "^2.2.6",
+        "nav-frontend-core": "^4.0.11",
+        "nav-frontend-typografi": "^2.0.17",
+        "nav-frontend-typografi-style": "^1.0.18",
+        "prop-types": "^15.7.2"
     },
     "peerDependencies": {
         "react": ">=16.8.0",
