@@ -24,13 +24,12 @@ jobs:
         run: |
           yarn
           yarn build
-      - name: Publiser storybook
-        run: yarn deploy-storybook
       - name: Push
         run: |
           git config user.email "teamfamilie@nav.no"
           git config user.name "Team familie"
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn deploy-storybook
           npm run publish:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
