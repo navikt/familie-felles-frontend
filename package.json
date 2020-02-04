@@ -6,10 +6,9 @@
     "scripts": {
         "ct": "git-cz",
         "bootstrap": "lerna bootstrap --use-workspaces --no-ci",
-        "build": "yarn build:packages",
+        "build": "lerna run build",
         "storybook": "start-storybook -p 8000",
         "deploy-storybook": "storybook-to-ghpages",
-        "commitmsg": "commitlint -e $GIT_PARAMS",
         "publish:ci": "lerna publish -y"
     },
     "husky": {
