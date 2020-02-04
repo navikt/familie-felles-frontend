@@ -46,5 +46,6 @@
         "request-promise": "^4.2.5",
         "tslint": "^5.20.1",
         "tslint-config-prettier": "^1.18.0"
-    }
+    },
+    "type": "module"
 }

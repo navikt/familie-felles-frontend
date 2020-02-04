@@ -7,7 +7,7 @@ Komponent for visittkort for team familie.
 ## Installasjon
 
 ```sh
-npm install @navikt/familie-typer
+npm install @navikt/familie-visittkort
 # eller hvis du bruker yarn:
-yarn add @navikt/familie-typer
+yarn add @navikt/familie-visittkort
 ```
