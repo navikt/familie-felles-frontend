@@ -1,0 +1,30 @@
+@import "~nav-frontend-core";
+
+.visittkort {
+    border-bottom: 1px solid @navGra80;
+    height: 5rem;
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &__ikon {
+        padding-right: .5rem;
+    }
+
+    &__skråstrek {
+        padding: 0 1rem;
+    }
+
+    &__kopier {
+        all: unset;
+
+        &:hover {
+            cursor: pointer;
+        }
+        
+        &-ikon {
+            padding-left: .5rem;
+        }
+    }
+}

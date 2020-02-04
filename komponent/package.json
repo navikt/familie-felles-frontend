@@ -1,0 +1,22 @@
+{
+    "version": "1.0.0",
+    "name": "@navikt/komponent",
+    "author": "NAV",
+    "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "module": "dist/index.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "yarn run clean && yarn run copy-less && yarn run tsc",
+        "clean": "rm -rf ./dist",
+        "copy-less": "copyfiles -u 1 src/**/*.less dist",
+        "tsc": "tsc -p tsconfig.json"
+    }
+}

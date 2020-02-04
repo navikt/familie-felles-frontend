@@ -1,9 +1,9 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./packages",
     "paths": {
-      "@navikt/*": ["packages/*/src"],
+      "@navikt/*": ["*/src"]
     }
   },
   "exclude": ["**/*.stories.tsx", "node_modules", "dist"]
