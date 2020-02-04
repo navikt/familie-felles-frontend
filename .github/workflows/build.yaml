@@ -2,7 +2,7 @@ name: Build-Deploy-Npm
 on:
   push:
     branches:
-      - 'master'
+      - '*'
     paths-ignore:
       - package.json
 
@@ -28,7 +28,7 @@ jobs:
           git config user.email "teamfamilie@nav.no"
           git config user.name "Team familie"
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          yarn publish:ci
+          npm run publish:ci
           yarn deploy-storybook
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
