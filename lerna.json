@@ -1,4 +1,11 @@
 {
+    "command": {
+        "publish": {
+            "conventionalCommits": true,
+            "ignoreChanges": ["ignored-file", "*.{md|mdx}"],
+            "message": "chore(release): publish"
+        }
+    },
     "packages": ["packages/*"],
     "version": "independent",
     "npmClient": "yarn",
