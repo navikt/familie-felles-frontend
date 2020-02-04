@@ -1,0 +1,7 @@
+{
+    "extends": "../../tsconfig.base.json",
+    "include": ["src", "types", "../familie-ikoner/src/familie/FamilieIkonVelger.tsx"],
+    "compilerOptions": {
+        "outDir": "./dist",
+    }
+}
