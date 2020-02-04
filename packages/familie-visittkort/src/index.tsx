@@ -14,14 +14,6 @@ export interface IVisittkortProps {
 }
 
 const Visittkort: React.SFC<IVisittkortProps> = ({ alder, ident, kjønn, navn }) => {
-    const [didCopy, setDidCopy] = React.useState(false);
-
-    React.useEffect(() => {
-        if (didCopy) {
-            setTimeout(() => setDidCopy(false), 2000);
-        }
-    }, [didCopy]);
-
     return (
         <div className={'visittkort'}>
             <FamilieIkonVelger className={'visittkort__ikon'} alder={alder} kjønn={kjønn} />
