@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@2.0.0...@navikt/familie-visittkort@2.1.0) (2020-02-04)
+
+
+### Features
+
+* **familie-backend, familie-visittkort:** lager backend serveren til en modul. Retter byggfeil i fa ([fdf6d71](https://github.com/navikt/familie-felles-frontend/commit/fdf6d712fd917c927122f9c2c679833ce741537e))
+
+
+
+
+
 # 2.0.0 (2020-02-04)
 
 
