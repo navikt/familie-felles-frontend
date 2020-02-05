@@ -10,8 +10,6 @@ export const authenticateAzure = (req: Request, res: Response, next: NextFunctio
 
     const successRedirect = regex ? redirectUrl : '/';
 
-    console.log('Session: ', req.session);
-
     if (!req.session) {
         throw new Error('Mangler sesjon på kall');
     }

@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-backend",
-    "version": "4.0.1-alpha.7+8547d01",
+    "version": "4.0.2",
     "description": "Skall for familieytelsenes frontend",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -29,7 +29,6 @@
         "@types/passport-azure-ad": "^4.0.3",
         "@types/redis": "^2.8.14",
         "@types/request-promise": "^4.1.44",
-        "cache-manager": "2.10.0",
         "connect-redis": "^4.0.3",
         "cookie-parser": "^1.4.4",
         "dotenv": "^8.2.0",
@@ -37,13 +36,15 @@
         "express-session": "^1.17.0",
         "loglevel": "^1.6.6",
         "moment-timezone": "^0.5.27",
-        "passport": "^0.4.1",
-        "passport-azure-ad": "^4.2.0",
+        "passport": "^0.4.0",
+        "passport-azure-ad": "^4.1.0",
         "prom-client": "^11.5.3",
         "redis": "^2.8.0",
         "request-promise": "^4.2.5",
         "tslint": "^5.20.1",
         "tslint-config-prettier": "^1.18.0"
     },
-    "gitHead": "8547d015318af95e0723972f89a0abe6f771d697"
+    "resolutions": {
+        "cache-manager": "2.10.0"
+    }
 }

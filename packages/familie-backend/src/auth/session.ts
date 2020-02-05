@@ -13,7 +13,6 @@ export default (
     passport: PassportStatic,
     sessionKonfigurasjon: ISessionKonfigurasjon,
 ) => {
-    console.log(sessionKonfigurasjon);
     app.use(cookieParser(sessionKonfigurasjon.cookieSecret));
     app.set('trust proxy', 1);
 

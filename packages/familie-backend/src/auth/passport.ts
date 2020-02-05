@@ -18,10 +18,7 @@ export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) =
     // Azure AD strategi
     passport.use(
         new OIDCStrategy(
-            {
-                ...passportConfig,
-                cookieSameSite: true,
-            } as any,
+            passportConfig,
             (
                 req: Request,
                 _iss: string,
