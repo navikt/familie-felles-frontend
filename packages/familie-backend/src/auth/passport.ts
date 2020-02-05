@@ -20,7 +20,7 @@ export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) =
         new OIDCStrategy(
             {
                 ...passportConfig,
-                cookieSameSite: true,
+                //cookieSameSite: true,
             } as any,
             (
                 req: Request,
