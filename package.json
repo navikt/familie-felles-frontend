@@ -10,7 +10,7 @@
         "storybook": "start-storybook -p 8000",
         "deploy-storybook": "storybook-to-ghpages",
         "publish:ci": "lerna publish -y",
-        "publish:canary": "lerna publish -y --canary"
+        "publish:canary": "lerna publish --canary"
     },
     "husky": {
         "hooks": {

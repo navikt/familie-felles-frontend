@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-backend",
-    "version": "4.0.2",
+    "version": "4.0.1-alpha.7+8547d01",
     "description": "Skall for familieytelsenes frontend",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -44,5 +44,5 @@
         "tslint": "^5.20.1",
         "tslint-config-prettier": "^1.18.0"
     },
-    "gitHead": "3e5179b5dcd94618e5769a2854f366e721798874"
+    "gitHead": "8547d015318af95e0723972f89a0abe6f771d697"
 }
