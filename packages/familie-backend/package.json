@@ -29,6 +29,7 @@
         "@types/passport-azure-ad": "^4.0.3",
         "@types/redis": "^2.8.14",
         "@types/request-promise": "^4.1.44",
+        "cache-manager": "2.10.0",
         "connect-redis": "^4.0.3",
         "cookie-parser": "^1.4.4",
         "dotenv": "^8.2.0",
