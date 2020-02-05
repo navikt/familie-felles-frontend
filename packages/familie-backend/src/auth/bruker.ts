@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 export const hentBrukerprofil = () => {
     return async (req: Request, res: Response) => {
         if (!req.session) {
-            throw Error('Mangler sesjon på kall');
+            throw new Error('Mangler sesjon på kall');
         }
 
         const user = {

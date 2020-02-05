@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "esnext",
-    "lib": ["dom", "esnext"],
+    "module": "commonjs",
+    "lib": ["dom", "esnext", "es6"],
     "importHelpers": true,
     "declaration": true,
     "sourceMap": true,

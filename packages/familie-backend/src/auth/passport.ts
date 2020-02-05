@@ -34,7 +34,7 @@ export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) =
                 }
                 process.nextTick(() => {
                     if (!req.session) {
-                        throw Error('Mangler sesjon på kall');
+                        throw new Error('Mangler sesjon på kall');
                     }
 
                     req.session.oid = profile.oid;
