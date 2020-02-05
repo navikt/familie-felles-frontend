@@ -17,9 +17,11 @@ export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) =
 
     // Azure AD strategi
     passport.use(
-        'azuread-openidconnect',
         new OIDCStrategy(
-            passportConfig,
+            {
+                ...passportConfig,
+                cookieSameSite: true,
+            } as any,
             (
                 req: Request,
                 _iss: string,
