@@ -10,8 +10,10 @@ export const authenticateAzure = (req: Request, res: Response, next: NextFunctio
 
     const successRedirect = regex ? redirectUrl : '/';
 
+    console.log('Session: ', req.session);
+
     if (!req.session) {
-        throw Error('Mangler sesjon på kall');
+        throw new Error('Mangler sesjon på kall');
     }
 
     req.session.redirectUrl = successRedirect;
@@ -29,7 +31,7 @@ export const authenticateAzureCallback = () => {
     return (req: Request, res: Response, next: NextFunction) => {
         try {
             if (!req.session) {
-                throw Error('Mangler sesjon på kall');
+                throw new Error('Mangler sesjon på kall');
             }
 
             passport.authenticate('azuread-openidconnect', {
@@ -66,7 +68,7 @@ export const ensureAuthenticated = (
 
 export const logout = (req: Request, res: Response, logoutUri: string) => {
     if (!req.session) {
-        throw Error('Mangler sesjon på kall');
+        throw new Error('Mangler sesjon på kall');
     }
 
     res.redirect(logoutUri);

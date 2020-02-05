@@ -108,7 +108,7 @@ const hentAccessTokenForSaksbehandler = async (
     saksbehandlerTokenConfig: ITokenRequest,
 ) => {
     if (!req.session) {
-        throw Error('Mangler sesjon på kall');
+        throw new Error('Mangler sesjon på kall');
     }
 
     const data = {
@@ -134,14 +134,14 @@ const hentAccessTokenForSaksbehandler = async (
             logError(req, `Feilet ved hentAccessTokenForSaksbehandler: ${err}`);
 
             if (!req.session) {
-                throw Error('Mangler sesjon på kall');
+                throw new Error('Mangler sesjon på kall');
             }
             req.session.destroy((error: Error) => {
                 if (error) {
                     logError(req, `Feilet ved nedbrytning av session: ${error}`);
                 }
             });
-            throw Error(`Feilet ved hentAccessTokenForSaksbehandler: ${err}`);
+            throw new Error(`Feilet ved hentAccessTokenForSaksbehandler: ${err}`);
         });
 };
 
@@ -174,14 +174,14 @@ const hentOnBehalfOfToken = async (
             logError(req, `Feilet ved hentOnBehalfOfToken: ${err}`);
 
             if (!req.session) {
-                throw Error('Mangler sesjon på kall');
+                throw new Error('Mangler sesjon på kall');
             }
             req.session.destroy((error: Error) => {
                 if (error) {
                     logError(req, `Feilet ved nedbrytning av session: ${error}`);
                 }
             });
-            throw Error(`Feilet ved hentOnBehalfOfToken: ${err}`);
+            throw new Error(`Feilet ved hentOnBehalfOfToken: ${err}`);
         });
 };
 

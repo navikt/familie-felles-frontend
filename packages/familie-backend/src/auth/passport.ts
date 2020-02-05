@@ -20,7 +20,7 @@ export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) =
         new OIDCStrategy(
             {
                 ...passportConfig,
-                //cookieSameSite: true,
+                cookieSameSite: true,
             } as any,
             (
                 req: Request,
@@ -36,7 +36,7 @@ export default (passport: any, passportConfig: IOIDCStrategyOptionWithRequest) =
                 }
                 process.nextTick(() => {
                     if (!req.session) {
-                        throw Error('Mangler sesjon på kall');
+                        throw new Error('Mangler sesjon på kall');
                     }
 
                     req.session.oid = profile.oid;
