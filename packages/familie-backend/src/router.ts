@@ -23,7 +23,7 @@ export default (
 
         authenticateAzure(req, res, next);
     });
-    router.post('/auth/openid/callback', authenticateAzureCallback());
+    router.get('/auth/openid/callback', authenticateAzureCallback());
     router.get('/auth/logout', (req: Request, res: Response) =>
         logout(req, res, saksbehandlerTokenConfig.redirectUrl),
     );
