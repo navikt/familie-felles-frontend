@@ -38,6 +38,7 @@ export default (
                     maxAge: sessionKonfigurasjon.sessionMaxAgeSekunder
                         ? sessionKonfigurasjon.sessionMaxAgeSekunder * 1000
                         : undefined,
+                    sameSite: 'lax',
                     secure: sessionKonfigurasjon.secureCookie,
                 },
                 name: sessionKonfigurasjon.navn,
@@ -50,7 +51,7 @@ export default (
     } else {
         app.use(
             session({
-                cookie: { secure: sessionKonfigurasjon.secureCookie },
+                cookie: { sameSite: 'lax', secure: sessionKonfigurasjon.secureCookie },
                 name: sessionKonfigurasjon.navn,
                 resave: false,
                 saveUninitialized: true,
