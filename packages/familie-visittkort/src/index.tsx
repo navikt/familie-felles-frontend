@@ -6,14 +6,14 @@ import * as React from 'react';
 
 import './index.less';
 
-export interface IVisittkortProps {
+export interface IProps {
     alder: number;
     ident: string;
     kjønn: kjønnType;
     navn: string;
 }
 
-const Visittkort: React.SFC<IVisittkortProps> = ({ alder, ident, kjønn, navn }) => {
+const Visittkort: React.StatelessComponent<IProps> = ({ alder, ident, kjønn, navn }) => {
     return (
         <div className={'visittkort'}>
             <FamilieIkonVelger className={'visittkort__ikon'} alder={alder} kjønn={kjønn} />

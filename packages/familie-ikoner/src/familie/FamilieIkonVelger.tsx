@@ -6,7 +6,7 @@ import { KvinneIkon } from './KvinneIkon';
 import { MannIkon } from './MannIkon';
 import { NøytralPersonIkon } from './NøytralPersonIkon';
 
-interface IProps {
+export interface IProps {
     alder: number;
     className?: string;
     kjønn: kjønnType;

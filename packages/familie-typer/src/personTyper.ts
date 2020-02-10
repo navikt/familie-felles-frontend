@@ -1,4 +1,6 @@
-export enum kjønnType {
+enum kjønnType {
     'K' = 'K',
     'M' = 'M',
 }
+
+export { kjønnType };
