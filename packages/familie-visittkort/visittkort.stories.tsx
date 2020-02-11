@@ -1,6 +1,6 @@
 import { kjønnType } from '@navikt/familie-typer';
 import React from 'react';
-import Visittkort from './src/index';
+import Visittkort from './src';
 
 export default {
     component: Visittkort,
@@ -10,7 +10,7 @@ export default {
     title: 'Komponenter/Visittkort',
 };
 
-export const standard = () => {
+export const visittkort = () => {
     return (
         <Visittkort alder={30} kjønn={kjønnType.K} navn={'Mock McMockface'} ident={'12345678910'} />
     );
