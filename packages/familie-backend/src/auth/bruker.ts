@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import request from 'request-promise';
 import { ITokenRequest } from '../typer';
 import { hentOnBehalfOfToken } from './token';
@@ -16,6 +16,7 @@ export const hentBrukerprofil = () => {
             email: req.session.upn,
             groups: req.session.groups,
             identifier: req.session.upn,
+            enhet: req.session.enhet,
         };
         res.status(200).send(user);
     };
@@ -32,7 +33,7 @@ export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
         tokenUri: saksbehandlerTokenConfig.tokenUri,
     };
     
-    return async (req:Request, res: Response) => {
+    return async (req:Request, _: Response, next: NextFunction) => {
 
         const msGraphMeUrl= `https://graph.microsoft.com/v1.0/me`
         if(!req.session){
@@ -41,8 +42,7 @@ export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
 
         if(req.session.enhet){
             logInfo(req, "Gyldig enhet i session");
-            res.status(200).send(req.session.enhet);
-            return;
+            return next();
         }
 
         logInfo(req, "Enhet ikke i session, henter fra "+ msGraphMeUrl);
@@ -69,8 +69,7 @@ export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
             }
 
             req.session.enhet= enhet;
-
-            res.status(200).send(enhet);
+            return next();
         })
         .catch(err => {
             throw new Error(`Feilet ved hent enhet: ${err}`);

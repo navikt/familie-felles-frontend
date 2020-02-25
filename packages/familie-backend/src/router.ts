@@ -32,12 +32,9 @@ export default (
     router.get(
         '/user/profile',
         ensureAuthenticated(true, saksbehandlerTokenConfig),
+        hentBrukerenhet(saksbehandlerTokenConfig),
         hentBrukerprofil(),
     );
 
-    router.get(
-        '/user/enhet',
-        hentBrukerenhet(saksbehandlerTokenConfig),
-    )
     return router;
 };
