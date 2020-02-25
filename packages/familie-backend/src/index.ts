@@ -27,8 +27,7 @@ class Backend {
         passportConfig: IOIDCStrategyOptionWithRequest,
         sessionKonfigurasjon: ISessionKonfigurasjon,
         saksbehandlerTokenConfig: ITokenRequest,
-        prometheusTellere?: { [key: string]: Counter },
-        msGraphOBOAccessTokenConfig?: ITokenRequest,
+        prometheusTellere?: { [key: string]: Counter }
     ) {
         konfigurerPassport(passport, passportConfig);
 
@@ -40,7 +39,7 @@ class Backend {
 
         konfigurerSession(this.app, passport, sessionKonfigurasjon);
 
-        this.router = konfigurerRouter(saksbehandlerTokenConfig, prometheusTellere, msGraphOBOAccessTokenConfig);
+        this.router = konfigurerRouter(saksbehandlerTokenConfig, prometheusTellere);
     }
 
     // Express

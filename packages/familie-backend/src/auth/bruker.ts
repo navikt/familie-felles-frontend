@@ -1,5 +1,8 @@
 import { Request, Response } from 'express';
 import request from 'request-promise';
+import { ITokenRequest } from '../typer';
+import { hentOnBehalfOfToken } from './token';
+import { logInfo } from '../customLoglevel';
 
 // Hent brukerprofil
 export const hentBrukerprofil = () => {
@@ -19,21 +22,37 @@ export const hentBrukerprofil = () => {
 };
 
 // Hent brukerenhet
-export const hentBrukerenhet = (scope?: string) => {
+export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
+    
+    const msGraphOBOTokenConfig: ITokenRequest = {
+        clientId: saksbehandlerTokenConfig.clientId,
+        clientSecret: saksbehandlerTokenConfig.clientSecret,
+        redirectUrl: saksbehandlerTokenConfig.redirectUrl,
+        scope: `https://graph.microsoft.com/.default`,
+        tokenUri: saksbehandlerTokenConfig.tokenUri,
+    };
+    
     return async (req:Request, res: Response) => {
-        if(!scope){
-            throw new Error('scope undefined');
-        }
 
         const msGraphMeUrl= `https://graph.microsoft.com/v1.0/me`
         if(!req.session){
             throw new Error('Mangler sesjon på kall');
         }
 
+        if(req.session.enhet){
+            logInfo(req, "Gyldig enhet i session");
+            res.status(200).send(req.session.enhet);
+            return;
+        }
+
+        logInfo(req, "Enhet ikke i session, henter fra "+ msGraphMeUrl);
+        
+        const obotoken= await hentOnBehalfOfToken(req, saksbehandlerTokenConfig, msGraphOBOTokenConfig);
+
         request
         .get(
             { url: msGraphMeUrl, headers:{
-                Authorization: 'Bearer '+ req.session.oboAccessTokens[scope],
+                Authorization: 'Bearer '+ obotoken,
             } },
             (_err, _httpResponse, body) => {
                 return body;
@@ -44,6 +63,12 @@ export const hentBrukerenhet = (scope?: string) => {
             if(!enhet){
                 throw new Error('officeLocation ikke funnet fra Microsoft Graph, eller formatet er uventet');
             }
+            
+            if(!req.session){
+                throw new Error('Mangler sesjon på kall');
+            }
+
+            req.session.enhet= enhet;
 
             res.status(200).send(enhet);
         })

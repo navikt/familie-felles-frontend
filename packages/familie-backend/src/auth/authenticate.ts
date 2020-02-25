@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 import { logError } from '../customLoglevel';
 import { ITokenRequest } from '../typer';
-import { validerEllerOppdaterAccessToken, validerEllerOppdaterOnBehalfOfToken } from './token';
+import { validerEllerOppdaterAccessToken } from './token';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);
@@ -63,25 +63,6 @@ export const ensureAuthenticated = (
         }
     };
 };
-
-export const ensureOBOAccessTokenValid=(
-    saksbehandlerTokenConfig: ITokenRequest,
-    oboTokenConfig?: ITokenRequest,
-)=>{
-    return async(req: Request, res: Response, next: NextFunction) =>{
-        if(!oboTokenConfig){
-            logError(req, `Feil ved henting av OBO access token: mangler obo token kongigurasjon`);
-            res.status(401).send(`Feil ved autentisering`);
-            return;
-        }
-
-        await validerEllerOppdaterOnBehalfOfToken(req, saksbehandlerTokenConfig, oboTokenConfig!).catch((error: Error)=>{
-            logError(req, `Feil ved henting av OBO access token: ${error.message}`);
-            res.status(500).send(`Feil ved autentisering`);
-        })
-        return next();
-    }
-}
 
 export const logout = (req: Request, res: Response, logoutUri: string) => {
     if (!req.session) {
