@@ -5,8 +5,9 @@ import {
     authenticateAzureCallback,
     ensureAuthenticated,
     logout,
+    ensureOBOAccessTokenValid,
 } from './auth/authenticate';
-import { hentBrukerprofil } from './auth/bruker';
+import { hentBrukerenhet, hentBrukerprofil } from './auth/bruker';
 import { ITokenRequest } from './typer';
 
 const router = express.Router();
@@ -14,6 +15,7 @@ const router = express.Router();
 export default (
     saksbehandlerTokenConfig: ITokenRequest,
     prometheusTellere?: { [key: string]: Counter },
+    msGraphOBOAccessTokenConfig?: ITokenRequest,
 ) => {
     // Authentication
     router.get('/login', (req: Request, res: Response, next: NextFunction) => {
@@ -35,5 +37,11 @@ export default (
         hentBrukerprofil(),
     );
 
+    router.get(
+        '/user/enhet',
+        ensureAuthenticated(true, saksbehandlerTokenConfig),
+        ensureOBOAccessTokenValid(saksbehandlerTokenConfig, msGraphOBOAccessTokenConfig),
+        hentBrukerenhet(msGraphOBOAccessTokenConfig?.scope),
+    )
     return router;
 };
