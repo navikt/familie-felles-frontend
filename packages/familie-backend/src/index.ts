@@ -27,7 +27,7 @@ class Backend {
         passportConfig: IOIDCStrategyOptionWithRequest,
         sessionKonfigurasjon: ISessionKonfigurasjon,
         saksbehandlerTokenConfig: ITokenRequest,
-        prometheusTellere?: { [key: string]: Counter },
+        prometheusTellere?: { [key: string]: Counter }
     ) {
         konfigurerPassport(passport, passportConfig);
 
