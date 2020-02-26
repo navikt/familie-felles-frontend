@@ -9,13 +9,13 @@ const auditLogPath = () =>
     fs.existsSync('/secure-logs/') ? '/secure-logs/secure.log' : './secure.log';
 
 const stdoutLogger = winston.createLogger({
-    format: winston.format.simple(),
+    format: winston.format.json(),
     level: 'info',
     transports: [new winston.transports.Console()],
 });
 
 const auditLogger = winston.createLogger({
-    format: winston.format.simple(),
+    format: winston.format.json(),
     level: 'info',
     transports: [new winston.transports.File({ filename: auditLogPath(), maxsize: 5242880 })],
 });
