@@ -4,16 +4,16 @@ import {
     authenticateAzure,
     authenticateAzureCallback,
     ensureAuthenticated,
-    logout,
+    logout
 } from './auth/authenticate';
-import { hentBrukerprofil } from './auth/bruker';
+import { hentBrukerenhet, hentBrukerprofil } from './auth/bruker';
 import { ITokenRequest } from './typer';
 
 const router = express.Router();
 
 export default (
     saksbehandlerTokenConfig: ITokenRequest,
-    prometheusTellere?: { [key: string]: Counter },
+    prometheusTellere?: { [key: string]: Counter }
 ) => {
     // Authentication
     router.get('/login', (req: Request, res: Response, next: NextFunction) => {
@@ -32,6 +32,7 @@ export default (
     router.get(
         '/user/profile',
         ensureAuthenticated(true, saksbehandlerTokenConfig),
+        hentBrukerenhet(saksbehandlerTokenConfig),
         hentBrukerprofil(),
     );
 

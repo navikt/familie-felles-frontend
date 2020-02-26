@@ -150,7 +150,7 @@ const hentAccessTokenForSaksbehandler = async (
 };
 
 // Hent OBO token for saksbehandler
-const hentOnBehalfOfToken = async (
+export const hentOnBehalfOfToken = async (
     req: Request,
     saksbehandlerTokenConfig: ITokenRequest,
     oboTokenConfig: ITokenRequest,
