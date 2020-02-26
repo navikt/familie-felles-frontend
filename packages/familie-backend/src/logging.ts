@@ -29,7 +29,10 @@ export const warning = (message: string) => {
 };
 
 export const error = (message: string, err?: Error) => {
-    stdoutLogger.error(message, err && { message: `: ${err?.message || err}` });
+    stdoutLogger.error(
+        `[${getLogTimestamp()}] ${message}`,
+        err && { message: `: ${err?.message || err}` },
+    );
 };
 
 export const audit = (message: string) => {
