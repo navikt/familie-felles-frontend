@@ -1,8 +1,8 @@
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import request from 'request-promise';
+import { LOG_LEVEL, logRequest } from '../logging';
 import { ITokenRequest } from '../typer';
 import { hentOnBehalfOfToken } from './token';
-import { logInfo, logError } from '../customLoglevel';
 
 // Hent brukerprofil
 export const hentBrukerprofil = () => {
@@ -14,9 +14,9 @@ export const hentBrukerprofil = () => {
         const user = {
             displayName: req.session.displayName,
             email: req.session.upn,
+            enhet: req.session.enhet,
             groups: req.session.groups,
             identifier: req.session.upn,
-            enhet: req.session.enhet,
         };
         res.status(200).send(user);
     };
@@ -24,7 +24,6 @@ export const hentBrukerprofil = () => {
 
 // Hent brukerenhet
 export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
-
     const msGraphOBOTokenConfig: ITokenRequest = {
         clientId: saksbehandlerTokenConfig.clientId,
         clientSecret: saksbehandlerTokenConfig.clientSecret,
@@ -34,37 +33,47 @@ export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
     };
 
     return async (req: Request, _: Response, next: NextFunction) => {
-        const ukjentEnhet = "9999";
+        const ukjentEnhet = '9999';
 
-        const msGraphMeUrl = `https://graph.microsoft.com/v1.0/me`
+        const msGraphMeUrl = `https://graph.microsoft.com/v1.0/me`;
         if (!req.session) {
             throw new Error('Mangler sesjon på kall');
         }
 
         if (req.session.enhet) {
-            logInfo(req, "Gyldig enhet i session");
+            logRequest(req, 'Gyldig enhet i session', LOG_LEVEL.INFO);
             return next();
         }
 
-        logInfo(req, "Enhet ikke i session, henter fra " + msGraphMeUrl);
+        logRequest(req, 'Enhet ikke i session, henter fra ' + msGraphMeUrl, LOG_LEVEL.INFO);
 
-        const obotoken = await hentOnBehalfOfToken(req, saksbehandlerTokenConfig, msGraphOBOTokenConfig);
+        const obotoken = await hentOnBehalfOfToken(
+            req,
+            saksbehandlerTokenConfig,
+            msGraphOBOTokenConfig,
+        );
 
         request
             .get(
                 {
-                    url: msGraphMeUrl, headers: {
+                    headers: {
                         Authorization: 'Bearer ' + obotoken,
-                    }
+                    },
+                    url: msGraphMeUrl,
                 },
                 (_err, _httpResponse, body) => {
                     return body;
                 },
             )
             .then(result => {
-                var officeLocation = JSON.parse(result)?.officeLocation;
-                if (!officeLocation || !(/^\d{4}\s+\S+.*$/.test(officeLocation))) {
-                    logError(req, 'officeLocation ikke funnet fra Microsoft Graph, eller formatet er uventet: ' + officeLocation);
+                let officeLocation = JSON.parse(result)?.officeLocation;
+                if (!officeLocation || !/^\d{4}\s+\S+.*$/.test(officeLocation)) {
+                    logRequest(
+                        req,
+                        'officeLocation ikke funnet fra Microsoft Graph, eller formatet er uventet: ' +
+                            officeLocation,
+                        LOG_LEVEL.ERROR,
+                    );
                     officeLocation = ukjentEnhet;
                 }
 
@@ -76,7 +85,7 @@ export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
                 return next();
             })
             .catch(err => {
-                logError(req, `Feilet ved hent enhet: ${err}`);
+                logRequest(req, `Feilet ved hent enhet: ${err}`, LOG_LEVEL.ERROR);
                 if (!req.session) {
                     throw new Error('Mangler sesjon på kall');
                 }

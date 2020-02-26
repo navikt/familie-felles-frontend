@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import moment from 'moment-timezone';
 import request from 'request-promise';
-import { logError, logInfo } from '../customLoglevel';
+import { LOG_LEVEL, logRequest } from '../logging';
 import { ITokenRequest } from '../typer';
 
 // Hent eller oppdater OBO token
@@ -25,7 +25,7 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
     }
 
     if (req.session.oboAccessTokens[oboTokenConfig.scope] === undefined) {
-        logInfo(req, 'Mangler OBO access token i session, henter nytt.');
+        logRequest(req, 'Mangler OBO access token i session, henter nytt.', LOG_LEVEL.INFO);
 
         const newOboAccessToken = await hentOnBehalfOfToken(
             req,
@@ -35,7 +35,7 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
 
         req.session.oboAccessTokens[oboTokenConfig.scope] = newOboAccessToken;
     } else if (moment().isAfter(moment(req.session.oboExpiryDates[oboTokenConfig.scope]))) {
-        logInfo(req, 'OBO token har utgått, henter nytt.');
+        logRequest(req, 'OBO token har utgått, henter nytt.', LOG_LEVEL.INFO);
 
         const newOboAccessToken = await hentOnBehalfOfToken(
             req,
@@ -47,7 +47,7 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
             req.session.oboAccessTokens[oboTokenConfig.scope] = newOboAccessToken;
         }
     } else {
-        logInfo(req, 'Gyldig OBO access token i cache.');
+        logRequest(req, 'Gyldig OBO access token i cache.', LOG_LEVEL.INFO);
         return req.session.oboAccessTokens[oboTokenConfig.scope];
     }
     req.session.oboExpiryDates[oboTokenConfig.scope] =
@@ -55,7 +55,11 @@ export const validerEllerOppdaterOnBehalfOfToken = async (
 
     req.session.save((error: Error) => {
         if (error) {
-            logError(req, `Feilet ved lagring av OBO access token til session: ${error}`);
+            logRequest(
+                req,
+                `Feilet ved lagring av OBO access token til session: ${error}`,
+                LOG_LEVEL.ERROR,
+            );
         }
     });
 
@@ -74,13 +78,13 @@ export const validerEllerOppdaterAccessToken = async (
     }
 
     if (!req.session.accessToken) {
-        logInfo(req, 'Mangler access token i session, henter nytt.');
+        logRequest(req, 'Mangler access token i session, henter nytt.', LOG_LEVEL.INFO);
 
         const newAccessToken = await hentAccessTokenForSaksbehandler(req, saksbehandlerTokenConfig);
 
         req.session.accessToken = newAccessToken;
     } else if (moment().isAfter(moment(req.session.expiryDate))) {
-        logInfo(req, 'Access token har utgått, henter nytt.');
+        logRequest(req, 'Access token har utgått, henter nytt.', LOG_LEVEL.INFO);
 
         const newAccessToken = await hentAccessTokenForSaksbehandler(req, saksbehandlerTokenConfig);
 
@@ -88,14 +92,14 @@ export const validerEllerOppdaterAccessToken = async (
             req.session.accessToken = newAccessToken;
         }
     } else {
-        logInfo(req, 'Gyldig access token i cache.');
+        logRequest(req, 'Gyldig access token i cache.', LOG_LEVEL.INFO);
         return req.session.accessToken;
     }
     req.session.expiryDate = JSON.parse(decodeToken(req.session.accessToken)).exp * 1000;
 
     req.session.save((error: Error) => {
         if (error) {
-            logError(req, `Failed to save access token to session: ${error}`);
+            logRequest(req, `Failed to save access token to session: ${error}`, LOG_LEVEL.ERROR);
         }
     });
 
@@ -131,14 +135,14 @@ const hentAccessTokenForSaksbehandler = async (
             return JSON.parse(result).access_token;
         })
         .catch(err => {
-            logError(req, `Feilet ved hentAccessTokenForSaksbehandler: ${err}`);
+            logRequest(req, `Feilet ved hentAccessTokenForSaksbehandler: ${err}`, LOG_LEVEL.ERROR);
 
             if (!req.session) {
                 throw new Error('Mangler sesjon på kall');
             }
             req.session.destroy((error: Error) => {
                 if (error) {
-                    logError(req, `Feilet ved nedbrytning av session: ${error}`);
+                    logRequest(req, `Feilet ved nedbrytning av session: ${error}`, LOG_LEVEL.ERROR);
                 }
             });
             throw new Error(`Feilet ved hentAccessTokenForSaksbehandler: ${err}`);
@@ -171,14 +175,14 @@ export const hentOnBehalfOfToken = async (
             return JSON.parse(result).access_token;
         })
         .catch(err => {
-            logError(req, `Feilet ved hentOnBehalfOfToken: ${err}`);
+            logRequest(req, `Feilet ved hentOnBehalfOfToken: ${err}`, LOG_LEVEL.ERROR);
 
             if (!req.session) {
                 throw new Error('Mangler sesjon på kall');
             }
             req.session.destroy((error: Error) => {
                 if (error) {
-                    logError(req, `Feilet ved nedbrytning av session: ${error}`);
+                    logRequest(req, `Feilet ved nedbrytning av session: ${error}`, LOG_LEVEL.ERROR);
                 }
             });
             throw new Error(`Feilet ved hentOnBehalfOfToken: ${err}`);
