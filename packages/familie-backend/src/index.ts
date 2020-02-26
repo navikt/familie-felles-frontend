@@ -13,10 +13,12 @@ import { ensureAuthenticated } from './auth/authenticate';
 import konfigurerPassport from './auth/passport';
 import konfigurerSession from './auth/session';
 import { validerEllerOppdaterOnBehalfOfToken } from './auth/token';
-import { getLogTimestamp, logError, logInfo } from './customLoglevel';
+import headers from './headers';
 import { konfigurerMetrikker } from './metrikker';
 import konfigurerRouter from './router';
 import { ISessionKonfigurasjon, ITokenRequest } from './typer';
+
+export * from './logging';
 
 class Backend {
     private app: Express;
@@ -32,6 +34,8 @@ class Backend {
         konfigurerPassport(passport, passportConfig);
 
         this.app = express();
+        headers.setup(this.app);
+
         this.app.get('/isAlive', (_req: Request, res: Response) => res.status(200).end());
         this.app.get('/isReady', (_req: Request, res: Response) => res.status(200).end());
 
@@ -70,19 +74,6 @@ class Backend {
         oboTokenConfig: ITokenRequest,
     ) => {
         return validerEllerOppdaterOnBehalfOfToken(req, saksbehandlerTokenConfig, oboTokenConfig);
-    };
-
-    // Utils
-    public getLogTimestamp = () => {
-        return getLogTimestamp();
-    };
-
-    public logInfo = (req: Request, message: string) => {
-        logInfo(req, message);
-    };
-
-    public logError = (req: Request, message: string) => {
-        logError(req, message);
     };
 }
 

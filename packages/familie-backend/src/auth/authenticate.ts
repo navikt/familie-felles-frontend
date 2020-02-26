@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
-import { logError } from '../customLoglevel';
+import { LOG_LEVEL, logRequest } from '../logging';
 import { ITokenRequest } from '../typer';
 import { validerEllerOppdaterAccessToken } from './token';
 
@@ -49,7 +49,11 @@ export const ensureAuthenticated = (
     return async (req: Request, res: Response, next: NextFunction) => {
         if (req.isAuthenticated()) {
             validerEllerOppdaterAccessToken(req, saksbehandlerTokenConfig).catch((error: Error) => {
-                logError(req, `Feil ved henting av accessToken: ${error.message}`);
+                logRequest(
+                    req,
+                    `Feil ved henting av accessToken: ${error.message}`,
+                    LOG_LEVEL.ERROR,
+                );
                 res.status(500).send(`Feil ved autentisering`);
             });
             return next();
@@ -72,7 +76,7 @@ export const logout = (req: Request, res: Response, logoutUri: string) => {
     res.redirect(logoutUri);
     req.session.destroy((error: Error) => {
         if (error) {
-            logError(req, `error during logout: ${error}`);
+            logRequest(req, `error during logout: ${error}`, LOG_LEVEL.ERROR);
         }
     });
 };

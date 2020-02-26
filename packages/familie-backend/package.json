@@ -34,7 +34,6 @@
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "express-session": "^1.17.0",
-        "loglevel": "^1.6.6",
         "moment-timezone": "^0.5.27",
         "passport": "^0.4.0",
         "passport-azure-ad": "^4.1.0",
@@ -42,7 +41,8 @@
         "redis": "^2.8.0",
         "request-promise": "^4.2.5",
         "tslint": "^5.20.1",
-        "tslint-config-prettier": "^1.18.0"
+        "tslint-config-prettier": "^1.18.0",
+        "winston": "^3.2.1"
     },
     "resolutions": {
         "cache-manager": "2.10.0"
