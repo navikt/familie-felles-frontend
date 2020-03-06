@@ -1,6 +1,7 @@
 enum kjønnType {
-    'K' = 'K',
-    'M' = 'M',
+    'KVINNE' = 'KVINNE',
+    'MANN' = 'MANN',
+    'UKJENT' = 'UKJENT',
 }
 
 export { kjønnType };

@@ -13,10 +13,10 @@ export default {
 export const familievelger = () => {
     return (
         <>
-            <FamilieIkonVelger alder={30} kjønn={kjønnType.K} />
-            <FamilieIkonVelger alder={3} kjønn={kjønnType.K} />
-            <FamilieIkonVelger alder={30} kjønn={kjønnType.M} />
-            <FamilieIkonVelger alder={3} kjønn={kjønnType.M} />
+            <FamilieIkonVelger alder={30} kjønn={kjønnType.KVINNE} />
+            <FamilieIkonVelger alder={3} kjønn={kjønnType.KVINNE} />
+            <FamilieIkonVelger alder={30} kjønn={kjønnType.MANN} />
+            <FamilieIkonVelger alder={3} kjønn={kjønnType.MANN} />
         </>
     );
 };
