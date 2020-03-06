@@ -12,6 +12,11 @@ export default {
 
 export const visittkort = () => {
     return (
-        <Visittkort alder={30} kjønn={kjønnType.K} navn={'Mock McMockface'} ident={'12345678910'} />
+        <Visittkort
+            alder={30}
+            kjønn={kjønnType.KVINNE}
+            navn={'Mock McMockface'}
+            ident={'12345678910'}
+        />
     );
 };

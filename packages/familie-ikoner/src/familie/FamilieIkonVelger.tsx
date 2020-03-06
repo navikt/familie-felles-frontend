@@ -18,13 +18,13 @@ export const FamilieIkonVelger: React.StatelessComponent<IProps> = ({
     kjønn,
 }) => {
     switch (kjønn) {
-        case kjønnType.K:
+        case kjønnType.KVINNE:
             if (alder < 18) {
                 return <JenteIkon className={className} heigth={32} width={32} />;
             } else {
                 return <KvinneIkon className={className} heigth={32} width={32} />;
             }
-        case kjønnType.M:
+        case kjønnType.MANN:
             if (alder < 18) {
                 return <GuttIkon className={className} heigth={32} width={32} />;
             } else {
