@@ -1,3 +1,6 @@
 {
-    "typescript.tsdk": "node_modules/typescript/lib"
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "less.lint.duplicateProperties": "warning",
+    "less.lint.important": "error",
+    "sort-imports.cache-package-json-config-checks": false
 }
