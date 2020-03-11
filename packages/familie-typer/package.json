@@ -20,6 +20,5 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "react": "^16.12.0"
     }
 }

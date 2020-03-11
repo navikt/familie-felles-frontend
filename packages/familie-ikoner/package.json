@@ -20,7 +20,6 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-typer": "^3.0.2",
-        "react": "^16.12.0"
+        "@navikt/familie-typer": "^3.0.2"
     }
 }
