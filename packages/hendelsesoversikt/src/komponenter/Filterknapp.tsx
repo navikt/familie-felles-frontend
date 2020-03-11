@@ -11,7 +11,10 @@ interface IFilterknappProps {
 
 const Filterknapp = ({ children, onClick, aktiv }: IFilterknappProps) => {
     return (
-        <button onClick={onClick} className={classNames('knapp', aktiv && 'aktivKnapp')}>
+        <button
+            onClick={onClick}
+            className={classNames('filterknapp', aktiv && 'filterknapp__aktivKnapp')}
+        >
             {children}
         </button>
     );
