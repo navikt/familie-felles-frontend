@@ -24,8 +24,8 @@ const Hendelsesoversikt = ({ hendelser, className }: IHendelsesoversiktProps) =>
     const [aktivtFilter, setAktivtFilter] = React.useState<Hendelsetype>(Hendelsetype.Historikk);
 
     return (
-        <div className={classNames('container', className)}>
-            <div className={'header'}>
+        <div className={classNames('hendelsesoversikt', className)}>
+            <div className={'hendelsesoversikt__header'}>
                 <Historikkknapp
                     aktiv={aktivtFilter === Hendelsetype.Historikk}
                     onClick={() => setAktivtFilter(Hendelsetype.Historikk)}
@@ -39,7 +39,7 @@ const Hendelsesoversikt = ({ hendelser, className }: IHendelsesoversiktProps) =>
                     onClick={() => setAktivtFilter(Hendelsetype.Dokumenter)}
                 />
             </div>
-            <ul className={'list'}>{hendelser?.map(tilHendelseItem)}</ul>
+            <ul className={'hendelsesoversikt__list'}>{hendelser?.map(tilHendelseItem)}</ul>
         </div>
     );
 };
