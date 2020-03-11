@@ -39,7 +39,9 @@ const Hendelsesoversikt = ({ hendelser, className }: IHendelsesoversiktProps) =>
                     onClick={() => setAktivtFilter(Hendelsetype.Dokumenter)}
                 />
             </div>
-            <ul className={'hendelsesoversikt__list'}>{hendelser?.map(tilHendelseItem)}</ul>
+            {aktivtFilter === Hendelsetype.Historikk && (
+                <ul className={'hendelsesoversikt__list'}>{hendelser?.map(tilHendelseItem)}</ul>
+            )}
         </div>
     );
 };
