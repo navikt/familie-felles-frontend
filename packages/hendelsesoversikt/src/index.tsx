@@ -1,7 +1,7 @@
 import './index.less';
 
 import * as React from 'react';
-import { Hendelse, Hendelsetype } from './types';
+import { Hendelse, Tabs } from './types';
 
 import classNames from 'classnames';
 import Dokumenterknapp from './komponenter/Dokumenterknapp';
@@ -9,7 +9,7 @@ import HendelseItem from './komponenter/HendelseItem';
 import Historikkknapp from './komponenter/Historikkknapp';
 import Meldingerknapp from './komponenter/Meldingerknapp';
 
-export { Hendelsetype, Hendelse };
+export { Tabs as Hendelsetype, Hendelse };
 
 export interface IHendelsesoversiktProps {
     className?: string;
@@ -21,25 +21,25 @@ const tilHendelseItem = (hendelse: Hendelse) => (
 );
 
 const Hendelsesoversikt = ({ hendelser, className }: IHendelsesoversiktProps) => {
-    const [aktivtFilter, setAktivtFilter] = React.useState<Hendelsetype>(Hendelsetype.Historikk);
+    const [aktivTab, settAktivTab] = React.useState<Tabs>(Tabs.Historikk);
 
     return (
         <div className={classNames('hendelsesoversikt', className)}>
             <div className={'hendelsesoversikt__header'}>
                 <Historikkknapp
-                    aktiv={aktivtFilter === Hendelsetype.Historikk}
-                    onClick={() => setAktivtFilter(Hendelsetype.Historikk)}
+                    aktiv={aktivTab === Tabs.Historikk}
+                    onClick={() => settAktivTab(Tabs.Historikk)}
                 />
                 <Meldingerknapp
-                    aktiv={aktivtFilter === Hendelsetype.Meldinger}
-                    onClick={() => setAktivtFilter(Hendelsetype.Meldinger)}
+                    aktiv={aktivTab === Tabs.Meldinger}
+                    onClick={() => settAktivTab(Tabs.Meldinger)}
                 />
                 <Dokumenterknapp
-                    aktiv={aktivtFilter === Hendelsetype.Dokumenter}
-                    onClick={() => setAktivtFilter(Hendelsetype.Dokumenter)}
+                    aktiv={aktivTab === Tabs.Dokumenter}
+                    onClick={() => settAktivTab(Tabs.Dokumenter)}
                 />
             </div>
-            {aktivtFilter === Hendelsetype.Historikk && (
+            {aktivTab === Tabs.Historikk && (
                 <ul className={'hendelsesoversikt__list'}>{hendelser?.map(tilHendelseItem)}</ul>
             )}
         </div>

@@ -1,4 +1,4 @@
-export enum Hendelsetype {
+export enum Tabs {
     Historikk,
     Meldinger,
     Dokumenter,
