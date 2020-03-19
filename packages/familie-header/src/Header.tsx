@@ -41,7 +41,7 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
                 name={navn}
                 unit={`Enhet: ${enhet}`}
                 onClick={(e) => {
-                    settAnkur(ankur=== undefined? e.currentTarget: undefined)
+                    settAnkur(ankur=== undefined? e.currentTarget: undefined);
                 }}
             />
             {popoverItems &&
@@ -50,6 +50,7 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
                     ankerEl= {ankur}
                     orientering= {PopoverOrientering.Under}
                     autoFokus={false}
+                    onRequestClose={()=>{settAnkur(undefined);}}
                     tabIndex={-1}
                     utenPil
                 >
