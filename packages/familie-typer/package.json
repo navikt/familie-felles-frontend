@@ -19,7 +19,7 @@
         "copy-less": "copyfiles -u 1 src/**/*.less dist",
         "tsc": "tsc -p tsconfig.json"
     },
-    "dependencies": {
+    "peerDependencies": {
         "react": "^16.12.0"
     }
 }

@@ -29,6 +29,7 @@ jobs:
           git config user.email "teamfamilie@nav.no"
           git config user.name "Team familie"
           git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git checkout yarn.lock package.json
           npm run publish:canary:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

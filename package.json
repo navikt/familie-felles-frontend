@@ -11,7 +11,7 @@
         "deploy-storybook": "storybook-to-ghpages",
         "publish:ci": "lerna publish -y",
         "publish:canary": "lerna publish --canary",
-        "publish:canary:ci": "lerna publish -y --canary"
+        "publish:canary:ci": "lerna publish from-git -y --canary"
     },
     "husky": {
         "hooks": {
