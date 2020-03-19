@@ -33,7 +33,7 @@ interface BrukerProps {
 }
 
 export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
-    const [ankur, settAnkur]= React.useState<HTMLElement|undefined>(undefined);
+    const [anker, settAnker]= React.useState<HTMLElement|undefined>(undefined);
 
     return (
         <div>
@@ -41,16 +41,16 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
                 name={navn}
                 unit={`Enhet: ${enhet}`}
                 onClick={(e) => {
-                    settAnkur(ankur=== undefined? e.currentTarget: undefined);
+                    settAnker(anker=== undefined? e.currentTarget: undefined);
                 }}
             />
             {popoverItems &&
                 <Popover
                     id={'this'}
-                    ankerEl= {ankur}
+                    ankerEl= {anker}
                     orientering= {PopoverOrientering.Under}
                     autoFokus={false}
-                    onRequestClose={()=>{settAnkur(undefined);}}
+                    onRequestClose={()=>{settAnker(undefined);}}
                     tabIndex={-1}
                     utenPil
                 >
