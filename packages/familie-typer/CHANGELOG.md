@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-typer@3.0.2...@navikt/familie-typer@3.0.3) (2020-03-20)
+
+**Note:** Version bump only for package @navikt/familie-typer
+
+
+
+
+
 ## [3.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-typer@3.0.1...@navikt/familie-typer@3.0.2) (2020-03-06)
 
 **Note:** Version bump only for package @navikt/familie-typer
