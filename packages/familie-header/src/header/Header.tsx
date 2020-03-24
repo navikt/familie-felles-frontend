@@ -6,7 +6,7 @@ import React from 'react';
 import BoxedListWithLinks from '@navikt/boxed-list-with-links';
 import UserPanel from '@navikt/nap-user-panel';
 
-import IkonSystem from './icons/IkonSystem';
+import IkonSystem from '../icons/IkonSystem';
 
 export type Brukerinfo = {
     navn: string;

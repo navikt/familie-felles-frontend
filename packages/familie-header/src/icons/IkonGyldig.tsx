@@ -1,6 +1,5 @@
 import React from 'react';
 import Ikon, { IkonProps } from './Ikon';
-import "./IkonPrompt.less";
 
 const navLysGra= '#E9E7E7';
 

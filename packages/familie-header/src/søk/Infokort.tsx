@@ -1,6 +1,5 @@
 import './Infokort.less';
 
-import Panel from 'nav-frontend-paneler';
 import React from 'react';
 
 export interface IInfokortProps {
@@ -20,13 +19,13 @@ const Infokort: React.FunctionComponent<IInfokortProps> = ({
     }
 
     return (
-        <Panel className={'infokort' + (index % 2 ? ' infokort__odd' : ' infokort__even')}>
+        <div className={'infokort' + (index % 2 ? ' infokort__odd' : ' infokort__even')}>
             <div className='infokort__ikon'>{ikon}</div>
             <div className='infokort__content' onClick={onclick} id={index.toString()}>
                 <div className='infokort_header'>{header}</div>
                 {children}
             </div>
-        </Panel>
+        </div>
     )
 }
 

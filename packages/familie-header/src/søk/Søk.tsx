@@ -57,7 +57,7 @@ const Søk = ({ onSøk, onEndring, validator, onGyldigVerdi, autoSøk = true, sp
 
     return (
         <div className='søk_container'>
-            {prompt && <div className= 'søk_container__prompt'>prompt</div>}
+            {prompt && <div className= 'søk_container__prompt'>{prompt}</div>}
             <input className='søk_container__felt' onChange={onChange} onKeyPress={onKeyPress} value={verdi} placeholder={placeholder} />
             <button className='søk_container__knapp' onClick={() => søk()}>
                 <IkonSøk />
