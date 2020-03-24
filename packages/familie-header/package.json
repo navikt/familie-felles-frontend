@@ -33,6 +33,8 @@
   "dependencies": {
     "@navikt/boxed-list-with-links": "^1.0.2",
     "@navikt/nap-user-panel": "^1.0.0",
+    "@navikt/familie-ikoner": "^3.0.3",
+    "@navikt/familie-typer": "^3.0.3",
     "classnames": "^2.2.6",
     "lodash.throttle": "^4.1.1",
     "nav-frontend-alertstriper": "^3.0.13",
