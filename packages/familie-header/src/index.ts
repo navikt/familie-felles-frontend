@@ -1,7 +1,7 @@
 import Header from './header/Header';
-import BASakskort, { BASakPersonRolle } from './søk/BASakskort';
+import Infokort from './søk/Infokort';
 import Infostripe, { InfoType } from './søk/Infostripe';
 import Søk from './søk/Søk';
 
-export { Søk, BASakskort, Infostripe, BASakPersonRolle, InfoType};
+export { Søk, Infokort, Infostripe, InfoType};
 export default Header;
