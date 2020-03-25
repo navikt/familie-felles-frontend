@@ -16,7 +16,7 @@ export default (
     app.use(cookieParser(sessionKonfigurasjon.cookieSecret));
     app.set('trust proxy', 1);
 
-    if (process.env.NODE_ENV === 'production' && sessionKonfigurasjon.redisUrl) {
+    if (sessionKonfigurasjon.redisUrl) {
         const client = redis.createClient({
             db: 1,
             host: sessionKonfigurasjon.redisUrl,
