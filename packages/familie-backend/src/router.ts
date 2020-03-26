@@ -7,7 +7,7 @@ import {
     ensureAuthenticated,
     logout,
 } from './auth/authenticate';
-import { getUserInfoFromGraphApi, hentBrukerprofil } from './auth/bruker';
+import { hentBrukerprofil } from './auth/bruker';
 
 const router = express.Router();
 
@@ -20,17 +20,11 @@ export default (authClient: Client, prometheusTellere?: { [key: string]: Counter
 
         authenticateAzure(req, res, next);
     });
-    router.get('/auth/openid/callback', authenticateAzureCallback());
+    router.use('/auth/openid/callback', authenticateAzureCallback());
     router.get('/auth/logout', (req: Request, res: Response) => logout(req, res));
 
     // Bruker
-    router.get(
-        '/user/profile',
-        ensureAuthenticated(true),
-        (req: Request, _: Response, next: NextFunction) =>
-            getUserInfoFromGraphApi(authClient, req, next),
-        hentBrukerprofil(),
-    );
+    router.get('/user/profile', ensureAuthenticated(authClient, true), hentBrukerprofil());
 
     return router;
 };

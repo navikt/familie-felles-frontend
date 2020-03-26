@@ -3,6 +3,8 @@ import passport from 'passport';
 import { appConfig } from '../config';
 import { LOG_LEVEL, logRequest } from '../logging';
 import { hasValidAccessToken } from './utils';
+import { Client } from 'openid-client';
+import { setBrukerprofilPåSesjon } from './bruker';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);
@@ -42,10 +44,10 @@ export const authenticateAzureCallback = () => {
     };
 };
 
-export const ensureAuthenticated = (sendUnauthorized: boolean) => {
+export const ensureAuthenticated = (authClient: Client, sendUnauthorized: boolean) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         if (req.isAuthenticated() && hasValidAccessToken(req)) {
-            return next();
+            return setBrukerprofilPåSesjon(authClient, req, next);
         }
 
         const pathname = req.originalUrl;

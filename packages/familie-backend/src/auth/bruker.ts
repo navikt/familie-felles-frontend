@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Request, Response, NextFunction } from 'express';
 import { Client } from 'openid-client';
 import { getOnBehalfOfAccessToken } from './utils';
+import { logRequest, LOG_LEVEL } from '../logging';
 
 // Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {
@@ -14,7 +15,7 @@ export const hentBrukerprofil = () => {
     };
 };
 
-export const getUserInfoFromGraphApi = (authClient: Client, req: Request, next: NextFunction) => {
+export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
     return new Promise((_, reject) => {
         const api = {
             scopes: ['https://graph.microsoft.com/.default'],
@@ -40,7 +41,18 @@ export const getUserInfoFromGraphApi = (authClient: Client, req: Request, next: 
                     identifier: response.data.userPrincipalName,
                     navIdent: response.data.onPremisesSamAccountName,
                 };
-                return next();
+
+                req.session.save((error: Error) => {
+                    if (error) {
+                        logRequest(
+                            req,
+                            `Feilet ved lagring av bruker på session: ${error}`,
+                            LOG_LEVEL.ERROR,
+                        );
+                    } else {
+                        return next();
+                    }
+                });
             })
             .catch((err: Error) => {
                 if (!req.session) {
