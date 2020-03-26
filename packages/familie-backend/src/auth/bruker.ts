@@ -3,6 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import { Client } from 'openid-client';
 import { getOnBehalfOfAccessToken } from './utils';
 import { logRequest, LOG_LEVEL } from '../logging';
+import { envVar } from '../config';
 
 // Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {
@@ -22,9 +23,13 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
             clientId: 'https://graph.microsoft.com',
         };
 
+        if (req.session && req.session.user) {
+            return next();
+        }
+
         const query =
             'onPremisesSamAccountName,displayName,mail,officeLocation,userPrincipalName,id';
-        const graphUrl = `https://graph.microsoft.com/v1.0/me?$select=${query}`;
+        const graphUrl = `${envVar('GRAPH_API')}?$select=${query}`;
         getOnBehalfOfAccessToken(authClient, req, api)
             .then(accessToken =>
                 axios.get(graphUrl, { headers: { Authorization: `Bearer ${accessToken}` } }),
