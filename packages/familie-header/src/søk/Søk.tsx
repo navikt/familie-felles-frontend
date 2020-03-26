@@ -6,50 +6,50 @@ import React, { useState } from 'react';
 import { IkonFeil, IkonGyldig, IkonSpinner, IkonSøk } from '../icons';
 
 export interface SøkProps {
-    onSøk: (value: string) => void;
-    onEndring?: (value: string) => void;
+    søk: (value: string) => void;
+    onChange?: (value: string) => void;
     spinner?: boolean;
     validator?: (value: string) => boolean;
     plassholder?: string;
-    onGyldigVerdi?: (value: string) => void;
+    gyldigVerdi?: (value: string) => void;
     autoSøk?: boolean;
     children?: React.ReactNode | React.ReactNode[];
 }
 
-export const Søk = ({ onSøk, onEndring, validator, onGyldigVerdi, autoSøk = true, spinner = false, plassholder='', children }: SøkProps) => {
+export const Søk = ({ søk, onChange, validator, gyldigVerdi, autoSøk = true, spinner = false, plassholder='', children }: SøkProps) => {
     const [verdi, settVerdi] = useState('');
     const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
     const [gyldig, settGyldig] = useState(false);
 
-    const søk = (nøkkel?: string) => {
+    const utløserSøk = (nøkkel?: string) => {
         const gyldigNøkkel = nøkkel || verdi;
 
-        gyldigNøkkel.length > 0 && onSøk(gyldigNøkkel);
+        gyldigNøkkel.length > 0 && søk(gyldigNøkkel);
     };
 
     const tastenTrykkes = (event: React.KeyboardEvent) => {
         //Vis popover når du trykker på en tast. Dette for å sikre at søkestatusen vises korrekt når den ble tilbake fra skjult.
         settAnker(verdi.length > 0 ? event.currentTarget as HTMLElement : undefined);
-        event.key === 'Enter' && verdi.length > 0 && søk();
+        event.key === 'Enter' && verdi.length > 0 && utløserSøk();
     };
 
     const søkKlikket= (event: React.MouseEvent)=>{
         settAnker(verdi.length > 0 ? event.currentTarget as HTMLElement : undefined);
-        søk();
+        utløserSøk();
     }
 
     const innspillEndret = (event: React.ChangeEvent) => {
-        const changed = (event.target as HTMLInputElement).value
-        settVerdi(changed);
+        const nyVerdi = (event.target as HTMLInputElement).value
+        settVerdi(nyVerdi);
         //sørg for at popover vises
-        settAnker(changed.length > 0 ? event.currentTarget as HTMLElement : undefined);
-        onEndring?.(changed);
-        const erGyldig = validator?.(changed);
+        settAnker(nyVerdi.length > 0 ? event.currentTarget as HTMLElement : undefined);
+        onChange?.(nyVerdi);
+        const erGyldig = validator?.(nyVerdi);
         settGyldig(erGyldig || false);
 
         if (erGyldig) {
-            onGyldigVerdi?.(changed);
-            autoSøk && søk(changed);
+            gyldigVerdi?.(nyVerdi);
+            autoSøk && utløserSøk(nyVerdi);
         }
     };
 
