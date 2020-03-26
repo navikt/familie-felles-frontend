@@ -6,14 +6,14 @@ import React from 'react';
 import BoxedListWithLinks from '@navikt/boxed-list-with-links';
 import UserPanel from '@navikt/nap-user-panel';
 
-import IkonSystem from './icons/IkonSystem';
+import { IkonSystem } from '../icons';
 
-export type Brukerinfo = {
+export interface Brukerinfo {
     navn: string;
     enhet: string;
 };
 
-export type BrukerPopoverItem = {
+export interface BrukerPopoverItem {
     name: string;
     href: string;
 }
@@ -33,7 +33,7 @@ interface BrukerProps {
 }
 
 export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
-    const [anker, settAnker]= React.useState<HTMLElement|undefined>(undefined);
+    const [anker, settAnker] = React.useState<HTMLElement | undefined>(undefined);
 
     return (
         <div>
@@ -41,16 +41,16 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
                 name={navn}
                 unit={`Enhet: ${enhet}`}
                 onClick={(e) => {
-                    settAnker(anker=== undefined? e.currentTarget: undefined);
+                    settAnker(anker === undefined ? e.currentTarget : undefined);
                 }}
             />
             {popoverItems &&
                 <Popover
                     id={'this'}
-                    ankerEl= {anker}
-                    orientering= {PopoverOrientering.Under}
+                    ankerEl={anker}
+                    orientering={PopoverOrientering.Under}
                     autoFokus={false}
-                    onRequestClose={()=>{settAnker(undefined);}}
+                    onRequestClose={() => { settAnker(undefined); }}
                     tabIndex={-1}
                     utenPil
                 >
@@ -63,7 +63,7 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
     );
 };
 
-const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerPopoverItems }: HeaderProps) => {
+export const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerPopoverItems }: HeaderProps) => {
     return (
         <div className='header'>
             <div className='rad'>
@@ -83,5 +83,3 @@ const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerPopoverI
         </div>
     );
 };
-
-export default Header;

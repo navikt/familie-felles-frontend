@@ -1,5 +1,4 @@
-import Header from './Header';
-import Søk from './Søk';
-
-export { Søk};
-export default Header;
+export * from './header';
+export * from './icons';
+export * from './søk';
+export * from './types';

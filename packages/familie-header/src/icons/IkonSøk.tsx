@@ -1,9 +1,8 @@
 import React from 'react';
-import Ikon, { IkonProps } from './Ikon';
+import {Ikon, IkonProps } from './Ikon';
+import {navGra60} from '../types';
 
-const navGra60= '#78706a';
-
-const IkonSøk = ({ color = navGra60, width = 16, height = 16 }: IkonProps) => {
+export const IkonSøk = ({ color = navGra60, width = 16, height = 16 }: IkonProps) => {
     return (
         <Ikon width={width} height={height}>
             <path
@@ -13,5 +12,3 @@ const IkonSøk = ({ color = navGra60, width = 16, height = 16 }: IkonProps) => {
         </Ikon>
     );
 };
-
-export default IkonSøk;
