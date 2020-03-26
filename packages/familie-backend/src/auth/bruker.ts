@@ -1,98 +1,68 @@
-import { NextFunction, Request, Response } from 'express';
-import request from 'request-promise';
-import { LOG_LEVEL, logRequest } from '../logging';
-import { ITokenRequest } from '../typer';
-import { hentOnBehalfOfToken } from './token';
+import axios from 'axios';
+import { Request, Response, NextFunction } from 'express';
+import { Client } from 'openid-client';
+import { getOnBehalfOfAccessToken } from './utils';
+import { logRequest, LOG_LEVEL } from '../logging';
 
-// Hent brukerprofil
+// Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {
     return async (req: Request, res: Response) => {
         if (!req.session) {
             throw new Error('Mangler sesjon på kall');
         }
 
-        const user = {
-            displayName: req.session.displayName,
-            email: req.session.upn,
-            enhet: req.session.enhet,
-            groups: req.session.groups,
-            identifier: req.session.upn,
-        };
-        res.status(200).send(user);
+        res.status(200).send(req.session.user);
     };
 };
 
-// Hent brukerenhet
-export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
-    const msGraphOBOTokenConfig: ITokenRequest = {
-        clientId: saksbehandlerTokenConfig.clientId,
-        clientSecret: saksbehandlerTokenConfig.clientSecret,
-        redirectUrl: saksbehandlerTokenConfig.redirectUrl,
-        scope: `https://graph.microsoft.com/.default`,
-        tokenUri: saksbehandlerTokenConfig.tokenUri,
-    };
+export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
+    return new Promise((_, reject) => {
+        const api = {
+            scopes: ['https://graph.microsoft.com/.default'],
+            clientId: 'https://graph.microsoft.com',
+        };
 
-    return async (req: Request, _: Response, next: NextFunction) => {
-        const ukjentEnhet = '9999';
-
-        const msGraphMeUrl = `https://graph.microsoft.com/v1.0/me`;
-        if (!req.session) {
-            throw new Error('Mangler sesjon på kall');
-        }
-
-        if (req.session.enhet) {
-            logRequest(req, 'Gyldig enhet i session', LOG_LEVEL.INFO);
-            return next();
-        }
-
-        logRequest(req, 'Enhet ikke i session, henter fra ' + msGraphMeUrl, LOG_LEVEL.INFO);
-
-        const obotoken = await hentOnBehalfOfToken(
-            req,
-            saksbehandlerTokenConfig,
-            msGraphOBOTokenConfig,
-        );
-
-        request
-            .get(
-                {
-                    headers: {
-                        Authorization: 'Bearer ' + obotoken,
-                    },
-                    url: msGraphMeUrl,
-                },
-                (_err, _httpResponse, body) => {
-                    return body;
-                },
+        const query =
+            'onPremisesSamAccountName,displayName,mail,officeLocation,userPrincipalName,id';
+        const graphUrl = `https://graph.microsoft.com/v1.0/me?$select=${query}`;
+        getOnBehalfOfAccessToken(authClient, req, api)
+            .then(accessToken =>
+                axios.get(graphUrl, { headers: { Authorization: `Bearer ${accessToken}` } }),
             )
-            .then(result => {
-                let officeLocation = JSON.parse(result)?.officeLocation;
-                if (!officeLocation || !/^\d{4}\s+\S+.*$/.test(officeLocation)) {
-                    logRequest(
-                        req,
-                        'officeLocation ikke funnet fra Microsoft Graph, eller formatet er uventet: ' +
-                            officeLocation,
-                        LOG_LEVEL.ERROR,
-                    );
-                    officeLocation = ukjentEnhet;
-                }
-
+            .then((response: any) => {
                 if (!req.session) {
                     throw new Error('Mangler sesjon på kall');
                 }
 
-                req.session.enhet = officeLocation.slice(0, 4);
-                return next();
+                req.session.user = {
+                    displayName: response.data.displayName,
+                    email: response.data.userPrincipalName,
+                    enhet: response.data.officeLocation.slice(0, 4),
+                    identifier: response.data.userPrincipalName,
+                    navIdent: response.data.onPremisesSamAccountName,
+                };
+
+                req.session.save((error: Error) => {
+                    if (error) {
+                        logRequest(
+                            req,
+                            `Feilet ved lagring av bruker på session: ${error}`,
+                            LOG_LEVEL.ERROR,
+                        );
+                    } else {
+                        return next();
+                    }
+                });
             })
-            .catch(err => {
-                logRequest(req, `Feilet ved hent enhet: ${err}`, LOG_LEVEL.ERROR);
+            .catch((err: Error) => {
                 if (!req.session) {
                     throw new Error('Mangler sesjon på kall');
                 }
 
-                req.session.enhet = ukjentEnhet;
-
-                return next();
+                req.session.user = {
+                    enhet: '9999',
+                };
+                reject(err);
             });
-    };
+    });
 };

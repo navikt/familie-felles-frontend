@@ -1,5 +1,3 @@
-'use strict';
-
 import { Request } from 'express';
 import fs from 'fs';
 import momenttz from 'moment-timezone';
@@ -46,9 +44,9 @@ export const getLogTimestamp = () => {
 };
 
 const prefix = (req: Request) => {
-    return `${req.session ? `${req.session.displayName} -` : 'ugyldig sesjon -'} ${req.method} - ${
-        req.originalUrl
-    }`;
+    return `${
+        req.session && req.session.user ? `${req.session.user.displayName} -` : 'ugyldig sesjon -'
+    } ${req.method} - ${req.originalUrl}`;
 };
 
 export const logRequest = (req: Request, message: string, level: LOG_LEVEL) => {

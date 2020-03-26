@@ -1,8 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
+import { appConfig } from '../config';
 import { LOG_LEVEL, logRequest } from '../logging';
-import { ITokenRequest } from '../typer';
-import { validerEllerOppdaterAccessToken } from './token';
+import { hasValidAccessToken } from './utils';
+import { Client } from 'openid-client';
+import { setBrukerprofilPåSesjon } from './bruker';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);
@@ -16,7 +18,7 @@ export const authenticateAzure = (req: Request, res: Response, next: NextFunctio
 
     req.session.redirectUrl = successRedirect;
     try {
-        passport.authenticate('azuread-openidconnect', {
+        passport.authenticate('azureOidc', {
             failureRedirect: '/error',
             successRedirect,
         })(req, res, next);
@@ -32,7 +34,7 @@ export const authenticateAzureCallback = () => {
                 throw new Error('Mangler sesjon på kall');
             }
 
-            passport.authenticate('azuread-openidconnect', {
+            passport.authenticate('azureOidc', {
                 failureRedirect: '/error',
                 successRedirect: req.session.redirectUrl || '/',
             })(req, res, next);
@@ -42,21 +44,10 @@ export const authenticateAzureCallback = () => {
     };
 };
 
-export const ensureAuthenticated = (
-    sendUnauthorized: boolean,
-    saksbehandlerTokenConfig: ITokenRequest,
-) => {
+export const ensureAuthenticated = (authClient: Client, sendUnauthorized: boolean) => {
     return async (req: Request, res: Response, next: NextFunction) => {
-        if (req.isAuthenticated()) {
-            validerEllerOppdaterAccessToken(req, saksbehandlerTokenConfig).catch((error: Error) => {
-                logRequest(
-                    req,
-                    `Feil ved henting av accessToken: ${error.message}`,
-                    LOG_LEVEL.ERROR,
-                );
-                res.status(500).send(`Feil ved autentisering`);
-            });
-            return next();
+        if (req.isAuthenticated() && hasValidAccessToken(req)) {
+            return setBrukerprofilPåSesjon(authClient, req, next);
         }
 
         const pathname = req.originalUrl;
@@ -68,12 +59,12 @@ export const ensureAuthenticated = (
     };
 };
 
-export const logout = (req: Request, res: Response, logoutUri: string) => {
+export const logout = (req: Request, res: Response) => {
     if (!req.session) {
         throw new Error('Mangler sesjon på kall');
     }
 
-    res.redirect(logoutUri);
+    res.redirect(appConfig.logoutRedirectUri);
     req.session.destroy((error: Error) => {
         if (error) {
             logRequest(req, `error during logout: ${error}`, LOG_LEVEL.ERROR);

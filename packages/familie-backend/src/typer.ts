@@ -1,10 +1,6 @@
-import { Express } from 'express';
-import { IOIDCStrategyOptionWithRequest } from 'passport-azure-ad';
-import { Registry } from 'prom-client';
-
-export interface IFamilieBackend {
-    app: Express;
-    prometheusRegistry: Registry;
+export interface IApi {
+    clientId: string;
+    scopes: string[];
 }
 
 export interface ISessionKonfigurasjon {
@@ -13,16 +9,14 @@ export interface ISessionKonfigurasjon {
     navn: string;
     secureCookie: boolean;
     sessionMaxAgeSekunder?: number;
-    sessionSecret: string | string[];
     cookieSecret: string | string[];
 }
 
-export interface ITokenRequest {
+export interface IAppConfig {
+    discoveryUrl: string;
     clientId: string;
     clientSecret: string;
-    redirectUrl: string;
-    scope: string;
-    tokenUri: string;
+    redirectUri: string;
+    logoutRedirectUri: string;
+    sessionSecret: string;
 }
-
-export { IOIDCStrategyOptionWithRequest };
