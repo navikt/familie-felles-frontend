@@ -6,14 +6,14 @@ import React from 'react';
 import BoxedListWithLinks from '@navikt/boxed-list-with-links';
 import UserPanel from '@navikt/nap-user-panel';
 
-import IkonSystem from '../icons/IkonSystem';
+import {IkonSystem} from '../icons';
 
-export type Brukerinfo = {
+export interface Brukerinfo{
     navn: string;
     enhet: string;
 };
 
-export type BrukerPopoverItem = {
+export interface BrukerPopoverItem{
     name: string;
     href: string;
 }
@@ -63,7 +63,7 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
     );
 };
 
-const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerPopoverItems }: HeaderProps) => {
+export const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerPopoverItems }: HeaderProps) => {
     return (
         <div className='header'>
             <div className='rad'>
@@ -83,5 +83,3 @@ const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerPopoverI
         </div>
     );
 };
-
-export default Header;

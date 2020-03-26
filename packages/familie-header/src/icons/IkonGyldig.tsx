@@ -1,9 +1,9 @@
 import React from 'react';
-import Ikon, { IkonProps } from './Ikon';
+import {Ikon, IkonProps } from './Ikon';
 
 const navLysGra= '#E9E7E7';
 
-const IkonGyldig = ({ color = navLysGra, width = 20, height = 20 }: IkonProps) => {
+export const IkonGyldig = ({ color = navLysGra, width = 16, height = 16 }: IkonProps) => {
     return (
         <Ikon width={width} height={height}>
             <path
@@ -15,5 +15,3 @@ const IkonGyldig = ({ color = navLysGra, width = 20, height = 20 }: IkonProps) =
         </Ikon>
     );
 };
-
-export default IkonGyldig;

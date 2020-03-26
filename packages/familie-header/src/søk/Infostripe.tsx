@@ -13,8 +13,6 @@ export interface IInfostripProps{
     children?: React.ReactNode | React.ReactNode[];
 }
 
-const Infostripe: React.FunctionComponent<IInfostripProps>= ({type, children})=>{
+export const Infostripe: React.FunctionComponent<IInfostripProps>= ({type, children})=>{
     return  <Alertstripe type={type}>{children}</Alertstripe>
 }
-
-export default Infostripe;

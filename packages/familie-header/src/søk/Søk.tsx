@@ -3,10 +3,7 @@ import './Søk.less';
 import Popover, { PopoverOrientering } from 'nav-frontend-popover';
 import React, { useState } from 'react';
 
-import IkonFeil from '../icons/IkonFeil';
-import IkonGyldig from '../icons/IkonGyldig';
-import IkonSpinner from '../icons/IkonSpinner';
-import IkonSøk from '../icons/IkonSøk';
+import {IkonFeil, IkonGyldig, IkonSpinner, IkonSøk} from '../icons';
 
 export interface SøkProps {
     onSøk: (value: string) => void;
@@ -19,7 +16,7 @@ export interface SøkProps {
     children?: React.ReactNode | React.ReactNode[];
 }
 
-const Søk = ({ onSøk, onEndring, validator, onGyldigVerdi, autoSøk = true, spinner = false, placeholder, children }: SøkProps) => {
+export const Søk = ({ onSøk, onEndring, validator, onGyldigVerdi, autoSøk = true, spinner = false, placeholder, children }: SøkProps) => {
     const [verdi, settVerdi] = useState('');
     const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
     const [gyldig, settGyldig] = useState(false);
@@ -53,11 +50,11 @@ const Søk = ({ onSøk, onEndring, validator, onGyldigVerdi, autoSøk = true, sp
 
     const prompt= !spinner && validator && gyldig && verdi.length > 0 && <IkonGyldig />
     || !spinner && validator && !gyldig && verdi.length > 0 && <IkonFeil />
-    || spinner && <IkonSpinner />;
 
     return (
         <div className='søk_container'>
             {prompt && <div className= 'søk_container__prompt'>{prompt}</div>}
+            {spinner && <div className= 'søk_container__spinner'><IkonSpinner/></div>}
             <input className='søk_container__felt' onChange={onChange} onKeyPress={onKeyPress} value={verdi} placeholder={placeholder} />
             <button className='søk_container__knapp' onClick={() => søk()}>
                 <IkonSøk />
@@ -78,5 +75,3 @@ const Søk = ({ onSøk, onEndring, validator, onGyldigVerdi, autoSøk = true, sp
         </div>
     );
 };
-
-export default Søk;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Ikon, { IkonProps } from './Ikon';
+import{Ikon, IkonProps } from './Ikon';
 
-const IkonSystem = ({ color = '#ffffff', width = 16, height = 16 }: IkonProps) => {
+export const IkonSystem = ({ color = '#ffffff', width = 16, height = 16 }: IkonProps) => {
     return (
         <Ikon width={width} height={height} viewBox={128}>
             <path
@@ -11,5 +11,3 @@ const IkonSystem = ({ color = '#ffffff', width = 16, height = 16 }: IkonProps) =
         </Ikon>
     );
 };
-
-export default IkonSystem;

@@ -10,7 +10,7 @@ export interface IInfokortProps {
     children?: React.ReactNode | React.ReactNode[];
 }
 
-const Infokort: React.FunctionComponent<IInfokortProps> = ({
+export const Infokort: React.FunctionComponent<IInfokortProps> = ({
     ikon, header, index, onClick, children
 }) => {
 
@@ -28,5 +28,3 @@ const Infokort: React.FunctionComponent<IInfokortProps> = ({
         </div>
     )
 }
-
-export default Infokort;

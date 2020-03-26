@@ -1,9 +1,9 @@
 import React from 'react';
-import Ikon, { IkonProps } from './Ikon';
+import {Ikon, IkonProps } from './Ikon';
 
 const redError= '#BA3A26';
 
-const IkonFeil = ({ color = redError, width = 20, height = 20 }: IkonProps) => {
+export const IkonFeil = ({ color = redError, width = 16, height = 16 }: IkonProps) => {
     return (
         <Ikon width={width} height={height}>
             <path
@@ -18,5 +18,3 @@ const IkonFeil = ({ color = redError, width = 20, height = 20 }: IkonProps) => {
         </Ikon>
     );
 };
-
-export default IkonFeil;
