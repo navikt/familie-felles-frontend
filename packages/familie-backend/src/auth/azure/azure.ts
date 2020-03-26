@@ -1,4 +1,3 @@
-import http from 'http';
 import {
     Client,
     ClientMetadata,
@@ -7,12 +6,11 @@ import {
     Strategy,
     StrategyOptions,
     TokenSet,
-    UserinfoResponse,
 } from 'openid-client';
 import { appConfig } from '../../config';
 import { info } from '../../logging';
 import httpProxy from '../proxy/http-proxy';
-import { appendDefaultScope } from '../utils';
+import { appendDefaultScope, tokenSetSelfId } from '../utils';
 
 const metadata: ClientMetadata = {
     client_id: appConfig.clientId,
@@ -34,24 +32,17 @@ const hentClient = (): Promise<Client> => {
 };
 
 const strategy = (client: Client) => {
-    const verify = (
-        req: http.IncomingMessage,
-        tokenset: TokenSet,
-        userinfo: UserinfoResponse,
-        done: (err: any, user?: UserinfoResponse) => void,
-    ) => {
-        /*if (!req.session) {
-            throw Error('Mangler session på request.');
+    const verify = (tokenSet: TokenSet, done: (err: any, user?: any) => void) => {
+        if (tokenSet.expired()) {
+            return done(undefined, undefined);
         }
 
-        req.session.oid = userinfo.oid;
-        req.session.upn = userinfo.preferred_username;
-        req.session.displayName = userinfo.displayName;
-        req.session.groups = userinfo.groups;
-        req.session.tokenSets[tokenSetSelfId] = tokenset;*/
-
-        info(`Request: ${req}\nTokenset: ${tokenset}`);
-        return done(undefined, userinfo);
+        done(undefined, {
+            claims: tokenSet.claims,
+            tokenSets: {
+                [tokenSetSelfId]: tokenSet,
+            },
+        });
     };
 
     const options: StrategyOptions<Client> = {
@@ -59,7 +50,7 @@ const strategy = (client: Client) => {
         params: {
             response_mode: 'query',
             response_types: ['code'],
-            scope: `openid profile offline_access ${appendDefaultScope(appConfig.clientId)}`,
+            scope: `openid offline_access ${appendDefaultScope(appConfig.clientId)}`,
         },
         passReqToCallback: false,
         usePKCE: 'S256',

@@ -2,9 +2,9 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import { PassportStatic } from 'passport';
 import redis from 'redis';
+import { appConfig } from '../config';
 import { info } from '../logging';
 import { ISessionKonfigurasjon } from '../typer';
-import { appConfig } from '../config';
 
 /* tslint:disable */
 const RedisStore = require('connect-redis')(session);

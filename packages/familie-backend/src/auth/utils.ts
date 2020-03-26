@@ -1,11 +1,15 @@
 import { Request } from 'express';
 import { Client, TokenSet } from 'openid-client';
-import { error } from '../logging';
+import { error, logRequest, LOG_LEVEL } from '../logging';
 import { IApi } from '../typer';
 
 export const tokenSetSelfId = 'self';
 
-export const getOnBehalfOfAccessToken = (authClient: Client, req: Request, api: IApi) => {
+export const getOnBehalfOfAccessToken = (
+    authClient: Client,
+    req: Request,
+    api: IApi,
+): Promise<string> => {
     return new Promise((resolve, reject) => {
         if (hasValidAccessToken(req, api.clientId)) {
             const tokenSets = getTokenSetsFromSession(req);
@@ -17,7 +21,7 @@ export const getOnBehalfOfAccessToken = (authClient: Client, req: Request, api: 
 
             authClient
                 .grant({
-                    assertion: req.session.tokenSets[tokenSetSelfId].access_token,
+                    assertion: req.session.passport.user.tokenSets[tokenSetSelfId].access_token,
                     client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
                     grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
                     requested_token_use: 'on_behalf_of',
@@ -28,7 +32,7 @@ export const getOnBehalfOfAccessToken = (authClient: Client, req: Request, api: 
                         throw Error('Mangler session på request.');
                     }
 
-                    req.session.tokenSets[api.clientId] = tokenSet;
+                    req.session.passport.user.tokenSets[api.clientId] = tokenSet;
                     resolve(tokenSet.access_token);
                 })
                 .catch((err: Error) => {
@@ -53,21 +57,30 @@ const createOnBehalfOfScope = (api: IApi) => {
 };
 
 const getTokenSetsFromSession = (req: Request) => {
-    if (req && req.session) {
-        return req.session.tokenSets;
+    if (req && req.session && req.session.passport) {
+        return req.session.passport.user.tokenSets;
     }
 
     return undefined;
 };
 
+const loggOgReturnerOmTokenErGyldig = (req: Request, key: string, validAccessToken: boolean) => {
+    logRequest(
+        req,
+        `Har ${validAccessToken ? 'gyldig' : 'ikke gyldig'} token for key '${key}'`,
+        LOG_LEVEL.INFO,
+    );
+    return validAccessToken;
+};
+
 export const hasValidAccessToken = (req: Request, key = tokenSetSelfId) => {
     const tokenSets = getTokenSetsFromSession(req);
     if (!tokenSets) {
-        return false;
+        return loggOgReturnerOmTokenErGyldig(req, key, false);
     }
     const tokenSet = tokenSets[key];
     if (!tokenSet) {
-        return false;
+        return loggOgReturnerOmTokenErGyldig(req, key, false);
     }
-    return new TokenSet(tokenSet).expired() === false;
+    return loggOgReturnerOmTokenErGyldig(req, key, new TokenSet(tokenSet).expired() === false);
 };

@@ -1,4 +1,4 @@
-import { Client } from 'openid-client';
+import { Client, UserinfoResponse } from 'openid-client';
 import { info } from '../../logging';
 import azure from './azure';
 
@@ -7,13 +7,14 @@ export default async (passport: any): Promise<Client> => {
     const azureAuthClient: Client = await azure.hentClient();
     const azureOidcStrategy = azure.strategy(azureAuthClient);
 
-    console.log(azureOidcStrategy);
-    passport.serializeUser((user: any, done: any) => {
-        done(undefined, user.oid);
-    });
-    passport.deserializeUser((oid: string, done: any) => {
-        done(undefined, oid);
-    });
+    passport.serializeUser(
+        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) =>
+            done(undefined, user),
+    );
+    passport.deserializeUser(
+        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) =>
+            done(undefined, user),
+    );
     passport.use('azureOidc', azureOidcStrategy);
 
     return azureAuthClient;

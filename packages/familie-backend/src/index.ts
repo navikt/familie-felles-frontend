@@ -6,7 +6,7 @@ import konfigurerSession from './auth/session';
 import headers from './headers';
 import { konfigurerMetrikker } from './metrikker';
 import konfigurerRouter from './router';
-import { ISessionKonfigurasjon, IApi } from './typer';
+import { ISessionKonfigurasjon } from './typer';
 import { Client } from 'openid-client';
 import { error } from './logging';
 
@@ -27,7 +27,6 @@ export interface IApp {
 
 export default async (
     sessionKonfigurasjon: ISessionKonfigurasjon,
-    saksbehandlerConfig: IApi,
     prometheusTellere?: { [key: string]: Counter },
 ): Promise<IApp> => {
     const app = express();
@@ -47,7 +46,7 @@ export default async (
             azureAuthClient = authClient;
 
             prometheusRegistry = konfigurerMetrikker(app, prometheusTellere);
-            router = konfigurerRouter(azureAuthClient, saksbehandlerConfig, prometheusTellere);
+            router = konfigurerRouter(azureAuthClient, prometheusTellere);
 
             return {
                 app,

@@ -7,16 +7,11 @@ import {
     ensureAuthenticated,
     logout,
 } from './auth/authenticate';
-import { hentBrukerenhet, hentBrukerprofil } from './auth/bruker';
-import { IApi } from './typer';
+import { getUserInfoFromGraphApi, hentBrukerprofil } from './auth/bruker';
 
 const router = express.Router();
 
-export default (
-    authClient: Client,
-    saksbehandlerConfig: IApi,
-    prometheusTellere?: { [key: string]: Counter },
-) => {
+export default (authClient: Client, prometheusTellere?: { [key: string]: Counter }) => {
     // Authentication
     router.get('/login', (req: Request, res: Response, next: NextFunction) => {
         if (prometheusTellere && prometheusTellere.login_route) {
@@ -31,8 +26,9 @@ export default (
     // Bruker
     router.get(
         '/user/profile',
-        ensureAuthenticated(authClient, true, saksbehandlerConfig),
-        hentBrukerenhet(authClient, saksbehandlerConfig),
+        ensureAuthenticated(true),
+        (req: Request, _: Response, next: NextFunction) =>
+            getUserInfoFromGraphApi(authClient, req, next),
         hentBrukerprofil(),
     );
 

@@ -2,7 +2,6 @@ import { error } from './logging';
 import { IAppConfig } from './typer';
 
 export const envVar = (navn: string, påkrevd = true): string => {
-    console.log(navn, process.env[navn]);
     if (!process.env[navn] && påkrevd) {
         error(`Mangler påkrevd miljøvariabel '${navn}'`);
         process.exit(1);

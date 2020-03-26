@@ -1,10 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
-import { Client } from 'openid-client';
 import passport from 'passport';
 import { appConfig } from '../config';
 import { LOG_LEVEL, logRequest } from '../logging';
-import { getOnBehalfOfAccessToken, hasValidAccessToken } from './utils';
-import { IApi } from '../typer';
+import { hasValidAccessToken } from './utils';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);
@@ -34,8 +32,6 @@ export const authenticateAzureCallback = () => {
                 throw new Error('Mangler sesjon på kall');
             }
 
-            console.log('authenticateAzureCallback');
-
             passport.authenticate('azureOidc', {
                 failureRedirect: '/error',
                 successRedirect: req.session.redirectUrl || '/',
@@ -46,24 +42,9 @@ export const authenticateAzureCallback = () => {
     };
 };
 
-export const ensureAuthenticated = (
-    authClient: Client,
-    sendUnauthorized: boolean,
-    saksbehandlerConfig: IApi,
-) => {
+export const ensureAuthenticated = (sendUnauthorized: boolean) => {
     return async (req: Request, res: Response, next: NextFunction) => {
-        console.log(req.isAuthenticated(), hasValidAccessToken(req));
         if (req.isAuthenticated() && hasValidAccessToken(req)) {
-            await getOnBehalfOfAccessToken(authClient, req, saksbehandlerConfig).catch(
-                (error: Error) => {
-                    logRequest(
-                        req,
-                        `Feil ved henting av accessToken: ${error.message}`,
-                        LOG_LEVEL.ERROR,
-                    );
-                    res.status(500).send(`Feil ved autentisering`);
-                },
-            );
             return next();
         }
 
