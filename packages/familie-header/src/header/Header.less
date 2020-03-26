@@ -4,17 +4,6 @@
 @titleMarginV: 30px;
 @headerHeight: ~"calc("@titleFontSize ~"+" @titleMarginV ~")";
 
-.rad {
-  display: flex;
-  align-items: center;
-}
-
-.gap {
-  > *:not(:last-child) {
-    margin-right: 1rem;
-  }
-}
-
 .button() {
   border: none;
   background: none;
@@ -37,27 +26,6 @@
   }
 }
 
-.systemknapp {
-  width: @headerHeight;
-  height: @headerHeight;
-  .button();
-}
-
-.brukerknapp {
-  position: relative;
-  justify-self: flex-end;
-  padding: 0 3rem 0 1rem;
-  margin-right: -1rem;
-  height: @headerHeight;
-  .button();
-}
-
-.avdeler {
-  width: 1px;
-  height: 100%;
-  background: @navGra60;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -69,17 +37,40 @@
   > *:first-child > *:not(:last-child) {
     margin-right: 1.5rem;
   }
-}
 
-.tittel {
-  color: #fff;
-  font-size: @titleFontSize;
-  font-weight: 600;
-  font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+  .rad {
+    display: flex;
+    align-items: center;
+  }
+  
+  .gap {
+    > *:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
 
-  > a {
-    text-decoration: none;
-    color: inherit;
-    font-size: inherit;
+  .tittel {
+    color: #fff;
+    font-size: @titleFontSize;
+    font-weight: 600;
+    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
+  
+    > a {
+      text-decoration: none;
+      color: inherit;
+      font-size: inherit;
+    }
+  }
+
+  .systemknapp {
+    width: @headerHeight;
+    height: @headerHeight;
+    .button();
+  }
+
+  .avdeler {
+    width: 1px;
+    height: 100%;
+    background: @navGra60;
   }
 }
