@@ -10,38 +10,38 @@ export interface SøkProps {
     onEndring?: (value: string) => void;
     spinner?: boolean;
     validator?: (value: string) => boolean;
-    placeholder?: string;
+    plassholder?: string;
     onGyldigVerdi?: (value: string) => void;
     autoSøk?: boolean;
     children?: React.ReactNode | React.ReactNode[];
 }
 
-export const Søk = ({ onSøk, onEndring, validator, onGyldigVerdi, autoSøk = true, spinner = false, placeholder, children }: SøkProps) => {
+export const Søk = ({ onSøk, onEndring, validator, onGyldigVerdi, autoSøk = true, spinner = false, plassholder='', children }: SøkProps) => {
     const [verdi, settVerdi] = useState('');
     const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
     const [gyldig, settGyldig] = useState(false);
 
-    const søk = (key?: string) => {
-        const searchKey = key || verdi;
+    const søk = (nøkkel?: string) => {
+        const gyldigNøkkel = nøkkel || verdi;
 
-        searchKey.length > 0 && onSøk(searchKey);
+        gyldigNøkkel.length > 0 && onSøk(gyldigNøkkel);
     };
 
-    const onKeyPress = (event: React.KeyboardEvent) => {
-        //Show popover when a key is pressed. This is to ensure the search status is correctly displayed when it was back from hidden.
+    const tastenTrykkes = (event: React.KeyboardEvent) => {
+        //Vis popover når du trykker på en tast. Dette for å sikre at søkestatusen vises korrekt når den ble tilbake fra skjult.
         settAnker(verdi.length > 0 ? event.currentTarget as HTMLElement : undefined);
         event.key === 'Enter' && verdi.length > 0 && søk();
     };
 
-    const onClickSøk= (event: React.MouseEvent)=>{
+    const søkKlikket= (event: React.MouseEvent)=>{
         settAnker(verdi.length > 0 ? event.currentTarget as HTMLElement : undefined);
         søk();
     }
 
-    const onChange = (event: React.ChangeEvent) => {
+    const innspillEndret = (event: React.ChangeEvent) => {
         const changed = (event.target as HTMLInputElement).value
         settVerdi(changed);
-        //make sure popover is displayed
+        //sørg for at popover vises
         settAnker(changed.length > 0 ? event.currentTarget as HTMLElement : undefined);
         onEndring?.(changed);
         const erGyldig = validator?.(changed);
@@ -60,8 +60,8 @@ export const Søk = ({ onSøk, onEndring, validator, onGyldigVerdi, autoSøk = t
         <div className='søk_container'>
             {prompt && <div className='søk_container__prompt'>{prompt}</div>}
             {spinner && <div className='søk_container__spinner'><IkonSpinner /></div>}
-            <input className='søk_container__felt' onChange={onChange} onKeyPress={onKeyPress} value={verdi} placeholder={placeholder} />
-            <button className='søk_container__knapp' onClick={onClickSøk}>
+            <input className='søk_container__felt' onChange={innspillEndret} onKeyPress={tastenTrykkes} value={verdi} placeholder={plassholder} />
+            <button className='søk_container__knapp' onClick={søkKlikket}>
                 <IkonSøk />
             </button>
             {children && <Popover

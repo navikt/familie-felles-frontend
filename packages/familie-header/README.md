@@ -1,8 +1,7 @@
-# Header with Search Field
+# Header komponent
+En header komponent med søkefelt. Dens utseende kan tilpasses for forskjellige prosjekter.
 
-A reusable page header component which includes a search field. It is developed for familie-ba-sak-frontend, but can be customized to fit other projects. 
-
-## Installation
+## Installasjon
 
 ```sh
 npm install @navikt/familie-header

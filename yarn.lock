@@ -2159,18 +2159,6 @@
   dependencies:
     "@navikt/nap-bem-utils" "1.0.1"
 
-"@navikt/familie-ikoner@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@navikt/familie-ikoner/-/familie-ikoner-3.0.3.tgz#34892433051e14656c805cadf3b109b79cd37c96"
-  integrity sha512-DfEm15CQgzc/vqkJvoB62MdH7K6kKVPttbrmio6EZh99YM08Lx1IxbUqDU0tkwZ9zmleF38pwBwna+CBOd56Qw==
-  dependencies:
-    "@navikt/familie-typer" "^3.0.3"
-
-"@navikt/familie-typer@^3.0.3":
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/@navikt/familie-typer/-/familie-typer-3.0.3.tgz#8a3bec3d06cd6d2b92eb15b6de7aaecbf21d6c55"
-  integrity sha512-rZwcfVZpKCz0Ib+OkqlCw8ObZaXMy+KZOxZcT/gYDSdq5g9jOfM6HkTrgKJwkon1fNyZytQHdYrSUchJ2OeHAA==
-
 "@navikt/nap-bem-utils@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@navikt/nap-bem-utils/-/nap-bem-utils-1.0.1.tgz#dd7edcee164611c187e3f548ad0463c9c10da8c8"
@@ -11369,6 +11357,16 @@ nav-frontend-popover@0.0.23:
   version "0.0.23"
   resolved "https://registry.yarnpkg.com/nav-frontend-popover/-/nav-frontend-popover-0.0.23.tgz#4a7b6835a09059085a371354d5b173449fafea66"
   integrity sha512-bLdi0wOedlinIVSe8E3HERSVYFadxlN9Xg2MXiwmKELwaVxb5EA58nOsQKalgBu8b7ERBFBl4QSg61g062So3A==
+
+nav-frontend-spinner-style@0.2.5:
+  version "0.2.5"
+  resolved "https://registry.yarnpkg.com/nav-frontend-spinner-style/-/nav-frontend-spinner-style-0.2.5.tgz#c782c63589776e768a45d6049047b1a60b6805be"
+  integrity sha512-PWSfscmNMbrnXRcXQUgBquU5479bNmO/sw3IwML6s6K/qyEYggRvJdGCbBEYyxXmoeDDjXGd2tkIVy5gja387A==
+
+nav-frontend-spinner@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/nav-frontend-spinner/-/nav-frontend-spinner-2.0.2.tgz#13c1a6f9126d3f3f746d53d480824348a7e91288"
+  integrity sha512-q2i43b6qR2tBK6cC6bJzI52vaxZZJIhZs1Pr4sa5J4IZIbuMDLiN/j7BDbAK5/AHMSakogxMCPxiQzVwY4ZWhQ==
 
 nav-frontend-typografi-style@^1.0.17, nav-frontend-typografi-style@^1.0.18:
   version "1.0.19"

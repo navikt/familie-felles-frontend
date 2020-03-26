@@ -1,7 +1,6 @@
 import React from 'react';
 import {Ikon, IkonProps } from './Ikon';
-
-const navGra60= '#78706a';
+import {navGra60} from '../types';
 
 export const IkonSøk = ({ color = navGra60, width = 16, height = 16 }: IkonProps) => {
     return (

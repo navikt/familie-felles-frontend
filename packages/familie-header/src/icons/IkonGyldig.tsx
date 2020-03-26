@@ -1,7 +1,6 @@
 import React from 'react';
 import {Ikon, IkonProps } from './Ikon';
-
-const navLysGra= '#E9E7E7';
+import {navLysGra} from '../types';
 
 export const IkonGyldig = ({ color = navLysGra, width = 16, height = 16 }: IkonProps) => {
     return (
