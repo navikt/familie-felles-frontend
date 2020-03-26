@@ -1,19 +1,21 @@
 import express, { NextFunction, Request, Response } from 'express';
+import { Client } from 'openid-client';
 import { Counter } from 'prom-client';
 import {
     authenticateAzure,
     authenticateAzureCallback,
     ensureAuthenticated,
-    logout
+    logout,
 } from './auth/authenticate';
 import { hentBrukerenhet, hentBrukerprofil } from './auth/bruker';
-import { ITokenRequest } from './typer';
+import { IApi } from './typer';
 
 const router = express.Router();
 
 export default (
-    saksbehandlerTokenConfig: ITokenRequest,
-    prometheusTellere?: { [key: string]: Counter }
+    authClient: Client,
+    saksbehandlerConfig: IApi,
+    prometheusTellere?: { [key: string]: Counter },
 ) => {
     // Authentication
     router.get('/login', (req: Request, res: Response, next: NextFunction) => {
@@ -24,15 +26,13 @@ export default (
         authenticateAzure(req, res, next);
     });
     router.get('/auth/openid/callback', authenticateAzureCallback());
-    router.get('/auth/logout', (req: Request, res: Response) =>
-        logout(req, res, saksbehandlerTokenConfig.redirectUrl),
-    );
+    router.get('/auth/logout', (req: Request, res: Response) => logout(req, res));
 
     // Bruker
     router.get(
         '/user/profile',
-        ensureAuthenticated(true, saksbehandlerTokenConfig),
-        hentBrukerenhet(saksbehandlerTokenConfig),
+        ensureAuthenticated(authClient, true, saksbehandlerConfig),
+        hentBrukerenhet(authClient, saksbehandlerConfig),
         hentBrukerprofil(),
     );
 

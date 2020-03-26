@@ -2,7 +2,9 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import { PassportStatic } from 'passport';
 import redis from 'redis';
+import { info } from '../logging';
 import { ISessionKonfigurasjon } from '../typer';
+import { appConfig } from '../config';
 
 /* tslint:disable */
 const RedisStore = require('connect-redis')(session);
@@ -17,6 +19,8 @@ export default (
     app.set('trust proxy', 1);
 
     if (sessionKonfigurasjon.redisUrl) {
+        info('Setter opp redis for session');
+
         const client = redis.createClient({
             db: 1,
             host: sessionKonfigurasjon.redisUrl,
@@ -43,18 +47,20 @@ export default (
                 name: sessionKonfigurasjon.navn,
                 resave: false,
                 saveUninitialized: true,
-                secret: sessionKonfigurasjon.sessionSecret,
+                secret: appConfig.sessionSecret,
                 store,
             }),
         );
     } else {
+        info('Setter opp in-memory db for session');
+
         app.use(
             session({
                 cookie: { sameSite: 'lax', secure: sessionKonfigurasjon.secureCookie },
                 name: sessionKonfigurasjon.navn,
                 resave: false,
                 saveUninitialized: true,
-                secret: sessionKonfigurasjon.sessionSecret,
+                secret: appConfig.sessionSecret,
             }),
         );
     }

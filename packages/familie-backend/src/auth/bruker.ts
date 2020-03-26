@@ -1,8 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import request from 'request-promise';
 import { LOG_LEVEL, logRequest } from '../logging';
-import { ITokenRequest } from '../typer';
-import { hentOnBehalfOfToken } from './token';
+import { Client } from 'openid-client';
+import { getOnBehalfOfAccessToken } from './utils';
+import { IApi } from '../typer';
 
 // Hent brukerprofil
 export const hentBrukerprofil = () => {
@@ -23,15 +24,7 @@ export const hentBrukerprofil = () => {
 };
 
 // Hent brukerenhet
-export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
-    const msGraphOBOTokenConfig: ITokenRequest = {
-        clientId: saksbehandlerTokenConfig.clientId,
-        clientSecret: saksbehandlerTokenConfig.clientSecret,
-        redirectUrl: saksbehandlerTokenConfig.redirectUrl,
-        scope: `https://graph.microsoft.com/.default`,
-        tokenUri: saksbehandlerTokenConfig.tokenUri,
-    };
-
+export const hentBrukerenhet = (authClient: Client, saksbehandlerConfig: IApi) => {
     return async (req: Request, _: Response, next: NextFunction) => {
         const ukjentEnhet = '9999';
 
@@ -47,11 +40,10 @@ export const hentBrukerenhet = (saksbehandlerTokenConfig: ITokenRequest) => {
 
         logRequest(req, 'Enhet ikke i session, henter fra ' + msGraphMeUrl, LOG_LEVEL.INFO);
 
-        const obotoken = await hentOnBehalfOfToken(
-            req,
-            saksbehandlerTokenConfig,
-            msGraphOBOTokenConfig,
-        );
+        const obotoken = await getOnBehalfOfAccessToken(authClient, req, {
+            clientId: saksbehandlerConfig.clientId,
+            scopes: [`https://graph.microsoft.com/.default`],
+        });
 
         request
             .get(
