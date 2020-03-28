@@ -1,9 +1,9 @@
-import axios from 'axios';
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { Client } from 'openid-client';
-import { getOnBehalfOfAccessToken } from './utils';
-import { logRequest, LOG_LEVEL } from '../logging';
+import request from 'request-promise';
 import { envVar } from '../config';
+import { LOG_LEVEL, logRequest } from '../logging';
+import { getOnBehalfOfAccessToken } from './utils';
 
 // Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {
@@ -16,11 +16,15 @@ export const hentBrukerprofil = () => {
     };
 };
 
+/**
+ * Funksjon som henter brukerprofil fra graph.
+ * Bruker node-fetch da axios ikke bryr seg om proxy agent som sendes inn.
+ */
 export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
-    return new Promise((_, reject) => {
+    return new Promise((_, _reject) => {
         const api = {
-            scopes: ['https://graph.microsoft.com/.default'],
             clientId: 'https://graph.microsoft.com',
+            scopes: ['https://graph.microsoft.com/.default'],
         };
 
         if (req.session && req.session.user) {
@@ -32,19 +36,30 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
         const graphUrl = `${envVar('GRAPH_API')}?$select=${query}`;
         getOnBehalfOfAccessToken(authClient, req, api)
             .then(accessToken =>
-                axios.get(graphUrl, { headers: { Authorization: `Bearer ${accessToken}` } }),
+                request.get(
+                    {
+                        headers: {
+                            Authorization: `Bearer ${accessToken}`,
+                        },
+                        url: graphUrl,
+                    },
+                    (_err, _httpResponse, body) => {
+                        return body;
+                    },
+                ),
             )
             .then((response: any) => {
                 if (!req.session) {
                     throw new Error('Mangler sesjon på kall');
                 }
+                const data = JSON.parse(response);
 
                 req.session.user = {
-                    displayName: response.data.displayName,
-                    email: response.data.userPrincipalName,
-                    enhet: response.data.officeLocation.slice(0, 4),
-                    identifier: response.data.userPrincipalName,
-                    navIdent: response.data.onPremisesSamAccountName,
+                    displayName: data.displayName,
+                    email: data.userPrincipalName,
+                    enhet: data.officeLocation.slice(0, 4),
+                    identifier: data.userPrincipalName,
+                    navIdent: data.onPremisesSamAccountName,
                 };
 
                 req.session.save((error: Error) => {
@@ -67,7 +82,13 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
                 req.session.user = {
                     enhet: '9999',
                 };
-                reject(err);
+
+                logRequest(
+                    req,
+                    `Feilet mot ms graph: ${err.message}. Fortsetter uten data fra bruker.`,
+                    LOG_LEVEL.ERROR,
+                );
+                return next();
             });
     });
 };
