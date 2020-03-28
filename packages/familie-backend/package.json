@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-backend",
-    "version": "4.1.9",
+    "version": "5.0.0",
     "description": "Skall for familieytelsenes frontend",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -27,7 +27,7 @@
         "@types/morgan": "^1.7.37",
         "@types/passport": "^1.0.1",
         "@types/redis": "^2.8.14",
-        "@types/request-promise": "^4.1.44",
+        "@types/request-promise": "^4.1.46",
         "@types/tunnel": "^0.0.1",
         "axios": "^0.19.2",
         "connect-redis": "^4.0.3",
@@ -48,5 +48,6 @@
     },
     "resolutions": {
         "cache-manager": "2.10.0"
-    }
+    },
+    "gitHead": "3e1605ed5034f92ba333a58c3d9e9775b393706f"
 }
