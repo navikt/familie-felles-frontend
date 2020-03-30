@@ -19,7 +19,7 @@ const animation = {
     },
 };
 
-const Clipboard: React.FC<IProps> = ({ children }) => {
+const Clipboard: React.FunctionComponent<IProps> = ({ children }) => {
     const [didCopy, setDidCopy] = useState(false);
 
     // tslint:disable-next-line: no-null-keyword
