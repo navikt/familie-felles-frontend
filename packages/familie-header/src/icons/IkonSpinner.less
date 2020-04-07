@@ -7,7 +7,7 @@
 @strokeDashOffset1: ~"calc("3.14 ~"*" @spinnerSize ~")";
 @strokeDashOffset2: ~"calc("0.66 ~"*" @spinnerSize ~")";
 
-svg.spinner {
+svg.familie-ikon-spinner {
     position: absolute;
     width: @spinnerSize;
     height: @spinnerSize;
@@ -23,13 +23,13 @@ svg.spinner {
         -webkit-transform-origin: @transformOrigin @transformOrigin 0;
         -moz-transform-origin: @transformOrigin @transformOrigin 0;
         transform-origin: @transformOrigin @transformOrigin 0;
-        -webkit-animation: spinner 2s linear infinite;
-        -moz-animation: spinner 2s linear infinite;
-        animation: spinner 2s linear infinite;
+        -webkit-animation: familie-ikon-spinner 2s linear infinite;
+        -moz-animation: familie-ikon-spinner 2s linear infinite;
+        animation: familie-ikon-spinner 2s linear infinite;
     }
 }
 
-@-webkit-keyframes spinner {
+@-webkit-keyframes familie-ikon-spinner {
     0% {
         -webkit-transform: rotate(0deg);
         stroke-dashoffset: @strokeDashOffset0;
@@ -42,7 +42,7 @@ svg.spinner {
     }
 }
 
-@-moz-keyframes spinner {
+@-moz-keyframes familie-ikon-spinner {
     0% {
         -moz-transform: rotate(0deg);
         stroke-dashoffset: @strokeDashOffset0;
@@ -55,7 +55,7 @@ svg.spinner {
     }
 }
 
-@keyframes spinner {
+@keyframes familie-ikon-spinner {
     0% {
         transform: rotate(0deg);
         stroke-dashoffset: @strokeDashOffset0;
