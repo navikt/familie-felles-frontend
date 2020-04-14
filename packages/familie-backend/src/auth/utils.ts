@@ -4,7 +4,6 @@ import { error, logRequest, LOG_LEVEL } from '../logging';
 import { IApi } from '../typer';
 
 export const tokenSetSelfId = 'self';
-
 export const getOnBehalfOfAccessToken = (
     authClient: Client,
     req: Request,
