@@ -2,8 +2,8 @@ import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 import { appConfig } from '../config';
 import { LOG_LEVEL, logRequest } from '../logging';
-import { hasValidAccessToken } from './utils';
-import { Client } from 'openid-client';
+import { getTokenSetsFromSession, tokenSetSelfId, hasValidAccessToken } from './utils';
+import { Client, TokenSet } from 'openid-client';
 import { setBrukerprofilPåSesjon } from './bruker';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
@@ -12,6 +12,11 @@ export const authenticateAzure = (req: Request, res: Response, next: NextFunctio
 
     const successRedirect = regex ? redirectUrl : '/';
 
+    logRequest(
+        req,
+        `authenticateAzure. redirectUrl=${redirectUrl}, successRedirect=${successRedirect}`,
+        LOG_LEVEL.DEBUG,
+    );
     if (!req.session) {
         throw new Error('Mangler sesjon på kall');
     }
@@ -46,7 +51,34 @@ export const authenticateAzureCallback = () => {
 
 export const ensureAuthenticated = (authClient: Client, sendUnauthorized: boolean) => {
     return async (req: Request, res: Response, next: NextFunction) => {
-        if (req.isAuthenticated() && hasValidAccessToken(req)) {
+        const validAccessToken = hasValidAccessToken(req);
+        logRequest(
+            req,
+            `ensureAuthenticated. isAuthenticated=${req.isAuthenticated()}, hasValidAccessToken=${validAccessToken}`,
+            LOG_LEVEL.DEBUG,
+        );
+
+        if (req.isAuthenticated()) {
+            if (!validAccessToken) {
+                const tokenSet: TokenSet = getTokenSetsFromSession(req)[tokenSetSelfId];
+                await authClient
+                    .refresh(tokenSet.refresh_token ?? '')
+                    .then((tokenSet: TokenSet) => {
+                        if (!req.session) {
+                            throw new Error('Mangler sesjon på kall');
+                        }
+
+                        req.session.passport.user.tokenSets[tokenSetSelfId] = tokenSet;
+                    })
+                    .catch((error: Error) => {
+                        logRequest(
+                            req,
+                            `Feilet ved refresh av tokenset: ${error.message}`,
+                            LOG_LEVEL.ERROR,
+                        );
+                    });
+            }
+
             return setBrukerprofilPåSesjon(authClient, req, next);
         }
 
@@ -63,6 +95,8 @@ export const logout = (req: Request, res: Response) => {
     if (!req.session) {
         throw new Error('Mangler sesjon på kall');
     }
+
+    logRequest(req, `logout.`, LOG_LEVEL.DEBUG);
 
     res.redirect(appConfig.logoutRedirectUri);
     req.session.destroy((error: Error) => {
