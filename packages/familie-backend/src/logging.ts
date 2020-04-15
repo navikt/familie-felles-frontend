@@ -2,13 +2,14 @@ import { Request } from 'express';
 import fs from 'fs';
 import momenttz from 'moment-timezone';
 import winston from 'winston';
+import { envVar } from './config';
 
 const secureLogPath = () =>
     fs.existsSync('/secure-logs/') ? '/secure-logs/secure.log' : './secure.log';
 
 const stdoutLogger = winston.createLogger({
     format: winston.format.json(),
-    level: 'info',
+    level: envVar('LOG_LEVEL', false, 'info'),
     transports: [new winston.transports.Console()],
 });
 
@@ -17,6 +18,10 @@ const secureLogger = winston.createLogger({
     level: 'info',
     transports: [new winston.transports.File({ filename: secureLogPath(), maxsize: 5242880 })],
 });
+
+export const debug = (message: string) => {
+    stdoutLogger.debug(`[${getLogTimestamp()}] ${message}`);
+};
 
 export const info = (message: string) => {
     stdoutLogger.info(`[${getLogTimestamp()}] ${message}`);
@@ -52,6 +57,9 @@ const prefix = (req: Request) => {
 export const logRequest = (req: Request, message: string, level: LOG_LEVEL) => {
     const melding = `${prefix(req)}: ${message}`;
     switch (level) {
+        case LOG_LEVEL.DEBUG:
+            debug(melding);
+            break;
         case LOG_LEVEL.INFO:
             info(melding);
             break;
@@ -67,7 +75,8 @@ export const logRequest = (req: Request, message: string, level: LOG_LEVEL) => {
 };
 
 export enum LOG_LEVEL {
-    INFO,
-    WARNING,
-    ERROR,
+    ERROR = 3,
+    WARNING = 2,
+    INFO = 1,
+    DEBUG = 0,
 }

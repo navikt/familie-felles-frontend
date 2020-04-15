@@ -4,7 +4,6 @@ import { error, logRequest, LOG_LEVEL } from '../logging';
 import { IApi } from '../typer';
 
 export const tokenSetSelfId = 'self';
-
 export const getOnBehalfOfAccessToken = (
     authClient: Client,
     req: Request,
@@ -56,7 +55,7 @@ const createOnBehalfOfScope = (api: IApi) => {
     }
 };
 
-const getTokenSetsFromSession = (req: Request) => {
+export const getTokenSetsFromSession = (req: Request) => {
     if (req && req.session && req.session.passport) {
         return req.session.passport.user.tokenSets;
     }

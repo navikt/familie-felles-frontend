@@ -1,12 +1,17 @@
 import { error } from './logging';
 import { IAppConfig } from './typer';
 
-export const envVar = (navn: string, påkrevd = true): string => {
-    if (!process.env[navn] && påkrevd) {
+export const envVar = (navn: string, påkrevd = true, defaultValue?: string): string => {
+    const envVariable = process.env[navn];
+    if (!envVariable && påkrevd && !defaultValue) {
         error(`Mangler påkrevd miljøvariabel '${navn}'`);
         process.exit(1);
     }
-    return process.env[navn] as string;
+    if (!envVariable && defaultValue) {
+        return defaultValue;
+    } else {
+        return envVariable as string;
+    }
 };
 
 export const appConfig: IAppConfig = {

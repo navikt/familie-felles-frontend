@@ -8,7 +8,7 @@ import {
     TokenSet,
 } from 'openid-client';
 import { appConfig } from '../../config';
-import { info } from '../../logging';
+import { info, debug } from '../../logging';
 import httpProxy from '../proxy/http-proxy';
 import { appendDefaultScope, tokenSetSelfId } from '../utils';
 
@@ -33,6 +33,7 @@ const hentClient = (): Promise<Client> => {
 
 const strategy = (client: Client) => {
     const verify = (tokenSet: TokenSet, done: (err: any, user?: any) => void) => {
+        debug(`verify. expired=${tokenSet.expired()}`);
         if (tokenSet.expired()) {
             return done(undefined, undefined);
         }

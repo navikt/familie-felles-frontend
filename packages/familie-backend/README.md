@@ -30,4 +30,6 @@ COOKIE_KEY2='<any string of length 32>'
 AAD_DISCOVERY_URL='<Azure discovery URL>'
 AAD_LOGOUT_REDIRECT_URL='<Azure logout URL>'
 AAD_REDIRECT_URL='<Azure redirect URL>'
+
+LOG_LEVEL='info' | 'debug' - ikke påkrevd
 ```
