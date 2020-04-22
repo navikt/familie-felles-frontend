@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import { Client } from 'openid-client';
+import { Client, TokenSet } from 'openid-client';
 import request from 'request-promise';
 import { envVar } from '../config';
 import { LOG_LEVEL, logRequest } from '../logging';
-import { getOnBehalfOfAccessToken } from './utils';
+import { getOnBehalfOfAccessToken, getTokenSetsFromSession, tokenSetSelfId } from './utils';
 
 // Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {
@@ -54,12 +54,14 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
                 }
                 const data = JSON.parse(response);
 
+                const tokenSet: TokenSet | undefined = getTokenSetsFromSession(req)[tokenSetSelfId];
                 req.session.user = {
                     displayName: data.displayName,
                     email: data.userPrincipalName,
                     enhet: data.officeLocation.slice(0, 4),
                     identifier: data.userPrincipalName,
                     navIdent: data.onPremisesSamAccountName,
+                    groups: tokenSet ? new TokenSet(tokenSet).claims().groups : [],
                 };
 
                 req.session.save((error: Error) => {
