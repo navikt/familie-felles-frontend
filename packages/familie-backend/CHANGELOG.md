@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@5.0.2...@navikt/familie-backend@5.0.3) (2020-04-22)
+
+**Note:** Version bump only for package @navikt/familie-backend
+
+
+
+
+
 ## [5.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@5.0.1...@navikt/familie-backend@5.0.2) (2020-04-15)
 
 **Note:** Version bump only for package @navikt/familie-backend
