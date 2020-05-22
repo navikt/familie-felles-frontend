@@ -24,7 +24,7 @@ module.exports = {
                 { loader: require.resolve('less-loader') },
             ],
         });
-        config.resolve.extensions.push('.ts', '.tsx');
+        config.resolve.extensions.push('.ts', '.tsx', '.less');
         return config;
     },
 };

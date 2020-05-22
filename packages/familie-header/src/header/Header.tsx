@@ -11,11 +11,12 @@ import { IkonSystem } from '../icons';
 export interface Brukerinfo {
     navn: string;
     enhet: string;
-};
+}
 
-export interface BrukerPopoverItem {
+export interface PopoverItem {
     name: string;
     href: string;
+    isExternal?: boolean;
 }
 
 export interface HeaderProps {
@@ -23,13 +24,17 @@ export interface HeaderProps {
     brukerinfo: Brukerinfo;
     tittelHref?: string;
     children?: React.ReactNode | React.ReactNode[];
-    brukerPopoverItems?: BrukerPopoverItem[];
+    brukerPopoverItems?: PopoverItem[];
+    eksterneLenker?: PopoverItem[];
 }
 
 interface BrukerProps {
     navn: string;
     enhet: string;
-    popoverItems?: BrukerPopoverItem[];
+    popoverItems?: PopoverItem[];
+}
+interface LenkePopoverProps {
+    lenker?: PopoverItem[];
 }
 
 export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
@@ -63,7 +68,35 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
     );
 };
 
-export const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerPopoverItems }: HeaderProps) => {
+export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
+    const [anker, settAnker] = React.useState<HTMLElement | undefined>(undefined);
+
+    return (
+        <div>
+            <button className='systemknapp' onClick={(e) => {
+                settAnker(anker === undefined ? e.currentTarget : undefined);
+            }}>
+                <IkonSystem/>
+            </button>
+            {lenker &&
+                <Popover
+                    id={'this'}
+                    ankerEl={anker}
+                    orientering={PopoverOrientering.UnderHoyre}
+                    autoFokus={false}
+                    onRequestClose={() => { settAnker(undefined); }}
+                    tabIndex={-1}
+                >
+                    <BoxedListWithLinks
+                        items={lenker || []}
+                    />
+                </Popover>
+            }
+        </div>
+    );
+};
+
+export const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerPopoverItems, eksterneLenker }: HeaderProps) => {
     return (
         <div className='header'>
             <div className='rad'>
@@ -74,9 +107,7 @@ export const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerP
             </div>
             <div className='rad'>
                 {children}
-                <button className='systemknapp'>
-                    <IkonSystem />
-                </button>
+                <LenkePopover lenker={eksterneLenker} />
                 <div className='avdeler' />
                 <Bruker {...brukerinfo} popoverItems={brukerPopoverItems} />
             </div>
