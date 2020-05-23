@@ -4,3 +4,4 @@ tsconfig.tsbuildinfo
 .docz
 docs
 *.log
+.idea
