@@ -10,7 +10,7 @@ import { IkonSystem } from '../icons';
 
 export interface Brukerinfo {
     navn: string;
-    enhet: string;
+    enhet?: string;
 }
 
 export interface PopoverItem {
@@ -30,21 +30,19 @@ export interface HeaderProps {
 
 interface BrukerProps {
     navn: string;
-    enhet: string;
     popoverItems?: PopoverItem[];
 }
 interface LenkePopoverProps {
     lenker?: PopoverItem[];
 }
 
-export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
+export const Bruker = ({ navn, popoverItems }: BrukerProps) => {
     const [anker, settAnker] = React.useState<HTMLElement | undefined>(undefined);
 
     return (
         <div>
             <UserPanel
                 name={navn}
-                unit={`Enhet: ${enhet}`}
                 onClick={(e) => {
                     settAnker(anker === undefined ? e.currentTarget : undefined);
                 }}
@@ -103,13 +101,12 @@ export const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerP
                 <h1 className='tittel'>
                     <a href={tittelHref}>{tittel}</a>
                 </h1>
-                <div className='avdeler' />
             </div>
             <div className='rad'>
                 {children}
                 <LenkePopover lenker={eksterneLenker} />
                 <div className='avdeler' />
-                <Bruker {...brukerinfo} popoverItems={brukerPopoverItems} />
+                <Bruker navn={brukerinfo.navn} popoverItems={brukerPopoverItems} />
             </div>
         </div>
     );
