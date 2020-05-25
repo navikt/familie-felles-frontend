@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Brukerinfo, Header, Infokort, PopoverItem, Søk } from './src';
 import { KvinneIkon } from '@navikt/familie-ikoner';
+import './headerstories.less';
 
 export default {
     component: Header,
@@ -52,7 +53,7 @@ export const header = () => {
     };
 
     return (
-        <>
+        <div className={'headerstory'}>
             <Header
                 tittel={'tittel'}
                 brukerinfo={saksbehandler}
@@ -72,6 +73,6 @@ export const header = () => {
                     }
                 </Søk>
             </Header>
-        </>
+        </div>
     );
 };
