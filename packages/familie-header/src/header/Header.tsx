@@ -30,19 +30,21 @@ export interface HeaderProps {
 
 interface BrukerProps {
     navn: string;
+    enhet?: string;
     popoverItems?: PopoverItem[];
 }
 interface LenkePopoverProps {
     lenker?: PopoverItem[];
 }
 
-export const Bruker = ({ navn, popoverItems }: BrukerProps) => {
+export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
     const [anker, settAnker] = React.useState<HTMLElement | undefined>(undefined);
 
     return (
         <div>
             <UserPanel
                 name={navn}
+                unit={enhet && `Enhet: ${enhet}`}
                 onClick={(e) => {
                     settAnker(anker === undefined ? e.currentTarget : undefined);
                 }}
@@ -106,7 +108,7 @@ export const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerP
                 {children}
                 <LenkePopover lenker={eksterneLenker} />
                 <div className='avdeler' />
-                <Bruker navn={brukerinfo.navn} popoverItems={brukerPopoverItems} />
+                <Bruker navn={brukerinfo.navn} enhet={brukerinfo.enhet} popoverItems={brukerPopoverItems} />
             </div>
         </div>
     );
