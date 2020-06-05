@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.0...@navikt/familie-header@2.0.1) (2020-06-05)
+
+
+### Bug Fixes
+
+* upgrade nav-frontend-alertstriper-style from 2.0.11 to 2.0.13 ([#38](https://github.com/navikt/familie-felles-frontend/issues/38)) ([a3b8330](https://github.com/navikt/familie-felles-frontend/commit/a3b83302d4a2a5e39729e730c9e745727969cf84))
+* upgrade nav-frontend-paneler-style from 0.3.18 to 0.3.19 ([#39](https://github.com/navikt/familie-felles-frontend/issues/39)) ([7caa3f5](https://github.com/navikt/familie-felles-frontend/commit/7caa3f52470795875078daaa347e01ecfca32089))
+
+
+
+
+
 # [2.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@1.0.7...@navikt/familie-header@2.0.0) (2020-05-25)
 
 
