@@ -1,0 +1,36 @@
+{
+  "name": "@navikt/familie-input",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "NAV",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "style-loader": "^1.1.3",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  },
+  "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
+  "scripts": {
+    "build": "yarn run clean && yarn run copy-less && yarn run tsc",
+    "clean": "rm -rf ./dist",
+    "copy-less": "copyfiles -u 1 src/**/*.less dist",
+    "tsc": "tsc -p tsconfig.json"
+  },
+
+  "dependencies": {
+    "nav-frontend-skjema": "^3.0.6"
+  },
+
+  "peerDependencies": {
+    "react": "^16.12.0"
+  }
+
+}
