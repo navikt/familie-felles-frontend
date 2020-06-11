@@ -1,5 +1,5 @@
-{
-  "name": "@navikt/familie-input",
+
+  "name": "@navikt/familie-form-elements",
   "version": "1.0.0",
   "main": "dist/index.js",
   "author": "NAV",
@@ -7,7 +7,6 @@
   "publishConfig": {
     "access": "public"
   },
-  
   "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
   "scripts": {
     "build": "yarn run clean && yarn run copy-less && yarn run tsc",
