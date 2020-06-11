@@ -2133,6 +2133,11 @@
   dependencies:
     "@navikt/nap-bem-utils" "1.0.1"
 
+"@navikt/fnrvalidator@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@navikt/fnrvalidator/-/fnrvalidator-1.1.2.tgz#b8fdf0997149aef1c2da0cee398281175f756c4c"
+  integrity sha512-F3Y8jzUtafjOEij+PvfL2TPjuvLnVQ+Gnd5cI/sPl56sUZMo2SIy104kgigdie9i3r8ya4bZRfIVHWjd272KEw==
+
 "@navikt/nap-bem-utils@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@navikt/nap-bem-utils/-/nap-bem-utils-1.0.1.tgz#dd7edcee164611c187e3f548ad0463c9c10da8c8"
@@ -11255,6 +11260,11 @@ nav-frontend-popover@0.0.23:
   version "0.0.23"
   resolved "https://registry.yarnpkg.com/nav-frontend-popover/-/nav-frontend-popover-0.0.23.tgz#4a7b6835a09059085a371354d5b173449fafea66"
   integrity sha512-bLdi0wOedlinIVSe8E3HERSVYFadxlN9Xg2MXiwmKELwaVxb5EA58nOsQKalgBu8b7ERBFBl4QSg61g062So3A==
+
+nav-frontend-skjema@^3.0.6:
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/nav-frontend-skjema/-/nav-frontend-skjema-3.0.6.tgz#553c44328fc68893e0dc7a5fc7d7f2b10441272c"
+  integrity sha512-rSmmeey47ZZ/SfD+0ewo1ohsSGOvQ6e0ytmysRRVyZT1rz/ZavO2Qg4m5LlUXOYdYP7a71l93VNWaDOW0f0zTQ==
 
 nav-frontend-typografi-style@^1.0.17, nav-frontend-typografi-style@^1.0.18:
   version "1.0.19"

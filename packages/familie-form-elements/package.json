@@ -1,0 +1,24 @@
+{
+  "name": "@navikt/familie-form-elements",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "NAV",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
+  "scripts": {
+    "build": "yarn run clean && yarn run copy-less && yarn run tsc",
+    "clean": "rm -rf ./dist",
+    "copy-less": "copyfiles -u 1 src/**/*.less dist",
+    "tsc": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@navikt/fnrvalidator": "^1.1.2",
+    "nav-frontend-skjema": "^3.0.6"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0"
+  }
+}
