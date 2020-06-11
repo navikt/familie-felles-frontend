@@ -1,5 +1,5 @@
 {
-  "name": "@navikt/familie-form-element",
+  "name": "@navikt/familie-form-elements",
   "version": "1.0.0",
   "main": "dist/index.js",
   "author": "NAV",
