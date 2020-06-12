@@ -2,7 +2,7 @@ import { Checkbox, CheckboxProps } from 'nav-frontend-skjema';
 import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 
-interface IProps {
+export interface IProps {
     erLesevisning: boolean
 }
 

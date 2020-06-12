@@ -16,7 +16,10 @@
   },
   "dependencies": {
     "@navikt/fnrvalidator": "^1.1.2",
-    "nav-frontend-skjema": "^3.0.6"
+    "nav-frontend-lenker-style": "^0.2.28",
+    "nav-frontend-skjema": "^3.0.6",
+    "nav-frontend-lenker": "^1.0.37",
+    "nav-frontend-skjema-style": "^2.0.9"
   },
   "peerDependencies": {
     "react": "^16.12.0"
