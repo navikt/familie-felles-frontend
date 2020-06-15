@@ -45,25 +45,25 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
             <UserPanel
                 name={navn}
                 unit={enhet && `Enhet: ${enhet}`}
-                onClick={(e) => {
+                onClick={e => {
                     settAnker(anker === undefined ? e.currentTarget : undefined);
                 }}
             />
-            {popoverItems &&
+            {popoverItems && (
                 <Popover
                     id={'this'}
                     ankerEl={anker}
                     orientering={PopoverOrientering.Under}
                     autoFokus={false}
-                    onRequestClose={() => { settAnker(undefined); }}
+                    onRequestClose={() => {
+                        settAnker(undefined);
+                    }}
                     tabIndex={-1}
                     utenPil
                 >
-                    <BoxedListWithLinks
-                        items={popoverItems!}
-                    />
+                    <BoxedListWithLinks items={popoverItems!} />
                 </Popover>
-            }
+            )}
         </div>
     );
 };
@@ -73,42 +73,56 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
 
     return (
         <div>
-            <button className='systemknapp' onClick={(e) => {
-                settAnker(anker === undefined ? e.currentTarget : undefined);
-            }}>
-                <IkonSystem/>
+            <button
+                className="systemknapp"
+                onClick={e => {
+                    settAnker(anker === undefined ? e.currentTarget : undefined);
+                }}
+            >
+                <IkonSystem />
             </button>
-            {lenker &&
+            {lenker && (
                 <Popover
                     id={'this'}
                     ankerEl={anker}
                     orientering={PopoverOrientering.UnderHoyre}
                     autoFokus={false}
-                    onRequestClose={() => { settAnker(undefined); }}
+                    onRequestClose={() => {
+                        settAnker(undefined);
+                    }}
                     tabIndex={-1}
                 >
-                    <BoxedListWithLinks
-                        items={lenker || []}
-                    />
+                    <BoxedListWithLinks items={lenker || []} />
                 </Popover>
-            }
+            )}
         </div>
     );
 };
 
-export const Header = ({ tittel, children, brukerinfo, tittelHref = '/', brukerPopoverItems, eksterneLenker }: HeaderProps) => {
+export const Header = ({
+    tittel,
+    children,
+    brukerinfo,
+    tittelHref = '/',
+    brukerPopoverItems,
+    eksterneLenker,
+}: HeaderProps) => {
     return (
-        <div className='header'>
-            <div className='rad'>
-                <h1 className='tittel'>
+        <div className="header">
+            <div className="rad">
+                <h1 className="tittel">
                     <a href={tittelHref}>{tittel}</a>
                 </h1>
             </div>
-            <div className='rad'>
+            <div className="rad">
                 {children}
                 <LenkePopover lenker={eksterneLenker} />
-                <div className='avdeler' />
-                <Bruker navn={brukerinfo.navn} enhet={brukerinfo.enhet} popoverItems={brukerPopoverItems} />
+                <div className="avdeler" />
+                <Bruker
+                    navn={brukerinfo.navn}
+                    enhet={brukerinfo.enhet}
+                    popoverItems={brukerPopoverItems}
+                />
             </div>
         </div>
     );

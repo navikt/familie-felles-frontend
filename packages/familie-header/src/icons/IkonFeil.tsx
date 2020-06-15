@@ -1,6 +1,6 @@
 import React from 'react';
-import {Ikon, IkonProps } from './Ikon';
-import {redError} from '../types';
+import { Ikon, IkonProps } from './Ikon';
+import { redError } from '../types';
 
 export const IkonFeil = ({ color = redError, width = 16, height = 16 }: IkonProps) => {
     return (
