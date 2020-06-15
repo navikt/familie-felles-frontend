@@ -7,13 +7,13 @@ import { envVar } from './config';
 const secureLogPath = () =>
     fs.existsSync('/secure-logs/') ? '/secure-logs/secure.log' : './secure.log';
 
-const stdoutLogger = winston.createLogger({
+export const stdoutLogger = winston.createLogger({
     format: winston.format.json(),
     level: envVar('LOG_LEVEL', false, 'info'),
     transports: [new winston.transports.Console()],
 });
 
-const secureLogger = winston.createLogger({
+export const secureLogger = winston.createLogger({
     format: winston.format.json(),
     level: 'info',
     transports: [new winston.transports.File({ filename: secureLogPath(), maxsize: 5242880 })],
