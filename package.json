@@ -9,6 +9,8 @@
         "build": "lerna run build",
         "storybook": "start-storybook -p 8000",
         "deploy-storybook": "storybook-to-ghpages",
+        "lint": "eslint './packages/**/*.{js,ts,tsx}'",
+        "lint:fix": "eslint './packages/**/*.{js,ts,tsx}' --fix",
         "publish:ci": "lerna publish -y",
         "publish:canary": "lerna publish --canary",
         "publish:canary:ci": "lerna publish -y --canary"
@@ -17,6 +19,11 @@
         "hooks": {
             "pre-commit": "pretty-quick --staged"
         }
+    },
+    "lint-staged": {
+        "./packages/**/*.{js,ts,tsx}": [
+            "eslint --fix"
+        ]
     },
     "config": {
         "commitizen": {
@@ -41,6 +48,15 @@
         "copyfiles": "^2.2.0",
         "css-loader": "^3.4.2",
         "cz-lerna-changelog": "^2.0.2",
+        "eslint": "^7.2.0",
+        "eslint-config-airbnb": "^18.1.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-loader": "^4.0.2",
+        "eslint-plugin-import": "^2.21.1",
+        "eslint-plugin-jsx-a11y": "^6.2.3",
+        "eslint-plugin-prettier": "^3.1.3",
+        "eslint-plugin-react": "^7.20.0",
+        "eslint-plugin-react-app": "^6.2.2",
         "lerna": "^3.18.4",
         "less": "^3.10.3",
         "less-loader": "^5.0.0",
@@ -54,7 +70,7 @@
         "rollup-plugin-less": "^1.1.2",
         "style-loader": "^1.1.3",
         "ts-loader": "^6.2.1",
-        "tslint": "^6.0.0",
+        "tslint": "^6.1.2",
         "tslint-config-prettier": "^1.18.0",
         "typescript": "^3.7.2"
     },

@@ -12,28 +12,28 @@ export default {
 };
 
 const saksbehandler: Brukerinfo = {
-    navn: "Navn på saksbehandler",
-    enhet: "Enhet"
+    navn: 'Navn på saksbehandler',
+    enhet: 'Enhet',
 };
 
 const popover: PopoverItem = {
-    name: "Logg ut",
-    href: "#"
+    name: 'Logg ut',
+    href: '#',
 };
 
 const eksterneLenker = [
-    { name: "Google", href: "https://www.google.com", isExternal: true },
-    { name: "NAV forside", href: "https://www.nav.no" },
+    { name: 'Google', href: 'https://www.google.com', isExternal: true },
+    { name: 'NAV forside', href: 'https://www.nav.no' },
 ];
 
 interface ISøkeresultat {
-    navn: string,
-    personident: string,
-    alder: number,
-    kjønn: string
+    navn: string;
+    personident: string;
+    alder: number;
+    kjønn: string;
 }
 
-export const header = () => {
+export const HeaderOgSøk = () => {
     const [søkeresultat, settSøkeresultat] = useState<ISøkeresultat[]>([]);
     const [spinner, settSpinner] = useState<boolean>(false);
 
@@ -41,13 +41,15 @@ export const header = () => {
         settSpinner(true);
         setTimeout(() => {
             if (personIdent.length === 11) {
-                settSøkeresultat([{
-                    navn: "Navn Navnesen",
-                    personident: personIdent,
-                    alder: 23,
-                    kjønn: 'KVINNE'
-                }]);
-                settSpinner(false)
+                settSøkeresultat([
+                    {
+                        navn: 'Navn Navnesen',
+                        personident: personIdent,
+                        alder: 23,
+                        kjønn: 'KVINNE',
+                    },
+                ]);
+                settSpinner(false);
             }
         }, 1000);
     };
@@ -58,8 +60,9 @@ export const header = () => {
                 tittel={'tittel'}
                 brukerinfo={saksbehandler}
                 brukerPopoverItems={[popover]}
-                tittelHref={"#"}
-                eksterneLenker={eksterneLenker}>
+                tittelHref={'#'}
+                eksterneLenker={eksterneLenker}
+            >
                 <Søk
                     søk={søk}
                     validator={undefined}
@@ -67,10 +70,16 @@ export const header = () => {
                     autoSøk={true}
                     onChange={() => settSøkeresultat([])}
                 >
-                    {søkeresultat.length > 0 && søkeresultat.map((person, index) => {
-                        return (<Infokort index={index} ikon={<KvinneIkon />} header={`${person.navn}(${person.personident})`} />)
-                    })
-                    }
+                    {søkeresultat.length > 0 &&
+                        søkeresultat.map((person, index) => {
+                            return (
+                                <Infokort
+                                    index={index}
+                                    ikon={<KvinneIkon />}
+                                    header={`${person.navn}(${person.personident})`}
+                                />
+                            );
+                        })}
                 </Søk>
             </Header>
         </div>
