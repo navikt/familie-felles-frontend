@@ -8,7 +8,7 @@ export default {
     parameters: {
         componentSubtitle: 'Som en vanlig knapp, men med lesevisning.',
     },
-    title: 'Komponenter/FamilieKnapp',
+    title: 'Komponenter/Form-elementer/FamilieKnapp',
 };
 
 export const FamilieKnappStory = () => {

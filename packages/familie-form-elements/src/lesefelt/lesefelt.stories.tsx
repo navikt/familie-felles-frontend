@@ -6,7 +6,7 @@ export default {
     parameters: {
         componentSubtitle: 'Et tekstfelt med som tar inn label og verdi',
     },
-    title: 'Komponenter/FamilieLesefelt',
+    title: 'Komponenter/Form-elementer/FamilieLesefelt',
 };
 
 export const FamilieLesefeltStory = () => {

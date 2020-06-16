@@ -9,7 +9,7 @@ export default {
     parameters: {
         componentSubtitle: 'En datovelger med støtte for lesevisning.',
     },
-    title: 'Komponenter/FamilieDatovelger',
+    title: 'Komponenter/Form-elementer/FamilieDatovelger',
 };
 
 export const FamilieDatovelgerStory = () => {

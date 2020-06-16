@@ -8,10 +8,10 @@ export default {
     parameters: {
         componentSubtitle: 'Et inputfelt med støtte for lesevisning.',
     },
-    title: 'Komponenter/FamilieInput',
+    title: 'Komponenter/Form-elementer/FamilieInput',
 };
 
-export const FamilieDatovelgerStory = () => {
+export const FamilieInloutStory = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
