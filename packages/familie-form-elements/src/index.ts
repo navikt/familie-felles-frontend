@@ -6,3 +6,4 @@ export * from './lesefelt';
 export * from './radiogruppe';
 export * from './select';
 export * from './textarea';
+export * from './textareacontrolled';
