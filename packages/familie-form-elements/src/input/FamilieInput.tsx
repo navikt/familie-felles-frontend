@@ -5,10 +5,12 @@ import { FamilieLesefelt } from '../lesefelt';
 
 export interface IFamilieInputProps extends InputProps {
     erLesevisning?: boolean;
+    tekstLesevisning?: string;
 }
 
 export const FamilieInput: React.FC<IFamilieInputProps> = ({
     erLesevisning = false,
+    tekstLesevisning = 'Ingen opplysninger oppgitt.',
     label,
     bredde,
     value,
@@ -18,7 +20,7 @@ export const FamilieInput: React.FC<IFamilieInputProps> = ({
 }) => {
     return erLesevisning ? (
         value === '' ? (
-            <Normaltekst className={'skjemaelement'} children={'Ingen opplysninger oppgitt.'} />
+            <Normaltekst className={'skjemaelement'} children={tekstLesevisning} />
         ) : (
             <FamilieLesefelt label={label} verdi={value} />
         )
