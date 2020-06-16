@@ -8,7 +8,7 @@ export default {
     parameters: {
         componentSubtitle: 'Som en vanlig checkbox, men med lesevisning.',
     },
-    title: 'Komponenter/FamilieCheckbox',
+    title: 'Komponenter/Form-elementer/FamilieCheckbox',
 };
 
 export const FamilieCheckboxStory = () => {

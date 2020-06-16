@@ -1,17 +1,19 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Knapp } from 'nav-frontend-knapper';
 import React, { useState } from 'react';
-import { FamilieKnapp } from '..';
 import '../../stories.less';
+import { FamilieTextareaControlled } from './FamilieTextareaControlled';
 
 export default {
-    component: FamilieKnapp,
+    component: FamilieTextareaControlled,
     parameters: {
-        componentSubtitle: 'Som en vanlig knapp, men med lesevisning.',
+        componentSubtitle:
+            'Et TextareaControlled som kun vises dersom man ikke er i lesevisningsmodus',
     },
-    title: 'Komponenter/Form-elementer/FamilieKnapp',
+    title: 'Komponenter/Form-elementer/FamilieTextareaControlled',
 };
 
-export const FamilieKnappStory: React.FC = () => {
+export const FamilieTextareaStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -31,7 +33,10 @@ export const FamilieKnappStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieKnapp erLesevisning={lesevisning}>FamilieKnapp</FamilieKnapp>
+                <FamilieTextareaControlled
+                    erLesevisning={lesevisning}
+                    defaultValue={'Default value'}
+                />
             </div>
         </>
     );

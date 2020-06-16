@@ -1,17 +1,18 @@
 import { Knapp } from 'nav-frontend-knapper';
+import { Radio } from 'nav-frontend-skjema';
 import React, { useState } from 'react';
-import { FamilieKnapp } from '..';
 import '../../stories.less';
+import { FamilieRadioGruppe } from './FamilieRadioGruppe';
 
 export default {
-    component: FamilieKnapp,
+    component: FamilieRadioGruppe,
     parameters: {
-        componentSubtitle: 'Som en vanlig knapp, men med lesevisning.',
+        componentSubtitle: 'En radiogruppe som kun vises dersom man ikke er i lesevisningsmodus.',
     },
-    title: 'Komponenter/Form-elementer/FamilieKnapp',
+    title: 'Komponenter/Form-elementer/FamilieRadioGruppe',
 };
 
-export const FamilieKnappStory: React.FC = () => {
+export const FamilieRadioGruppeStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -31,7 +32,10 @@ export const FamilieKnappStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieKnapp erLesevisning={lesevisning}>FamilieKnapp</FamilieKnapp>
+                <FamilieRadioGruppe erLesevisning={lesevisning}>
+                    <Radio label={'Radio1'} name={'radio1'} />
+                    <Radio label={'Radio2'} name={'radio2'} />
+                </FamilieRadioGruppe>
             </div>
         </>
     );

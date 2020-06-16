@@ -1,17 +1,18 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Knapp } from 'nav-frontend-knapper';
 import React, { useState } from 'react';
-import { FamilieKnapp } from '..';
+import { FamilieDatovelger } from '..';
 import '../../stories.less';
 
 export default {
-    component: FamilieKnapp,
+    component: FamilieDatovelger,
     parameters: {
-        componentSubtitle: 'Som en vanlig knapp, men med lesevisning.',
+        componentSubtitle: 'En datovelger med støtte for lesevisning.',
     },
-    title: 'Komponenter/Form-elementer/FamilieKnapp',
+    title: 'Komponenter/Form-elementer/FamilieDatovelger',
 };
 
-export const FamilieKnappStory: React.FC = () => {
+export const FamilieDatovelgerStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -31,7 +32,12 @@ export const FamilieKnappStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieKnapp erLesevisning={lesevisning}>FamilieKnapp</FamilieKnapp>
+                <FamilieDatovelger
+                    id={'dato'}
+                    label={'Datovelger'}
+                    onChange={() => {}}
+                    erLesesvisning={lesevisning}
+                />
             </div>
         </>
     );

@@ -1,17 +1,17 @@
 import { Knapp } from 'nav-frontend-knapper';
 import React, { useState } from 'react';
-import { FamilieKnapp } from '..';
 import '../../stories.less';
+import { FamilieSelect } from './FamilieSelect';
 
 export default {
-    component: FamilieKnapp,
+    component: FamilieSelect,
     parameters: {
-        componentSubtitle: 'Som en vanlig knapp, men med lesevisning.',
+        componentSubtitle: 'En Select som kun vises dersom man ikke er i lesevisningsmodus',
     },
-    title: 'Komponenter/Form-elementer/FamilieKnapp',
+    title: 'Komponenter/Form-elementer/FamilieSelect',
 };
 
-export const FamilieKnappStory: React.FC = () => {
+export const FamilieSelectStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -31,7 +31,10 @@ export const FamilieKnappStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieKnapp erLesevisning={lesevisning}>FamilieKnapp</FamilieKnapp>
+                <FamilieSelect erLesevisning={lesevisning} bredde={'l'}>
+                    <option>Valg1</option>
+                    <option>Valg2</option>
+                </FamilieSelect>
             </div>
         </>
     );
