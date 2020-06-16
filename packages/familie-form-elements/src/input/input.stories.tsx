@@ -11,7 +11,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieInput',
 };
 
-export const FamilieInputStory = () => {
+export const FamilieInputStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 

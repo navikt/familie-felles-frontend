@@ -12,7 +12,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieDatovelger',
 };
 
-export const FamilieDatovelgerStory = () => {
+export const FamilieDatovelgerStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 

@@ -5,7 +5,7 @@ export interface IKnappProps {
     erLesevisning: boolean;
 }
 
-export const FamilieKnapp = ({
+export const FamilieKnapp: React.FC<IKnappProps> = ({
     onClick,
     mini,
     type,
