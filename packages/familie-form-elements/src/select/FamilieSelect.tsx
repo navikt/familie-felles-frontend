@@ -1,6 +1,6 @@
-import { FamilieLesefelt } from '../lesefelt';
 import { Select, SelectProps } from 'nav-frontend-skjema';
 import React from 'react';
+import { FamilieLesefelt } from '../lesefelt';
 
 export interface IFamilieSelectProps extends SelectProps {
     erLesevisning?: boolean;

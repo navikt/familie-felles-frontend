@@ -1,17 +1,18 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { Knapp } from 'nav-frontend-knapper';
 import React, { useState } from 'react';
 import '../../stories.less';
-import { FamilieSelect } from './FamilieSelect';
+import { FamilieTextarea } from './FamilieTextarea';
 
 export default {
-    component: FamilieSelect,
+    component: FamilieTextarea,
     parameters: {
-        componentSubtitle: 'En Select som kun vises dersom man ikke er i lesevisningsmodus',
+        componentSubtitle: 'Et Textarea som kun vises dersom man ikke er i lesevisningsmodus',
     },
-    title: 'Komponenter/Form-elementer/FamilieSelect',
+    title: 'Komponenter/Form-elementer/FamilieTextarea',
 };
 
-export const FamilieSelectStory: React.FC = () => {
+export const FamilieTextareaStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -31,10 +32,7 @@ export const FamilieSelectStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieSelect erLesevisning={lesevisning} bredde={'l'}>
-                    <option>Valg1</option>
-                    <option>Valg2</option>
-                </FamilieSelect>
+                <FamilieTextarea erLesevisning={lesevisning} value={'value'} onChange={() => {}} />
             </div>
         </>
     );
