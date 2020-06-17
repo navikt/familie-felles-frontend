@@ -11192,7 +11192,7 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-nav-datovelger@^6.1.8:
+nav-datovelger@^6.1.9:
   version "6.1.9"
   resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-6.1.9.tgz#ab99dd27c710d6299d9cff0ec4bde98f4f8e90a1"
   integrity sha512-/85jt7ihtxn7qcVMmvyz00Z/RKCgPBdTTzVoviSTt9vkLy5o/PMircwCloq+BOJ8D0eq6aaNrs5TC689inKD8A==
