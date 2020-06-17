@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@navikt/fnrvalidator": "^1.1.2",
-    "nav-datovelger": "^6.1.8",
+    "nav-datovelger": "^6.1.9",
     "nav-frontend-knapper": "^2.0.4",
     "nav-frontend-knapper-style": "^0.3.38",
     "nav-frontend-lenker": "^1.0.37",
