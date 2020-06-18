@@ -2,16 +2,16 @@ import { Checkbox, CheckboxProps } from 'nav-frontend-skjema';
 import { Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
 
-export interface ICheckboxProps {
+export interface ICheckboxProps extends CheckboxProps {
     erLesevisning: boolean;
 }
 
-export const FamilieCheckbox = ({
+export const FamilieCheckbox: React.FC<ICheckboxProps> = ({
     label,
     checked,
     onChange,
     erLesevisning,
-}: CheckboxProps & ICheckboxProps) => {
+}) => {
     return erLesevisning ? (
         checked ? (
             <Normaltekst className={'skjemaelement lese-felt'} children={label} />
