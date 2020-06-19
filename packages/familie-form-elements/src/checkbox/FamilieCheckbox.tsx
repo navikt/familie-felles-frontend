@@ -4,12 +4,11 @@ import React from 'react';
 
 export interface ICheckboxProps extends CheckboxProps {
     erLesevisning: boolean;
-    checked?: boolean;
 }
 
 export const FamilieCheckbox: React.FC<ICheckboxProps> = ({
     label,
-    checked = false,
+    checked,
     onChange,
     erLesevisning,
 }) => {
@@ -18,6 +17,6 @@ export const FamilieCheckbox: React.FC<ICheckboxProps> = ({
             <Normaltekst className={'skjemaelement lese-felt'} children={label} />
         ) : null
     ) : (
-        <Checkbox label={label} onChange={onChange} />
+        <Checkbox label={label} onChange={onChange} checked={checked} />
     );
 };
