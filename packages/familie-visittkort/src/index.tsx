@@ -13,17 +13,19 @@ export interface IProps {
     navn: string;
 }
 
-const Visittkort: React.StatelessComponent<IProps> = ({ alder, ident, kjønn, navn }) => {
+const Visittkort: React.StatelessComponent<IProps> = ({ alder, children, ident, kjønn, navn }) => {
     return (
         <div className={'visittkort'}>
             <FamilieIkonVelger className={'visittkort__ikon'} alder={alder} kjønn={kjønn} />
             <Element type={'element'}>{navn}</Element>
 
-            <div className={'visittkort__skråstrek'}>/</div>
+            <div className={'visittkort__pipe'}>|</div>
 
             <Clipboard>
                 <Normaltekst>{ident}</Normaltekst>
             </Clipboard>
+
+            {children}
         </div>
     );
 };
