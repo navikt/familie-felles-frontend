@@ -30,10 +30,19 @@ export const Søk = ({
     const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
     const [gyldig, settGyldig] = useState(false);
 
+    const trimHvisTall = (innspill: string) => {
+        const utenSpaces = innspill.replace(/ /g, '');
+        if (utenSpaces.match(/^\d+$/)) {
+            return utenSpaces;
+        } else {
+            return innspill;
+        }
+    };
+
     const utløserSøk = (nøkkel?: string) => {
         const gyldigNøkkel = nøkkel || verdi;
 
-        gyldigNøkkel.length > 0 && søk(gyldigNøkkel);
+        gyldigNøkkel.length > 0 && søk(trimHvisTall(gyldigNøkkel));
     };
 
     const tastenTrykkes = (event: React.KeyboardEvent) => {
@@ -48,12 +57,12 @@ export const Søk = ({
     };
 
     const innspillEndret = (event: React.ChangeEvent) => {
-        const nyVerdi = (event.target as HTMLInputElement).value.replace(' ', '');
+        const nyVerdi = (event.target as HTMLInputElement).value;
         settVerdi(nyVerdi);
         //sørg for at popover vises
         settAnker(nyVerdi.length > 0 ? (event.currentTarget as HTMLElement) : undefined);
         onChange?.(nyVerdi);
-        const erGyldig = validator?.(nyVerdi);
+        const erGyldig = validator?.(trimHvisTall(nyVerdi));
         settGyldig(erGyldig || false);
 
         if (erGyldig) {
