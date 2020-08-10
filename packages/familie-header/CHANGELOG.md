@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.6](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.5...@navikt/familie-header@2.0.6) (2020-08-10)
+
+
+### Performance Improvements
+
+* småfiks på søk ([#69](https://github.com/navikt/familie-felles-frontend/issues/69)) ([11aa91c](https://github.com/navikt/familie-felles-frontend/commit/11aa91c054683a0c13354eed54811700b99ab402))
+
+
+
+
+
 ## [2.0.5](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.4...@navikt/familie-header@2.0.5) (2020-08-10)
 
 **Note:** Version bump only for package @navikt/familie-header
