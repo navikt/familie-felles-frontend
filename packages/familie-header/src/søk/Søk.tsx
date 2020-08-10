@@ -48,7 +48,7 @@ export const Søk = ({
     };
 
     const innspillEndret = (event: React.ChangeEvent) => {
-        const nyVerdi = (event.target as HTMLInputElement).value;
+        const nyVerdi = (event.target as HTMLInputElement).value.replace(' ', '');
         settVerdi(nyVerdi);
         //sørg for at popover vises
         settAnker(nyVerdi.length > 0 ? (event.currentTarget as HTMLElement) : undefined);
