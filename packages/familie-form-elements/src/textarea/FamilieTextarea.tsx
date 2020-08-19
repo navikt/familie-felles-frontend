@@ -15,6 +15,7 @@ export const FamilieTextarea: React.FC<IFamilieTextareaProps> = ({
     label,
     value,
     onChange,
+    maxLength,
     children,
 }) => {
     return erLesevisning ? (
@@ -24,7 +25,7 @@ export const FamilieTextarea: React.FC<IFamilieTextareaProps> = ({
             <FamilieLesefelt label={label} verdi={value} />
         )
     ) : (
-        <Textarea name={name} label={label} value={value} onChange={onChange}>
+        <Textarea name={name} label={label} value={value} onChange={onChange} maxLength={maxLength}>
             {children}
         </Textarea>
     );
