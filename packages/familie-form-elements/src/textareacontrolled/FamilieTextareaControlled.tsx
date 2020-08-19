@@ -15,6 +15,7 @@ export const FamilieTextareaControlled: React.FC<IFamilieTextareaControlledProps
     id,
     label,
     placeholder,
+    maxLength,
     textareaClass,
     value,
     feil,
@@ -32,6 +33,7 @@ export const FamilieTextareaControlled: React.FC<IFamilieTextareaControlledProps
             id={id}
             label={label}
             placeholder={placeholder}
+            maxLength={maxLength}
             textareaClass={textareaClass}
             value={value}
             feil={feil}
