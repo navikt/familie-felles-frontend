@@ -3,7 +3,7 @@ import React from 'react';
 
 export interface ILesefeltProps {
     label?: React.ReactNode;
-    verdi?: string | string[] | number;
+    verdi?: string | readonly string[] | number;
 }
 
 export const FamilieLesefelt: React.FC<ILesefeltProps> = ({ label, verdi }) => {
