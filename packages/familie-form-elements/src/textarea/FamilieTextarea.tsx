@@ -16,6 +16,7 @@ export const FamilieTextarea: React.FC<IFamilieTextareaProps> = ({
     value,
     onChange,
     children,
+    disabled,
 }) => {
     return erLesevisning ? (
         value === '' ? (
@@ -24,7 +25,7 @@ export const FamilieTextarea: React.FC<IFamilieTextareaProps> = ({
             <FamilieLesefelt label={label} verdi={value} />
         )
     ) : (
-        <Textarea name={name} label={label} value={value} onChange={onChange}>
+        <Textarea disabled={disabled} name={name} label={label} value={value} onChange={onChange}>
             {children}
         </Textarea>
     );
