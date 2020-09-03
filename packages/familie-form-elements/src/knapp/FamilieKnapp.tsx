@@ -7,6 +7,7 @@ export interface IKnappProps extends KnappBaseProps {
 
 export const FamilieKnapp: React.FC<IKnappProps> = ({
     children,
+    className,
     erLesevisning,
     mini,
     onClick,
@@ -15,7 +16,14 @@ export const FamilieKnapp: React.FC<IKnappProps> = ({
     ...props
 }) => {
     return !erLesevisning ? (
-        <Knapp mini={mini} onClick={onClick} spinner={spinner} type={type} {...props}>
+        <Knapp
+            className={className}
+            mini={mini}
+            onClick={onClick}
+            spinner={spinner}
+            type={type}
+            {...props}
+        >
             {children}
         </Knapp>
     ) : null;
