@@ -9,35 +9,39 @@ export interface IFamilieTextareaControlledProps extends TextareaControlledProps
 }
 
 export const FamilieTextareaControlled: React.FC<IFamilieTextareaControlledProps> = ({
-    erLesevisning,
-    tekstLesevisning = 'Ingen opplysninger oppgitt.',
+    className,
     defaultValue,
+    erLesevisning,
+    feil,
     id,
     label,
-    placeholder,
     maxLength,
+    onBlur,
+    placeholder,
+    tekstLesevisning = 'Ingen opplysninger oppgitt.',
     textareaClass,
     value,
-    feil,
-    onBlur,
+    ...props
 }) => {
     return erLesevisning ? (
         value === '' ? (
-            <Normaltekst className={'skjemaelement'} children={tekstLesevisning} />
+            <Normaltekst className={className} children={tekstLesevisning} />
         ) : (
-            <FamilieLesefelt label={label} verdi={value} />
+            <FamilieLesefelt className={className} label={label} verdi={value} />
         )
     ) : (
         <TextareaControlled
+            className={className}
             defaultValue={defaultValue}
+            feil={feil}
             id={id}
             label={label}
-            placeholder={placeholder}
             maxLength={maxLength}
+            onBlur={onBlur}
+            placeholder={placeholder}
             textareaClass={textareaClass}
             value={value}
-            feil={feil}
-            onBlur={onBlur}
+            {...props}
         />
     );
 };

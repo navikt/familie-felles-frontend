@@ -8,17 +8,25 @@ export interface IRadioGruppeProps extends SkjemaGruppeProps {
     erLesevisning: boolean;
 }
 export const FamilieRadioGruppe: React.FC<IRadioGruppeProps> = ({
-    verdi,
+    children,
+    className,
     erLesevisning,
-    legend,
     feil,
     feilmeldingId,
-    children,
+    legend,
+    verdi,
+    ...props
 }) => {
     return erLesevisning ? (
-        <FamilieLesefelt label={legend} verdi={verdi} />
+        <FamilieLesefelt className={className} label={legend} verdi={verdi} {...props} />
     ) : (
-        <RadioGruppe legend={legend} feil={feil} feilmeldingId={feilmeldingId}>
+        <RadioGruppe
+            className={className}
+            feil={feil}
+            feilmeldingId={feilmeldingId}
+            legend={legend}
+            {...props}
+        >
             {children}
         </RadioGruppe>
     );
