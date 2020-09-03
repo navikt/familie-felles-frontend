@@ -26,7 +26,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
     erLesesvisning = false,
 }) => {
     if (erLesesvisning) {
-        return <FamilieLesefelt label={label} verdi={valgtDato} />;
+        return <FamilieLesefelt className={className} label={label} verdi={valgtDato} />;
     } else
         return (
             <div id={id} className={className}>

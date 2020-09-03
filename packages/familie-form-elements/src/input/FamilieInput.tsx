@@ -9,28 +9,32 @@ export interface IFamilieInputProps extends InputProps {
 }
 
 export const FamilieInput: React.FC<IFamilieInputProps> = ({
-    erLesevisning = false,
-    tekstLesevisning = 'Ingen opplysninger oppgitt.',
-    label,
     bredde,
-    value,
-    placeholder,
-    onChange,
+    className,
     children,
+    erLesevisning = false,
+    label,
+    onChange,
+    placeholder,
+    tekstLesevisning = 'Ingen opplysninger oppgitt.',
+    value,
+    ...props
 }) => {
     return erLesevisning ? (
         value === '' ? (
-            <Normaltekst className={'skjemaelement'} children={tekstLesevisning} />
+            <Normaltekst className={className} children={tekstLesevisning} />
         ) : (
-            <FamilieLesefelt label={label} verdi={value} />
+            <FamilieLesefelt className={className} label={label} verdi={value} />
         )
     ) : (
         <Input
-            label={label}
             bredde={bredde}
-            value={value}
-            placeholder={placeholder}
+            className={className}
+            label={label}
             onChange={onChange}
+            placeholder={placeholder}
+            value={value}
+            {...props}
         >
             {children}
         </Input>

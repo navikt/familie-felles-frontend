@@ -1,6 +1,6 @@
 {
   "name": "@navikt/familie-form-elements",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "main": "dist/index.js",
   "author": "NAV",
   "license": "MIT",
@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@navikt/fnrvalidator": "^1.1.2",
+    "@types/classnames": "^2.2.10",
+    "classnames": "^2.2.6",
     "nav-datovelger": "^6.1.9",
     "nav-frontend-knapper": "^2.0.4",
     "nav-frontend-knapper-style": "^0.3.38",
