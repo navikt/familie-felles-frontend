@@ -12,7 +12,7 @@ export const konfigurerMetrikker = (
     collectDefaultMetrics({ register });
 
     if (prometheusTellere) {
-        Object.values(prometheusTellere).map(counter => {
+        Object.values(prometheusTellere).forEach(counter => {
             register.registerMetric(counter);
         });
     }
