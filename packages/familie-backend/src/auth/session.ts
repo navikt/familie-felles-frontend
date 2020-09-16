@@ -1,3 +1,4 @@
+import { Express } from 'express';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import { PassportStatic } from 'passport';
@@ -11,7 +12,7 @@ const RedisStore = require('connect-redis')(session);
 /* tslint:enable */
 
 export default (
-    app: any,
+    app: Express,
     passport: PassportStatic,
     sessionKonfigurasjon: ISessionKonfigurasjon,
 ) => {
@@ -44,9 +45,10 @@ export default (
                     sameSite: 'lax',
                     secure: sessionKonfigurasjon.secureCookie,
                 },
+                unset: 'destroy',
                 name: sessionKonfigurasjon.navn,
                 resave: false,
-                saveUninitialized: true,
+                saveUninitialized: false,
                 secret: appConfig.sessionSecret,
                 store,
             }),
@@ -59,7 +61,7 @@ export default (
                 cookie: { sameSite: 'lax', secure: sessionKonfigurasjon.secureCookie },
                 name: sessionKonfigurasjon.navn,
                 resave: false,
-                saveUninitialized: true,
+                saveUninitialized: false,
                 secret: appConfig.sessionSecret,
             }),
         );
