@@ -32,20 +32,18 @@ export default async (
     const app = express();
     let azureAuthClient!: Client;
     let router: Router;
-    let prometheusRegistry: Registry;
 
     headers.setup(app);
 
     app.get('/isAlive', (_req: Request, res: Response) => res.status(200).end());
     app.get('/isReady', (_req: Request, res: Response) => res.status(200).end());
+    const prometheusRegistry: Registry = konfigurerMetrikker(app, prometheusTellere);
 
     konfigurerSession(app, passport, sessionKonfigurasjon);
 
     return konfigurerPassport(passport)
         .then((authClient: Client) => {
             azureAuthClient = authClient;
-
-            prometheusRegistry = konfigurerMetrikker(app, prometheusTellere);
             router = konfigurerRouter(azureAuthClient, prometheusTellere);
 
             return {
