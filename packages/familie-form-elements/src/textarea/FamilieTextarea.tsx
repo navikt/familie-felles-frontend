@@ -29,7 +29,7 @@ export const FamilieTextarea: React.FC<IFamilieTextareaProps> = ({
         )
     ) : (
         <Textarea
-            className={className}
+            textareaClass={className}
             disabled={disabled}
             label={label}
             maxLength={maxLength}
