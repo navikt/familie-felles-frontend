@@ -44,8 +44,6 @@
     "redis": "^3.0.2",
     "request-promise": "^4.2.5",
     "snyk": "^1.336.0",
-    "tslint": "^5.20.1",
-    "tslint-config-prettier": "^1.18.0",
     "winston": "^3.2.1"
   },
   "resolutions": {
