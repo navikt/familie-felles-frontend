@@ -11674,9 +11674,9 @@ nav-frontend-alertstriper-style@2.0.17:
   integrity sha512-1TaOkbDI8qJiHSmdigZ3aXXZJrf3CbXf8ZmzPWaSSt6lrYJaKgxtO4sBPajbdWtcZOFo8Ls2RuCH6clrhzNEeQ==
 
 nav-frontend-alertstriper@^3.0.13:
-  version "3.0.23"
-  resolved "https://registry.yarnpkg.com/nav-frontend-alertstriper/-/nav-frontend-alertstriper-3.0.23.tgz#21743aa2396739defffba1ec43bd37d5ed459c57"
-  integrity sha512-ePZn15nseITLwZhD+oVWMRUqtWQgVR8TLDeC8wSXSX19J2D+KNSRwAMrsN7pdCDmufRvb32Mim1XsVenx7eJfQ==
+  version "3.0.27"
+  resolved "https://registry.yarnpkg.com/nav-frontend-alertstriper/-/nav-frontend-alertstriper-3.0.27.tgz#0d4d9707470fed1ee67cb87792cfaaa39cd0cfc2"
+  integrity sha512-9bQ0aejsbbzjRCwpY+eG2UGM6mVtw+DgtBr+coNlS9O7fjYWSKOzAmLz1HcN4I85jEIXtL77zkwVskWdrghF4g==
 
 nav-frontend-chevron-style@^0.3.5:
   version "0.3.5"
