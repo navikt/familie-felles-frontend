@@ -11766,9 +11766,9 @@ nav-frontend-typografi-style@^1.0.17, nav-frontend-typografi-style@^1.0.18:
     nav-frontend-core "^5.0.1"
 
 nav-frontend-typografi@^2.0.16, nav-frontend-typografi@^2.0.17, nav-frontend-typografi@^2.0.21:
-  version "2.0.26"
-  resolved "https://registry.yarnpkg.com/nav-frontend-typografi/-/nav-frontend-typografi-2.0.26.tgz#a7701af21ddbdc6bdc0259549e398b36afb46835"
-  integrity sha512-GZ4WcQ0H4HBw7GHcVJtuDihSyrzPQ+df5dls4h60oOV3zNiedarMMGy43xFPxvPZnI0LTYlOX7rDGVxLBR9NBg==
+  version "2.0.29"
+  resolved "https://registry.yarnpkg.com/nav-frontend-typografi/-/nav-frontend-typografi-2.0.29.tgz#9bd648b712d0be9a116bf0546468303b4a7ff801"
+  integrity sha512-atM1HCPiRlBBksw8cokS6CvZ/b8+U2zuepczM2m9WMgMWNwk37Sjdid+F1HYlHz9qTgg2rwhwavES0WcDno2FA==
 
 nconf@^0.10.0:
   version "0.10.0"
