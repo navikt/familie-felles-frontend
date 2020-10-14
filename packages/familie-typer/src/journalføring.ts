@@ -42,9 +42,9 @@ export interface IDokumentvariant {
 }
 
 export enum Journalposttype {
-    I,
-    U,
-    N,
+    I = 'I',
+    U = 'U',
+    N = 'N',
 }
 
 export enum Journalstatus {
@@ -63,8 +63,8 @@ export enum Journalstatus {
 }
 
 export enum Dokumentstatus {
-    FERDIGSTILT,
-    AVBRUTT,
-    UNDER_REDIGERING,
-    KASSERT,
+    FERDIGSTILT = 'FERDIGSTILT',
+    AVBRUTT = 'AVBRUTT',
+    UNDER_REDIGERING = 'UNDER_REDIGERING',
+    KASSERT = 'KASSERT',
 }
