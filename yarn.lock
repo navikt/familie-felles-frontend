@@ -11708,10 +11708,10 @@ nav-frontend-js-utils@1.0.9:
   resolved "https://registry.yarnpkg.com/nav-frontend-js-utils/-/nav-frontend-js-utils-1.0.9.tgz#3b177db985dd3b1e57911f3e38440d62ca82e51c"
   integrity sha512-Kf2ksWM9cdEFesT1QS3X2c9ZLyQ4BsoHASBVzOgTU/2dd55jQmNtse0rJ43CGLEDguKPYUaIiaYfKdxIqU9SfQ==
 
-nav-frontend-knapper-style@^0.3.38:
-  version "0.3.38"
-  resolved "https://registry.yarnpkg.com/nav-frontend-knapper-style/-/nav-frontend-knapper-style-0.3.38.tgz#4ad009a42cc6405dd41b1932f3f0839311dae57f"
-  integrity sha512-pqzIAakw2EU2aqsPpYLLfYO/3DEb7OuW+qcmM95u6h9pIOB+pbduwzoYjRDv11N9ylk5Nqt7oYmpildGVwwZbg==
+nav-frontend-knapper-style@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/nav-frontend-knapper-style/-/nav-frontend-knapper-style-1.0.5.tgz#bcbc5c1c971fc0c9faa505c0800cfda062c87bc6"
+  integrity sha512-MhEfnCYX58gq0d7RNo8epsBgaS+wXKFDPZ3GOXRY/RfpjzThsHtJWVBNufbwO12myi2DrPqm27HVg9bjS+XtXg==
 
 nav-frontend-knapper@^2.0.4:
   version "2.0.9"
