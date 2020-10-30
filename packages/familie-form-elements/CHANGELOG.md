@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@1.0.17...@navikt/familie-form-elements@2.0.0) (2020-10-30)
+
+
+* Oppdater datovelger (#107) ([add1692](https://github.com/navikt/familie-felles-frontend/commit/add16925a7281c2c55fc6360393c22a38dd96a35)), closes [#107](https://github.com/navikt/familie-felles-frontend/issues/107)
+
+
+### BREAKING CHANGES
+
+* Se changelog for 7.0.0 navikt/datovelger
+
+* Ikke fjern classname
+
+
+
+
+
 ## [1.0.17](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@1.0.16...@navikt/familie-form-elements@1.0.17) (2020-10-02)
 
 **Note:** Version bump only for package @navikt/familie-form-elements
