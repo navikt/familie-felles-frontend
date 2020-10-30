@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-ikoner@3.1.1...@navikt/familie-ikoner@3.1.2) (2020-10-15)
+
+**Note:** Version bump only for package @navikt/familie-ikoner
+
+
+
+
+
+## [3.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-ikoner@3.1.0...@navikt/familie-ikoner@3.1.1) (2020-10-14)
+
+**Note:** Version bump only for package @navikt/familie-ikoner
+
+
+
+
+
+# [3.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-ikoner@3.0.4...@navikt/familie-ikoner@3.1.0) (2020-09-30)
+
+
+### Features
+
+* **Legge til mulighet for å sende med bredde og høyde på familie-ikoner:** legger til optional widt ([#82](https://github.com/navikt/familie-felles-frontend/issues/82)) ([7016ffb](https://github.com/navikt/familie-felles-frontend/commit/7016ffb32e72be5f4e819518522376f6162f6f15))
+
+
+
+
+
 ## [3.0.4](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-ikoner@3.0.3...@navikt/familie-ikoner@3.0.4) (2020-07-01)
 
 **Note:** Version bump only for package @navikt/familie-ikoner

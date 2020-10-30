@@ -1,18 +1,18 @@
 import { Express, Request } from 'express';
-import prom_client, { Counter } from 'prom-client';
+import client, { Counter } from 'prom-client';
 
 export const konfigurerMetrikker = (
     app: Express,
-    prometheusTellere?: { [key: string]: Counter },
+    prometheusTellere?: { [key: string]: Counter<string> },
 ) => {
-    const collectDefaultMetrics = prom_client.collectDefaultMetrics;
-    const Registry = prom_client.Registry;
+    const collectDefaultMetrics = client.collectDefaultMetrics;
+    const Registry = client.Registry;
     const register = new Registry();
 
     collectDefaultMetrics({ register });
 
     if (prometheusTellere) {
-        Object.values(prometheusTellere).map(counter => {
+        Object.values(prometheusTellere).forEach(counter => {
             register.registerMetric(counter);
         });
     }

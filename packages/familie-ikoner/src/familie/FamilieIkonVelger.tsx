@@ -10,27 +10,31 @@ export interface IProps {
     alder: number;
     className?: string;
     kjønn: kjønnType;
+    width?: number;
+    height?: number;
 }
 
-export const FamilieIkonVelger: React.StatelessComponent<IProps> = ({
+export const FamilieIkonVelger: React.FunctionComponent<IProps> = ({
     className,
     alder,
     kjønn,
+    width = 32,
+    height = 32,
 }) => {
     switch (kjønn) {
         case kjønnType.KVINNE:
             if (alder < 18) {
-                return <JenteIkon className={className} heigth={32} width={32} />;
+                return <JenteIkon className={className} heigth={height} width={width} />;
             } else {
-                return <KvinneIkon className={className} heigth={32} width={32} />;
+                return <KvinneIkon className={className} heigth={height} width={width} />;
             }
         case kjønnType.MANN:
             if (alder < 18) {
-                return <GuttIkon className={className} heigth={32} width={32} />;
+                return <GuttIkon className={className} heigth={height} width={width} />;
             } else {
-                return <MannIkon className={className} heigth={32} width={32} />;
+                return <MannIkon className={className} heigth={height} width={width} />;
             }
         default:
-            return <NøytralPersonIkon className={className} heigth={32} width={32} />;
+            return <NøytralPersonIkon className={className} heigth={height} width={width} />;
     }
 };

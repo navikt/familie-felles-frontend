@@ -31,7 +31,7 @@ export const FamilieSelectStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieSelect erLesevisning={lesevisning} bredde={'l'}>
+                <FamilieSelect erLesevisning={lesevisning} lesevisningVerdi={'Valg2'} bredde={'l'}>
                     <option>Valg1</option>
                     <option>Valg2</option>
                 </FamilieSelect>
