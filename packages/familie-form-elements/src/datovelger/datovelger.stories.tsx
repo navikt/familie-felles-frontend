@@ -3,6 +3,7 @@ import { Knapp } from 'nav-frontend-knapper';
 import React, { useState } from 'react';
 import { FamilieDatovelger } from '..';
 import '../../stories.less';
+import {ISODateString} from "nav-datovelger/lib/types";
 
 export default {
     component: FamilieDatovelger,
@@ -15,6 +16,7 @@ export default {
 export const FamilieDatovelgerStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
+    const [valgtDato, settValgtDato] = useState<ISODateString | undefined>('01.01.20');
 
     const onClickToggleKnapp = () => {
         if (lesevisning) {
@@ -35,7 +37,8 @@ export const FamilieDatovelgerStory: React.FC = () => {
                 <FamilieDatovelger
                     id={'dato'}
                     label={'Datovelger'}
-                    onChange={() => {}}
+                    onChange={(dato?: ISODateString) => {settValgtDato(dato)}}
+                    valgtDato={valgtDato}
                     erLesesvisning={lesevisning}
                 />
             </div>
