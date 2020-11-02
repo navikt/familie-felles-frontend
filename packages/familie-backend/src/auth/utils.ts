@@ -15,7 +15,7 @@ export const getOnBehalfOfAccessToken = (
             resolve(tokenSets[api.clientId].access_token);
         } else {
             if (!req.session) {
-                throw Error('Mangler session på request.');
+                throw Error('Session på request mangler.');
             }
 
             authClient
