@@ -8,7 +8,7 @@ const cspString = `
     default-src 'self' data:;
     style-src 'self' ${styleSource} data: 'unsafe-inline';
     connect-src 'self' ${sentry};
-    script-src-elem 'self' ${sentry};
+    script-src 'self' ${sentry};
     font-src 'self' ${fontSource} data:`;
 
 const setup = (app: Express) => {
