@@ -4,30 +4,30 @@ import { Datepicker as NavDatovelger } from 'nav-datovelger';
 import { Label } from 'nav-frontend-skjema';
 import React from 'react';
 import { FamilieLesefelt } from '../lesefelt';
-import { DatepickerLimitations, ISODateString } from 'nav-datovelger/lib/types';
+import { ISODateString } from 'nav-datovelger/lib/types';
+import { DatepickerProps } from 'nav-datovelger/lib/Datepicker';
 
 export interface IDatovelgerProps {
+    className?: string;
     disabled?: boolean;
+    erLesesvisning?: boolean;
     id: string;
     label: string;
     onChange: (dato?: ISODateString) => void;
     placeholder?: string;
     valgtDato?: string;
-    className?: string;
-    erLesesvisning?: boolean;
-    limitations?: DatepickerLimitations;
 }
 
-export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
+export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = ({
+    className = '',
     disabled,
+    erLesesvisning = false,
     id,
     label,
     onChange,
     placeholder,
     valgtDato,
-    className = '',
-    erLesesvisning = false,
-    limitations,
+    ...props
 }) => {
     if (erLesesvisning) {
         return <FamilieLesefelt className={className} label={label} verdi={valgtDato} />;
@@ -36,6 +36,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
             <div id={id} className={className}>
                 <Label children={label} htmlFor={id} />
                 <NavDatovelger
+                    {...props}
                     disabled={disabled}
                     inputId={`input_${id}`}
                     showYearSelector={true}
@@ -46,7 +47,6 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
                     locale={'nb'}
                     value={valgtDato}
                     onChange={onChange}
-                    limitations={limitations}
                 />
             </div>
         );
