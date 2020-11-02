@@ -2,7 +2,14 @@ import { Express } from 'express';
 
 const styleSource = 'https://fonts.googleapis.com';
 const fontSource = 'https://fonts.gstatic.com';
-const cspString = `default-src 'self' data:; style-src 'self' ${styleSource} data: 'unsafe-inline'; connect-src 'self'; font-src ${fontSource} 'self' data:`;
+const sentry = 'https://sentry.gc.nav.no';
+
+const cspString = `
+    default-src 'self' data:;
+    style-src 'self' ${styleSource} data: 'unsafe-inline';
+    connect-src 'self' ${sentry};
+    script-src-elem 'self' ${sentry};
+    font-src 'self' ${fontSource} data:`;
 
 const setup = (app: Express) => {
     app.disable('x-powered-by');
