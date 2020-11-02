@@ -15,7 +15,7 @@ export interface IDatovelgerProps {
     valgtDato?: string;
     className?: string;
     erLesesvisning?: boolean;
-    avgrensninger?: DatepickerLimitations;
+    limitations?: DatepickerLimitations;
 }
 
 export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
@@ -27,7 +27,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
     valgtDato,
     className = '',
     erLesesvisning = false,
-    avgrensninger,
+    limitations,
 }) => {
     if (erLesesvisning) {
         return <FamilieLesefelt className={className} label={label} verdi={valgtDato} />;
@@ -46,7 +46,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
                     locale={'nb'}
                     value={valgtDato}
                     onChange={onChange}
-                    limitations={avgrensninger}
+                    limitations={limitations}
                 />
             </div>
         );
