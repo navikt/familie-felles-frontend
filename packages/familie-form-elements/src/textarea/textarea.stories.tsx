@@ -7,7 +7,7 @@ import { FamilieTextarea } from './FamilieTextarea';
 export default {
     component: FamilieTextarea,
     parameters: {
-        componentSubtitle: 'Et Textarea som kun vises dersom man ikke er i lesevisningsmodus',
+        componentSubtitle: 'Textarea som kun vises dersom man ikke er i lesevisningsmodus',
     },
     title: 'Komponenter/Form-elementer/FamilieTextarea',
 };
