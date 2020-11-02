@@ -4,6 +4,13 @@ import momenttz from 'moment-timezone';
 import winston from 'winston';
 import { envVar } from './config';
 
+export enum LOG_LEVEL {
+    ERROR = 3,
+    WARNING = 2,
+    INFO = 1,
+    DEBUG = 0,
+}
+
 const secureLogPath = () =>
     fs.existsSync('/secure-logs/') ? '/secure-logs/secure.log' : './secure.log';
 
@@ -43,9 +50,7 @@ export const secure = (message: string) => {
 };
 
 export const getLogTimestamp = () => {
-    return `${momenttz()
-        .tz('Europe/Oslo')
-        .format('YYYY-MM-DD HH:mm:ss')}`;
+    return `${momenttz().tz('Europe/Oslo').format('YYYY-MM-DD HH:mm:ss')}`;
 };
 
 const prefix = (req: Request) => {
@@ -73,10 +78,3 @@ export const logRequest = (req: Request, message: string, level: LOG_LEVEL) => {
             info(melding);
     }
 };
-
-export enum LOG_LEVEL {
-    ERROR = 3,
-    WARNING = 2,
-    INFO = 1,
-    DEBUG = 0,
-}

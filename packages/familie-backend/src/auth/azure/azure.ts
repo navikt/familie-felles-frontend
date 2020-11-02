@@ -35,7 +35,7 @@ const hentClient = (): Promise<Client> => {
 };
 
 const strategy = (client: Client) => {
-    const verify = (tokenSet: TokenSet, done: (err: any, user?: any) => void) => {
+    const verify = (tokenSet: TokenSet, done: (err: any, _: any) => void) => {
         debug(`verify. expired=${tokenSet.expired()}`);
         if (tokenSet.expired()) {
             return done(undefined, undefined);
