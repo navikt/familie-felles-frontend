@@ -4,7 +4,7 @@ import { Datepicker as NavDatovelger } from 'nav-datovelger';
 import { Label } from 'nav-frontend-skjema';
 import React from 'react';
 import { FamilieLesefelt } from '../lesefelt';
-import { ISODateString } from 'nav-datovelger/lib/types';
+import { DatepickerLimitations, ISODateString } from 'nav-datovelger/lib/types';
 
 export interface IDatovelgerProps {
     disabled?: boolean;
@@ -15,6 +15,7 @@ export interface IDatovelgerProps {
     valgtDato?: string;
     className?: string;
     erLesesvisning?: boolean;
+    avgrensninger?: DatepickerLimitations;
 }
 
 export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
@@ -26,6 +27,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
     valgtDato,
     className = '',
     erLesesvisning = false,
+    avgrensninger,
 }) => {
     if (erLesesvisning) {
         return <FamilieLesefelt className={className} label={label} verdi={valgtDato} />;
@@ -44,6 +46,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps> = ({
                     locale={'nb'}
                     value={valgtDato}
                     onChange={onChange}
+                    limitations={avgrensninger}
                 />
             </div>
         );
