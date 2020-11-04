@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.15](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@5.0.14...@navikt/familie-backend@5.0.15) (2020-11-04)
+
+
+### Bug Fixes
+
+* **familie-backend:** revert pretty kode for csp string. ([3b18811](https://github.com/navikt/familie-felles-frontend/commit/3b188116b0477f29fe4a32b0a78474fe3a59d47b))
+
+
+
+
+
 ## [5.0.14](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@5.0.13...@navikt/familie-backend@5.0.14) (2020-11-02)
 
 **Note:** Version bump only for package @navikt/familie-backend
