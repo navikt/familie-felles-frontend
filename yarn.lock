@@ -11978,15 +11978,10 @@ nav-frontend-chevron@^1.0.10:
   resolved "https://registry.yarnpkg.com/nav-frontend-chevron/-/nav-frontend-chevron-1.0.13.tgz#38efff6b1c84e0d45dd0899c1a0dcc04da2f07a4"
   integrity sha512-hYn0tTDUEaJafzT6cw/ZTvipVpg7xA9GJrp32Ymo47zRf6XXzfNeycC0q+IqtPrlECUfZXaDne3cSaU+CqOYRg==
 
-nav-frontend-core@^4.0.11, nav-frontend-core@^4.0.12:
-  version "4.0.13"
-  resolved "https://registry.yarnpkg.com/nav-frontend-core/-/nav-frontend-core-4.0.13.tgz#0f1917d914279c9f6555ccd1f7709c67b0316233"
-  integrity sha512-36PyQkYceP6ZInQpeYfNA307qEODRjGfSxOIeiPdxilyxRB6v2PaLEePRZSS/adJ5i9PegSCDsm/rUKBaJKaIA==
-
-nav-frontend-core@^5.0.6:
-  version "5.0.6"
-  resolved "https://registry.yarnpkg.com/nav-frontend-core/-/nav-frontend-core-5.0.6.tgz#54057efb5457f2d9b65ecbefc9bfb734a1f67504"
-  integrity sha512-xoa4cZeI0K/q6/qf40Ixs53RzdrFU2N1g9DNpCZk7mc1EhX0KS6VrswYGqY44F1LK4OZcx/cF/0crsrG0xcCkQ==
+nav-frontend-core@^5.0.6, nav-frontend-core@^5.0.8:
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/nav-frontend-core/-/nav-frontend-core-5.0.8.tgz#ee735886dce11f6ba2f56f0147881eed5b18af47"
+  integrity sha512-2NsEnm+vnMVhXO8Jo4RsGLGJUHpfOziTaUtCWJqaQt0gCscRSTkPkFSBQGlR0bxs9QFkO4TEW514EVBOBsmR1g==
 
 nav-frontend-ikoner-assets@2.0.3:
   version "2.0.3"
