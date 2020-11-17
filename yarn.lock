@@ -12198,10 +12198,10 @@ nav-frontend-chevron@^1.0.10:
   resolved "https://registry.yarnpkg.com/nav-frontend-chevron/-/nav-frontend-chevron-1.0.13.tgz#38efff6b1c84e0d45dd0899c1a0dcc04da2f07a4"
   integrity sha512-hYn0tTDUEaJafzT6cw/ZTvipVpg7xA9GJrp32Ymo47zRf6XXzfNeycC0q+IqtPrlECUfZXaDne3cSaU+CqOYRg==
 
-nav-frontend-core@^5.0.6, nav-frontend-core@^5.0.8:
-  version "5.0.8"
-  resolved "https://registry.yarnpkg.com/nav-frontend-core/-/nav-frontend-core-5.0.8.tgz#ee735886dce11f6ba2f56f0147881eed5b18af47"
-  integrity sha512-2NsEnm+vnMVhXO8Jo4RsGLGJUHpfOziTaUtCWJqaQt0gCscRSTkPkFSBQGlR0bxs9QFkO4TEW514EVBOBsmR1g==
+nav-frontend-core@^5.0.10, nav-frontend-core@^5.0.8:
+  version "5.0.10"
+  resolved "https://registry.yarnpkg.com/nav-frontend-core/-/nav-frontend-core-5.0.10.tgz#6f582c2a09ee18c3d26d68fe09413289a7efed65"
+  integrity sha512-0wo5L2s/OO5Q5pqJg8UWQCuRBzYY5txgbx1dD7OXHuokbva7GA0sZvh25VTrPauUbnDSUB26leJtwzos9Upi0A==
 
 nav-frontend-ikoner-assets@2.0.3:
   version "2.0.3"
@@ -12264,11 +12264,11 @@ nav-frontend-skjema@^3.0.7:
   integrity sha512-VFaNnrO1wxS5v/+KpXcK84kf5oo3RIebnlJgkMfHHz+BinhZSAqA94vfl8GpYFHwfjEUDB+uI+QBWku/T6YDWg==
 
 nav-frontend-typografi-style@^1.0.17, nav-frontend-typografi-style@^1.0.18:
-  version "1.0.27"
-  resolved "https://registry.yarnpkg.com/nav-frontend-typografi-style/-/nav-frontend-typografi-style-1.0.27.tgz#e222618b9eece4498c60d6d975dd652acb416f38"
-  integrity sha512-AMLkVPFmCUd1Sd60xR3jOEsFc9PZ2C8wO4UjVl2KBos+8QM/ZT7Q2zyNd0+sTlHMh9ikM76uQQtiJIaPQklONA==
+  version "1.0.31"
+  resolved "https://registry.yarnpkg.com/nav-frontend-typografi-style/-/nav-frontend-typografi-style-1.0.31.tgz#c98a270e9c86f3ffb21e026ae82ca262211183c9"
+  integrity sha512-zs3XNGf/8YMO3Pi/xD11B9n8kY1s1okCVVuPJcVu+DVjKwMsScDdmuKCtotm0QDpHUk1CExPDCLwPGuAPAlOsw==
   dependencies:
-    nav-frontend-core "^5.0.6"
+    nav-frontend-core "^5.0.10"
 
 nav-frontend-typografi@^2.0.16, nav-frontend-typografi@^2.0.17, nav-frontend-typografi@^2.0.21:
   version "2.0.26"
