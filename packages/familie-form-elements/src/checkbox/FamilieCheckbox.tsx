@@ -23,6 +23,12 @@ export const FamilieCheckbox: React.FC<ICheckboxProps> = ({
             />
         ) : null
     ) : (
-        <Checkbox label={label} onChange={onChange} checked={checked} {...props} />
+        <Checkbox
+            className={className}
+            label={label}
+            onChange={onChange}
+            checked={checked}
+            {...props}
+        />
     );
 };
