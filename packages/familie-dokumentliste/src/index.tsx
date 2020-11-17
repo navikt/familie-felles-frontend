@@ -7,15 +7,15 @@ import PilNed from '@navikt/familie-ikoner/dist/utils/PilNed';
 import PilHøyre from '@navikt/familie-ikoner/dist/utils/PilHøyre';
 import { Journalposttype } from '@navikt/familie-typer';
 
-const StyledVedlegg = styled.div`
+const StyledDokumentliste = styled.div`
     padding: 0.5rem 1rem;
     display: grid;
     grid-gap: 0 1rem;
     grid-template-columns: minmax(min-content, max-content);
     grid-template-rows: repeat(2, min-content);
     grid-template-areas:
-        'journalposttype tittel'
-        'journalposttype dato';
+        'ikon tittel'
+        'ikon dato';
     max-width: 300px;
 
     :hover {
@@ -25,14 +25,14 @@ const StyledVedlegg = styled.div`
 `;
 
 const StyledJournalpostIkon = styled.span`
-    grid-area: journalposttype;
+    grid-area: ikon;
     padding-top: 0.3rem;
 `;
 const StyledDato = styled(Undertekst)`
     grid-area: dato;
 `;
 
-const StyledVedleggsnavn = styled(Element)`
+const StyledDokumentnavn = styled(Element)`
     text-overflow: ellipsis;
     max-width: 100%;
     overflow: hidden;
@@ -59,30 +59,28 @@ const Journalpostikon: React.FC<JournalpostikonProps> = ({ journalposttype }) =>
 };
 
 
-export interface VedleggProps {
-    dokumentinfoId: string;
+export interface DokumentlisteProps {
     tittel: string;
-    journalpostId: string;
     dato?: string;
     journalposttype: Journalposttype;
-    lastNedDokument: (journalpostId: string, dokumentinfoId: string, tittel: string) => void;
+    onClick: () => void;
 }
 
-const Vedlegg: React.FC<VedleggProps> = ({ dokumentinfoId, tittel, journalpostId, dato, journalposttype, lastNedDokument }) => {
+const Dokumentliste: React.FC<DokumentlisteProps> = ({ tittel, dato, journalposttype, onClick }) => {
     return (
-        <StyledVedlegg
+        <StyledDokumentliste
             role={'button'}
-            onClick={() => lastNedDokument(journalpostId, dokumentinfoId, tittel)}
+            onClick={() => onClick()}
         >
             <StyledJournalpostIkon>
                 <Journalpostikon
                     journalposttype={journalposttype}
                 />
             </StyledJournalpostIkon>
-            <StyledVedleggsnavn>{tittel}</StyledVedleggsnavn>
+            <StyledDokumentnavn>{tittel}</StyledDokumentnavn>
             <StyledDato>{dato}</StyledDato>
-        </StyledVedlegg>
+        </StyledDokumentliste>
     );
 };
 
-export default Vedlegg;
+export default Dokumentliste;
