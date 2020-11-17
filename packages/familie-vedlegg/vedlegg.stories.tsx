@@ -5,7 +5,7 @@ import { Journalposttype } from '@navikt/familie-typer';
 export default {
     component: Vedlegg,
     parameters: {
-        componentSubtitle: 'Vedlegg brukes til å vise informasjon om et vedlegg fra en journalpost.',
+        componentSubtitle: 'Vedlegg-komponenten brukes til å vise informasjon om et vedlegg fra en journalpost.',
     },
     title: 'Komponenter/Vedlegg',
 };
@@ -40,7 +40,7 @@ const vedleggListe = [
         lastNedDokument,
     },
 ];
-export const visittkort = () => {
+export const vedleggskomponent = () => {
     return vedleggListe.map((vedlegg) => {
         return <Vedlegg
             dokumentinfoId={vedlegg.dokumentinfoId}

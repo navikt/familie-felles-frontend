@@ -1,6 +1,6 @@
-# Visittkort
+# Vedlegg
 
-Komponent for å vise dokumentvedlegg for team familie.
+Komponent for å liste opp vedlegg tilknyttet en sak i saksbehandlingsløsningen for team familie. Passer inn i en høyremeny.
 
 > 💡 Ser du etter [dokumentasjon](https://navikt.github.io/familie-felles-frontend/?path=/docs/komponenter-vedlegg--standard)?
 

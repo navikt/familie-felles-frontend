@@ -30,7 +30,7 @@ const PilVenstre: React.FunctionComponent<IPilVenstre> = ({
                 stroke="#000000"
                 stroke-linejoin="round"
                 points="23.5,15.504 23.5,8.504 10.5,8.504 10.5,2.025 0.491,12   10.5,22.004 10.5,15.504 "
-            />{' '}
+            />
         </svg>
     );
 };
