@@ -12272,9 +12272,9 @@ nav-frontend-popover@0.0.40:
   integrity sha512-U2d8u34YQWbDtJ+fvUBNYTKuYNBVUdq2xmGnBNTJSvK+97dkQ7W840kYEblKxTpODTIkXQ4RAz9nvShQHR3b9A==
 
 nav-frontend-skjema-style@^2.0.9:
-  version "2.0.12"
-  resolved "https://registry.yarnpkg.com/nav-frontend-skjema-style/-/nav-frontend-skjema-style-2.0.12.tgz#73c83a65e2b09e88aea7cb4e427133da8af0e082"
-  integrity sha512-Ngu7QEzvpb9blSaf/+7MYTTTEBV28ohuuN2wMCTYHw3ieMMaODLQuLx+TmdBVe52izHymy7gEBeFS1VR4S5D+Q==
+  version "2.0.23"
+  resolved "https://registry.yarnpkg.com/nav-frontend-skjema-style/-/nav-frontend-skjema-style-2.0.23.tgz#11e357a5379787d58ef0bf538ab029646862694d"
+  integrity sha512-OPADPvNP9tElahXSnlLPoKUBJr0BUOZr71rukxDGbLwXu+NNsf8b7mgRsDzLYuavqtC8BiFLmtsUv9/cD/d2Uw==
 
 nav-frontend-skjema@^3.0.7:
   version "3.0.20"
