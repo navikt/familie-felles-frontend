@@ -20,3 +20,21 @@ export interface IAppConfig {
     logoutRedirectUri: string;
     sessionSecret: string;
 }
+
+export interface User {
+    displayName: string;
+    email: string;
+    enhet: string;
+    identifier: string;
+    navIdent: string;
+    groups: any;
+}
+
+declare module 'express-session' {
+    interface Session {
+        user: User;
+        // eslint-disable-next-line
+        passport: any;
+        redirectUrl: string;
+    }
+}

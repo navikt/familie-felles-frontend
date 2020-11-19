@@ -22,7 +22,6 @@ const animation = {
 const Clipboard: React.FunctionComponent<IProps> = ({ children }) => {
     const [didCopy, setDidCopy] = useState(false);
 
-    // tslint:disable-next-line: no-null-keyword
     const ref = useRef<HTMLDivElement>(null);
 
     const copy = () => {
@@ -32,7 +31,6 @@ const Clipboard: React.FunctionComponent<IProps> = ({ children }) => {
     };
 
     useEffect(() => {
-        // tslint:disable-next-line: no-unused-expression
         didCopy && setTimeout(() => setDidCopy(false), 2000);
     }, [didCopy]);
 

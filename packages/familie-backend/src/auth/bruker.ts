@@ -82,6 +82,7 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
                 }
 
                 req.session.user = {
+                    ...req.session.user,
                     enhet: '9999',
                 };
 
