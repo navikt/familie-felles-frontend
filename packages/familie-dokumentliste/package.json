@@ -1,0 +1,38 @@
+{
+    "version": "1.0.0",
+    "name": "@navikt/familie-dokumentliste",
+    "author": "NAV",
+    "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "module": "dist/index.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "yarn run clean && yarn run copy-less && yarn run tsc",
+        "clean": "rm -rf ./dist",
+        "copy-less": "copyfiles -u 1 src/**/*.less dist",
+        "tsc": "tsc -p tsconfig.json"
+    },
+    "dependencies": {
+        "@navikt/familie-ikoner": "^3.1.2",
+        "@navikt/familie-typer": "^3.0.6",
+        "classnames": "^2.2.6",
+        "nav-frontend-core": "^5.0.8",
+        "nav-frontend-typografi": "^2.0.17",
+        "nav-frontend-typografi-style": "^1.0.18",
+        "prop-types": "^15.7.2",
+        "styled-components": "^5.2.1"
+    },
+    "devDependencies": {
+        "@types/styled-components": "^5.1.4"
+    },
+    "peerDependencies": {
+        "react": "^16.12.0"
+    }
+}
