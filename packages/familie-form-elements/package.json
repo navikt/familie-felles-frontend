@@ -18,7 +18,7 @@
     "@navikt/fnrvalidator": "^1.1.2",
     "@types/classnames": "^2.2.10",
     "classnames": "^2.2.6",
-    "nav-datovelger": "^7.0.8",
+    "nav-datovelger": "^8.0.0",
     "nav-frontend-knapper": "^2.0.4",
     "nav-frontend-knapper-style": "^1.0.8",
     "nav-frontend-lenker": "^1.0.37",
@@ -30,5 +30,5 @@
   },
   "peerDependencies": {
     "react": "^16.12.0"
-  }
+  },
 }
