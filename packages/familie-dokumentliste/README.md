@@ -8,7 +8,7 @@ Passer inn i en høyremeny. Tar inn `onClick`-funksjon som kan brukes for nedlas
 ## Installasjon
 
 ```sh
-npm install @navikt/familie-vedlegg
+npm install @navikt/familie-dokumentliste
 # eller hvis du bruker yarn:
-yarn add @navikt/familie-vedlegg
+yarn add @navikt/familie-dokumentliste
 ```

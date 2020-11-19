@@ -1,13 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import navFarger from 'nav-frontend-core';
-import { Undertekst, Element } from 'nav-frontend-typografi';
+import { Element, Undertekst } from 'nav-frontend-typografi';
 import PilVenstre from '@navikt/familie-ikoner/dist/utils/PilVenstre';
 import PilNed from '@navikt/familie-ikoner/dist/utils/PilNed';
 import PilHøyre from '@navikt/familie-ikoner/dist/utils/PilHøyre';
 import { Journalposttype } from '@navikt/familie-typer';
 
-const StyledDokumentliste = styled.div`
+const StyledDokumentElement = styled.div`
     padding: 0.5rem 1rem;
     display: grid;
     grid-gap: 0 1rem;
@@ -58,29 +58,55 @@ const Journalpostikon: React.FC<JournalpostikonProps> = ({ journalposttype }) =>
     }
 };
 
-
-export interface DokumentlisteProps {
+export interface DokumentProps {
     tittel: string;
     dato?: string;
+    journalpostId: string;
     journalposttype: Journalposttype;
-    onClick: () => void;
+    dokumentinfoId: string;
+    filnavn?: string;
 }
 
-const Dokumentliste: React.FC<DokumentlisteProps> = ({ tittel, dato, journalposttype, onClick }) => {
+export interface DokumentElementProps {
+    dokument: DokumentProps;
+    onClick: (dokument: DokumentProps) => void;
+}
+
+export interface DokumentlisteProps {
+    dokumenter: DokumentProps[];
+    onClick: (dokument: DokumentProps) => void;
+}
+
+export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onClick }) => {
     return (
-        <StyledDokumentliste
+        <StyledDokumentElement
             role={'button'}
-            onClick={() => onClick()}
+            onClick={() => onClick(dokument)}
         >
             <StyledJournalpostIkon>
                 <Journalpostikon
-                    journalposttype={journalposttype}
+                    journalposttype={dokument.journalposttype}
                 />
             </StyledJournalpostIkon>
-            <StyledDokumentnavn>{tittel}</StyledDokumentnavn>
-            <StyledDato>{dato}</StyledDato>
-        </StyledDokumentliste>
+            <StyledDokumentnavn>{dokument.tittel}</StyledDokumentnavn>
+            <StyledDato>{dokument.dato}</StyledDato>
+        </StyledDokumentElement>
+    );
+
+};
+
+const Dokumentliste: React.FC<DokumentlisteProps> = ({ dokumenter, onClick }) => {
+    return (
+        <>
+            {dokumenter.map((dokument, indeks) => {
+                    return (
+                        <DokumentElement dokument={dokument} onClick={onClick} key={indeks} />
+                    );
+                },
+            )}
+        </>
     );
 };
+
 
 export default Dokumentliste;
