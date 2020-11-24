@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.16](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.15...@navikt/familie-header@2.0.16) (2020-11-24)
+
+
+### Bug Fixes
+
+* upgrade nav-frontend-alertstriper-style from 2.0.17 to 2.0.23 ([#141](https://github.com/navikt/familie-felles-frontend/issues/141)) ([05f0b1c](https://github.com/navikt/familie-felles-frontend/commit/05f0b1cd15942823918aa1bcfbc8c88dfab9d5b2))
+* upgrade nav-frontend-ikoner-assets from 2.0.3 to 2.0.8 ([#142](https://github.com/navikt/familie-felles-frontend/issues/142)) ([6bed4e0](https://github.com/navikt/familie-felles-frontend/commit/6bed4e0ca619df70df9c02883e242fde469f2482))
+* upgrade nav-frontend-js-utils from 1.0.13 to 1.0.15 ([#144](https://github.com/navikt/familie-felles-frontend/issues/144)) ([2bfbacb](https://github.com/navikt/familie-felles-frontend/commit/2bfbacbc70297d538f77953ab93a5fd8a7aa6978))
+* upgrade nav-frontend-paneler-style from 0.3.21 to 0.3.25 ([#143](https://github.com/navikt/familie-felles-frontend/issues/143)) ([973efd6](https://github.com/navikt/familie-felles-frontend/commit/973efd6114669b497e14044aa5e1db6ccf48b8d1))
+* upgrade nav-frontend-popover-style from 0.0.5 to 0.0.8 ([#145](https://github.com/navikt/familie-felles-frontend/issues/145)) ([6621896](https://github.com/navikt/familie-felles-frontend/commit/6621896620f23799998ed7d435611b2717ebca29))
+
+
+
+
+
 ## [2.0.15](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.14...@navikt/familie-header@2.0.15) (2020-11-19)
 
 **Note:** Version bump only for package @navikt/familie-header
