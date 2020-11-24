@@ -40,7 +40,6 @@ const StyledDokumentnavn = styled(Element)`
     grid-area: tittel;
 `;
 
-
 interface JournalpostikonProps {
     journalposttype: Journalposttype;
 }
@@ -79,34 +78,24 @@ export interface DokumentlisteProps {
 
 export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onClick }) => {
     return (
-        <StyledDokumentElement
-            role={'button'}
-            onClick={() => onClick(dokument)}
-        >
+        <StyledDokumentElement role={'button'} onClick={() => onClick(dokument)}>
             <StyledJournalpostIkon>
-                <Journalpostikon
-                    journalposttype={dokument.journalposttype}
-                />
+                <Journalpostikon journalposttype={dokument.journalposttype} />
             </StyledJournalpostIkon>
             <StyledDokumentnavn>{dokument.tittel}</StyledDokumentnavn>
             <StyledDato>{dokument.dato}</StyledDato>
         </StyledDokumentElement>
     );
-
 };
 
 const Dokumentliste: React.FC<DokumentlisteProps> = ({ dokumenter, onClick }) => {
     return (
         <>
             {dokumenter.map((dokument, indeks) => {
-                    return (
-                        <DokumentElement dokument={dokument} onClick={onClick} key={indeks} />
-                    );
-                },
-            )}
+                return <DokumentElement dokument={dokument} onClick={onClick} key={indeks} />;
+            })}
         </>
     );
 };
-
 
 export default Dokumentliste;
