@@ -5,7 +5,7 @@ import { Element, Undertekst } from 'nav-frontend-typografi';
 import PilVenstre from '@navikt/familie-ikoner/dist/utils/PilVenstre';
 import PilNed from '@navikt/familie-ikoner/dist/utils/PilNed';
 import PilHøyre from '@navikt/familie-ikoner/dist/utils/PilHøyre';
-import { Journalposttype, IDokumentInfo } from '@navikt/familie-typer';
+import { Journalposttype } from '@navikt/familie-typer';
 
 const StyledDokumentElement = styled.div`
     padding: 0.5rem 1rem;
