@@ -5,7 +5,7 @@ import { Element, Undertekst } from 'nav-frontend-typografi';
 import PilVenstre from '@navikt/familie-ikoner/dist/utils/PilVenstre';
 import PilNed from '@navikt/familie-ikoner/dist/utils/PilNed';
 import PilHøyre from '@navikt/familie-ikoner/dist/utils/PilHøyre';
-import { Journalposttype } from '@navikt/familie-typer';
+import { Journalposttype, IDokumentInfo } from '@navikt/familie-typer';
 
 const StyledDokumentElement = styled.div`
     padding: 0.5rem 1rem;
@@ -91,7 +91,7 @@ export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onCl
 const Dokumentliste: React.FC<DokumentlisteProps> = ({ dokumenter, onClick }) => {
     return (
         <>
-            {dokumenter.map((dokument, indeks) => {
+            {dokumenter.map((dokument: DokumentProps, indeks: number) => {
                 return <DokumentElement dokument={dokument} onClick={onClick} key={indeks} />;
             })}
         </>
