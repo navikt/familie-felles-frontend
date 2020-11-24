@@ -19,7 +19,7 @@ export interface IDatovelgerProps {
 }
 
 export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = ({
-    className = '',
+    className,
     disabled,
     erLesesvisning = false,
     id,
