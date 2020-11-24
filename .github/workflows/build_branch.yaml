@@ -2,7 +2,7 @@ name: Build-Deploy-Npm-Canary
 on:
   push:
     branches-ignore:
-      - '**'
+      - 'master'
     paths-ignore:
       - package.json
 
