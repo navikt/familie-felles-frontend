@@ -1,8 +1,8 @@
 name: Build-Deploy-Npm
 on:
   push:
-    branches-ignore:
-      - '**'
+    branches:
+      - 'master'
     paths-ignore:
       - package.json
 
