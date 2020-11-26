@@ -13,6 +13,21 @@ export interface IJournalpost {
     tittel?: string;
 }
 
+export interface AvsenderMottaker {
+    erLikBruker: boolean;
+    id: string;
+    land: string;
+    navn: string;
+    type: AvsenderMottakerIdType;
+}
+
+enum AvsenderMottakerIdType {
+    NULL,
+    FNR,
+    ORGNR,
+    UKJENT,
+}
+
 export interface IJournalpostSak {
     arkivsaksnummer?: string;
     arkivsaksystem?: string;
