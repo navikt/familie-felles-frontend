@@ -1,4 +1,5 @@
 export interface IJournalpost {
+    avsenderMottaker?: AvsenderMottaker;
     datoMottatt?: string;
     journalpostId: string;
     journalposttype: Journalposttype;
