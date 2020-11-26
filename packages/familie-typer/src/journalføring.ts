@@ -10,6 +10,7 @@ export interface IJournalpost {
     journalforendeEnhet?: string;
     kanal?: string;
     dokumenter?: IDokumentInfo[];
+    tittel?: string;
 }
 
 export interface IJournalpostSak {
