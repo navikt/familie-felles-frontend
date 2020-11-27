@@ -1,4 +1,5 @@
 export interface IJournalpost {
+    avsenderMottaker?: AvsenderMottaker;
     datoMottatt?: string;
     journalpostId: string;
     journalposttype: Journalposttype;
@@ -11,6 +12,21 @@ export interface IJournalpost {
     kanal?: string;
     dokumenter?: IDokumentInfo[];
     tittel?: string;
+}
+
+export interface AvsenderMottaker {
+    erLikBruker: boolean;
+    id: string;
+    land: string;
+    navn: string;
+    type: AvsenderMottakerIdType;
+}
+
+enum AvsenderMottakerIdType {
+    NULL = 'NULL',
+    FNR = 'FNR',
+    ORGNR = 'ORGNR',
+    UKJENT = 'UKJENT',
 }
 
 export interface IJournalpostSak {
