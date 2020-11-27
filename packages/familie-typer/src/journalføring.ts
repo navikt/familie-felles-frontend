@@ -23,10 +23,10 @@ export interface AvsenderMottaker {
 }
 
 enum AvsenderMottakerIdType {
-    NULL,
-    FNR,
-    ORGNR,
-    UKJENT,
+    NULL = 'NULL',
+    FNR = 'FNR',
+    ORGNR = 'ORGNR',
+    UKJENT = 'UKJENT',
 }
 
 export interface IJournalpostSak {
