@@ -22,11 +22,12 @@ export interface AvsenderMottaker {
     type: AvsenderMottakerIdType;
 }
 
-enum AvsenderMottakerIdType {
-    NULL = 'NULL',
+export enum AvsenderMottakerIdType {
     FNR = 'FNR',
+    HPRNR = 'HPRNR',
     ORGNR = 'ORGNR',
     UKJENT = 'UKJENT',
+    UTL_ORG = 'UTL_ORG',
 }
 
 export interface IJournalpostSak {
