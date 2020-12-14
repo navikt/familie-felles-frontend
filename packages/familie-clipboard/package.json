@@ -21,8 +21,13 @@
     },
     "dependencies": {
         "@types/react-tooltip": "^3.11.0",
+        "nav-frontend-core": "^5.0.10",
         "framer-motion": "^2.9.1",
-        "react-tooltip": "^3.11.4"
+        "react-tooltip": "^3.11.4",
+        "styled-components": "^5.2.1"
+    },
+    "devDependencies": {
+        "@types/styled-components": "^5.1.4"
     },
     "peerDependencies": {
         "react": "^16.12.0"

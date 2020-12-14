@@ -3,12 +3,41 @@ import React, { ReactChild, useEffect, useRef, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import ClipboardIcon from './ClipboardIcon';
 import { copyContentsToClipboard } from './util';
-
-import './Clipboard.less';
+import navFarger from 'nav-frontend-core';
+import styled from 'styled-components';
 
 interface IProps {
     children: ReactChild;
 }
+
+const ClipboardContainer = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
+`;
+
+const ClipboardChildrenContainer = styled.div`
+    :hover {
+        border-bottom: 1px dotted #000;
+    }
+`;
+
+const StyledButton = styled.button`
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0.0625rem;
+    margin-left: 0.25rem;
+
+    :focus,
+    :active {
+        outline: 0.1875rem solid ${navFarger.fokusFarge};
+    }
+`;
+
+const IconContainer = styled(motion.span)`
+    display: flex;
+`;
 
 const animation = {
     animate: { y: 0, opacity: 1 },
@@ -35,24 +64,22 @@ const Clipboard: React.FunctionComponent<IProps> = ({ children }) => {
     }, [didCopy]);
 
     return (
-        <div className="Clipboard">
-            <div className="Clipboard__children" ref={ref}>
-                {children}
-            </div>
+        <ClipboardContainer>
+            <ClipboardChildrenContainer ref={ref}>{children}</ClipboardChildrenContainer>
             <ReactTooltip place="bottom" disable={!didCopy} />
-            <button
+            <StyledButton
                 data-tip="Kopiert!"
                 data-tip-disable={!didCopy}
                 onClick={copy}
                 data-class="typo-undertekst"
             >
                 <AnimatePresence initial={false} exitBeforeEnter>
-                    <motion.div {...animation} key={didCopy ? 'check' : 'copy'}>
+                    <IconContainer {...animation} key={didCopy ? 'check' : 'copy'}>
                         <ClipboardIcon type={didCopy ? 'check' : 'copy'} />
-                    </motion.div>
+                    </IconContainer>
                 </AnimatePresence>
-            </button>
-        </div>
+            </StyledButton>
+        </ClipboardContainer>
     );
 };
 
