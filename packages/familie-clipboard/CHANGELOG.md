@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-clipboard@3.0.5...@navikt/familie-clipboard@3.1.0) (2020-12-14)
+
+
+### Features
+
+* **Legger til fokus på clipboard-komponenten:** legger til fokus på clipboard-komponenten. Skriver ([#207](https://github.com/navikt/familie-felles-frontend/issues/207)) ([533a4f1](https://github.com/navikt/familie-felles-frontend/commit/533a4f1caaee5e574947da9f01f5acf5d2cb67e8))
+
+
+
+
+
 ## [3.0.5](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-clipboard@3.0.4...@navikt/familie-clipboard@3.0.5) (2020-11-18)
 
 **Note:** Version bump only for package @navikt/familie-clipboard
