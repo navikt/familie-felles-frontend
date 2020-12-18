@@ -39,7 +39,7 @@ const navSelectStyles = (feil?: string): StylesConfig => ({
     }),
     placeholder: provided => ({
         ...provided,
-        color: 'initial',
+        color: navFarger.navGra60,
     }),
     dropdownIndicator: provided => ({
         ...provided,
