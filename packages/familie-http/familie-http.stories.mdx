@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="providers/http" />
+
+# Familie http provider
+
+Http provider for familie for henting av data. Bruker konseptet ressurs. Se @navikt/familie-typer, ressurs for mer informasjon.
+
+Sett opp provideren rundt appen din. Innlogget saksbehandler brukes ved feil som logges til sentry.
+Ved 401 fra backend kalles sett autentisert for å sette state til false.
+
+```js
+const App: React.FC = ({ children }) => {
+    return (
+        <HttpProvider
+            innloggetSaksbehandler={innloggetSaksbehandler}
+            settAutentisert={settAutentisert}
+        >
+            <AppContentProvider>{children}</AppContentProvider>
+        </HttpProvider>
+    );
+};
+```
+
+I barn komponentene kan man bruke hooken slik:
+
+```js
+const { request, systemetLaster } = useHttp();
+
+/**
+ * Første parameter peker på data til requesten.
+ * Andre paramenter peker på ønsket returverdi på requesten.
+ *
+ * Funksjonen tar inn et objekt (FamilieRequestConfig) som er basert på axios sitt request-objekt.
+ * I tillegg har vi påvirkerSystemLaster som oppdaterer state i hooken.
+ * Sett denne dersom man ønsker systemet i en gitt tilstand når kallet kjøres.
+ */
+request<void, string>({
+    url: '/version',
+    method: 'GET',
+    påvirkerSystemLaster: true
+}).then((versjon: Ressurs<string>) => {
+    // Håndter returverdi.
+})
+```

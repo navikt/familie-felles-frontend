@@ -6,10 +6,14 @@ import { Ressurs, RessursStatus, ApiRessurs, ISaksbehandler } from '@navikt/fami
 axios.defaults.baseURL = window.location.origin;
 export const preferredAxios = axios;
 
-export const håndterApiRessurs = <T>(
-    ressurs?: ApiRessurs<T>,
-    innloggetSaksbehandler?: ISaksbehandler,
-): Ressurs<T> => {
+export interface HåndterApiRessurs<T> {
+    ressurs?: ApiRessurs<T>;
+    innloggetSaksbehandler?: ISaksbehandler;
+    error?: AxiosError;
+}
+
+export const håndterApiRessurs = <T>(håndterApiRessurs: HåndterApiRessurs<T>): Ressurs<T> => {
+    const { ressurs, innloggetSaksbehandler, error } = håndterApiRessurs;
     let typetRessurs: Ressurs<T>;
 
     if (!ressurs) {
@@ -33,7 +37,7 @@ export const håndterApiRessurs = <T>(
             };
             break;
         case RessursStatus.FEILET:
-            loggFeil(undefined, innloggetSaksbehandler, ressurs.melding);
+            loggFeil(error, innloggetSaksbehandler, ressurs.melding);
             typetRessurs = {
                 frontendFeilmelding: ressurs.frontendFeilmelding ?? 'En feil har oppstått!',
                 status: RessursStatus.FEILET,

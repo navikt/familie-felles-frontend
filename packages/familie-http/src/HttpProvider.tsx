@@ -14,12 +14,13 @@ export type FamilieRequest = <SkjemaData, SkjemaRespons>(
 ) => Promise<Ressurs<SkjemaRespons>>;
 
 interface IProps {
-    settAutentisert?: (autentisert: boolean) => void;
+    fjernRessursSomLasterTimeout?: number;
     innloggetSaksbehandler?: ISaksbehandler;
+    settAutentisert?: (autentisert: boolean) => void;
 }
 
 export const [HttpProvider, useHttp] = createUseContext(
-    ({ innloggetSaksbehandler, settAutentisert }: IProps) => {
+    ({ innloggetSaksbehandler, settAutentisert, fjernRessursSomLasterTimeout = 300 }: IProps) => {
         const [ressurserSomLaster, settRessurserSomLaster] = React.useState<string[]>([]);
 
         const fjernRessursSomLaster = (ressursId: string) => {
@@ -27,7 +28,7 @@ export const [HttpProvider, useHttp] = createUseContext(
                 settRessurserSomLaster((prevState: string[]) => {
                     return prevState.filter((ressurs: string) => ressurs !== ressursId);
                 });
-            }, 300);
+            }, fjernRessursSomLasterTimeout);
         };
 
         const systemetLaster = () => {
@@ -47,7 +48,10 @@ export const [HttpProvider, useHttp] = createUseContext(
                     const responsRessurs: ApiRessurs<SkjemaRespons> = response.data;
 
                     config.påvirkerSystemLaster && fjernRessursSomLaster(ressursId);
-                    return håndterApiRessurs(responsRessurs, innloggetSaksbehandler);
+                    return håndterApiRessurs({
+                        ressurs: responsRessurs,
+                        innloggetSaksbehandler,
+                    });
                 })
                 .catch((error: AxiosError) => {
                     if (error.message.includes('401') && settAutentisert) {
@@ -57,7 +61,11 @@ export const [HttpProvider, useHttp] = createUseContext(
                     config.påvirkerSystemLaster && fjernRessursSomLaster(ressursId);
 
                     const responsRessurs: ApiRessurs<SkjemaRespons> = error.response?.data;
-                    return håndterApiRessurs(responsRessurs, innloggetSaksbehandler);
+                    return håndterApiRessurs({
+                        ressurs: responsRessurs,
+                        innloggetSaksbehandler,
+                        error,
+                    });
                 });
         };
 
