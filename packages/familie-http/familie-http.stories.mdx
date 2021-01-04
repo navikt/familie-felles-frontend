@@ -28,8 +28,8 @@ I barn komponentene kan man bruke hooken slik:
 const { request, systemetLaster } = useHttp();
 
 /**
- * Første parameter peker på data til requesten.
- * Andre paramenter peker på ønsket returverdi på requesten.
+ * Første type bestemmer data i request-objektet.
+ * Andre type bestemmer returtype i ressurs.
  *
  * Funksjonen tar inn et objekt (FamilieRequestConfig) som er basert på axios sitt request-objekt.
  * I tillegg har vi påvirkerSystemLaster som oppdaterer state i hooken.

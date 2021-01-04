@@ -9,7 +9,7 @@ import {
     NavBaseSkjemaProps,
     NavInputProps,
     ValiderFelt,
-    FeltContext,
+    Avhengigheter,
     Valideringsstatus,
 } from './typer';
 import { isChangeEvent } from './utils';
@@ -21,13 +21,13 @@ import { isChangeEvent } from './utils';
  * @valideringsfunksjon optional valideringsfunksjon på feltet
  * @skalFeltetVises optional visningsfunksjon. Kan brukes dersom skjemaet
  * skjuler felter for bruker under gitte omstendigheter
- * @valideringscontext avhengighetene som brukes til validering og vis/skjul
+ * @avhengigheter avhengighetene som brukes til validering og vis/skjul
  */
 export interface FeltConfig<Verdi> {
     verdi: Verdi;
     valideringsfunksjon?: ValiderFelt<Verdi>;
-    skalFeltetVises?: (valideringscontext: FeltContext) => boolean;
-    avhengigheter?: FeltContext;
+    skalFeltetVises?: (avhengigheter: Avhengigheter) => boolean;
+    avhengigheter?: Avhengigheter;
 }
 
 export function useFelt<Verdi = string>({
@@ -45,7 +45,7 @@ export function useFelt<Verdi = string>({
 
     const [feltState, settFeltState] = useState<FeltState<Verdi>>(initialFeltState);
     const [erSynlig, settErSynlig] = useState(
-        skalFeltetVises ? skalFeltetVises(avhengigheter) : true
+        skalFeltetVises ? skalFeltetVises(avhengigheter) : true,
     );
 
     const nullstill = () => {
@@ -58,7 +58,7 @@ export function useFelt<Verdi = string>({
                 ...feltState,
                 verdi,
             },
-            avhengigheter
+            avhengigheter,
         );
 
         if (!deepEqual(feltState, validertFelt)) {
@@ -100,7 +100,7 @@ export function useFelt<Verdi = string>({
 
             validerOgSettFelt(normalisertVerdi as Verdi);
         },
-        [validerOgSettFelt, settFeltState]
+        [validerOgSettFelt, settFeltState],
     );
 
     const hentNavInputProps = useCallback(
@@ -109,7 +109,7 @@ export function useFelt<Verdi = string>({
             value: feltState.verdi,
             onChange,
         }),
-        [validerOgSettFelt, settFeltState]
+        [validerOgSettFelt, settFeltState],
     );
 
     const hentNavBaseSkjemaProps = useCallback(
@@ -117,7 +117,7 @@ export function useFelt<Verdi = string>({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
             value: feltState.verdi,
         }),
-        [validerOgSettFelt, settFeltState]
+        [validerOgSettFelt, settFeltState],
     );
 
     return useMemo(
@@ -130,6 +130,6 @@ export function useFelt<Verdi = string>({
             onChange,
             validerOgSettFelt,
         }),
-        [feltState, hentNavInputProps, validerOgSettFelt, nullstill, onChange]
+        [feltState, hentNavInputProps, validerOgSettFelt, nullstill, onChange],
     );
 }

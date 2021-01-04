@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useFelt, useSkjema, ok, FeltState, feil, FeltContext } from './src';
+import { useFelt, useSkjema, ok, FeltState, feil, Avhengigheter } from './src';
 import { FamilieInput, FamilieKnapp } from '@navikt/familie-form-elements';
 import { SkjemaGruppe } from 'nav-frontend-skjema';
 import { RessursStatus } from '@navikt/familie-typer';
@@ -27,7 +27,7 @@ export const EnkeltSkjema = () => {
     });
     const by = useFelt<string>({
         verdi: '',
-        valideringsfunksjon: (felt: FeltState<string>, avhengigheter: FeltContext) => {
+        valideringsfunksjon: (felt: FeltState<string>, avhengigheter: Avhengigheter) => {
             const { land } = avhengigheter;
 
             if (!felt.verdi) {
@@ -41,8 +41,8 @@ export const EnkeltSkjema = () => {
 
             return ok(felt);
         },
-        skalFeltetVises: (valideringscontext: FeltContext) => {
-            const { land } = valideringscontext;
+        skalFeltetVises: (avhengigheter: Avhengigheter) => {
+            const { land } = avhengigheter;
             return land.verdi !== '' ? true : false;
         },
         avhengigheter: { land },

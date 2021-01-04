@@ -10,7 +10,7 @@ export interface FeltState<Verdi> {
 }
 
 export type FeltOnChange<Verdi> = (
-    verdi: Verdi | ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+    verdi: Verdi | ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
 ) => void;
 
 export interface Felt<Verdi> {
@@ -43,13 +43,13 @@ export enum Valideringsstatus {
 }
 
 // eslint-disable-next-line
-export type FeltContext = { [key: string]: any };
+export type Avhengigheter = { [key: string]: any };
 export type ValiderFelt<Verdi> = (
     felt: FeltState<Verdi>,
-    avhengigheter?: FeltContext
+    avhengigheter?: Avhengigheter,
 ) => FeltState<Verdi>;
 
-export type ValiderOgSettFelt<Verdi> = (verdi: Verdi, avhengigheter?: FeltContext) => void;
+export type ValiderOgSettFelt<Verdi> = (verdi: Verdi, avhengigheter?: Avhengigheter) => void;
 
 export const defaultValidator = <Verdi>(felt: FeltState<Verdi>) => ({
     ...felt,
