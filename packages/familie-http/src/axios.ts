@@ -6,19 +6,26 @@ import { Ressurs, RessursStatus, ApiRessurs, ISaksbehandler } from '@navikt/fami
 axios.defaults.baseURL = window.location.origin;
 export const preferredAxios = axios;
 
-export interface HåndterApiRessurs<T> {
+export interface ApiRespons<T> {
     ressurs?: ApiRessurs<T>;
     innloggetSaksbehandler?: ISaksbehandler;
     error?: AxiosError;
+    defaultFeilmelding?: string;
 }
 
-export const håndterApiRessurs = <T>(håndterApiRessurs: HåndterApiRessurs<T>): Ressurs<T> => {
-    const { ressurs, innloggetSaksbehandler, error } = håndterApiRessurs;
+export const håndterApiRespons = <T>(apiRespons: ApiRespons<T>): Ressurs<T> => {
+    const {
+        ressurs,
+        innloggetSaksbehandler,
+        error,
+        defaultFeilmelding = 'En feil har oppstått!',
+    } = apiRespons;
+
     let typetRessurs: Ressurs<T>;
 
     if (!ressurs) {
         return {
-            frontendFeilmelding: 'En feil har oppstått!',
+            frontendFeilmelding: defaultFeilmelding,
             status: RessursStatus.FEILET,
         };
     }
@@ -39,7 +46,7 @@ export const håndterApiRessurs = <T>(håndterApiRessurs: HåndterApiRessurs<T>)
         case RessursStatus.FEILET:
             loggFeil(error, innloggetSaksbehandler, ressurs.melding);
             typetRessurs = {
-                frontendFeilmelding: ressurs.frontendFeilmelding ?? 'En feil har oppstått!',
+                frontendFeilmelding: ressurs.frontendFeilmelding ?? defaultFeilmelding,
                 status: RessursStatus.FEILET,
             };
             break;
@@ -52,7 +59,7 @@ export const håndterApiRessurs = <T>(håndterApiRessurs: HåndterApiRessurs<T>)
             break;
         default:
             typetRessurs = {
-                frontendFeilmelding: 'En feil har oppstått!',
+                frontendFeilmelding: defaultFeilmelding,
                 status: RessursStatus.FEILET,
             };
             break;

@@ -2,11 +2,12 @@ import React from 'react';
 import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import createUseContext from 'constate';
 import { Ressurs, ApiRessurs, ISaksbehandler } from '@navikt/familie-typer';
-import { preferredAxios, håndterApiRessurs } from './axios';
+import { preferredAxios, håndterApiRespons } from './axios';
 
 export type FamilieRequestConfig<SkjemaData> = AxiosRequestConfig & {
     data?: SkjemaData;
     påvirkerSystemLaster?: boolean;
+    defaultFeilmelding?: string;
 };
 
 export type FamilieRequest = <SkjemaData, SkjemaRespons>(
@@ -48,9 +49,10 @@ export const [HttpProvider, useHttp] = createUseContext(
                     const responsRessurs: ApiRessurs<SkjemaRespons> = response.data;
 
                     config.påvirkerSystemLaster && fjernRessursSomLaster(ressursId);
-                    return håndterApiRessurs({
+                    return håndterApiRespons({
                         ressurs: responsRessurs,
                         innloggetSaksbehandler,
+                        defaultFeilmelding: config.defaultFeilmelding,
                     });
                 })
                 .catch((error: AxiosError) => {
@@ -61,10 +63,11 @@ export const [HttpProvider, useHttp] = createUseContext(
                     config.påvirkerSystemLaster && fjernRessursSomLaster(ressursId);
 
                     const responsRessurs: ApiRessurs<SkjemaRespons> = error.response?.data;
-                    return håndterApiRessurs({
+                    return håndterApiRespons({
                         ressurs: responsRessurs,
                         innloggetSaksbehandler,
                         error,
+                        defaultFeilmelding: config.defaultFeilmelding,
                     });
                 });
         };
