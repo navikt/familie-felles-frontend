@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "name": "@navikt/familie-skjema",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -20,7 +20,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-http": "1.0.0",
+        "@navikt/familie-http": "^1.0.1",
         "@navikt/familie-typer": "^3.0.10",
         "@types/deep-equal": "^1.0.1",
         "deep-equal": "^2.0.5"
