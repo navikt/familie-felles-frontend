@@ -11802,10 +11802,10 @@ nav-frontend-popover-style@0.0.8:
   resolved "https://registry.yarnpkg.com/nav-frontend-popover-style/-/nav-frontend-popover-style-0.0.8.tgz#f9f25207c05c490fd29288dcf8cfa8ca40695e1a"
   integrity sha512-p6SemqUJsjGlUNfCMp2zD1e5fccBfrcofI4A6WrD4zJCsyWpaY18XcO8MrMsmWudOQpoMJo0kUE7+12YZq4ydg==
 
-nav-frontend-popover@0.0.40:
-  version "0.0.40"
-  resolved "https://registry.yarnpkg.com/nav-frontend-popover/-/nav-frontend-popover-0.0.40.tgz#41bbbbc2fe6cda64fc566a4ff6585bba85e18b09"
-  integrity sha512-U2d8u34YQWbDtJ+fvUBNYTKuYNBVUdq2xmGnBNTJSvK+97dkQ7W840kYEblKxTpODTIkXQ4RAz9nvShQHR3b9A==
+nav-frontend-popover@0.0.41:
+  version "0.0.41"
+  resolved "https://registry.yarnpkg.com/nav-frontend-popover/-/nav-frontend-popover-0.0.41.tgz#64f6823a99216fb807531200da6a9429a00d42bc"
+  integrity sha512-zK+sepFYXDFViz4z8NxmjXPLf2cX51npG4ewLq5UAMyg9YngqYbiI4LdE5V5Nkya28r0Dw3Cy/Ds011n22+Xnw==
 
 nav-frontend-skjema-style@^2.0.9:
   version "2.0.23"
