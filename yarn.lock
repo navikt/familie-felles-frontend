@@ -11880,10 +11880,10 @@ nav-datovelger@^8.0.0, nav-datovelger@^8.0.4:
   dependencies:
     focus-trap-react "^8.1.0"
 
-nav-frontend-alertstriper-style@2.0.23:
-  version "2.0.23"
-  resolved "https://registry.yarnpkg.com/nav-frontend-alertstriper-style/-/nav-frontend-alertstriper-style-2.0.23.tgz#fae2c905a98da091bc70721617cb6f478b2b2cc3"
-  integrity sha512-hCDtn5AxsaCzLfL3z8f+dFH/YqNiXT83uQKcjT8EZ1J4u3ccXVlggXMeFw1P0iHM85Nn2EJ/rHh/azX7QbJ6OA==
+nav-frontend-alertstriper-style@2.0.33:
+  version "2.0.33"
+  resolved "https://registry.yarnpkg.com/nav-frontend-alertstriper-style/-/nav-frontend-alertstriper-style-2.0.33.tgz#dea26838e135ad3dfb47cd060ab1cefa454e8494"
+  integrity sha512-11m3sde2W11zEjnLn7/kgbknAZhnrpoN2f8tF2fBu4LUE6ybsQo2olCXk96skD9Zun/EePCPcZZ70ybNepzHlw==
 
 nav-frontend-alertstriper@^3.0.13:
   version "3.0.38"
