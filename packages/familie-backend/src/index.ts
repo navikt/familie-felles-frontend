@@ -8,12 +8,11 @@ import { konfigurerMetrikker } from './metrikker';
 import konfigurerRouter from './router';
 import { ISessionKonfigurasjon } from './typer';
 import { Client } from 'openid-client';
-import { error } from './logging';
+import { error } from '@navikt/familie-logging';
 
 export * from './auth/authenticate';
-export * from './auth/utils';
+export * from './auth/tokenUtils';
 export * from './config';
-export * from './logging';
 export * from './typer';
 export * from 'openid-client';
 export * from 'prom-client';

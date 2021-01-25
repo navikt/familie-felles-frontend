@@ -1,7 +1,8 @@
 import { Request } from 'express';
 import { Client, TokenSet } from 'openid-client';
-import { error, logRequest, LOG_LEVEL } from '../logging';
+import { error, LOG_LEVEL } from '@navikt/familie-logging';
 import { IApi } from '../typer';
+import { logRequest } from '../utils';
 
 export const tokenSetSelfId = 'self';
 export const getOnBehalfOfAccessToken = (
