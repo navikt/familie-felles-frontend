@@ -23,7 +23,7 @@
         "@types/react-tooltip": "^3.11.0",
         "framer-motion": "^2.9.1",
         "nav-frontend-core": "^5.0.10",
-        "react-tooltip": "^3.11.4",
+        "react-tooltip": "^4.2.13",
         "styled-components": "^5.2.1"
     },
     "devDependencies": {
