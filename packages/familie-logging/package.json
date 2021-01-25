@@ -21,8 +21,5 @@
     },
     "dependencies": {
         "winston": "^3.2.1"
-    },
-    "peerDependencies": {
-        "react": "^16.12.0"
     }
 }
