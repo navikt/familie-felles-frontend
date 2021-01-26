@@ -1,10 +1,11 @@
 import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
 import { appConfig } from '../config';
-import { LOG_LEVEL, logRequest } from '../logging';
-import { getTokenSetsFromSession, tokenSetSelfId, hasValidAccessToken } from './utils';
+import { LOG_LEVEL } from '@navikt/familie-logging';
+import { getTokenSetsFromSession, tokenSetSelfId, hasValidAccessToken } from './tokenUtils';
 import { Client, TokenSet } from 'openid-client';
 import { setBrukerprofilPåSesjon } from './bruker';
+import { logRequest } from '../utils';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);

@@ -8,9 +8,9 @@ import {
     TokenSet,
 } from 'openid-client';
 import { appConfig } from '../../config';
-import { info, debug } from '../../logging';
+import { info, debug } from '@navikt/familie-logging';
 import httpProxy from '../proxy/http-proxy';
-import { appendDefaultScope, tokenSetSelfId } from '../utils';
+import { appendDefaultScope, tokenSetSelfId } from '../tokenUtils';
 
 const metadata: ClientMetadata = {
     client_id: appConfig.clientId,

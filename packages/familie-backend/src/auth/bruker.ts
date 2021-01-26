@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import { Client, TokenSet } from 'openid-client';
 import request from 'request-promise';
-import { envVar } from '../config';
-import { LOG_LEVEL, logRequest } from '../logging';
-import { getOnBehalfOfAccessToken, getTokenSetsFromSession, tokenSetSelfId } from './utils';
+import { envVar, logRequest } from '../utils';
+import { LOG_LEVEL } from '@navikt/familie-logging';
+import { getOnBehalfOfAccessToken, getTokenSetsFromSession, tokenSetSelfId } from './tokenUtils';
 
 // Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {

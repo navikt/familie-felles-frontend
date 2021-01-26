@@ -1,5 +1,5 @@
 import { Client, UserinfoResponse } from 'openid-client';
-import { info } from '../../logging';
+import { info } from '@navikt/familie-logging';
 import azure from './azure';
 
 export default async (passport: any): Promise<Client> => {

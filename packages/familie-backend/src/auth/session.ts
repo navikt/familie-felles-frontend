@@ -4,7 +4,7 @@ import session from 'express-session';
 import { PassportStatic } from 'passport';
 import redis from 'redis';
 import { appConfig } from '../config';
-import { info } from '../logging';
+import { info } from '@navikt/familie-logging';
 import { ISessionKonfigurasjon } from '../typer';
 
 /* tslint:disable */

@@ -1,6 +1,6 @@
 import createHttpsProxyAgent from 'https-proxy-agent';
-import { envVar } from '../../config';
-import { info } from '../../logging';
+import { envVar } from '../../utils';
+import { info } from '@navikt/familie-logging';
 
 const agent = () => {
     const proxyUri = envVar('HTTP_PROXY', false);
