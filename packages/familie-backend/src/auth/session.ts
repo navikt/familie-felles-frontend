@@ -4,7 +4,7 @@ import session from 'express-session';
 import { PassportStatic } from 'passport';
 import redis from 'redis';
 import { appConfig } from '../config';
-import { info } from '@navikt/familie-logging';
+import { logInfo } from '@navikt/familie-logging';
 import { ISessionKonfigurasjon } from '../typer';
 
 /* tslint:disable */
@@ -20,7 +20,7 @@ export default (
     app.set('trust proxy', 1);
 
     if (sessionKonfigurasjon.redisUrl) {
-        info('Setter opp redis for session');
+        logInfo('Setter opp redis for session');
 
         const client = redis.createClient({
             db: 1,
@@ -54,7 +54,7 @@ export default (
             }),
         );
     } else {
-        info('Setter opp in-memory db for session');
+        logInfo('Setter opp in-memory db for session');
 
         app.use(
             session({

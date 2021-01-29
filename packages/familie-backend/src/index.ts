@@ -8,7 +8,7 @@ import { konfigurerMetrikker } from './metrikker';
 import konfigurerRouter from './router';
 import { ISessionKonfigurasjon } from './typer';
 import { Client } from 'openid-client';
-import { error } from '@navikt/familie-logging';
+import { logError } from '@navikt/familie-logging';
 
 export * from './auth/authenticate';
 export * from './auth/tokenUtils';
@@ -53,7 +53,7 @@ export default async (
             };
         })
         .catch((err: Error) => {
-            error('Feil ved konfigurasjon av azure', err);
+            logError('Feil ved konfigurasjon av azure', err);
             process.exit(1);
         });
 };
