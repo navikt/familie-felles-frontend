@@ -8,7 +8,7 @@ import {
     TokenSet,
 } from 'openid-client';
 import { appConfig } from '../../config';
-import { info, debug } from '@navikt/familie-logging';
+import { logInfo, logDebug } from '@navikt/familie-logging';
 import httpProxy from '../proxy/http-proxy';
 import { appendDefaultScope, tokenSetSelfId } from '../tokenUtils';
 
@@ -29,14 +29,14 @@ const hentClient = (): Promise<Client> => {
         });
     }
     return Issuer.discover(appConfig.discoveryUrl).then((issuer: Issuer<Client>) => {
-        info(`Discovered issuer ${issuer.issuer}`);
+        logInfo(`Discovered issuer ${issuer.issuer}`);
         return new issuer.Client(metadata);
     });
 };
 
 const strategy = (client: Client) => {
     const verify = (tokenSet: TokenSet, done: (err: any, _: any) => void) => {
-        debug(`verify. expired=${tokenSet.expired()}`);
+        logDebug(`verify. expired=${tokenSet.expired()}`);
         if (tokenSet.expired()) {
             return done(undefined, undefined);
         }

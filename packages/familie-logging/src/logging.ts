@@ -24,25 +24,22 @@ export const secureLogger = winston.createLogger({
     transports: [new winston.transports.File({ filename: secureLogPath(), maxsize: 5242880 })],
 });
 
-export const debug = (message: string) => {
-    stdoutLogger.debug(`[${new Date().toISOString()}] ${message}`);
+export const logDebug = (message: string) => {
+    stdoutLogger.debug(message);
 };
 
-export const info = (message: string) => {
-    stdoutLogger.info(`[${new Date().toISOString()}] ${message}`);
+export const logInfo = (message: string) => {
+    stdoutLogger.info(message);
 };
 
-export const warning = (message: string) => {
-    stdoutLogger.warn(`[${new Date().toISOString()}] ${message}`);
+export const logWarn = (message: string) => {
+    stdoutLogger.warn(message);
 };
 
-export const error = (message: string, err?: Error) => {
-    stdoutLogger.error(
-        `[${new Date().toISOString()}] ${message}`,
-        err && { message: `: ${err?.message || err}` },
-    );
+export const logError = (message: string, err?: Error) => {
+    stdoutLogger.error(message, err && { message: `: ${err?.message || err}` });
 };
 
-export const secure = (message: string) => {
-    secureLogger.info(`[${new Date().toISOString()}] ${message}`);
+export const logSecure = (message: string) => {
+    secureLogger.info(message);
 };

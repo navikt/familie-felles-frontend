@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { Client, TokenSet } from 'openid-client';
-import { error, LOG_LEVEL } from '@navikt/familie-logging';
+import { logError, LOG_LEVEL } from '@navikt/familie-logging';
 import { IApi } from '../typer';
 import { logRequest } from '../utils';
 
@@ -36,7 +36,7 @@ export const getOnBehalfOfAccessToken = (
                     resolve(tokenSet.access_token);
                 })
                 .catch((err: Error) => {
-                    error('Feil ved henting av obo token', err);
+                    logError('Feil ved henting av obo token', err);
                     reject(err);
                 });
         }

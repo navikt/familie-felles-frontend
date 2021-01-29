@@ -1,9 +1,9 @@
 import { Client, UserinfoResponse } from 'openid-client';
-import { info } from '@navikt/familie-logging';
+import { logInfo } from '@navikt/familie-logging';
 import azure from './azure';
 
 export default async (passport: any): Promise<Client> => {
-    info('Konfigurerer passport');
+    logInfo('Konfigurerer passport');
     const azureAuthClient: Client = await azure.hentClient();
     const azureOidcStrategy = azure.strategy(azureAuthClient);
 

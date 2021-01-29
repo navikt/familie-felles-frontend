@@ -1,10 +1,10 @@
 import { Request } from 'express';
-import { error, debug, info, LOG_LEVEL, warning } from '@navikt/familie-logging';
+import { logError, logDebug, logInfo, LOG_LEVEL, logWarn } from '@navikt/familie-logging';
 
 export const envVar = (navn: string, påkrevd = true, defaultValue?: string): string => {
     const envVariable = process.env[navn];
     if (!envVariable && påkrevd && !defaultValue) {
-        error(`Mangler påkrevd miljøvariabel '${navn}'`);
+        logError(`Mangler påkrevd miljøvariabel '${navn}'`);
         process.exit(1);
     }
     if (!envVariable && defaultValue) {
@@ -24,18 +24,18 @@ export const logRequest = (req: Request, message: string, level: LOG_LEVEL) => {
     const melding = `${prefix(req)}: ${message}`;
     switch (level) {
         case LOG_LEVEL.DEBUG:
-            debug(melding);
+            logDebug(melding);
             break;
         case LOG_LEVEL.INFO:
-            info(melding);
+            logInfo(melding);
             break;
         case LOG_LEVEL.WARNING:
-            warning(melding);
+            logWarn(melding);
             break;
         case LOG_LEVEL.ERROR:
-            error(melding);
+            logError(melding);
             break;
         default:
-            info(melding);
+            logInfo(melding);
     }
 };
