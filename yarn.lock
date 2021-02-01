@@ -12088,10 +12088,10 @@ nav-frontend-skjema-style@^2.0.9:
   resolved "https://registry.yarnpkg.com/nav-frontend-skjema-style/-/nav-frontend-skjema-style-2.0.23.tgz#11e357a5379787d58ef0bf538ab029646862694d"
   integrity sha512-OPADPvNP9tElahXSnlLPoKUBJr0BUOZr71rukxDGbLwXu+NNsf8b7mgRsDzLYuavqtC8BiFLmtsUv9/cD/d2Uw==
 
-nav-frontend-skjema@3.0.38, nav-frontend-skjema@^3.0.7:
-  version "3.0.38"
-  resolved "https://registry.yarnpkg.com/nav-frontend-skjema/-/nav-frontend-skjema-3.0.38.tgz#bc2b3b8952cea09d61254f87c36bac1e578b83b5"
-  integrity sha512-33l41M/AwutmF92cD2RW8jVIwb3aKYaeuBSOAnhZaKC56UNXqtKi6SegP5wtzW00SlaoNI1MEtw7sYyHBAVLEA==
+nav-frontend-skjema@3.0.49, nav-frontend-skjema@^3.0.7:
+  version "3.0.49"
+  resolved "https://registry.yarnpkg.com/nav-frontend-skjema/-/nav-frontend-skjema-3.0.49.tgz#419dc0e01fcfc79d2aefd7ea661910cd489dd556"
+  integrity sha512-QKT8e3ld41RxK48Er3TWr5eZUBYyvPsr8szsCrXNTyCyuTDywBaSTFt8mgM7kvS+Nw+W99K5h7wUMfzfnWdATg==
 
 nav-frontend-toggle-style@^0.0.46:
   version "0.0.46"
