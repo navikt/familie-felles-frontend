@@ -11,7 +11,7 @@ import { Feilmelding } from 'nav-frontend-typografi';
 export interface IProps extends NamedProps<{ label: string; value: string }, true | false> {
     erLesevisning?: boolean;
     creatable?: boolean;
-    label: string | React.ReactNode;
+    label?: string | React.ReactNode;
     feil?: string;
     propSelectStyles?: StylesConfig;
 }
@@ -109,7 +109,7 @@ export const FamilieReactSelect: React.FC<IProps> = ({
 
     return (
         <Container>
-            <Label htmlFor={id}>{label} </Label>
+            {label && typeof label === 'string' ? <Label htmlFor={id}>{label} </Label> : label}
             {creatable ? (
                 <Creatable
                     formatCreateLabel={value => `Opprett "${value}"`}
