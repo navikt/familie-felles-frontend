@@ -11,7 +11,7 @@ import { Feilmelding } from 'nav-frontend-typografi';
 export interface IProps extends NamedProps<{ label: string; value: string }, true | false> {
     erLesevisning?: boolean;
     creatable?: boolean;
-    label: string | React.ReactNode;
+    label: React.ReactNode;
     feil?: string;
     propSelectStyles?: StylesConfig;
 }
