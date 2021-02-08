@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-clipboard@3.1.0...@navikt/familie-clipboard@3.1.1) (2021-02-08)
+
+**Note:** Version bump only for package @navikt/familie-clipboard
+
+
+
+
+
 # [3.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-clipboard@3.0.5...@navikt/familie-clipboard@3.1.0) (2020-12-14)
 
 
