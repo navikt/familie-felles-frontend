@@ -66,9 +66,10 @@ const Clipboard: React.FunctionComponent<IProps> = ({ children }) => {
     return (
         <ClipboardContainer>
             <ClipboardChildrenContainer ref={ref}>{children}</ClipboardChildrenContainer>
-            <ReactTooltip place="bottom" />
+            <ReactTooltip place="bottom" disable={!didCopy} />
             <StyledButton
                 data-tip="Kopiert!"
+                data-tip-disable={!didCopy}
                 data-delay-hide={1750}
                 data-effect={'solid'}
                 onClick={copy}
