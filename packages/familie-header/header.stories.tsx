@@ -4,6 +4,7 @@ import './headerstories.less';
 import {
     Adressebeskyttelsegradering,
     byggDataRessurs,
+    byggFunksjonellFeilRessurs,
     byggHenterRessurs,
     byggTomRessurs,
     Ressurs,
@@ -65,6 +66,10 @@ export const HeaderOgSøk = () => {
                             ident: personIdent,
                         },
                     ]),
+                );
+            } else {
+                settSøkeresultat(
+                    byggFunksjonellFeilRessurs('Ugyldig. Tast inn fnr/dnr (11 siffer)'),
                 );
             }
         }, 1000);
