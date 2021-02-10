@@ -8,8 +8,8 @@ import { Input, InputProps } from 'nav-frontend-skjema';
 import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
 import SkjultLabel from './SkjultLabel';
+import { ISøkResultat } from './typer';
 import SøkResultater from './SøkResultater';
-import { ISøkResultat } from '../typer';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (søkResultat: ISøkResultat) => React.ReactNode;
