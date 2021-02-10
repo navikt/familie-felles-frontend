@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
-import { Brukerinfo, Header, Infokort, PopoverItem, Søk } from './src';
-import { KvinneIkon } from '@navikt/familie-ikoner';
+import { ikoner, Brukerinfo, Header, ISøkResultat, PopoverItem, Søk } from './src';
 import './headerstories.less';
+import {
+    Adressebeskyttelsegradering,
+    byggDataRessurs,
+    byggHenterRessurs,
+    byggTomRessurs,
+    Ressurs,
+} from '@navikt/familie-typer';
 
 export default {
     component: Header,
@@ -26,30 +32,40 @@ const eksterneLenker = [
     { name: 'NAV forside', href: 'https://www.nav.no' },
 ];
 
-interface ISøkeresultat {
-    navn: string;
-    personident: string;
-    alder: number;
-    kjønn: string;
-}
-
 export const HeaderOgSøk = () => {
-    const [søkeresultat, settSøkeresultat] = useState<ISøkeresultat[]>([]);
-    const [spinner, settSpinner] = useState<boolean>(false);
+    const [søkeresultat, settSøkeresultat] = useState<Ressurs<ISøkResultat[]>>(byggTomRessurs());
 
     const søk = (personIdent: string): void => {
-        settSpinner(true);
+        settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
             if (personIdent.length === 11) {
-                settSøkeresultat([
-                    {
-                        navn: 'Navn Navnesen',
-                        personident: personIdent,
-                        alder: 23,
-                        kjønn: 'KVINNE',
-                    },
-                ]);
-                settSpinner(false);
+                settSøkeresultat(
+                    byggDataRessurs<ISøkResultat[]>([
+                        {
+                            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+                            harTilgang: true,
+                            ikon: ikoner.FORELDER_KVINNE,
+                            navn: 'Mor Moresen',
+                            ident: personIdent,
+                        },
+                        {
+                            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+                            harTilgang: true,
+                            ikon: ikoner.FORELDER_KVINNE,
+                            fagsakId: 1,
+                            navn: 'Mor Moresen (med fagsak)',
+                            ident: personIdent,
+                        },
+                        {
+                            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+                            harTilgang: true,
+                            ikon: ikoner.FORELDER_MANN,
+                            fagsakId: 1,
+                            navn: 'Far Faresen (med fagsak)',
+                            ident: personIdent,
+                        },
+                    ]),
+                );
             }
         }, 1000);
     };
@@ -64,23 +80,13 @@ export const HeaderOgSøk = () => {
                 eksterneLenker={eksterneLenker}
             >
                 <Søk
+                    label={'Søk på fnr'}
+                    placeholder={'Søk på fnr'}
                     søk={søk}
-                    validator={undefined}
-                    spinner={spinner}
-                    autoSøk={true}
-                    onChange={() => settSøkeresultat([])}
-                >
-                    {søkeresultat.length > 0 &&
-                        søkeresultat.map((person, index) => {
-                            return (
-                                <Infokort
-                                    index={index}
-                                    ikon={<KvinneIkon />}
-                                    header={`${person.navn}(${person.personident})`}
-                                />
-                            );
-                        })}
-                </Søk>
+                    nullstillSøkResultater={() => settSøkeresultat(byggTomRessurs)}
+                    søkResultater={søkeresultat}
+                    søkResultatOnClick={() => alert('Du har klikket på et av resultatene')}
+                />
             </Header>
         </div>
     );

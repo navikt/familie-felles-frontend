@@ -1,113 +1,135 @@
-import './Søk.less';
-
-import Popover, { PopoverOrientering } from 'nav-frontend-popover';
 import React, { useState } from 'react';
 
-import { IkonFeil, IkonGyldig, IkonSpinner, IkonSøk } from '../icons';
+import styled from 'styled-components';
 
-export interface SøkProps {
+import Popover, { PopoverOrientering } from 'nav-frontend-popover';
+import { Input, InputProps } from 'nav-frontend-skjema';
+
+import { Ressurs, RessursStatus } from '@navikt/familie-typer';
+
+import SkjultLabel from './SkjultLabel';
+import SøkResultater from './SøkResultater';
+import { ISøkResultat } from '../typer';
+
+export interface SøkProps extends InputProps {
+    formaterResultat?: (søkResultat: ISøkResultat) => React.ReactNode;
+    label: React.ReactNode;
+    nullstillSøkResultater: () => void;
     søk: (value: string) => void;
-    onChange?: (value: string) => void;
-    spinner?: boolean;
-    validator?: (value: string) => boolean;
-    plassholder?: string;
-    gyldigVerdi?: (value: string) => void;
-    autoSøk?: boolean;
-    children?: React.ReactNode | React.ReactNode[];
+    søkResultater: Ressurs<ISøkResultat[]>;
+    søkResultatOnClick: (søkResultat: ISøkResultat) => void;
 }
 
+const SøkContainer = styled.div`
+    width: 20rem;
+    position: relative;
+    margin: 0 1rem;
+`;
+
+export const inputId = 'sok-input';
+
 export const Søk = ({
+    formaterResultat,
+    label,
+    nullstillSøkResultater,
     søk,
-    onChange,
-    validator,
-    gyldigVerdi,
-    autoSøk = true,
-    spinner = false,
-    plassholder = '',
-    children,
+    søkResultatOnClick,
+    søkResultater,
+    ...props
 }: SøkProps) => {
     const [verdi, settVerdi] = useState('');
     const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
-    const [gyldig, settGyldig] = useState(false);
+    const [valgtSøkResultat, settValgtSøkResultat] = useState(-1);
 
-    const trimHvisTall = (innspill: string) => {
-        const utenSpaces = innspill.replace(/ /g, '');
-        if (utenSpaces.match(/^\d+$/)) {
-            return utenSpaces;
-        } else {
-            return innspill;
-        }
+    const settAnkerPåInput = () => {
+        settAnker(document.getElementById(inputId) as HTMLElement);
     };
 
-    const utløserSøk = (nøkkel?: string) => {
-        const gyldigNøkkel = nøkkel || verdi;
-
-        gyldigNøkkel.length > 0 && søk(trimHvisTall(gyldigNøkkel));
+    const nullstillInput = (lukkPopover = false) => {
+        settVerdi('');
+        lukkPopover && settAnker(undefined);
+        nullstillSøkResultater();
     };
 
-    const tastenTrykkes = (event: React.KeyboardEvent) => {
-        //Vis popover når du trykker på en tast. Dette for å sikre at søkestatusen vises korrekt når den ble tilbake fra skjult.
-        settAnker(verdi.length > 0 ? (event.currentTarget as HTMLElement) : undefined);
-        event.key === 'Enter' && verdi.length > 0 && utløserSøk();
+    const utløserSøk = () => {
+        søk(verdi.replace(/ /g, ''));
+        settAnkerPåInput();
     };
 
-    const søkKlikket = (event: React.MouseEvent) => {
-        settAnker(verdi.length > 0 ? (event.currentTarget as HTMLElement) : undefined);
-        utløserSøk();
-    };
-
-    const innspillEndret = (event: React.ChangeEvent) => {
+    const onChange = (event: React.ChangeEvent) => {
         const nyVerdi = (event.target as HTMLInputElement).value;
         settVerdi(nyVerdi);
-        //sørg for at popover vises
-        settAnker(nyVerdi.length > 0 ? (event.currentTarget as HTMLElement) : undefined);
-        onChange?.(nyVerdi);
-        const erGyldig = validator?.(trimHvisTall(nyVerdi));
-        settGyldig(erGyldig || false);
 
-        if (erGyldig) {
-            gyldigVerdi?.(nyVerdi);
-            autoSøk && utløserSøk(nyVerdi);
+        if (nyVerdi === '') {
+            nullstillSøkResultater();
+            settAnker(undefined);
         }
     };
 
-    const prompt =
-        (!spinner && validator && gyldig && verdi.length > 0 && <IkonGyldig />) ||
-        (!spinner && validator && !gyldig && verdi.length > 0 && <IkonFeil />);
-
     return (
-        <div className="søk_container">
-            {prompt && <div className="søk_container__prompt">{prompt}</div>}
-            {spinner && (
-                <div className="søk_container__spinner">
-                    <IkonSpinner />
-                </div>
+        <SøkContainer>
+            {typeof label === 'string' ? (
+                <SkjultLabel htmlFor={inputId}>{label}</SkjultLabel>
+            ) : (
+                label
             )}
-            <input
-                className="søk_container__felt"
-                onChange={innspillEndret}
-                onKeyPress={tastenTrykkes}
+            <Input
+                aria-label={props.placeholder}
+                id={inputId}
+                onChange={onChange}
+                onKeyDown={event => {
+                    switch (event.key) {
+                        case 'ArrowUp':
+                            settValgtSøkResultat(valgtSøkResultat >= 0 ? valgtSøkResultat - 1 : -1);
+                            break;
+                        case 'ArrowDown':
+                            settValgtSøkResultat(
+                                valgtSøkResultat <
+                                    (søkResultater.status === RessursStatus.SUKSESS
+                                        ? søkResultater.data.length - 1
+                                        : -1)
+                                    ? valgtSøkResultat + 1
+                                    : -1,
+                            );
+                            break;
+                        case 'Enter':
+                            if (
+                                valgtSøkResultat !== -1 &&
+                                søkResultater.status === RessursStatus.SUKSESS
+                            ) {
+                                søkResultatOnClick(søkResultater.data[valgtSøkResultat]);
+                            } else {
+                                utløserSøk();
+                            }
+                            break;
+                    }
+                }}
+                onClick={() => settAnkerPåInput()}
                 value={verdi}
-                placeholder={plassholder}
+                {...props}
             />
-            <button className="søk_container__knapp" onClick={søkKlikket}>
-                <IkonSøk />
-            </button>
-            {children && (
-                <Popover
-                    id={'søkresultat'}
-                    ankerEl={anker}
-                    orientering={PopoverOrientering.UnderVenstre}
-                    autoFokus={false}
-                    onRequestClose={() => {
-                        settAnker(undefined);
-                    }}
-                    tabIndex={-1}
-                    utenPil
-                >
-                    <div className="søk_container__resultat">{children}</div>
-                </Popover>
-            )}
-        </div>
+
+            <Popover
+                id={'søkresultat'}
+                ankerEl={anker}
+                orientering={PopoverOrientering.UnderVenstre}
+                autoFokus={false}
+                onRequestClose={() => {
+                    nullstillInput(true);
+                }}
+                tabIndex={-1}
+                utenPil={true}
+            >
+                <SøkResultater
+                    formaterResultat={formaterResultat}
+                    settValgtSøkResultat={søkResultatIndex =>
+                        settValgtSøkResultat(søkResultatIndex)
+                    }
+                    søkResultatOnClick={søkResultatOnClick}
+                    søkResultater={søkResultater}
+                    valgtSøkResultat={valgtSøkResultat}
+                />
+            </Popover>
+        </SøkContainer>
     );
 };

@@ -1,10 +1,12 @@
 import React from 'react';
-import { Ikon, IkonProps } from './Ikon';
-import { navLysGra } from '../types';
 
-export const IkonGyldig = ({ color = navLysGra, width = 16, height = 16 }: IkonProps) => {
+import navFarger from 'nav-frontend-core';
+
+import { Ikon, IkonProps } from './Ikon';
+
+export const IkonGyldig = ({ color = navFarger.navLysGra, width = 16, height = 16 }: IkonProps) => {
     return (
-        <Ikon width={width} height={height}>
+        <Ikon aria-label={'gyldig'} width={width} height={height}>
             <path
                 fill={color}
                 d="M23.854,5.396l-3.5-3.5c-0.195-0.195-0.512-0.195-0.707,0L7.5,14.043l-3.146-3.146c-0.195-0.195-0.512-0.195-0.707,0

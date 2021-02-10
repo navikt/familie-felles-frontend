@@ -1,20 +1,19 @@
-import React, { ReactNode } from 'react';
+import React, { SVGProps } from 'react';
 
-export interface IkonProps {
+export interface IkonProps extends SVGProps<SVGSVGElement> {
     color?: string;
     width?: number;
     height?: number;
-    viewBox?: number;
     className?: string;
-    children?: ReactNode | ReactNode[];
 }
 
 export const Ikon = ({
     children,
     width = 16,
     height = 16,
-    viewBox = 24,
+    viewBox = '24',
     className = '',
+    ...props
 }: IkonProps) => {
     return (
         <svg
@@ -23,6 +22,7 @@ export const Ikon = ({
             height={height}
             viewBox={`0 0 ${viewBox} ${viewBox}`}
             className={className}
+            {...props}
         >
             {children}
         </svg>

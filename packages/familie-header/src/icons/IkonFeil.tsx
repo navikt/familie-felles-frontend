@@ -1,10 +1,12 @@
 import React from 'react';
-import { Ikon, IkonProps } from './Ikon';
-import { redError } from '../types';
 
-export const IkonFeil = ({ color = redError, width = 16, height = 16 }: IkonProps) => {
+import navFarger from 'nav-frontend-core';
+
+import { Ikon, IkonProps } from './Ikon';
+
+export const IkonFeil = ({ color = navFarger.redError, width = 16, height = 16 }: IkonProps) => {
     return (
-        <Ikon width={width} height={height}>
+        <Ikon aria-label={'feil'} width={width} height={height}>
             <path
                 fill={color}
                 d="M17.207,12.01l6.658-6.634c0.096-0.093,0.149-0.22,0.149-0.353c0-0.133-0.053-0.26-0.146-0.354L19.375,0.16
