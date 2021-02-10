@@ -7,7 +7,13 @@ import PilNed from '@navikt/familie-ikoner/dist/utils/PilNed';
 import PilHøyre from '@navikt/familie-ikoner/dist/utils/PilHøyre';
 import { Journalposttype } from '@navikt/familie-typer';
 
-const StyledDokumentElement = styled.div`
+const StyledDokumentListe = styled.ul`
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+`;
+
+const StyledKnapp = styled.button`
     padding: 0.5rem 1rem;
     display: grid;
     grid-gap: 0 1rem;
@@ -17,18 +23,20 @@ const StyledDokumentElement = styled.div`
         'ikon tittel'
         'ikon dato';
     max-width: 300px;
+    background-color: transparent;
+    border: none;
 
     :hover {
-        cursor: pointer;
         background-color: ${navFarger.navLysGra};
+        cursor: pointer;
     }
 `;
 
-const StyledJournalpostIkon = styled.span`
+const JournalpostIkon = styled.span`
     grid-area: ikon;
     padding-top: 0.3rem;
 `;
-const StyledDato = styled(Undertekst)`
+const StyledUndertekst = styled(Undertekst)`
     grid-area: dato;
 `;
 
@@ -78,23 +86,25 @@ export interface DokumentlisteProps {
 
 export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onClick }) => {
     return (
-        <StyledDokumentElement role={'button'} onClick={() => onClick(dokument)}>
-            <StyledJournalpostIkon>
-                <Journalpostikon journalposttype={dokument.journalposttype} />
-            </StyledJournalpostIkon>
-            <StyledDokumentnavn>{dokument.tittel}</StyledDokumentnavn>
-            <StyledDato>{dokument.dato}</StyledDato>
-        </StyledDokumentElement>
+        <li>
+            <StyledKnapp onClick={() => onClick(dokument)}>
+                <JournalpostIkon>
+                    <Journalpostikon journalposttype={dokument.journalposttype} />
+                </JournalpostIkon>
+                <StyledDokumentnavn>{dokument.tittel}</StyledDokumentnavn>
+                <StyledUndertekst>{dokument.dato}</StyledUndertekst>
+            </StyledKnapp>
+        </li>
     );
 };
 
 const Dokumentliste: React.FC<DokumentlisteProps> = ({ dokumenter, onClick }) => {
     return (
-        <>
+        <StyledDokumentListe>
             {dokumenter.map((dokument: DokumentProps, indeks: number) => {
                 return <DokumentElement dokument={dokument} onClick={onClick} key={indeks} />;
             })}
-        </>
+        </StyledDokumentListe>
     );
 };
 

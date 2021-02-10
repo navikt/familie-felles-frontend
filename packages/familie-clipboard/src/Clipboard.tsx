@@ -70,6 +70,8 @@ const Clipboard: React.FunctionComponent<IProps> = ({ children }) => {
             <StyledButton
                 data-tip="Kopiert!"
                 data-tip-disable={!didCopy}
+                data-delay-hide={1750}
+                data-effect={'solid'}
                 onClick={copy}
                 data-class="typo-undertekst"
             >
