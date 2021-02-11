@@ -1,6 +1,8 @@
+import React from 'react';
+
 import { Adressebeskyttelsegradering } from '@navikt/familie-typer';
 
-export interface Søkeresultat {
+export interface ISøkeresultat {
     adressebeskyttelseGradering?: Adressebeskyttelsegradering;
     fagsakId?: number; // null betyr at det ikke finnes fagsak på personen
     harTilgang: boolean;

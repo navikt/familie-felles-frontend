@@ -8,19 +8,19 @@ import { Input, InputProps } from 'nav-frontend-skjema';
 import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
 import SkjultLabel from './SkjultLabel';
-import { Søkeresultat } from '../typer';
+import { ISøkeresultat } from '../typer';
 import SøkResultater from './Søkeresultater';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
-        søkeresultat: Søkeresultat,
+        søkeresultat: ISøkeresultat,
         erSøkeresultatValgt: boolean,
     ) => React.ReactNode;
     label: React.ReactNode;
     nullstillSøkResultater: () => void;
     søk: (value: string) => void;
-    søkResultater: Ressurs<Søkeresultat[]>;
-    søkResultatOnClick: (søkResultat: Søkeresultat) => void;
+    søkResultater: Ressurs<ISøkeresultat[]>;
+    søkResultatOnClick: (søkResultat: ISøkeresultat) => void;
 }
 
 const SøkContainer = styled.div`

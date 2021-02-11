@@ -8,15 +8,15 @@ import { Normaltekst } from 'nav-frontend-typografi';
 
 import { adressebeskyttelsestyper, Ressurs, RessursStatus } from '@navikt/familie-typer';
 
-import { Søkeresultat } from '../typer';
+import { ISøkeresultat } from '../typer';
 
 import { inputId } from '.';
 import { formaterPersonIdent } from './formatter';
 
 interface Props {
-    formaterResultat?: (søkResultat: Søkeresultat, erSøkeresultatValgt: boolean) => React.ReactNode;
-    søkeresultatOnClick: (søkResultat: Søkeresultat) => void;
-    søkeresultater: Ressurs<Søkeresultat[]>;
+    formaterResultat?: (søkResultat: ISøkeresultat, erSøkeresultatValgt: boolean) => React.ReactNode;
+    søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
+    søkeresultater: Ressurs<ISøkeresultat[]>;
     valgtSøkeresultat: number;
     settValgtSøkeresultat: (søkeresultatIndex: number) => void;
 }
@@ -63,7 +63,7 @@ const SøkResultater: React.FC<Props> = ({
         case RessursStatus.SUKSESS:
             return søkeresultater.data.length > 0 ? (
                 <ResultatListe aria-labelledby={inputId}>
-                    {søkeresultater.data.map((søkResultat: Søkeresultat, index: number) => {
+                    {søkeresultater.data.map((søkResultat: ISøkeresultat, index: number) => {
                         if (formaterResultat) {
                             return formaterResultat(søkResultat, index === valgtSøkeresultat);
                         } else {
