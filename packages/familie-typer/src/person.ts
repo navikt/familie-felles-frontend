@@ -17,9 +17,9 @@ export enum FamilieRelasjonRolle {
 }
 
 export enum kjønnType {
-    'KVINNE' = 'KVINNE',
-    'MANN' = 'MANN',
-    'UKJENT' = 'UKJENT',
+    KVINNE = 'KVINNE',
+    MANN = 'MANN',
+    UKJENT = 'UKJENT',
 }
 
 export enum Adressebeskyttelsegradering {
