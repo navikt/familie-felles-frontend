@@ -17,7 +17,7 @@ export interface SøkProps extends InputProps {
         erSøkeresultatValgt: boolean,
     ) => React.ReactNode;
     label: React.ReactNode;
-    nullstillSøkResultater: () => void;
+    nullstillSøkeresultater: () => void;
     søk: (value: string) => void;
     søkResultater: Ressurs<ISøkeresultat[]>;
     søkResultatOnClick: (søkResultat: ISøkeresultat) => void;
@@ -34,7 +34,7 @@ export const inputId = 'sok-input';
 export const Søk = ({
     formaterResultat,
     label,
-    nullstillSøkResultater,
+    nullstillSøkeresultater,
     søk,
     søkResultatOnClick,
     søkResultater,
@@ -51,7 +51,7 @@ export const Søk = ({
     const nullstillInput = (lukkPopover = false) => {
         settVerdi('');
         lukkPopover && settAnker(undefined);
-        nullstillSøkResultater();
+        nullstillSøkeresultater();
     };
 
     const utløserSøk = () => {
@@ -64,7 +64,7 @@ export const Søk = ({
         settVerdi(nyVerdi);
 
         if (nyVerdi === '') {
-            nullstillSøkResultater();
+            nullstillSøkeresultater();
             settAnker(undefined);
         }
     };

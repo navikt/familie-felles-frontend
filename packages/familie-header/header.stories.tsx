@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ikoner, Brukerinfo, Header, ISøkResultat, PopoverItem, Søk } from './src';
+import { ikoner, Brukerinfo, Header, ISøkeresultat, PopoverItem, Søk } from './src';
 import './headerstories.less';
 import {
     Adressebeskyttelsegradering,
@@ -34,14 +34,14 @@ const eksterneLenker = [
 ];
 
 export const HeaderOgSøk = () => {
-    const [søkeresultat, settSøkeresultat] = useState<Ressurs<ISøkResultat[]>>(byggTomRessurs());
+    const [søkeresultat, settSøkeresultat] = useState<Ressurs<ISøkeresultat[]>>(byggTomRessurs());
 
     const søk = (personIdent: string): void => {
         settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
             if (personIdent.length === 11) {
                 settSøkeresultat(
-                    byggDataRessurs<ISøkResultat[]>([
+                    byggDataRessurs<ISøkeresultat[]>([
                         {
                             adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
                             harTilgang: true,
@@ -88,7 +88,7 @@ export const HeaderOgSøk = () => {
                     label={'Søk på fnr'}
                     placeholder={'Søk på fnr'}
                     søk={søk}
-                    nullstillSøkResultater={() => settSøkeresultat(byggTomRessurs)}
+                    nullstillSøkeresultater={() => settSøkeresultat(byggTomRessurs)}
                     søkResultater={søkeresultat}
                     søkResultatOnClick={() => alert('Du har klikket på et av resultatene')}
                 />

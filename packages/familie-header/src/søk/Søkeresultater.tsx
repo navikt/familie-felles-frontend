@@ -14,7 +14,10 @@ import { inputId } from '.';
 import { formaterPersonIdent } from './formatter';
 
 interface Props {
-    formaterResultat?: (søkResultat: ISøkeresultat, erSøkeresultatValgt: boolean) => React.ReactNode;
+    formaterResultat?: (
+        søkeresultat: ISøkeresultat,
+        erSøkeresultatValgt: boolean,
+    ) => React.ReactNode;
     søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
     søkeresultater: Ressurs<ISøkeresultat[]>;
     valgtSøkeresultat: number;
@@ -63,9 +66,9 @@ const SøkResultater: React.FC<Props> = ({
         case RessursStatus.SUKSESS:
             return søkeresultater.data.length > 0 ? (
                 <ResultatListe aria-labelledby={inputId}>
-                    {søkeresultater.data.map((søkResultat: ISøkeresultat, index: number) => {
+                    {søkeresultater.data.map((søkeresultat: ISøkeresultat, index: number) => {
                         if (formaterResultat) {
-                            return formaterResultat(søkResultat, index === valgtSøkeresultat);
+                            return formaterResultat(søkeresultat, index === valgtSøkeresultat);
                         } else {
                             return (
                                 <ResultatListeElement
@@ -74,38 +77,38 @@ const SøkResultater: React.FC<Props> = ({
                                 >
                                     <ResultatListeElementKnapp
                                         aria-label={
-                                            søkResultat.harTilgang
-                                                ? søkResultat.navn
+                                            søkeresultat.harTilgang
+                                                ? søkeresultat.navn
                                                 : 'Person har diskresjonskode'
                                         }
                                         aria-selected={index === valgtSøkeresultat}
                                         role={'option'}
                                         onClick={() => {
-                                            søkeresultatOnClick(søkResultat);
+                                            søkeresultatOnClick(søkeresultat);
                                             settValgtSøkeresultat(index);
                                         }}
                                     >
-                                        {søkResultat.ikon}
+                                        {søkeresultat.ikon}
                                         <div>
                                             <Normaltekst>
-                                                {søkResultat.harTilgang
-                                                    ? `${søkResultat.navn} (${formaterPersonIdent(
-                                                          søkResultat.ident,
+                                                {søkeresultat.harTilgang
+                                                    ? `${søkeresultat.navn} (${formaterPersonIdent(
+                                                          søkeresultat.ident,
                                                       )})`
                                                     : `Personen har diskresjonskode ${
-                                                          søkResultat.adressebeskyttelseGradering
+                                                          søkeresultat.adressebeskyttelseGradering
                                                               ? adressebeskyttelsestyper[
-                                                                    søkResultat
+                                                                    søkeresultat
                                                                         .adressebeskyttelseGradering
                                                                 ]
                                                               : 'ukjent'
                                                       }`}
                                             </Normaltekst>
 
-                                            {!søkResultat.fagsakId && søkResultat.harTilgang && (
+                                            {!søkeresultat.fagsakId && søkeresultat.harTilgang && (
                                                 <Normaltekst>
                                                     {`Ingen fagsak. ${
-                                                        !søkResultat.fagsakId
+                                                        !søkeresultat.fagsakId
                                                             ? 'Trykk for å opprette >'
                                                             : ''
                                                     }`}
