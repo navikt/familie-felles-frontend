@@ -5,11 +5,19 @@ import styled from 'styled-components';
 import Popover, { PopoverOrientering } from 'nav-frontend-popover';
 import { Input, InputProps } from 'nav-frontend-skjema';
 
-import { Ressurs, RessursStatus } from '@navikt/familie-typer';
+import { Adressebeskyttelsegradering, Ressurs, RessursStatus } from '@navikt/familie-typer';
 
 import SkjultLabel from './SkjultLabel';
-import { ISøkeresultat } from '../typer';
 import Søkeresultater from './Søkeresultater';
+
+export interface ISøkeresultat {
+    adressebeskyttelseGradering?: Adressebeskyttelsegradering;
+    fagsakId?: number; // null betyr at det ikke finnes fagsak på personen
+    harTilgang: boolean;
+    ident: string;
+    ikon: React.ReactNode;
+    navn?: string;
+}
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
