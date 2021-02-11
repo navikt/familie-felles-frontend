@@ -10,14 +10,14 @@ import { Adressebeskyttelsegradering, Ressurs, RessursStatus } from '@navikt/fam
 import SkjultLabel from './SkjultLabel';
 import Søkeresultater from './Søkeresultater';
 
-export interface ISøkeresultat {
+export type ISøkeresultat = {
     adressebeskyttelseGradering?: Adressebeskyttelsegradering;
     fagsakId?: number; // null betyr at det ikke finnes fagsak på personen
     harTilgang: boolean;
     ident: string;
     ikon: React.ReactNode;
     navn?: string;
-}
+};
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
