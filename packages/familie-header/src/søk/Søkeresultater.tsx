@@ -8,9 +8,7 @@ import { Normaltekst } from 'nav-frontend-typografi';
 
 import { adressebeskyttelsestyper, Ressurs, RessursStatus } from '@navikt/familie-typer';
 
-import { ISøkeresultat } from '../typer';
-
-import { inputId } from '.';
+import { inputId, ISøkeresultat } from '.';
 import { formaterPersonIdent } from './formatter';
 
 interface Props {
