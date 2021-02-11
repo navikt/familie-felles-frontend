@@ -8,17 +8,17 @@ import { Normaltekst } from 'nav-frontend-typografi';
 
 import { adressebeskyttelsestyper, Ressurs, RessursStatus } from '@navikt/familie-typer';
 
-import { ISøkResultat } from '../types';
+import { Søkeresultat } from '../typer';
 
-import { inputId } from '../søk';
+import { inputId } from '.';
 import { formaterPersonIdent } from './formatter';
 
 interface Props {
-    formaterResultat?: (søkResultat: ISøkResultat) => React.ReactNode;
-    søkResultatOnClick: (søkResultat: ISøkResultat) => void;
-    søkResultater: Ressurs<ISøkResultat[]>;
-    valgtSøkResultat: number;
-    settValgtSøkResultat: (søkResultatIndex: number) => void;
+    formaterResultat?: (søkResultat: Søkeresultat, erSøkeresultatValgt: boolean) => React.ReactNode;
+    søkeresultatOnClick: (søkResultat: Søkeresultat) => void;
+    søkeresultater: Ressurs<Søkeresultat[]>;
+    valgtSøkeresultat: number;
+    settValgtSøkeresultat: (søkeresultatIndex: number) => void;
 }
 
 const ResultatListe = styled.ul`
@@ -54,23 +54,23 @@ const ResultatListeElementKnapp = styled.div`
 
 const SøkResultater: React.FC<Props> = ({
     formaterResultat,
-    settValgtSøkResultat,
-    søkResultatOnClick,
-    søkResultater,
-    valgtSøkResultat,
+    settValgtSøkeresultat,
+    søkeresultatOnClick,
+    søkeresultater,
+    valgtSøkeresultat,
 }) => {
-    switch (søkResultater.status) {
+    switch (søkeresultater.status) {
         case RessursStatus.SUKSESS:
-            return søkResultater.data.length > 0 ? (
+            return søkeresultater.data.length > 0 ? (
                 <ResultatListe aria-labelledby={inputId}>
-                    {søkResultater.data.map((søkResultat: ISøkResultat, index: number) => {
+                    {søkeresultater.data.map((søkResultat: Søkeresultat, index: number) => {
                         if (formaterResultat) {
-                            return formaterResultat(søkResultat);
+                            return formaterResultat(søkResultat, index === valgtSøkeresultat);
                         } else {
                             return (
                                 <ResultatListeElement
                                     key={index}
-                                    fokus={index === valgtSøkResultat}
+                                    fokus={index === valgtSøkeresultat}
                                 >
                                     <ResultatListeElementKnapp
                                         aria-label={
@@ -78,11 +78,11 @@ const SøkResultater: React.FC<Props> = ({
                                                 ? søkResultat.navn
                                                 : 'Person har diskresjonskode'
                                         }
-                                        aria-selected={index === valgtSøkResultat}
+                                        aria-selected={index === valgtSøkeresultat}
                                         role={'option'}
                                         onClick={() => {
-                                            søkResultatOnClick(søkResultat);
-                                            settValgtSøkResultat(index);
+                                            søkeresultatOnClick(søkResultat);
+                                            settValgtSøkeresultat(index);
                                         }}
                                     >
                                         {søkResultat.ikon}
@@ -126,7 +126,7 @@ const SøkResultater: React.FC<Props> = ({
         case RessursStatus.IKKE_TILGANG:
             return (
                 <StyledAlertStripe type="feil">
-                    {søkResultater.frontendFeilmelding}
+                    {søkeresultater.frontendFeilmelding}
                 </StyledAlertStripe>
             );
         case RessursStatus.HENTER:
