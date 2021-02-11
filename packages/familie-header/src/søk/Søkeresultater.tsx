@@ -55,7 +55,7 @@ const ResultatListeElementKnapp = styled.div`
     }
 `;
 
-const SøkResultater: React.FC<Props> = ({
+const Søkeresultater: React.FC<Props> = ({
     formaterResultat,
     settValgtSøkeresultat,
     søkeresultatOnClick,
@@ -143,4 +143,4 @@ const SøkResultater: React.FC<Props> = ({
     }
 };
 
-export default SøkResultater;
+export default Søkeresultater;

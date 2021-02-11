@@ -89,8 +89,8 @@ export const HeaderOgSøk = () => {
                     placeholder={'Søk på fnr'}
                     søk={søk}
                     nullstillSøkeresultater={() => settSøkeresultat(byggTomRessurs)}
-                    søkResultater={søkeresultat}
-                    søkResultatOnClick={() => alert('Du har klikket på et av resultatene')}
+                    søkeresultater={søkeresultat}
+                    søkeresultatOnClick={() => alert('Du har klikket på et av resultatene')}
                 />
             </Header>
         </div>

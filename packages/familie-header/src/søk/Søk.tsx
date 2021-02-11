@@ -9,7 +9,7 @@ import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
 import SkjultLabel from './SkjultLabel';
 import { ISøkeresultat } from '../typer';
-import SøkResultater from './Søkeresultater';
+import Søkeresultater from './Søkeresultater';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
@@ -19,8 +19,8 @@ export interface SøkProps extends InputProps {
     label: React.ReactNode;
     nullstillSøkeresultater: () => void;
     søk: (value: string) => void;
-    søkResultater: Ressurs<ISøkeresultat[]>;
-    søkResultatOnClick: (søkResultat: ISøkeresultat) => void;
+    søkeresultater: Ressurs<ISøkeresultat[]>;
+    søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
 }
 
 const SøkContainer = styled.div`
@@ -36,8 +36,8 @@ export const Søk = ({
     label,
     nullstillSøkeresultater,
     søk,
-    søkResultatOnClick,
-    søkResultater,
+    søkeresultatOnClick,
+    søkeresultater,
     ...props
 }: SøkProps) => {
     const [verdi, settVerdi] = useState('');
@@ -90,8 +90,8 @@ export const Søk = ({
                         case 'ArrowDown':
                             settValgtSøkeresultat(
                                 valgtSøkeresultat <
-                                    (søkResultater.status === RessursStatus.SUKSESS
-                                        ? søkResultater.data.length - 1
+                                    (søkeresultater.status === RessursStatus.SUKSESS
+                                        ? søkeresultater.data.length - 1
                                         : -1)
                                     ? valgtSøkeresultat + 1
                                     : -1,
@@ -100,9 +100,9 @@ export const Søk = ({
                         case 'Enter':
                             if (
                                 valgtSøkeresultat !== -1 &&
-                                søkResultater.status === RessursStatus.SUKSESS
+                                søkeresultater.status === RessursStatus.SUKSESS
                             ) {
-                                søkResultatOnClick(søkResultater.data[valgtSøkeresultat]);
+                                søkeresultatOnClick(søkeresultater.data[valgtSøkeresultat]);
                             } else {
                                 utløserSøk();
                             }
@@ -125,13 +125,13 @@ export const Søk = ({
                 tabIndex={-1}
                 utenPil={true}
             >
-                <SøkResultater
+                <Søkeresultater
                     formaterResultat={formaterResultat}
                     settValgtSøkeresultat={søkeresultatIndex =>
                         settValgtSøkeresultat(søkeresultatIndex)
                     }
-                    søkeresultatOnClick={søkResultatOnClick}
-                    søkeresultater={søkResultater}
+                    søkeresultatOnClick={søkeresultatOnClick}
+                    søkeresultater={søkeresultater}
                     valgtSøkeresultat={valgtSøkeresultat}
                 />
             </Popover>
