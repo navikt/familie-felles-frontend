@@ -5,30 +5,22 @@ import styled from 'styled-components';
 import Popover, { PopoverOrientering } from 'nav-frontend-popover';
 import { Input, InputProps } from 'nav-frontend-skjema';
 
-import { Adressebeskyttelsegradering, Ressurs, RessursStatus } from '@navikt/familie-typer';
+import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
 import SkjultLabel from './SkjultLabel';
 import Søkeresultater from './Søkeresultater';
-
-export type ISøkeresultat = {
-    adressebeskyttelseGradering?: Adressebeskyttelsegradering;
-    fagsakId?: number; // null betyr at det ikke finnes fagsak på personen
-    harTilgang: boolean;
-    ident: string;
-    ikon: React.ReactNode;
-    navn?: string;
-};
+import { Søkeresultat } from '../types';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
-        søkeresultat: ISøkeresultat,
+        søkeresultat: Søkeresultat,
         erSøkeresultatValgt: boolean,
     ) => React.ReactNode;
     label: React.ReactNode;
     nullstillSøkeresultater: () => void;
     søk: (value: string) => void;
-    søkeresultater: Ressurs<ISøkeresultat[]>;
-    søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
+    søkeresultater: Ressurs<Søkeresultat[]>;
+    søkeresultatOnClick: (søkResultat: Søkeresultat) => void;
 }
 
 const SøkContainer = styled.div`

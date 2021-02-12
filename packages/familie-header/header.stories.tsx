@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ikoner, Brukerinfo, Header, ISøkeresultat, PopoverItem, Søk } from './src';
+import { ikoner, Brukerinfo, Header, PopoverItem, Søk } from './src';
 import './headerstories.less';
 import {
     Adressebeskyttelsegradering,
@@ -9,6 +9,7 @@ import {
     byggTomRessurs,
     Ressurs,
 } from '@navikt/familie-typer';
+import { Søkeresultat } from './src/types';
 
 export default {
     component: Header,
@@ -34,14 +35,14 @@ const eksterneLenker = [
 ];
 
 export const HeaderOgSøk = () => {
-    const [søkeresultat, settSøkeresultat] = useState<Ressurs<ISøkeresultat[]>>(byggTomRessurs());
+    const [søkeresultat, settSøkeresultat] = useState<Ressurs<Søkeresultat[]>>(byggTomRessurs());
 
     const søk = (personIdent: string): void => {
         settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
             if (personIdent.length === 11) {
                 settSøkeresultat(
-                    byggDataRessurs<ISøkeresultat[]>([
+                    byggDataRessurs<Søkeresultat[]>([
                         {
                             adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
                             harTilgang: true,
