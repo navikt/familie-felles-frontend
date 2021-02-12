@@ -9,7 +9,7 @@ import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
 import SkjultLabel from './SkjultLabel';
 import Søkeresultater from './Søkeresultater';
-import { Søkeresultat } from '../../types';
+import { Søkeresultat } from '../types';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
