@@ -39,6 +39,7 @@ export const HeaderOgSøk = () => {
     const søk = (personIdent: string): void => {
         settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
+            console.log(personIdent.length);
             if (personIdent.length === 11) {
                 settSøkeresultat(
                     byggDataRessurs<Søkeresultat[]>([
@@ -85,8 +86,8 @@ export const HeaderOgSøk = () => {
                 eksterneLenker={eksterneLenker}
             >
                 <Søk
-                    label={'Søk på fnr'}
-                    placeholder={'Søk på fnr'}
+                    label={'Søk. Tast inn fødselsnummer eller d-nummer, 11 siffer'}
+                    placeholder={'Søk'}
                     søk={søk}
                     nullstillSøkeresultater={() => settSøkeresultat(byggTomRessurs)}
                     søkeresultater={søkeresultat}
