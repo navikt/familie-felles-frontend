@@ -10,7 +10,7 @@ import { adressebeskyttelsestyper, Ressurs, RessursStatus } from '@navikt/famili
 
 import { inputId } from '.';
 import { formaterPersonIdent } from './formatter';
-import { Søkeresultat } from '../types';
+import { Søkeresultat } from '../../types';
 
 interface Props {
     formaterResultat?: (

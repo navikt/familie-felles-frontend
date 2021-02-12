@@ -9,7 +9,7 @@ import {
     byggTomRessurs,
     Ressurs,
 } from '@navikt/familie-typer';
-import { Søkeresultat } from './src/types';
+import { Søkeresultat } from './types';
 
 export default {
     component: Header,
