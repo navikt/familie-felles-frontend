@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ikoner, Brukerinfo, Header, PopoverItem, Søk } from './src';
+import { ikoner, Brukerinfo, Header, PopoverItem, Søk, Søkeresultat } from './src';
 import './headerstories.less';
 import {
     Adressebeskyttelsegradering,
@@ -9,7 +9,6 @@ import {
     byggTomRessurs,
     Ressurs,
 } from '@navikt/familie-typer';
-import { Søkeresultat } from './types';
 
 export default {
     component: Header,
