@@ -7,6 +7,7 @@ import BoxedListWithLinks from '@navikt/boxed-list-with-links';
 import UserPanel from '@navikt/nap-user-panel';
 
 import { IkonSystem } from '../icons';
+import { Systemtittel } from 'nav-frontend-typografi';
 
 export interface Brukerinfo {
     navn: string;
@@ -25,7 +26,7 @@ export interface HeaderProps {
     tittelHref?: string;
     children?: React.ReactNode | React.ReactNode[];
     brukerPopoverItems?: PopoverItem[];
-    eksterneLenker?: PopoverItem[];
+    eksterneLenker: PopoverItem[];
 }
 
 interface BrukerProps {
@@ -34,7 +35,7 @@ interface BrukerProps {
     popoverItems?: PopoverItem[];
 }
 interface LenkePopoverProps {
-    lenker?: PopoverItem[];
+    lenker: PopoverItem[];
 }
 
 export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
@@ -44,14 +45,14 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
         <div>
             <UserPanel
                 name={navn}
-                unit={enhet && `Enhet: ${enhet}`}
+                unit={enhet ? `Enhet: ${enhet}` : 'Ukjent enhet'}
                 onClick={e => {
                     settAnker(anker === undefined ? e.currentTarget : undefined);
                 }}
             />
             {popoverItems && (
                 <Popover
-                    id={'this'}
+                    id={'meny-popover'}
                     ankerEl={anker}
                     orientering={PopoverOrientering.Under}
                     autoFokus={false}
@@ -61,7 +62,7 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
                     tabIndex={-1}
                     utenPil
                 >
-                    <BoxedListWithLinks items={popoverItems!} />
+                    <BoxedListWithLinks items={popoverItems} />
                 </Popover>
             )}
         </div>
@@ -105,14 +106,14 @@ export const Header = ({
     brukerinfo,
     tittelHref = '/',
     brukerPopoverItems,
-    eksterneLenker,
+    eksterneLenker = [],
 }: HeaderProps) => {
     return (
         <div className="header">
             <div className="rad">
-                <h1 className="tittel">
-                    <a href={tittelHref}>{tittel}</a>
-                </h1>
+                <a href={tittelHref} className="tittel">
+                    <Systemtittel tag={'h1'}>{tittel}</Systemtittel>
+                </a>
             </div>
             <div className="rad">
                 {children}

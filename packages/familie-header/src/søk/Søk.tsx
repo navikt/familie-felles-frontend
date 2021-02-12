@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import styled from 'styled-components';
 
@@ -14,6 +14,7 @@ import Søkeresultater from './Søkeresultater';
 import { Søkeresultat } from '../types';
 import { IkonSøk } from '../icons';
 import { oransjBoxShadow } from '../common';
+import ReactDOM from 'react-dom';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
@@ -39,11 +40,44 @@ const SøkContainer = styled.div`
     }
 `;
 
+const StyledTømknapp = styled(Flatknapp)`
+    position: absolute;
+    right: 3rem;
+    top: 0;
+    padding: 0;
+    width: 3rem;
+
+    .knapp__spinner {
+        width: 1rem;
+        height: 1rem;
+        margin: 0;
+    }
+
+    :hover {
+        border-color: ${navFarger.navBla} !important;
+
+        svg > path {
+            fill: ${navFarger.navBla};
+        }
+    }
+
+    :focus {
+        background-color: ${navFarger.white} !important;
+        border: ${navFarger.white};
+        box-shadow: ${oransjBoxShadow};
+
+        svg > path {
+            fill: ${navFarger.navBla};
+        }
+    }
+`;
+
 const StyledHovedknapp = styled(Flatknapp)`
     position: absolute;
     right: 0;
     top: 0;
-    height: 100%;
+    padding: 0;
+    width: 3rem;
     background-color: ${navFarger.navBla};
 
     .knapp__spinner {
@@ -83,6 +117,7 @@ export const Søk = ({
     const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
     const [valgtSøkeresultat, settValgtSøkeresultat] = useState(-1);
     const [erGyldig, settErGyldig] = useState(false);
+    const søkKnappRef = useRef(null);
 
     useEffect(() => {
         if (erGyldig) {
@@ -135,8 +170,10 @@ export const Søk = ({
                 if (søkeresultater.status === RessursStatus.SUKSESS) {
                     if (valgtSøkeresultat === -1 && søkeresultater.data.length === 1) {
                         søkeresultatOnClick(søkeresultater.data[0]);
-                    } else {
+                    } else if (valgtSøkeresultat !== -1) {
                         søkeresultatOnClick(søkeresultater.data[valgtSøkeresultat]);
+                    } else {
+                        utløserSøk();
                     }
                 } else {
                     utløserSøk();
@@ -170,9 +207,23 @@ export const Søk = ({
                     value={verdi}
                     {...props}
                 />
+                {verdi !== '' && (
+                    <StyledTømknapp
+                        title={'tøm'}
+                        ref={søkKnappRef}
+                        onClick={() => {
+                            nullstillInput(true);
+                        }}
+                    >
+                        <IkonSøk color={navFarger.navBla} width={32} height={32} />
+                    </StyledTømknapp>
+                )}
                 <StyledHovedknapp
                     title={knappTitle()}
-                    onClick={() => utløserSøk()}
+                    ref={søkKnappRef}
+                    onClick={() => {
+                        utløserSøk();
+                    }}
                     spinner={søkeresultater.status === RessursStatus.HENTER}
                 >
                     {søkeresultater.status !== RessursStatus.HENTER && (
@@ -187,7 +238,7 @@ export const Søk = ({
                 orientering={PopoverOrientering.UnderVenstre}
                 autoFokus={false}
                 onRequestClose={() => {
-                    if (søkeresultater.status !== RessursStatus.HENTER) {
+                    if (document.activeElement !== ReactDOM.findDOMNode(søkKnappRef.current)) {
                         nullstillInput(true);
                     }
                 }}

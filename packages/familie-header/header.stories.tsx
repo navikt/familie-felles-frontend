@@ -33,40 +33,57 @@ const eksterneLenker = [
     { name: 'NAV forside', href: 'https://www.nav.no' },
 ];
 
+const defaultIdent = '12345678910';
+const søkeResultater: Record<string, Søkeresultat[]> = {
+    '12345678910': [
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+            harTilgang: true,
+            ikon: ikoner.FORELDER_KVINNE,
+            navn: 'Mor Moresen',
+            ident: defaultIdent,
+        },
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+            harTilgang: true,
+            ikon: ikoner.FORELDER_KVINNE,
+            fagsakId: 1,
+            navn: 'Mor Moresen (med fagsak)',
+            ident: '12345678911',
+        },
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+            harTilgang: true,
+            ikon: ikoner.FORELDER_MANN,
+            fagsakId: 1,
+            navn: 'Far Faresen (med fagsak)',
+            ident: '12345678912',
+        },
+    ],
+    '12345678911': [
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+            harTilgang: true,
+            ikon: ikoner.FORELDER_KVINNE,
+            fagsakId: 1,
+            navn: 'Mor Moresen (med fagsak)',
+            ident: '12345678911',
+        },
+    ],
+};
+
 export const HeaderOgSøk = () => {
     const [søkeresultat, settSøkeresultat] = useState<Ressurs<Søkeresultat[]>>(byggTomRessurs());
 
     const søk = (personIdent: string): void => {
         settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
-            console.log(personIdent.length);
             if (personIdent.length === 11) {
+                const søkeresultat: Søkeresultat[] | undefined = søkeResultater[personIdent];
                 settSøkeresultat(
-                    byggDataRessurs<Søkeresultat[]>([
-                        {
-                            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
-                            harTilgang: true,
-                            ikon: ikoner.FORELDER_KVINNE,
-                            navn: 'Mor Moresen',
-                            ident: personIdent,
-                        },
-                        {
-                            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
-                            harTilgang: true,
-                            ikon: ikoner.FORELDER_KVINNE,
-                            fagsakId: 1,
-                            navn: 'Mor Moresen (med fagsak)',
-                            ident: personIdent,
-                        },
-                        {
-                            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
-                            harTilgang: true,
-                            ikon: ikoner.FORELDER_MANN,
-                            fagsakId: 1,
-                            navn: 'Far Faresen (med fagsak)',
-                            ident: personIdent,
-                        },
-                    ]),
+                    byggDataRessurs<Søkeresultat[]>(
+                        søkeresultat !== undefined ? søkeresultat : søkeResultater[defaultIdent],
+                    ),
                 );
             } else {
                 settSøkeresultat(
