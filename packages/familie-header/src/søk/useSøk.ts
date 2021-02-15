@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { inputId } from '.';
 import { ISøkeresultat } from '..';
+import { søkKnappId, tømKnappId } from './Søk';
 
 export interface Props {
     nullstillSøkeresultater: () => void;
@@ -17,8 +18,6 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
     const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
     const [valgtSøkeresultat, settValgtSøkeresultat] = useState(-1);
     const [erGyldig, settErGyldig] = useState(false);
-    const søkKnappRef = useRef(null);
-    const tømKnappRef = useRef(null);
     const ankerRef = useRef<HTMLElement>();
 
     useEffect(() => {
@@ -67,8 +66,8 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
         if (
             ankerRef.current !== undefined &&
             !ReactDOM.findDOMNode(ankerRef.current)?.contains(document.activeElement) &&
-            !ReactDOM.findDOMNode(søkKnappRef.current)?.contains(document.activeElement) &&
-            !ReactDOM.findDOMNode(tømKnappRef.current)?.contains(document.activeElement)
+            !document.getElementById(søkKnappId)?.contains(document.activeElement) &&
+            !document.getElementById(tømKnappId)?.contains(document.activeElement)
         ) {
             nullstillInput(true);
         }
@@ -133,8 +132,6 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
         onInputKeyDown,
         settErGyldig,
         settValgtSøkeresultat,
-        søkKnappRef,
-        tømKnappRef,
         utløserSøk,
         valgtSøkeresultat,
     };

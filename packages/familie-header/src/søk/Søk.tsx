@@ -89,6 +89,8 @@ const StyledSøkKnapp = styled(StyledTømknapp)`
 `;
 
 export const inputId = 'sok-input';
+export const søkKnappId = 'søk-knapp';
+export const tømKnappId = 'tøm-knapp';
 
 export const Søk = ({
     formaterResultat,
@@ -107,8 +109,6 @@ export const Søk = ({
         onInputKeyDown,
         settErGyldig,
         settValgtSøkeresultat,
-        søkKnappRef,
-        tømKnappRef,
         utløserSøk,
         valgtSøkeresultat,
     } = useSøk({
@@ -138,8 +138,9 @@ export const Søk = ({
                 {ident !== '' && (
                     <StyledTømknapp
                         title={'tøm'}
-                        ref={tømKnappRef}
+                        id={tømKnappId}
                         onClick={() => {
+                            document.getElementById(inputId)?.focus();
                             nullstillInput(true);
                         }}
                     >
@@ -147,7 +148,7 @@ export const Søk = ({
                     </StyledTømknapp>
                 )}
                 <StyledSøkKnapp
-                    ref={søkKnappRef}
+                    id={søkKnappId}
                     onClick={() => {
                         utløserSøk();
                     }}
