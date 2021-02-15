@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.25](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.24...@navikt/familie-header@2.0.25) (2021-02-15)
+
+
+### Bug Fixes
+
+* **familie-header:** fikser bug hvor handleGlobalClick ikke klarte å få tak i elementer i dom'en via ([86d11a0](https://github.com/navikt/familie-felles-frontend/commit/86d11a0611a3165f76a36f799862b41a09942063))
+
+
+
+
+
 ## [2.0.24](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.23...@navikt/familie-header@2.0.24) (2021-02-15)
 
 **Note:** Version bump only for package @navikt/familie-header
