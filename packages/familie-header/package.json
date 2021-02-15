@@ -9,7 +9,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "849643531c0cc81589e2e4c280d3e81add7e16f3",
   "files": [
     "dist"
   ],
@@ -31,6 +30,7 @@
   },
   "dependencies": {
     "@navikt/boxed-list-with-links": "^1.0.2",
+    "@navikt/ds-icons": "^0.1.5",
     "@navikt/familie-ikoner": "^3.1.8",
     "@navikt/familie-typer": "^3.0.11",
     "@navikt/nap-user-panel": "^1.0.0",
@@ -41,6 +41,8 @@
     "nav-frontend-core": "^5.0.8",
     "nav-frontend-ikoner-assets": "2.0.8",
     "nav-frontend-js-utils": "1.0.15",
+    "nav-frontend-knapper": "^2.0.31",
+    "nav-frontend-knapper-style": "^1.0.16",
     "nav-frontend-paneler": "^1.0.24",
     "nav-frontend-paneler-style": "0.3.25",
     "nav-frontend-popover": "0.0.40",

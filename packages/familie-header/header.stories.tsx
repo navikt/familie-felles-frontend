@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { Brukerinfo, Header, Infokort, PopoverItem, Søk } from './src';
-import { KvinneIkon } from '@navikt/familie-ikoner';
+import { ikoner, Brukerinfo, Header, PopoverItem, Søk, ISøkeresultat } from './src';
 import './headerstories.less';
+import {
+    Adressebeskyttelsegradering,
+    byggDataRessurs,
+    byggFunksjonellFeilRessurs,
+    byggHenterRessurs,
+    byggTomRessurs,
+    Ressurs,
+} from '@navikt/familie-typer';
 
 export default {
     component: Header,
@@ -26,30 +33,76 @@ const eksterneLenker = [
     { name: 'NAV forside', href: 'https://www.nav.no' },
 ];
 
-interface ISøkeresultat {
-    navn: string;
-    personident: string;
-    alder: number;
-    kjønn: string;
-}
+const defaultIdent = '12345678910';
+const søkeResultater: Record<string, ISøkeresultat[]> = {
+    '12345678910': [
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+            harTilgang: true,
+            ident: defaultIdent,
+            ikon: ikoner.FORELDER_KVINNE,
+            navn: 'Mor Moresen',
+            rolle: 'MOR',
+        },
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+            fagsakId: 1,
+            harTilgang: true,
+            ident: '12345678911',
+            ikon: ikoner.FORELDER_KVINNE,
+            navn: 'Mor Moresen (med fagsak)',
+            rolle: 'MOR',
+        },
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+            fagsakId: 1,
+            harTilgang: true,
+            ident: '12345678912',
+            ikon: ikoner.FORELDER_MANN,
+            navn: 'Far Faresen (med fagsak)',
+            rolle: 'FAR',
+        },
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.STRENGT_FORTROLIG,
+            fagsakId: 1,
+            harTilgang: false,
+            ident: '12345678912',
+            ikon: ikoner.BARN_MANN,
+            navn: 'Sønn Sønnesen',
+            rolle: 'BARN',
+        },
+    ],
+    '12345678911': [
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+            fagsakId: 1,
+            harTilgang: true,
+            ident: '12345678911',
+            ikon: ikoner.FORELDER_KVINNE,
+            navn: 'Mor Moresen (med fagsak)',
+            rolle: 'MOR',
+        },
+    ],
+    '12345678912': [],
+};
 
 export const HeaderOgSøk = () => {
-    const [søkeresultat, settSøkeresultat] = useState<ISøkeresultat[]>([]);
-    const [spinner, settSpinner] = useState<boolean>(false);
+    const [søkeresultat, settSøkeresultat] = useState<Ressurs<ISøkeresultat[]>>(byggTomRessurs());
 
     const søk = (personIdent: string): void => {
-        settSpinner(true);
+        settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
             if (personIdent.length === 11) {
-                settSøkeresultat([
-                    {
-                        navn: 'Navn Navnesen',
-                        personident: personIdent,
-                        alder: 23,
-                        kjønn: 'KVINNE',
-                    },
-                ]);
-                settSpinner(false);
+                const søkeresultat: ISøkeresultat[] | undefined = søkeResultater[personIdent];
+                settSøkeresultat(
+                    byggDataRessurs<ISøkeresultat[]>(
+                        søkeresultat !== undefined ? søkeresultat : søkeResultater[defaultIdent],
+                    ),
+                );
+            } else {
+                settSøkeresultat(
+                    byggFunksjonellFeilRessurs('Ugyldig. Tast inn fnr/dnr (11 siffer)'),
+                );
             }
         }, 1000);
     };
@@ -64,23 +117,13 @@ export const HeaderOgSøk = () => {
                 eksterneLenker={eksterneLenker}
             >
                 <Søk
+                    label={'Søk. Tast inn fødselsnummer eller d-nummer, 11 siffer'}
+                    placeholder={'Søk'}
                     søk={søk}
-                    validator={undefined}
-                    spinner={spinner}
-                    autoSøk={true}
-                    onChange={() => settSøkeresultat([])}
-                >
-                    {søkeresultat.length > 0 &&
-                        søkeresultat.map((person, index) => {
-                            return (
-                                <Infokort
-                                    index={index}
-                                    ikon={<KvinneIkon />}
-                                    header={`${person.navn}(${person.personident})`}
-                                />
-                            );
-                        })}
-                </Søk>
+                    nullstillSøkeresultater={() => settSøkeresultat(byggTomRessurs)}
+                    søkeresultater={søkeresultat}
+                    søkeresultatOnClick={() => alert('Du har klikket på et av resultatene')}
+                />
             </Header>
         </div>
     );

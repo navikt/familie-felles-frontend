@@ -20,7 +20,9 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-typer": "^3.0.11"
+        "@navikt/familie-typer": "^3.0.11",
+        "nav-frontend-knapper": "^2.0.31",
+        "nav-frontend-knapper-style": "^1.0.16"
     },
     "peerDependencies": {
         "react": "^16.12.0"

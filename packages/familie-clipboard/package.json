@@ -23,6 +23,8 @@
         "@types/react-tooltip": "^3.11.0",
         "framer-motion": "^2.9.1",
         "nav-frontend-core": "^5.0.10",
+        "nav-frontend-knapper": "^2.0.31",
+        "nav-frontend-knapper-style": "^1.0.16",
         "react-tooltip": "^3.11.4",
         "styled-components": "^5.2.1"
     },

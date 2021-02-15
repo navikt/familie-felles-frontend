@@ -1,113 +1,202 @@
-import './Søk.less';
+import React from 'react';
 
+import styled from 'styled-components';
+
+import navFarger from 'nav-frontend-core';
 import Popover, { PopoverOrientering } from 'nav-frontend-popover';
-import React, { useState } from 'react';
+import { FnrInput, InputProps } from 'nav-frontend-skjema';
+import { Flatknapp } from 'nav-frontend-knapper';
 
-import { IkonFeil, IkonGyldig, IkonSpinner, IkonSøk } from '../icons';
+import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
-export interface SøkProps {
+import SkjultLabel from './SkjultLabel';
+import Søkeresultater from './Søkeresultater';
+import { ISøkeresultat } from '../types';
+import { oransjBoxShadow } from '../common';
+import { Close, Search } from '@navikt/ds-icons';
+import useSøk from './useSøk';
+
+export interface SøkProps extends InputProps {
+    formaterResultat?: (
+        søkeresultat: ISøkeresultat,
+        erSøkeresultatValgt: boolean,
+    ) => React.ReactNode;
+    label: React.ReactNode;
+    nullstillSøkeresultater: () => void;
     søk: (value: string) => void;
-    onChange?: (value: string) => void;
-    spinner?: boolean;
-    validator?: (value: string) => boolean;
-    plassholder?: string;
-    gyldigVerdi?: (value: string) => void;
-    autoSøk?: boolean;
-    children?: React.ReactNode | React.ReactNode[];
+    søkeresultater: Ressurs<ISøkeresultat[]>;
+    søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
 }
 
+const SøkContainer = styled.div`
+    width: 20rem;
+    position: relative;
+    margin: 0 1rem;
+
+    .skjemaelement__input-fodselsnr {
+        :focus {
+            border-color: ${navFarger.navBla};
+            box-shadow: ${oransjBoxShadow};
+        }
+    }
+`;
+
+const StyledTømknapp = styled(Flatknapp)`
+    position: absolute;
+    right: 3rem;
+    top: 0;
+    padding: 0;
+    width: 3rem;
+    border-radius: 0;
+
+    :hover {
+        background-color: ${navFarger.navBla} !important;
+        border-color: ${navFarger.navBla} !important;
+
+        svg > path {
+            fill: ${navFarger.white};
+        }
+    }
+
+    :focus {
+        z-index: 1000;
+        background-color: ${navFarger.white} !important;
+        border: ${navFarger.white};
+        box-shadow: ${oransjBoxShadow};
+
+        svg > path {
+            fill: ${navFarger.navBla};
+        }
+    }
+`;
+
+const StyledHovedknapp = styled(Flatknapp)`
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+    width: 3rem;
+    background-color: ${navFarger.navBla};
+    border-radius: 0 4px 4px 0;
+
+    .knapp__spinner {
+        width: 1rem;
+        height: 1rem;
+        margin: 0;
+    }
+
+    :hover {
+        border-color: #0074df !important;
+        background-color: #0074df !important;
+    }
+
+    :focus {
+        z-index: 1000;
+        background-color: ${navFarger.white} !important;
+        border: ${navFarger.white};
+        box-shadow: ${oransjBoxShadow};
+
+        svg > path {
+            fill: ${navFarger.navBla};
+        }
+    }
+`;
+
+export const inputId = 'sok-input';
+
 export const Søk = ({
+    formaterResultat,
+    label,
+    nullstillSøkeresultater,
     søk,
-    onChange,
-    validator,
-    gyldigVerdi,
-    autoSøk = true,
-    spinner = false,
-    plassholder = '',
-    children,
+    søkeresultatOnClick,
+    søkeresultater,
+    ...props
 }: SøkProps) => {
-    const [verdi, settVerdi] = useState('');
-    const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
-    const [gyldig, settGyldig] = useState(false);
-
-    const trimHvisTall = (innspill: string) => {
-        const utenSpaces = innspill.replace(/ /g, '');
-        if (utenSpaces.match(/^\d+$/)) {
-            return utenSpaces;
-        } else {
-            return innspill;
-        }
-    };
-
-    const utløserSøk = (nøkkel?: string) => {
-        const gyldigNøkkel = nøkkel || verdi;
-
-        gyldigNøkkel.length > 0 && søk(trimHvisTall(gyldigNøkkel));
-    };
-
-    const tastenTrykkes = (event: React.KeyboardEvent) => {
-        //Vis popover når du trykker på en tast. Dette for å sikre at søkestatusen vises korrekt når den ble tilbake fra skjult.
-        settAnker(verdi.length > 0 ? (event.currentTarget as HTMLElement) : undefined);
-        event.key === 'Enter' && verdi.length > 0 && utløserSøk();
-    };
-
-    const søkKlikket = (event: React.MouseEvent) => {
-        settAnker(verdi.length > 0 ? (event.currentTarget as HTMLElement) : undefined);
-        utløserSøk();
-    };
-
-    const innspillEndret = (event: React.ChangeEvent) => {
-        const nyVerdi = (event.target as HTMLInputElement).value;
-        settVerdi(nyVerdi);
-        //sørg for at popover vises
-        settAnker(nyVerdi.length > 0 ? (event.currentTarget as HTMLElement) : undefined);
-        onChange?.(nyVerdi);
-        const erGyldig = validator?.(trimHvisTall(nyVerdi));
-        settGyldig(erGyldig || false);
-
-        if (erGyldig) {
-            gyldigVerdi?.(nyVerdi);
-            autoSøk && utløserSøk(nyVerdi);
-        }
-    };
-
-    const prompt =
-        (!spinner && validator && gyldig && verdi.length > 0 && <IkonGyldig />) ||
-        (!spinner && validator && !gyldig && verdi.length > 0 && <IkonFeil />);
+    const {
+        anker,
+        ident,
+        knappTitle,
+        nullstillInput,
+        onInputChange,
+        onInputKeyDown,
+        settErGyldig,
+        settValgtSøkeresultat,
+        søkKnappRef,
+        tømKnappRef,
+        utløserSøk,
+        valgtSøkeresultat,
+    } = useSøk({
+        label,
+        nullstillSøkeresultater,
+        søk,
+        søkeresultatOnClick,
+        søkeresultater,
+    });
 
     return (
-        <div className="søk_container">
-            {prompt && <div className="søk_container__prompt">{prompt}</div>}
-            {spinner && (
-                <div className="søk_container__spinner">
-                    <IkonSpinner />
-                </div>
-            )}
-            <input
-                className="søk_container__felt"
-                onChange={innspillEndret}
-                onKeyPress={tastenTrykkes}
-                value={verdi}
-                placeholder={plassholder}
-            />
-            <button className="søk_container__knapp" onClick={søkKlikket}>
-                <IkonSøk />
-            </button>
-            {children && (
-                <Popover
-                    id={'søkresultat'}
-                    ankerEl={anker}
-                    orientering={PopoverOrientering.UnderVenstre}
-                    autoFokus={false}
-                    onRequestClose={() => {
-                        settAnker(undefined);
+        <>
+            <SøkContainer alt-text={'søk'}>
+                {typeof label === 'string' ? (
+                    <SkjultLabel htmlFor={inputId}>{label}</SkjultLabel>
+                ) : (
+                    label
+                )}
+                <FnrInput
+                    aria-label={props.placeholder}
+                    id={inputId}
+                    onChange={onInputChange}
+                    onKeyDown={onInputKeyDown}
+                    onValidate={(isValid: boolean) => settErGyldig(isValid)}
+                    value={ident}
+                    {...props}
+                />
+                {ident !== '' && (
+                    <StyledTømknapp
+                        title={'tøm'}
+                        ref={tømKnappRef}
+                        onClick={() => {
+                            nullstillInput(true);
+                        }}
+                    >
+                        <Close color={navFarger.navBla} width={32} height={32} />
+                    </StyledTømknapp>
+                )}
+                <StyledHovedknapp
+                    title={knappTitle()}
+                    ref={søkKnappRef}
+                    onClick={() => {
+                        utløserSøk();
                     }}
-                    tabIndex={-1}
-                    utenPil
+                    spinner={søkeresultater.status === RessursStatus.HENTER}
                 >
-                    <div className="søk_container__resultat">{children}</div>
-                </Popover>
-            )}
-        </div>
+                    {søkeresultater.status !== RessursStatus.HENTER && (
+                        <Search id={'sok-ikon'} color={navFarger.white} width={32} height={32} />
+                    )}
+                </StyledHovedknapp>
+            </SøkContainer>
+
+            <Popover
+                id={'søkeresultat'}
+                ankerEl={anker}
+                orientering={PopoverOrientering.UnderVenstre}
+                autoFokus={false}
+                onRequestClose={() => {
+                    return;
+                }}
+                tabIndex={-1}
+                utenPil={true}
+            >
+                <Søkeresultater
+                    formaterResultat={formaterResultat}
+                    settValgtSøkeresultat={søkeresultatIndex =>
+                        settValgtSøkeresultat(søkeresultatIndex)
+                    }
+                    søkeresultatOnClick={søkeresultatOnClick}
+                    søkeresultater={søkeresultater}
+                    valgtSøkeresultat={valgtSøkeresultat}
+                />
+            </Popover>
+        </>
     );
 };

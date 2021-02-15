@@ -14,6 +14,7 @@ export * from './auth/authenticate';
 export * from './auth/tokenUtils';
 export * from './config';
 export * from './typer';
+export * from './utils';
 export * from 'openid-client';
 export * from 'prom-client';
 

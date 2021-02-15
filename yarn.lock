@@ -2274,6 +2274,11 @@
   dependencies:
     "@navikt/nap-bem-utils" "1.0.1"
 
+"@navikt/ds-icons@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.1.5.tgz#8cd5c770dbec16e0d1a9dfc9bd97bde67e862e19"
+  integrity sha512-PsHaP3Q8UsjkNgU5UbiS3Fg8b2LI9xSAPG7crbAGQkhXYc4iyR7eYPm//5ymUqhGUxkY1wu2WCkk9ZrGuy9U4Q==
+
 "@navikt/familie-form-elements@2.0.11":
   version "2.0.11"
   resolved "https://registry.yarnpkg.com/@navikt/familie-form-elements/-/familie-form-elements-2.0.11.tgz#1660cd8795a2b6a7e71cdb4f9e255a2b58bba07d"
@@ -12043,10 +12048,15 @@ nav-frontend-js-utils@1.0.15, nav-frontend-js-utils@^1.0.15:
   dependencies:
     lodash.throttle "^4.1.1"
 
-nav-frontend-knapper-style@^1.0.11, nav-frontend-knapper-style@^1.0.8:
+nav-frontend-knapper-style@^1.0.11, nav-frontend-knapper-style@^1.0.16, nav-frontend-knapper-style@^1.0.8:
   version "1.0.16"
   resolved "https://registry.yarnpkg.com/nav-frontend-knapper-style/-/nav-frontend-knapper-style-1.0.16.tgz#648612a3d5c5afdecb9cc0ec81e92c7108b5a620"
   integrity sha512-LRG81mtg/48klu3K7Ow9KMUBT7FbcIR1+7L3DfEHdxt2k4FsvsjdPt48oVIgc2Nm2z4uEco4UkGPjYLv0s66MQ==
+
+nav-frontend-knapper@^2.0.31:
+  version "2.0.31"
+  resolved "https://registry.yarnpkg.com/nav-frontend-knapper/-/nav-frontend-knapper-2.0.31.tgz#2b748e01925b2352a30d24e6e5fdf2bdf4aa6519"
+  integrity sha512-6wYv/xHT1LUDepO+Svjl2fVvTLCcrIw2lwysoWnXdMO/ov7ggNn6jaEbbtxhCdl0dGwFCC4ErT059iRjTOdl7w==
 
 nav-frontend-knapper@^2.0.4:
   version "2.0.24"
