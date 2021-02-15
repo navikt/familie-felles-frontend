@@ -36,7 +36,7 @@ const StyledAlertStripe = styled(AlertStripe)`
 const ResultatListeElement = styled.li<{ fokus: boolean }>`
     list-style-type: none;
     padding: 0.5rem;
-    outline: ${({ fokus }) => (fokus ? `3px solid ${navFarger.fokusFarge}` : '')};
+    outline: ${({ fokus }) => (fokus ? `3px solid ${navFarger.orangeFocus}` : '')};
 
     &:hover {
         background-color: ${navFarger.navLysGra};
@@ -48,7 +48,7 @@ const ResultatListeElementKnapp = styled.div`
     display: flex;
     flex-direction: row;
 
-    & svg {
+    svg {
         text-align: center;
         padding-right: 0.5rem;
     }
@@ -127,15 +127,19 @@ const Søkeresultater: React.FC<Props> = ({
         case RessursStatus.FUNKSJONELL_FEIL:
         case RessursStatus.IKKE_TILGANG:
             return (
-                <StyledAlertStripe type="feil">
+                <StyledAlertStripe aria-labelledby={inputId} type="feil">
                     {søkeresultater.frontendFeilmelding}
                 </StyledAlertStripe>
             );
         case RessursStatus.HENTER:
-            return <StyledAlertStripe type={'info'}>Søker...</StyledAlertStripe>;
+            return (
+                <StyledAlertStripe aria-labelledby={inputId} type={'info'}>
+                    Søker...
+                </StyledAlertStripe>
+            );
         default:
             return (
-                <StyledAlertStripe type={'info'}>
+                <StyledAlertStripe aria-labelledby={inputId} type={'info'}>
                     Tast inn fødselsnummer eller d-nummer. Trykk 'enter' for å søke.
                 </StyledAlertStripe>
             );

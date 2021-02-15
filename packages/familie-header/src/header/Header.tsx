@@ -1,12 +1,13 @@
 import './Header.less';
 
+import navFarger from 'nav-frontend-core';
 import Popover, { PopoverOrientering } from 'nav-frontend-popover';
 import React from 'react';
 
 import BoxedListWithLinks from '@navikt/boxed-list-with-links';
 import UserPanel from '@navikt/nap-user-panel';
 
-import { IkonSystem } from '../icons';
+import { System } from '@navikt/ds-icons';
 import { Systemtittel } from 'nav-frontend-typografi';
 
 export interface Brukerinfo {
@@ -75,12 +76,13 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
     return (
         <div>
             <button
+                title={'Andre systemer'}
                 className="systemknapp"
                 onClick={e => {
                     settAnker(anker === undefined ? e.currentTarget : undefined);
                 }}
             >
-                <IkonSystem />
+                <System color={navFarger.white} />
             </button>
             {lenker && (
                 <Popover

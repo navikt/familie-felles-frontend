@@ -70,6 +70,7 @@ const søkeResultater: Record<string, Søkeresultat[]> = {
             ident: '12345678911',
         },
     ],
+    '12345678912': [],
 };
 
 export const HeaderOgSøk = () => {
