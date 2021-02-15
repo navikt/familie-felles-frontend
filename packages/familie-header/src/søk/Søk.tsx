@@ -11,21 +11,21 @@ import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
 import SkjultLabel from './SkjultLabel';
 import Søkeresultater from './Søkeresultater';
-import { Søkeresultat } from '../types';
+import { ISøkeresultat } from '../types';
 import { oransjBoxShadow } from '../common';
 import { Close, Search } from '@navikt/ds-icons';
 import useSøk from './useSøk';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
-        søkeresultat: Søkeresultat,
+        søkeresultat: ISøkeresultat,
         erSøkeresultatValgt: boolean,
     ) => React.ReactNode;
     label: React.ReactNode;
     nullstillSøkeresultater: () => void;
     søk: (value: string) => void;
-    søkeresultater: Ressurs<Søkeresultat[]>;
-    søkeresultatOnClick: (søkResultat: Søkeresultat) => void;
+    søkeresultater: Ressurs<ISøkeresultat[]>;
+    søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
 }
 
 const SøkContainer = styled.div`
@@ -171,7 +171,7 @@ export const Søk = ({
                     spinner={søkeresultater.status === RessursStatus.HENTER}
                 >
                     {søkeresultater.status !== RessursStatus.HENTER && (
-                        <Search color={navFarger.white} width={32} height={32} />
+                        <Search id={'sok-ikon'} color={navFarger.white} width={32} height={32} />
                     )}
                 </StyledHovedknapp>
             </SøkContainer>

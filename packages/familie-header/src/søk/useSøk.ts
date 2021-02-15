@@ -2,14 +2,14 @@ import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 import { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { inputId } from '.';
-import { Søkeresultat } from '..';
+import { ISøkeresultat } from '..';
 
 export interface Props {
     label: React.ReactNode;
     nullstillSøkeresultater: () => void;
     søk: (value: string) => void;
-    søkeresultatOnClick: (søkResultat: Søkeresultat) => void;
-    søkeresultater: Ressurs<Søkeresultat[]>;
+    søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
+    søkeresultater: Ressurs<ISøkeresultat[]>;
 }
 
 const useSøk = ({
@@ -78,12 +78,12 @@ const useSøk = ({
         if (event.key === 'Escape') nullstillInput(true);
     };
 
-    const handleGlobalClick = (event: MouseEvent) => {
+    const handleGlobalClick = () => {
         if (
             ankerRef.current !== undefined &&
-            ReactDOM.findDOMNode(ankerRef.current) !== event.target &&
-            ReactDOM.findDOMNode(søkKnappRef.current) !== event.target &&
-            ReactDOM.findDOMNode(tømKnappRef.current) !== event.target
+            !ReactDOM.findDOMNode(ankerRef.current)?.contains(document.activeElement) &&
+            !ReactDOM.findDOMNode(søkKnappRef.current)?.contains(document.activeElement) &&
+            !ReactDOM.findDOMNode(tømKnappRef.current)?.contains(document.activeElement)
         ) {
             nullstillInput(true);
         }

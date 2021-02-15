@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ikoner, Brukerinfo, Header, PopoverItem, Søk, Søkeresultat } from './src';
+import { ikoner, Brukerinfo, Header, PopoverItem, Søk, ISøkeresultat } from './src';
 import './headerstories.less';
 import {
     Adressebeskyttelsegradering,
@@ -34,55 +34,68 @@ const eksterneLenker = [
 ];
 
 const defaultIdent = '12345678910';
-const søkeResultater: Record<string, Søkeresultat[]> = {
+const søkeResultater: Record<string, ISøkeresultat[]> = {
     '12345678910': [
         {
             adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
             harTilgang: true,
+            ident: defaultIdent,
             ikon: ikoner.FORELDER_KVINNE,
             navn: 'Mor Moresen',
-            ident: defaultIdent,
+            rolle: 'MOR',
         },
         {
             adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
-            harTilgang: true,
-            ikon: ikoner.FORELDER_KVINNE,
             fagsakId: 1,
-            navn: 'Mor Moresen (med fagsak)',
+            harTilgang: true,
             ident: '12345678911',
+            ikon: ikoner.FORELDER_KVINNE,
+            navn: 'Mor Moresen (med fagsak)',
+            rolle: 'MOR',
         },
         {
             adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
-            harTilgang: true,
-            ikon: ikoner.FORELDER_MANN,
             fagsakId: 1,
-            navn: 'Far Faresen (med fagsak)',
+            harTilgang: true,
             ident: '12345678912',
+            ikon: ikoner.FORELDER_MANN,
+            navn: 'Far Faresen (med fagsak)',
+            rolle: 'FAR',
+        },
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.STRENGT_FORTROLIG,
+            fagsakId: 1,
+            harTilgang: false,
+            ident: '12345678912',
+            ikon: ikoner.BARN_MANN,
+            navn: 'Sønn Sønnesen',
+            rolle: 'BARN',
         },
     ],
     '12345678911': [
         {
             adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
-            harTilgang: true,
-            ikon: ikoner.FORELDER_KVINNE,
             fagsakId: 1,
-            navn: 'Mor Moresen (med fagsak)',
+            harTilgang: true,
             ident: '12345678911',
+            ikon: ikoner.FORELDER_KVINNE,
+            navn: 'Mor Moresen (med fagsak)',
+            rolle: 'MOR',
         },
     ],
     '12345678912': [],
 };
 
 export const HeaderOgSøk = () => {
-    const [søkeresultat, settSøkeresultat] = useState<Ressurs<Søkeresultat[]>>(byggTomRessurs());
+    const [søkeresultat, settSøkeresultat] = useState<Ressurs<ISøkeresultat[]>>(byggTomRessurs());
 
     const søk = (personIdent: string): void => {
         settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
             if (personIdent.length === 11) {
-                const søkeresultat: Søkeresultat[] | undefined = søkeResultater[personIdent];
+                const søkeresultat: ISøkeresultat[] | undefined = søkeResultater[personIdent];
                 settSøkeresultat(
-                    byggDataRessurs<Søkeresultat[]>(
+                    byggDataRessurs<ISøkeresultat[]>(
                         søkeresultat !== undefined ? søkeresultat : søkeResultater[defaultIdent],
                     ),
                 );

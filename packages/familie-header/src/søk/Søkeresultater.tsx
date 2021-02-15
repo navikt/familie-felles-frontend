@@ -3,55 +3,26 @@ import React from 'react';
 import styled from 'styled-components';
 
 import AlertStripe from 'nav-frontend-alertstriper';
-import navFarger from 'nav-frontend-core';
-import { Normaltekst } from 'nav-frontend-typografi';
 
-import { adressebeskyttelsestyper, Ressurs, RessursStatus } from '@navikt/familie-typer';
+import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
 import { inputId } from '.';
-import { formaterPersonIdent } from './formatter';
-import { Søkeresultat } from '../types';
+import { ISøkeresultat } from '../types';
+import Søkeresultat from './Søkeresultat';
 
 interface Props {
     formaterResultat?: (
-        søkeresultat: Søkeresultat,
+        søkeresultat: ISøkeresultat,
         erSøkeresultatValgt: boolean,
     ) => React.ReactNode;
-    søkeresultatOnClick: (søkResultat: Søkeresultat) => void;
-    søkeresultater: Ressurs<Søkeresultat[]>;
+    søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
+    søkeresultater: Ressurs<ISøkeresultat[]>;
     valgtSøkeresultat: number;
     settValgtSøkeresultat: (søkeresultatIndex: number) => void;
 }
 
-const ResultatListe = styled.ul`
+export const StyledAlertStripe = styled(AlertStripe)`
     width: 20rem;
-    padding: 0;
-    margin: 0;
-`;
-
-const StyledAlertStripe = styled(AlertStripe)`
-    width: 20rem;
-`;
-
-const ResultatListeElement = styled.li<{ fokus: boolean }>`
-    list-style-type: none;
-    padding: 0.5rem;
-    outline: ${({ fokus }) => (fokus ? `3px solid ${navFarger.orangeFocus}` : '')};
-
-    &:hover {
-        background-color: ${navFarger.navLysGra};
-        cursor: pointer;
-    }
-`;
-
-const ResultatListeElementKnapp = styled.div`
-    display: flex;
-    flex-direction: row;
-
-    svg {
-        text-align: center;
-        padding-right: 0.5rem;
-    }
 `;
 
 const Søkeresultater: React.FC<Props> = ({
@@ -63,65 +34,14 @@ const Søkeresultater: React.FC<Props> = ({
 }) => {
     switch (søkeresultater.status) {
         case RessursStatus.SUKSESS:
-            return søkeresultater.data.length > 0 ? (
-                <ResultatListe aria-labelledby={inputId}>
-                    {søkeresultater.data.map((søkeresultat: Søkeresultat, index: number) => {
-                        if (formaterResultat) {
-                            return formaterResultat(søkeresultat, index === valgtSøkeresultat);
-                        } else {
-                            return (
-                                <ResultatListeElement
-                                    key={index}
-                                    fokus={index === valgtSøkeresultat}
-                                >
-                                    <ResultatListeElementKnapp
-                                        aria-label={
-                                            søkeresultat.harTilgang
-                                                ? søkeresultat.navn
-                                                : 'Person har diskresjonskode'
-                                        }
-                                        aria-selected={index === valgtSøkeresultat}
-                                        role={'option'}
-                                        onClick={() => {
-                                            søkeresultatOnClick(søkeresultat);
-                                            settValgtSøkeresultat(index);
-                                        }}
-                                    >
-                                        {søkeresultat.ikon}
-                                        <div>
-                                            <Normaltekst>
-                                                {søkeresultat.harTilgang
-                                                    ? `${søkeresultat.navn} (${formaterPersonIdent(
-                                                          søkeresultat.ident,
-                                                      )})`
-                                                    : `Personen har diskresjonskode ${
-                                                          søkeresultat.adressebeskyttelseGradering
-                                                              ? adressebeskyttelsestyper[
-                                                                    søkeresultat
-                                                                        .adressebeskyttelseGradering
-                                                                ]
-                                                              : 'ukjent'
-                                                      }`}
-                                            </Normaltekst>
-
-                                            {!søkeresultat.fagsakId && søkeresultat.harTilgang && (
-                                                <Normaltekst>
-                                                    {`Ingen fagsak. ${
-                                                        !søkeresultat.fagsakId
-                                                            ? 'Trykk for å opprette >'
-                                                            : ''
-                                                    }`}
-                                                </Normaltekst>
-                                            )}
-                                        </div>
-                                    </ResultatListeElementKnapp>
-                                </ResultatListeElement>
-                            );
-                        }
-                    })}
-                </ResultatListe>
-            ) : (
-                <StyledAlertStripe type={'info'}>Beklager, ingen treff</StyledAlertStripe>
+            return (
+                <Søkeresultat
+                    søkeresultater={søkeresultater.data}
+                    valgtSøkeresultat={valgtSøkeresultat}
+                    settValgtSøkeresultat={settValgtSøkeresultat}
+                    formaterResultat={formaterResultat}
+                    søkeresultatOnClick={søkeresultatOnClick}
+                />
             );
         case RessursStatus.FEILET:
         case RessursStatus.FUNKSJONELL_FEIL:
