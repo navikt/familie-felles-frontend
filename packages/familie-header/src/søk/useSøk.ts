@@ -5,20 +5,13 @@ import { inputId } from '.';
 import { ISøkeresultat } from '..';
 
 export interface Props {
-    label: React.ReactNode;
     nullstillSøkeresultater: () => void;
     søk: (value: string) => void;
     søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
     søkeresultater: Ressurs<ISøkeresultat[]>;
 }
 
-const useSøk = ({
-    label,
-    nullstillSøkeresultater,
-    søk,
-    søkeresultatOnClick,
-    søkeresultater,
-}: Props) => {
+const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkeresultater }: Props) => {
     const [ident, settIdent] = useState('');
     const [identSistSøktPå, settIdentSistSøktPå] = useState('');
     const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
@@ -63,14 +56,6 @@ const useSøk = ({
         søk(identUtenWhitespace);
         settIdentSistSøktPå(identUtenWhitespace);
         settAnkerPåInput();
-    };
-
-    const knappTitle = () => {
-        if (søkeresultater.status === RessursStatus.HENTER) {
-            return 'søker';
-        } else {
-            return typeof label === 'string' ? label : 'søk';
-        }
     };
 
     const handleGlobalKeydown = (event: KeyboardEvent) => {
@@ -143,7 +128,6 @@ const useSøk = ({
     return {
         anker,
         ident,
-        knappTitle,
         nullstillInput,
         onInputChange,
         onInputKeyDown,

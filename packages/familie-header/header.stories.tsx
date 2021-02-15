@@ -101,7 +101,7 @@ export const HeaderOgSøk = () => {
                 );
             } else {
                 settSøkeresultat(
-                    byggFunksjonellFeilRessurs('Ugyldig. Tast inn fnr/dnr (11 siffer)'),
+                    byggFunksjonellFeilRessurs('Ugyldig fødsels- eller d-nummer (11 siffer)'),
                 );
             }
         }, 1000);

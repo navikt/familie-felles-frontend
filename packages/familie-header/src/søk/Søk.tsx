@@ -39,6 +39,12 @@ const SøkContainer = styled.div`
             box-shadow: ${oransjBoxShadow};
         }
     }
+
+    .knapp__spinner {
+        width: 1rem;
+        height: 1rem;
+        margin: 0;
+    }
 `;
 
 const StyledTømknapp = styled(Flatknapp)`
@@ -49,6 +55,10 @@ const StyledTømknapp = styled(Flatknapp)`
     width: 3rem;
     border-radius: 0;
 
+    svg > path {
+        fill: ${navFarger.navBla};
+    }
+
     :hover {
         background-color: ${navFarger.navBla} !important;
         border-color: ${navFarger.navBla} !important;
@@ -58,10 +68,13 @@ const StyledTømknapp = styled(Flatknapp)`
         }
     }
 
+    :focus:hover {
+        background-color: ${navFarger.white} !important;
+    }
+
     :focus {
         z-index: 1000;
-        background-color: ${navFarger.white} !important;
-        border: ${navFarger.white};
+        border-color: ${navFarger.navBla};
         box-shadow: ${oransjBoxShadow};
 
         svg > path {
@@ -70,36 +83,9 @@ const StyledTømknapp = styled(Flatknapp)`
     }
 `;
 
-const StyledHovedknapp = styled(Flatknapp)`
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 0;
-    width: 3rem;
-    background-color: ${navFarger.navBla};
+const StyledSøkKnapp = styled(StyledTømknapp)`
     border-radius: 0 4px 4px 0;
-
-    .knapp__spinner {
-        width: 1rem;
-        height: 1rem;
-        margin: 0;
-    }
-
-    :hover {
-        border-color: #0074df !important;
-        background-color: #0074df !important;
-    }
-
-    :focus {
-        z-index: 1000;
-        background-color: ${navFarger.white} !important;
-        border: ${navFarger.white};
-        box-shadow: ${oransjBoxShadow};
-
-        svg > path {
-            fill: ${navFarger.navBla};
-        }
-    }
+    right: 0;
 `;
 
 export const inputId = 'sok-input';
@@ -116,7 +102,6 @@ export const Søk = ({
     const {
         anker,
         ident,
-        knappTitle,
         nullstillInput,
         onInputChange,
         onInputKeyDown,
@@ -127,7 +112,6 @@ export const Søk = ({
         utløserSøk,
         valgtSøkeresultat,
     } = useSøk({
-        label,
         nullstillSøkeresultater,
         søk,
         søkeresultatOnClick,
@@ -162,8 +146,7 @@ export const Søk = ({
                         <Close color={navFarger.navBla} width={32} height={32} />
                     </StyledTømknapp>
                 )}
-                <StyledHovedknapp
-                    title={knappTitle()}
+                <StyledSøkKnapp
                     ref={søkKnappRef}
                     onClick={() => {
                         utløserSøk();
@@ -171,9 +154,9 @@ export const Søk = ({
                     spinner={søkeresultater.status === RessursStatus.HENTER}
                 >
                     {søkeresultater.status !== RessursStatus.HENTER && (
-                        <Search id={'sok-ikon'} color={navFarger.white} width={32} height={32} />
+                        <Search color={navFarger.navBla} width={32} height={32} />
                     )}
-                </StyledHovedknapp>
+                </StyledSøkKnapp>
             </SøkContainer>
 
             <Popover
