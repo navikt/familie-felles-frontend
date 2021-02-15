@@ -47,6 +47,7 @@ const StyledTømknapp = styled(Flatknapp)`
     top: 0;
     padding: 0;
     width: 3rem;
+    border-radius: 0;
 
     :hover {
         background-color: ${navFarger.navBla} !important;
@@ -176,7 +177,7 @@ export const Søk = ({
             </SøkContainer>
 
             <Popover
-                id={'søkresultat'}
+                id={'søkeresultat'}
                 ankerEl={anker}
                 orientering={PopoverOrientering.UnderVenstre}
                 autoFokus={false}

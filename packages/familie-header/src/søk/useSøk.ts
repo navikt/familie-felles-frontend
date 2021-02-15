@@ -26,12 +26,7 @@ const useSøk = ({
     const [erGyldig, settErGyldig] = useState(false);
     const søkKnappRef = useRef(null);
     const tømKnappRef = useRef(null);
-
     const ankerRef = useRef<HTMLElement>();
-
-    useEffect(() => {
-        ankerRef.current = anker;
-    }, [anker]);
 
     useEffect(() => {
         if (erGyldig) {
@@ -58,7 +53,9 @@ const useSøk = ({
     };
 
     const settAnkerPåInput = () => {
-        settAnker(document.getElementById(inputId) as HTMLElement);
+        const ankerElement = document.getElementById(inputId) as HTMLElement;
+        settAnker(ankerElement);
+        ankerRef.current = ankerElement;
     };
 
     const utløserSøk = () => {

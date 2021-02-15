@@ -22,7 +22,7 @@
 
   &:focus, &:active {
     outline: none;
-    box-shadow: inset 0 0 0 3px @navOransje;
+    box-shadow: inset 0 0 0 3px @orangeFocus;
   }
 }
 
@@ -56,8 +56,9 @@
     font-weight: 600;
     text-decoration: none;
 
-    :focus {
+    &:focus {
       box-shadow: 0 0 0 3px @orangeFocus;
+      outline: 0;
     }
   }
 
