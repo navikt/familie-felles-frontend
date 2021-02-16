@@ -1,6 +1,6 @@
 {
   "name": "@navikt/familie-header",
-  "version": "2.0.25",
+  "version": "2.0.26",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
