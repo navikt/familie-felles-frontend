@@ -127,6 +127,7 @@ export const Søk = ({
                     label
                 )}
                 <FnrInput
+                    autoComplete={'off'}
                     aria-label={props.placeholder}
                     id={inputId}
                     onChange={onInputChange}
