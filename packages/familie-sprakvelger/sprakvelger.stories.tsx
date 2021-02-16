@@ -1,5 +1,5 @@
 import React from 'react';
-import Sprakvelger from './src/Sprakvelger';
+import { Sprakvelger } from './src/Sprakvelger';
 
 export default {
     component: Sprakvelger,

@@ -52,7 +52,7 @@ const StyledChevronNed = styled(NedChevron)`
   align-self: center;
 `;
 
-const Sprakvelger: React.FC<any> = () => {
+export const Sprakvelger: React.FC<any> = () => {
     const [locale, setLocale] = useSpråkContext();
     const språkObjekter = hentListeMedSpråk();
 
@@ -81,5 +81,3 @@ const Sprakvelger: React.FC<any> = () => {
         </StyledSpråkvelger>
     );
 };
-
-export default Sprakvelger;
