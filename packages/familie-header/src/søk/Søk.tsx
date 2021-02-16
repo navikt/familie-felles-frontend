@@ -150,6 +150,7 @@ export const Søk = ({
                     </StyledTømknapp>
                 )}
                 <StyledSøkKnapp
+                    title={'søk'}
                     id={søkKnappId}
                     onClick={() => {
                         utløserSøk();
