@@ -54,7 +54,7 @@ const StyledTømknapp = styled(Flatknapp)`
     padding: 0;
     width: 3rem;
     border-radius: 0;
-    background-color: unset;
+    background: none;
 
     svg > path {
         fill: ${navFarger.navBla};

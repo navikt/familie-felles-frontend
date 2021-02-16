@@ -24,7 +24,7 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
         if (erGyldig) {
             utløserSøk();
         }
-    }, [erGyldig]);
+    }, [erGyldig, ident]);
 
     useEffect(() => {
         window.addEventListener('keydown', handleGlobalKeydown);
