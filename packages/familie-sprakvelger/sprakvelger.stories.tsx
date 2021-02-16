@@ -1,5 +1,5 @@
 import React from 'react';
-import Sprakvelger from './src/Sprakvelger'
+import Sprakvelger from './src/Sprakvelger';
 
 export default {
     component: Sprakvelger,
@@ -10,5 +10,5 @@ export default {
 };
 
 export const FamilieSprakvelger: React.FC = () => {
-    return <Sprakvelger/>;
+    return <Sprakvelger />;
 };
