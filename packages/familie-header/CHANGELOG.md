@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.27](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.26...@navikt/familie-header@2.0.27) (2021-02-16)
+
+
+### Bug Fixes
+
+* **familie-header:** fikser bug hvor søk på nytt gyldig fnr ikke trigget søk. Setter riktigere css p ([772d373](https://github.com/navikt/familie-felles-frontend/commit/772d3736a1b6920243fd1a194b62587c5faf2ca0))
+* **familie-header:** retter UU bug hvor knapp ikke hadde beskrivende tekst. ([f0f7d2d](https://github.com/navikt/familie-felles-frontend/commit/f0f7d2d7e5a71bf73ff1175d221309aa14509e12))
+
+
+
+
+
 ## [2.0.26](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.25...@navikt/familie-header@2.0.26) (2021-02-16)
 
 **Note:** Version bump only for package @navikt/familie-header
