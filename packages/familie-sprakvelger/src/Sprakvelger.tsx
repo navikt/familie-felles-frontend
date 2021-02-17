@@ -7,7 +7,7 @@ import navFarger from 'nav-frontend-core';
 import { Button, Wrapper } from 'react-aria-menubutton';
 import { EngelskFlaggIkon, NorskFlaggIkon } from '@navikt/familie-ikoner';
 import { useSprakContext } from './SprakContext';
-import {LocaleType, Sprak} from './typer';
+import { LocaleType, Sprak } from './typer';
 
 const StyledSprakvelger = styled.div`
     width: 100%;

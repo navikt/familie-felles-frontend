@@ -1,9 +1,9 @@
 import React, { createContext, useContext, useState } from 'react';
 import { IntlProvider } from 'react-intl';
-import { Sprak} from './typer';
+import { Sprak } from './typer';
 
 interface SprakProviderProps {
-    tekster: Record<string, string>;
+    tekster: Record<string, Record<string, string>>;
     defaultSprak: Sprak;
 }
 
@@ -15,7 +15,13 @@ const SprakProvider: React.FC<SprakProviderProps> = ({ tekster, defaultSprak, ch
 
     return (
         <SprakContext.Provider value={[sprak, setSprak]}>
-            <IntlProvider locale={defaultSprak.locale} messages={tekster}>
+            <IntlProvider
+                locale={defaultSprak.locale}
+                messages={
+                    // @ts-ignore
+                    tekster[sprak.locale]
+                }
+            >
                 {children}
             </IntlProvider>
         </SprakContext.Provider>
