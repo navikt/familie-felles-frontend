@@ -4,10 +4,10 @@ import styled from 'styled-components/macro';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { SpråkSelectMenu } from './SpråkSelectMenu';
 import navFarger from 'nav-frontend-core';
-import { hentListeMedSpråk, hentValgtSpråk } from './utils';
 import { Button, Wrapper } from 'react-aria-menubutton';
 import { EngelskFlaggIkon, NorskFlaggIkon } from '@navikt/familie-ikoner';
 import { useSprakContext } from './SprakContext';
+import {LocaleType, Sprak} from './typer';
 
 const StyledSprakvelger = styled.div`
     width: 100%;
@@ -51,15 +51,14 @@ const StyledChevronNed = styled(NedChevron)`
     align-self: center;
 `;
 
-export const Sprakvelger: React.FC<any> = () => {
-    const [ locale, setLocale ] = useSprakContext();
-    const språkObjekter = hentListeMedSpråk();
+export const Sprakvelger: React.FC<{ støttedeSprak: Sprak[] }> = ({ støttedeSprak }) => {
+    const [sprak, setSprak] = useSprakContext();
 
     const handleSelection = (value: JSX.Element[]) => {
-        const språk = value[1].props.children;
-        const loc = språkObjekter.find(språkobj => språkobj.tittel === språk);
-        if (loc) {
-            setLocale(loc.locale);
+        const valgtSprakTittel = value[1].props.children;
+        const valgtSprak = støttedeSprak.find(sprakObj => sprakObj.tittel === valgtSprakTittel);
+        if (valgtSprak) {
+            setSprak(valgtSprak);
         }
     };
 
@@ -68,12 +67,12 @@ export const Sprakvelger: React.FC<any> = () => {
             <StyledWrapper onSelection={(value: JSX.Element[]) => handleSelection(value)}>
                 <StyledButton>
                     <SVGFlagg>
-                        {locale === 'en' ? <EngelskFlaggIkon /> : <NorskFlaggIkon />}
+                        {sprak.locale === LocaleType.en ? <EngelskFlaggIkon /> : <NorskFlaggIkon />}
                     </SVGFlagg>
-                    <StyledTekst>{hentValgtSpråk(locale)}</StyledTekst>
+                    <StyledTekst>{sprak.tittel}</StyledTekst>
                     <StyledChevronNed />
                 </StyledButton>
-                <SpråkSelectMenu locale={locale} språkObjekter={språkObjekter} />
+                <SpråkSelectMenu locale={sprak.locale} støttedeSprak={støttedeSprak} />
             </StyledWrapper>
         </StyledSprakvelger>
     );

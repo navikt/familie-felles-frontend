@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sprakvelger } from './src/Sprakvelger';
+import { LocaleType } from './src/typer';
 
 export default {
     component: Sprakvelger,
@@ -10,5 +11,12 @@ export default {
 };
 
 export const FamilieSprakvelger: React.FC = () => {
-    return <Sprakvelger />;
+    return (
+        <Sprakvelger
+            støttedeSprak={[
+                { tittel: 'Engelsk', locale: LocaleType.en },
+                { tittel: 'Norsk', locale: LocaleType.nb },
+            ]}
+        />
+    );
 };

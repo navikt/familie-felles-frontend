@@ -3,8 +3,8 @@ import { Menu, MenuItem } from 'react-aria-menubutton';
 import { StyledTekst, SVGFlagg } from './Sprakvelger';
 import styled from 'styled-components/macro';
 import navFarger from 'nav-frontend-core';
-import { Språk } from './utils';
 import { EngelskFlaggIkon, NorskFlaggIkon } from '@navikt/familie-ikoner';
+import { Sprak } from './typer';
 
 const StyledSpråkMeny = styled(Menu)`
     width: 100%;
@@ -73,7 +73,7 @@ const StyledMenuItem = styled(MenuItem)`
     }
 `;
 
-const SelectMenuItem: FC<{ språkObj: Språk }> = ({ språkObj }) => {
+const SelectMenuItem: FC<{ språkObj: Sprak }> = ({ språkObj }) => {
     return (
         <li key={språkObj.locale} value={språkObj.locale}>
             <StyledMenuItem>
@@ -87,17 +87,16 @@ const SelectMenuItem: FC<{ språkObj: Språk }> = ({ språkObj }) => {
 };
 
 export const SpråkSelectMenu: FC<{
-    språkObjekter: Språk[];
+    støttedeSprak: Sprak[];
     locale: string;
-}> = ({ språkObjekter, locale }) => {
-
+}> = ({ støttedeSprak, locale }) => {
     return (
         <StyledSpråkMeny>
             <StyledListe>
-                {språkObjekter.map(språkObj => {
+                {støttedeSprak.map(sprakObj => {
                     return (
-                        språkObj.locale !== locale && (
-                            <SelectMenuItem key={språkObj.locale} språkObj={språkObj} />
+                        sprakObj.locale !== locale && (
+                            <SelectMenuItem key={sprakObj.locale} språkObj={sprakObj} />
                         )
                     );
                 })}
