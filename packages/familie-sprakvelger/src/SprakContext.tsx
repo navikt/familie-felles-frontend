@@ -2,24 +2,23 @@ import React, { createContext, useContext, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { LocaleType } from './utils';
 
-
-interface SpråkProviderProps {
-    tekster?: Record<string, string> ;
+interface SprakProviderProps {
+    tekster?: Record<string, string>;
 }
 
-const SpråkContext = createContext<any>(['', () => {}]);
-const useSpråkContext = () => useContext(SpråkContext);
+const SprakContext = createContext<any>(['', () => {}]);
+const useSprakContext = () => useContext(SprakContext);
 
-const SpråkProvider: React.FC<SpråkProviderProps> = ({ tekster, children }) => {
+const SprakProvider: React.FC<SprakProviderProps> = ({ tekster, children }) => {
     const [locale, setLocale] = useState<LocaleType>(LocaleType.nb);
 
     return (
-        <SpråkContext.Provider value={[locale, setLocale]}>
+        <SprakContext.Provider value={[locale, setLocale]}>
             <IntlProvider locale={locale} messages={tekster}>
                 {children}
             </IntlProvider>
-        </SpråkContext.Provider>
+        </SprakContext.Provider>
     );
 };
 
-export { useSpråkContext, SpråkProvider };
+export { useSprakContext, SprakProvider };
