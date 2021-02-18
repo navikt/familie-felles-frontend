@@ -5,7 +5,8 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { SpråkSelectMenu } from './SpråkSelectMenu';
 import navFarger from 'nav-frontend-core';
 import { Button, Wrapper } from 'react-aria-menubutton';
-import { EngelskFlaggIkon, NorskFlaggIkon } from '@navikt/familie-ikoner';
+import { EngelskFlaggIkon } from './flagg/EngelskFlaggIkon';
+import { NorskFlaggIkon } from './flagg/NorskFlaggIkon';
 import { useSprakContext } from './SprakContext';
 import { LocaleType, Sprak } from './typer';
 

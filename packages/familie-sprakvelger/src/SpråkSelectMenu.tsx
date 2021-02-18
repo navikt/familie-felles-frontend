@@ -3,8 +3,10 @@ import { Menu, MenuItem } from 'react-aria-menubutton';
 import { StyledTekst, SVGFlagg } from './Sprakvelger';
 import styled from 'styled-components/macro';
 import navFarger from 'nav-frontend-core';
-import { EngelskFlaggIkon, NorskFlaggIkon } from '@navikt/familie-ikoner';
-import { Sprak } from './typer';
+import { EngelskFlaggIkon } from './flagg/EngelskFlaggIkon';
+import { NorskFlaggIkon } from './flagg/NorskFlaggIkon';
+
+import { LocaleType, Sprak } from './typer';
 
 const StyledSpråkMeny = styled(Menu)`
     width: 100%;
@@ -78,7 +80,7 @@ const SelectMenuItem: FC<{ språkObj: Sprak }> = ({ språkObj }) => {
         <li key={språkObj.locale} value={språkObj.locale}>
             <StyledMenuItem>
                 <SVGFlagg key={språkObj.locale}>
-                    {språkObj.locale === 'en' ? <EngelskFlaggIkon /> : <NorskFlaggIkon />}
+                    {språkObj.locale === LocaleType.en ? <EngelskFlaggIkon /> : <NorskFlaggIkon />}
                 </SVGFlagg>
                 <StyledTekst id={språkObj.tittel}>{språkObj.tittel}</StyledTekst>
             </StyledMenuItem>
