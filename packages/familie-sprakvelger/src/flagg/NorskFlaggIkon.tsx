@@ -6,7 +6,7 @@ export const NorskFlaggIkon = () => {
     const [sprak] = useSprakContext();
 
     return (
-        <svg width={25} height={18} aria-label={ariaLabelForNorskFlagg(sprak.locale)}>
+        <svg width={25} height={18} aria-label={ariaLabelForNorskFlagg(sprak.locale)} role="img">
             <g fill="none" fillRule="evenodd">
                 <path fill="#EF2B2D" d="M0 0h25v18H0z" />
                 <path fill="#FFF" d="M6.875 0h4.688v18H6.875z" />
