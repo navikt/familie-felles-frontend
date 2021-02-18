@@ -1,0 +1,40 @@
+{
+    "version": "1.0.0",
+    "name": "@navikt/familie-sprakvelger",
+    "author": "NAV",
+    "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "module": "dist/index.js",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "yarn run clean && yarn run copy-less && yarn run tsc",
+        "clean": "rm -rf ./dist",
+        "copy-less": "copyfiles -u 1 src/**/*.less dist",
+        "tsc": "tsc -p tsconfig.json"
+    },
+    "dependencies": {
+        "@navikt/familie-ikoner": "^3.1.9",
+        "@types/react-aria-menubutton": "^6.2.7",
+        "nav-frontend-core": "^5.0.11",
+        "nav-frontend-chevron": "^1.0.28",
+        "nav-frontend-chevron-style": "^1.0.4",
+        "nav-frontend-typografi": "^3.0.3",
+        "nav-frontend-typografi-style": "^1.0.34",
+        "react-aria-menubutton": "^7.0.1",
+        "react-intl": "^5.12.3",
+        "styled-components": "^5.2.1"
+    },
+    "devDependencies": {
+        "@types/styled-components": "^5.1.4"
+    },
+    "peerDependencies": {
+        "react": "^16.3.0"
+    }
+}
