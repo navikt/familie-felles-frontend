@@ -1,5 +1,5 @@
 import * as React from 'react';
-import NedChevron from 'nav-frontend-chevron/lib/ned-chevron';
+import { NedChevron } from 'nav-frontend-chevron';
 import styled from 'styled-components/macro';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { SpråkSelectMenu } from './SpråkSelectMenu';
