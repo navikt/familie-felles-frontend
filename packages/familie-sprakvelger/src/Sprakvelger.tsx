@@ -1,6 +1,6 @@
 import * as React from 'react';
-import NedChevron from 'nav-frontend-chevron/lib/ned-chevron';
-import styled from 'styled-components/macro';
+import { NedChevron } from 'nav-frontend-chevron';
+import styled from 'styled-components';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { SpråkSelectMenu } from './SpråkSelectMenu';
 import navFarger from 'nav-frontend-core';

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Menu, MenuItem } from 'react-aria-menubutton';
 import { StyledTekst, SVGFlagg } from './Sprakvelger';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import navFarger from 'nav-frontend-core';
 import { EngelskFlaggIkon } from './flagg/EngelskFlaggIkon';
 import { NorskFlaggIkon } from './flagg/NorskFlaggIkon';
