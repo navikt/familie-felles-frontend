@@ -27,7 +27,7 @@ const StyledButton = styled(Button)`
 
     &:focus {
         outline: none;
-        box-shadow: 0 0 0 3px ${navFarger.orangeFocus};
+        box-shadow: 0 0 0 3px ${navFarger.fokusFarge};
         border-color: transparent;
     }
 `;
