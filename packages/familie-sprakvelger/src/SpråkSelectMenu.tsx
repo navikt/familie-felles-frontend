@@ -11,7 +11,7 @@ const StyledListe = styled.ul`
     position: absolute;
     width: 100%;
     z-index: 100;
-    margin-top: 3px;
+    margin-top: 0;
 
     :hover,
     :focus {
@@ -26,9 +26,9 @@ const StyledListe = styled.ul`
 const StyledMenuItem = styled(MenuItem)`
     padding: 0.5rem 1rem;
     background-color: #ffffff;
-    border-bottom: 1px solid ${navFarger.navGra40};
-    border-left: 1px solid ${navFarger.navGra40};
-    border-right: 1px solid ${navFarger.navGra40};
+    border-bottom: 1px solid ${navFarger.navGra20};
+    border-left: 1px solid ${navFarger.navGra20};
+    border-right: 1px solid ${navFarger.navGra20};
 
     :hover,
     :focus {
