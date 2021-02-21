@@ -179,10 +179,7 @@ export const Søk = ({
                     settValgtSøkeresultat={søkeresultatIndex =>
                         settValgtSøkeresultat(søkeresultatIndex)
                     }
-                    søkeresultatOnClick={søkeResultat => {
-                        søkeresultatOnClick(søkeResultat);
-                        nullstillInput(true);
-                    }}
+                    søkeresultatOnClick={søkeresultatOnClick}
                     søkeresultater={søkeresultater}
                     valgtSøkeresultat={valgtSøkeresultat}
                 />
