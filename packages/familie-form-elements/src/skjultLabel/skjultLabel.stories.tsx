@@ -11,15 +11,17 @@ export default {
     title: 'Komponenter/Form-elementer/SkjultLabel',
 };
 
-export const SkjultLabelStory: React.FC = () => (
-    <>
-        <Normaltekst>
-            I noen tilfeller passer det ikke alltid i layouten med en tilhørende label som er synlig
-            til hvert form-element. Likevel er det viktig at koden har en label, slik at de som
-            bruker skjermleser får opp form-elements i riktig kontekst. Denne komponenten legger på
-            en skjult label, som du vil se hvis du åpner inspect.
-        </Normaltekst>
-        <SkjultLabel htmlFor="input" />
-        <Input id="input" />
-    </>
-);
+export const SkjultLabelStory: React.FC = () => {
+    return (
+        <>
+            <Normaltekst>
+                I noen tilfeller passer det ikke alltid i layouten med en tilhørende label som er
+                synlig til hvert form-element. Likevel er det viktig at koden har en label, slik at
+                de som bruker skjermleser får opp form-elements i riktig kontekst. Denne komponenten
+                legger på en skjult label, som du vil se hvis du åpner inspect.
+            </Normaltekst>
+            <SkjultLabel htmlFor="input" />
+            <Input id="input" />
+        </>
+    );
+};
