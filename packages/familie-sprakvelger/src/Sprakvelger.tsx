@@ -1,62 +1,44 @@
 import * as React from 'react';
-import { NedChevron } from 'nav-frontend-chevron';
 import styled from 'styled-components';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { SpråkSelectMenu } from './SpråkSelectMenu';
 import navFarger from 'nav-frontend-core';
 import { Button, Wrapper } from 'react-aria-menubutton';
-import { EngelskFlaggIkon } from './flagg/EngelskFlaggIkon';
-import { NorskFlaggIkon } from './flagg/NorskFlaggIkon';
 import { useSprakContext } from './SprakContext';
-import { LocaleType, Sprak } from './typer';
-
-const StyledSprakvelger = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content: center;
-`;
+import { Sprak } from './typer';
+import { Globe, Expand, Collapse } from '@navikt/ds-icons';
 
 const StyledWrapper = styled(Wrapper)`
     width: 170px;
-    border: 3px solid ${navFarger.navGra40};
-    border-radius: 0.25rem;
     position: relative;
     outline: none;
+    margin: auto;
 `;
 
 const StyledButton = styled(Button)`
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    grid-gap: 1.22rem;
-    padding: 0.5rem 1rem 0.5rem 1rem;
+    display: flex;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    outline: none;
+    border-radius: 0.25rem;
+    border: 3px solid ${navFarger.navGra40};
 
     &:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px ${navFarger.orangeFocus};
-        border-color: transparent;
+        border: solid 3px ${navFarger.fokusFarge};
     }
 `;
 
-export const SVGFlagg = styled.div`
-    text-align: left;
-    width: 65%;
-`;
-
-export const StyledTekst = styled(Normaltekst)`
-    text-align: left;
-    width: 65%;
-`;
-
-const StyledChevronNed = styled(NedChevron)`
-    align-self: center;
+const StyledNormalTekst = styled(Normaltekst)`
+    padding: 0 1.22rem;
+    flex-grow: 1;
 `;
 
 export const Sprakvelger: React.FC<{ støttedeSprak: Sprak[] }> = ({ støttedeSprak }) => {
     const [sprak, setSprak] = useSprakContext();
+    const [erÅpen, setErÅpen] = React.useState(false);
 
-    const handleSelection = (value: JSX.Element[]) => {
-        const valgtSprakTittel = value[1].props.children;
+    const handleSelection = (value: JSX.Element) => {
+        const valgtSprakTittel = value.props.children;
         const valgtSprak = støttedeSprak.find(sprakObj => sprakObj.tittel === valgtSprakTittel);
         if (valgtSprak) {
             setSprak(valgtSprak);
@@ -64,17 +46,16 @@ export const Sprakvelger: React.FC<{ støttedeSprak: Sprak[] }> = ({ støttedeSp
     };
 
     return (
-        <StyledSprakvelger>
-            <StyledWrapper onSelection={(value: JSX.Element[]) => handleSelection(value)}>
-                <StyledButton>
-                    <SVGFlagg>
-                        {sprak.locale === LocaleType.en ? <EngelskFlaggIkon /> : <NorskFlaggIkon />}
-                    </SVGFlagg>
-                    <StyledTekst>{sprak.tittel}</StyledTekst>
-                    <StyledChevronNed />
-                </StyledButton>
-                <SpråkSelectMenu locale={sprak.locale} støttedeSprak={støttedeSprak} />
-            </StyledWrapper>
-        </StyledSprakvelger>
+        <StyledWrapper
+            onSelection={(value: JSX.Element) => handleSelection(value)}
+            onMenuToggle={wrapperState => setErÅpen(wrapperState.isOpen)}
+        >
+            <StyledButton>
+                <Globe />
+                <StyledNormalTekst>{sprak.tittel}</StyledNormalTekst>
+                {erÅpen ? <Collapse /> : <Expand />}
+            </StyledButton>
+            <SpråkSelectMenu locale={sprak.locale} støttedeSprak={støttedeSprak} />
+        </StyledWrapper>
     );
 };

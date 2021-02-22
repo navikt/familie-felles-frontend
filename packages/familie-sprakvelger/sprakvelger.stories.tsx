@@ -14,10 +14,13 @@ export default {
 
 const messages = {
     en: {
-        greeting: 'Hey you',
+        greeting: 'Hey på engelsk',
     },
     nb: {
-        greeting: 'Hei på deg',
+        greeting: 'Hei på norsk',
+    },
+    nn: {
+        greeting: 'Hei på nynorsk',
     },
 };
 
@@ -30,7 +33,8 @@ export const FamilieSprakvelger: React.FC = () => {
             <Sprakvelger
                 støttedeSprak={[
                     { tittel: 'Engelsk', locale: LocaleType.en },
-                    { tittel: 'Norsk', locale: LocaleType.nb },
+                    { tittel: 'Bokmål', locale: LocaleType.nb },
+                    { tittel: 'Nynorsk', locale: LocaleType.nn },
                 ]}
             />
             <FormattedMessage id={'greeting'} />
