@@ -3,7 +3,7 @@ import { Menu, MenuItem } from 'react-aria-menubutton';
 import styled from 'styled-components';
 import navFarger from 'nav-frontend-core';
 
-import { Sprak } from './typer';
+import { LocaleType, sprakTittel } from './typer';
 import { Normaltekst } from 'nav-frontend-typografi';
 
 const StyledListe = styled.ul`
@@ -42,28 +42,26 @@ const StyledMenuItem = styled(MenuItem)`
     }
 `;
 
-const SelectMenuItem: FC<{ språkObj: Sprak }> = ({ språkObj }) => {
+const SelectMenuItem: FC<{ locale: LocaleType }> = ({ locale }) => {
     return (
-        <li key={språkObj.locale} value={språkObj.locale}>
+        <li value={locale}>
             <StyledMenuItem>
-                <Normaltekst id={språkObj.tittel}>{språkObj.tittel}</Normaltekst>
+                <Normaltekst key={locale}>{sprakTittel[locale]}</Normaltekst>
             </StyledMenuItem>
         </li>
     );
 };
 
 export const SpråkSelectMenu: FC<{
-    støttedeSprak: Sprak[];
-    locale: string;
-}> = ({ støttedeSprak, locale }) => {
+    støttedeSprak: LocaleType[];
+    valgtLocale: LocaleType;
+}> = ({ støttedeSprak, valgtLocale }) => {
     return (
         <Menu>
             <StyledListe>
-                {støttedeSprak.map(sprakObj => {
+                {støttedeSprak.map(locale => {
                     return (
-                        sprakObj.locale !== locale && (
-                            <SelectMenuItem key={sprakObj.locale} språkObj={sprakObj} />
-                        )
+                        locale !== valgtLocale && <SelectMenuItem key={locale} locale={locale} />
                     );
                 })}
             </StyledListe>
