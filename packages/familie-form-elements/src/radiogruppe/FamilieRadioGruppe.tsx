@@ -1,5 +1,4 @@
-import { RadioGruppe } from 'nav-frontend-skjema';
-import { SkjemaGruppeProps } from 'nav-frontend-skjema';
+import { RadioGruppe, SkjemaGruppeProps } from 'nav-frontend-skjema';
 import React from 'react';
 import { FamilieLesefelt } from '../lesefelt';
 
