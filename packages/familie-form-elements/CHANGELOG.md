@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.1.0...@navikt/familie-form-elements@2.1.1) (2021-02-23)
+
+
+### Bug Fixes
+
+* **Skjult label eksport:** fiks feilmelding som kom pga. deafult eksport ([#275](https://github.com/navikt/familie-felles-frontend/issues/275)) ([0607a3e](https://github.com/navikt/familie-felles-frontend/commit/0607a3e19ba3714034310e85f0f7940561cd3d14))
+
+
+
+
+
 # [2.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.0.16...@navikt/familie-form-elements@2.1.0) (2021-02-22)
 
 
