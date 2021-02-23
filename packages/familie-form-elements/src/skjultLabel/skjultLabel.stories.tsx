@@ -1,5 +1,5 @@
 import React from 'react';
-import SkjultLabel from './SkjultLabel';
+import { SkjultLabel } from './SkjultLabel';
 import { Input } from 'nav-frontend-skjema';
 import { Normaltekst } from 'nav-frontend-typografi';
 

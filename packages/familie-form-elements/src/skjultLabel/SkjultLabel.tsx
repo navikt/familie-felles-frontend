@@ -13,8 +13,6 @@ export interface SkjultLabelProps {
     htmlFor: string;
 }
 
-const SkjultLabel: React.FC<SkjultLabelProps> = ({ htmlFor, children }) => (
+export const SkjultLabel: React.FC<SkjultLabelProps> = ({ htmlFor, children }) => (
     <StyledLabel htmlFor={htmlFor}>{children}</StyledLabel>
 );
-
-export default SkjultLabel;
