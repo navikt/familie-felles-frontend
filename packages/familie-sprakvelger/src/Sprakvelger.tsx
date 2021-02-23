@@ -7,6 +7,8 @@ import { Button, Wrapper } from 'react-aria-menubutton';
 import { useSprakContext } from './SprakContext';
 import { Sprak } from './typer';
 import { Globe, Expand, Collapse } from '@navikt/ds-icons';
+import { SkjultLabel } from '@navikt/familie-form-elements';
+import { hentSprakvelgerLabelTekst } from './utils';
 
 const StyledWrapper = styled(Wrapper)`
     width: 170px;
@@ -50,10 +52,13 @@ export const Sprakvelger: React.FC<{ støttedeSprak: Sprak[] }> = ({ støttedeSp
             onSelection={(value: JSX.Element) => handleSelection(value)}
             onMenuToggle={wrapperState => setErÅpen(wrapperState.isOpen)}
         >
-            <StyledButton>
-                <Globe />
+            <SkjultLabel htmlFor="språkvelger">
+                {hentSprakvelgerLabelTekst(sprak.locale)}
+            </SkjultLabel>
+            <StyledButton id="språkvelger">
+                <Globe role="img" />
                 <StyledNormalTekst>{sprak.tittel}</StyledNormalTekst>
-                {erÅpen ? <Collapse /> : <Expand />}
+                {erÅpen ? <Collapse role="img" /> : <Expand role="img" />}
             </StyledButton>
             <SpråkSelectMenu locale={sprak.locale} støttedeSprak={støttedeSprak} />
         </StyledWrapper>
