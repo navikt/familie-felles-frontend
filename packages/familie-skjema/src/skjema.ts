@@ -83,6 +83,7 @@ export const useSkjema = <Felter, SkjemaRespons>({
         kanSendeSkjema,
         nullstillSkjema,
         onSubmit,
+        settSubmitRessurs,
         skjema,
     };
 };
