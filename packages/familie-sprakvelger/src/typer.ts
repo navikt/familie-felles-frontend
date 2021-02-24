@@ -4,7 +4,8 @@ export enum LocaleType {
     nn = 'nn',
 }
 
-export interface Sprak {
-    tittel: string;
-    locale: LocaleType;
-}
+export const sprakTittel: Record<LocaleType, string> = {
+    [LocaleType.en]: 'English',
+    [LocaleType.nb]: 'Bokmål',
+    [LocaleType.nn]: 'Nynorsk',
+};

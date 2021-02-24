@@ -5,8 +5,10 @@ import { SpråkSelectMenu } from './SpråkSelectMenu';
 import navFarger from 'nav-frontend-core';
 import { Button, Wrapper } from 'react-aria-menubutton';
 import { useSprakContext } from './SprakContext';
-import { Sprak } from './typer';
+import { LocaleType, sprakTittel } from './typer';
 import { Globe, Expand, Collapse } from '@navikt/ds-icons';
+import { SkjultLabel } from '@navikt/familie-form-elements';
+import { hentSprakvelgerLabelTekst } from './utils';
 
 const StyledWrapper = styled(Wrapper)`
     width: 170px;
@@ -33,15 +35,14 @@ const StyledNormalTekst = styled(Normaltekst)`
     flex-grow: 1;
 `;
 
-export const Sprakvelger: React.FC<{ støttedeSprak: Sprak[] }> = ({ støttedeSprak }) => {
-    const [sprak, setSprak] = useSprakContext();
+export const Sprakvelger: React.FC<{ støttedeSprak: LocaleType[] }> = ({ støttedeSprak }) => {
+    const [valgtLocale, setValgtLocale] = useSprakContext();
     const [erÅpen, setErÅpen] = React.useState(false);
 
     const handleSelection = (value: JSX.Element) => {
-        const valgtSprakTittel = value.props.children;
-        const valgtSprak = støttedeSprak.find(sprakObj => sprakObj.tittel === valgtSprakTittel);
+        const valgtSprak = støttedeSprak.find(locale => locale === value.key);
         if (valgtSprak) {
-            setSprak(valgtSprak);
+            setValgtLocale(valgtSprak);
         }
     };
 
@@ -50,12 +51,15 @@ export const Sprakvelger: React.FC<{ støttedeSprak: Sprak[] }> = ({ støttedeSp
             onSelection={(value: JSX.Element) => handleSelection(value)}
             onMenuToggle={wrapperState => setErÅpen(wrapperState.isOpen)}
         >
-            <StyledButton>
-                <Globe />
-                <StyledNormalTekst>{sprak.tittel}</StyledNormalTekst>
-                {erÅpen ? <Collapse /> : <Expand />}
+            <SkjultLabel htmlFor="språkvelger">
+                {hentSprakvelgerLabelTekst(valgtLocale)}
+            </SkjultLabel>
+            <StyledButton id="språkvelger" value={valgtLocale}>
+                <Globe role="img" />
+                <StyledNormalTekst>{sprakTittel[valgtLocale as LocaleType]}</StyledNormalTekst>
+                {erÅpen ? <Collapse role="img" /> : <Expand role="img" />}
             </StyledButton>
-            <SpråkSelectMenu locale={sprak.locale} støttedeSprak={støttedeSprak} />
+            <SpråkSelectMenu valgtLocale={valgtLocale} støttedeSprak={støttedeSprak} />
         </StyledWrapper>
     );
 };

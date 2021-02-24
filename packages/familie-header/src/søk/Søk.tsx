@@ -9,12 +9,12 @@ import { Flatknapp } from 'nav-frontend-knapper';
 
 import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
-import SkjultLabel from './SkjultLabel';
 import Søkeresultater from './Søkeresultater';
 import { ISøkeresultat } from '../types';
 import { oransjBoxShadow } from '../common';
 import { Close, Search } from '@navikt/ds-icons';
 import useSøk from './useSøk';
+import { SkjultLabel } from '@navikt/familie-form-elements';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (

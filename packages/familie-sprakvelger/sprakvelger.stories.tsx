@@ -17,7 +17,7 @@ const messages = {
         greeting: 'Hey på engelsk',
     },
     nb: {
-        greeting: 'Hei på norsk',
+        greeting: 'Hei på bokmål',
     },
     nn: {
         greeting: 'Hei på nynorsk',
@@ -26,17 +26,8 @@ const messages = {
 
 export const FamilieSprakvelger: React.FC = () => {
     return (
-        <SprakProvider
-            tekster={messages}
-            defaultSprak={{ tittel: 'Engelsk', locale: LocaleType.en }}
-        >
-            <Sprakvelger
-                støttedeSprak={[
-                    { tittel: 'Engelsk', locale: LocaleType.en },
-                    { tittel: 'Bokmål', locale: LocaleType.nb },
-                    { tittel: 'Nynorsk', locale: LocaleType.nn },
-                ]}
-            />
+        <SprakProvider tekster={messages} defaultLocale={LocaleType.en}>
+            <Sprakvelger støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]} />
             <FormattedMessage id={'greeting'} />
         </SprakProvider>
     );
