@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.28...@navikt/familie-header@3.0.0) (2021-02-24)
+
+
+* Feature/uu språkvelger (#276) ([22f94a2](https://github.com/navikt/familie-felles-frontend/commit/22f94a2073333e044ec00cf09d5ea5f15774a07d)), closes [#276](https://github.com/navikt/familie-felles-frontend/issues/276)
+
+
+### BREAKING CHANGES
+
+* Props har endret seg
+
+
+
+
+
 ## [2.0.28](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@2.0.27...@navikt/familie-header@2.0.28) (2021-02-21)
 
 **Note:** Version bump only for package @navikt/familie-header
