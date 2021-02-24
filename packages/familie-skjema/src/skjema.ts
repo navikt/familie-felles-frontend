@@ -50,7 +50,6 @@ export const useSkjema = <Felter, SkjemaRespons>({
         // eslint-disable-next-line
         alleSynligeFelter().forEach((felt: unknown) => (felt as Felt<unknown>).nullstill());
         settVisfeilmeldinger(false);
-        settSubmitRessurs(byggTomRessurs());
     };
 
     const onSubmit = <SkjemaData>(
