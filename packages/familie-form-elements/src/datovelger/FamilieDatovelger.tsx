@@ -1,4 +1,3 @@
-import 'nav-datovelger/lib/styles/datepicker';
 import { Datepicker as NavDatovelger } from 'nav-datovelger';
 
 import { Label } from 'nav-frontend-skjema';
