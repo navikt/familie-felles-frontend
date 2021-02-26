@@ -1,0 +1,133 @@
+import React, { useEffect, useState } from 'react';
+import AlertStripe from 'nav-frontend-alertstriper';
+import { Element, Normaltekst } from 'nav-frontend-typografi';
+import { Input } from 'nav-frontend-skjema';
+
+import SøkerBorIkkePåAdresse from './SøkerBorIkkePåAdresse';
+import { borDuPåDenneAdressen } from './PersonopplysningerConfig';
+
+import FeltGruppe from './components/gruppe/FeltGruppe';
+import JaNeiSpørsmål from './components/spørsmål/JaNeiSpørsmål';
+import KomponentGruppe from './components/gruppe/KomponentGruppe';
+import SeksjonGruppe from './components/gruppe/SeksjonGruppe';
+import { hentBooleanFraValgtSvar } from './utils/spørsmålogsvar';
+import { ISpørsmål, ISvar } from './models/felles/spørsmålogsvar';
+import { hentSivilstatus } from './helpers/steg/omdeg';
+import { ISøker } from './models/søknad/person';
+import { ISpørsmålBooleanFelt } from './models/søknad/søknadsfelter';
+
+export interface Props {
+    søker: ISøker;
+    settSøker: (søker: ISøker) => void;
+    søkerBorPåRegistrertAdresse?: ISpørsmålBooleanFelt;
+    settSøkerBorPåRegistrertAdresse: (søkerBorPåRegistrertAdresse: ISpørsmålBooleanFelt) => void;
+    lenkePDFSøknad: string;
+}
+
+export const Personopplysninger: React.FC<Props> = ({
+    søker,
+    settSøker,
+    søkerBorPåRegistrertAdresse,
+    settSøkerBorPåRegistrertAdresse,
+    lenkePDFSøknad,
+}) => {
+    const { kontakttelefon } = søker;
+    const [feilTelefonnr, settFeilTelefonnr] = useState<boolean>(false);
+    const [telefonnummer, settTelefonnummer] = useState<string>(
+        kontakttelefon ? kontakttelefon : '',
+    );
+
+    useEffect(() => {
+        settTelefonnummer(kontakttelefon ? kontakttelefon : '');
+    }, [kontakttelefon]);
+
+    const settPersonopplysningerFelt = (spørsmål: ISpørsmål, valgtSvar: ISvar) => {
+        const svar: boolean = hentBooleanFraValgtSvar(valgtSvar);
+        settSøkerBorPåRegistrertAdresse({
+            spørsmålid: spørsmål.søknadid,
+            svarid: valgtSvar.id,
+            label: spørsmål.søknadid,
+            verdi: svar,
+        });
+    };
+
+    const oppdaterTelefonnr = (e: React.FormEvent<HTMLInputElement>) => {
+        const telefonnr = e.currentTarget.value;
+        settTelefonnummer(telefonnr);
+        if (telefonnr.length >= 8 && /^[+\d\s]+$/.test(telefonnr)) {
+            settSøker({ ...søker, kontakttelefon: telefonnr });
+        } else {
+            settSøker({ ...søker, kontakttelefon: '' });
+        }
+    };
+
+    const oppdaterFeilmelding = (e: React.FormEvent<HTMLInputElement>) => {
+        e.currentTarget.value.length >= 8 && /^[+\d\s]+$/.test(e.currentTarget.value)
+            ? settFeilTelefonnr(false)
+            : settFeilTelefonnr(true);
+    };
+
+    return (
+        <SeksjonGruppe aria-live={'polite'}>
+            <KomponentGruppe>
+                <FeltGruppe>
+                    <AlertStripe type={'info'} form={'inline'}>
+                        'personopplysninger.alert.infohentet'
+                    </AlertStripe>
+                </FeltGruppe>
+
+                <FeltGruppe>
+                    <Element>'person.ident.visning'</Element>
+                    <Normaltekst>{søker.fnr}</Normaltekst>
+                </FeltGruppe>
+
+                <FeltGruppe>
+                    <Element>'person.statsborgerskap'</Element>
+                    <Normaltekst>{søker.statsborgerskap}</Normaltekst>
+                </FeltGruppe>
+
+                <FeltGruppe>
+                    <Element>'sivilstatus.tittel'</Element>
+                    <Normaltekst>{hentSivilstatus(søker.sivilstand)}</Normaltekst>
+                </FeltGruppe>
+
+                <FeltGruppe>
+                    <Element>'person.adresse'</Element>
+                    <Normaltekst>{søker.adresse.adresse}</Normaltekst>
+                    <Normaltekst>
+                        {søker.adresse.postnummer} {søker.adresse.poststed}
+                    </Normaltekst>
+                </FeltGruppe>
+            </KomponentGruppe>
+
+            <KomponentGruppe aria-live="polite">
+                <JaNeiSpørsmål
+                    spørsmål={borDuPåDenneAdressen()}
+                    valgtSvar={
+                        søkerBorPåRegistrertAdresse ? søkerBorPåRegistrertAdresse.verdi : undefined
+                    }
+                    onChange={settPersonopplysningerFelt}
+                />
+
+                {søkerBorPåRegistrertAdresse?.verdi === false && (
+                    <SøkerBorIkkePåAdresse lenkePDFSøknad={lenkePDFSøknad} />
+                )}
+            </KomponentGruppe>
+
+            {søkerBorPåRegistrertAdresse?.verdi && (
+                <Input
+                    id={'Telefonnummer'}
+                    key={'tlf'}
+                    label={'person.telefonnr'.trim()}
+                    type="tel"
+                    bredde={'M'}
+                    onChange={e => oppdaterTelefonnr(e)}
+                    onBlur={e => oppdaterFeilmelding(e)}
+                    className="inputfelt-tekst-fetskrift"
+                    feil={feilTelefonnr ? 'personopplysninger.feilmelding.telefonnr' : undefined}
+                    value={telefonnummer}
+                />
+            )}
+        </SeksjonGruppe>
+    );
+};
