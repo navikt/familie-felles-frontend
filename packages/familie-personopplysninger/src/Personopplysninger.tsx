@@ -1,64 +1,49 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import AlertStripe from 'nav-frontend-alertstriper';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { Input } from 'nav-frontend-skjema';
 
 import SøkerBorIkkePåAdresse from './SøkerBorIkkePåAdresse';
-import { borDuPåDenneAdressen } from './PersonopplysningerConfig';
 
 import FeltGruppe from './components/gruppe/FeltGruppe';
-import JaNeiSpørsmål from './components/spørsmål/JaNeiSpørsmål';
+import JaNeiSpørsmål from './components/JaNeiSpørsmål';
 import KomponentGruppe from './components/gruppe/KomponentGruppe';
 import SeksjonGruppe from './components/gruppe/SeksjonGruppe';
-import { hentBooleanFraValgtSvar } from './utils/spørsmålogsvar';
-import { ISpørsmål, ISvar } from './models/felles/spørsmålogsvar';
-import { hentSivilstatus } from './helpers/steg/omdeg';
-import { ISøker } from './models/søknad/person';
-import { ISpørsmålBooleanFelt } from './models/søknad/søknadsfelter';
+import { hentSivilstatus } from './utils';
+import { ESvar, IPersonopplysninger } from './types';
+import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
 
-export interface Props {
-    søker: ISøker;
-    settSøker: (søker: ISøker) => void;
-    søkerBorPåRegistrertAdresse?: ISpørsmålBooleanFelt;
-    settSøkerBorPåRegistrertAdresse: (søkerBorPåRegistrertAdresse: ISpørsmålBooleanFelt) => void;
+export interface PersonopplysningerProps {
+    personopplysninger: IPersonopplysninger;
     lenkePDFSøknad: string;
+    settTelefonnummerCallback: (telefonnr: string) => void;
 }
 
-export const Personopplysninger: React.FC<Props> = ({
-    søker,
-    settSøker,
-    søkerBorPåRegistrertAdresse,
-    settSøkerBorPåRegistrertAdresse,
+const StyledInput = styled(Input)`
+    label {
+        font-size: 1.125rem;
+    }
+`;
+
+export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
+    personopplysninger,
+    settTelefonnummerCallback,
     lenkePDFSøknad,
 }) => {
-    const { kontakttelefon } = søker;
+    const { kontakttelefon } = personopplysninger;
     const [feilTelefonnr, settFeilTelefonnr] = useState<boolean>(false);
     const [telefonnummer, settTelefonnummer] = useState<string>(
         kontakttelefon ? kontakttelefon : '',
     );
-
-    useEffect(() => {
-        settTelefonnummer(kontakttelefon ? kontakttelefon : '');
-    }, [kontakttelefon]);
-
-    const settPersonopplysningerFelt = (spørsmål: ISpørsmål, valgtSvar: ISvar) => {
-        const svar: boolean = hentBooleanFraValgtSvar(valgtSvar);
-        settSøkerBorPåRegistrertAdresse({
-            spørsmålid: spørsmål.søknadid,
-            svarid: valgtSvar.id,
-            label: spørsmål.søknadid,
-            verdi: svar,
-        });
-    };
+    const [søkerBorPåRegistrertAdresse, setSøkerBorPåRegistrertAdresse] = useState<
+        boolean | undefined
+    >();
 
     const oppdaterTelefonnr = (e: React.FormEvent<HTMLInputElement>) => {
         const telefonnr = e.currentTarget.value;
         settTelefonnummer(telefonnr);
-        if (telefonnr.length >= 8 && /^[+\d\s]+$/.test(telefonnr)) {
-            settSøker({ ...søker, kontakttelefon: telefonnr });
-        } else {
-            settSøker({ ...søker, kontakttelefon: '' });
-        }
+        settTelefonnummerCallback(telefonnr);
     };
 
     const oppdaterFeilmelding = (e: React.FormEvent<HTMLInputElement>) => {
@@ -67,64 +52,92 @@ export const Personopplysninger: React.FC<Props> = ({
             : settFeilTelefonnr(true);
     };
 
+    const borDuPåRegistrertAdresseOnChange = (verdi: ESvar) => {
+        setSøkerBorPåRegistrertAdresse(verdi === ESvar.JA);
+    };
+
     return (
         <SeksjonGruppe aria-live={'polite'}>
             <KomponentGruppe>
                 <FeltGruppe>
                     <AlertStripe type={'info'} form={'inline'}>
-                        'personopplysninger.alert.infohentet'
+                        <FormattedMessage id={'personopplysninger.alert.infohentet'} />
                     </AlertStripe>
                 </FeltGruppe>
 
                 <FeltGruppe>
-                    <Element>'person.ident.visning'</Element>
-                    <Normaltekst>{søker.fnr}</Normaltekst>
+                    <Element>
+                        <FormattedMessage id={'person.ident.visning'} />
+                    </Element>
+                    <Normaltekst>{personopplysninger.fnr}</Normaltekst>
                 </FeltGruppe>
 
                 <FeltGruppe>
-                    <Element>'person.statsborgerskap'</Element>
-                    <Normaltekst>{søker.statsborgerskap}</Normaltekst>
+                    <Element>
+                        <FormattedMessage id={'person.statsborgerskap'} />
+                    </Element>
+                    <Normaltekst>{personopplysninger.statsborgerskap.join(', ')}</Normaltekst>
                 </FeltGruppe>
 
                 <FeltGruppe>
-                    <Element>'sivilstatus.tittel'</Element>
-                    <Normaltekst>{hentSivilstatus(søker.sivilstand)}</Normaltekst>
+                    <Element>
+                        <FormattedMessage id={'sivilstatus.tittel'} />
+                    </Element>
+                    <Normaltekst>{hentSivilstatus(personopplysninger.sivilstand)}</Normaltekst>
                 </FeltGruppe>
 
                 <FeltGruppe>
-                    <Element>'person.adresse'</Element>
-                    <Normaltekst>{søker.adresse.adresse}</Normaltekst>
+                    <Element>
+                        <FormattedMessage id={'person.adresse'} />
+                    </Element>
+                    <Normaltekst>{personopplysninger.adresse.adresse}</Normaltekst>
                     <Normaltekst>
-                        {søker.adresse.postnummer} {søker.adresse.poststed}
+                        {personopplysninger.adresse.postnummer}{' '}
+                        {personopplysninger.adresse.poststed}
                     </Normaltekst>
                 </FeltGruppe>
             </KomponentGruppe>
 
             <KomponentGruppe aria-live="polite">
                 <JaNeiSpørsmål
-                    spørsmål={borDuPåDenneAdressen()}
-                    valgtSvar={
-                        søkerBorPåRegistrertAdresse ? søkerBorPåRegistrertAdresse.verdi : undefined
+                    legend={
+                        <>
+                            <Element>
+                                <FormattedMessage id={'personopplysninger.spm.riktigAdresse'} />
+                            </Element>
+                            <Normaltekst>
+                                <FormattedMessage
+                                    id={'personopplysninger.lesmer-innhold.riktigAdresse'}
+                                />
+                            </Normaltekst>
+                        </>
                     }
-                    onChange={settPersonopplysningerFelt}
+                    onChange={borDuPåRegistrertAdresseOnChange}
+                    name={'RegistrertAdresseStemmer'}
+                    labelTekstForJaNei={{
+                        ja: <FormattedMessage id={'ja'} />,
+                        nei: <FormattedMessage id={'nei'} />,
+                    }}
                 />
 
-                {søkerBorPåRegistrertAdresse?.verdi === false && (
+                {søkerBorPåRegistrertAdresse === false && (
                     <SøkerBorIkkePåAdresse lenkePDFSøknad={lenkePDFSøknad} />
                 )}
             </KomponentGruppe>
 
-            {søkerBorPåRegistrertAdresse?.verdi && (
-                <Input
-                    id={'Telefonnummer'}
-                    key={'tlf'}
-                    label={'person.telefonnr'.trim()}
-                    type="tel"
+            {søkerBorPåRegistrertAdresse && (
+                <StyledInput
+                    name={'Telefonnummer'}
+                    label={<FormattedMessage id={'person.telefonnr'} />}
                     bredde={'M'}
+                    type="tel"
                     onChange={e => oppdaterTelefonnr(e)}
                     onBlur={e => oppdaterFeilmelding(e)}
-                    className="inputfelt-tekst-fetskrift"
-                    feil={feilTelefonnr ? 'personopplysninger.feilmelding.telefonnr' : undefined}
+                    feil={
+                        feilTelefonnr ? (
+                            <FormattedMessage id={'personopplysninger.feilmelding.telefonnr'} />
+                        ) : undefined
+                    }
                     value={telefonnummer}
                 />
             )}

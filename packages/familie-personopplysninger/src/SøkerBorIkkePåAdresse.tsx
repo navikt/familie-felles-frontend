@@ -4,6 +4,7 @@ import AlertStripe from 'nav-frontend-alertstriper';
 import FeltGruppe from './components/gruppe/FeltGruppe';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
+import { FormattedMessage } from 'react-intl';
 
 interface Props {
     lenkePDFSøknad: string;
@@ -14,19 +15,25 @@ const SøkerBorIkkePåAdresse: FC<Props> = ({ lenkePDFSøknad }) => {
         <>
             <KomponentGruppe>
                 <AlertStripe type={'advarsel'} form={'inline'} className={'avstand-øverst'}>
-                    'personopplysninger.alert.riktigAdresse'
+                    <FormattedMessage id={'personopplysninger.alert.riktigAdresse'} />
                 </AlertStripe>
             </KomponentGruppe>
             <KomponentGruppe>
                 <FeltGruppe>
-                    <Element>'personopplysninger.info.endreAdresse'</Element>
+                    <Element>
+                        <FormattedMessage id={'personopplysninger.info.endreAdresse'} />
+                    </Element>
                 </FeltGruppe>
                 <FeltGruppe>
                     <Normaltekst>
-                        <Lenke href={lenkePDFSøknad}>'personopplysninger.lenke.pdfskjema'</Lenke>
+                        <Lenke href={lenkePDFSøknad}>
+                            <FormattedMessage id={'personopplysninger.lenke.pdfskjema'} />
+                        </Lenke>
                     </Normaltekst>
                 </FeltGruppe>
-                <Normaltekst>'personopplysninger.info.pdfskjema'</Normaltekst>
+                <Normaltekst>
+                    <FormattedMessage id={'personopplysninger.info.pdfskjema'} />
+                </Normaltekst>
             </KomponentGruppe>
         </>
     );

@@ -1,6 +1,7 @@
-import React from 'react';
-import { Personopplysninger } from './src/Personopplysninger';
-import { ISøker } from './src/models/søknad/person';
+import React, { useState } from 'react';
+import { Personopplysninger } from './src';
+import { IPersonopplysninger } from './src/types';
+import { IntlProvider } from 'react-intl';
 
 export default {
     component: Personopplysninger,
@@ -10,33 +11,61 @@ export default {
     title: 'Komponenter/Personopplysninger',
 };
 
-const søker: ISøker = {
-    fnr: '12345678910',
-    forkortetNavn: 'P. Potetesen',
-    adresse: {
-        adresse: 'Hunstadveien 1',
-        postnummer: '8009',
-        poststed: 'Bodø',
-    },
-    egenansatt: true,
-    sivilstand: 'Ugift',
-    språk: 'Norsk',
-    statsborgerskap: 'NORGE',
-    kontakttelefon: '401234567',
-    bankkontonummer: '3201 51 01234',
+const tekster: Record<string, string> = {
+    'personopplysninger.alert.infohentet':
+        'Hvis opplysningene vi har om deg ikke stemmer, må du endre disse hos Folkeregisteret.',
+    'person.ident.visning': 'Fødselsnummer eller d-nummer',
+    'person.statsborgerskap': 'Statsborgerskap',
+    'sivilstatus.tittel': 'Sivilstatus',
+    'person.adresse': 'Adresse',
+    'personopplysninger.spm.riktigAdresse': 'Bor du på denne adressen?',
+    'personopplysninger.lesmer-innhold.riktigAdresse':
+        'Hvis du har strengt fortrolig adresse, vises ikke adressen din her. Du kan svare Ja på dette spørsmålet og fortsette med den digitale søknaden.',
+    'personopplysninger.alert.riktigAdresse':
+        'Du må oppgi riktig adresse til Folkeregisteret for å bruke denne søknaden',
+    'personopplysninger.info.endreAdresse': 'Skal du ikke endre adresse i Folkeregisteret?',
+    'personopplysninger.lenke.pdfskjema': 'Bruk PDF-skjema',
+    'personopplysninger.info.pdfskjema': 'Skjemaet kan sendes inn elektronisk eller på papir',
+    'person.telefonnr': 'Telefonnummer du kan kontaktes på',
+    'personopplysninger.feilmelding.telefonnr': 'Telefonnummeret må ha minst 8 siffer',
+    ja: 'ja',
+    nei: 'nei',
 };
 
 export const FamiliePersonopplysningerStory: React.FC = () => {
+    const [personopplysninger, setPersonopplysninger] = useState<IPersonopplysninger>({
+        fnr: '12345678910',
+        adresse: {
+            adresse: 'Hunstadveien 1',
+            postnummer: '8009',
+            poststed: 'Bodø',
+        },
+        sivilstand: 'Ugift',
+        statsborgerskap: ['NORGE', 'NEDERLAND'],
+        kontakttelefon: '12345678',
+    });
+
+    const oppdaterTelefonnummer = (telefonnr: string) => {
+        if (telefonnr.length >= 8 && /^[+\d\s]+$/.test(telefonnr)) {
+            setPersonopplysninger({
+                ...personopplysninger,
+                kontakttelefon: telefonnr,
+            });
+        } else {
+            setPersonopplysninger({
+                ...personopplysninger,
+                kontakttelefon: '',
+            });
+        }
+    };
+
     return (
-        <Personopplysninger
-            søker={søker}
-            settSøker={() => {
-                return;
-            }}
-            settSøkerBorPåRegistrertAdresse={() => {
-                return;
-            }}
-            lenkePDFSøknad={'https://example.com/'}
-        />
+        <IntlProvider locale={'no'} messages={tekster}>
+            <Personopplysninger
+                personopplysninger={personopplysninger}
+                settTelefonnummerCallback={oppdaterTelefonnummer}
+                lenkePDFSøknad={'https://example.com/'}
+            />
+        </IntlProvider>
     );
 };
