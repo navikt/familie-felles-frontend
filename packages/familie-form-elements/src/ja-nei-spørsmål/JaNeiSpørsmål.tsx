@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { RadioPanelGruppe } from 'nav-frontend-skjema';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 import { ESvar } from './typer';
 
 type LabelTekstForJaNei = {
