@@ -1,1 +1,2 @@
-export * from './Personopplysninger';
+export { Personopplysninger } from './Personopplysninger';
+export { SøkerBorIkkePåAdresse } from './SøkerBorIkkePåAdresse';

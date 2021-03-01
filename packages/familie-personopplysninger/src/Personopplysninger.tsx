@@ -3,12 +3,9 @@ import AlertStripe from 'nav-frontend-alertstriper';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { Input } from 'nav-frontend-skjema';
 
-import SøkerBorIkkePåAdresse from './SøkerBorIkkePåAdresse';
+import { SøkerBorIkkePåAdresse } from './SøkerBorIkkePåAdresse';
 
-import FeltGruppe from './components/gruppe/FeltGruppe';
 import { JaNeiSpørsmål, ESvar } from '@navikt/familie-form-elements';
-import KomponentGruppe from './components/gruppe/KomponentGruppe';
-import SeksjonGruppe from './components/gruppe/SeksjonGruppe';
 import { hentSivilstatus } from './utils';
 import { IPersonopplysninger } from './types';
 import { FormattedMessage } from 'react-intl';
@@ -23,6 +20,29 @@ export interface PersonopplysningerProps {
 const StyledInput = styled(Input)`
     label {
         font-size: 1.125rem;
+    }
+`;
+
+const PersonopplysningerSection = styled.section`
+    p {
+        font-size: 1.125rem;
+    }
+`;
+
+export const KomponentGruppe = styled.div`
+    padding-bottom: 2rem;
+    :last-child {
+        padding-bottom: 0;
+    }
+`;
+
+export const FeltGruppe = styled.div`
+    padding-bottom: 2rem;
+`;
+
+export const StyledAlertStripe = styled(AlertStripe)`
+    p {
+        margin: 0;
     }
 `;
 
@@ -57,12 +77,14 @@ export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
     };
 
     return (
-        <SeksjonGruppe aria-live={'polite'}>
+        <PersonopplysningerSection aria-live={'polite'}>
             <KomponentGruppe>
                 <FeltGruppe>
-                    <AlertStripe type={'info'} form={'inline'}>
-                        <FormattedMessage id={'personopplysninger.alert.infohentet'} />
-                    </AlertStripe>
+                    <StyledAlertStripe type={'info'} form={'inline'}>
+                        <p>
+                            <FormattedMessage id={'personopplysninger.alert.infohentet'} />
+                        </p>
+                    </StyledAlertStripe>
                 </FeltGruppe>
 
                 <FeltGruppe>
@@ -141,6 +163,6 @@ export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
                     value={telefonnummer}
                 />
             )}
-        </SeksjonGruppe>
+        </PersonopplysningerSection>
     );
 };

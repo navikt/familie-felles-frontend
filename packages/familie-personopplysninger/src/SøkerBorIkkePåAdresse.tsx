@@ -1,7 +1,5 @@
 import React, { FC } from 'react';
-import KomponentGruppe from './components/gruppe/KomponentGruppe';
-import AlertStripe from 'nav-frontend-alertstriper';
-import FeltGruppe from './components/gruppe/FeltGruppe';
+import { KomponentGruppe, FeltGruppe, StyledAlertStripe } from './Personopplysninger';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
 import { FormattedMessage } from 'react-intl';
@@ -10,13 +8,13 @@ interface Props {
     lenkePDFSøknad: string;
 }
 
-const SøkerBorIkkePåAdresse: FC<Props> = ({ lenkePDFSøknad }) => {
+export const SøkerBorIkkePåAdresse: FC<Props> = ({ lenkePDFSøknad }) => {
     return (
         <>
             <KomponentGruppe>
-                <AlertStripe type={'advarsel'} form={'inline'} className={'avstand-øverst'}>
+                <StyledAlertStripe type={'advarsel'} form={'inline'} className={'avstand-øverst'}>
                     <FormattedMessage id={'personopplysninger.alert.riktigAdresse'} />
-                </AlertStripe>
+                </StyledAlertStripe>
             </KomponentGruppe>
             <KomponentGruppe>
                 <FeltGruppe>
@@ -38,5 +36,3 @@ const SøkerBorIkkePåAdresse: FC<Props> = ({ lenkePDFSøknad }) => {
         </>
     );
 };
-
-export default SøkerBorIkkePåAdresse;
