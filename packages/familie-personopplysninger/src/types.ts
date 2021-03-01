@@ -13,12 +13,6 @@ export interface IAdresse {
     poststed?: string;
 }
 
-// spørsmål og svar
-export enum ESvar {
-    JA = 'JA',
-    NEI = 'NEI',
-}
-
 export enum ESvarTekstid {
     JA = 'svar.ja',
     NEI = 'svar.nei',

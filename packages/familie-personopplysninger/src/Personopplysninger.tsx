@@ -6,11 +6,11 @@ import { Input } from 'nav-frontend-skjema';
 import SøkerBorIkkePåAdresse from './SøkerBorIkkePåAdresse';
 
 import FeltGruppe from './components/gruppe/FeltGruppe';
-import JaNeiSpørsmål from './components/JaNeiSpørsmål';
+import { JaNeiSpørsmål, ESvar } from '@navikt/familie-form-elements';
 import KomponentGruppe from './components/gruppe/KomponentGruppe';
 import SeksjonGruppe from './components/gruppe/SeksjonGruppe';
 import { hentSivilstatus } from './utils';
-import { ESvar, IPersonopplysninger } from './types';
+import { IPersonopplysninger } from './types';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
 

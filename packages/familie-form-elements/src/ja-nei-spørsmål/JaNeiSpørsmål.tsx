@@ -1,7 +1,7 @@
 import React, { ReactNode, useState } from 'react';
 import { RadioPanelGruppe } from 'nav-frontend-skjema';
 import styled from 'styled-components/macro';
-import { ESvar } from '../types';
+import { ESvar } from './typer';
 
 type LabelTekstForJaNei = {
     ja: ReactNode;
@@ -48,7 +48,7 @@ const Capitalized = styled.span`
     text-transform: capitalize;
 `;
 
-const JaNeiSpørsmål: React.FC<JaNeiSpørsmålProps> = ({
+export const JaNeiSpørsmål: React.FC<JaNeiSpørsmålProps> = ({
     legend,
     name,
     onChange,
@@ -75,5 +75,3 @@ const JaNeiSpørsmål: React.FC<JaNeiSpørsmålProps> = ({
         />
     );
 };
-
-export default JaNeiSpørsmål;

@@ -20,6 +20,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
+        "@navikt/familie-form-elements": "^2.1.2",
         "iso-datestring-validator": "^2.1.4",
         "nav-frontend-alertstriper": "^3.0.50",
         "nav-frontend-core": "^5.0.11",
