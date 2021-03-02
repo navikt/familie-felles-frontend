@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
-import { KomponentGruppe, FeltGruppe, StyledAlertStripe } from './Personopplysninger';
+import { FormattedMessage } from 'react-intl';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import Lenke from 'nav-frontend-lenker';
-import { FormattedMessage } from 'react-intl';
+
+import { StyledAlertStripe, FeltGruppe, KomponentGruppe } from './layoutKomponenter';
 
 interface Props {
     lenkePDFSøknad: string;

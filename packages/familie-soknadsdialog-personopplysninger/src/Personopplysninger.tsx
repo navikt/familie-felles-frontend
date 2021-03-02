@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import AlertStripe from 'nav-frontend-alertstriper';
-import { Element, Normaltekst } from 'nav-frontend-typografi';
-import { Input } from 'nav-frontend-skjema';
-
-import { SøkerBorIkkePåAdresse } from './SøkerBorIkkePåAdresse';
-
-import { JaNeiSpørsmål, ESvar } from '@navikt/familie-form-elements';
-import { hentSivilstatus } from './utils';
-import { IPersonopplysninger } from './types';
 import { FormattedMessage } from 'react-intl';
 import styled from 'styled-components';
+import { Element, Normaltekst } from 'nav-frontend-typografi';
+import { Input } from 'nav-frontend-skjema';
+import { JaNeiSpørsmål, ESvar } from '@navikt/familie-form-elements';
+
+import { SøkerBorIkkePåAdresse } from './SøkerBorIkkePåAdresse';
+import { StyledAlertStripe, FeltGruppe, KomponentGruppe } from './layoutKomponenter';
+import { hentSivilstatus } from './utils';
+import { IPersonopplysninger } from './types';
 
 export interface PersonopplysningerProps {
     personopplysninger: IPersonopplysninger;
@@ -26,23 +25,6 @@ const StyledInput = styled(Input)`
 const PersonopplysningerSection = styled.section`
     p {
         font-size: 1.125rem;
-    }
-`;
-
-export const KomponentGruppe = styled.div`
-    padding-bottom: 2rem;
-    :last-child {
-        padding-bottom: 0;
-    }
-`;
-
-export const FeltGruppe = styled.div`
-    padding-bottom: 2rem;
-`;
-
-export const StyledAlertStripe = styled(AlertStripe)`
-    p {
-        margin: 0;
     }
 `;
 
