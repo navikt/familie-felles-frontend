@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Personopplysninger } from './src';
-import { IPersonopplysninger } from './src/typer';
+import { IPersonopplysninger, ESivilstand } from './src/typer';
 import { IntlProvider } from 'react-intl';
 import { LocaleType } from '@navikt/familie-sprakvelger';
 
@@ -31,6 +31,25 @@ const tekster: Record<string, string> = {
     'personopplysninger.feilmelding.telefonnr': 'Telefonnummeret må ha minst 8 siffer',
     ja: 'ja',
     nei: 'nei',
+    'sivilstatus.kode.REPA': 'Registrert partner',
+    'sivilstatus.kode.GIFT': 'Gift',
+    'sivilstatus.kode.UGIF': 'Ugift',
+    'sivilstatus.kode.SAMB': 'Samboer',
+    'sivilstatus.kode.SEPR': 'Separert',
+    'sivilstatus.kode.SEPA': 'Separert',
+    'sivilstatus.kode.SKIL': 'Skilt',
+    'sivilstatus.kode.GJPA': 'Gjenlevende partner',
+    'sivilstatus.kode.ENKE': 'Enke/Enkemann',
+    'sivilstatus.kode.UOPPGITT': 'Ikke oppgitt',
+    'sivilstatus.kode.UGIFT': 'Ugift',
+    'sivilstatus.kode.ENKE_ELLER_ENKEMANN': 'Enke/Enkemann',
+    'sivilstatus.kode.SKILT': 'Skilt',
+    'sivilstatus.kode.SEPARERT': 'Separert',
+    'sivilstatus.kode.PARTNER': 'Partner',
+    'sivilstatus.kode.SEPARERT_PARTNER': 'Separert',
+    'sivilstatus.kode.SKILT_PARTNER': 'Skilt',
+    'sivilstatus.kode.GJENLEVENDE_PARTNER': 'Gjenlevende partner',
+    'sivilstatus.kode.ANNET': 'Annen sivilstatus enn GIFT, UGIF, SAMB, SEPA, SKIL, SEPR',
 };
 
 export const FamiliePersonopplysningerStory: React.FC = () => {
@@ -41,7 +60,7 @@ export const FamiliePersonopplysningerStory: React.FC = () => {
             postnummer: '8009',
             poststed: 'Bodø',
         },
-        sivilstand: 'Ugift',
+        sivilstand: ESivilstand.ENKE_ELLER_ENKEMANN,
         statsborgerskap: ['NOR', 'NLD'],
         kontakttelefon: '12345678',
     });

@@ -1,33 +1,10 @@
 import { alpha3ToAlpha2, getName } from 'i18n-iso-countries';
+import { ESivilstand } from './typer';
 
 export const landkodeTilSpråk = (landkode: string, locale: string) => {
     const landkodeIso = alpha3ToAlpha2(landkode);
     return getName(landkodeIso, locale);
 };
-
-export enum ESivilstand {
-    // GIFT = 'GIFT',
-    REPA = 'REPA',
-    UGIF = 'UGIF',
-    ENKE = 'ENKE',
-    GJPA = 'GJPA',
-    SEPA = 'SEPA',
-    SEPR = 'SEPR',
-    SKIL = 'SKIL',
-    SKPA = 'SKPA',
-    SAMB = 'SAMB',
-
-    UOPPGITT = 'UOPPGITT',
-    UGIFT = 'UGIFT',
-    GIFT = 'GIFT',
-    ENKE_ELLER_ENKEMANN = 'ENKE_ELLER_ENKEMANN',
-    SKILT = 'SKILT',
-    SEPARERT = 'SEPARERT',
-    PARTNER = 'PARTNER',
-    SEPARERT_PARTNER = 'SEPARERT_PARTNER',
-    SKILT_PARTNER = 'SKILT_PARTNER',
-    GJENLEVENDE_PARTNER = 'GJENLEVENDE_PARTNER',
-}
 
 export const hentSivilstatus = (statuskode?: string) => {
     switch (statuskode) {
@@ -55,6 +32,6 @@ export const hentSivilstatus = (statuskode?: string) => {
             return `sivilstatus.kode.${statuskode}`;
 
         default:
-            return 'Annen sivilstatus enn GIFT, UGIF, SAMB, SEPA, SKIL, SEPR';
+            return 'sivilstatus.kode.ANNET';
     }
 };

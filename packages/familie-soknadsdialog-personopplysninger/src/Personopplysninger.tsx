@@ -109,7 +109,9 @@ export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
                     <Element>
                         <FormattedMessage id={'sivilstatus.tittel'} />
                     </Element>
-                    <Normaltekst>{hentSivilstatus(personopplysninger.sivilstand)}</Normaltekst>
+                    <Normaltekst>
+                        <FormattedMessage id={hentSivilstatus(personopplysninger.sivilstand)} />
+                    </Normaltekst>
                 </FeltGruppe>
 
                 <FeltGruppe>
