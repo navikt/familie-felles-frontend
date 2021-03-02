@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Personopplysninger } from './src';
 import { IPersonopplysninger } from './src/types';
 import { IntlProvider } from 'react-intl';
+import { LocaleType } from '@navikt/familie-sprakvelger';
 
 export default {
     component: Personopplysninger,
@@ -41,7 +42,7 @@ export const FamiliePersonopplysningerStory: React.FC = () => {
             poststed: 'Bodø',
         },
         sivilstand: 'Ugift',
-        statsborgerskap: ['NORGE', 'NEDERLAND'],
+        statsborgerskap: ['NOR', 'NLD'],
         kontakttelefon: '12345678',
     });
 
@@ -60,11 +61,12 @@ export const FamiliePersonopplysningerStory: React.FC = () => {
     };
 
     return (
-        <IntlProvider locale={'no'} messages={tekster}>
+        <IntlProvider locale={LocaleType.nb} messages={tekster}>
             <Personopplysninger
                 personopplysninger={personopplysninger}
                 settTelefonnummerCallback={oppdaterTelefonnummer}
                 lenkePDFSøknad={'https://example.com/'}
+                støttaSpråk={[LocaleType.nb, LocaleType.en]}
             />
         </IntlProvider>
     );

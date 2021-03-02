@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import React, { useEffect, useState } from 'react';
+import { FormattedMessage, useIntl } from 'react-intl';
 import styled from 'styled-components';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { Input } from 'nav-frontend-skjema';
 import { JaNeiSpørsmål, ESvar } from '@navikt/familie-form-elements';
+import { LocaleType } from '@navikt/familie-sprakvelger';
 
 import { SøkerBorIkkePåAdresse } from './SøkerBorIkkePåAdresse';
 import { StyledAlertStripe, FeltGruppe, KomponentGruppe } from './layoutKomponenter';
-import { hentSivilstatus } from './utils';
+import { hentSivilstatus, landkodeTilSpråk } from './utils';
 import { IPersonopplysninger } from './types';
+import { registerLocale } from 'i18n-iso-countries';
 
 export interface PersonopplysningerProps {
     personopplysninger: IPersonopplysninger;
     lenkePDFSøknad: string;
     settTelefonnummerCallback: (telefonnr: string) => void;
+    støttaSpråk: LocaleType[];
 }
 
 const StyledInput = styled(Input)`
@@ -32,6 +35,7 @@ export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
     personopplysninger,
     settTelefonnummerCallback,
     lenkePDFSøknad,
+    støttaSpråk,
 }) => {
     const { kontakttelefon } = personopplysninger;
     const [feilTelefonnr, settFeilTelefonnr] = useState<boolean>(false);
@@ -41,6 +45,19 @@ export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
     const [søkerBorPåRegistrertAdresse, setSøkerBorPåRegistrertAdresse] = useState<
         boolean | undefined
     >();
+    const [språkFerdigImportert, settSpråkFerdigImportert] = useState<boolean>(false);
+
+    const intl = useIntl();
+
+    useEffect(() => {
+        støttaSpråk.forEach(async (locale, index) => {
+            const landnavnFraSpråkFil = await import(`i18n-iso-countries/langs/${locale}.json`);
+            registerLocale(landnavnFraSpråkFil);
+            if (index === støttaSpråk.length - 1) {
+                settSpråkFerdigImportert(true);
+            }
+        });
+    });
 
     const oppdaterTelefonnr = (e: React.FormEvent<HTMLInputElement>) => {
         const telefonnr = e.currentTarget.value;
@@ -80,7 +97,12 @@ export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
                     <Element>
                         <FormattedMessage id={'person.statsborgerskap'} />
                     </Element>
-                    <Normaltekst>{personopplysninger.statsborgerskap.join(', ')}</Normaltekst>
+                    <Normaltekst>
+                        {språkFerdigImportert &&
+                            personopplysninger.statsborgerskap
+                                .map((landkode: string) => landkodeTilSpråk(landkode, intl.locale))
+                                .join(', ')}
+                    </Normaltekst>
                 </FeltGruppe>
 
                 <FeltGruppe>

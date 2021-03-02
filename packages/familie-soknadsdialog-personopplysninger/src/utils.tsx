@@ -1,3 +1,10 @@
+import { alpha3ToAlpha2, getName } from 'i18n-iso-countries';
+
+export const landkodeTilSpråk = (landkode: string, locale: string) => {
+    const landkodeIso = alpha3ToAlpha2(landkode);
+    return getName(landkodeIso, locale);
+};
+
 export enum ESivilstand {
     // GIFT = 'GIFT',
     REPA = 'REPA',

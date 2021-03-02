@@ -2,6 +2,7 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "baseUrl": "./packages",
+    "module": "ES2020",
     "paths": {
       "@navikt/*": ["*/src"]
     }

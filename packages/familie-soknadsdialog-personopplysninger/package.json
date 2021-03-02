@@ -21,6 +21,8 @@
     },
     "dependencies": {
         "@navikt/familie-form-elements": "^2.1.2",
+        "@navikt/familie-sprakvelger": "^2.0.1",
+        "i18n-iso-countries": "^6.5.0",
         "iso-datestring-validator": "^2.1.4",
         "nav-frontend-alertstriper": "^3.0.50",
         "nav-frontend-core": "^5.0.11",
