@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage, IntlShape, RawIntlProvider } from 'react-intl';
 import styled from 'styled-components';
 import { Element, Normaltekst } from 'nav-frontend-typografi';
 import { Input } from 'nav-frontend-skjema';
@@ -17,6 +17,7 @@ export interface PersonopplysningerProps {
     lenkePDFSøknad: string;
     settTelefonnummerCallback: (telefonnr: string) => void;
     støttaSpråk: LocaleType[];
+    intl: IntlShape;
 }
 
 const StyledInput = styled(Input)`
@@ -36,6 +37,7 @@ export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
     settTelefonnummerCallback,
     lenkePDFSøknad,
     støttaSpråk,
+    intl,
 }) => {
     const { kontakttelefon } = personopplysninger;
     const [feilTelefonnr, settFeilTelefonnr] = useState<boolean>(false);
@@ -46,8 +48,6 @@ export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
         boolean | undefined
     >();
     const [språkFerdigImportert, settSpråkFerdigImportert] = useState<boolean>(false);
-
-    const intl = useIntl();
 
     useEffect(() => {
         støttaSpråk.forEach(async (locale, index) => {
@@ -76,99 +76,103 @@ export const Personopplysninger: React.FC<PersonopplysningerProps> = ({
     };
 
     return (
-        <PersonopplysningerSection aria-live={'polite'}>
-            <KomponentGruppe>
-                <FeltGruppe>
-                    <StyledAlertStripe type={'info'} form={'inline'}>
-                        <p>
-                            <FormattedMessage id={'personopplysninger.alert.infohentet'} />
-                        </p>
-                    </StyledAlertStripe>
-                </FeltGruppe>
+        <RawIntlProvider value={intl}>
+            <PersonopplysningerSection aria-live={'polite'}>
+                <KomponentGruppe>
+                    <FeltGruppe>
+                        <StyledAlertStripe type={'info'} form={'inline'}>
+                            <p>
+                                <FormattedMessage id={'personopplysninger.alert.infohentet'} />
+                            </p>
+                        </StyledAlertStripe>
+                    </FeltGruppe>
 
-                <FeltGruppe>
-                    <Element>
-                        <FormattedMessage id={'person.ident.visning'} />
-                    </Element>
-                    <Normaltekst>{personopplysninger.fnr}</Normaltekst>
-                </FeltGruppe>
+                    <FeltGruppe>
+                        <Element>
+                            <FormattedMessage id={'person.ident.visning'} />
+                        </Element>
+                        <Normaltekst>{personopplysninger.fnr}</Normaltekst>
+                    </FeltGruppe>
 
-                <FeltGruppe>
-                    <Element>
-                        <FormattedMessage id={'person.statsborgerskap'} />
-                    </Element>
-                    <Normaltekst>
-                        {språkFerdigImportert &&
-                            personopplysninger.statsborgerskap
-                                .map((landkode: string) => landkodeTilSpråk(landkode, intl.locale))
-                                .join(', ')}
-                    </Normaltekst>
-                </FeltGruppe>
+                    <FeltGruppe>
+                        <Element>
+                            <FormattedMessage id={'person.statsborgerskap'} />
+                        </Element>
+                        <Normaltekst>
+                            {språkFerdigImportert &&
+                                personopplysninger.statsborgerskap
+                                    .map((landkode: string) =>
+                                        landkodeTilSpråk(landkode, intl.locale),
+                                    )
+                                    .join(', ')}
+                        </Normaltekst>
+                    </FeltGruppe>
 
-                <FeltGruppe>
-                    <Element>
-                        <FormattedMessage id={'sivilstatus.tittel'} />
-                    </Element>
-                    <Normaltekst>
-                        <FormattedMessage id={hentSivilstatus(personopplysninger.sivilstand)} />
-                    </Normaltekst>
-                </FeltGruppe>
+                    <FeltGruppe>
+                        <Element>
+                            <FormattedMessage id={'sivilstatus.tittel'} />
+                        </Element>
+                        <Normaltekst>
+                            <FormattedMessage id={hentSivilstatus(personopplysninger.sivilstand)} />
+                        </Normaltekst>
+                    </FeltGruppe>
 
-                <FeltGruppe>
-                    <Element>
-                        <FormattedMessage id={'person.adresse'} />
-                    </Element>
-                    <Normaltekst>{personopplysninger.adresse.adresse}</Normaltekst>
-                    <Normaltekst>
-                        {personopplysninger.adresse.postnummer}{' '}
-                        {personopplysninger.adresse.poststed}
-                    </Normaltekst>
-                </FeltGruppe>
-            </KomponentGruppe>
+                    <FeltGruppe>
+                        <Element>
+                            <FormattedMessage id={'person.adresse'} />
+                        </Element>
+                        <Normaltekst>{personopplysninger.adresse.adresse}</Normaltekst>
+                        <Normaltekst>
+                            {personopplysninger.adresse.postnummer}{' '}
+                            {personopplysninger.adresse.poststed}
+                        </Normaltekst>
+                    </FeltGruppe>
+                </KomponentGruppe>
 
-            <KomponentGruppe aria-live="polite">
-                <JaNeiSpørsmål
-                    legend={
-                        <>
-                            <Element>
-                                <FormattedMessage id={'personopplysninger.spm.riktigAdresse'} />
-                            </Element>
-                            <Normaltekst>
-                                <FormattedMessage
-                                    id={'personopplysninger.lesmer-innhold.riktigAdresse'}
-                                />
-                            </Normaltekst>
-                        </>
-                    }
-                    onChange={borDuPåRegistrertAdresseOnChange}
-                    name={'RegistrertAdresseStemmer'}
-                    labelTekstForJaNei={{
-                        ja: <FormattedMessage id={'ja'} />,
-                        nei: <FormattedMessage id={'nei'} />,
-                    }}
-                />
+                <KomponentGruppe aria-live="polite">
+                    <JaNeiSpørsmål
+                        legend={
+                            <>
+                                <Element>
+                                    <FormattedMessage id={'personopplysninger.spm.riktigAdresse'} />
+                                </Element>
+                                <Normaltekst>
+                                    <FormattedMessage
+                                        id={'personopplysninger.lesmer-innhold.riktigAdresse'}
+                                    />
+                                </Normaltekst>
+                            </>
+                        }
+                        onChange={borDuPåRegistrertAdresseOnChange}
+                        name={'RegistrertAdresseStemmer'}
+                        labelTekstForJaNei={{
+                            ja: <FormattedMessage id={'ja'} />,
+                            nei: <FormattedMessage id={'nei'} />,
+                        }}
+                    />
 
-                {søkerBorPåRegistrertAdresse === false && (
-                    <SøkerBorIkkePåAdresse lenkePDFSøknad={lenkePDFSøknad} />
+                    {søkerBorPåRegistrertAdresse === false && (
+                        <SøkerBorIkkePåAdresse lenkePDFSøknad={lenkePDFSøknad} />
+                    )}
+                </KomponentGruppe>
+
+                {søkerBorPåRegistrertAdresse && (
+                    <StyledInput
+                        name={'Telefonnummer'}
+                        label={<FormattedMessage id={'person.telefonnr'} />}
+                        bredde={'M'}
+                        type="tel"
+                        onChange={e => oppdaterTelefonnr(e)}
+                        onBlur={e => oppdaterFeilmelding(e)}
+                        feil={
+                            feilTelefonnr ? (
+                                <FormattedMessage id={'personopplysninger.feilmelding.telefonnr'} />
+                            ) : undefined
+                        }
+                        value={telefonnummer}
+                    />
                 )}
-            </KomponentGruppe>
-
-            {søkerBorPåRegistrertAdresse && (
-                <StyledInput
-                    name={'Telefonnummer'}
-                    label={<FormattedMessage id={'person.telefonnr'} />}
-                    bredde={'M'}
-                    type="tel"
-                    onChange={e => oppdaterTelefonnr(e)}
-                    onBlur={e => oppdaterFeilmelding(e)}
-                    feil={
-                        feilTelefonnr ? (
-                            <FormattedMessage id={'personopplysninger.feilmelding.telefonnr'} />
-                        ) : undefined
-                    }
-                    value={telefonnummer}
-                />
-            )}
-        </PersonopplysningerSection>
+            </PersonopplysningerSection>
+        </RawIntlProvider>
     );
 };
