@@ -49,7 +49,7 @@
     "nav-frontend-popover": "0.0.40",
     "nav-frontend-popover-style": "0.0.8",
     "nav-frontend-skjema": "^3.0.52",
-    "nav-frontend-typografi": "^2.0.17",
+    "nav-frontend-typografi": "^3.0.4",
     "nav-frontend-typografi-style": "^1.0.18",
     "prop-types": "^15.7.2",
     "styled-components": "^5.2.1"
