@@ -1,4 +1,3 @@
-// om deg
 export interface IPersonopplysninger {
     fnr: string;
     statsborgerskap: string[];

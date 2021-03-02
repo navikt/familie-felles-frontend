@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Personopplysninger } from './src';
-import { IPersonopplysninger } from './src/types';
+import { IPersonopplysninger } from './src/typer';
 import { IntlProvider } from 'react-intl';
 import { LocaleType } from '@navikt/familie-sprakvelger';
 

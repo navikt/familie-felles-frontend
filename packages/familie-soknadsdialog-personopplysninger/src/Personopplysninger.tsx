@@ -9,7 +9,7 @@ import { LocaleType } from '@navikt/familie-sprakvelger';
 import { SøkerBorIkkePåAdresse } from './SøkerBorIkkePåAdresse';
 import { StyledAlertStripe, FeltGruppe, KomponentGruppe } from './layoutKomponenter';
 import { hentSivilstatus, landkodeTilSpråk } from './utils';
-import { IPersonopplysninger } from './types';
+import { IPersonopplysninger } from './typer';
 import { registerLocale } from 'i18n-iso-countries';
 
 export interface PersonopplysningerProps {
