@@ -8,7 +8,7 @@ type LabelTekstForJaNei = {
     nei: ReactNode;
 };
 
-interface JaNeiSpørsmålProps {
+export interface JaNeiSpørsmålProps {
     onChange: (value: ESvar) => void;
     legend: JSX.Element | string;
     name: string;
