@@ -1,5 +1,5 @@
 {
-    "version": "3.0.12",
+    "version": "3.0.13",
     "name": "@navikt/familie-typer",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -18,6 +18,5 @@
         "clean": "rm -rf ./dist",
         "copy-less": "copyfiles -u 1 src/**/*.less dist",
         "tsc": "tsc -p tsconfig.json"
-    },
-    "dependencies": {}
+    }
 }

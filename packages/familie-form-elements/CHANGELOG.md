@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.0...@navikt/familie-form-elements@2.2.1) (2021-03-05)
+
+**Note:** Version bump only for package @navikt/familie-form-elements
+
+
+
+
+
 # [2.2.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.1.2...@navikt/familie-form-elements@2.2.0) (2021-03-03)
 
 

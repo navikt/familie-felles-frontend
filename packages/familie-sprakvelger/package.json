@@ -1,5 +1,5 @@
 {
-    "version": "2.0.2",
+    "version": "2.0.3",
     "name": "@navikt/familie-sprakvelger",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -21,8 +21,8 @@
     },
     "dependencies": {
         "@navikt/ds-icons": "^0.1.6",
-        "@navikt/familie-form-elements": "^2.2.0",
-        "@navikt/familie-ikoner": "^3.1.9",
+        "@navikt/familie-form-elements": "^2.2.1",
+        "@navikt/familie-ikoner": "^3.1.10",
         "@types/react-aria-menubutton": "^6.2.7",
         "nav-frontend-chevron": "^1.0.28",
         "nav-frontend-chevron-style": "^1.0.4",
