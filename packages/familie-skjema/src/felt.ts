@@ -67,8 +67,7 @@ export function useFelt<Verdi = string>({
     };
 
     const hentAvhengighetArray = () => {
-        return avhengigheter
-            ? // eslint-disable-next-line
+        return avhengigheter ?
               Object.values(avhengigheter).reduce((acc: [], avhengighet: any) => {
                   if ((avhengighet instanceof Object) && 'valideringsstatus' in avhengighet) {
                       return [...acc, (avhengighet as Felt<unknown>).verdi];
