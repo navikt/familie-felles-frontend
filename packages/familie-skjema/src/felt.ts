@@ -70,7 +70,7 @@ export function useFelt<Verdi = string>({
         return avhengigheter
             ? // eslint-disable-next-line
               Object.values(avhengigheter).reduce((acc: [], avhengighet: any) => {
-                  if ('valideringsstatus' in avhengighet) {
+                  if ((avhengighet instanceof Object) && 'valideringsstatus' in avhengighet) {
                       return [...acc, (avhengighet as Felt<unknown>).verdi];
                   } else {
                       return [...acc, avhengighet];
