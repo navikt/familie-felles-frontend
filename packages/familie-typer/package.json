@@ -19,11 +19,5 @@
         "copy-less": "copyfiles -u 1 src/**/*.less dist",
         "tsc": "tsc -p tsconfig.json"
     },
-    "peerDependencies": {
-        "react": "^16.12.0"
-    },
-    "dependencies": {
-        "nav-frontend-knapper": "^2.0.31",
-        "nav-frontend-knapper-style": "^1.0.16"
-    }
+    "dependencies": {}
 }

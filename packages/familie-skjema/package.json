@@ -23,15 +23,13 @@
         "@navikt/familie-http": "^1.0.3",
         "@navikt/familie-typer": "^3.0.12",
         "@types/deep-equal": "^1.0.1",
-        "deep-equal": "^2.0.5",
-        "nav-frontend-knapper": "^2.0.31",
-        "nav-frontend-knapper-style": "^1.0.16"
+        "deep-equal": "^2.0.5"
     },
     "devDependencies": {
         "@navikt/familie-form-elements": "2.0.11",
-        "nav-frontend-skjema": "3.0.38"
+        "nav-frontend-skjema": "3.0.53"
     },
     "peerDependencies": {
-        "react": "^16.12.0"
+        "react": "^17.0.1"
     }
 }
