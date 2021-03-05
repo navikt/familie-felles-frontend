@@ -35,6 +35,6 @@
         "@types/styled-components": "^5.1.7"
     },
     "peerDependencies": {
-        "react": "^16.12.0"
+        "react": "^17.0.1"
     }
 }

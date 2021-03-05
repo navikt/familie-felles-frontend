@@ -20,8 +20,6 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "nav-frontend-knapper": "^2.0.31",
-        "nav-frontend-knapper-style": "^1.0.16",
         "winston": "^3.2.1"
     }
 }

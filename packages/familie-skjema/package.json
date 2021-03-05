@@ -30,6 +30,6 @@
         "nav-frontend-skjema": "3.0.53"
     },
     "peerDependencies": {
-        "react": "^16.12.0"
+        "react": "^17.0.1"
     }
 }
