@@ -1,9 +1,9 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, ReactNode } from 'react';
 
 import { Ressurs } from '@navikt/familie-typer';
 
 export interface FeltState<Verdi> {
-    feilmelding: string;
+    feilmelding: ReactNode;
     valider: ValiderFelt<Verdi>;
     valideringsstatus: Valideringsstatus;
     verdi: Verdi;
@@ -15,7 +15,7 @@ export type FeltOnChange<Verdi> = (
 
 export interface Felt<Verdi> {
     erSynlig: boolean;
-    feilmelding: string;
+    feilmelding: ReactNode;
     hentNavInputProps(visFeilmelding: boolean): NavInputProps<Verdi>;
     hentNavBaseSkjemaProps(visFeilmelding: boolean): NavBaseSkjemaProps<Verdi>;
     nullstill(): void;
@@ -27,7 +27,7 @@ export interface Felt<Verdi> {
 }
 
 export interface NavBaseSkjemaProps<Verdi> {
-    feil: string | undefined;
+    feil: ReactNode | undefined;
     value: Verdi;
 }
 
