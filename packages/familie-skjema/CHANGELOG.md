@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.9](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@1.0.8...@navikt/familie-skjema@1.0.9) (2021-03-05)
+
+
+### Bug Fixes
+
+* **Refaktor felthook:** refaktorer felt-hook i familie-skjema ([#289](https://github.com/navikt/familie-felles-frontend/issues/289)) ([0671e8d](https://github.com/navikt/familie-felles-frontend/commit/0671e8dbfffdce69e68905ca50b361c065e9d206))
+
+
+
+
+
 ## [1.0.8](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@1.0.5...@navikt/familie-skjema@1.0.8) (2021-03-05)
 
 
