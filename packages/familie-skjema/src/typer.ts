@@ -10,7 +10,11 @@ export interface FeltState<Verdi> {
 }
 
 export type FeltOnChange<Verdi> = (
-    verdi: Verdi | ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>,
+    verdi:
+        | Verdi
+        | ChangeEvent<HTMLInputElement>
+        | ChangeEvent<HTMLTextAreaElement>
+        | ChangeEvent<HTMLSelectElement>,
 ) => void;
 
 export interface Felt<Verdi> {
