@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFelt, useSkjema, ok, FeltState, feil, Avhengigheter } from './src';
 import { FamilieInput, FamilieKnapp } from '@navikt/familie-form-elements';
-import { SkjemaGruppe } from 'nav-frontend-skjema';
+import { Select, SkjemaGruppe } from 'nav-frontend-skjema';
 import { RessursStatus } from '@navikt/familie-typer';
 
 export default {
@@ -10,6 +10,12 @@ export default {
         text: 'Test',
     },
     title: 'hooks/skjema',
+};
+
+const SkjemaTyper = {
+    ORDINÆR: 'Ordinær',
+    UTVIDET: 'Utvidet',
+    EØS: 'EØS',
 };
 
 export const EnkeltSkjema = () => {
@@ -46,6 +52,14 @@ export const EnkeltSkjema = () => {
             return land.verdi !== '' ? true : false;
         },
         avhengigheter: { land },
+    });
+
+    const skjemaType = useFelt<string | undefined>({
+        verdi: undefined,
+        valideringsfunksjon: (felt: FeltState<string | undefined>) =>
+            felt.verdi && felt.verdi in SkjemaTyper
+                ? ok(felt)
+                : feil(felt, 'Du må velge blant disse'),
     });
 
     const { kanSendeSkjema, nullstillSkjema, skjema } = useSkjema<
@@ -93,6 +107,20 @@ export const EnkeltSkjema = () => {
             )}
 
             <p>{eksempelMelding}</p>
+
+            <Select {...skjemaType.hentNavInputProps(false)} label={'Hva søker du om?'}>
+                <option
+                    value={undefined}
+                    label={'Velg søknadstype'}
+                    disabled={true}
+                    selected={true}
+                />
+                {Object.entries(SkjemaTyper).map(entry => {
+                    const [verdi, label] = entry;
+                    return <option value={verdi}>{label}</option>;
+                })}
+            </Select>
+            {skjemaType.verdi && <p>Du har valgt: {skjemaType.verdi}</p>}
 
             <FamilieKnapp
                 onClick={() => {
