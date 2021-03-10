@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.10](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@1.0.9...@navikt/familie-skjema@1.0.10) (2021-03-10)
+
+
+### Bug Fixes
+
+* **familie-skjema:** støtte select-elementer i FeltOnChange ([#294](https://github.com/navikt/familie-felles-frontend/issues/294)) ([36bda2d](https://github.com/navikt/familie-felles-frontend/commit/36bda2df3fa953588f2547366b30e21f2b274802))
+
+
+
+
+
 ## [1.0.9](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@1.0.8...@navikt/familie-skjema@1.0.9) (2021-03-05)
 
 
