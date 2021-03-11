@@ -10,9 +10,10 @@ type LabelTekstForJaNei = {
 
 export interface JaNeiSpørsmålProps {
     onChange: (value: ESvar) => void;
-    legend: JSX.Element | string;
+    legend: ReactNode;
     name: string;
     labelTekstForJaNei: LabelTekstForJaNei;
+    feil?: ReactNode;
 }
 
 const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
@@ -22,7 +23,6 @@ const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
         grid-auto-rows: min-content;
         grid-template: 'ja nei';
         grid-gap: 1rem;
-        padding-top: 1rem;
 
         label {
             margin-bottom: 0.5rem;
@@ -53,6 +53,7 @@ export const JaNeiSpørsmål: React.FC<JaNeiSpørsmålProps> = ({
     name,
     onChange,
     labelTekstForJaNei,
+    feil,
 }) => {
     const [checked, setChecked] = useState<ESvar | undefined>();
 
@@ -72,6 +73,7 @@ export const JaNeiSpørsmål: React.FC<JaNeiSpørsmålProps> = ({
                 setChecked(value);
                 onChange(value);
             }}
+            feil={feil}
         />
     );
 };
