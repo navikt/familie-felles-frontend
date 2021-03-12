@@ -34,6 +34,15 @@ export const useSkjema = <Felter, SkjemaRespons>({
             });
     };
 
+    const valideringErOk = () => {
+        return (
+            alleSynligeFelter().filter(felt => {
+                const unknownFelt = felt as Felt<unknown>;
+                return unknownFelt.valideringsstatus !== Valideringsstatus.OK;
+            }).length === 0 && skjema.submitRessurs.status !== RessursStatus.HENTER
+        );
+    };
+
     const kanSendeSkjema = (): boolean => {
         validerAlleSynligeFelter();
         settVisfeilmeldinger(true);
@@ -84,5 +93,7 @@ export const useSkjema = <Felter, SkjemaRespons>({
         onSubmit,
         settSubmitRessurs,
         skjema,
+        validerAlleSynligeFelter,
+        valideringErOk,
     };
 };
