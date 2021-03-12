@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@1.0.10...@navikt/familie-skjema@1.1.0) (2021-03-12)
+
+
+### Features
+
+* **Utvid skjema-hook funksjonalitet:** eksponer ut validering hver for seg utenom kanSendeSkjema ([#296](https://github.com/navikt/familie-felles-frontend/issues/296)) ([ea790f6](https://github.com/navikt/familie-felles-frontend/commit/ea790f6dbd5f792f0be3fd6e377bcd406b1f467d))
+
+
+
+
+
 ## [1.0.10](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@1.0.9...@navikt/familie-skjema@1.0.10) (2021-03-10)
 
 
