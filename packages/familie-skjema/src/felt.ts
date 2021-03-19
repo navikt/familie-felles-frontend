@@ -1,7 +1,7 @@
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
-
-import { v4 as uuidv4 } from 'uuid';
+import { guid } from './utils';
 import deepEqual from 'deep-equal';
+
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 
 import {
     defaultValidator,
@@ -37,7 +37,7 @@ export function useFelt<Verdi = string>({
     skalFeltetVises,
     avhengigheter = {},
 }: FeltConfig<Verdi>): Felt<Verdi> {
-    const id = uuidv4();
+    const id = guid();
     const initialFeltState = {
         feilmelding: '',
         valider: valideringsfunksjon ? valideringsfunksjon : defaultValidator,

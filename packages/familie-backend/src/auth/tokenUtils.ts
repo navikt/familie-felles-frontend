@@ -33,7 +33,12 @@ export const getOnBehalfOfAccessToken = (
                     }
 
                     req.session.passport.user.tokenSets[api.clientId] = tokenSet;
-                    resolve(tokenSet.access_token);
+
+                    if (tokenSet.access_token) {
+                        resolve(tokenSet.access_token);
+                    } else {
+                        reject('Token ikke tilgjengelig');
+                    }
                 })
                 .catch((err: Error) => {
                     logError('Feil ved henting av obo token', err);
