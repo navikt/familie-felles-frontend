@@ -37,7 +37,7 @@ export function useFelt<Verdi = string>({
     skalFeltetVises,
     avhengigheter = {},
 }: FeltConfig<Verdi>): Felt<Verdi> {
-    const id = guid();
+    const [id] = useState(guid());
     const initialFeltState = {
         feilmelding: '',
         valider: valideringsfunksjon ? valideringsfunksjon : defaultValidator,
