@@ -1,6 +1,7 @@
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 
 import deepEqual from 'deep-equal';
+import { v4 as uuidv4 } from 'uuid';
 
 import {
     defaultValidator,
@@ -67,9 +68,9 @@ export function useFelt<Verdi = string>({
     };
 
     const hentAvhengighetArray = () => {
-        return avhengigheter ?
-              Object.values(avhengigheter).reduce((acc: [], avhengighet: any) => {
-                  if ((avhengighet instanceof Object) && 'valideringsstatus' in avhengighet) {
+        return avhengigheter
+            ? Object.values(avhengigheter).reduce((acc: [], avhengighet: any) => {
+                  if (avhengighet instanceof Object && 'valideringsstatus' in avhengighet) {
                       return [...acc, (avhengighet as Felt<unknown>).verdi];
                   } else {
                       return [...acc, avhengighet];
@@ -122,6 +123,7 @@ export function useFelt<Verdi = string>({
     return useMemo(
         () => ({
             ...feltState,
+            id: uuidv4(),
             hentNavInputProps,
             hentNavBaseSkjemaProps,
             nullstill,

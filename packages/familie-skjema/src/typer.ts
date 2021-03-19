@@ -20,8 +20,9 @@ export type FeltOnChange<Verdi> = (
 export interface Felt<Verdi> {
     erSynlig: boolean;
     feilmelding: ReactNode;
-    hentNavInputProps(visFeilmelding: boolean): NavInputProps<Verdi>;
     hentNavBaseSkjemaProps(visFeilmelding: boolean): NavBaseSkjemaProps<Verdi>;
+    hentNavInputProps(visFeilmelding: boolean): NavInputProps<Verdi>;
+    id: string;
     nullstill(): void;
     onChange: FeltOnChange<Verdi>;
     valider: ValiderFelt<Verdi>;
