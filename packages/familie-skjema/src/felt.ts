@@ -1,7 +1,7 @@
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 
-import deepEqual from 'deep-equal';
 import { v4 as uuidv4 } from 'uuid';
+import deepEqual from 'deep-equal';
 
 import {
     defaultValidator,
