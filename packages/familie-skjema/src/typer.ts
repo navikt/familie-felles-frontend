@@ -32,12 +32,26 @@ export interface Felt<Verdi> {
 }
 
 export interface NavBaseSkjemaProps<Verdi> {
+    id: string;
     feil: ReactNode | undefined;
     value: Verdi;
 }
 
 export interface NavInputProps<Verdi> extends NavBaseSkjemaProps<Verdi> {
+    id: string;
     onChange: FeltOnChange<Verdi>;
+}
+
+// Kopiert fra feiloppsummering, men ønsker ikke å trekke inn dette som dependency
+export interface FeiloppsummeringFeil {
+    /**
+     * ID til skjemaelementet som feilmeldingen tilhører.
+     */
+    skjemaelementId: string;
+    /**
+     * Selve feilmeldingen.
+     */
+    feilmelding: string;
 }
 
 export enum Valideringsstatus {

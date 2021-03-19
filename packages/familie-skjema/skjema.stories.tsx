@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFelt, useSkjema, ok, FeltState, feil, Avhengigheter } from './src';
 import { FamilieInput, FamilieKnapp } from '@navikt/familie-form-elements';
-import { Select, SkjemaGruppe } from 'nav-frontend-skjema';
+import { Feiloppsummering, Select, SkjemaGruppe } from 'nav-frontend-skjema';
 import { RessursStatus } from '@navikt/familie-typer';
 
 export default {
@@ -62,7 +62,7 @@ export const EnkeltSkjema = () => {
                 : feil(felt, 'Du må velge blant disse'),
     });
 
-    const { kanSendeSkjema, nullstillSkjema, skjema } = useSkjema<
+    const { kanSendeSkjema, nullstillSkjema, hentFeilTilOppsummering, skjema } = useSkjema<
         {
             navn: string;
             land: string;
@@ -121,6 +121,17 @@ export const EnkeltSkjema = () => {
                 })}
             </Select>
             {skjemaType.verdi && <p>Du har valgt: {skjemaType.verdi}</p>}
+
+            {skjema.visFeilmeldinger && (
+                <>
+                    <br />
+                    <Feiloppsummering
+                        tittel={'Du må rette følgende for å gå videre:'}
+                        feil={hentFeilTilOppsummering()}
+                    />
+                    <br />
+                </>
+            )}
 
             <FamilieKnapp
                 onClick={() => {

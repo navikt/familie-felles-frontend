@@ -37,6 +37,7 @@ export function useFelt<Verdi = string>({
     skalFeltetVises,
     avhengigheter = {},
 }: FeltConfig<Verdi>): Felt<Verdi> {
+    const id = uuidv4();
     const initialFeltState = {
         feilmelding: '',
         valider: valideringsfunksjon ? valideringsfunksjon : defaultValidator,
@@ -106,8 +107,9 @@ export function useFelt<Verdi = string>({
     const hentNavInputProps = useCallback(
         (visFeilmelding: boolean): NavInputProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
-            value: feltState.verdi,
+            id,
             onChange,
+            value: feltState.verdi,
         }),
         [validerOgSettFelt, settFeltState],
     );
@@ -115,6 +117,7 @@ export function useFelt<Verdi = string>({
     const hentNavBaseSkjemaProps = useCallback(
         (visFeilmelding: boolean): NavBaseSkjemaProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
+            id,
             value: feltState.verdi,
         }),
         [validerOgSettFelt, settFeltState],
@@ -123,7 +126,7 @@ export function useFelt<Verdi = string>({
     return useMemo(
         () => ({
             ...feltState,
-            id: uuidv4(),
+            id,
             hentNavInputProps,
             hentNavBaseSkjemaProps,
             nullstill,
