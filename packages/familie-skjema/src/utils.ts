@@ -1,4 +1,6 @@
 import { ChangeEvent } from 'react';
+import Hashids from 'hashids';
+const hashid = new Hashids();
 
 // eslint-disable-next-line
 export function isChangeEvent(value: any): value is ChangeEvent<HTMLInputElement> {
@@ -16,6 +18,6 @@ function s4() {
         .substring(1);
 }
 
-export function guid() {
-    return `${s4()}${s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
+export function genererId() {
+    return hashid.encode([s4(), s4()]);
 }

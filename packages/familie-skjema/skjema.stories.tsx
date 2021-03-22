@@ -78,6 +78,7 @@ export const EnkeltSkjema = () => {
         skjemanavn: 'enkelt-skjema',
     });
 
+    console.log(skjema);
     return (
         <SkjemaGruppe
             feil={

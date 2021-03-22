@@ -1,4 +1,4 @@
-import { guid } from './utils';
+import { genererId } from './utils';
 import deepEqual from 'deep-equal';
 
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
@@ -39,7 +39,7 @@ export function useFelt<Verdi = string>({
     valideringsfunksjon,
     verdi,
 }: FeltConfig<Verdi>): Felt<Verdi> {
-    const [id] = useState(feltId ?? guid());
+    const [id] = useState(feltId ? feltId : genererId());
     const initialFeltState = {
         feilmelding: '',
         valider: valideringsfunksjon ? valideringsfunksjon : defaultValidator,
