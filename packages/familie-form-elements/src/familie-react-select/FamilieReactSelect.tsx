@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import ReactSelect, { NamedProps, StylesConfig } from 'react-select';
 import Creatable from 'react-select/creatable';
@@ -11,8 +11,8 @@ import { Feilmelding } from 'nav-frontend-typografi';
 export interface IProps extends NamedProps<{ label: string; value: string }, true | false> {
     erLesevisning?: boolean;
     creatable?: boolean;
-    label: React.ReactNode;
-    feil?: string;
+    label: ReactNode;
+    feil?: ReactNode;
     propSelectStyles?: StylesConfig;
 }
 
@@ -20,7 +20,7 @@ const Container = styled.div`
     margin-bottom: 1rem;
 `;
 
-const navSelectStyles = (feil?: string): StylesConfig => ({
+const navSelectStyles = (feil?: ReactNode): StylesConfig => ({
     control: (provided, state) => ({
         ...provided,
         border:

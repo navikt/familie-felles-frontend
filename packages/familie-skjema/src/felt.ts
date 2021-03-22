@@ -1,6 +1,7 @@
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
-
+import { genererId } from './utils';
 import deepEqual from 'deep-equal';
+
+import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 
 import {
     defaultValidator,
@@ -24,18 +25,21 @@ import { isChangeEvent } from './utils';
  * @avhengigheter avhengighetene som brukes til validering og vis/skjul
  */
 export interface FeltConfig<Verdi> {
-    verdi: Verdi;
-    valideringsfunksjon?: ValiderFelt<Verdi>;
-    skalFeltetVises?: (avhengigheter: Avhengigheter) => boolean;
     avhengigheter?: Avhengigheter;
+    feltId?: string;
+    skalFeltetVises?: (avhengigheter: Avhengigheter) => boolean;
+    valideringsfunksjon?: ValiderFelt<Verdi>;
+    verdi: Verdi;
 }
 
 export function useFelt<Verdi = string>({
-    verdi,
-    valideringsfunksjon,
-    skalFeltetVises,
     avhengigheter = {},
+    feltId,
+    skalFeltetVises,
+    valideringsfunksjon,
+    verdi,
 }: FeltConfig<Verdi>): Felt<Verdi> {
+    const [id] = useState(feltId ? feltId : genererId());
     const initialFeltState = {
         feilmelding: '',
         valider: valideringsfunksjon ? valideringsfunksjon : defaultValidator,
@@ -67,9 +71,9 @@ export function useFelt<Verdi = string>({
     };
 
     const hentAvhengighetArray = () => {
-        return avhengigheter ?
-              Object.values(avhengigheter).reduce((acc: [], avhengighet: any) => {
-                  if ((avhengighet instanceof Object) && 'valideringsstatus' in avhengighet) {
+        return avhengigheter
+            ? Object.values(avhengigheter).reduce((acc: [], avhengighet: any) => {
+                  if (avhengighet instanceof Object && 'valideringsstatus' in avhengighet) {
                       return [...acc, (avhengighet as Felt<unknown>).verdi];
                   } else {
                       return [...acc, avhengighet];
@@ -105,8 +109,9 @@ export function useFelt<Verdi = string>({
     const hentNavInputProps = useCallback(
         (visFeilmelding: boolean): NavInputProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
-            value: feltState.verdi,
+            id,
             onChange,
+            value: feltState.verdi,
         }),
         [validerOgSettFelt, settFeltState],
     );
@@ -114,6 +119,7 @@ export function useFelt<Verdi = string>({
     const hentNavBaseSkjemaProps = useCallback(
         (visFeilmelding: boolean): NavBaseSkjemaProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
+            id,
             value: feltState.verdi,
         }),
         [validerOgSettFelt, settFeltState],
@@ -122,6 +128,7 @@ export function useFelt<Verdi = string>({
     return useMemo(
         () => ({
             ...feltState,
+            id,
             hentNavInputProps,
             hentNavBaseSkjemaProps,
             nullstill,

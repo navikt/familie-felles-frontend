@@ -20,8 +20,9 @@ export type FeltOnChange<Verdi> = (
 export interface Felt<Verdi> {
     erSynlig: boolean;
     feilmelding: ReactNode;
-    hentNavInputProps(visFeilmelding: boolean): NavInputProps<Verdi>;
     hentNavBaseSkjemaProps(visFeilmelding: boolean): NavBaseSkjemaProps<Verdi>;
+    hentNavInputProps(visFeilmelding: boolean): NavInputProps<Verdi>;
+    id: string;
     nullstill(): void;
     onChange: FeltOnChange<Verdi>;
     valider: ValiderFelt<Verdi>;
@@ -31,12 +32,26 @@ export interface Felt<Verdi> {
 }
 
 export interface NavBaseSkjemaProps<Verdi> {
+    id: string;
     feil: ReactNode | undefined;
     value: Verdi;
 }
 
 export interface NavInputProps<Verdi> extends NavBaseSkjemaProps<Verdi> {
+    id: string;
     onChange: FeltOnChange<Verdi>;
+}
+
+// Kopiert fra feiloppsummering, men ønsker ikke å trekke inn dette som dependency
+export interface FeiloppsummeringFeil {
+    /**
+     * ID til skjemaelementet som feilmeldingen tilhører.
+     */
+    skjemaelementId: string;
+    /**
+     * Selve feilmeldingen.
+     */
+    feilmelding: string;
 }
 
 export enum Valideringsstatus {

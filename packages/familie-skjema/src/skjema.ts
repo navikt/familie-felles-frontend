@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { byggHenterRessurs, byggTomRessurs, Ressurs, RessursStatus } from '@navikt/familie-typer';
 import { useHttp, FamilieRequestConfig } from '@navikt/familie-http';
 
-import { Felt, FieldDictionary, ISkjema, Valideringsstatus } from './typer';
+import { FeiloppsummeringFeil, Felt, FieldDictionary, ISkjema, Valideringsstatus } from './typer';
 
 export const useSkjema = <Felter, SkjemaRespons>({
     felter,
@@ -80,6 +80,20 @@ export const useSkjema = <Felter, SkjemaRespons>({
         }
     };
 
+    const hentFeilTilOppsummering = (): FeiloppsummeringFeil[] => {
+        return Object.values(alleSynligeFelter())
+            .filter(felt => (felt as Felt<unknown>).valideringsstatus === Valideringsstatus.FEIL)
+            .map(felt => {
+                const typetFelt = felt as Felt<unknown>;
+
+                return {
+                    skjemaelementId: typetFelt.id,
+                    feilmelding:
+                        typeof typetFelt.feilmelding === 'string' ? typetFelt.feilmelding : '',
+                };
+            });
+    };
+
     const skjema: ISkjema<Felter, SkjemaRespons> = {
         felter,
         visFeilmeldinger,
@@ -88,6 +102,7 @@ export const useSkjema = <Felter, SkjemaRespons>({
     };
 
     return {
+        hentFeilTilOppsummering,
         kanSendeSkjema,
         nullstillSkjema,
         onSubmit,
