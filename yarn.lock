@@ -2389,10 +2389,10 @@
   dependencies:
     "@navikt/nap-bem-utils" "1.0.1"
 
-"@navikt/ds-icons@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.1.6.tgz#f28f223384c0e6385bb6990e58c946e1d7ecf61d"
-  integrity sha512-0oFQ5P1SGOYoxxunyp1V6kJE+YX5EhLdkP9sxXr0M8dusTMNhzXd6xJEG59V1DE0fKqX7CfmNSMnHWIJ2MdG6A==
+"@navikt/ds-icons@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.2.0.tgz#5ea53007f5b2b76a1f00030dc50e679284ee85da"
+  integrity sha512-Jr3zAp+NCpW6he+Q0e6TeV7PMUcMkUfbHkc2yiIWb5kynEHLNFPNqD8iOdqBrhPmwp0RFAI5iCyQmm4tC4VxAw==
 
 "@navikt/familie-form-elements@2.0.11":
   version "2.0.11"
