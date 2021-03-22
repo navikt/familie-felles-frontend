@@ -25,19 +25,21 @@ import { isChangeEvent } from './utils';
  * @avhengigheter avhengighetene som brukes til validering og vis/skjul
  */
 export interface FeltConfig<Verdi> {
-    verdi: Verdi;
-    valideringsfunksjon?: ValiderFelt<Verdi>;
-    skalFeltetVises?: (avhengigheter: Avhengigheter) => boolean;
     avhengigheter?: Avhengigheter;
+    feltId?: string;
+    skalFeltetVises?: (avhengigheter: Avhengigheter) => boolean;
+    valideringsfunksjon?: ValiderFelt<Verdi>;
+    verdi: Verdi;
 }
 
 export function useFelt<Verdi = string>({
-    verdi,
-    valideringsfunksjon,
-    skalFeltetVises,
     avhengigheter = {},
+    feltId,
+    skalFeltetVises,
+    valideringsfunksjon,
+    verdi,
 }: FeltConfig<Verdi>): Felt<Verdi> {
-    const [id] = useState(guid());
+    const [id] = useState(feltId ?? guid());
     const initialFeltState = {
         feilmelding: '',
         valider: valideringsfunksjon ? valideringsfunksjon : defaultValidator,
