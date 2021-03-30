@@ -30,6 +30,7 @@ export interface FeltConfig<Verdi> {
     skalFeltetVises?: (avhengigheter: Avhengigheter) => boolean;
     valideringsfunksjon?: ValiderFelt<Verdi>;
     verdi: Verdi;
+    nullstillVedAvhengighetEndring?: boolean;
 }
 
 export function useFelt<Verdi = string>({
@@ -38,6 +39,7 @@ export function useFelt<Verdi = string>({
     skalFeltetVises,
     valideringsfunksjon,
     verdi,
+    nullstillVedAvhengighetEndring = true,
 }: FeltConfig<Verdi>): Felt<Verdi> {
     const [id] = useState(feltId ? feltId : genererId());
     const initialFeltState = {
@@ -88,9 +90,11 @@ export function useFelt<Verdi = string>({
      */
     useEffect(() => {
         if (skalFeltetVises) {
-            if (feltState.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT) {
+
+            if (nullstillVedAvhengighetEndring && feltState.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT) {
                 nullstill();
             }
+
             settErSynlig(skalFeltetVises(avhengigheter));
         } else {
             validerOgSettFelt();
