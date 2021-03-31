@@ -32,12 +32,12 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
         return <FamilieLesefelt className={className} label={label} verdi={valgtDato} />;
     } else {
         return (
-            <div id={id} className={className}>
+            <div className={className}>
                 <Label children={label} htmlFor={id} />
                 <NavDatovelger
                     {...props}
                     disabled={disabled}
-                    inputId={`input_${id}`}
+                    inputId={id}
                     showYearSelector={true}
                     inputProps={{
                         name: id,
