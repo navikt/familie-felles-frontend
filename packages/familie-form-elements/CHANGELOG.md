@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.6](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.3...@navikt/familie-form-elements@2.2.6) (2021-04-09)
+
+
+### Bug Fixes
+
+* **Type til datovelger-label:** endrer typen til datovelger-label, så… ([#318](https://github.com/navikt/familie-felles-frontend/issues/318)) ([8e025d9](https://github.com/navikt/familie-felles-frontend/commit/8e025d9770b89a6c40f512aaa01b2717ab99a0ad))
+
+
+
+
+
 ## [2.2.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.2...@navikt/familie-form-elements@2.2.3) (2021-03-22)
 
 **Note:** Version bump only for package @navikt/familie-form-elements
