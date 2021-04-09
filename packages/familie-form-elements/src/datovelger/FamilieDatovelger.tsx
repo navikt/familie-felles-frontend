@@ -1,7 +1,7 @@
 import { Datepicker as NavDatovelger } from 'nav-datovelger';
 
 import { Label } from 'nav-frontend-skjema';
-import React from 'react';
+import React, {ReactNode} from 'react';
 import { FamilieLesefelt } from '../lesefelt';
 import { ISODateString } from 'nav-datovelger/lib/types';
 import { DatepickerProps } from 'nav-datovelger/lib/Datepicker';
@@ -11,7 +11,7 @@ export interface IDatovelgerProps {
     disabled?: boolean;
     erLesesvisning?: boolean;
     id: string;
-    label: string;
+    label: ReactNode;
     onChange: (dato?: ISODateString) => void;
     placeholder?: string;
     valgtDato?: string;
