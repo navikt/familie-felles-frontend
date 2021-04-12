@@ -33,6 +33,9 @@
     "react-select": "^4.0.13",
     "styled-components": "^5.2.1"
   },
+  "devDependencies": {
+    "@storybook/addon-knobs": "^6.2.7"
+  },
   "peerDependencies": {
     "react": "^17.0.1"
   }

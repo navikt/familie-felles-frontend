@@ -19,9 +19,9 @@ export interface JaNeiSpørsmålProps {
 const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
     div {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: min-content;
-        grid-template: 'ja nei';
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template: 'ja' 'nei';
         grid-gap: 1rem;
 
         label {
@@ -34,12 +34,6 @@ const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
 
         label:last-child {
             grid-area: nei;
-        }
-
-        @media all and (max-width: 420px) {
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-            grid-template: 'ja' 'nei';
         }
     }
 `;
