@@ -24,10 +24,6 @@ const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
         grid-template: 'ja' 'nei';
         grid-gap: 1rem;
 
-        label {
-            margin-bottom: 0.5rem;
-        }
-
         label:first-child {
             grid-area: ja;
         }
