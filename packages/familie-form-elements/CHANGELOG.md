@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.8](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.6...@navikt/familie-form-elements@2.2.8) (2021-04-13)
+
+
+### Bug Fixes
+
+* **familie-form-elements:** endre ja/nei-spm til å være vertikal ([#326](https://github.com/navikt/familie-felles-frontend/issues/326)) ([b28a351](https://github.com/navikt/familie-felles-frontend/commit/b28a351c58edbd43fbe2ba43398343a8500b012b))
+
+
+
+
+
 ## [2.2.6](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.3...@navikt/familie-form-elements@2.2.6) (2021-04-09)
 
 
