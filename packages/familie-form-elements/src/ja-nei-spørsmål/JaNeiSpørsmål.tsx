@@ -32,6 +32,10 @@ const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
             grid-area: nei;
         }
     }
+
+    div:empty {
+        display: none; // Nav sin radiopanelgruppe rendrer feil-container selv om feil er tom, så vi skjuler den for å fikse spacing
+    }
 `;
 
 const Capitalized = styled.span`
