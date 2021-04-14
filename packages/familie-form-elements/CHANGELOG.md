@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.12](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.8...@navikt/familie-form-elements@2.2.12) (2021-04-14)
+
+
+### Bug Fixes
+
+* **Send intiellVerdi som prop:** sett en initiell verdi til jaNeiSpm ([#328](https://github.com/navikt/familie-felles-frontend/issues/328)) ([21e8af6](https://github.com/navikt/familie-felles-frontend/commit/21e8af62bec369b0c9b2e9d66cee3538ca6db79f))
+
+
+
+
+
 ## [2.2.8](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.6...@navikt/familie-form-elements@2.2.8) (2021-04-13)
 
 
