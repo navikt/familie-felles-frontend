@@ -16,7 +16,8 @@ export default {
 };
 
 const DivMedBredde = styled.div<{bredde: string}>`
-  width: ${props => props.bredde};
+    width: ${props => props.bredde};
+    margin-bottom: 3rem;
 `
 
 export const FamilieJaNeiSpørsmålStory: React.FC = () => {
@@ -40,6 +41,15 @@ export const FamilieJaNeiSpørsmålStory: React.FC = () => {
                     onChange={value => {
                         alert(value === ESvar.NEI ? 'So sad' : 'Yayy, hurra!');
                     }}
+                />
+            </DivMedBredde>
+            <DivMedBredde bredde={bredde.toString(10) + '%'}>
+                <JaNeiSpørsmål
+                    onChange={() => {}}
+                    legend={"Denne har feilmelding"}
+                    name={'felt.medfeil'}
+                    labelTekstForJaNei={{ja: "Yes sir", nei: "Nåneidu"}}
+                    feil={"Dette var ikke bra"}
                 />
             </DivMedBredde>
             <div>
