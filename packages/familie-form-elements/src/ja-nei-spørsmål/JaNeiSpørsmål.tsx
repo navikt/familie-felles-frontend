@@ -13,6 +13,7 @@ export interface JaNeiSpørsmålProps {
     legend: ReactNode;
     name: string;
     labelTekstForJaNei: LabelTekstForJaNei;
+    initiellVerdi?: ESvar | undefined;
     feil?: ReactNode;
 }
 
@@ -44,8 +45,9 @@ export const JaNeiSpørsmål: React.FC<JaNeiSpørsmålProps> = ({
     onChange,
     labelTekstForJaNei,
     feil,
+    initiellVerdi
 }) => {
-    const [checked, setChecked] = useState<ESvar | undefined>();
+    const [checked, setChecked] = useState<ESvar | undefined>(initiellVerdi);
 
     return (
         <StyledRadioPanelGruppe
