@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.14](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.12...@navikt/familie-form-elements@2.2.14) (2021-04-14)
+
+
+### Bug Fixes
+
+* **familie-form-elements:** skjul tom feil-kontainer fra radiopanelgruppe ([#327](https://github.com/navikt/familie-felles-frontend/issues/327)) ([427a479](https://github.com/navikt/familie-felles-frontend/commit/427a4791fafcc0d143ba9fb181172fa415272212))
+
+
+
+
+
 ## [2.2.12](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.8...@navikt/familie-form-elements@2.2.12) (2021-04-14)
 
 
