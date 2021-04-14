@@ -17,24 +17,12 @@ export interface JaNeiSpørsmålProps {
 }
 
 const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
-    div {
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
-        grid-template: 'ja' 'nei';
-        grid-gap: 1rem;
-
-        label:first-child {
-            grid-area: ja;
+    && {
+        div {
+            label:not(:last-child) {
+                margin-bottom: 1rem;
+            }
         }
-
-        label:last-child {
-            grid-area: nei;
-        }
-    }
-
-    div:empty {
-        display: none; // Nav sin radiopanelgruppe rendrer feil-container selv om feil er tom, så vi skjuler den for å fikse spacing
     }
 `;
 
