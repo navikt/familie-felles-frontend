@@ -20,15 +20,15 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/ds-icons": "^0.1.6",
+        "@navikt/ds-icons": "^0.2.1",
         "@navikt/familie-form-elements": "^2.2.14",
         "@navikt/familie-ikoner": "^3.1.10",
         "@types/react-aria-menubutton": "^6.2.7",
         "nav-frontend-chevron": "^1.0.28",
         "nav-frontend-chevron-style": "^1.0.4",
-        "nav-frontend-core": "^5.0.11",
-        "nav-frontend-typografi": "^3.0.4",
-        "nav-frontend-typografi-style": "^1.0.35",
+        "nav-frontend-core": "^5.1.1",
+        "nav-frontend-typografi": "^3.1.1",
+        "nav-frontend-typografi-style": "^1.1.1",
         "react-aria-menubutton": "^7.0.1",
         "react-intl": "^5.13.2",
         "styled-components": "^5.2.1"
@@ -37,6 +37,6 @@
         "@types/styled-components": "^5.1.7"
     },
     "peerDependencies": {
-        "react": "^17.0.1"
+        "react": "^17.0.2"
     }
 }
