@@ -5,4 +5,4 @@ tsconfig.tsbuildinfo
 docs
 *.log
 .idea
-*/src/*d.ts
+*.d.ts
