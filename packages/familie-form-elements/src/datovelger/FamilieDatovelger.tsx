@@ -1,15 +1,17 @@
 import { Datepicker as NavDatovelger } from 'nav-datovelger';
 
 import { Label } from 'nav-frontend-skjema';
-import React, {ReactNode} from 'react';
+import React, { ReactNode } from 'react';
 import { FamilieLesefelt } from '../lesefelt';
 import { ISODateString } from 'nav-datovelger/lib/types';
 import { DatepickerProps } from 'nav-datovelger/lib/Datepicker';
+import dayjs from 'dayjs';
 
 export interface IDatovelgerProps {
     className?: string;
     disabled?: boolean;
     erLesesvisning?: boolean;
+    lesevisningFormat?: string;
     id: string;
     label: ReactNode;
     onChange: (dato?: ISODateString) => void;
@@ -26,10 +28,18 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
     onChange,
     placeholder,
     valgtDato,
+    lesevisningFormat = 'DD.MM.YYYY',
     ...props
 }) => {
     if (erLesesvisning) {
-        return <FamilieLesefelt className={className} label={label} verdi={valgtDato} />;
+        const verdiDayjs = dayjs(valgtDato);
+        return (
+            <FamilieLesefelt
+                className={className}
+                label={label}
+                verdi={verdiDayjs.isValid() ? verdiDayjs.format(lesevisningFormat) : valgtDato}
+            />
+        );
     } else {
         return (
             <div id={id} className={className}>
