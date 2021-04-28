@@ -23,6 +23,6 @@
         "@navikt/familie-typer": "^3.0.13"
     },
     "peerDependencies": {
-        "react": "^17.0.1"
+        "react": "^17.0.2"
     }
 }
