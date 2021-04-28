@@ -25,13 +25,14 @@
         "nav-frontend-core": "^5.1.1",
         "nav-frontend-knapper": "^2.1.2",
         "nav-frontend-knapper-style": "^1.1.2",
-        "react-tooltip": "^4.2.15",
-        "styled-components": "^5.2.1"
+        "react-tooltip": "^4.2.15"
     },
     "devDependencies": {
-        "@types/styled-components": "^5.1.7"
+        "@types/styled-components": "^5.1.7",
+        "styled-components": "^5.2.1"
     },
     "peerDependencies": {
-        "react": "^17.0.2"
+        "react": "^17.0.2",
+        "styled-components": "^5.2.1"
     }
 }
