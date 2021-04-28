@@ -1,6 +1,6 @@
 {
   "name": "@navikt/familie-backend",
-  "version": "5.0.23",
+  "version": "5.0.24",
   "description": "Skall for familieytelsenes frontend",
   "author": "NAV",
   "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -39,7 +39,7 @@
     "express-session": "^1.17.1",
     "https-proxy-agent": "^5.0.0",
     "moment-timezone": "^0.5.27",
-    "openid-client": "^4.4.1",
+    "openid-client": "^4.7.2",
     "passport": "^0.4.0",
     "prom-client": "^13.1.0",
     "redis": "^3.0.2",

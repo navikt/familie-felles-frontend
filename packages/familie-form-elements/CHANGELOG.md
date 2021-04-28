@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.16](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.15...@navikt/familie-form-elements@2.2.16) (2021-04-28)
+
+**Note:** Version bump only for package @navikt/familie-form-elements
+
+
+
+
+
+## [2.2.15](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.14...@navikt/familie-form-elements@2.2.15) (2021-04-27)
+
+**Note:** Version bump only for package @navikt/familie-form-elements
+
+
+
+
+
+## [2.2.14](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.12...@navikt/familie-form-elements@2.2.14) (2021-04-14)
+
+
+### Bug Fixes
+
+* **familie-form-elements:** skjul tom feil-kontainer fra radiopanelgruppe ([#327](https://github.com/navikt/familie-felles-frontend/issues/327)) ([427a479](https://github.com/navikt/familie-felles-frontend/commit/427a4791fafcc0d143ba9fb181172fa415272212))
+
+
+
+
+
+## [2.2.12](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.8...@navikt/familie-form-elements@2.2.12) (2021-04-14)
+
+
+### Bug Fixes
+
+* **Send intiellVerdi som prop:** sett en initiell verdi til jaNeiSpm ([#328](https://github.com/navikt/familie-felles-frontend/issues/328)) ([21e8af6](https://github.com/navikt/familie-felles-frontend/commit/21e8af62bec369b0c9b2e9d66cee3538ca6db79f))
+
+
+
+
+
+## [2.2.8](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.6...@navikt/familie-form-elements@2.2.8) (2021-04-13)
+
+
+### Bug Fixes
+
+* **familie-form-elements:** endre ja/nei-spm til å være vertikal ([#326](https://github.com/navikt/familie-felles-frontend/issues/326)) ([b28a351](https://github.com/navikt/familie-felles-frontend/commit/b28a351c58edbd43fbe2ba43398343a8500b012b))
+
+
+
+
+
+## [2.2.6](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.3...@navikt/familie-form-elements@2.2.6) (2021-04-09)
+
+
+### Bug Fixes
+
+* **Type til datovelger-label:** endrer typen til datovelger-label, så… ([#318](https://github.com/navikt/familie-felles-frontend/issues/318)) ([8e025d9](https://github.com/navikt/familie-felles-frontend/commit/8e025d9770b89a6c40f512aaa01b2717ab99a0ad))
+
+
+
+
+
 ## [2.2.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.2...@navikt/familie-form-elements@2.2.3) (2021-03-22)
 
 **Note:** Version bump only for package @navikt/familie-form-elements

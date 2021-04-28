@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.24](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@2.1.23...@navikt/familie-visittkort@2.1.24) (2021-04-28)
+
+**Note:** Version bump only for package @navikt/familie-visittkort
+
+
+
+
+
 ## [2.1.23](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@2.1.22...@navikt/familie-visittkort@2.1.23) (2021-03-05)
 
 **Note:** Version bump only for package @navikt/familie-visittkort

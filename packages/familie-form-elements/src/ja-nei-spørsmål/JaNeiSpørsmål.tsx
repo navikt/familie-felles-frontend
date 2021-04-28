@@ -13,33 +13,16 @@ export interface JaNeiSpørsmålProps {
     legend: ReactNode;
     name: string;
     labelTekstForJaNei: LabelTekstForJaNei;
+    initiellVerdi?: ESvar | undefined;
     feil?: ReactNode;
 }
 
 const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
-    div {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-auto-rows: min-content;
-        grid-template: 'ja nei';
-        grid-gap: 1rem;
-
-        label {
-            margin-bottom: 0.5rem;
-        }
-
-        label:first-child {
-            grid-area: ja;
-        }
-
-        label:last-child {
-            grid-area: nei;
-        }
-
-        @media all and (max-width: 420px) {
-            grid-template-columns: 1fr;
-            grid-template-rows: 1fr;
-            grid-template: 'ja' 'nei';
+    && {
+        div {
+            label:not(:last-child) {
+                margin-bottom: 1rem;
+            }
         }
     }
 `;
@@ -54,8 +37,9 @@ export const JaNeiSpørsmål: React.FC<JaNeiSpørsmålProps> = ({
     onChange,
     labelTekstForJaNei,
     feil,
+    initiellVerdi
 }) => {
-    const [checked, setChecked] = useState<ESvar | undefined>();
+    const [checked, setChecked] = useState<ESvar | undefined>(initiellVerdi);
 
     return (
         <StyledRadioPanelGruppe

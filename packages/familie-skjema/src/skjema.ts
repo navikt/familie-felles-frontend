@@ -64,6 +64,7 @@ export const useSkjema = <Felter, SkjemaRespons>({
     const onSubmit = <SkjemaData>(
         familieAxiosRequestConfig: FamilieRequestConfig<SkjemaData>,
         onSuccess: (ressurs: Ressurs<SkjemaRespons>) => void,
+        onError?: (ressurs: Ressurs<SkjemaRespons>) => void,
     ) => {
         if (kanSendeSkjema()) {
             settSubmitRessurs(byggHenterRessurs());
@@ -74,6 +75,8 @@ export const useSkjema = <Felter, SkjemaRespons>({
                     if (response.status === RessursStatus.SUKSESS) {
                         nullstillSkjema();
                         onSuccess(response);
+                    } else {
+                        onError && onError(response);
                     }
                 },
             );

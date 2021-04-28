@@ -1,5 +1,5 @@
 module.exports = {
-    stories: ['../packages/**/*.stories.(tsx|mdx)'],
+    stories: ['../packages/**/*.stories.@(tsx|mdx)'],
     addons: [
         '@storybook/addon-docs',
         '@storybook/addon-storysource',
@@ -7,6 +7,7 @@ module.exports = {
         '@storybook/addon-links',
         '@storybook/addon-knobs',
         '@storybook/addon-a11y',
+        '@storybook/addon-postcss',
     ],
     webpackFinal: async config => {
         config.module.rules.push({

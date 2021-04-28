@@ -1,5 +1,5 @@
 {
-    "version": "1.0.10",
+    "version": "1.0.11",
     "name": "@navikt/familie-dokumentliste",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -20,14 +20,14 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-ikoner": "^3.1.10",
+        "@navikt/familie-ikoner": "^3.1.11",
         "@navikt/familie-typer": "^3.0.13",
         "classnames": "^2.2.6",
-        "nav-frontend-core": "^5.0.11",
-        "nav-frontend-knapper": "^2.0.32",
-        "nav-frontend-knapper-style": "^1.0.17",
-        "nav-frontend-typografi": "^3.0.4",
-        "nav-frontend-typografi-style": "^1.0.35",
+        "nav-frontend-core": "^5.1.1",
+        "nav-frontend-knapper": "^2.1.2",
+        "nav-frontend-knapper-style": "^1.1.2",
+        "nav-frontend-typografi": "^3.1.1",
+        "nav-frontend-typografi-style": "^1.1.1",
         "prop-types": "^15.7.2"
     },
     "devDependencies": {
@@ -35,7 +35,7 @@
         "styled-components": "^5.2.1"
     },
     "peerDependencies": {
-        "react": "^17.0.1",
+        "react": "^17.0.2",
         "styled-components": "^5.2.1"
     }
 }
