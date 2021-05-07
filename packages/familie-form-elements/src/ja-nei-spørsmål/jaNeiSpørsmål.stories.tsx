@@ -35,7 +35,7 @@ export const FamilieJaNeiSpørsmålStory: React.FC = () => {
         <>
             <DivMedBredde bredde={bredde.toString(10) + '%'}>
                 <JaNeiSpørsmål
-                    labelTekstForJaNei={{ ja: 'Ja', nei: 'Nei' }}
+                    labelTekstForRadios={{ ja: 'Ja', nei: 'Nei' }}
                     legend={'Har du det bra?'}
                     name={'person.hardudetbra'}
                     onChange={value => {
@@ -45,11 +45,21 @@ export const FamilieJaNeiSpørsmålStory: React.FC = () => {
             </DivMedBredde>
             <DivMedBredde bredde={bredde.toString(10) + '%'}>
                 <JaNeiSpørsmål
-                    onChange={() => {}}
+                    onChange={() => {alert('feil')}}
                     legend={"Denne har feilmelding"}
                     name={'felt.medfeil'}
-                    labelTekstForJaNei={{ja: "Yes sir", nei: "Nåneidu"}}
+                    labelTekstForRadios={{ja: "Yes sir", nei: "Nåneidu"}}
                     feil={"Dette var ikke bra"}
+                />
+            </DivMedBredde>
+            <DivMedBredde bredde={bredde.toString(10) + '%'}>
+                <JaNeiSpørsmål
+                    labelTekstForRadios={{ ja: 'Ja', nei: 'Nei', vetikke: 'Vet ikke' }}
+                    legend={'Har du det bra? Her kan du også svare vet ikke'}
+                    name={'person.hardudetbra'}
+                    onChange={value => {
+                        alert(value !== ESvar.NEI ? 'Yayy, hurra!' : 'So sad');
+                    }}
                 />
             </DivMedBredde>
             <div>
