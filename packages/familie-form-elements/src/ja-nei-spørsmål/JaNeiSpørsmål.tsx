@@ -6,25 +6,22 @@ import { ESvar } from './typer';
 type LabelTekstForJaNei = {
     ja: ReactNode;
     nei: ReactNode;
+    vetikke?: ReactNode;
 };
 
 export interface JaNeiSpørsmålProps {
     onChange: (value: ESvar) => void;
     legend: ReactNode;
     name: string;
-    labelTekstForJaNei: LabelTekstForJaNei;
+    labelTekstForRadios: LabelTekstForJaNei;
     initiellVerdi?: ESvar | undefined;
     feil?: ReactNode;
 }
 
 const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
-    && {
-        div {
-            label:not(:last-child) {
-                margin-bottom: 1rem;
-            }
-        }
-    }
+  && label:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const Capitalized = styled.span`
@@ -35,23 +32,31 @@ export const JaNeiSpørsmål: React.FC<JaNeiSpørsmålProps> = ({
     legend,
     name,
     onChange,
-    labelTekstForJaNei,
+    labelTekstForRadios,
     feil,
-    initiellVerdi
+    initiellVerdi,
 }) => {
     const [checked, setChecked] = useState<ESvar | undefined>(initiellVerdi);
+
+    let radios = [
+        { label: <Capitalized>{labelTekstForRadios.ja}</Capitalized>, value: ESvar.JA },
+        {
+            label: <Capitalized>{labelTekstForRadios.nei}</Capitalized>,
+            value: ESvar.NEI,
+        },
+    ]
+
+    const inkluderVetIkke = !!labelTekstForRadios.vetikke;
+
+    if (inkluderVetIkke) {
+        radios = [...radios, { label: <Capitalized>{labelTekstForRadios.vetikke}</Capitalized>, value: ESvar.VET_IKKE }];
+    }
 
     return (
         <StyledRadioPanelGruppe
             legend={legend}
             name={name}
-            radios={[
-                { label: <Capitalized>{labelTekstForJaNei.ja}</Capitalized>, value: ESvar.JA },
-                {
-                    label: <Capitalized>{labelTekstForJaNei.nei}</Capitalized>,
-                    value: ESvar.NEI,
-                },
-            ]}
+            radios={radios}
             checked={checked}
             onChange={(_event, value) => {
                 setChecked(value);
