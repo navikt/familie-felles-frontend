@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.18...@navikt/familie-form-elements@3.0.0) (2021-05-07)
+
+
+### Features
+
+* **Legger til alternativ for vet ikke på janeispm:** legger til alternativ for vet ikke dersom man ([#359](https://github.com/navikt/familie-felles-frontend/issues/359)) ([f994389](https://github.com/navikt/familie-felles-frontend/commit/f99438932efe4d9bb158c8b0eda11594971f85d0))
+
+
+### BREAKING CHANGES
+
+* **Legger til alternativ for vet ikke på janeispm:** propen labelTekstForJaNei har blitt endret til labelTekstForRadios
+
+
+
+
+
 ## [2.2.18](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.17...@navikt/familie-form-elements@2.2.18) (2021-04-28)
 
 **Note:** Version bump only for package @navikt/familie-form-elements
