@@ -25,7 +25,9 @@ const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
 `;
 
 const Capitalized = styled.span`
+  ::first-letter{
     text-transform: capitalize;
+  }
 `;
 
 export const JaNeiSpørsmål: React.FC<JaNeiSpørsmålProps> = ({
