@@ -3,7 +3,14 @@ import { useState } from 'react';
 import { byggHenterRessurs, byggTomRessurs, Ressurs, RessursStatus } from '@navikt/familie-typer';
 import { useHttp, FamilieRequestConfig } from '@navikt/familie-http';
 
-import { FeiloppsummeringFeil, Felt, FieldDictionary, ISkjema, Valideringsstatus } from './typer';
+import {
+    FeiloppsummeringFeil,
+    Felt,
+    FeltState,
+    FieldDictionary,
+    ISkjema,
+    Valideringsstatus,
+} from './typer';
 
 export const useSkjema = <Felter, SkjemaRespons>({
     felter,
@@ -20,15 +27,15 @@ export const useSkjema = <Felter, SkjemaRespons>({
         return Object.values(felter).filter(felt => (felt as Felt<unknown>).erSynlig);
     };
 
-    const validerAlleSynligeFelter = () => {
-        alleSynligeFelter()
+    const validerAlleSynligeFelter = (): FeltState<unknown>[] => {
+        return alleSynligeFelter()
             .filter(
                 felt =>
                     (felt as Felt<unknown>).valideringsstatus === Valideringsstatus.IKKE_VALIDERT,
             )
-            .forEach(felt => {
+            .map(felt => {
                 const unknownFelt = felt as Felt<unknown>;
-                unknownFelt.validerOgSettFelt(unknownFelt.verdi, {
+                return unknownFelt.validerOgSettFelt(unknownFelt.verdi, {
                     felter,
                 });
             });
@@ -44,11 +51,11 @@ export const useSkjema = <Felter, SkjemaRespons>({
     };
 
     const kanSendeSkjema = (): boolean => {
-        validerAlleSynligeFelter();
+        const validerteSynligeFelter = validerAlleSynligeFelter();
         settVisfeilmeldinger(true);
 
         return (
-            alleSynligeFelter().filter(felt => {
+            validerteSynligeFelter.filter(felt => {
                 const unknownFelt = felt as Felt<unknown>;
                 return unknownFelt.valideringsstatus !== Valideringsstatus.OK;
             }).length === 0 && skjema.submitRessurs.status !== RessursStatus.HENTER

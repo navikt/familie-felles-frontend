@@ -58,8 +58,8 @@ export function useFelt<Verdi = string>({
         settFeltState(initialFeltState);
     };
 
-    const validerOgSettFelt = (verdi: Verdi = feltState.verdi) => {
-        const validertFelt = feltState.valider(
+    const validerOgSettFelt = (verdi: Verdi = feltState.verdi): FeltState<Verdi> => {
+        const validertFelt: FeltState<Verdi> = feltState.valider(
             {
                 ...feltState,
                 verdi,
@@ -70,6 +70,8 @@ export function useFelt<Verdi = string>({
         if (!deepEqual(feltState, validertFelt)) {
             settFeltState(validertFelt);
         }
+
+        return validertFelt;
     };
 
     const hentAvhengighetArray = () => {
@@ -83,12 +85,6 @@ export function useFelt<Verdi = string>({
               }, [])
             : [];
     };
-
-    useEffect(() => {
-        if (feltState.valideringsstatus === Valideringsstatus.IKKE_VALIDERT) {
-            validerOgSettFelt();
-        }
-    }, [feltState.valideringsstatus]);
 
     /**
      * Basert på avhengighetene til feltet håndterer vi vis/skjul
