@@ -28,17 +28,26 @@ export const useSkjema = <Felter, SkjemaRespons>({
     };
 
     const validerAlleSynligeFelter = (): FeltState<unknown>[] => {
-        return alleSynligeFelter()
-            .filter(
-                felt =>
-                    (felt as Felt<unknown>).valideringsstatus === Valideringsstatus.IKKE_VALIDERT,
-            )
-            .map(felt => {
-                const unknownFelt = felt as Felt<unknown>;
-                return unknownFelt.validerOgSettFelt(unknownFelt.verdi, {
-                    felter,
-                });
-            });
+        const synligeFelter: Felt<unknown>[] = alleSynligeFelter().map(
+            felt => felt as Felt<unknown>,
+        );
+
+        return [
+            ...synligeFelter
+                .filter(
+                    (unknownFelt: Felt<unknown>) =>
+                        unknownFelt.valideringsstatus === Valideringsstatus.IKKE_VALIDERT,
+                )
+                .map((unknownFelt: Felt<unknown>) => {
+                    return unknownFelt.validerOgSettFelt(unknownFelt.verdi, {
+                        felter,
+                    });
+                }),
+            ...synligeFelter.filter(
+                (unknownFelt: Felt<unknown>) =>
+                    unknownFelt.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT,
+            ),
+        ];
     };
 
     const valideringErOk = () => {
