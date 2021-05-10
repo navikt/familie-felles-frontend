@@ -37,14 +37,14 @@ export function useFelt<Verdi = string>({
     avhengigheter = {},
     feltId,
     skalFeltetVises,
-    valideringsfunksjon,
+    valideringsfunksjon = defaultValidator,
     verdi,
     nullstillVedAvhengighetEndring = true,
 }: FeltConfig<Verdi>): Felt<Verdi> {
     const [id] = useState(feltId ? feltId : genererId());
     const initialFeltState = {
         feilmelding: '',
-        valider: valideringsfunksjon ? valideringsfunksjon : defaultValidator,
+        valider: valideringsfunksjon,
         valideringsstatus: Valideringsstatus.IKKE_VALIDERT,
         verdi,
     };
@@ -58,8 +58,8 @@ export function useFelt<Verdi = string>({
         settFeltState(initialFeltState);
     };
 
-    const validerOgSettFelt = (verdi: Verdi = feltState.verdi) => {
-        const validertFelt = feltState.valider(
+    const validerOgSettFelt = (verdi: Verdi = feltState.verdi): FeltState<Verdi> => {
+        const validertFelt: FeltState<Verdi> = feltState.valider(
             {
                 ...feltState,
                 verdi,
@@ -70,6 +70,8 @@ export function useFelt<Verdi = string>({
         if (!deepEqual(feltState, validertFelt)) {
             settFeltState(validertFelt);
         }
+
+        return validertFelt;
     };
 
     const hentAvhengighetArray = () => {
@@ -90,8 +92,10 @@ export function useFelt<Verdi = string>({
      */
     useEffect(() => {
         if (skalFeltetVises) {
-
-            if (nullstillVedAvhengighetEndring && feltState.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT) {
+            if (
+                nullstillVedAvhengighetEndring &&
+                feltState.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT
+            ) {
                 nullstill();
             }
 

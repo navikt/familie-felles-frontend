@@ -3,7 +3,14 @@ import { useState } from 'react';
 import { byggHenterRessurs, byggTomRessurs, Ressurs, RessursStatus } from '@navikt/familie-typer';
 import { useHttp, FamilieRequestConfig } from '@navikt/familie-http';
 
-import { FeiloppsummeringFeil, Felt, FieldDictionary, ISkjema, Valideringsstatus } from './typer';
+import {
+    FeiloppsummeringFeil,
+    Felt,
+    FeltState,
+    FieldDictionary,
+    ISkjema,
+    Valideringsstatus,
+} from './typer';
 
 export const useSkjema = <Felter, SkjemaRespons>({
     felter,
@@ -20,18 +27,27 @@ export const useSkjema = <Felter, SkjemaRespons>({
         return Object.values(felter).filter(felt => (felt as Felt<unknown>).erSynlig);
     };
 
-    const validerAlleSynligeFelter = () => {
-        alleSynligeFelter()
-            .filter(
-                felt =>
-                    (felt as Felt<unknown>).valideringsstatus === Valideringsstatus.IKKE_VALIDERT,
-            )
-            .forEach(felt => {
-                const unknownFelt = felt as Felt<unknown>;
-                unknownFelt.validerOgSettFelt(unknownFelt.verdi, {
-                    felter,
-                });
-            });
+    const validerAlleSynligeFelter = (): FeltState<unknown>[] => {
+        const synligeFelter: Felt<unknown>[] = alleSynligeFelter().map(
+            felt => felt as Felt<unknown>,
+        );
+
+        return [
+            ...synligeFelter
+                .filter(
+                    (unknownFelt: Felt<unknown>) =>
+                        unknownFelt.valideringsstatus === Valideringsstatus.IKKE_VALIDERT,
+                )
+                .map((unknownFelt: Felt<unknown>) => {
+                    return unknownFelt.validerOgSettFelt(unknownFelt.verdi, {
+                        felter,
+                    });
+                }),
+            ...synligeFelter.filter(
+                (unknownFelt: Felt<unknown>) =>
+                    unknownFelt.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT,
+            ),
+        ];
     };
 
     const valideringErOk = () => {
@@ -44,11 +60,11 @@ export const useSkjema = <Felter, SkjemaRespons>({
     };
 
     const kanSendeSkjema = (): boolean => {
-        validerAlleSynligeFelter();
+        const validerteSynligeFelter = validerAlleSynligeFelter();
         settVisfeilmeldinger(true);
 
         return (
-            alleSynligeFelter().filter(felt => {
+            validerteSynligeFelter.filter(felt => {
                 const unknownFelt = felt as Felt<unknown>;
                 return unknownFelt.valideringsstatus !== Valideringsstatus.OK;
             }).length === 0 && skjema.submitRessurs.status !== RessursStatus.HENTER
