@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@3.0.0...@navikt/familie-form-elements@3.0.1) (2021-05-10)
+
+
+### Bug Fixes
+
+* **Stor eller liten forbokstav:** stor forbokstav på kun først ordet ([#365](https://github.com/navikt/familie-felles-frontend/issues/365)) ([1d67c78](https://github.com/navikt/familie-felles-frontend/commit/1d67c78e0c1d63ec00d2bc147da2100c7c283ff9))
+
+
+
+
+
 # [3.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@2.2.18...@navikt/familie-form-elements@3.0.0) (2021-05-07)
 
 
