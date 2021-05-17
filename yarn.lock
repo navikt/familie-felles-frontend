@@ -9200,26 +9200,12 @@ focus-lock@^0.8.1:
   dependencies:
     tslib "^1.9.3"
 
-focus-trap-react@^8.1.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.2.0.tgz#77c09ce7c05b8aee2815c81441e702c9ebca805b"
-  integrity sha512-rDPEchqmGnmAM6v8QZ00gMdMJC9sj3J/IA/TYE2dPVmpu48swhWHPZUSYd+AVazoD4xBYs7bNlMYqBG5M2p0eA==
-  dependencies:
-    focus-trap "^6.2.0"
-
-focus-trap-react@^8.4.2:
+focus-trap-react@^8.1.0, focus-trap-react@^8.5.0:
   version "8.5.0"
   resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.5.0.tgz#c4d08609ed1da0976b856519fd2c97760524474c"
   integrity sha512-YnQ3PtoszlXqHQQIYCnnTbWsXa6daEACXg9KkFvv357PkJUVp347G9L+e9WJwj2KgSIX+pTDcZFx+f7azo8dhw==
   dependencies:
     focus-trap "^6.4.0"
-
-focus-trap@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/focus-trap/-/focus-trap-6.2.0.tgz#ff8aa4bef1f4c47f6fee3fdcee71474771cab374"
-  integrity sha512-CO9ovKkTdoo4eKQJ2/nLIsDyCwEDKfbeuW27PqFJZQoPzVwrbDj6RhPvVxPbj2kzOrWN7sVEMeIVzeqSXFd15g==
-  dependencies:
-    tabbable "^5.1.3"
 
 focus-trap@^6.4.0:
   version "6.4.0"
@@ -12856,11 +12842,11 @@ natural-compare@^1.4.0:
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
 nav-datovelger@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-11.0.0.tgz#e6a85c3296f34f9c7b15b281b62a39112a4ce612"
-  integrity sha512-DxBdC4/7EnH0ykOzTMZtYCVy0zuhwp4sDhoPnRmPYUxUJkLLlZ9fXAPV0O9PzIDU+cgBhha8rQOXT3/AeDDU2w==
+  version "11.1.2"
+  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-11.1.2.tgz#a93eb06c8cfc39471c5d6ef7c29212e45ad75031"
+  integrity sha512-Zk2vU7hnSLGtfcogSsdi4cCpedIIDpzZncIsXzHCXJvs1u3sqx/CCcTMHONMKYVDuYLtw58dROaPcO3PuXrwDw==
   dependencies:
-    focus-trap-react "^8.4.2"
+    focus-trap-react "^8.5.0"
 
 nav-datovelger@^8.0.0:
   version "8.0.4"
@@ -17191,11 +17177,6 @@ symbol.prototype.description@^1.0.0:
   dependencies:
     es-abstract "^1.17.0-next.1"
     has-symbols "^1.0.1"
-
-tabbable@^5.1.3:
-  version "5.1.3"
-  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-5.1.3.tgz#8bb22b620d5a54d575c3243e4a324bd36acf99ec"
-  integrity sha512-jqR3rOgeyNlYWDWoyjNTWuHk3+FObu3Fw4e0zjeOLBicI74TT/wGrvSbJUaFVs7FMfiY0Ee8CKM7QaJwVMT4YA==
 
 tabbable@^5.2.0:
   version "5.2.0"
