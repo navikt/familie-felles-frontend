@@ -87,7 +87,7 @@ export interface DokumentlisteProps {
 }
 
 const formaterIsoDatoTid = (dato?: string): string | undefined => {
-    return dato && format(parseISO(dato), "dd.MM.yyyy 'kl'.HH:mm") ;
+    return dato && format(parseISO(dato), dato.length === 10 ? "dd.MM.yyyy" : "dd.MM.yyyy 'kl'.HH:mm") ;
 };
 
 export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onClick }) => {
