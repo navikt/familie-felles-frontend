@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import navFarger from 'nav-frontend-core';
-import { format, parseISO } from 'date-fns';
 import { Element, Undertekst } from 'nav-frontend-typografi';
 import PilVenstre from '@navikt/familie-ikoner/dist/utils/PilVenstre';
 import PilNed from '@navikt/familie-ikoner/dist/utils/PilNed';
@@ -86,10 +85,6 @@ export interface DokumentlisteProps {
     className?: string;
 }
 
-const formaterIsoDatoTid = (dato?: string): string | undefined => {
-    return dato && format(parseISO(dato), dato.length === 10 ? "dd.MM.yyyy" : "dd.MM.yyyy 'kl'.HH:mm") ;
-};
-
 export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onClick }) => {
     return (
         <li>
@@ -98,7 +93,7 @@ export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onCl
                     <Journalpostikon journalposttype={dokument.journalposttype} />
                 </JournalpostIkon>
                 <StyledDokumentnavn>{dokument.tittel}</StyledDokumentnavn>
-                <StyledUndertekst>{formaterIsoDatoTid(dokument.dato)}</StyledUndertekst>
+                <StyledUndertekst>{dokument.dato}</StyledUndertekst>
             </StyledKnapp>
         </li>
     );
