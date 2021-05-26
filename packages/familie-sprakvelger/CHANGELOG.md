@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.18](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.17...@navikt/familie-sprakvelger@2.0.18) (2021-05-26)
+
+
+### Bug Fixes
+
+* **Chevron klikkbar:** gjør chevron klikkbar i språkvelgeren ([#386](https://github.com/navikt/familie-felles-frontend/issues/386)) ([3fc4d46](https://github.com/navikt/familie-felles-frontend/commit/3fc4d461a905433f88443a478e37a41a5ec9216e))
+
+
+
+
+
 ## [2.0.17](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.16...@navikt/familie-sprakvelger@2.0.17) (2021-05-20)
 
 **Note:** Version bump only for package @navikt/familie-sprakvelger
