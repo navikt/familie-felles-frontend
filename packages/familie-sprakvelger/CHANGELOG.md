@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.19](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.18...@navikt/familie-sprakvelger@2.0.19) (2021-05-26)
+
+
+### Bug Fixes
+
+* **sprakvelger:** bruk intl peerDependency istedenfor egen ([#387](https://github.com/navikt/familie-felles-frontend/issues/387)) ([dddca92](https://github.com/navikt/familie-felles-frontend/commit/dddca927de5ceab9686e10b41ccef72dfa3eb883))
+
+
+
+
+
 ## [2.0.18](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.17...@navikt/familie-sprakvelger@2.0.18) (2021-05-26)
 
 
