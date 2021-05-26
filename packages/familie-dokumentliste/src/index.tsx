@@ -82,6 +82,7 @@ export interface DokumentElementProps {
 export interface DokumentlisteProps {
     dokumenter: DokumentProps[];
     onClick: (dokument: DokumentProps) => void;
+    className?: string;
 }
 
 export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onClick }) => {
@@ -98,9 +99,9 @@ export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onCl
     );
 };
 
-const Dokumentliste: React.FC<DokumentlisteProps> = ({ dokumenter, onClick }) => {
+const Dokumentliste: React.FC<DokumentlisteProps> = ({ dokumenter, onClick, className }) => {
     return (
-        <StyledDokumentListe>
+        <StyledDokumentListe className={className}>
             {dokumenter.map((dokument: DokumentProps, indeks: number) => {
                 return <DokumentElement dokument={dokument} onClick={onClick} key={indeks} />;
             })}
