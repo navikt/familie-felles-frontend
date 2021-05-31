@@ -28,7 +28,7 @@
     },
     "devDependencies": {
         "@navikt/familie-form-elements": "2.0.11",
-        "nav-frontend-skjema": "3.2.1"
+        "nav-frontend-skjema": "4.0.1"
     },
     "peerDependencies": {
         "react": "^17.0.2"
