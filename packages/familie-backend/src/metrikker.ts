@@ -17,9 +17,9 @@ export const konfigurerMetrikker = (
         });
     }
 
-    app.get('/metrics', (_: Request, res) => {
+    app.get('/metrics', async (_: Request, res) => {
         res.set('Content-Type', register.contentType);
-        res.end(register.metrics());
+        res.end(await register.metrics());
     });
 
     return register;
