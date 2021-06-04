@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.20](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.19...@navikt/familie-sprakvelger@2.0.20) (2021-06-04)
+
+
+### Bug Fixes
+
+* **språkvelger:** gi svger aria-hidden og fjern focusable ([#393](https://github.com/navikt/familie-felles-frontend/issues/393)) ([0aed085](https://github.com/navikt/familie-felles-frontend/commit/0aed0855f775904dafcc408329ac0396c57e5008))
+
+
+
+
+
 ## [2.0.19](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.18...@navikt/familie-sprakvelger@2.0.19) (2021-05-26)
 
 
