@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.6](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@1.1.5...@navikt/familie-skjema@1.1.6) (2021-06-09)
+
+
+### Bug Fixes
+
+* **familie-skjema:** eksponerer settVisFeilmeldinger i tilfelle noen vil resete skjema selv. ([#399](https://github.com/navikt/familie-felles-frontend/issues/399)) ([628d905](https://github.com/navikt/familie-felles-frontend/commit/628d905d6a835d6f04aab3355c009229bfd3a518))
+
+
+
+
+
 ## [1.1.5](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@1.1.4...@navikt/familie-skjema@1.1.5) (2021-05-10)
 
 **Note:** Version bump only for package @navikt/familie-skjema
