@@ -126,6 +126,7 @@ export const useSkjema = <Felter, SkjemaRespons>({
         nullstillSkjema,
         onSubmit,
         settSubmitRessurs,
+        settVisfeilmeldinger,
         skjema,
         validerAlleSynligeFelter,
         valideringErOk,
