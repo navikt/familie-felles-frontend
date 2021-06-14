@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.21](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.20...@navikt/familie-sprakvelger@2.0.21) (2021-06-14)
+
+
+### Bug Fixes
+
+* **sprakvelger:** fjern 170px bredde på språkvelger ([#400](https://github.com/navikt/familie-felles-frontend/issues/400)) ([f700297](https://github.com/navikt/familie-felles-frontend/commit/f7002978c9d60bd2647653000c2cc4b628f8a444))
+
+
+
+
+
 ## [2.0.20](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.19...@navikt/familie-sprakvelger@2.0.20) (2021-06-04)
 
 
