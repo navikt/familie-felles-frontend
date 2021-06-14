@@ -1,8 +1,7 @@
 import React from 'react';
-import { Sprakvelger } from './src/Sprakvelger';
-import { LocaleType } from './src/typer';
-import { SprakProvider } from './src/SprakContext';
+import { Sprakvelger, LocaleType, SprakProvider } from './src';
 import { FormattedMessage } from 'react-intl';
+import styled from 'styled-components';
 
 export default {
     component: Sprakvelger,
@@ -25,10 +24,27 @@ const messages = {
 };
 
 export const FamilieSprakvelger: React.FC = () => {
+    const Wrapper = styled.div`
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    `;
+
+    const StyledSprakvelger = styled(Sprakvelger)`
+        color: green;
+        margin: auto;
+    `;
+
     return (
         <SprakProvider tekster={messages} defaultLocale={LocaleType.en}>
-            <Sprakvelger støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]} />
-            <FormattedMessage id={'greeting'} />
+            <Wrapper>
+                <Sprakvelger støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]} />
+                <p>
+                    <FormattedMessage id={'greeting'} />
+                </p>
+                <p>Den kan styles om ønskelig</p>
+                <StyledSprakvelger støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]} />
+            </Wrapper>
         </SprakProvider>
     );
 };

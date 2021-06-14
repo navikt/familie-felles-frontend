@@ -11,10 +11,8 @@ import { SkjultLabel } from '@navikt/familie-form-elements';
 import { hentSprakvelgerLabelTekst } from './utils';
 
 const StyledWrapper = styled(Wrapper)`
-    width: 170px;
     position: relative;
     outline: none;
-    margin: auto;
 `;
 
 const StyledButton = styled(Button)`
@@ -43,7 +41,10 @@ const StyledExpand = styled(Expand)`
     z-index: -1;
 `;
 
-export const Sprakvelger: React.FC<{ støttedeSprak: LocaleType[] }> = ({ støttedeSprak }) => {
+export const Sprakvelger: React.FC<{ støttedeSprak: LocaleType[]; className?: string }> = ({
+    støttedeSprak,
+    className,
+}) => {
     const [valgtLocale, setValgtLocale] = useSprakContext();
     const [erÅpen, setErÅpen] = React.useState(false);
 
@@ -58,6 +59,7 @@ export const Sprakvelger: React.FC<{ støttedeSprak: LocaleType[] }> = ({ støtt
         <StyledWrapper
             onSelection={(value: JSX.Element) => handleSelection(value)}
             onMenuToggle={wrapperState => setErÅpen(wrapperState.isOpen)}
+            className={className}
         >
             <SkjultLabel htmlFor="språkvelger">
                 {hentSprakvelgerLabelTekst(valgtLocale)}
