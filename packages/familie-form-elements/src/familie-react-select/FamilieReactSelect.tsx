@@ -20,7 +20,7 @@ const Container = styled.div`
     margin-bottom: 1rem;
 `;
 
-const navSelectStyles = (feil?: ReactNode): StylesConfig => ({
+const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfig => ({
     control: (provided, state) => ({
         ...provided,
         border:
@@ -41,14 +41,18 @@ const navSelectStyles = (feil?: ReactNode): StylesConfig => ({
         ...provided,
         color: navFarger.navGra60,
     }),
-    dropdownIndicator: provided => ({
+    dropdownIndicator: provided => (
+        erLesevisning ? { display: 'none' }
+        : {
         ...provided,
         color: 'initial',
         ':hover': {
             color: 'initial',
         },
     }),
-    clearIndicator: provided => ({
+    clearIndicator: provided => (
+        erLesevisning ? { display: 'none' }
+        : {
         ...provided,
         color: navFarger.navGra60,
         ':hover': {
@@ -60,7 +64,9 @@ const navSelectStyles = (feil?: ReactNode): StylesConfig => ({
         backgroundColor: navFarger.navBlaLighten80,
         maxWidth: '18rem',
     }),
-    multiValueRemove: provided => ({
+    multiValueRemove: provided => (
+        erLesevisning ? { display: 'none' }
+        : {
         ...provided,
         ':hover': {
             backgroundColor: navFarger.navBla,
@@ -96,11 +102,12 @@ export const FamilieReactSelect: React.FC<IProps> = ({
 
     const hentSelectProps = () => ({
         styles: {
-            ...navSelectStyles(feil),
+            ...navSelectStyles(feil, erLesevisning),
             ...propSelectStyles,
         },
         id: id,
         isDisabled: erLesevisning,
+        isClearable: !erLesevisning,
         value,
         placeholder: 'Velg',
         noOptionsMessage: () => 'Ingen valg',
