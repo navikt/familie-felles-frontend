@@ -9,6 +9,8 @@ export enum LOG_LEVEL {
     DEBUG = 0,
 }
 
+export type Meta = Record<string, unknown>;
+
 const secureLogPath = () =>
     fs.existsSync('/secure-logs/') ? '/secure-logs/secure.log' : './secure.log';
 
@@ -24,22 +26,22 @@ export const secureLogger = winston.createLogger({
     transports: [new winston.transports.File({ filename: secureLogPath(), maxsize: 5242880 })],
 });
 
-export const logDebug = (message: string) => {
-    stdoutLogger.debug(message);
+export const logDebug = (message: string, meta: Meta = {}) => {
+    stdoutLogger.debug(message, meta);
 };
 
-export const logInfo = (message: string) => {
-    stdoutLogger.info(message);
+export const logInfo = (message: string, meta: Meta = {}) => {
+    stdoutLogger.info(message, meta);
 };
 
-export const logWarn = (message: string) => {
-    stdoutLogger.warn(message);
+export const logWarn = (message: string, meta: Meta = {}) => {
+    stdoutLogger.warn(message, meta);
 };
 
-export const logError = (message: string, err?: Error) => {
-    stdoutLogger.error(message, err && { message: `: ${err?.message || err}` });
+export const logError = (message: string, err?: Error, meta: Meta = {}) => {
+    stdoutLogger.error(message, { ...meta, ...(err && { message: `: ${err?.message || err}` }) });
 };
 
-export const logSecure = (message: string) => {
-    secureLogger.info(message);
+export const logSecure = (message: string, meta: Meta = {}) => {
+    secureLogger.info(message, meta);
 };
