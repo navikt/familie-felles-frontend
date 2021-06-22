@@ -22,20 +22,23 @@ const prefix = (req: Request) => {
 
 export const logRequest = (req: Request, message: string, level: LOG_LEVEL) => {
     const melding = `${prefix(req)}: ${message}`;
+    const callId = req.header('nav-call-id');
+    // eslint-disable-next-line @typescript-eslint/camelcase
+    const meta = callId ? { x_callId: callId } : {};
     switch (level) {
         case LOG_LEVEL.DEBUG:
-            logDebug(melding);
+            logDebug(melding, meta);
             break;
         case LOG_LEVEL.INFO:
-            logInfo(melding);
+            logInfo(melding, meta);
             break;
         case LOG_LEVEL.WARNING:
-            logWarn(melding);
+            logWarn(melding, meta);
             break;
         case LOG_LEVEL.ERROR:
-            logError(melding);
+            logError(melding, undefined, meta);
             break;
         default:
-            logInfo(melding);
+            logInfo(melding, meta);
     }
 };
