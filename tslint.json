@@ -8,7 +8,6 @@
         "no-trailing-whitespace": true,
         "triple-equals": true,
         "switch-default": true,
-        "no-null-keyword": true,
         "curly": true,
         "no-implicit-dependencies": [true, "dev"]
     }
