@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@3.0.3...@navikt/familie-form-elements@3.1.0) (2021-06-24)
+
+
+### Features
+
+* **Ref JaNeiSpm:** gjør mulig å lage en ref til jaNeiSpm ([#407](https://github.com/navikt/familie-felles-frontend/issues/407)) ([1713dd3](https://github.com/navikt/familie-felles-frontend/commit/1713dd3b01617becbadbd78c1a3bd59b64934170))
+
+
+
+
+
 ## [3.0.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@3.0.2...@navikt/familie-form-elements@3.0.3) (2021-06-15)
 
 
