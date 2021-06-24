@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import { JaNeiSpørsmål } from './JaNeiSpørsmål';
 import { ESvar } from './typer';
-import styled from "styled-components";
+import styled from 'styled-components';
 // Det må faktisk være plugin fra workspace her så vidt jeg forstår
 // tslint:disable-next-line:no-implicit-dependencies
-import { number, withKnobs } from "@storybook/addon-knobs";
+import { number, withKnobs } from '@storybook/addon-knobs';
 
 export default {
     component: JaNeiSpørsmål,
@@ -12,25 +12,21 @@ export default {
         componentSubtitle: 'En toggle for å svare på ja- og neispørsmål',
     },
     title: 'Komponenter/Form-elementer/JaNeiSpørsmål',
-    decorators: [withKnobs]
+    decorators: [withKnobs],
 };
 
-const DivMedBredde = styled.div<{bredde: string}>`
+const DivMedBredde = styled.div<{ bredde: string }>`
     width: ${props => props.bredde};
     margin-bottom: 3rem;
-`
+`;
 
 export const FamilieJaNeiSpørsmålStory: React.FC = () => {
-    const bredde = number(
-        'Breddebegrensning',
-        100,
-        {
-            min: 10,
-            max: 100,
-            step: 1,
-            range: true
-        }
-    )
+    const bredde = number('Breddebegrensning', 100, {
+        min: 10,
+        max: 100,
+        step: 1,
+        range: true,
+    });
     return (
         <>
             <DivMedBredde bredde={bredde.toString(10) + '%'}>
@@ -41,15 +37,19 @@ export const FamilieJaNeiSpørsmålStory: React.FC = () => {
                     onChange={value => {
                         alert(value === ESvar.NEI ? 'So sad' : 'Yayy, hurra!');
                     }}
+                    initiellVerdi={null}
                 />
             </DivMedBredde>
             <DivMedBredde bredde={bredde.toString(10) + '%'}>
                 <JaNeiSpørsmål
-                    onChange={() => {alert('feil')}}
-                    legend={"Denne har feilmelding"}
+                    onChange={() => {
+                        alert('feil');
+                    }}
+                    legend={'Denne har feilmelding'}
                     name={'felt.medfeil'}
-                    labelTekstForRadios={{ja: "Yes sir", nei: "Nåneidu"}}
-                    feil={"Dette var ikke bra"}
+                    labelTekstForRadios={{ ja: 'Yes sir', nei: 'Nåneidu' }}
+                    feil={'Dette var ikke bra'}
+                    initiellVerdi={null}
                 />
             </DivMedBredde>
             <DivMedBredde bredde={bredde.toString(10) + '%'}>
@@ -60,11 +60,10 @@ export const FamilieJaNeiSpørsmålStory: React.FC = () => {
                     onChange={value => {
                         alert(value !== ESvar.NEI ? 'Yayy, hurra!' : 'So sad');
                     }}
+                    initiellVerdi={null}
                 />
             </DivMedBredde>
-            <div>
-                Du kan begrense bredde via knobs
-            </div>
+            <div>Du kan begrense bredde via knobs</div>
         </>
     );
 };
