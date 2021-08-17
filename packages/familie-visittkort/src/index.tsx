@@ -10,14 +10,14 @@ export interface IProps {
     alder: number;
     ident: string;
     kjønn: kjønnType;
-    navn: string;
+    navn: string | React.ReactNode;
 }
 
 const Visittkort: React.StatelessComponent<IProps> = ({ alder, children, ident, kjønn, navn }) => {
     return (
         <div className={'visittkort'}>
             <FamilieIkonVelger className={'visittkort__ikon'} alder={alder} kjønn={kjønn} />
-            <Element type={'element'}>{navn}</Element>
+            {typeof navn === 'string' ? <Element type={'element'}>{navn}</Element> : navn}
 
             <div className={'visittkort__pipe'}>|</div>
 
