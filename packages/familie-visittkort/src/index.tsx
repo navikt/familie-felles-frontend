@@ -2,7 +2,6 @@ import Clipboard from '@navikt/familie-clipboard';
 import { FamilieIkonVelger } from '@navikt/familie-ikoner';
 import { kjønnType } from '@navikt/familie-typer';
 import Element, { Normaltekst } from 'nav-frontend-typografi';
-import Lenke from 'nav-frontend-lenker';
 import * as React from 'react';
 
 import './index.less';
@@ -11,28 +10,14 @@ export interface IProps {
     alder: number;
     ident: string;
     kjønn: kjønnType;
-    navn: string;
-    href?: string;
+    navn: string | React.ReactNode;
 }
 
-const Visittkort: React.StatelessComponent<IProps> = ({
-    alder,
-    children,
-    ident,
-    kjønn,
-    navn,
-    href,
-}) => {
+const Visittkort: React.StatelessComponent<IProps> = ({ alder, children, ident, kjønn, navn }) => {
     return (
         <div className={'visittkort'}>
             <FamilieIkonVelger className={'visittkort__ikon'} alder={alder} kjønn={kjønn} />
-            {href ? (
-                <Lenke href={href}>
-                    <Element type={'element'}>{navn}</Element>
-                </Lenke>
-            ) : (
-                <Element type={'element'}>{navn}</Element>
-            )}
+            {typeof navn === 'string' ? <Element type={'element'}>{navn}</Element> : navn}
 
             <div className={'visittkort__pipe'}>|</div>
 
