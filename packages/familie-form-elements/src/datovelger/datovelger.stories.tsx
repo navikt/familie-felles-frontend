@@ -3,7 +3,8 @@ import { Knapp } from 'nav-frontend-knapper';
 import React, { useState } from 'react';
 import { FamilieDatovelger } from '..';
 import '../../stories.less';
-import {ISODateString} from "nav-datovelger/lib/types";
+import { ISODateString } from 'nav-datovelger/lib/types';
+import { Normaltekst } from 'nav-frontend-typografi';
 
 export default {
     component: FamilieDatovelger,
@@ -37,7 +38,14 @@ export const FamilieDatovelgerStory: React.FC = () => {
                 <FamilieDatovelger
                     id={'dato'}
                     label={'Datovelger'}
-                    onChange={(dato?: ISODateString) => {settValgtDato(dato)}}
+                    onChange={(dato?: ISODateString) => {
+                        settValgtDato(dato);
+                    }}
+                    description={
+                        <Normaltekst>
+                            Dette er en beskrivelse, f.eks. (format: dd.mm.åååå)
+                        </Normaltekst>
+                    }
                     valgtDato={valgtDato}
                     erLesesvisning={lesevisning}
                 />

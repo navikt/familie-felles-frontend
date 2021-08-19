@@ -6,6 +6,7 @@ import { FamilieLesefelt } from '../lesefelt';
 import { ISODateString } from 'nav-datovelger/lib/types';
 import { DatepickerProps } from 'nav-datovelger/lib/Datepicker';
 import dayjs from 'dayjs';
+import styled from 'styled-components';
 
 export interface IDatovelgerProps {
     className?: string;
@@ -17,7 +18,13 @@ export interface IDatovelgerProps {
     onChange: (dato?: ISODateString) => void;
     placeholder?: string;
     valgtDato?: string;
+    description?: ReactNode;
 }
+
+const DescriptionContainer = styled.div`
+    margin-bottom: 0.5rem;
+    margin-top: -0.3rem;
+`;
 
 export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = ({
     className,
@@ -29,6 +36,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
     placeholder,
     valgtDato,
     lesevisningFormat = 'DD.MM.YYYY',
+    description,
     ...props
 }) => {
     if (erLesesvisning) {
@@ -44,6 +52,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
         return (
             <div className={className}>
                 <Label children={label} htmlFor={id} />
+                {description && <DescriptionContainer>{description}</DescriptionContainer>}
                 <NavDatovelger
                     {...props}
                     disabled={disabled}
