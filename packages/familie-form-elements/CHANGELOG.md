@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@3.2.0...@navikt/familie-form-elements@3.2.1) (2021-09-02)
+
+
+### Bug Fixes
+
+* **familie-sprakvelger:** fjern hardkoda locale slik at man kan passe det inn som prop ([#426](https://github.com/navikt/familie-felles-frontend/issues/426)) ([bc74681](https://github.com/navikt/familie-felles-frontend/commit/bc746811b4e5099a59015eee188e86a06d113fb0))
+
+
+
+
+
 # [3.2.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@3.1.0...@navikt/familie-form-elements@3.2.0) (2021-08-19)
 
 
