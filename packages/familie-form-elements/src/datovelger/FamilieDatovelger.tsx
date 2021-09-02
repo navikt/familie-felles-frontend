@@ -62,7 +62,6 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
                         name: id,
                         placeholder,
                     }}
-                    locale={'nb'}
                     value={valgtDato}
                     onChange={onChange}
                 />
