@@ -7,7 +7,10 @@ interface SprakProviderProps {
     defaultLocale: LocaleType;
 }
 
-const SprakContext = createContext<any>(['', () => {}]);
+const SprakContext = createContext<[
+    LocaleType,
+    React.Dispatch<React.SetStateAction<LocaleType>>
+]>([LocaleType.nb, () => { return; }]);
 const useSprakContext = () => useContext(SprakContext);
 
 const SprakProvider: React.FC<SprakProviderProps> = ({ tekster, defaultLocale, children }) => {

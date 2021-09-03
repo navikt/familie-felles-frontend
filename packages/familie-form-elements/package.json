@@ -20,7 +20,7 @@
         "@types/react-select": "^3.0.28",
         "classnames": "^2.2.6",
         "dayjs": "^1.10.4",
-        "nav-datovelger": "^11.0.0",
+        "nav-datovelger": "^12.1.2",
         "nav-frontend-knapper": "^2.1.2",
         "nav-frontend-knapper-style": "^1.1.2",
         "nav-frontend-lenker": "^1.1.1",
