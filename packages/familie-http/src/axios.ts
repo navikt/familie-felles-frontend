@@ -7,18 +7,20 @@ axios.defaults.baseURL = window.location.origin;
 export const preferredAxios = axios;
 
 export interface ApiRespons<T> {
-    ressurs?: ApiRessurs<T>;
-    innloggetSaksbehandler?: ISaksbehandler;
-    error?: AxiosError;
     defaultFeilmelding?: string;
+    error?: AxiosError;
+    innloggetSaksbehandler?: ISaksbehandler;
+    loggFeilTilSentry?: boolean;
+    ressurs?: ApiRessurs<T>;
 }
 
 export const håndterApiRespons = <T>(apiRespons: ApiRespons<T>): Ressurs<T> => {
     const {
-        ressurs,
-        innloggetSaksbehandler,
-        error,
         defaultFeilmelding = 'En feil har oppstått!',
+        error,
+        innloggetSaksbehandler,
+        loggFeilTilSentry = false,
+        ressurs,
     } = apiRespons;
 
     let typetRessurs: Ressurs<T>;
@@ -44,7 +46,7 @@ export const håndterApiRespons = <T>(apiRespons: ApiRespons<T>): Ressurs<T> => 
             };
             break;
         case RessursStatus.FEILET:
-            loggFeil(error, innloggetSaksbehandler, ressurs.melding);
+            loggFeilTilSentry && loggFeil(error, innloggetSaksbehandler, ressurs.melding);
             typetRessurs = {
                 frontendFeilmelding: ressurs.frontendFeilmelding ?? defaultFeilmelding,
                 status: RessursStatus.FEILET,
