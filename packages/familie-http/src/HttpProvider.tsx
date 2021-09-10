@@ -6,8 +6,9 @@ import { preferredAxios, håndterApiRespons } from './axios';
 
 export type FamilieRequestConfig<SkjemaData> = AxiosRequestConfig & {
     data?: SkjemaData;
-    påvirkerSystemLaster?: boolean;
     defaultFeilmelding?: string;
+    loggFeilTilSentry?: boolean;
+    påvirkerSystemLaster?: boolean;
 };
 
 export type FamilieRequest = <SkjemaData, SkjemaRespons>(
@@ -50,9 +51,10 @@ export const [HttpProvider, useHttp] = createUseContext(
 
                     config.påvirkerSystemLaster && fjernRessursSomLaster(ressursId);
                     return håndterApiRespons({
-                        ressurs: responsRessurs,
-                        innloggetSaksbehandler,
                         defaultFeilmelding: config.defaultFeilmelding,
+                        innloggetSaksbehandler,
+                        loggFeilTilSentry: config.loggFeilTilSentry,
+                        ressurs: responsRessurs,
                     });
                 })
                 .catch((error: AxiosError) => {
@@ -64,10 +66,11 @@ export const [HttpProvider, useHttp] = createUseContext(
 
                     const responsRessurs: ApiRessurs<SkjemaRespons> = error.response?.data;
                     return håndterApiRespons({
-                        ressurs: responsRessurs,
-                        innloggetSaksbehandler,
-                        error,
                         defaultFeilmelding: config.defaultFeilmelding,
+                        error,
+                        innloggetSaksbehandler,
+                        loggFeilTilSentry: true,
+                        ressurs: responsRessurs,
                     });
                 });
         };
