@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.27](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.26...@navikt/familie-sprakvelger@2.0.27) (2021-09-13)
+
+**Note:** Version bump only for package @navikt/familie-sprakvelger
+
+
+
+
+
 ## [2.0.26](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@2.0.25...@navikt/familie-sprakvelger@2.0.26) (2021-09-03)
 
 **Note:** Version bump only for package @navikt/familie-sprakvelger
