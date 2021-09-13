@@ -101,3 +101,18 @@ export enum Dokumentstatus {
     UNDER_REDIGERING = 'UNDER_REDIGERING',
     KASSERT = 'KASSERT',
 }
+
+export const journalpoststatus: Record<Journalstatus, string> = {
+    MOTTATT: 'Mottatt',
+    JOURNALFOERT: 'Journalført',
+    FERDIGSTILT: 'Ferdigstilt',
+    EKSPEDERT: 'Ekspedert',
+    UNDER_ARBEID: 'Under arbeid',
+    FEILREGISTRERT: 'Feilregistrert',
+    UTGAAR: 'Utgår',
+    AVBRUTT: 'Avbrutt',
+    UKJENT_BRUKER: 'Ukjent bruker',
+    RESERVERT: 'Reservert',
+    OPPLASTING_DOKUMENT: 'Opplasting dokument',
+    UKJENT: 'Ukjent',
+};
