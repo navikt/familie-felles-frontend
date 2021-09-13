@@ -12,6 +12,21 @@ export interface IJournalpost {
     kanal?: string;
     dokumenter?: IDokumentInfo[];
     tittel?: string;
+    relevanteDatoer: IJournalpostRelevantDato[];
+}
+
+export interface IJournalpostRelevantDato {
+    dato: string;
+    datotype: JournalpostDatotype;
+}
+
+export enum JournalpostDatotype {
+    DATO_SENDT_PRINT = 'DATO_SENDT_PRINT',
+    DATO_EKSPEDERT = 'DATO_EKSPEDERT',
+    DATO_JOURNALFOERT = 'DATO_JOURNALFOERT',
+    DATO_REGISTRERT = 'DATO_REGISTRERT',
+    DATO_AVS_RETUR = 'DATO_AVS_RETUR',
+    DATO_DOKUMENT = 'DATO_DOKUMENT',
 }
 
 export interface AvsenderMottaker {
@@ -86,3 +101,18 @@ export enum Dokumentstatus {
     UNDER_REDIGERING = 'UNDER_REDIGERING',
     KASSERT = 'KASSERT',
 }
+
+export const journalpoststatus: Record<Journalstatus, string> = {
+    MOTTATT: 'Mottatt',
+    JOURNALFOERT: 'Journalført',
+    FERDIGSTILT: 'Ferdigstilt',
+    EKSPEDERT: 'Ekspedert',
+    UNDER_ARBEID: 'Under arbeid',
+    FEILREGISTRERT: 'Feilregistrert',
+    UTGAAR: 'Utgår',
+    AVBRUTT: 'Avbrutt',
+    UKJENT_BRUKER: 'Ukjent bruker',
+    RESERVERT: 'Reservert',
+    OPPLASTING_DOKUMENT: 'Opplasting dokument',
+    UKJENT: 'Ukjent',
+};
