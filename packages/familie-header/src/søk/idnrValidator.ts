@@ -49,8 +49,8 @@ const birthdate = (digits: string, isDnr: boolean) => {
    }
 
    const day = + digits.substr(0, 2)
-   const month = + digits.substr(2, 4)
-   const year = digits.substr(4, 6)
+   const month = + digits.substr(2, 2)
+   const year = digits.substr(4, 2)
 
    // set year 00 default to 2000 instead of 1900
    const date = new Date(year === '00' ? 2000 : + year, month - 1, day)
