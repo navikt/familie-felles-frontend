@@ -1,6 +1,6 @@
 const elevenDigits = new RegExp('^\\d{11}$')
 
-export const idnr = (digits: string, acceptSynthNr = false): boolean => {
+export const idnr = (digits: string, acceptSynthNr = false) => {
    const isDnr = + digits.substr(0, 1) >= 4
    return validate(digits, isDnr, acceptSynthNr)
 }
