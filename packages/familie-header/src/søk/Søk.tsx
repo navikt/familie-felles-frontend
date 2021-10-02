@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import navFarger from 'nav-frontend-core';
 import Popover, { PopoverOrientering } from 'nav-frontend-popover';
-import { FnrInput, InputProps } from 'nav-frontend-skjema';
+import { InputProps } from 'nav-frontend-skjema';
 import { Flatknapp } from 'nav-frontend-knapper';
 
 import { Ressurs, RessursStatus } from '@navikt/familie-typer';
