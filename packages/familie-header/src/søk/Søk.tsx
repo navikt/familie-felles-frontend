@@ -15,6 +15,7 @@ import { oransjBoxShadow } from '../common';
 import { Close, Search } from '@navikt/ds-icons';
 import useSøk from './useSøk';
 import { SkjultLabel } from '@navikt/familie-form-elements';
+import { FnrInputWrapper } from './FnrInputWrapper';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
