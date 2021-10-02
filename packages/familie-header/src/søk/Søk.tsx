@@ -27,6 +27,7 @@ export interface SøkProps extends InputProps {
     søk: (value: string) => void;
     søkeresultater: Ressurs<ISøkeresultat[]>;
     søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
+    acceptSynthNr?: boolean;
 }
 
 const SøkContainer = styled.div`
@@ -101,6 +102,7 @@ export const Søk = ({
     søk,
     søkeresultatOnClick,
     søkeresultater,
+    acceptSynthNr,
     ...props
 }: SøkProps) => {
     const {
@@ -135,6 +137,7 @@ export const Søk = ({
                     onChange={onInputChange}
                     onKeyDown={onInputKeyDown}
                     onValidate={(isValid: boolean) => settErGyldig(isValid)}
+                    acceptSynthNr={acceptSynthNr}
                     value={ident}
                     {...props}
                 />

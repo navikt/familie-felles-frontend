@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ikoner, Brukerinfo, Header, PopoverItem, Søk, ISøkeresultat } from './src';
+import { ikoner, Brukerinfo, Header, PopoverItem, Søk, ISøkeresultat, erIdnr } from './src';
 import './headerstories.less';
 import {
     Adressebeskyttelsegradering,
@@ -92,7 +92,7 @@ export const HeaderOgSøk = () => {
     const søk = (personIdent: string): void => {
         settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
-            if (personIdent.length === 11) {
+            if (erIdnr(personIdent, true)) {
                 const søkeresultat: ISøkeresultat[] | undefined = søkeResultater[personIdent];
                 settSøkeresultat(
                     byggDataRessurs<ISøkeresultat[]>(
@@ -123,6 +123,7 @@ export const HeaderOgSøk = () => {
                     nullstillSøkeresultater={() => settSøkeresultat(byggTomRessurs)}
                     søkeresultater={søkeresultat}
                     søkeresultatOnClick={() => alert('Du har klikket på et av resultatene')}
+                    acceptSynthNr={true}
                 />
             </Header>
         </div>

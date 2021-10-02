@@ -11,8 +11,7 @@ interface IdnrValideringResultat {
     reasons?: string[];
 }
 
-export const erIdnr = (digits: string, acceptSynthNr = false): boolean =>
-    validerIdnr(digits, acceptSynthNr).status === 'valid';
+export const erIdnr = (digits: string, acceptSynthNr = false): boolean => validerIdnr(digits, acceptSynthNr).status === 'valid';
 
 export const validerIdnr = (digits: string, acceptSynthNr = false): IdnrValideringResultat => {
     const isDnr = +digits.substr(0, 1) >= 4;

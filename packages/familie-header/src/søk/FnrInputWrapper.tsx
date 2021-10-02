@@ -2,16 +2,20 @@ import React from 'react';
 import { FnrInput, FnrInputProps } from 'nav-frontend-skjema';
 import { erIdnr } from '.';
 
+interface FnrInputWrapperProps extends FnrInputProps{
+    acceptSynthNr?: boolean
+}
+
 //support synthID for FnrInput
-export const FnrInputWrapper: React.FC<FnrInputProps> = ({
+export const FnrInputWrapper: React.FC<FnrInputWrapperProps> = ({
     id,
     onChange,
     onKeyDown,
     onValidate,
     value,
+    acceptSynthNr,
     ...props
-}: FnrInputProps) => {
-    const [ident, settIdent] = React.useState('');
+}: FnrInputWrapperProps) => {
 
     return (
         <FnrInput
@@ -20,11 +24,11 @@ export const FnrInputWrapper: React.FC<FnrInputProps> = ({
             id={id}
             onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const nyVerdi = event.target.value;
-                settIdent(nyVerdi);
                 onChange && onChange(event);
+                onValidate && onValidate(erIdnr(nyVerdi, acceptSynthNr));
             }}
+            onValidate={()=>{}}
             onKeyDown={onKeyDown}
-            onValidate={() => onValidate(erIdnr(ident))}
             value={value}
             {...props}
         />
