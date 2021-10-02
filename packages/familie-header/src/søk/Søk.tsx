@@ -127,7 +127,7 @@ export const Søk = ({
                 ) : (
                     label
                 )}
-                <FnrInput
+                <FnrInputWrapper
                     autoComplete={'off'}
                     aria-label={props.placeholder}
                     id={inputId}

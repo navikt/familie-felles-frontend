@@ -1,8 +1,8 @@
-import { idnr } from '../idnrValidator';
+import { erIdnr, validerIdnr } from '../idnrValidator';
 
 describe('ID/SynthID validator', () => {
     test('should accept a valid one', () => {
-        const result = idnr('13097248022');
+        const result = validerIdnr('13097248022');
         expect(result).toEqual({
             status: 'valid',
             type: 'fnr',
@@ -10,7 +10,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should accept a standard leap year', function () {
-        const result = idnr('29029648784');
+        const result = validerIdnr('29029648784');
         expect(result).toEqual({
             status: 'valid',
             type: 'fnr',
@@ -18,7 +18,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should accept year 00 as valid leap year', function () {
-        const result = idnr('29020075838');
+        const result = validerIdnr('29020075838');
         expect(result).toEqual({
             status: 'valid',
             type: 'fnr',
@@ -26,7 +26,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if date is > 28 feb in a non leap year', function () {
-        const result = idnr('29020112345');
+        const result = validerIdnr('29020112345');
         expect(result).toEqual({
             status: 'invalid',
             reasons: ["checksums don't match", 'invalid date'],
@@ -34,7 +34,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should compensate for checksum digits that are 11', function () {
-        const result = idnr('15021951940');
+        const result = validerIdnr('15021951940');
         expect(result).toEqual({
             status: 'valid',
             type: 'fnr',
@@ -42,7 +42,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if less than 11 digits', function () {
-        const result = idnr('1234567890');
+        const result = validerIdnr('1234567890');
         expect(result).toEqual({
             status: 'invalid',
             reasons: ['fnr or dnr must consist of 11 digits'],
@@ -50,7 +50,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if more than 11 digits', function () {
-        const result = idnr('123456789101');
+        const result = validerIdnr('123456789101');
         expect(result).toEqual({
             status: 'invalid',
             reasons: ['fnr or dnr must consist of 11 digits'],
@@ -58,7 +58,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if non-digits are present', function () {
-        const result = idnr('1234567891A');
+        const result = validerIdnr('1234567891A');
         expect(result).toEqual({
             status: 'invalid',
             reasons: ['fnr or dnr must consist of 11 digits'],
@@ -66,7 +66,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if checksum 1 is invalid', function () {
-        const result = idnr('13097248032');
+        const result = validerIdnr('13097248032');
         expect(result).toEqual({
             status: 'invalid',
             reasons: ["checksums don't match"],
@@ -74,7 +74,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if checksum 2 is invalid', function () {
-        const result = idnr('13097248023');
+        const result = validerIdnr('13097248023');
         expect(result).toEqual({
             status: 'invalid',
             reasons: ["checksums don't match"],
@@ -82,7 +82,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if day is invalid', function () {
-        const result = idnr('32127248022');
+        const result = validerIdnr('32127248022');
         expect(result).toEqual({
             status: 'invalid',
             reasons: ["checksums don't match", 'invalid date'],
@@ -90,7 +90,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if month is invalid', function () {
-        const result = idnr('13137248022');
+        const result = validerIdnr('13137248022');
         expect(result).toEqual({
             status: 'invalid',
             reasons: ["checksums don't match", 'invalid date'],
@@ -98,7 +98,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should accept synthNr with the third digits = x + 8, for idnr()', function () {
-        const result = idnr('04886696871', true);
+        const result = validerIdnr('04886696871', true);
         expect(result).toEqual({
             status: 'valid',
             type: 'fnr',
@@ -106,7 +106,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should accept synthNr with the third digits = x + 8, for fnr()', function () {
-        const result = idnr('04886696871', true);
+        const result = validerIdnr('04886696871', true);
         expect(result).toEqual({
             status: 'valid',
             type: 'fnr',
@@ -114,7 +114,7 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if synthNr is wrong', function () {
-        const result = idnr('04886696870', true);
+        const result = validerIdnr('04886696870', true);
         expect(result).toEqual({
             status: 'invalid',
             reasons: ["checksums don't match"],
@@ -122,10 +122,19 @@ describe('ID/SynthID validator', () => {
     });
 
     test('should reject if synthNr is disabled', function () {
-        const result = idnr('04886696871');
+        const result = validerIdnr('04886696871');
         expect(result).toEqual({
             status: 'invalid',
             reasons: ['invalid date'],
         });
     });
+
+    test('wrapper routine should also work', function () {
+        const trueResult = erIdnr('04886696871', true);
+        expect(trueResult).toEqual(true);
+
+        const falseResult = erIdnr('04886696870', true);
+        expect(falseResult).toEqual(false);
+    });
+
 });
