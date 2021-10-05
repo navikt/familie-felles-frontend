@@ -14,6 +14,7 @@ export default {
 export const FamilieInputStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
+    const [inputVerdi, settInputVerdi] = useState('Den satte verdien');
 
     const onClickToggleKnapp = () => {
         if (lesevisning) {
@@ -31,7 +32,12 @@ export const FamilieInputStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieInput erLesevisning={lesevisning} bredde={'L'} />
+                <FamilieInput
+                    erLesevisning={lesevisning}
+                    bredde={'L'}
+                    onChange={e => settInputVerdi(e.target.value)}
+                    value={inputVerdi}
+                />
             </div>
         </>
     );

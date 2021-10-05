@@ -14,6 +14,7 @@ export default {
 export const FamilieSelectStory: React.FC = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
+    const [valgtOption, settValgtOption] = useState('');
 
     const onClickToggleKnapp = () => {
         if (lesevisning) {
@@ -31,7 +32,13 @@ export const FamilieSelectStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieSelect erLesevisning={lesevisning} lesevisningVerdi={'Valg2'} bredde={'l'}>
+                <FamilieSelect
+                    erLesevisning={lesevisning}
+                    lesevisningVerdi={valgtOption}
+                    bredde={'l'}
+                    onChange={e => settValgtOption(e.target.value)}
+                    value={valgtOption}
+                >
                     <option>Valg1</option>
                     <option>Valg2</option>
                 </FamilieSelect>
