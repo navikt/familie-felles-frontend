@@ -1,5 +1,5 @@
 {
-    "version": "2.0.27",
+    "version": "2.0.29",
     "name": "@navikt/familie-sprakvelger",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -20,25 +20,25 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/ds-icons": "^0.2.1",
-        "@navikt/familie-form-elements": "^3.2.2",
+        "@navikt/ds-icons": "^0.5.4",
+        "@navikt/familie-form-elements": "^3.2.3",
         "@navikt/familie-ikoner": "^3.1.12",
-        "@types/react-aria-menubutton": "^6.2.7",
-        "nav-frontend-chevron": "^1.0.28",
+        "@types/react-aria-menubutton": "^6.2.8",
+        "nav-frontend-chevron": "^1.0.30",
         "nav-frontend-chevron-style": "^1.0.4",
-        "nav-frontend-core": "^5.1.1",
-        "nav-frontend-typografi": "^3.1.1",
-        "nav-frontend-typografi-style": "^1.1.1",
-        "react-aria-menubutton": "^7.0.1"
+        "nav-frontend-core": "^6.0.1",
+        "nav-frontend-typografi": "^4.0.1",
+        "nav-frontend-typografi-style": "^2.0.1",
+        "react-aria-menubutton": "^7.0.3"
     },
     "devDependencies": {
-        "@types/styled-components": "^5.1.7",
-        "react-intl": "^5.13.2",
-        "styled-components": "^5.2.1"
+        "@types/styled-components": "^5.1.14",
+        "react-intl": "^5.20.12",
+        "styled-components": "^5.3.1"
     },
     "peerDependencies": {
         "react": "^17.0.2",
-        "react-intl": "^5.13.2",
-        "styled-components": "^5.2.1"
+        "react-intl": "^5.20.12",
+        "styled-components": "^5.3.1"
     }
 }

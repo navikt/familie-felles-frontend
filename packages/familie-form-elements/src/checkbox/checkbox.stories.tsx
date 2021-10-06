@@ -14,6 +14,7 @@ export default {
 export const FamilieCheckboxStory = () => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
+    const [checked, settChecked] = useState(false);
 
     const onClickToggleKnapp = () => {
         if (lesevisning) {
@@ -33,8 +34,9 @@ export const FamilieCheckboxStory = () => {
             <div className={'story-elements'}>
                 <FamilieCheckbox
                     label={'FamilieCheckbox'}
-                    checked={false}
+                    checked={checked}
                     erLesevisning={lesevisning}
+                    onChange={() => settChecked(prevState => !prevState)}
                 />
             </div>
         </>
