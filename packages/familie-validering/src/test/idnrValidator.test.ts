@@ -136,5 +136,4 @@ describe('ID/SynthID validator', () => {
         const falseResult = erIdnr('04886696870', true);
         expect(falseResult).toEqual(false);
     });
-
 });

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ikoner, Brukerinfo, Header, PopoverItem, Søk, ISøkeresultat, erIdnr } from './src';
+import { ikoner, Brukerinfo, Header, PopoverItem, Søk, ISøkeresultat } from './src';
+import { erIdnr } from '../familie-validering/dist';
 import './headerstories.less';
 import {
     Adressebeskyttelsegradering,
@@ -92,6 +93,8 @@ export const HeaderOgSøk = () => {
     const søk = (personIdent: string): void => {
         settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
+            console.log(personIdent);
+            console.log(erIdnr(personIdent));
             if (erIdnr(personIdent, true)) {
                 const søkeresultat: ISøkeresultat[] | undefined = søkeResultater[personIdent];
                 settSøkeresultat(
