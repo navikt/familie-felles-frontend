@@ -93,8 +93,6 @@ export const HeaderOgSøk = () => {
     const søk = (personIdent: string): void => {
         settSøkeresultat(byggHenterRessurs());
         setTimeout(() => {
-            console.log(personIdent);
-            console.log(erIdnr(personIdent));
             if (erIdnr(personIdent, true)) {
                 const søkeresultat: ISøkeresultat[] | undefined = søkeResultater[personIdent];
                 settSøkeresultat(

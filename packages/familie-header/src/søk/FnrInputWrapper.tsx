@@ -26,7 +26,7 @@ export const FnrInputWrapper: React.FC<FnrInputWrapperProps> = ({
                 onChange && onChange(event);
                 onValidate && onValidate(erIdnr(nyVerdi, acceptSynthNr));
             }}
-            onValidate={() => {}}
+            onValidate={() => void 0}
             onKeyDown={onKeyDown}
             value={value}
             {...props}
