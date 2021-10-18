@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@3.0.25...@navikt/familie-header@3.1.0) (2021-10-18)
+
+
+### Features
+
+* **familie-header:** lagt til onClick event handling på headeren ([#433](https://github.com/navikt/familie-felles-frontend/issues/433)) ([77ee30b](https://github.com/navikt/familie-felles-frontend/commit/77ee30be4b3bfc252e278dcd030c42261dd6c0f9))
+
+
+
+
+
 ## [3.0.25](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@3.0.24...@navikt/familie-header@3.0.25) (2021-10-18)
 
 **Note:** Version bump only for package @navikt/familie-header
