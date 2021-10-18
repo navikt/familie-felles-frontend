@@ -116,6 +116,9 @@ export const HeaderOgSøk = () => {
                 brukerPopoverItems={[popover]}
                 tittelHref={'#'}
                 eksterneLenker={eksterneLenker}
+                tittelOnClick={() => {
+                    alert('du trykket på tittelen');
+                }}
             >
                 <Søk
                     label={'Søk. Tast inn fødselsnummer eller d-nummer, 11 siffer'}
