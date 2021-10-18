@@ -28,6 +28,7 @@ export interface HeaderProps {
     children?: React.ReactNode | React.ReactNode[];
     brukerPopoverItems?: PopoverItem[];
     eksterneLenker: PopoverItem[];
+    tittelOnClick?: () => void;
 }
 
 interface BrukerProps {
@@ -109,12 +110,15 @@ export const Header = ({
     tittelHref = '/',
     brukerPopoverItems,
     eksterneLenker = [],
+    tittelOnClick,
 }: HeaderProps) => {
     return (
         <div className="header">
             <div className="rad">
                 <a href={tittelHref} className="tittel">
-                    <Systemtittel tag={'h1'}>{tittel}</Systemtittel>
+                    <Systemtittel onClick={tittelOnClick} tag={'h1'}>
+                        {tittel}
+                    </Systemtittel>
                 </a>
             </div>
             <div className="rad">
