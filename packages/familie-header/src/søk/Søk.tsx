@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import navFarger from 'nav-frontend-core';
 import Popover, { PopoverOrientering } from 'nav-frontend-popover';
-import { FnrInput, InputProps } from 'nav-frontend-skjema';
+import { InputProps } from 'nav-frontend-skjema';
 import { Flatknapp } from 'nav-frontend-knapper';
 
 import { Ressurs, RessursStatus } from '@navikt/familie-typer';
@@ -15,6 +15,7 @@ import { oransjBoxShadow } from '../common';
 import { Close, Search } from '@navikt/ds-icons';
 import useSøk from './useSøk';
 import { SkjultLabel } from '@navikt/familie-form-elements';
+import { FnrInputWrapper } from './FnrInputWrapper';
 
 export interface SøkProps extends InputProps {
     formaterResultat?: (
@@ -26,6 +27,7 @@ export interface SøkProps extends InputProps {
     søk: (value: string) => void;
     søkeresultater: Ressurs<ISøkeresultat[]>;
     søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
+    acceptSynthNr?: boolean;
 }
 
 const SøkContainer = styled.div`
@@ -100,6 +102,7 @@ export const Søk = ({
     søk,
     søkeresultatOnClick,
     søkeresultater,
+    acceptSynthNr,
     ...props
 }: SøkProps) => {
     const {
@@ -127,13 +130,14 @@ export const Søk = ({
                 ) : (
                     label
                 )}
-                <FnrInput
+                <FnrInputWrapper
                     autoComplete={'off'}
                     aria-label={props.placeholder}
                     id={inputId}
                     onChange={onInputChange}
                     onKeyDown={onInputKeyDown}
                     onValidate={(isValid: boolean) => settErGyldig(isValid)}
+                    acceptSynthNr={acceptSynthNr}
                     value={ident}
                     {...props}
                 />
