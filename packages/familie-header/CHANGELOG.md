@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@3.1.0...@navikt/familie-header@3.2.0) (2021-10-20)
+
+
+### Features
+
+* **header:** dersom man inkluderer tittelOnClick i props benyttes ik… ([#434](https://github.com/navikt/familie-felles-frontend/issues/434)) ([5d97a63](https://github.com/navikt/familie-felles-frontend/commit/5d97a639352956293d47b253cb158a803afb2d51))
+
+
+
+
+
 # [3.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@3.0.25...@navikt/familie-header@3.1.0) (2021-10-18)
 
 
