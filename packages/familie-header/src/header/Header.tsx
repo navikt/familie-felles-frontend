@@ -121,11 +121,9 @@ export const Header = ({
                     </a>
                 )}
                 {tittelOnClick && (
-                    <h1 className="tittel" tabIndex={-1}>
-                        <Systemtittel onClick={tittelOnClick} tag={'h1'}>
-                            {tittel}
-                        </Systemtittel>
-                    </h1>
+                    <button className="tittelknapp" onClick={tittelOnClick}>
+                        <Systemtittel tag={'h1'}>{tittel}</Systemtittel>
+                    </button>
                 )}
             </div>
             <div className="rad">
