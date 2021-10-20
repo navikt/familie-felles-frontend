@@ -115,11 +115,16 @@ export const Header = ({
     return (
         <div className="header">
             <div className="rad">
-                <a href={tittelHref} className="tittel">
-                    <Systemtittel onClick={tittelOnClick} tag={'h1'}>
-                        {tittel}
-                    </Systemtittel>
-                </a>
+                {!tittelOnClick && (
+                    <a href={tittelHref} className="tittel">
+                        <Systemtittel tag={'h1'}>{tittel}</Systemtittel>
+                    </a>
+                )}
+                {tittelOnClick && (
+                    <button className="tittelknapp" onClick={tittelOnClick}>
+                        <Systemtittel tag={'h1'}>{tittel}</Systemtittel>
+                    </button>
+                )}
             </div>
             <div className="rad">
                 {children}

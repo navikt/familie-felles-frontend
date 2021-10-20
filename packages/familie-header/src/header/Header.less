@@ -43,7 +43,25 @@
     align-items: center;
     height: 100%;
   }
-  
+
+  .tittelknapp {
+      background: none;
+      border: none;
+      padding: 0;
+      font: inherit;
+      cursor: pointer;
+      outline: inherit;
+      color: #fff;
+      font-size: @titleFontSize;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:focus {
+          box-shadow: 0 0 0 3px @orangeFocus;
+          outline: 0;
+      }
+  }
+
   .gap {
     > *:not(:last-child) {
       margin-right: 1rem;
@@ -55,6 +73,7 @@
     font-size: @titleFontSize;
     font-weight: 600;
     text-decoration: none;
+    cursor: pointer;
 
     &:focus {
       box-shadow: 0 0 0 3px @orangeFocus;
