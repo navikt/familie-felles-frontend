@@ -19,6 +19,7 @@ export interface PopoverItem {
     name: string;
     href: string;
     isExternal?: boolean;
+    onClick?: (e: React.SyntheticEvent) => void;
 }
 
 export interface HeaderProps {
@@ -64,7 +65,10 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
                     tabIndex={-1}
                     utenPil
                 >
-                    <BoxedListWithLinks items={popoverItems} />
+                    <BoxedListWithLinks
+                        items={popoverItems}
+                        onClick={(index, e) => popoverItems[index]?.onClick?.(e)}
+                    />
                 </Popover>
             )}
         </div>
@@ -96,7 +100,10 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
                     }}
                     tabIndex={-1}
                 >
-                    <BoxedListWithLinks items={lenker || []} />
+                    <BoxedListWithLinks
+                        items={lenker || []}
+                        onClick={(index, e) => lenker[index]?.onClick?.(e)}
+                    />
                 </Popover>
             )}
         </div>
