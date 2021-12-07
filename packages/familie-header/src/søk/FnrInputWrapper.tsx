@@ -6,7 +6,7 @@ interface FnrInputWrapperProps extends FnrInputProps {
     acceptSynthNr?: boolean;
 }
 
-//support synthID for FnrInput
+// support synthID for FnrInput
 export const FnrInputWrapper: React.FC<FnrInputWrapperProps> = ({
     id,
     onChange,
