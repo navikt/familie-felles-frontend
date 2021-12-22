@@ -16,7 +16,7 @@
     "scripts": {
         "build": "yarn run clean && yarn run copy-less && yarn run tsc",
         "clean": "rm -rf ./dist",
-        "copy-less": "copyfiles -u 1 src/**/*.less dist",
+        "copy-less": "copyfiles -u 1 \"src/**/*.less\" dist",
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
