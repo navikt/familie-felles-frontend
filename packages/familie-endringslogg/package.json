@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "name": "@navikt/familie-endringslogg",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -20,27 +20,26 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
+        "@sanity/block-content-to-react": "^3.0.0",
         "@types/react-modal": "^3.13.1",
         "classnames": "^2.2.6",
-        "nav-frontend-typografi": "^4.0.1",
-        "nav-frontend-typografi-style": "^2.0.1",
-        "nav-frontend-core": "^6.0.1",
-        "nav-frontend-lenker": "^2.0.1",
-        "nav-frontend-lenker-style": "^2.0.1",
-        "nav-frontend-knapper": "^3.1.2",
-        "nav-frontend-knapper-style": "^2.1.1",
-        "nav-frontend-modal": "^2.0.1",
-        "nav-frontend-modal-style": "^2.0.1",
         "nav-frontend-chevron": "^1.0.30",
         "nav-frontend-chevron-style": "^1.0.4",
+        "nav-frontend-core": "^6.0.1",
+        "nav-frontend-knapper": "^3.1.2",
+        "nav-frontend-knapper-style": "^2.1.1",
+        "nav-frontend-lenker": "^2.0.1",
+        "nav-frontend-lenker-style": "^2.0.1",
+        "nav-frontend-lukknapp": "^2.0.1",
+        "nav-frontend-lukknapp-style": "^2.0.1",
+        "nav-frontend-modal": "^2.0.1",
+        "nav-frontend-modal-style": "^2.0.1",
         "nav-frontend-paneler": "^3.0.1",
         "nav-frontend-paneler-style": "^2.0.1",
-        "react-transition-group": "^4.4.2",
-        "nav-frontend-lukknapp-style": "^2.0.1",
-        "nav-frontend-lukknapp": "^2.0.1",
+        "nav-frontend-typografi": "^4.0.1",
+        "nav-frontend-typografi-style": "^2.0.1",
         "react-modal": "^3.14.4",
-
-        "@sanity/block-content-to-react": "^3.0.0"
+        "react-transition-group": "^4.4.2"
     },
     "peerDependencies": {
         "react": "^17.0.2"
