@@ -6,7 +6,7 @@ import { useEventListener } from "./hooks/use-event-listener";
 import { EndringsloggEntryWithSeenStatus } from "./utils/endringslogg-custom";
 import "./endringslogg.less";
 import classNames from "classnames";
-import { Undertittel } from 'nav-frontend-typografi';
+import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 
 interface EndringsloggContainerProps {
   content: EndringsloggEntryWithSeenStatus[];
@@ -17,6 +17,7 @@ interface EndringsloggContainerProps {
   appName: string;
   stil?: StilType;
   alignLeft?: boolean;
+  errorMessage?: string;
 }
 
 export const EndringsloggContainer = (
@@ -93,6 +94,7 @@ export const EndringsloggContainer = (
           data-testid="endringslogg-innhold"
         >
           <EndringsloggContent innleggsListe={props.content} />
+          {props.errorMessage && <Normaltekst>{props.errorMessage}</Normaltekst>}
         </div>
       </TransitionContainer>
     </div>

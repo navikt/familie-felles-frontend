@@ -24,6 +24,7 @@ export interface EndringsloggProps {
     stil?: StilType;
     dataset?: string;
     maxEntries?: number;
+    dataFetchingIntervalSeconds?: number;
     appName?: string;
     alignLeft?: boolean;
     localData?: EndringsloggEntryWithSeenStatus[];
@@ -34,18 +35,20 @@ const Endringslogg = (props: EndringsloggProps) => {
     const [endringsloggEntries, setEndringsloggEntries] = useState<
         EndringsloggEntryWithSeenStatus[]
         >([]);
+    const [errorMessage, setErrorMessage] = useState('')
     const [forcedEndringsloggEntries, setForcedEndringsloggEntries] = useState<
         EndringsloggEntryWithSeenStatus[]
         >([]);
 
-    useEffect(() => {
+    const fetchData = () => {
+        setErrorMessage('')
         if (!props.localData) {
             setBackendUrl(props.backendUrl);
             hentEndringsLoggEntries(
                 props.userId,
                 props.appId,
-                props.dataset || "production",
-                props.maxEntries || DEFAULT_MAX_ENTRIES
+                props.dataset || 'production',
+                props.maxEntries || DEFAULT_MAX_ENTRIES,
             ).then((response) =>
                 response
                     .json()
@@ -53,21 +56,30 @@ const Endringslogg = (props: EndringsloggProps) => {
                         const entries = mapRemoteToState(jsonResponse);
                         setEndringsloggEntries(entries);
                         setForcedEndringsloggEntries(
-                            entries.filter((entry) => entry.forced && !entry.seenForced)
+                            entries.filter((entry) => entry.forced && !entry.seenForced),
                         );
                     })
                     .catch(() => {
-                        // TODO: Kunne ikke hente endringslogg som melding i boksen?
-                        // console.error("Could not get endringslogg");
-                    })
+                        setErrorMessage("Kunne ikke hente data for endringslogg")
+                    }),
             );
         } else {
             setEndringsloggEntries(props.localData);
             setForcedEndringsloggEntries(
-                endringsloggEntries.filter((entry) => entry.forced && !entry.seenForced)
+                endringsloggEntries.filter((entry) => entry.forced && !entry.seenForced),
             );
         }
-    }, [props.appId]);
+    }
+
+    useEffect(() => {
+        fetchData();
+        if (props.dataFetchingIntervalSeconds) {
+            const interval = setInterval(() => {
+                fetchData()
+            }, 1000 * props.dataFetchingIntervalSeconds);
+            return () => clearInterval(interval);
+        }
+    }, [props.appId, props.dataFetchingIntervalSeconds]);
 
     const onClose = () => {
         const ulesteFelter = endringsloggEntries.filter(
@@ -117,6 +129,7 @@ const Endringslogg = (props: EndringsloggProps) => {
                 appId={props.appId}
                 appName={props.appName || props.appId}
                 alignLeft={props.alignLeft}
+                errorMessage={errorMessage}
             />
             {forcedEndringsloggEntries.length > 0 && (
                 <TourModal
