@@ -6,7 +6,7 @@ import { ModalType } from "../../utils/endringslogg-custom";
 // @ts-ignore
 import BlockContent from "@sanity/block-content-to-react";
 import ModalWrapper from 'nav-frontend-modal';
-import { Undertittel } from 'nav-frontend-typografi';
+import { Normaltekst, Undertittel } from "nav-frontend-typografi";
 
 export interface Step {
   tittel: string;
@@ -85,7 +85,7 @@ const TourModal = (props: TourModalProps) => {
           )}
         </div>
         <div className={"tour-modal__main--beskrivelse"}>
-          <Undertittel>{step.slideHeader}</Undertittel>
+          <Normaltekst>{step.slideHeader}</Normaltekst>
           {step.slideDescription && (
             <div className={"tour-modal__main--tekst"}>
               <BlockContent blocks={step.slideDescription} />
