@@ -87,5 +87,10 @@ export const hasValidAccessToken = (req: Request, key = tokenSetSelfId) => {
     if (!tokenSet) {
         return loggOgReturnerOmTokenErGyldig(req, key, false);
     }
-    return loggOgReturnerOmTokenErGyldig(req, key, new TokenSet(tokenSet).expired() === false);
+    return loggOgReturnerOmTokenErGyldig(req, key, erUtgått(new TokenSet(tokenSet)) === false);
 };
+
+// kallkjedene kan ta litt tid, og tokenet kan i corner-case gå ut i løpet av kjeden. Så innfører et buffer
+// på 2 minutter.
+const erUtgått = (tokenSet: TokenSet): boolean =>
+    tokenSet.expired() || (tokenSet.expires_in !== undefined && tokenSet.expires_in < 120);
