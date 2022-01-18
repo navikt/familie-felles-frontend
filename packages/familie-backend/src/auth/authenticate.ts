@@ -77,6 +77,13 @@ export const ensureAuthenticated = (authClient: Client, sendUnauthorized: boolea
                             `Feilet ved refresh av tokenset: ${error.message}`,
                             LOG_LEVEL.ERROR,
                         );
+                        const pathname = req.originalUrl;
+                        if (sendUnauthorized) {
+                            res.status(401).send('Unauthorized');
+                        } else {
+                            res.redirect(`/login?redirectUrl=${pathname}`);
+                        }
+                        return;
                     });
             }
 
