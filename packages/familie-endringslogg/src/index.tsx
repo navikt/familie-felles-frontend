@@ -30,7 +30,7 @@ export interface EndringsloggProps {
     localData?: EndringsloggEntryWithSeenStatus[];
 }
 
-const Endringslogg = (props: EndringsloggProps) => {
+export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggProps) => {
     const { startTimer, stopTimer } = useTimer();
     const [endringsloggEntries, setEndringsloggEntries] = useState<
         EndringsloggEntryWithSeenStatus[]

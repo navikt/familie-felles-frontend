@@ -11,7 +11,7 @@ export default {
     title: 'Komponenter/Form-elementer/SkjultLabel',
 };
 
-export const SkjultLabelStory: React.FC = () => {
+export const SkjultLabelStory: React.FC = ({...args}) => {
     return (
         <>
             <Normaltekst>
@@ -20,7 +20,7 @@ export const SkjultLabelStory: React.FC = () => {
                 de som bruker skjermleser får opp form-elements i riktig kontekst. Denne komponenten
                 legger på en skjult label, som du vil se hvis du åpner inspect.
             </Normaltekst>
-            <SkjultLabel htmlFor="input" />
+            <SkjultLabel htmlFor="input" {...args}/>
             <Input id="input" />
         </>
     );

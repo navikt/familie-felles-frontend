@@ -12,7 +12,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieRadioGruppe',
 };
 
-export const FamilieRadioGruppeStory: React.FC = () => {
+export const FamilieRadioGruppeStory: React.FC = ({...args}) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -32,7 +32,7 @@ export const FamilieRadioGruppeStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieRadioGruppe erLesevisning={lesevisning}>
+                <FamilieRadioGruppe erLesevisning={lesevisning} {...args}>
                     <Radio label={'Radio1'} name={'radio1'} />
                     <Radio label={'Radio2'} name={'radio2'} />
                 </FamilieRadioGruppe>

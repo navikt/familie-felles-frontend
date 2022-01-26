@@ -11,7 +11,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieCheckbox',
 };
 
-export const FamilieCheckboxStory = () => {
+export const FamilieCheckboxStory = ({...args}) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
     const [checked, settChecked] = useState(false);
@@ -37,6 +37,7 @@ export const FamilieCheckboxStory = () => {
                     checked={checked}
                     erLesevisning={lesevisning}
                     onChange={() => settChecked(prevState => !prevState)}
+                    {...args}
                 />
             </div>
         </>

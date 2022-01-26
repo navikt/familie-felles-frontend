@@ -29,7 +29,7 @@ const popover: PopoverItem = {
     href: '#',
 };
 
-const eksterneLenker = [
+const eksterneLenkerForStory = [
     { name: 'Google', href: 'https://www.google.com', isExternal: true },
     { name: 'NAV forside', href: 'https://www.nav.no' },
 ];
@@ -87,7 +87,7 @@ const søkeResultater: Record<string, ISøkeresultat[]> = {
     '12345678912': [],
 };
 
-export const HeaderOgSøk = () => {
+export const HeaderOgSøk: React.FC = ({...args}) => {
     const [søkeresultat, settSøkeresultat] = useState<Ressurs<ISøkeresultat[]>>(byggTomRessurs());
 
     const søk = (personIdent: string): void => {
@@ -115,10 +115,11 @@ export const HeaderOgSøk = () => {
                 brukerinfo={saksbehandler}
                 brukerPopoverItems={[popover]}
                 tittelHref={'#'}
-                eksterneLenker={eksterneLenker}
+                eksterneLenker={eksterneLenkerForStory}
                 tittelOnClick={() => {
                     alert('du trykket på tittelen');
                 }}
+                {...args}
             >
                 <Søk
                     label={'Søk. Tast inn fødselsnummer eller d-nummer, 11 siffer'}
@@ -133,3 +134,12 @@ export const HeaderOgSøk = () => {
         </div>
     );
 };
+
+// @ts-ignore
+HeaderOgSøk.args = {
+    tittel: 'tittel',
+    brukerinfo: saksbehandler,
+    brukerPopoverItems: [popover],
+    tittelHref: '#',
+    eksterneLenker: eksterneLenkerForStory,
+}

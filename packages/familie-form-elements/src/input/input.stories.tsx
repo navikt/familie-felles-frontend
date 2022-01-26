@@ -11,7 +11,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieInput',
 };
 
-export const FamilieInputStory: React.FC = () => {
+export const FamilieInputStory: React.FC = ({...args}) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
     const [inputVerdi, settInputVerdi] = useState('Den satte verdien');
@@ -37,6 +37,7 @@ export const FamilieInputStory: React.FC = () => {
                     bredde={'L'}
                     onChange={e => settInputVerdi(e.target.value)}
                     value={inputVerdi}
+                    {...args}
                 />
             </div>
         </>

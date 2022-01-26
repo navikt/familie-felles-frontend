@@ -9,9 +9,9 @@ export default {
     title: 'Komponenter/Clipboard',
 };
 
-export const standard = () => {
+export const standard = ({...args}) => {
     return (
-        <Clipboard>
+        <Clipboard {...args}>
             <div>12345678910</div>
         </Clipboard>
     );

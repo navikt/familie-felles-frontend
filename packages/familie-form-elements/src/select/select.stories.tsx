@@ -11,7 +11,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieSelect',
 };
 
-export const FamilieSelectStory: React.FC = () => {
+export const FamilieSelectStory: React.FC = ({...args}) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
     const [valgtOption, settValgtOption] = useState('');
@@ -38,6 +38,7 @@ export const FamilieSelectStory: React.FC = () => {
                     bredde={'l'}
                     onChange={e => settValgtOption(e.target.value)}
                     value={valgtOption}
+                    {...args}
                 >
                     <option>Valg1</option>
                     <option>Valg2</option>

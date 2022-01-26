@@ -99,7 +99,7 @@ export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onCl
     );
 };
 
-const Dokumentliste: React.FC<DokumentlisteProps> = ({ dokumenter, onClick, className }) => {
+export const Dokumentliste: React.FC<DokumentlisteProps> = ({ dokumenter, onClick, className }) => {
     return (
         <StyledDokumentListe className={className}>
             {dokumenter.map((dokument: DokumentProps, indeks: number) => {

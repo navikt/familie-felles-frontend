@@ -10,13 +10,22 @@ export default {
     title: 'Komponenter/Visittkort',
 };
 
-export const visittkort = () => {
+export const visittkort = ({...args}) => {
     return (
         <Visittkort
             alder={30}
             kjønn={kjønnType.KVINNE}
             navn={'Mock McMockface'}
             ident={'12345678910'}
+            {...args}
         />
     );
 };
+
+
+visittkort.args = {
+    alder: 30,
+    kjønn: kjønnType.KVINNE,
+    navn: 'Mock McMockface',
+    ident: '12345678910',
+}
