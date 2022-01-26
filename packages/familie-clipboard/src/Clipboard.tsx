@@ -6,7 +6,7 @@ import { copyContentsToClipboard } from './util';
 import navFarger from 'nav-frontend-core';
 import styled from 'styled-components';
 
-interface IProps {
+export interface IProps {
     children: ReactChild;
 }
 
@@ -48,7 +48,7 @@ const animation = {
     },
 };
 
-const Clipboard: React.FunctionComponent<IProps> = ({ children }) => {
+export const Clipboard: React.FC<IProps> = ({ children }) => {
     const [didCopy, setDidCopy] = useState(false);
 
     const ref = useRef<HTMLDivElement>(null);

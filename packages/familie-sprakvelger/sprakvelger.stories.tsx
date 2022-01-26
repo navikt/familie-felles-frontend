@@ -23,7 +23,7 @@ const messages = {
     },
 };
 
-export const FamilieSprakvelger: React.FC = () => {
+export const FamilieSprakvelger: React.FC = ({...args}) => {
     const Wrapper = styled.div`
         display: flex;
         flex-direction: column;
@@ -38,7 +38,7 @@ export const FamilieSprakvelger: React.FC = () => {
     return (
         <SprakProvider tekster={messages} defaultLocale={LocaleType.en}>
             <Wrapper>
-                <Sprakvelger støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]} />
+                <Sprakvelger støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]} {...args}/>
                 <p>
                     <FormattedMessage id={'greeting'} />
                 </p>
@@ -48,3 +48,9 @@ export const FamilieSprakvelger: React.FC = () => {
         </SprakProvider>
     );
 };
+
+
+// @ts-ignore
+FamilieSprakvelger.args = {
+    støttedeSprak: [LocaleType.en, LocaleType.nn, LocaleType.nb]
+}

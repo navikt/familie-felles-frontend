@@ -11,7 +11,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieKnapp',
 };
 
-export const FamilieKnappStory: React.FC = () => {
+export const FamilieKnappStory: React.FC = ({...args}) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -31,7 +31,7 @@ export const FamilieKnappStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieKnapp erLesevisning={lesevisning}>FamilieKnapp</FamilieKnapp>
+                <FamilieKnapp erLesevisning={lesevisning} {...args}>FamilieKnapp</FamilieKnapp>
             </div>
         </>
     );

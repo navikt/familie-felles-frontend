@@ -13,7 +13,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieTextareaControlled',
 };
 
-export const FamilieTextareaStory: React.FC = () => {
+export const FamilieTextareaStory: React.FC = ({...args}) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -36,6 +36,7 @@ export const FamilieTextareaStory: React.FC = () => {
                 <FamilieTextareaControlled
                     erLesevisning={lesevisning}
                     defaultValue={'Default value'}
+                    {...args}
                 />
             </div>
         </>

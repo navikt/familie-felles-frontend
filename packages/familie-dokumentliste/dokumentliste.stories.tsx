@@ -8,13 +8,18 @@ export default {
         componentSubtitle: 'Dokumentliste-komponenten brukes til å vise informasjon om dokumenter fra journalposter.',
     },
     title: 'Komponenter/Dokumentliste',
+    argTypes: {
+        dokumenter: {
+            description: 'Liste av dokumenter',
+        }
+    }
 };
 
 const lastNedDokument = (dokument: DokumentProps): void => {
     // tslint:disable-next-line:no-console
     console.log('Laster ned', dokument);
 };
-const dokumenter = [
+const dokumenterForStory = [
     {
         dokumentinfoId: '12345',
         journalpostId: '23456',
@@ -37,11 +42,21 @@ const dokumenter = [
         dato: '2020-12-02',
     },
 ];
-export const dokumentlistekomponent = () => {
-    return (<
-            Dokumentliste
-            dokumenter={dokumenter}
-            onClick={lastNedDokument} />
-    );
 
+interface Props {
+    dokumenter: DokumentProps[];
+}
+export const Dokumentlistekomponent:React.FC<Props> = ({dokumenter = dokumenterForStory, ...args}) => {
+    return (
+        <Dokumentliste
+            dokumenter={dokumenter}
+            onClick={lastNedDokument}
+            {...args}
+        />
+    );
 };
+
+// @ts-ignore
+Dokumentlistekomponent.args = {
+   dokumenter: dokumenterForStory
+}

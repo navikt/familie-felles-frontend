@@ -14,7 +14,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieDatovelger',
 };
 
-export const FamilieDatovelgerStory: React.FC = () => {
+export const FamilieDatovelgerStory: React.FC = ({...args}) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
     const [valgtDato, settValgtDato] = useState<ISODateString | undefined>('01.01.20');
@@ -48,6 +48,7 @@ export const FamilieDatovelgerStory: React.FC = () => {
                     }
                     valgtDato={valgtDato}
                     erLesesvisning={lesevisning}
+                    {...args}
                 />
             </div>
         </>

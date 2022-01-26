@@ -10,13 +10,27 @@ export default {
     title: 'Komponenter/Ikoner',
 };
 
-export const familievelger = () => {
+export const familievelger: React.FC = ({...args}) => {
     return (
         <>
-            <FamilieIkonVelger alder={30} kjønn={kjønnType.KVINNE} />
+            <FamilieIkonVelger alder={30} kjønn={kjønnType.KVINNE} {...args}/>
+            <FamilieIkonVelger alder={30} kjønn={kjønnType.KVINNE}/>
             <FamilieIkonVelger alder={3} kjønn={kjønnType.KVINNE} />
             <FamilieIkonVelger alder={30} kjønn={kjønnType.MANN} />
             <FamilieIkonVelger alder={3} kjønn={kjønnType.MANN} />
         </>
     );
 };
+
+// @ts-ignore
+familievelger.args = {
+    alder: 30
+}
+// @ts-ignore
+familievelger.argTypes = {
+    alder: {
+        control: {
+            type:'number'
+        }
+    }
+}

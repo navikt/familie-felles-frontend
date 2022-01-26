@@ -9,7 +9,7 @@ export default {
     title: 'Komponenter/Endringslogg',
 };
 
-export const endringslogg = () => {
+export const endringslogg:React.FC = ({...args}) => {
     return <div>
 
         <div><h2>Normalversjon</h2>
@@ -18,6 +18,7 @@ export const endringslogg = () => {
                 appId={'EF'}
                 backendUrl={'https://familie-endringslogg.dev.intern.nav.no/'}
                 appName={'Enslig forsørger'}
+                {...args}
             /></div>
         <div style={{'backgroundColor': '#262626'}}><h2 style={{color:'white'}}>Lys versjon</h2>
             <Endringslogg
@@ -26,6 +27,7 @@ export const endringslogg = () => {
                 backendUrl={'https://familie-endringslogg.dev.intern.nav.no/'}
                 appName={'Enslig forsørger'}
                 stil={'lys'}
+                {...args}
             /></div>
 
     </div>;

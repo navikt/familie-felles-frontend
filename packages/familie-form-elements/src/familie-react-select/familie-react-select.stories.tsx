@@ -16,7 +16,7 @@ const options: ISelectOption[] = [
     { value: 'SVERIGE', label: 'Sverige' },
 ];
 
-export const FamilieReactSelectStory: React.FC = () => {
+export const FamilieReactSelectStory: React.FC = ({...args}) => {
     const [land, settLand] = useState<ISelectOption[]>([]);
     const [lesevisning, settLesevisning] = useState(false);
     const [multi, settMulti] = useState(true);
@@ -52,6 +52,7 @@ export const FamilieReactSelectStory: React.FC = () => {
                     isMulti={multi}
                     creatable={creatable}
                     options={options}
+                    {...args}
                 />
             </div>
         </>

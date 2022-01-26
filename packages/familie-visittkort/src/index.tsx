@@ -13,7 +13,7 @@ export interface IProps {
     navn: string | React.ReactNode;
 }
 
-const Visittkort: React.StatelessComponent<IProps> = ({ alder, children, ident, kjønn, navn }) => {
+export const Visittkort: React.StatelessComponent<IProps> = ({ alder, children, ident, kjønn, navn }) => {
     return (
         <div className={'visittkort'}>
             <FamilieIkonVelger className={'visittkort__ikon'} alder={alder} kjønn={kjønn} />

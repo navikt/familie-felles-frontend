@@ -12,7 +12,7 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieTextarea',
 };
 
-export const FamilieTextareaStory: React.FC = () => {
+export const FamilieTextareaStory: React.FC = ({...args}) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -32,7 +32,7 @@ export const FamilieTextareaStory: React.FC = () => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieTextarea erLesevisning={lesevisning} value={'value'} onChange={() => {}} />
+                <FamilieTextarea erLesevisning={lesevisning} value={'value'} onChange={() => {}} {...args}/>
             </div>
         </>
     );

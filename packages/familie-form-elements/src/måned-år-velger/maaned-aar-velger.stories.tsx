@@ -11,7 +11,7 @@ export default {
     title: 'Komponenter/Form-elementer/MånedÅrVelger',
 };
 
-export const MånedårVelgerStory: React.FC = () => {
+export const MånedårVelgerStory: React.FC = ({...args}) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -45,7 +45,8 @@ export const MånedårVelgerStory: React.FC = () => {
                     id={'årMånedVelger-1'}
                     feilmelding={'Ugyldig verdi'}
                     label={'Velg år og måned'}
-                    disabled={disabled} />
+                    disabled={disabled}
+                    {...args}/>
             </div>
         </>
     );
