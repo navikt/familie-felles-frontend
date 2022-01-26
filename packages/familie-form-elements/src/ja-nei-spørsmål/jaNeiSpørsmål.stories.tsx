@@ -22,12 +22,6 @@ interface Props {
     bredde: number
 }
 export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }) => {
-    // const bredde = number('Breddebegrensning', 100, {
-    //     min: 10,
-    //     max: 100,
-    //     step: 1,
-    //     range: true,
-    // });
     return (
         <>
             <DivMedBredde bredde={bredde.toString(10) + '%'} {...args}>
