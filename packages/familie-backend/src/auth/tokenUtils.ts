@@ -3,6 +3,7 @@ import { Client, TokenSet } from 'openid-client';
 import { logError, LOG_LEVEL } from '@navikt/familie-logging';
 import { IApi } from '../typer';
 import { logRequest } from '../utils';
+import { logInfo } from '../../../familie-logging/dist';
 
 export const tokenSetSelfId = 'self';
 export const getOnBehalfOfAccessToken = (
@@ -41,7 +42,12 @@ export const getOnBehalfOfAccessToken = (
                     }
                 })
                 .catch((err: Error) => {
-                    logError('Feil ved henting av obo token', err);
+                    const message = err.message;
+                    if (message.includes('invalid_grant')) {
+                        logInfo(`Bruker har ikke tilgang: ${message}`);
+                    } else {
+                        logError('Feil ved henting av obo token', err);
+                    }
                     reject(err);
                 });
         }
