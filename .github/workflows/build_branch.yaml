@@ -23,12 +23,23 @@ jobs:
         run: |
           yarn
           yarn build
-      - name: Push
+
+
+      - name: Login
         run: |
           git config user.email "teamfamilie@nav.no"
           git config user.name "Team familie"
           git remote set-url origin https://github-actions[bot]:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
-          npm run publish:canary:ci
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a .npmrc file for the github package repository
+        uses: FerLuisxd/create-npmrc@3
+        with:
+          org_name: navikt
+        env:
+          AUTH_TOKEN: ${{secrets.GIT_REPO}}
+      - name: Publish
+        run: |
+          npm run publish:canary:ci
