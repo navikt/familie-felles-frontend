@@ -5,7 +5,7 @@ export const useFocus = <T extends HTMLElement>() => {
 
   const elem = focusRef.current;
 
-
+    console.log('Fjern denne');
 
   useEffect(() => {
     if (elem) {
