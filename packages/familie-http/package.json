@@ -1,5 +1,5 @@
 {
-    "version": "1.1.2",
+    "version": "2.0.0",
     "name": "@navikt/familie-http",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -24,7 +24,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-typer": "^3.0.14",
+        "@navikt/familie-typer": "^4.0.0",
         "@sentry/core": "^6.2.1",
         "constate": "^3.2.0"
     },

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@5.0.31...@navikt/familie-backend@6.0.0) (2022-02-02)
+
+
+### Features
+
+* **root:** publiser pakker til github package repository ([098043d](https://github.com/navikt/familie-felles-frontend/commit/098043dd584336c8746c391bf3bc3523dd6590fb))
+
+
+### BREAKING CHANGES
+
+* **root:** Publiserer ikke til npmjs
+
+Co-authored-by: Henning Håkonsen <henning.hakonsen@nav.no>
+
+
+
+
+
 ## [5.0.31](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@5.0.30...@navikt/familie-backend@5.0.31) (2022-02-01)
 
 **Note:** Version bump only for package @navikt/familie-backend

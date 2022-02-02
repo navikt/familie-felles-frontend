@@ -1,6 +1,6 @@
 {
   "name": "@navikt/familie-header",
-  "version": "3.2.2",
+  "version": "4.0.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -14,9 +14,9 @@
   ],
   "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
   "repository": {
-        "type": "git",
-        "url": "https://github.com/navikt/familie-felles-frontend"
-    },
+    "type": "git",
+    "url": "https://github.com/navikt/familie-felles-frontend"
+  },
   "scripts": {
     "build": "yarn run clean && yarn run copy-less && yarn run tsc",
     "clean": "rm -rf ./dist",
@@ -28,10 +28,10 @@
     "@babel/preset-typescript": "^7.15.0",
     "@navikt/boxed-list-with-links": "^1.0.2",
     "@navikt/ds-icons": "^0.2.1",
-    "@navikt/familie-form-elements": "^3.2.4",
-    "@navikt/familie-ikoner": "^3.1.13",
-    "@navikt/familie-typer": "^3.0.14",
-    "@navikt/familie-validering": "^1.0.1",
+    "@navikt/familie-form-elements": "^4.0.0",
+    "@navikt/familie-ikoner": "^4.0.0",
+    "@navikt/familie-typer": "^4.0.0",
+    "@navikt/familie-validering": "^2.0.0",
     "@navikt/nap-user-panel": "^1.1.0",
     "@types/jest": "^27.0.1",
     "classnames": "^2.2.6",
