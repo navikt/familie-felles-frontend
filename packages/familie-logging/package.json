@@ -3,6 +3,10 @@
     "name": "@navikt/familie-logging",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/navikt/familie-felles-frontend"
+    },
     "license": "MIT",
     "publishConfig": {
         "access": "public"

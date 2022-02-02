@@ -16,7 +16,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-          registry-url: https://registry.npmjs.org/
       - name: Prepare repository
         run: git checkout "${GITHUB_REF:11}"
 
@@ -24,12 +23,22 @@ jobs:
         run: |
           yarn
           yarn build
-      - name: Push
+
+
+      - name: Login
         run: |
           git config user.email "teamfamilie@nav.no"
           git config user.name "Team familie"
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npm run publish:canary:ci
+          git remote set-url origin https://github-actions[bot]:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create a .npmrc file for the github package repository
+        uses: FerLuisxd/create-npmrc@3
+        with:
+          org_name: navikt
+        env:
+          AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Publish
+        run: |
+          npm run publish:canary:ci
