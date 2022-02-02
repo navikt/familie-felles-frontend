@@ -1,5 +1,5 @@
 {
-    "version": "1.1.9",
+    "version": "1.1.10-alpha.28+a163638",
     "name": "@navikt/familie-skjema",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -20,7 +20,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-http": "^1.1.1",
+        "@navikt/familie-http": "^1.1.2-alpha.28+a163638",
         "@navikt/familie-typer": "^3.0.14",
         "@types/deep-equal": "^1.0.1",
         "deep-equal": "^2.0.5",
@@ -32,5 +32,6 @@
     },
     "peerDependencies": {
         "react": "^17.0.2"
-    }
+    },
+    "gitHead": "a163638953761e0e1a6428555d276d6e1c8d38d1"
 }

@@ -1,5 +1,5 @@
 {
-    "version": "1.1.1",
+    "version": "1.1.2-alpha.28+a163638",
     "name": "@navikt/familie-http",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -26,5 +26,6 @@
     },
     "peerDependencies": {
         "react": "^17.0.2"
-    }
+    },
+    "gitHead": "a163638953761e0e1a6428555d276d6e1c8d38d1"
 }
