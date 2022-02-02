@@ -6,4 +6,3 @@ docs
 *.log
 .idea
 *.d.ts
-.npmrc
