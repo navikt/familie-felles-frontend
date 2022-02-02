@@ -39,7 +39,7 @@ jobs:
         with:
           org_name: navikt
         env:
-          AUTH_TOKEN: ${{secrets.GIT_REPO}}
+          AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Publish
         run: |
           npm run publish:canary:ci
