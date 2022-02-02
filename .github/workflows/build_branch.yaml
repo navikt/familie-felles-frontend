@@ -43,3 +43,4 @@ jobs:
       - name: Publish
         run: |
           npm run publish:canary:ci
+        env:

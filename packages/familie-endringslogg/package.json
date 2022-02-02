@@ -4,6 +4,10 @@
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/navikt/familie-felles-frontend"
+    },
     "publishConfig": {
         "access": "public"
     },

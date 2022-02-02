@@ -5,6 +5,8 @@ export const useFocus = <T extends HTMLElement>() => {
 
     const elem = focusRef.current;
 
+    console.log('hei');
+
     useEffect(() => {
         if (elem) {
             elem.focus();
