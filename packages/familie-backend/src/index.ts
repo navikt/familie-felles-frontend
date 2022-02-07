@@ -28,7 +28,6 @@ export interface IApp {
 export default async (
     sessionKonfigurasjon: ISessionKonfigurasjon,
     prometheusTellere?: { [key: string]: Counter<string> },
-    konfigurerbarC
 ): Promise<IApp> => {
     const app = express();
     let azureAuthClient!: Client;
