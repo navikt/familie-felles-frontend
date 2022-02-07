@@ -5,7 +5,7 @@ const fontSource = 'https://fonts.gstatic.com';
 const amplitude = 'https://amplitude.nav.no';
 const sentry = 'https://sentry.gc.nav.no';
 
-const cspString = `default-src 'self' data: ${amplitude} ${sentry}; style-src 'self' ${styleSource} data: 'unsafe-inline'; font-src 'self' ${fontSource}; object-src 'self'; frame-src 'self' blob:;`;
+const cspString = `default-src 'self' data: ${amplitude} ${sentry}; style-src 'self' ${styleSource} data: 'unsafe-inline'; font-src 'self' ${fontSource} data:; frame-src 'self' blob:;`;
 
 const setup = (app: Express) => {
     app.disable('x-powered-by');
