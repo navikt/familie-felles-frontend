@@ -1,5 +1,5 @@
 {
-    "version": "2.0.0",
+    "version": "2.0.1",
     "name": "@navikt/familie-dokumentliste",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -24,8 +24,8 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-ikoner": "^4.0.0",
-        "@navikt/familie-typer": "^4.0.0",
+        "@navikt/familie-ikoner": "^4.0.1",
+        "@navikt/familie-typer": "^5.0.0",
         "classnames": "^2.2.6",
         "nav-frontend-core": "^5.1.1",
         "nav-frontend-knapper": "^2.1.2",

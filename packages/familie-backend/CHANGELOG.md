@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@6.0.1...@navikt/familie-backend@7.0.0) (2022-02-25)
+
+
+### Bug Fixes
+
+* **Endre modul fra commonjs til es6:** endre typen på modul fra commonjs til es6 ([#448](https://github.com/navikt/familie-felles-frontend/issues/448)) ([ba5e03d](https://github.com/navikt/familie-felles-frontend/commit/ba5e03d3cd9fd500e7a2648a8a42eec0fc45eed1))
+
+
+### BREAKING CHANGES
+
+* **Endre modul fra commonjs til es6:** Endrer modultypen
+
+
+
+
+
 ## [6.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@6.0.0...@navikt/familie-backend@6.0.1) (2022-02-08)
 
 **Note:** Version bump only for package @navikt/familie-backend
