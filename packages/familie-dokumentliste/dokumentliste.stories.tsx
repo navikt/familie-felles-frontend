@@ -5,21 +5,22 @@ import { Journalposttype } from '@navikt/familie-typer';
 export default {
     component: Dokumentliste,
     parameters: {
-        componentSubtitle: 'Dokumentliste-komponenten brukes til å vise informasjon om dokumenter fra journalposter.',
+        componentSubtitle:
+            'Dokumentliste-komponenten brukes til å vise informasjon om dokumenter fra journalposter.',
     },
     title: 'Komponenter/Dokumentliste',
     argTypes: {
         dokumenter: {
             description: 'Liste av dokumenter',
-        }
-    }
+        },
+    },
 };
 
 const lastNedDokument = (dokument: DokumentProps): void => {
     // tslint:disable-next-line:no-console
     console.log('Laster ned', dokument);
 };
-const dokumenterForStory = [
+const dokumenterForStory: DokumentProps[] = [
     {
         dokumentinfoId: '12345',
         journalpostId: '23456',
@@ -33,6 +34,10 @@ const dokumenterForStory = [
         tittel: 'Dokument 2',
         journalposttype: Journalposttype.U,
         dato: '2020-12-05',
+        logiskeVedlegg: [
+            { logiskVedleggId: '1', tittel: 'Manuelt skannet innhold 1' },
+            { logiskVedleggId: '2', tittel: 'Manuelt skannet innhold 2' },
+        ],
     },
     {
         dokumentinfoId: '12345',
@@ -46,17 +51,14 @@ const dokumenterForStory = [
 interface Props {
     dokumenter: DokumentProps[];
 }
-export const Dokumentlistekomponent:React.FC<Props> = ({dokumenter = dokumenterForStory, ...args}) => {
-    return (
-        <Dokumentliste
-            dokumenter={dokumenter}
-            onClick={lastNedDokument}
-            {...args}
-        />
-    );
+export const Dokumentlistekomponent: React.FC<Props> = ({
+    dokumenter = dokumenterForStory,
+    ...args
+}) => {
+    return <Dokumentliste dokumenter={dokumenter} onClick={lastNedDokument} {...args} />;
 };
 
 // @ts-ignore
 Dokumentlistekomponent.args = {
-   dokumenter: dokumenterForStory
-}
+    dokumenter: dokumenterForStory,
+};

@@ -5,7 +5,8 @@ import { Element, Undertekst } from 'nav-frontend-typografi';
 import PilVenstre from '@navikt/familie-ikoner/dist/utils/PilVenstre';
 import PilNed from '@navikt/familie-ikoner/dist/utils/PilNed';
 import PilHøyre from '@navikt/familie-ikoner/dist/utils/PilHøyre';
-import { Journalposttype } from '@navikt/familie-typer';
+import { ILogiskVedlegg, Journalposttype } from '@navikt/familie-typer';
+import { LogiskeVedlegg } from './LogiskeVedlegg';
 
 const StyledDokumentListe = styled.ul`
     padding: 0;
@@ -18,9 +19,10 @@ const StyledKnapp = styled.button`
     display: grid;
     grid-gap: 0 1rem;
     grid-template-columns: minmax(min-content, max-content);
-    grid-template-rows: repeat(2, min-content);
+    grid-template-rows: repeat(3, min-content);
     grid-template-areas:
         'ikon tittel'
+        'ikon vedlegg'
         'ikon dato';
     max-width: 300px;
     background-color: transparent;
@@ -38,6 +40,7 @@ const JournalpostIkon = styled.span`
 `;
 const StyledUndertekst = styled(Undertekst)`
     grid-area: dato;
+    display: flex;
 `;
 
 const StyledDokumentnavn = styled(Element)`
@@ -46,6 +49,7 @@ const StyledDokumentnavn = styled(Element)`
     overflow: hidden;
     color: ${navFarger.navBla};
     grid-area: tittel;
+    display: flex;
 `;
 
 interface JournalpostikonProps {
@@ -72,6 +76,7 @@ export interface DokumentProps {
     journalposttype: Journalposttype;
     dokumentinfoId: string;
     filnavn?: string;
+    logiskeVedlegg?: ILogiskVedlegg[];
 }
 
 export interface DokumentElementProps {
@@ -93,6 +98,7 @@ export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onCl
                     <Journalpostikon journalposttype={dokument.journalposttype} />
                 </JournalpostIkon>
                 <StyledDokumentnavn>{dokument.tittel}</StyledDokumentnavn>
+                <LogiskeVedlegg logiskeVedlegg={dokument.logiskeVedlegg} />
                 <StyledUndertekst>{dokument.dato}</StyledUndertekst>
             </StyledKnapp>
         </li>
