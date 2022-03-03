@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@2.0.1...@navikt/familie-dokumentliste@2.1.0) (2022-03-03)
+
+
+### Features
+
+* **Dokumentliste:** skal vise logiske vedlegg i dokumentliste ([#449](https://github.com/navikt/familie-felles-frontend/issues/449)) ([8b84135](https://github.com/navikt/familie-felles-frontend/commit/8b841354ecefad5a32277256ff6e500422297b73))
+
+
+
+
+
 ## [2.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@2.0.0...@navikt/familie-dokumentliste@2.0.1) (2022-02-25)
 
 **Note:** Version bump only for package @navikt/familie-dokumentliste
