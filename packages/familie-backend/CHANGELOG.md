@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@7.0.0...@navikt/familie-backend@7.0.1) (2022-03-08)
+
+
+### Bug Fixes
+
+* **backend:** fikset import av connect-redis ([#450](https://github.com/navikt/familie-felles-frontend/issues/450)) ([c79c0ec](https://github.com/navikt/familie-felles-frontend/commit/c79c0ec36b6d3dbe5c98a0aef45932b3ee9a0f38))
+
+
+
+
+
 # [7.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@6.0.1...@navikt/familie-backend@7.0.0) (2022-02-25)
 
 
