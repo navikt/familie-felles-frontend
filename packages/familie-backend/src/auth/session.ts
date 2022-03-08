@@ -7,9 +7,8 @@ import { appConfig } from '../config';
 import { logInfo } from '@navikt/familie-logging';
 import { ISessionKonfigurasjon } from '../typer';
 
-/* tslint:disable */
-const RedisStore = require('connect-redis')(session);
-/* tslint:enable */
+import RedisStore from 'connect-redis';
+const redisStore = RedisStore(session);
 
 export default (
     app: Express,
@@ -30,7 +29,7 @@ export default (
         });
         client.unref();
 
-        const store = new RedisStore({
+        const store = new redisStore({
             client,
             disableTouch: true,
             ttl: sessionKonfigurasjon.sessionMaxAgeSekunder,
