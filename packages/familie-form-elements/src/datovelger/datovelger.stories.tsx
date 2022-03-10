@@ -1,10 +1,11 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
-import { Knapp } from 'nav-frontend-knapper';
 import React, { useState } from 'react';
-import { FamilieDatovelger } from '..';
-import '../../stories.less';
+
 import { ISODateString } from 'nav-datovelger/lib/types';
 import { Normaltekst } from 'nav-frontend-typografi';
+import { ToggleKnapp } from 'nav-frontend-toggle';
+
+import '../../stories.less';
+import { FamilieDatovelger } from '..';
 
 export default {
     component: FamilieDatovelger,
@@ -14,25 +15,20 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieDatovelger',
 };
 
-export const FamilieDatovelgerStory: React.FC = ({...args}) => {
-    const [lesevisning, settLesevisning] = useState(true);
-    const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
+export const FamilieDatovelgerStory: React.FC = ({ ...args }) => {
+    const [lesevisning, settLesevisning] = useState(false);
+    const [medFeil, settMedFeil] = useState(false);
     const [valgtDato, settValgtDato] = useState<ISODateString | undefined>('01.01.20');
-
-    const onClickToggleKnapp = () => {
-        if (lesevisning) {
-            settLesevisning(false);
-            settKnappTekst('Vis med lesevisning');
-        } else {
-            settLesevisning(true);
-            settKnappTekst('Fjern lesevisning');
-        }
-    };
 
     return (
         <>
             <div className={'story-elements'}>
-                <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
+                <ToggleKnapp pressed={lesevisning} onClick={() => settLesevisning(!lesevisning)}>
+                    Lesevisning
+                </ToggleKnapp>
+                <ToggleKnapp pressed={medFeil} onClick={() => settMedFeil(!medFeil)}>
+                    Feil
+                </ToggleKnapp>
             </div>
             <div className={'story-elements'}>
                 <FamilieDatovelger
@@ -41,6 +37,7 @@ export const FamilieDatovelgerStory: React.FC = ({...args}) => {
                     onChange={(dato?: ISODateString) => {
                         settValgtDato(dato);
                     }}
+                    feil={medFeil ? 'Denne har feil' : undefined}
                     description={
                         <Normaltekst>
                             Dette er en beskrivelse, f.eks. (format: dd.mm.åååå)
