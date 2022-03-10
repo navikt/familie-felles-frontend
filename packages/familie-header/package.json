@@ -1,6 +1,6 @@
 {
   "name": "@navikt/familie-header",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -28,7 +28,7 @@
     "@babel/preset-typescript": "^7.15.0",
     "@navikt/boxed-list-with-links": "^1.0.2",
     "@navikt/ds-icons": "^0.2.1",
-    "@navikt/familie-form-elements": "^4.0.0",
+    "@navikt/familie-form-elements": "^4.0.1",
     "@navikt/familie-ikoner": "^4.0.1",
     "@navikt/familie-typer": "^5.0.0",
     "@navikt/familie-validering": "^2.0.0",

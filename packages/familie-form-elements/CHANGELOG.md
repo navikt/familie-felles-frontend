@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@4.0.0...@navikt/familie-form-elements@4.0.1) (2022-03-10)
+
+
+### Bug Fixes
+
+* **form-elements:** la til støtte for visning av feil på datovelger ([881c17c](https://github.com/navikt/familie-felles-frontend/commit/881c17cab7d9d6c0599820455d49e4c46c647fcb))
+
+
+
+
+
 # [4.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@3.2.4...@navikt/familie-form-elements@4.0.0) (2022-02-02)
 
 
