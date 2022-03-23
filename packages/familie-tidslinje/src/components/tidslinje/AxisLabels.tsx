@@ -119,9 +119,8 @@ const Etiketter = styled.div`
     margin-bottom: 16px;
 
     > * {
-        font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
         position: absolute;
-        font-size: 14px;
+        font-size: 0.8rem;
         color: #78706a;
     }
 `;

@@ -6,8 +6,7 @@ import styled from 'styled-components';
 import { Tooltip } from './Tooltip';
 
 const StyledTooltip = styled(Tooltip)`
-    font-family: 'Source Sans Pro', Arial, Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 0.8rem;
     top: -10px;
 `;
 
