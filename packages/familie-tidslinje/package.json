@@ -1,0 +1,42 @@
+{
+  "name": "@navikt/familie-tidslinje",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "author": "NAV",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/navikt/familie-felles-frontend"
+  },
+  "scripts": {
+    "build": "yarn run clean && yarn run copy-less && yarn run tsc",
+    "clean": "rm -rf ./dist",
+    "copy-less": "copyfiles -u 1 src/**/*.less dist",
+    "tsc": "tsc -p tsconfig.json",
+    "test": "jest"
+  },
+  "dependencies": {
+    "nanoid": "^3.1.18"
+  },
+  "peerDependencies": {
+    "@types/react": "^17.0.20",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@navikt/ds-icons": "^0.8.4",
+    "css-loader": "^5.1.1",
+    "less-loader": "^8.1.1",
+    "mini-css-extract-plugin": "^1.3.9",
+    "style-loader": "^1.1.3",
+    "ts-loader": "^6.2.1"
+  }
+}
