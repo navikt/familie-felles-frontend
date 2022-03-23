@@ -13,13 +13,16 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: 14
+          registry-url: "https://npm.pkg.github.com"
       - name: Prepare repository
         run: git checkout "${GITHUB_REF:11}"
 
       - name: Installer dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
         run: |
           yarn
           yarn build
