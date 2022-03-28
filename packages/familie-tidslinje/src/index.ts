@@ -1,4 +1,4 @@
 import { Tidslinje, TidslinjeProps } from './components/tidslinje/Tidslinje';
-import { EnkelPeriode, Periode } from './components/types.external';
+import { EnkelPeriode, Periode, Etikett } from './components/types.external';
 
-export { Periode, Tidslinje, EnkelPeriode, TidslinjeProps };
+export { Periode, Tidslinje, EnkelPeriode, TidslinjeProps, Etikett };
