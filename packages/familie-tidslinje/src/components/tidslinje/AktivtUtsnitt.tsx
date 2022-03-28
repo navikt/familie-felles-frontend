@@ -44,7 +44,7 @@ const AktivPeriode = styled.div`
 `;
 
 const AktivPeriodeBorder = styled(AktivPeriode)`
-    box-shadow: inset 2px 0 0 -1px @navBla, inset -2px 0 0 -1px ${navFarger.navBla};
+    box-shadow: inset 2px 0 0 -1px ${navFarger.navBla}, inset -2px 0 0 -1px ${navFarger.navBla};
 `;
 
 const AktivPeriodeBakgrunn = styled(AktivPeriode)`

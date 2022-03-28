@@ -49,6 +49,10 @@ export interface TidslinjeProps {
      * Markeringer for enkeltdager på tidslinjen.
      */
     pins?: Pin[];
+    /**
+     * Bruke kompact style, med smalere stolper og uten padding.
+     */
+    compact?: boolean;
 }
 
 const TidslinjeStyle = styled.div`
@@ -60,16 +64,21 @@ const TidslinjeStyle = styled.div`
     flex: 1;
 `;
 
-const TidslinjeRadStyle = styled.div`
+const TidslinjeRadStyle = styled.div(
+    (props: { compact?: boolean }) => `
     position: relative;
     padding: 0;
+
+    tidslinjerad, .hr {
+        margin: ${props.compact ? '0rem' : '1.56rem 0rem'};
+    }
 
     & .periode {
         cursor: pointer;
         background: #e7e9e9;
         border: 1px solid #59514b;
 
-        height: 1.5rem;
+        height: ${props.compact ? 1.5 : 2}rem;
         border-radius: 1.5rem;
         position: absolute;
         transition: box-shadow 0.1s ease;
@@ -166,7 +175,8 @@ const TidslinjeRadStyle = styled.div`
             }
         }
     }
-`;
+`,
+);
 
 const EmptyRowsStyle = styled.div`
     position: absolute;
@@ -184,6 +194,7 @@ export interface TimelineProps {
     onSelectPeriod?: (periode: Periode) => void;
     axisLabelRenderer?: (etikett: AxisLabel) => ReactNode;
     pins?: Pin[];
+    compact?: boolean;
 }
 
 const Timeline = React.memo(
@@ -197,6 +208,7 @@ const Timeline = React.memo(
         activeRow,
         direction,
         axisLabelRenderer,
+        compact = false,
     }: TimelineProps) => {
         const onSelectPeriodeWrapper =
             onSelectPeriod &&
@@ -221,10 +233,10 @@ const Timeline = React.memo(
                     direction={direction}
                     etikettRender={axisLabelRenderer}
                 />
-                <TidslinjeRadStyle className={classNames('tidslinjerader')}>
+                <TidslinjeRadStyle compact={compact} className={classNames('tidslinjerader')}>
                     <EmptyRowsStyle>
                         {rows.map((_, i) => (
-                            <EmptyTimelineRow key={i} active={i === activeRow} />
+                            <EmptyTimelineRow compact={compact} key={i} active={i === activeRow} />
                         ))}
                     </EmptyRowsStyle>
                     {pins && (
@@ -249,6 +261,7 @@ const Timeline = React.memo(
                             {...tidslinje}
                             onSelectPeriod={onSelectPeriodeWrapper}
                             active={i === activeRow}
+                            compact={compact}
                         />
                     ))}
                     {aktivtUtsnitt && (
@@ -279,6 +292,7 @@ export const Tidslinje = React.memo(
         onSelectPeriode,
         aktivtUtsnitt,
         retning = 'stigende',
+        compact = false,
     }: TidslinjeProps) => {
         if (!rader) throw new Error('Tidslinjen mangler rader.');
 
@@ -298,6 +312,7 @@ export const Tidslinje = React.memo(
                 aktivtUtsnitt={aktivtUtsnitt}
                 axisLabelRenderer={etikettRender}
                 pins={pins}
+                compact={compact}
             />
         );
     },
