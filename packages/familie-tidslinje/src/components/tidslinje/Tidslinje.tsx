@@ -2,9 +2,10 @@ import React, { ReactNode, useCallback } from 'react';
 import classNames from 'classnames';
 import { Dayjs } from 'dayjs';
 import styled from 'styled-components';
+import { AktivtUtsnittBakgrunn, AktivtUtsnittBorder } from './AktivtUtsnitt';
 import { AxisLabels } from './AxisLabels';
 import { EmptyTimelineRow, TimelineRow } from './TimelineRow';
-import { Etikett, Periode, Pin } from '../types.external';
+import { EnkelPeriode, Etikett, Periode, Pin } from '../types.external';
 import { AxisLabel, InternalSimpleTimeline, PositionedPeriod } from '../types.internal';
 import { useSenesteDato, useTidligsteDato, useTidslinjerader } from './useTidslinjerader';
 import { Pins } from './Pins';
@@ -27,6 +28,10 @@ export interface TidslinjeProps {
      * Handling som skal skje når en bruker klikker på/interagerer med en periodeknapp.
      */
     onSelectPeriode?: (periode: Periode) => void;
+    /**
+     * Utsnittet av tidslinjen som skal markeres som aktivt.
+     */
+    aktivtUtsnitt?: EnkelPeriode;
     /**
      * Raden som skal markeres som aktiv.
      */
@@ -175,6 +180,7 @@ export interface TimelineProps {
     direction: 'left' | 'right';
     endInclusive: Dayjs;
     activeRow?: number;
+    aktivtUtsnitt?: EnkelPeriode;
     onSelectPeriod?: (periode: Periode) => void;
     axisLabelRenderer?: (etikett: AxisLabel) => ReactNode;
     pins?: Pin[];
@@ -187,6 +193,7 @@ const Timeline = React.memo(
         start,
         endInclusive,
         onSelectPeriod,
+        aktivtUtsnitt,
         activeRow,
         direction,
         axisLabelRenderer,
@@ -228,6 +235,14 @@ const Timeline = React.memo(
                             direction={direction}
                         />
                     )}
+                    {aktivtUtsnitt && (
+                        <AktivtUtsnittBakgrunn
+                            tidslinjestart={start}
+                            tidslinjeslutt={endInclusive}
+                            aktivtUtsnitt={aktivtUtsnitt}
+                            direction={direction}
+                        />
+                    )}
                     {rows.map((tidslinje, i) => (
                         <TimelineRow
                             key={tidslinje.id}
@@ -236,6 +251,14 @@ const Timeline = React.memo(
                             active={i === activeRow}
                         />
                     ))}
+                    {aktivtUtsnitt && (
+                        <AktivtUtsnittBorder
+                            tidslinjestart={start}
+                            tidslinjeslutt={endInclusive}
+                            aktivtUtsnitt={aktivtUtsnitt}
+                            direction={direction}
+                        />
+                    )}
                 </TidslinjeRadStyle>
             </TidslinjeStyle>
         );
@@ -254,6 +277,7 @@ export const Tidslinje = React.memo(
         sluttDato,
         etikettRender,
         onSelectPeriode,
+        aktivtUtsnitt,
         retning = 'stigende',
     }: TidslinjeProps) => {
         if (!rader) throw new Error('Tidslinjen mangler rader.');
@@ -271,6 +295,7 @@ export const Tidslinje = React.memo(
                 direction={direction}
                 endInclusive={endInclusive}
                 onSelectPeriod={onSelectPeriode}
+                aktivtUtsnitt={aktivtUtsnitt}
                 axisLabelRenderer={etikettRender}
                 pins={pins}
             />

@@ -34,7 +34,7 @@ const TidslinjeMedIkonContainer = styled.div`
 `;
 
 export default {
-    title: 'Tidslinje/Tidslinje',
+    title: 'Komponenter/Tidslinje',
     component: Tidslinje,
     argTypes: {
         rader: {

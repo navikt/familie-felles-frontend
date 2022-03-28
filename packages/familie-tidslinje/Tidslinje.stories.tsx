@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Periode, Tidslinje, TidslinjeProps } from './src';
 
 export default {
-    title: 'Tidslinje/Tidslinje',
+    title: 'Komponenter/Tidslinje',
     component: Tidslinje,
     argTypes: {
         rader: {
@@ -73,6 +73,12 @@ export default {
         },
         pins: {
             defaultValue: [{ date: new Date('2020-03-15'), render: 'Dette er en pin' }],
+        },
+        aktivtUtsnitt: {
+            defaultValue: {
+                fom: new Date('2020-02-01'),
+                tom: new Date('2020-02-29'),
+            },
         },
     },
 };
