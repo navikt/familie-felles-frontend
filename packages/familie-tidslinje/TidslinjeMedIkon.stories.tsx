@@ -119,7 +119,7 @@ export const NotClickableWithIcon = (args: TidslinjeProps) => {
         <>
             <h2>Perioder ikke klikkbare</h2>
             <TidslinjeMedIkonContainer>
-                <Tidslinje compact {...args} />
+                <Tidslinje kompakt {...args} />
             </TidslinjeMedIkonContainer>
         </>
     );

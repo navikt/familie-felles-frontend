@@ -33,12 +33,26 @@ const AktivPeriode = styled.div`
     }
 
     &:before {
-        .dot(3px);
+        content: '';
+        position: absolute;
+        top: -2px;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: ${navFarger.navBla};
+        box-shadow: 0 0 0 1px ${navFarger.navBla};
         left: -1px;
     }
 
     &:after {
-        .dot(3px);
+        content: '';
+        position: absolute;
+        top: -2px;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: ${navFarger.navBla};
+        box-shadow: 0 0 0 1px ${navFarger.navBla};
         right: -1px;
     }
 `;

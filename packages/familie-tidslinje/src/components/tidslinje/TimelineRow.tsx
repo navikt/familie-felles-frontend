@@ -5,26 +5,26 @@ import { TimelinePeriod } from './TimelinePeriod';
 import { PositionedPeriod } from '../types.internal';
 
 const TimelineRowStyle = styled.div(
-    (props: { compact?: boolean }) => `
+    (props: { kompakt?: boolean }) => `
     flex: 1;
-    height: ${props.compact ? 1.5 : 2}rem;
+    height: ${props.kompakt ? 1.5 : 2}rem;
     display: flex;
     align-items: center;
     position: relative;
-    margin-top: ${props.compact ? 0 : 1.56}rem;
+    margin-top: ${props.kompakt ? 0 : 1.56}rem;
     margin-bottom: 1.5rem;
 `,
 );
 
 const EmptyRowHr = styled.hr(
-    (props: { compact: boolean }) =>
+    (props: { kompakt: boolean }) =>
         `
     flex: 1;
-    height: ${props.compact ? 1.5 : 2}rem;
+    height: ${props.kompakt ? 1.5 : 2}rem;
     width: 100%;
     border: none;
     background-color: #f8f8f8;
-    margin-top: ${props.compact ? 0 : 1.56}rem;;
+    margin-top: ${props.kompakt ? 0 : 1.56}rem;;
     margin-bottom: 1.5rem;
 
     &.aktivRad {
@@ -35,28 +35,28 @@ const EmptyRowHr = styled.hr(
 
 interface EmptyTimelineRowProps {
     active?: boolean;
-    compact?: boolean;
+    kompakt?: boolean;
 }
 
 interface TimelineRowProps {
     periods: PositionedPeriod[];
     onSelectPeriod?: (periode: PositionedPeriod) => void;
     active?: boolean;
-    compact?: boolean;
+    kompakt?: boolean;
 }
 
-export const EmptyTimelineRow = ({ active = false, compact = false }: EmptyTimelineRowProps) => (
-    <EmptyRowHr compact={compact} className={classNames(active && 'aktivRad')} />
+export const EmptyTimelineRow = ({ active = false, kompakt = false }: EmptyTimelineRowProps) => (
+    <EmptyRowHr kompakt={kompakt} className={classNames(active && 'aktivRad')} />
 );
 
 export const TimelineRow = ({
     periods,
     onSelectPeriod,
     active = false,
-    compact = false,
+    kompakt = false,
 }: TimelineRowProps) => (
     <TimelineRowStyle
-        compact={compact}
+        kompakt={kompakt}
         className={classNames('tidslinjerad', active && 'aktivRad')}
     >
         {periods.map(period => (

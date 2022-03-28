@@ -117,7 +117,7 @@ export const BasicNotClickable = (args: TidslinjeProps) => {
         <>
             <div>
                 <h2>Perioder ikke klikkbare</h2>
-                <Tidslinje compact {...args} />
+                <Tidslinje kompakt {...args} />
             </div>
         </>
     );
