@@ -32,8 +32,8 @@
         "hashids": "^2.2.8"
     },
     "devDependencies": {
-        "@navikt/familie-form-elements": "2.0.11",
-        "nav-frontend-skjema": "3.2.1"
+        "@navikt/familie-form-elements": "4.0.1",
+        "nav-frontend-skjema": "4.0.5"
     },
     "peerDependencies": {
         "react": "^17.0.2"
