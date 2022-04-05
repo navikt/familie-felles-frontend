@@ -32,7 +32,7 @@ const ResultatListe = styled.ul`
 const ResultatListeElement = styled.li<{ fokus: boolean }>`
     list-style-type: none;
     padding: 0.5rem;
-    outline: ${({ fokus }) => (fokus ? `3px solid ${navFarger.orangeFocus}` : '')};
+    outline: ${({ fokus }) => (fokus ? `3px solid ${navFarger.navOransjeLighten40}` : '')};
 
     &:hover {
         background-color: ${navFarger.navLysGra};
