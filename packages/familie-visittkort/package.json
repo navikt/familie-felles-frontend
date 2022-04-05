@@ -1,5 +1,5 @@
 {
-    "version": "3.0.1",
+    "version": "3.0.2",
     "name": "@navikt/familie-visittkort",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -24,7 +24,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-clipboard": "^4.0.0",
+        "@navikt/familie-clipboard": "^4.0.1",
         "@navikt/familie-ikoner": "^4.0.1",
         "@navikt/familie-typer": "^5.0.0",
         "classnames": "^2.2.6",

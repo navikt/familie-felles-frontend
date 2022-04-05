@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-form-elements",
-    "version": "4.0.1",
+    "version": "4.0.2",
     "main": "dist/index.js",
     "author": "NAV",
     "license": "MIT",
@@ -41,8 +41,8 @@
     },
     "devDependencies": {
         "@types/styled-components": "^5.1.7",
-        "styled-components": "^5.2.1",
-        "react-day-picker": "7.4.8"
+        "react-day-picker": "7.4.8",
+        "styled-components": "^5.2.1"
     },
     "peerDependencies": {
         "react": "^17.0.2",
