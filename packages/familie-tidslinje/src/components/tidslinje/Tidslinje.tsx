@@ -71,7 +71,7 @@ const TidslinjeRadStyle = styled.div(
     border-top: ${props.kompakt ? 'none' : '1px solid #e7e9e9'};
 
     .tidslinjerad.førsterad, hr.førsterad {
-        margin: ${props.kompakt ? '0rem 0rem 1.5rem 0rem' : '1.56rem 0rem 1.5rem 0rem'};
+        margin-top: ${props.kompakt ? '0rem' : '1.56rem'};
     }
 
     & button.periode {
