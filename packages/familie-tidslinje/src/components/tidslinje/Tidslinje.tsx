@@ -70,12 +70,47 @@ const TidslinjeRadStyle = styled.div(
     padding: 0;
     border-top: ${props.kompakt ? 'none' : '1px solid #e7e9e9'};
 
-    tidslinjerad, .hr {
-        margin: ${props.kompakt ? '0rem' : '1.56rem 0rem'};
+    .tidslinjerad.førsterad, hr.førsterad {
+        margin: ${props.kompakt ? '0rem 0rem 1.5rem 0rem' : '1.56rem 0rem 1.5rem 0rem'};
+    }
+
+    & button.periode {
+        cursor: pointer;
+
+        &.advarsel {
+            &:hover,
+            &.active,
+            &:focus {
+                background: #fed7a3;
+            }
+        }
+
+        &.feil {
+            &:hover,
+            &.active,
+            &:focus {
+                background: #e3b0a8;
+            }
+        }
+
+        &.inaktiv {
+            &:hover,
+            &.active,
+            &:focus {
+                background: #c3c3c3;
+            }
+        }
+
+        &.suksess {
+            &:hover,
+            &.active,
+            &:focus {
+                background: #9bd0b0;
+            }
+        }
     }
 
     & .periode {
-        cursor: pointer;
         background: #e7e9e9;
         border: 1px solid #59514b;
 
@@ -116,43 +151,21 @@ const TidslinjeRadStyle = styled.div(
         &.advarsel {
             background: #ffe9cc;
             border: 1px solid #ff9100;
-
-            &:hover,
-            &.active,
-            &:focus {
-                background: #fed7a3;
-                //background: blue;
-            }
         }
 
         &.feil {
             background: #f1d8d4;
             border: 1px solid #ba3a26;
-            &:hover,
-            &.active,
-            &:focus {
-                background: #e3b0a8;
-            }
         }
 
         &.inaktiv {
             background: #e7e9e9;
             border: 1px solid #78706a;
-            &:hover,
-            &.active,
-            &:focus {
-                background: #c3c3c3;
-            }
         }
 
         &.suksess {
             background: #cde7d8;
             border: 1px solid #117938;
-            &:hover,
-            &.active,
-            &:focus {
-                background: #9bd0b0;
-            }
         }
 
         & div.infoPin {
@@ -237,7 +250,12 @@ const Timeline = React.memo(
                 <TidslinjeRadStyle kompakt={kompakt} className={classNames('tidslinjerader')}>
                     <EmptyRowsStyle>
                         {rows.map((_, i) => (
-                            <EmptyTimelineRow kompakt={kompakt} key={i} active={i === activeRow} />
+                            <EmptyTimelineRow
+                                kompakt={kompakt}
+                                className={classNames(i === 0 && 'førsterad')}
+                                key={i}
+                                active={i === activeRow}
+                            />
                         ))}
                     </EmptyRowsStyle>
                     {pins && (
@@ -259,6 +277,7 @@ const Timeline = React.memo(
                     {rows.map((tidslinje, i) => (
                         <TimelineRow
                             key={tidslinje.id}
+                            className={classNames(i === 0 && 'førsterad')}
                             {...tidslinje}
                             onSelectPeriod={onSelectPeriodeWrapper}
                             active={i === activeRow}

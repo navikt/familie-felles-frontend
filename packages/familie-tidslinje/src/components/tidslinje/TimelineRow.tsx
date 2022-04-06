@@ -11,7 +11,6 @@ const TimelineRowStyle = styled.div(
     display: flex;
     align-items: center;
     position: relative;
-    margin-top: ${props.kompakt ? 0 : 1.56}rem;
     margin-bottom: 1.5rem;
 `,
 );
@@ -24,7 +23,6 @@ const EmptyRowHr = styled.hr(
     width: 100%;
     border: none;
     background-color: #f8f8f8;
-    margin-top: ${props.kompakt ? 0 : 1.56}rem;;
     margin-bottom: 1.5rem;
 
     &.aktivRad {
@@ -36,6 +34,7 @@ const EmptyRowHr = styled.hr(
 interface EmptyTimelineRowProps {
     active?: boolean;
     kompakt?: boolean;
+    className: string;
 }
 
 interface TimelineRowProps {
@@ -43,10 +42,15 @@ interface TimelineRowProps {
     onSelectPeriod?: (periode: PositionedPeriod) => void;
     active?: boolean;
     kompakt?: boolean;
+    className: string;
 }
 
-export const EmptyTimelineRow = ({ active = false, kompakt = false }: EmptyTimelineRowProps) => (
-    <EmptyRowHr kompakt={kompakt} className={classNames(active && 'aktivRad')} />
+export const EmptyTimelineRow = ({
+    active = false,
+    kompakt = false,
+    className,
+}: EmptyTimelineRowProps) => (
+    <EmptyRowHr kompakt={kompakt} className={classNames(active && 'aktivRad', className)} />
 );
 
 export const TimelineRow = ({
@@ -54,10 +58,11 @@ export const TimelineRow = ({
     onSelectPeriod,
     active = false,
     kompakt = false,
+    className,
 }: TimelineRowProps) => (
     <TimelineRowStyle
         kompakt={kompakt}
-        className={classNames('tidslinjerad', active && 'aktivRad')}
+        className={classNames('tidslinjerad', active && 'aktivRad', className)}
     >
         {periods.map(period => (
             <TimelinePeriod
