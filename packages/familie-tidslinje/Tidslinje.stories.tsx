@@ -92,7 +92,6 @@ export const BasicClickable = (args: TidslinjeProps) => {
     const [kompakt, settKompakt] = useState<boolean>(false);
 
     const onSelectPeriode = (periode: Periode) => {
-        console.log(periode);
         setAktivPeriode(periode);
         setRader(rader => rader.map(rad => rad.map(p => ({ ...p, active: periode.id === p.id }))));
     };
