@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+
+import { ToggleKnapp } from 'nav-frontend-toggle';
+
 import { Periode, Tidslinje, TidslinjeProps } from './src';
 
 export default {
-    title: 'Tidslinje/Tidslinje',
+    title: 'Komponenter/Tidslinje',
     component: Tidslinje,
     argTypes: {
         rader: {
@@ -74,15 +77,21 @@ export default {
         pins: {
             defaultValue: [{ date: new Date('2020-03-15'), render: 'Dette er en pin' }],
         },
+        aktivtUtsnitt: {
+            defaultValue: {
+                fom: new Date('2020-02-01'),
+                tom: new Date('2020-02-29'),
+            },
+        },
     },
 };
 
 export const BasicClickable = (args: TidslinjeProps) => {
     const [rader, setRader] = useState<Periode[][]>(args.rader);
     const [aktivPeriode, setAktivPeriode] = useState<Periode>();
+    const [kompakt, settKompakt] = useState<boolean>(false);
 
     const onSelectPeriode = (periode: Periode) => {
-        console.log(periode);
         setAktivPeriode(periode);
         setRader(rader => rader.map(rad => rad.map(p => ({ ...p, active: periode.id === p.id }))));
     };
@@ -97,8 +106,18 @@ export const BasicClickable = (args: TidslinjeProps) => {
     return (
         <>
             <div>
+                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                    Kompakt
+                </ToggleKnapp>
+            </div>
+            <div>
                 <h2>Klikkbare perioder</h2>
-                <Tidslinje {...args} aktivRad={aktivRad} onSelectPeriode={onSelectPeriode} />
+                <Tidslinje
+                    kompakt={kompakt}
+                    {...args}
+                    aktivRad={aktivRad}
+                    onSelectPeriode={onSelectPeriode}
+                />
             </div>
             {aktivPeriode && <div>{`${aktivPeriode.fom} - ${aktivPeriode.tom}`}</div>}
         </>
@@ -107,11 +126,18 @@ export const BasicClickable = (args: TidslinjeProps) => {
 BasicClickable.storyName = 'Enkel klikkbar tidslinje';
 
 export const BasicNotClickable = (args: TidslinjeProps) => {
+    const [kompakt, settKompakt] = useState<boolean>(false);
+
     return (
         <>
             <div>
+                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                    Kompakt
+                </ToggleKnapp>
+            </div>
+            <div>
                 <h2>Perioder ikke klikkbare</h2>
-                <Tidslinje {...args} />
+                <Tidslinje kompakt={kompakt} {...args} />
             </div>
         </>
     );

@@ -34,7 +34,7 @@ const TidslinjeMedIkonContainer = styled.div`
 `;
 
 export default {
-    title: 'Tidslinje/Tidslinje',
+    title: 'Komponenter/Tidslinje',
     component: Tidslinje,
     argTypes: {
         rader: {
@@ -90,7 +90,6 @@ export const ClickableWithIcon = (args: TidslinjeProps) => {
     const [aktivPeriode, setAktivPeriode] = useState<Periode>();
 
     const onSelectPeriode = (periode: Periode) => {
-        console.log(periode);
         setAktivPeriode(periode);
         setRader(rader => rader.map(rad => rad.map(p => ({ ...p, active: periode.id === p.id }))));
     };
@@ -119,7 +118,7 @@ export const NotClickableWithIcon = (args: TidslinjeProps) => {
         <>
             <h2>Perioder ikke klikkbare</h2>
             <TidslinjeMedIkonContainer>
-                <Tidslinje {...args} />
+                <Tidslinje kompakt {...args} />
             </TidslinjeMedIkonContainer>
         </>
     );

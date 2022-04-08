@@ -2,9 +2,10 @@ import React, { ReactNode, useCallback } from 'react';
 import classNames from 'classnames';
 import { Dayjs } from 'dayjs';
 import styled from 'styled-components';
+import { AktivtUtsnittBakgrunn, AktivtUtsnittBorder } from './AktivtUtsnitt';
 import { AxisLabels } from './AxisLabels';
 import { EmptyTimelineRow, TimelineRow } from './TimelineRow';
-import { Etikett, Periode, Pin } from '../types.external';
+import { EnkelPeriode, Etikett, Periode, Pin } from '../types.external';
 import { AxisLabel, InternalSimpleTimeline, PositionedPeriod } from '../types.internal';
 import { useSenesteDato, useTidligsteDato, useTidslinjerader } from './useTidslinjerader';
 import { Pins } from './Pins';
@@ -28,6 +29,10 @@ export interface TidslinjeProps {
      */
     onSelectPeriode?: (periode: Periode) => void;
     /**
+     * Utsnittet av tidslinjen som skal markeres som aktivt.
+     */
+    aktivtUtsnitt?: EnkelPeriode;
+    /**
      * Raden som skal markeres som aktiv.
      */
     aktivRad?: number;
@@ -44,6 +49,10 @@ export interface TidslinjeProps {
      * Markeringer for enkeltdager på tidslinjen.
      */
     pins?: Pin[];
+    /**
+     * Bruke kompakt style, med smalere stolper og uten margin.
+     */
+    kompakt?: boolean;
 }
 
 const TidslinjeStyle = styled.div`
@@ -55,16 +64,57 @@ const TidslinjeStyle = styled.div`
     flex: 1;
 `;
 
-const TidslinjeRadStyle = styled.div`
+const TidslinjeRadStyle = styled.div(
+    (props: { kompakt?: boolean }) => `
     position: relative;
     padding: 0;
+    border-top: ${props.kompakt ? 'none' : '1px solid #e7e9e9'};
+
+    .tidslinjerad.førsterad, hr.førsterad {
+        margin-top: ${props.kompakt ? '0rem' : '1.56rem'};
+    }
+
+    & button.periode {
+        cursor: pointer;
+
+        &.advarsel {
+            &:hover,
+            &.active,
+            &:focus {
+                background: #fed7a3;
+            }
+        }
+
+        &.feil {
+            &:hover,
+            &.active,
+            &:focus {
+                background: #e3b0a8;
+            }
+        }
+
+        &.inaktiv {
+            &:hover,
+            &.active,
+            &:focus {
+                background: #c3c3c3;
+            }
+        }
+
+        &.suksess {
+            &:hover,
+            &.active,
+            &:focus {
+                background: #9bd0b0;
+            }
+        }
+    }
 
     & .periode {
-        cursor: pointer;
         background: #e7e9e9;
         border: 1px solid #59514b;
 
-        height: 1.5rem;
+        height: ${props.kompakt ? 1.5 : 2}rem;
         border-radius: 1.5rem;
         position: absolute;
         transition: box-shadow 0.1s ease;
@@ -101,43 +151,21 @@ const TidslinjeRadStyle = styled.div`
         &.advarsel {
             background: #ffe9cc;
             border: 1px solid #ff9100;
-
-            &:hover,
-            &.active,
-            &:focus {
-                background: #fed7a3;
-                //background: blue;
-            }
         }
 
         &.feil {
             background: #f1d8d4;
             border: 1px solid #ba3a26;
-            &:hover,
-            &.active,
-            &:focus {
-                background: #e3b0a8;
-            }
         }
 
         &.inaktiv {
             background: #e7e9e9;
             border: 1px solid #78706a;
-            &:hover,
-            &.active,
-            &:focus {
-                background: #c3c3c3;
-            }
         }
 
         &.suksess {
             background: #cde7d8;
             border: 1px solid #117938;
-            &:hover,
-            &.active,
-            &:focus {
-                background: #9bd0b0;
-            }
         }
 
         & div.infoPin {
@@ -161,7 +189,8 @@ const TidslinjeRadStyle = styled.div`
             }
         }
     }
-`;
+`,
+);
 
 const EmptyRowsStyle = styled.div`
     position: absolute;
@@ -175,9 +204,11 @@ export interface TimelineProps {
     direction: 'left' | 'right';
     endInclusive: Dayjs;
     activeRow?: number;
+    aktivtUtsnitt?: EnkelPeriode;
     onSelectPeriod?: (periode: Periode) => void;
     axisLabelRenderer?: (etikett: AxisLabel) => ReactNode;
     pins?: Pin[];
+    kompakt?: boolean;
 }
 
 const Timeline = React.memo(
@@ -187,9 +218,11 @@ const Timeline = React.memo(
         start,
         endInclusive,
         onSelectPeriod,
+        aktivtUtsnitt,
         activeRow,
         direction,
         axisLabelRenderer,
+        kompakt = false,
     }: TimelineProps) => {
         const onSelectPeriodeWrapper =
             onSelectPeriod &&
@@ -214,10 +247,15 @@ const Timeline = React.memo(
                     direction={direction}
                     etikettRender={axisLabelRenderer}
                 />
-                <TidslinjeRadStyle className={classNames('tidslinjerader')}>
+                <TidslinjeRadStyle kompakt={kompakt} className={classNames('tidslinjerader')}>
                     <EmptyRowsStyle>
                         {rows.map((_, i) => (
-                            <EmptyTimelineRow key={i} active={i === activeRow} />
+                            <EmptyTimelineRow
+                                kompakt={kompakt}
+                                className={classNames(i === 0 && 'førsterad')}
+                                key={i}
+                                active={i === activeRow}
+                            />
                         ))}
                     </EmptyRowsStyle>
                     {pins && (
@@ -228,14 +266,32 @@ const Timeline = React.memo(
                             direction={direction}
                         />
                     )}
+                    {aktivtUtsnitt && (
+                        <AktivtUtsnittBakgrunn
+                            tidslinjestart={start}
+                            tidslinjeslutt={endInclusive}
+                            aktivtUtsnitt={aktivtUtsnitt}
+                            direction={direction}
+                        />
+                    )}
                     {rows.map((tidslinje, i) => (
                         <TimelineRow
                             key={tidslinje.id}
+                            className={classNames(i === 0 && 'førsterad')}
                             {...tidslinje}
                             onSelectPeriod={onSelectPeriodeWrapper}
                             active={i === activeRow}
+                            kompakt={kompakt}
                         />
                     ))}
+                    {aktivtUtsnitt && (
+                        <AktivtUtsnittBorder
+                            tidslinjestart={start}
+                            tidslinjeslutt={endInclusive}
+                            aktivtUtsnitt={aktivtUtsnitt}
+                            direction={direction}
+                        />
+                    )}
                 </TidslinjeRadStyle>
             </TidslinjeStyle>
         );
@@ -254,7 +310,9 @@ export const Tidslinje = React.memo(
         sluttDato,
         etikettRender,
         onSelectPeriode,
+        aktivtUtsnitt,
         retning = 'stigende',
+        kompakt = false,
     }: TidslinjeProps) => {
         if (!rader) throw new Error('Tidslinjen mangler rader.');
 
@@ -271,8 +329,10 @@ export const Tidslinje = React.memo(
                 direction={direction}
                 endInclusive={endInclusive}
                 onSelectPeriod={onSelectPeriode}
+                aktivtUtsnitt={aktivtUtsnitt}
                 axisLabelRenderer={etikettRender}
                 pins={pins}
+                kompakt={kompakt}
             />
         );
     },
