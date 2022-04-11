@@ -44,6 +44,10 @@ export interface Periode extends EnkelPeriode {
      * Indikerer om det skal rendres en blå markering over perioden.
      */
     infoPin?: boolean;
+    /**
+     * Innhold som skal vises inne i en periode i tidslinjen. Kan f.eks. være ikon, tekst eller ikon+tekst.
+     */
+    children?: ReactNode;
 }
 
 export interface Pin {

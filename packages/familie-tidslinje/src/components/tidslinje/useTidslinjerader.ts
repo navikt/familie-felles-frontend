@@ -12,7 +12,7 @@ const spatialPeriod = (
     period: Periode,
     timelineStart: Dayjs,
     timelineEndInclusive: Dayjs,
-    direction: 'left' | 'right' = 'left'
+    direction: 'left' | 'right' = 'left',
 ): PositionedPeriod => {
     const start = dayjs(period.fom);
     const endInclusive = dayjs(period.tom);
@@ -20,7 +20,7 @@ const spatialPeriod = (
         start.startOf('day'),
         endInclusive.endOf('day'),
         timelineStart,
-        timelineEndInclusive
+        timelineEndInclusive,
     );
     return {
         id: period.id || nanoid(),
@@ -34,13 +34,19 @@ const spatialPeriod = (
         status: period.status,
         active: period.active,
         infoPin: period.infoPin,
-        width: width
+        width: width,
+        children: period.children,
     };
 };
 
-const adjustedEdges = (period: PositionedPeriod, i: number, allPeriods: PositionedPeriod[]): PositionedPeriod => {
+const adjustedEdges = (
+    period: PositionedPeriod,
+    i: number,
+    allPeriods: PositionedPeriod[],
+): PositionedPeriod => {
     const left = i > 0 && innenEtDøgn(allPeriods[i - 1].endInclusive, period.start);
-    const right = i < allPeriods.length - 1 && innenEtDøgn(period.endInclusive, allPeriods[i + 1].start);
+    const right =
+        i < allPeriods.length - 1 && innenEtDøgn(period.endInclusive, allPeriods[i + 1].start);
     return left && right
         ? { ...period, cropped: 'both' }
         : left
@@ -65,7 +71,7 @@ const trimmedPeriods = (period: PositionedPeriod) => {
         ...period,
         width: width,
         horizontalPosition: horizontalPosition,
-        cropped: cropped
+        cropped: cropped,
     };
 };
 
@@ -73,35 +79,45 @@ export const useTidslinjerader = (
     rader: Periode[][],
     startDato: Dayjs,
     sluttDato: Dayjs,
-    direction: 'left' | 'right'
+    direction: 'left' | 'right',
 ): InternalSimpleTimeline[] =>
     useMemo(
         () =>
             rader.map(perioder => {
                 const tidslinjeperioder = perioder
-                    .map((periode: Periode) => spatialPeriod(periode, startDato, sluttDato, direction))
+                    .map((periode: Periode) =>
+                        spatialPeriod(periode, startDato, sluttDato, direction),
+                    )
                     .sort(sistePeriode)
                     .map(adjustedEdges)
                     .map(trimmedPeriods)
                     .filter(invisiblePeriods);
                 return {
                     id: nanoid(),
-                    periods: direction === 'left' ? tidslinjeperioder : tidslinjeperioder.reverse()
+                    periods: direction === 'left' ? tidslinjeperioder : tidslinjeperioder.reverse(),
                 };
             }),
-        [rader, startDato, sluttDato]
+        [rader, startDato, sluttDato],
     );
 
-const tidligsteDato = (tidligst: Date, periode: Periode) => (periode.fom < tidligst ? periode.fom : tidligst);
+const tidligsteDato = (tidligst: Date, periode: Periode) =>
+    periode.fom < tidligst ? periode.fom : tidligst;
 
 const tidligsteFomDato = (rader: Periode[][]) => rader.flat().reduce(tidligsteDato, new Date());
 
 export const useTidligsteDato = ({ startDato, rader }: TidslinjeProps) =>
-    useMemo(() => (startDato ? dayjs(startDato) : dayjs(tidligsteFomDato(rader))), [startDato, rader]);
+    useMemo(() => (startDato ? dayjs(startDato) : dayjs(tidligsteFomDato(rader))), [
+        startDato,
+        rader,
+    ]);
 
-const senesteDato = (senest: Date, periode: Periode) => (periode.tom > senest ? periode.tom : senest);
+const senesteDato = (senest: Date, periode: Periode) =>
+    periode.tom > senest ? periode.tom : senest;
 
 const senesteTomDato = (rader: Periode[][]) => rader.flat().reduce(senesteDato, new Date(0));
 
 export const useSenesteDato = ({ sluttDato, rader }: TidslinjeProps) =>
-    useMemo(() => (sluttDato ? dayjs(sluttDato) : dayjs(senesteTomDato(rader)).add(1, 'day')), [sluttDato, rader]);
+    useMemo(() => (sluttDato ? dayjs(sluttDato) : dayjs(senesteTomDato(rader)).add(1, 'day')), [
+        sluttDato,
+        rader,
+    ]);

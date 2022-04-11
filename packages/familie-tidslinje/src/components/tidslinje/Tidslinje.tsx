@@ -110,6 +110,12 @@ const TidslinjeRadStyle = styled.div(
         }
     }
 
+    & div.periode div.infoPin {
+        &:before {
+            transform: translate(-4px, -100%);
+        }
+    }
+
     & .periode {
         background: #e7e9e9;
         border: 1px solid #59514b;

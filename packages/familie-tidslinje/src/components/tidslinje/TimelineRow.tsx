@@ -70,6 +70,7 @@ export const TimelineRow = ({
                 period={period}
                 onSelectPeriod={onSelectPeriod}
                 active={period.active}
+                kompakt={kompakt}
             />
         ))}
     </TimelineRowStyle>

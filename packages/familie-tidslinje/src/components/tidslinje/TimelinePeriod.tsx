@@ -11,11 +11,23 @@ import classNames from 'classnames';
 import { Tooltip } from './Tooltip';
 import { PositionedPeriod } from '../types.internal';
 import { ClassValue } from 'classnames/types';
+import styled from 'styled-components';
+
+const PeriodeInnhold = styled.div(
+    (props: { kompakt?: boolean }) => `
+    margin: ${props.kompakt ? 0 : 0.3}rem 0.3rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: clip;
+    text-align: left;
+`,
+);
 
 interface NonClickablePeriodProps {
     period: PositionedPeriod;
     divRef: RefObject<HTMLDivElement>;
     className?: string;
+    kompakt?: boolean;
 }
 
 interface ClickablePeriodProps {
@@ -23,6 +35,7 @@ interface ClickablePeriodProps {
     buttonRef: RefObject<HTMLButtonElement>;
     onSelectPeriod: (period: PositionedPeriod) => void;
     className?: string;
+    kompakt?: boolean;
 }
 
 interface TimelinePeriodProps {
@@ -30,6 +43,7 @@ interface TimelinePeriodProps {
     active?: boolean;
     onSelectPeriod?: (period: PositionedPeriod) => void;
     onHoverPeriod?: ReactNode;
+    kompakt?: boolean;
 }
 
 const ariaLabel = (period: PositionedPeriod): string => {
@@ -44,7 +58,7 @@ const style = (period: PositionedPeriod): CSSProperties => ({
 });
 
 const ClickablePeriod = React.memo(
-    ({ buttonRef, period, className, onSelectPeriod }: ClickablePeriodProps) => {
+    ({ buttonRef, period, className, onSelectPeriod, kompakt }: ClickablePeriodProps) => {
         const [showHoverLabel, setShowHoverLabel] = useState(false);
 
         const onClick = () => {
@@ -73,14 +87,18 @@ const ClickablePeriod = React.memo(
             >
                 {period.hoverLabel && showHoverLabel && <Tooltip>{period.hoverLabel}</Tooltip>}
                 {period.infoPin && <div className={'infoPin'} />}
+                {period.children && (
+                    <PeriodeInnhold kompakt={kompakt}>{period.children}</PeriodeInnhold>
+                )}
             </button>
         );
     },
 );
 
-const NonClickablePeriod = ({ divRef, period, className }: NonClickablePeriodProps) => (
+const NonClickablePeriod = ({ divRef, period, className, kompakt }: NonClickablePeriodProps) => (
     <div ref={divRef} className={className} aria-label={ariaLabel(period)} style={style(period)}>
         {period.infoPin && <div className={'infoPin'} />}
+        {period.children && <PeriodeInnhold kompakt={kompakt}>{period.children}</PeriodeInnhold>}
     </div>
 );
 
@@ -114,7 +132,7 @@ const finnClassnames = (
 };
 
 export const TimelinePeriod = React.memo(
-    ({ period, onSelectPeriod, active }: TimelinePeriodProps) => {
+    ({ period, onSelectPeriod, active, kompakt }: TimelinePeriodProps) => {
         const ref = useRef<HTMLButtonElement | HTMLDivElement>(null);
         const [isMini, setIsMini] = useState(false);
 
@@ -141,12 +159,14 @@ export const TimelinePeriod = React.memo(
                 period={period}
                 onSelectPeriod={onSelectPeriod}
                 className={className}
+                kompakt={kompakt}
             />
         ) : (
             <NonClickablePeriod
                 divRef={ref as RefObject<HTMLDivElement>}
                 period={period}
                 className={className}
+                kompakt={kompakt}
             />
         );
     },
