@@ -11,7 +11,7 @@ const TimelineRowStyle = styled.div(
     display: flex;
     align-items: center;
     position: relative;
-    margin-bottom: 1.5rem;
+    margin-bottom: ${props.kompakt ? 1 : 1.5}rem;
 `,
 );
 
@@ -23,7 +23,7 @@ const EmptyRowHr = styled.hr(
     width: 100%;
     border: none;
     background-color: #f8f8f8;
-    margin-bottom: 1.5rem;
+    margin-bottom: ${props.kompakt ? 1 : 1.5}rem;
 
     &.aktivRad {
         background-color: #e5f3ff;

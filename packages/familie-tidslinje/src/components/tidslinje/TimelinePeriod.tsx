@@ -111,6 +111,22 @@ const finnClassnames = (
 
     switch (period.cropped) {
         case 'both':
+            classNames.push('croppedBegge');
+            break;
+        case 'left':
+            if (period.direction === 'left') classNames.push('croppedVenstre');
+            else classNames.push('croppedHøyre');
+            break;
+        case 'right':
+            if (period.direction === 'left') classNames.push('croppedHøyre');
+            else classNames.push('croppedVenstre');
+            break;
+        default:
+            break;
+    }
+
+    switch (period.connectingEdge) {
+        case 'both':
             classNames.push('sammenhengendeFraBegge');
             break;
         case 'left':

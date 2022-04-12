@@ -90,6 +90,7 @@ export const BasicClickable = (args: TidslinjeProps) => {
     const [rader, setRader] = useState<Periode[][]>(args.rader);
     const [aktivPeriode, setAktivPeriode] = useState<Periode>();
     const [kompakt, settKompakt] = useState<boolean>(false);
+    const [rightLeft, settRightLeft] = useState<boolean>(false);
 
     const onSelectPeriode = (periode: Periode) => {
         setAktivPeriode(periode);
@@ -109,11 +110,15 @@ export const BasicClickable = (args: TidslinjeProps) => {
                 <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
                 </ToggleKnapp>
+                <ToggleKnapp pressed={rightLeft} onClick={() => settRightLeft(!rightLeft)}>
+                    Synkende
+                </ToggleKnapp>
             </div>
             <div>
                 <h2>Klikkbare perioder</h2>
                 <Tidslinje
                     kompakt={kompakt}
+                    retning={rightLeft ? 'synkende' : undefined}
                     {...args}
                     aktivRad={aktivRad}
                     onSelectPeriode={onSelectPeriode}
@@ -127,6 +132,7 @@ BasicClickable.storyName = 'Enkel klikkbar tidslinje';
 
 export const BasicNotClickable = (args: TidslinjeProps) => {
     const [kompakt, settKompakt] = useState<boolean>(false);
+    const [rightLeft, settRightLeft] = useState<boolean>(false);
 
     return (
         <>
@@ -134,10 +140,17 @@ export const BasicNotClickable = (args: TidslinjeProps) => {
                 <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
                 </ToggleKnapp>
+                <ToggleKnapp pressed={rightLeft} onClick={() => settRightLeft(!rightLeft)}>
+                    Synkende
+                </ToggleKnapp>
             </div>
             <div>
                 <h2>Perioder ikke klikkbare</h2>
-                <Tidslinje kompakt={kompakt} {...args} />
+                <Tidslinje
+                    kompakt={kompakt}
+                    retning={rightLeft ? 'synkende' : undefined}
+                    {...args}
+                />
             </div>
         </>
     );

@@ -19,6 +19,7 @@ export interface PositionedPeriod extends Period, Positioned {
     width: number;
     status: PeriodStatus;
     active?: boolean;
+    connectingEdge?: 'left' | 'right' | 'both';
     cropped?: 'left' | 'right' | 'both';
     disabled?: boolean;
     className?: string;

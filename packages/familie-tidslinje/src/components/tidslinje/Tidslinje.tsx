@@ -77,6 +77,11 @@ const TidslinjeRadStyle = styled.div(
     & button.periode {
         cursor: pointer;
 
+        & svg {
+            position: relative;
+            top: 2px;
+        }
+
         &.advarsel {
             &:hover,
             &.active,
@@ -110,15 +115,23 @@ const TidslinjeRadStyle = styled.div(
         }
     }
 
-    & div.periode div.infoPin {
-        &:before {
-            transform: translate(-4px, -100%);
+    & div.periode {
+        & svg {
+            position: relative;
+            top: ${props.kompakt ? 3 : 2}px;
+        }
+
+        div.infoPin {
+            &:before {
+                transform: translate(-4px, -100%);
+            }
         }
     }
 
     & .periode {
         background: #e7e9e9;
-        border: 1px solid #59514b;
+        border-top: 1px solid #59514b;
+        border-bottom: 1px solid #59514b;
 
         height: ${props.kompakt ? 1.5 : 2}rem;
         border-radius: 1.5rem;
@@ -157,21 +170,73 @@ const TidslinjeRadStyle = styled.div(
         &.advarsel {
             background: #ffe9cc;
             border: 1px solid #ff9100;
+
+            &.croppedHøyre {
+                border-right: none;
+            }
+
+            &.croppedVenstre {
+                border-left: none;
+            }
+
+            &.croppedBegge {
+                border-left: none;
+                border-right: none;
+            }
         }
 
         &.feil {
             background: #f1d8d4;
             border: 1px solid #ba3a26;
+
+            &.croppedHøyre {
+                border-right: none;
+            }
+
+            &.croppedVenstre {
+                border-left: none;
+            }
+
+            &.croppedBegge {
+                border-left: none;
+                border-right: none;
+            }
         }
 
         &.inaktiv {
             background: #e7e9e9;
             border: 1px solid #78706a;
+
+            &.croppedHøyre {
+                border-right: none;
+            }
+
+            &.croppedVenstre {
+                border-left: none;
+            }
+
+            &.croppedBegge {
+                border-left: none;
+                border-right: none;
+            }
         }
 
         &.suksess {
             background: #cde7d8;
             border: 1px solid #117938;
+
+            &.croppedHøyre {
+                border-right: none;
+            }
+
+            &.croppedVenstre {
+                border-left: none;
+            }
+
+            &.croppedBegge {
+                border-left: none;
+                border-right: none;
+            }
         }
 
         & div.infoPin {

@@ -12,14 +12,10 @@ const TidlinjeContainer = styled.div`
 `;
 
 const StyledEu = styled(Eu)`
-    position: relative;
-    top: 2px;
     margin-right: 0.3rem;
 `;
 
 const StyledNorwegian = styled(NorwegianFlag)`
-    position: relative;
-    top: 2px;
     margin-right: 0.3rem;
 `;
 
