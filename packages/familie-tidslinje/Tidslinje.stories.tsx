@@ -116,6 +116,10 @@ export const BasicClickable = (args: TidslinjeProps) => {
             </div>
             <div>
                 <h2>Klikkbare perioder</h2>
+                <p>
+                    Eksempel på klikkbar familie-tidslinje med default styling. Tilgjengelige
+                    classnames på perioder er: 'success', 'advarsel', 'feil' og 'inaktiv'
+                </p>
                 <Tidslinje
                     kompakt={kompakt}
                     retning={rightLeft ? 'synkende' : undefined}
@@ -146,6 +150,10 @@ export const BasicNotClickable = (args: TidslinjeProps) => {
             </div>
             <div>
                 <h2>Perioder ikke klikkbare</h2>
+                <p>
+                    Eksempel på uklikkbar familie-tidslinje med default styling. Tilgjengelige
+                    classnames på perioder er: 'success', 'advarsel', 'feil' og 'inaktiv'
+                </p>
                 <Tidslinje
                     kompakt={kompakt}
                     retning={rightLeft ? 'synkende' : undefined}

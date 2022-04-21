@@ -77,11 +77,6 @@ const TidslinjeRadStyle = styled.div(
     & button.periode {
         cursor: pointer;
 
-        & svg {
-            position: relative;
-            top: 2px;
-        }
-
         &.advarsel {
             &:hover,
             &.active,
@@ -116,11 +111,6 @@ const TidslinjeRadStyle = styled.div(
     }
 
     & div.periode {
-        & svg {
-            position: relative;
-            top: ${props.kompakt ? 3 : 2}px;
-        }
-
         div.infoPin {
             &:before {
                 transform: translate(-4px, -100%);

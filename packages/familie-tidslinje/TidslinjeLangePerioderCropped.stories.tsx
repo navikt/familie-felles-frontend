@@ -1,10 +1,28 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 import { ToggleKnapp } from 'nav-frontend-toggle';
 
 import { Success, Error, Warning } from '@navikt/ds-icons';
 
 import { Periode, Tidslinje, TidslinjeProps } from './src';
+
+const StyledContainer = styled.div(
+    (props: { kompakt: boolean }) => `
+    & button.periode {
+        & div svg {
+            position: relative;
+            top: ${props.kompakt ? 2 : 3}px;
+        }
+    }
+    & div.periode {
+        & div svg {
+            position: relative;
+            top: ${props.kompakt ? 2 : 3}px;
+        }
+    }
+`,
+);
 
 export default {
     title: 'Komponenter/Tidslinje',
@@ -154,8 +172,17 @@ export const LongPeriodClickable = (args: TidslinjeProps) => {
                     Kompakt
                 </ToggleKnapp>
             </div>
-            <div>
+            <StyledContainer kompakt={kompakt}>
                 <h2>Klikkbare perioder</h2>
+                <p>
+                    Eksempel på visning av perioder, som strekker seg utanfor startDato og sluttDato
+                    for tidslinjen. Start- og sluttdato for visning er 01.01.2021 og 31.12.2021.
+                </p>
+                <p>
+                    De ulike periodene kan gå fra 01.01.2020 til 31.12.2022, 01.01.2021 til
+                    31.12.2022 og 01.01.2020 til 31.12.2021
+                </p>
+                <p>Eksempelet viser også hvordan det er mulig å bruke ikon i periodene.</p>
                 <Tidslinje
                     kompakt={kompakt}
                     {...args}
@@ -164,7 +191,7 @@ export const LongPeriodClickable = (args: TidslinjeProps) => {
                     aktivRad={aktivRad}
                     onSelectPeriode={onSelectPeriode}
                 />
-            </div>
+            </StyledContainer>
             {aktivPeriode && <div>{`${aktivPeriode.fom} - ${aktivPeriode.tom}`}</div>}
         </>
     );
@@ -181,15 +208,24 @@ export const LongPeriodNotClickable = (args: TidslinjeProps) => {
                     Kompakt
                 </ToggleKnapp>
             </div>
-            <div>
+            <StyledContainer kompakt={kompakt}>
                 <h2>Perioder ikke klikkbare</h2>
+                <p>
+                    Eksempel på visning av perioder, som strekker seg utanfor startDato og sluttDato
+                    for tidslinjen. Start- og sluttdato for visning er 01.01.2021 og 31.12.2021.
+                </p>
+                <p>
+                    De ulike periodene kan gå fra 01.01.2020 til 31.12.2022, 01.01.2021 til
+                    31.12.2022 og 01.01.2020 til 31.12.2021
+                </p>
+                <p>Eksempelet viser også hvordan det er mulig å bruke ikon i periodene.</p>
                 <Tidslinje
                     kompakt={kompakt}
                     startDato={new Date('2021-01-01')}
                     sluttDato={new Date('2021-12-31')}
                     {...args}
                 />
-            </div>
+            </StyledContainer>
         </>
     );
 };

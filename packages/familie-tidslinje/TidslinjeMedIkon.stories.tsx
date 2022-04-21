@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { Periode, Tidslinje, TidslinjeProps } from './src';
 import styled from 'styled-components';
 
+import '@navikt/ds-css';
 import { Eu, NorwegianFlag } from '@navikt/ds-icons';
+import { Detail } from '@navikt/ds-react';
 import { ToggleKnapp } from 'nav-frontend-toggle';
 
 const TidlinjeContainer = styled.div`
@@ -35,8 +37,14 @@ export default {
                         className: 'eøs',
                         children: (
                             <>
-                                <StyledEu />
-                                <span>Dette er ein lang tekst for testing</span>
+                                <StyledEu
+                                    height="24"
+                                    width="24"
+                                    style={{ position: 'relative', top: '-1px' }}
+                                />
+                                <span style={{ position: 'relative', top: '-6px' }}>
+                                    Dette er ein lang tekst for testing
+                                </span>
                             </>
                         ),
                         hoverLabel: 'Dette er ein lang tekst for testing',
@@ -57,8 +65,21 @@ export default {
                         className: 'norge',
                         children: (
                             <>
-                                <StyledNorwegian />
-                                <span>Dette er ein lang tekst for testing</span>
+                                <StyledNorwegian
+                                    height="24"
+                                    width="24"
+                                    style={{
+                                        color: 'var(--navds-global-color-orange-600)',
+                                        position: 'relative',
+                                        top: '-1px',
+                                    }}
+                                />
+                                <Detail
+                                    size="small"
+                                    style={{ display: 'inline', position: 'relative', top: '-8px' }}
+                                >
+                                    Dette er ein lang tekst for testing
+                                </Detail>
                             </>
                         ),
                     },
@@ -68,7 +89,7 @@ export default {
                         tom: new Date('2020-07-31'),
                         status: 'suksess',
                         className: 'norge',
-                        children: <StyledNorwegian />,
+                        children: <StyledNorwegian height="24" width="24" />,
                     },
                     {
                         id: '567',
@@ -111,6 +132,11 @@ export const ClickableWithIcon = (args: TidslinjeProps) => {
             </div>
             <TidlinjeContainer>
                 <h2>Klikkbare perioder</h2>
+                <p>
+                    Eksempel på muligheten for litt mer avansert innhold med blanding av ikon og
+                    tekst. Også eksempel på egne klasser på perioder.
+                </p>
+                <p>Styling må tilpasses bruken.</p>
                 <Tidslinje
                     kompakt={kompakt}
                     {...args}
@@ -134,6 +160,11 @@ export const NotClickableWithIcon = (args: TidslinjeProps) => {
                 </ToggleKnapp>
             </div>
             <h2>Perioder ikke klikkbare</h2>
+            <p>
+                Eksempel på muligheten for litt mer avansert innhold med blanding av ikon og tekst.
+                Også eksempel på egne klasser på perioder.
+            </p>
+            <p>Styling må tilpasses bruken.</p>
             <TidlinjeContainer>
                 <Tidslinje kompakt={kompakt} {...args} />
             </TidlinjeContainer>

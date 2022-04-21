@@ -20,6 +20,8 @@ const PeriodeInnhold = styled.div(
     white-space: nowrap;
     text-overflow: clip;
     text-align: left;
+    position: relative;
+    top: ${props.kompakt ? 0 : -2}px;
 `,
 );
 
