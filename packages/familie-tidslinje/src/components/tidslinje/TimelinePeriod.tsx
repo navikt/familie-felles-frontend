@@ -83,28 +83,30 @@ const fellesPeriodeStyle = css`
         border-left: none;
         border-right: none;
     }
-
-    & div.infoPin {
-        position: absolute;
-        background: #0067c5;
-        height: 6px;
-        width: 2px;
-        top: 0;
-        left: 50%;
-        transform: translate(-1px, -7px);
-
-        &:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 10px;
-            height: 10px;
-            background: #0067c5;
-            transform: translate(-5px, -100%);
-            border-radius: 50%;
-        }
-    }
 `;
+
+const InfoPin = styled.div(
+    (props: { påPeriodeKnapp?: boolean }) => `
+    position: absolute;
+    background: #0067c5;
+    height: 6px;
+    width: 2px;
+    top: 0;
+    left: 50%;
+    transform: translate(-1px, -7px);
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        background: #0067c5;
+        transform: translate(-${props.påPeriodeKnapp ? 5 : 4}px, -100%);
+        border-radius: 50%;
+    }
+    `,
+);
 
 const PeriodeInnhold = styled.div(
     (props: { kompakt?: boolean }) => `
@@ -162,12 +164,6 @@ const PeriodeDiv = styled.div(
     (props: { kompakt?: boolean }) => `
     ${fellesPeriodeStyle}
     height: ${props.kompakt ? 1.5 : 2}rem;
-
-    div.infoPin {
-        &:before {
-            transform: translate(-4px, -100%);
-        }
-    }
 `,
 );
 
@@ -235,7 +231,7 @@ const ClickablePeriod = React.memo(
                 style={style(period)}
             >
                 {period.hoverLabel && showHoverLabel && <Tooltip>{period.hoverLabel}</Tooltip>}
-                {period.infoPin && <div className={'infoPin'} />}
+                {period.infoPin && <InfoPin påPeriodeKnapp className={'infoPin'} />}
                 {period.children && (
                     <PeriodeInnhold kompakt={kompakt}>{period.children}</PeriodeInnhold>
                 )}
@@ -252,7 +248,7 @@ const NonClickablePeriod = ({ divRef, period, className, kompakt }: NonClickable
         aria-label={ariaLabel(period)}
         style={style(period)}
     >
-        {period.infoPin && <div className={'infoPin'} />}
+        {period.infoPin && <InfoPin className={'infoPin'} />}
         {period.children && <PeriodeInnhold kompakt={kompakt}>{period.children}</PeriodeInnhold>}
     </PeriodeDiv>
 );

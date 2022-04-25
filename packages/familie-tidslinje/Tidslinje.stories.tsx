@@ -90,7 +90,7 @@ export const BasicClickable = (args: TidslinjeProps) => {
     const [rader, setRader] = useState<Periode[][]>(args.rader);
     const [aktivPeriode, setAktivPeriode] = useState<Periode>();
     const [kompakt, settKompakt] = useState<boolean>(false);
-    const [rightLeft, settRightLeft] = useState<boolean>(false);
+    const [retningSynkende, settRetningSynkende] = useState<boolean>(false);
 
     const onSelectPeriode = (periode: Periode) => {
         setAktivPeriode(periode);
@@ -110,7 +110,10 @@ export const BasicClickable = (args: TidslinjeProps) => {
                 <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
                 </ToggleKnapp>
-                <ToggleKnapp pressed={rightLeft} onClick={() => settRightLeft(!rightLeft)}>
+                <ToggleKnapp
+                    pressed={retningSynkende}
+                    onClick={() => settRetningSynkende(!retningSynkende)}
+                >
                     Synkende
                 </ToggleKnapp>
             </div>
@@ -122,7 +125,7 @@ export const BasicClickable = (args: TidslinjeProps) => {
                 </p>
                 <Tidslinje
                     kompakt={kompakt}
-                    retning={rightLeft ? 'synkende' : undefined}
+                    retning={retningSynkende ? 'synkende' : undefined}
                     {...args}
                     aktivRad={aktivRad}
                     onSelectPeriode={onSelectPeriode}
@@ -136,7 +139,7 @@ BasicClickable.storyName = 'Enkel klikkbar tidslinje';
 
 export const BasicNotClickable = (args: TidslinjeProps) => {
     const [kompakt, settKompakt] = useState<boolean>(false);
-    const [rightLeft, settRightLeft] = useState<boolean>(false);
+    const [retningSynkende, settRetningSynkende] = useState<boolean>(false);
 
     return (
         <>
@@ -144,7 +147,10 @@ export const BasicNotClickable = (args: TidslinjeProps) => {
                 <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
                 </ToggleKnapp>
-                <ToggleKnapp pressed={rightLeft} onClick={() => settRightLeft(!rightLeft)}>
+                <ToggleKnapp
+                    pressed={retningSynkende}
+                    onClick={() => settRetningSynkende(!retningSynkende)}
+                >
                     Synkende
                 </ToggleKnapp>
             </div>
@@ -156,7 +162,7 @@ export const BasicNotClickable = (args: TidslinjeProps) => {
                 </p>
                 <Tidslinje
                     kompakt={kompakt}
-                    retning={rightLeft ? 'synkende' : undefined}
+                    retning={retningSynkende ? 'synkende' : undefined}
                     {...args}
                 />
             </div>
