@@ -21,8 +21,7 @@
     "build": "yarn run clean && yarn run copy-less && yarn run tsc",
     "clean": "rm -rf ./dist",
     "copy-less": "copyfiles -u 1 src/**/*.less dist",
-    "tsc": "tsc -p tsconfig.json",
-    "test": "jest"
+    "tsc": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.15.0",
@@ -33,9 +32,7 @@
     "@navikt/familie-typer": "^5.0.0",
     "@navikt/familie-validering": "^2.0.0",
     "@navikt/nap-user-panel": "^1.1.0",
-    "@types/jest": "^27.0.1",
     "classnames": "^2.2.6",
-    "jest": "^26.6.0",
     "lodash.throttle": "^4.1.1",
     "nav-frontend-alertstriper": "^3.1.1",
     "nav-frontend-alertstriper-style": "^2.1.1",
@@ -52,8 +49,7 @@
     "nav-frontend-typografi": "^3.1.1",
     "nav-frontend-typografi-style": "^1.1.1",
     "prop-types": "^15.7.2",
-    "styled-components": "^5.2.1",
-    "ts-jest": "^26.5.6"
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "css-loader": "^5.1.1",
