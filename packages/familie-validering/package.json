@@ -26,10 +26,10 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.15.0",
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^27.4.1",
     "classnames": "^2.2.6",
-    "jest": "^26.6.0",
-    "ts-jest": "^26.5.6"
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.4"
   },
   "devDependencies": {
     "css-loader": "^5.1.1",
