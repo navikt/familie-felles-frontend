@@ -1,36 +1,24 @@
 import React, { useState } from 'react';
-import { renderToStaticMarkup } from 'react-dom/server';
 import { Periode, Tidslinje, TidslinjeProps } from './src';
 import styled from 'styled-components';
 
+import '@navikt/ds-css';
 import { Eu, NorwegianFlag } from '@navikt/ds-icons';
+import { Detail } from '@navikt/ds-react';
+import { ToggleKnapp } from 'nav-frontend-toggle';
 
-const euSvg = encodeURIComponent(renderToStaticMarkup(<Eu />));
-const norgeSvg = encodeURIComponent(renderToStaticMarkup(<NorwegianFlag />));
+const TidlinjeContainer = styled.div`
+    & div.tidslinje .eøs {
+        background-color: yellow;
+    }
+`;
 
-const euUrl = `data:image/svg+xml,${euSvg}`;
-const norgeUrl = `data:image/svg+xml,${norgeSvg}`;
+const StyledEu = styled(Eu)`
+    margin-right: 0.3rem;
+`;
 
-const TidslinjeMedIkonContainer = styled.div`
-    div.tidslinjerad div::before,
-    button::before {
-        content: '';
-        position: absolute;
-        height: 16px;
-        width: 16px;
-        top: 50%;
-        left: 6px;
-        transform: translateY(-50%);
-        background-repeat: no-repeat;
-    }
-    div.eøs::before,
-    button.eøs::before {
-        background-image: url(${euUrl});
-    }
-    div.norge::before,
-    button.norge::before {
-        background-image: url(${norgeUrl});
-    }
+const StyledNorwegian = styled(NorwegianFlag)`
+    margin-right: 0.3rem;
 `;
 
 export default {
@@ -47,6 +35,19 @@ export default {
                         status: 'suksess',
                         infoPin: false,
                         className: 'eøs',
+                        children: (
+                            <>
+                                <StyledEu
+                                    height="24"
+                                    width="24"
+                                    style={{ position: 'relative', top: '-1px' }}
+                                />
+                                <span style={{ position: 'relative', top: '-6px' }}>
+                                    Dette er ein lang tekst for testing
+                                </span>
+                            </>
+                        ),
+                        hoverLabel: 'Dette er ein lang tekst for testing',
                     },
                     {
                         id: '234',
@@ -54,6 +55,7 @@ export default {
                         tom: new Date('2020-02-29'),
                         status: 'feil',
                         className: 'eøs',
+                        children: <StyledEu />,
                     },
                     {
                         id: '345',
@@ -61,6 +63,25 @@ export default {
                         tom: new Date('2020-03-31'),
                         status: 'suksess',
                         className: 'norge',
+                        children: (
+                            <>
+                                <StyledNorwegian
+                                    height="24"
+                                    width="24"
+                                    style={{
+                                        color: 'var(--navds-global-color-orange-600)',
+                                        position: 'relative',
+                                        top: '-1px',
+                                    }}
+                                />
+                                <Detail
+                                    size="small"
+                                    style={{ display: 'inline', position: 'relative', top: '-8px' }}
+                                >
+                                    Dette er ein lang tekst for testing
+                                </Detail>
+                            </>
+                        ),
                     },
                     {
                         id: '456',
@@ -68,13 +89,13 @@ export default {
                         tom: new Date('2020-07-31'),
                         status: 'suksess',
                         className: 'norge',
+                        children: <StyledNorwegian height="24" width="24" />,
                     },
                     {
                         id: '567',
                         fom: new Date('2020-08-01'),
                         tom: new Date('2020-08-31'),
                         status: 'advarsel',
-                        className: 'eøs',
                     },
                 ],
             ],
@@ -88,6 +109,7 @@ export default {
 export const ClickableWithIcon = (args: TidslinjeProps) => {
     const [rader, setRader] = useState<Periode[][]>(args.rader);
     const [aktivPeriode, setAktivPeriode] = useState<Periode>();
+    const [kompakt, settKompakt] = useState<boolean>(false);
 
     const onSelectPeriode = (periode: Periode) => {
         setAktivPeriode(periode);
@@ -103,10 +125,25 @@ export const ClickableWithIcon = (args: TidslinjeProps) => {
         );
     return (
         <>
-            <TidslinjeMedIkonContainer>
+            <div>
+                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                    Kompakt
+                </ToggleKnapp>
+            </div>
+            <TidlinjeContainer>
                 <h2>Klikkbare perioder</h2>
-                <Tidslinje {...args} aktivRad={aktivRad} onSelectPeriode={onSelectPeriode} />
-            </TidslinjeMedIkonContainer>
+                <p>
+                    Eksempel på muligheten for litt mer avansert innhold med blanding av ikon og
+                    tekst. Også eksempel på egne klasser på perioder.
+                </p>
+                <p>Styling må tilpasses bruken.</p>
+                <Tidslinje
+                    kompakt={kompakt}
+                    {...args}
+                    aktivRad={aktivRad}
+                    onSelectPeriode={onSelectPeriode}
+                />
+            </TidlinjeContainer>
             {aktivPeriode && <div>{`${aktivPeriode.fom} - ${aktivPeriode.tom}`}</div>}
         </>
     );
@@ -114,12 +151,23 @@ export const ClickableWithIcon = (args: TidslinjeProps) => {
 ClickableWithIcon.storyName = 'Klikkbar tidslinje med ikon';
 
 export const NotClickableWithIcon = (args: TidslinjeProps) => {
+    const [kompakt, settKompakt] = useState<boolean>(false);
     return (
         <>
+            <div>
+                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                    Kompakt
+                </ToggleKnapp>
+            </div>
             <h2>Perioder ikke klikkbare</h2>
-            <TidslinjeMedIkonContainer>
-                <Tidslinje kompakt {...args} />
-            </TidslinjeMedIkonContainer>
+            <p>
+                Eksempel på muligheten for litt mer avansert innhold med blanding av ikon og tekst.
+                Også eksempel på egne klasser på perioder.
+            </p>
+            <p>Styling må tilpasses bruken.</p>
+            <TidlinjeContainer>
+                <Tidslinje kompakt={kompakt} {...args} />
+            </TidlinjeContainer>
         </>
     );
 };

@@ -90,6 +90,7 @@ export const BasicClickable = (args: TidslinjeProps) => {
     const [rader, setRader] = useState<Periode[][]>(args.rader);
     const [aktivPeriode, setAktivPeriode] = useState<Periode>();
     const [kompakt, settKompakt] = useState<boolean>(false);
+    const [retningSynkende, settRetningSynkende] = useState<boolean>(false);
 
     const onSelectPeriode = (periode: Periode) => {
         setAktivPeriode(periode);
@@ -109,11 +110,22 @@ export const BasicClickable = (args: TidslinjeProps) => {
                 <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
                 </ToggleKnapp>
+                <ToggleKnapp
+                    pressed={retningSynkende}
+                    onClick={() => settRetningSynkende(!retningSynkende)}
+                >
+                    Synkende
+                </ToggleKnapp>
             </div>
             <div>
                 <h2>Klikkbare perioder</h2>
+                <p>
+                    Eksempel på klikkbar familie-tidslinje med default styling. Tilgjengelige
+                    classnames på perioder er: 'success', 'advarsel', 'feil' og 'inaktiv'
+                </p>
                 <Tidslinje
                     kompakt={kompakt}
+                    retning={retningSynkende ? 'synkende' : undefined}
                     {...args}
                     aktivRad={aktivRad}
                     onSelectPeriode={onSelectPeriode}
@@ -127,6 +139,7 @@ BasicClickable.storyName = 'Enkel klikkbar tidslinje';
 
 export const BasicNotClickable = (args: TidslinjeProps) => {
     const [kompakt, settKompakt] = useState<boolean>(false);
+    const [retningSynkende, settRetningSynkende] = useState<boolean>(false);
 
     return (
         <>
@@ -134,10 +147,24 @@ export const BasicNotClickable = (args: TidslinjeProps) => {
                 <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
                 </ToggleKnapp>
+                <ToggleKnapp
+                    pressed={retningSynkende}
+                    onClick={() => settRetningSynkende(!retningSynkende)}
+                >
+                    Synkende
+                </ToggleKnapp>
             </div>
             <div>
                 <h2>Perioder ikke klikkbare</h2>
-                <Tidslinje kompakt={kompakt} {...args} />
+                <p>
+                    Eksempel på uklikkbar familie-tidslinje med default styling. Tilgjengelige
+                    classnames på perioder er: 'success', 'advarsel', 'feil' og 'inaktiv'
+                </p>
+                <Tidslinje
+                    kompakt={kompakt}
+                    retning={retningSynkende ? 'synkende' : undefined}
+                    {...args}
+                />
             </div>
         </>
     );
