@@ -1,10 +1,11 @@
-import {default as React, useState} from 'react';
+import { default as React, useState } from 'react';
 import './tour-modal.css';
-import ChevronLenke, {Direction} from '../../chevron-lenke/chevron-lenke';
+import ChevronLenke, { Direction } from '../../chevron-lenke/chevron-lenke';
 import Stegviser from '../../stegviser/stegviser';
-import {ModalType} from '../../utils/endringslogg-custom';
+import { ModalType } from '../../utils/endringslogg-custom';
+// @ts-ignore
 import BlockContent from '@sanity/block-content-to-react';
-import {Heading, Modal} from '@navikt/ds-react';
+import { Heading, Modal } from '@navikt/ds-react';
 
 interface TourModalProps {
     modal: ModalType;

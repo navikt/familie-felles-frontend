@@ -1,12 +1,12 @@
-import {default as React, RefObject, useRef, useState} from 'react';
-import EndringsloggIkon, {StilType} from './icons/endringslogg-icon';
-import {EndringsloggContent} from './endringslogg-content';
+import { default as React, RefObject, useRef, useState } from 'react';
+import EndringsloggIkon, { StilType } from './icons/endringslogg-icon';
+import { EndringsloggContent } from './endringslogg-content';
 import TransitionContainer from './transition-container';
-import {useEventListener} from './hooks/use-event-listener';
-import {EndringsloggEntryWithSeenStatus} from './utils/endringslogg-custom';
+import { useEventListener } from './hooks/use-event-listener';
+import { EndringsloggEntryWithSeenStatus } from './utils/endringslogg-custom';
 import './endringslogg.css';
 import classNames from 'classnames';
-import {Label, Heading} from '@navikt/ds-react';
+import { Heading, Label } from '@navikt/ds-react';
 
 interface EndringsloggContainerProps {
     content: EndringsloggEntryWithSeenStatus[];
@@ -107,7 +107,7 @@ const EndringsloggIconButton = (props: EndringsloggIconButtonProps) => {
             className={classNames(
                 'endringslogg-knapp',
                 'endringslogg-dropDown',
-                props.open && 'endringslogg-dropDown-active'
+                props.open && 'endringslogg-dropDown-active',
             )}
             onClick={props.onClick}
             data-testid="endringslogg-knapp"
@@ -123,7 +123,7 @@ const EndringsloggIconButton = (props: EndringsloggIconButtonProps) => {
     );
 };
 
-const EndringsloggHeader = (props: {appName: string}) => {
+const EndringsloggHeader = (props: { appName: string }) => {
     return (
         <Heading size="small" level="1" className={'collapse-header'}>
             Nytt i {props.appName}

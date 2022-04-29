@@ -1,6 +1,6 @@
 import React from 'react';
-import {CSSTransition, TransitionGroup} from 'react-transition-group';
-import {useFocus} from './hooks/use-focus';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { useFocus } from './hooks/use-focus';
 import './endringslogg.css';
 import './collapse-container-transition.css';
 import classNames from 'classnames';
@@ -23,7 +23,7 @@ const TransitionContainer = (props: TransitionProps) => (
                     enter: 'collapse-container-enter',
                     enterActive: 'collapse-container-enter-active',
                     exit: 'collapse-container-exit',
-                    exitActive: 'collapse-container-exit-active'
+                    exitActive: 'collapse-container-exit-active',
                 }}
                 timeout={400}
             >
@@ -34,7 +34,7 @@ const TransitionContainer = (props: TransitionProps) => (
 );
 
 const CollapseContainer = (props: CollapseContainerProps) => {
-    const {focusRef} = useFocus();
+    const { focusRef } = useFocus();
     return (
         <div className={props.alignLeft ? classNames('align-left', 'collapse-container') : 'collapse-container'}>
             <div

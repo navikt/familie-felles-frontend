@@ -24,6 +24,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
+        "@types/react": "^17.0.39",
         "@sanity/block-content-to-react": "^3.0.0",
         "@types/react-modal": "^3.13.1",
         "@navikt/ds-css": "^0.16.3",

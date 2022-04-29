@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import './chevron-lenke.css';
-import {Right, Left} from '@navikt/ds-icons';
+import { Left, Right } from '@navikt/ds-icons';
 
 export enum Direction {
     RIGHT,
@@ -18,8 +18,8 @@ interface ChevronLenkeProps {
 }
 
 const ChevronLenke = (props: ChevronLenkeProps) => {
-    const {retning, tekst, onClick, hide, dataTestId} = props;
-    const clsPar = ['chevron-lenke', {'chevron-lenke--hide': hide}];
+    const { retning, tekst, onClick, hide, dataTestId } = props;
+    const clsPar = ['chevron-lenke', { 'chevron-lenke--hide': hide }];
     return (
         <button className={classNames(clsPar)} onClick={onClick} data-testid={dataTestId}>
             {retning === Direction.RIGHT ? (

@@ -1,18 +1,19 @@
 import classNames from 'classnames/dedupe';
 import React from 'react';
-import {EndringsloggEntryWithSeenStatus} from './utils/endringslogg-custom';
+import { EndringsloggEntryWithSeenStatus } from './utils/endringslogg-custom';
 import './endringslogg.css';
+// @ts-ignore
 import BlockContent from '@sanity/block-content-to-react';
-import {TourModalButton} from './modal/tour-modal/tour-modal-button';
-import {trackLinkClick} from './utils/utils';
-import {Heading, Label, Link} from '@navikt/ds-react';
-import {ExternalLink} from '@navikt/ds-icons';
+import { TourModalButton } from './modal/tour-modal/tour-modal-button';
+import { trackLinkClick } from './utils/utils';
+import { Heading, Label, Link } from '@navikt/ds-react';
+import { ExternalLink } from '@navikt/ds-icons';
 
 interface EndringsloggContentProps {
     innleggsListe: EndringsloggEntryWithSeenStatus[];
 }
 
-export const EndringsloggLink = (props: {linkText: string; link: string; onClick: () => void}) => {
+export const EndringsloggLink = (props: { linkText: string; link: string; onClick: () => void }) => {
     return (
         <Link className={'endringslogg-link'} target="_blank" href={props.link} onClick={props.onClick}>
             {props.linkText ? props.linkText : props.link}
@@ -46,7 +47,7 @@ export const EndringsloggContent = (props: EndringsloggContentProps) => {
 
 const isoTimeStringToDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.getDate() + '. ' + date.toLocaleString('no-NO', {year: 'numeric', month: 'long'}).toLowerCase();
+    return date.getDate() + '. ' + date.toLocaleString('no-NO', { year: 'numeric', month: 'long' }).toLowerCase();
 };
 
 const EndringsloggEntry = (props: EndringsloggEntryWithSeenStatus) => {
@@ -57,7 +58,7 @@ const EndringsloggEntry = (props: EndringsloggEntryWithSeenStatus) => {
                     role={props.seen ? 'alert' : ''}
                     aria-label={props.seen ? 'Nye endringer i Arbeidsrettet oppfølging' : ''}
                     className={classNames('endringslogg-info-kolonne', {
-                        'endringslogg-info-nye-notifikasjoner': !props.seen
+                        'endringslogg-info-nye-notifikasjoner': !props.seen,
                     })}
                 />
                 <Label size={'small'}>{isoTimeStringToDate(props.date!)}</Label>
