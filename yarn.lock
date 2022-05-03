@@ -3422,23 +3422,6 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@navikt/boxed-list-with-links@^1.0.2":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@navikt/boxed-list-with-links/-/boxed-list-with-links-1.0.4.tgz#e0550bd66b921ad3ed1e9367980e04c8e1001a60"
-  integrity sha512-yXZ5jg2By7QC/I4qssY40eyUuO1fuYpI7dM/LmFSh5gg4JFjPkdgZqdQ1HtxqD9Ku+GicTTXrh9/3Y/GPqBJTw==
-  dependencies:
-    "@navikt/boxed-list" "1.0.2"
-    "@navikt/nap-bem-utils" "1.0.1"
-    nav-frontend-typografi "^2.0.16"
-    nav-frontend-typografi-style "^1.0.17"
-
-"@navikt/boxed-list@1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@navikt/boxed-list/-/boxed-list-1.0.2.tgz#9b9d4142b13184bdc39d1ad99baa9a1ee04213ec"
-  integrity sha512-LcluBBXFPE2jo+xF/yjsTtZm7B1lYwpICtRth8coJ68gZ4hj9oe3QoWee8LI9uIzBkWL/BkSPTIfIDfnVNQhSA==
-  dependencies:
-    "@navikt/nap-bem-utils" "1.0.1"
-
 "@navikt/ds-css-internal@^0.7.3":
   version "0.7.3"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css-internal/0.7.3/1f807f24db86976f1e220700b4089be252215e834bd18ea2561ba8d1d3488586#06ea2722e95c226eb5e562116054477613f71f4e"
@@ -15004,11 +14987,6 @@ nav-frontend-chevron@^1.0.30:
   resolved "https://registry.yarnpkg.com/nav-frontend-chevron/-/nav-frontend-chevron-1.0.30.tgz#1739d8b60d6a7ac3341a70c861b74725efb859ad"
   integrity sha512-lc7DV09rflT6oHaZqGHhoSEOn3uMjdIpGId/QpW2wGF1pc9h/cOZUPNzdqneXPi4JeC3do3gHS+M5dB3J+wSmA==
 
-nav-frontend-core@^5.0.10:
-  version "5.0.10"
-  resolved "https://registry.yarnpkg.com/nav-frontend-core/-/nav-frontend-core-5.0.10.tgz#6f582c2a09ee18c3d26d68fe09413289a7efed65"
-  integrity sha512-0wo5L2s/OO5Q5pqJg8UWQCuRBzYY5txgbx1dD7OXHuokbva7GA0sZvh25VTrPauUbnDSUB26leJtwzos9Upi0A==
-
 nav-frontend-core@^5.0.11:
   version "5.0.11"
   resolved "https://registry.yarnpkg.com/nav-frontend-core/-/nav-frontend-core-5.0.11.tgz#d2611a79f5f5372166a467a5f6e5eaccb8725086"
@@ -15133,13 +15111,6 @@ nav-frontend-toggle@^2.1.2:
   resolved "https://registry.yarnpkg.com/nav-frontend-toggle/-/nav-frontend-toggle-2.1.2.tgz#21048b698a60fef69608435f4cc75378569e5c0a"
   integrity sha512-OMA2TLAt179CJMp+ZAw92bZToyY65wPD6Gv5dnP0I6yb4zz8iQDhBydEJGYOg9Cf89k9UbxBnVrvDy0mz7zOmw==
 
-nav-frontend-typografi-style@^1.0.17:
-  version "1.0.31"
-  resolved "https://registry.yarnpkg.com/nav-frontend-typografi-style/-/nav-frontend-typografi-style-1.0.31.tgz#c98a270e9c86f3ffb21e026ae82ca262211183c9"
-  integrity sha512-zs3XNGf/8YMO3Pi/xD11B9n8kY1s1okCVVuPJcVu+DVjKwMsScDdmuKCtotm0QDpHUk1CExPDCLwPGuAPAlOsw==
-  dependencies:
-    nav-frontend-core "^5.0.10"
-
 nav-frontend-typografi-style@^1.0.34:
   version "1.0.34"
   resolved "https://registry.yarnpkg.com/nav-frontend-typografi-style/-/nav-frontend-typografi-style-1.0.34.tgz#ab377665e5b6130d1c5c1bd8c073a9d914f06538"
@@ -15160,11 +15131,6 @@ nav-frontend-typografi-style@^2.0.1:
   integrity sha512-9vb94WbB4+w30ZNg3/AqgK/fsduU5eqlkY5kXTPGcRcvHpf9l8/nfQI3aD0xSETw8q8zVOwHT00XPc4jkPK9WA==
   dependencies:
     nav-frontend-core "^6.0.1"
-
-nav-frontend-typografi@^2.0.16:
-  version "2.0.37"
-  resolved "https://registry.yarnpkg.com/nav-frontend-typografi/-/nav-frontend-typografi-2.0.37.tgz#dc7d930dbdb9fb8bfcb5441b1f893f67d9c59ad0"
-  integrity sha512-u+oUiAgsf3e0/TZtzksiQKayxtrkU+WNZ/w5OjIx2W1oiKocE8UaJ1SWCoJm1JrVops1ifR+ZMuBQcXCpb8pFQ==
 
 nav-frontend-typografi@^3.0.3:
   version "3.0.3"
