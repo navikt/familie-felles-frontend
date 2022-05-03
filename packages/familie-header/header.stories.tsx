@@ -87,7 +87,7 @@ const søkeResultater: Record<string, ISøkeresultat[]> = {
     '12345678912': [],
 };
 
-export const HeaderOgSøk: React.FC = ({...args}) => {
+export const HeaderOgSøk: React.FC = ({ ...args }) => {
     const [søkeresultat, settSøkeresultat] = useState<Ressurs<ISøkeresultat[]>>(byggTomRessurs());
 
     const søk = (personIdent: string): void => {
@@ -115,7 +115,7 @@ export const HeaderOgSøk: React.FC = ({...args}) => {
                 brukerinfo={saksbehandler}
                 brukerPopoverItems={[popover]}
                 tittelHref={'#'}
-                eksterneLenker={eksterneLenkerForStory}
+                eksterneLenker={[]}
                 tittelOnClick={() => {
                     alert('du trykket på tittelen');
                 }}
@@ -142,4 +142,4 @@ HeaderOgSøk.args = {
     brukerPopoverItems: [popover],
     tittelHref: '#',
     eksterneLenker: eksterneLenkerForStory,
-}
+};

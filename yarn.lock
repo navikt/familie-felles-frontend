@@ -3439,6 +3439,11 @@
   dependencies:
     "@navikt/nap-bem-utils" "1.0.1"
 
+"@navikt/ds-css-internal@^0.7.3":
+  version "0.7.3"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css-internal/0.7.3/1f807f24db86976f1e220700b4089be252215e834bd18ea2561ba8d1d3488586#06ea2722e95c226eb5e562116054477613f71f4e"
+  integrity sha512-mCjEWAwNW4fqmA+SMG3hmRZW49imxx8wIv+0yfQIpk9fnhutEqB2cnJmXvgYY4XVZaPeWFLeZcGAwouuSGBqXQ==
+
 "@navikt/ds-css@0.16.17":
   version "0.16.17"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css/0.16.17/2dcf733af4b0f506c6a777a88290f25dbccace6d3f307c3a0fc8dce068f358ad#a25ca3801587894b120bae02f21c9d96c8b4d6ee"
@@ -3454,6 +3459,13 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.5.4.tgz#5b00f98f84da5cdb01f7b0dac9e4004d7d4bed0a"
   integrity sha512-4lk4CTKZtNkqGJ2wAtJPheaCcwD6hILh6zWICO7071Lu/O+O+qSmxJSGFJmPh4pTAUuPONp6p8jOUqQwTi4yhw==
 
+"@navikt/ds-icons@^0.8.11", "@navikt/ds-icons@^0.8.9":
+  version "0.8.11"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/0.8.11/9d23d99d977655dbf28547b15069539716f76f9dd23239eed7cfdca1f9de9564#b9e2e62d0c6145f86c9688a59c97049657af80cb"
+  integrity sha512-1oO4hp1wnJUgLlw/YqT5w+N2UAhEBNuoOD+ngY3QhoQAyj6MLsIkw/778hD93qZAB5f2msfFvDqLUsYOSCHCdQ==
+  dependencies:
+    uuid "^8.3.2"
+
 "@navikt/ds-icons@^0.8.4":
   version "0.8.6"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/0.8.6/51a9a30e74f2f2cd3849d52132b58d01880840ad8503b41329626bd1f0a604db#d5237b20a086c83291d5fcb02d6d5206c93bde45"
@@ -3461,12 +3473,17 @@
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-icons@^0.8.9":
-  version "0.8.11"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/0.8.11/9d23d99d977655dbf28547b15069539716f76f9dd23239eed7cfdca1f9de9564#b9e2e62d0c6145f86c9688a59c97049657af80cb"
-  integrity sha512-1oO4hp1wnJUgLlw/YqT5w+N2UAhEBNuoOD+ngY3QhoQAyj6MLsIkw/778hD93qZAB5f2msfFvDqLUsYOSCHCdQ==
+"@navikt/ds-react-internal@^0.13.3":
+  version "0.13.3"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react-internal/0.13.3/2913a9094d07c673e654d1f0b2b1d879b0f6a623de34aef97d9e8fb1b5b83d3f#2aa90eed3fa9cdbefa032bb9677a12ba107fed81"
+  integrity sha512-aDl6LVTxJNpLkvxRrehCWCdgtiKjlOrhFV7CdblmETSI49IwHPrn8GTCaLoEALVKJW3dFfOHps6nS/3IrdapWg==
   dependencies:
-    uuid "^8.3.2"
+    "@navikt/ds-icons" "^0.8.11"
+    "@navikt/ds-react" "^0.18.3"
+    "@popperjs/core" "^2.10.1"
+    classnames "^2.3.1"
+    copy-to-clipboard "^3.3.1"
+    react-merge-refs "^1.1.0"
 
 "@navikt/ds-react@0.17.21":
   version "0.17.21"
@@ -3476,6 +3493,24 @@
     "@floating-ui/react-dom" "0.6.0"
     "@material-ui/core" "^4.12.3"
     "@navikt/ds-icons" "^0.8.9"
+    "@popperjs/core" "^2.10.1"
+    "@radix-ui/react-tabs" "0.1.5"
+    "@radix-ui/react-toggle-group" "0.1.5"
+    classnames "^2.2.6"
+    react-collapse "^5.1.0"
+    react-merge-refs "^1.1.0"
+    react-modal "3.14.3"
+    react-popper "^2.2.5"
+    uuid "^8.3.2"
+
+"@navikt/ds-react@^0.18.3":
+  version "0.18.3"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/0.18.3/b24af0e2ab401b42cb44be0d5e9e6814c55dbe1803063a407340cc527d463c6d#ab2e997e589da412da138deef54d33947b0b2e4f"
+  integrity sha512-c+ffL3fMU4jVJGTdV9q/Q1YM4+xAa9280TlFRWIWGUzsodhiS0Bh4Dm+uuyMfvizPEz8Dfyyg4zOH0LA7aWdBg==
+  dependencies:
+    "@floating-ui/react-dom" "0.6.0"
+    "@material-ui/core" "^4.12.3"
+    "@navikt/ds-icons" "^0.8.11"
     "@popperjs/core" "^2.10.1"
     "@radix-ui/react-tabs" "0.1.5"
     "@radix-ui/react-toggle-group" "0.1.5"
@@ -7953,6 +7988,11 @@ classnames@^2.2.5, classnames@^2.2.6:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
+
+classnames@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
+  integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
 
 clean-css@^4.2.3:
   version "4.2.3"
