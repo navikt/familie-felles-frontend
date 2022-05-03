@@ -3,7 +3,6 @@ import './Header.less';
 import navFarger from 'nav-frontend-core';
 import React from 'react';
 
-import BoxedListWithLinks from '@navikt/boxed-list-with-links';
 import UserPanel from '@navikt/nap-user-panel';
 
 import { System } from '@navikt/ds-icons';
@@ -57,10 +56,6 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
                             </Dropdown.Menu.List.Item>
                         ))}
                     </Dropdown.Menu.List>
-                    <BoxedListWithLinks
-                        items={popoverItems}
-                        onClick={(index, e) => popoverItems[index]?.onClick?.(e)}
-                    />
                 </Dropdown.Menu>
             )}
         </Dropdown>
