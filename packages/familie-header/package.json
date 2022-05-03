@@ -25,7 +25,6 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.15.0",
-    "@navikt/boxed-list-with-links": "^1.0.2",
     "@navikt/ds-css-internal": "^0.7.3",
     "@navikt/ds-icons": "^0.2.1",
     "@navikt/ds-react-internal": "^0.13.3",
