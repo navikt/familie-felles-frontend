@@ -115,7 +115,7 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
                 brukerinfo={saksbehandler}
                 brukerPopoverItems={[popover]}
                 tittelHref={'#'}
-                eksterneLenker={[]}
+                eksterneLenker={eksterneLenkerForStory}
                 tittelOnClick={() => {
                     alert('du trykket på tittelen');
                 }}
