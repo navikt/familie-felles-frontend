@@ -44,7 +44,7 @@ interface LenkePopoverProps {
 export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
     return (
         <Dropdown>
-            <Dropdown.Toggle>
+            <Dropdown.Toggle className={'navdsi-header__user'}>
                 <UserPanel name={navn} unit={enhet ? `Enhet: ${enhet}` : 'Ukjent enhet'} />
             </Dropdown.Toggle>
             {popoverItems && (
