@@ -1,13 +1,14 @@
 import './Header.less';
 
 import navFarger from 'nav-frontend-core';
-import Popover, { PopoverOrientering } from 'nav-frontend-popover';
 import React from 'react';
 
 import BoxedListWithLinks from '@navikt/boxed-list-with-links';
 import UserPanel from '@navikt/nap-user-panel';
 
 import { System } from '@navikt/ds-icons';
+import { Dropdown } from '@navikt/ds-react-internal';
+import '@navikt/ds-css-internal';
 import { Systemtittel } from 'nav-frontend-typografi';
 
 export interface Brukerinfo {
@@ -42,71 +43,46 @@ interface LenkePopoverProps {
 }
 
 export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
-    const [anker, settAnker] = React.useState<HTMLElement | undefined>(undefined);
-
     return (
-        <div>
-            <UserPanel
-                name={navn}
-                unit={enhet ? `Enhet: ${enhet}` : 'Ukjent enhet'}
-                onClick={e => {
-                    settAnker(anker === undefined ? e.currentTarget : undefined);
-                }}
-            />
+        <Dropdown>
+            <Dropdown.Toggle>
+                <UserPanel name={navn} unit={enhet ? `Enhet: ${enhet}` : 'Ukjent enhet'} />
+            </Dropdown.Toggle>
             {popoverItems && (
-                <Popover
-                    id={'meny-popover'}
-                    ankerEl={anker}
-                    orientering={PopoverOrientering.Under}
-                    autoFokus={false}
-                    onRequestClose={() => {
-                        settAnker(undefined);
-                    }}
-                    tabIndex={-1}
-                    utenPil
-                >
+                <Dropdown.Menu>
+                    <Dropdown.Menu.List>
+                        {popoverItems.map(lenke => (
+                            <Dropdown.Menu.List.Item>
+                                <a href={lenke.href}>{lenke.name}</a>
+                            </Dropdown.Menu.List.Item>
+                        ))}
+                    </Dropdown.Menu.List>
                     <BoxedListWithLinks
                         items={popoverItems}
                         onClick={(index, e) => popoverItems[index]?.onClick?.(e)}
                     />
-                </Popover>
+                </Dropdown.Menu>
             )}
-        </div>
+        </Dropdown>
     );
 };
 
-export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
-    const [anker, settAnker] = React.useState<HTMLElement | undefined>(undefined);
-
+export const LenkerDropdown = ({ lenker }: LenkePopoverProps) => {
     return (
-        <div>
-            <button
-                title={'Andre systemer'}
-                className="systemknapp"
-                onClick={e => {
-                    settAnker(anker === undefined ? e.currentTarget : undefined);
-                }}
-            >
+        <Dropdown>
+            <Dropdown.Toggle className={'systemknapp'}>
                 <System color={navFarger.white} />
-            </button>
-            {lenker && (
-                <Popover
-                    id={'this'}
-                    ankerEl={anker}
-                    orientering={PopoverOrientering.UnderHoyre}
-                    autoFokus={false}
-                    onRequestClose={() => {
-                        settAnker(undefined);
-                    }}
-                    tabIndex={-1}
-                >
-                    <BoxedListWithLinks
-                        items={lenker || []}
-                        onClick={(index, e) => lenker[index]?.onClick?.(e)}
-                    />
-                </Popover>
-            )}
-        </div>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+                <Dropdown.Menu.List>
+                    {lenker.map(lenke => (
+                        <Dropdown.Menu.List.Item>
+                            <a href={lenke.href}>{lenke.name}</a>
+                        </Dropdown.Menu.List.Item>
+                    ))}
+                </Dropdown.Menu.List>
+            </Dropdown.Menu>
+        </Dropdown>
     );
 };
 
@@ -135,7 +111,7 @@ export const Header = ({
             </div>
             <div className="rad">
                 {children}
-                <LenkePopover lenker={eksterneLenker} />
+                <LenkerDropdown lenker={eksterneLenker} />
                 <div className="avdeler" />
                 <Bruker
                     navn={brukerinfo.navn}
