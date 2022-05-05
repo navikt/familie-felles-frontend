@@ -36,7 +36,13 @@ const TransitionContainer = (props: TransitionProps) => (
 const CollapseContainer = (props: CollapseContainerProps) => {
     const { focusRef } = useFocus();
     return (
-        <div className={props.alignLeft ? classNames('align-left', 'collapse-container') : 'collapse-container'}>
+        <div
+            className={
+                props.alignLeft
+                    ? classNames('align-left', 'collapse-container')
+                    : 'collapse-container'
+            }
+        >
             <div
                 className={props.alignLeft ? 'arrow-container-left' : 'arrow-container'}
                 ref={inputRef => (focusRef.current = inputRef)}

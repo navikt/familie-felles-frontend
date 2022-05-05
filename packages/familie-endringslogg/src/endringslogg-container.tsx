@@ -37,7 +37,10 @@ export const EndringsloggContainer = (props: EndringsloggContainerProps) => {
     };
 
     const handleClickOutside = (event: any) => {
-        if (loggNode.current?.contains(event.target) || document.body.classList.contains('ReactModal__Body--open')) {
+        if (
+            loggNode.current?.contains(event.target) ||
+            document.body.classList.contains('ReactModal__Body--open')
+        ) {
             // Klikket er inne i komponenten, eller modalen vises
             return;
         }

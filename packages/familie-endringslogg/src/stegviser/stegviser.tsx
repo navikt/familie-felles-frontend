@@ -13,7 +13,7 @@ const Stegviser = (props: StegviserProps) => {
             <div
                 key={i}
                 className={classNames('stegviser__steg', {
-                    'stegviser__steg--selected': i === selectedIdx
+                    'stegviser__steg--selected': i === selectedIdx,
                 })}
             />
         ));
