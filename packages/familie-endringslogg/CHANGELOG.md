@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@2.0.1...@navikt/familie-endringslogg@2.0.2) (2022-05-05)
+
+
+### Bug Fixes
+
+* **familie-endringslogg:** skal kopiere med css-filer til dist-mappen i familie-endringslogg ([#463](https://github.com/navikt/familie-felles-frontend/issues/463)) ([e4b95f5](https://github.com/navikt/familie-felles-frontend/commit/e4b95f568688e729651d4d3b0974b1c6a1703e9c))
+
+
+
+
+
 ## [2.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@2.0.0...@navikt/familie-endringslogg@2.0.1) (2022-05-05)
 
 
