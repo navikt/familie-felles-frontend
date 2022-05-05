@@ -1,5 +1,5 @@
 module.exports = {
-    stories: ['../packages/**/*.stories.@(tsx|mdx)'],
+    stories: ['../packages/familie-*/src/**/*.stories.@(tsx|mdx)', '../packages/familie-*/*.stories.@(tsx|mdx)'],
     addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-storysource'],
     typescript: {
         check: true,
