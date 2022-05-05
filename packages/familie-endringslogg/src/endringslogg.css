@@ -2,6 +2,7 @@
   width: fit-content;
   position: relative;
 }
+
 .collapse-header {
   background-color: var(--navds-semantic-color-canvas-background-inverted);;
   color: white;
@@ -14,6 +15,7 @@
   font-size: 1.1rem;
   width: 100%;
 }
+
 .collapse-container {
   top: 3rem;
   position: absolute;
@@ -30,14 +32,17 @@
   -webkit-appearance: none;
   width: 10px;
 }
+
 .collapse-container ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, 0.5);
 }
+
 .arrow-container {
   padding-top: 0.95rem;
 }
+
 .arrow-container-left {
   padding-top: 0.95rem;
 }
@@ -66,10 +71,12 @@
   border-right: 0.8125rem solid transparent;
   border-bottom: 0.6875rem solid var(--navds-semantic-color-canvas-background-inverted);;
 }
+
 .innhold-container {
   overflow-y: scroll;
   max-height: 30rem;
 }
+
 .innhold-container ul {
   padding-left: 1.25rem;
   margin: 0 0 0.5rem 0;
