@@ -232,6 +232,7 @@
   animation: pulsate 2.5s ease-out infinite;
   opacity: 0;
 }
+
 @keyframes pulsate {
   0% {
     -webkit-transform: scale(0.1, 0.1);
