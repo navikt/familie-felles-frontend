@@ -1,16 +1,20 @@
-import {EndringsloggContainer} from './endringslogg-container';
-import React, {useCallback, useEffect, useState} from 'react';
-import {EndringsloggEntryWithSeenStatus, mapRemoteToState, setAllEntriesSeen} from './utils/endringslogg-custom';
+import { EndringsloggContainer } from './endringslogg-container';
+import React, { useCallback, useEffect, useState } from 'react';
+import {
+    EndringsloggEntryWithSeenStatus,
+    mapRemoteToState,
+    setAllEntriesSeen,
+} from './utils/endringslogg-custom';
 import {
     hentEndringsLoggEntries,
     setBackendUrl,
     trackSeenForcedModal,
     trackSeenStatus,
-    trackSessionDuration
+    trackSessionDuration,
 } from './utils/utils';
-import {useTimer} from './hooks/use-timer';
+import { useTimer } from './hooks/use-timer';
 import TourModal from './modal/tour-modal/tour-modal';
-import {StilType} from './icons/endringslogg-icon';
+import { StilType } from './icons/endringslogg-icon';
 
 const DEFAULT_MAX_ENTRIES = 50;
 
@@ -28,11 +32,15 @@ export interface EndringsloggProps {
 }
 
 export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggProps) => {
-    const {startTimer, stopTimer} = useTimer();
+    const { startTimer, stopTimer } = useTimer();
     const [loadData, setLoadData] = useState(true);
-    const [endringsloggEntries, setEndringsloggEntries] = useState<EndringsloggEntryWithSeenStatus[]>([]);
+    const [endringsloggEntries, setEndringsloggEntries] = useState<
+        EndringsloggEntryWithSeenStatus[]
+    >([]);
     const [errorMessage, setErrorMessage] = useState('');
-    const [forcedEndringsloggEntries, setForcedEndringsloggEntries] = useState<EndringsloggEntryWithSeenStatus[]>([]);
+    const [forcedEndringsloggEntries, setForcedEndringsloggEntries] = useState<
+        EndringsloggEntryWithSeenStatus[]
+    >([]);
 
     const fetchData = useCallback(() => {
         if (loadData) {
@@ -44,22 +52,26 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
                     props.userId,
                     props.appId,
                     props.dataset || 'production',
-                    props.maxEntries || DEFAULT_MAX_ENTRIES
+                    props.maxEntries || DEFAULT_MAX_ENTRIES,
                 ).then(response =>
                     response
                         .json()
                         .then((jsonResponse: any) => {
                             const entries = mapRemoteToState(jsonResponse);
                             setEndringsloggEntries(entries);
-                            setForcedEndringsloggEntries(entries.filter(entry => entry.forced && !entry.seenForced));
+                            setForcedEndringsloggEntries(
+                                entries.filter(entry => entry.forced && !entry.seenForced),
+                            );
                         })
                         .catch(() => {
                             setErrorMessage('Kunne ikke hente data for endringslogg');
-                        })
+                        }),
                 );
             } else {
                 setEndringsloggEntries(props.localData);
-                setForcedEndringsloggEntries(endringsloggEntries.filter(entry => entry.forced && !entry.seenForced));
+                setForcedEndringsloggEntries(
+                    endringsloggEntries.filter(entry => entry.forced && !entry.seenForced),
+                );
             }
         }
     }, [props, loadData, endringsloggEntries]);
@@ -75,7 +87,9 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
     }, [props.appId, props.dataFetchingIntervalSeconds, fetchData]);
 
     const onClose = () => {
-        const ulesteFelter = endringsloggEntries.filter(endringsloggEntry => !endringsloggEntry.seen);
+        const ulesteFelter = endringsloggEntries.filter(
+            endringsloggEntry => !endringsloggEntry.seen,
+        );
         trackSessionDuration(props.userId, props.appId, stopTimer(), ulesteFelter.length);
         if (ulesteFelter.length > 0) {
             const newList = setAllEntriesSeen(endringsloggEntries);
@@ -85,18 +99,22 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
 
     const onOpen = () => {
         startTimer();
-        const ulesteFelter = endringsloggEntries.filter(endringsloggEntry => !endringsloggEntry.seen);
+        const ulesteFelter = endringsloggEntries.filter(
+            endringsloggEntry => !endringsloggEntry.seen,
+        );
         if (ulesteFelter.length > 0) {
             trackSeenStatus(
                 props.userId,
                 props.appId,
-                ulesteFelter.map(entry => entry._id)
+                ulesteFelter.map(entry => entry._id),
             );
         }
     };
 
     const onCloseForcedModal = () => {
-        trackSeenForcedModal(props.userId, [forcedEndringsloggEntries[forcedEndringsloggEntries.length - 1]._id]);
+        trackSeenForcedModal(props.userId, [
+            forcedEndringsloggEntries[forcedEndringsloggEntries.length - 1]._id,
+        ]);
         setForcedEndringsloggEntries(forcedEndringsloggEntries.slice(0, -1));
     };
 

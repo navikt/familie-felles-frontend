@@ -44,7 +44,10 @@ const TourModal = (props: TourModalProps) => {
     return (
         <Modal className={'tour-modal'} open={props.open} onClose={lukkModal}>
             <Modal.Content>
-                <div className={'tour-modal__header--wrapper'} data-testid="endringslogg_tour-modal">
+                <div
+                    className={'tour-modal__header--wrapper'}
+                    data-testid="endringslogg_tour-modal"
+                >
                     <header className={'tour-modal__header'}>
                         <Heading size="medium" level="1">
                             {modalTittel}
@@ -92,7 +95,9 @@ const TourModal = (props: TourModalProps) => {
                         retning={Direction.RIGHT}
                         tekst={nextBtnText}
                         onClick={nextBtnHandleClick}
-                        dataTestId={isFinalStep ? 'endringslogg_ferdig-knapp' : 'endringslogg_neste-knapp'}
+                        dataTestId={
+                            isFinalStep ? 'endringslogg_ferdig-knapp' : 'endringslogg_neste-knapp'
+                        }
                     />
                 </footer>
             </Modal.Content>

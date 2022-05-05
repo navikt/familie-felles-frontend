@@ -13,9 +13,18 @@ interface EndringsloggContentProps {
     innleggsListe: EndringsloggEntryWithSeenStatus[];
 }
 
-export const EndringsloggLink = (props: { linkText: string; link: string; onClick: () => void }) => {
+export const EndringsloggLink = (props: {
+    linkText: string;
+    link: string;
+    onClick: () => void;
+}) => {
     return (
-        <Link className={'endringslogg-link'} target="_blank" href={props.link} onClick={props.onClick}>
+        <Link
+            className={'endringslogg-link'}
+            target="_blank"
+            href={props.link}
+            onClick={props.onClick}
+        >
             {props.linkText ? props.linkText : props.link}
             <ExternalLink className={'linkikon'} />
         </Link>
@@ -47,7 +56,11 @@ export const EndringsloggContent = (props: EndringsloggContentProps) => {
 
 const isoTimeStringToDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.getDate() + '. ' + date.toLocaleString('no-NO', { year: 'numeric', month: 'long' }).toLowerCase();
+    return (
+        date.getDate() +
+        '. ' +
+        date.toLocaleString('no-NO', { year: 'numeric', month: 'long' }).toLowerCase()
+    );
 };
 
 const EndringsloggEntry = (props: EndringsloggEntryWithSeenStatus) => {
@@ -73,7 +86,12 @@ const EndringsloggEntry = (props: EndringsloggEntryWithSeenStatus) => {
                     </div>
                 )}
                 {props.modal && (
-                    <TourModalButton id={props._id} modal={props.modal} buttonText="Se hvordan" forced={props.forced} />
+                    <TourModalButton
+                        id={props._id}
+                        modal={props.modal}
+                        buttonText="Se hvordan"
+                        forced={props.forced}
+                    />
                 )}
                 {props.link && props.linkText && (
                     <EndringsloggLink

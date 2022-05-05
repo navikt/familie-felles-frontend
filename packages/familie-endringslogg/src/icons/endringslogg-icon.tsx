@@ -1,25 +1,20 @@
 import * as React from 'react';
 
-export type StilType = 'mørk' | 'lys'
+export type StilType = 'mørk' | 'lys';
 
 export interface Props {
-    className?: string,
-    height?: string,
-    width?: string,
-    stil?: StilType
+    className?: string;
+    height?: string;
+    width?: string;
+    stil?: StilType;
 }
 
 const farger = {
-    mørk : '#3e3832',
+    mørk: '#3e3832',
     lys: '#f1f1f1',
-}
+};
 
-const EndringsloggIkon: React.FC<Props> = ({
-                                               className,
-                                               height,
-                                               width,
-                                               stil = 'mørk',
-                                           }) => (
+const EndringsloggIkon: React.FC<Props> = ({ className, height, width, stil = 'mørk' }) => (
     <svg
         data-name="Layer 1"
         className={className}

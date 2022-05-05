@@ -5,7 +5,7 @@ import { Left, Right } from '@navikt/ds-icons';
 
 export enum Direction {
     RIGHT,
-    LEFT
+    LEFT,
 }
 
 interface ChevronLenkeProps {
