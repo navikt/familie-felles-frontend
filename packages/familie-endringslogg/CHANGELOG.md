@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@2.0.0...@navikt/familie-endringslogg@2.0.1) (2022-05-05)
+
+
+### Bug Fixes
+
+* **familie-endringslogg:** vil trigge bygg av patch ([6e55618](https://github.com/navikt/familie-felles-frontend/commit/6e55618350a6df130522cf08e52a0c5966989cad))
+
+
+
+
+
 # [2.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@1.2.2...@navikt/familie-endringslogg@2.0.0) (2022-02-02)
 
 
