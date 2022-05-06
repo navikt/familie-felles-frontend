@@ -24,6 +24,11 @@ module.exports = {
                 { loader: require.resolve('less-loader') },
             ],
         });
+        config.module.rules.push({
+            test: /\.mjs$/,
+            include: /node_modules/,
+            type: "javascript/auto",
+        })
         config.resolve.extensions.push('.ts', '.tsx', '.less');
         return config;
     },
