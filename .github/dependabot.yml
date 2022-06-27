@@ -1,101 +1,19 @@
 version: 2
-registries:
-  npm-registry-npm-pkg-github-com-navikt-data-catalog-components:
-    type: npm-registry
-    url: https://npm.pkg.github.com/@navikt/data-catalog-components
-    token: "${{secrets.NPM_REGISTRY_NPM_PKG_GITHUB_COM_NAVIKT_DATA_CATALOG_COMPONENTS_TOKEN}}"
-  npm-registry-npm-pkg-github-com-deetly-plotly-view:
-    type: npm-registry
-    url: https://npm.pkg.github.com/@deetly/plotly-view
-    token: "${{secrets.NPM_REGISTRY_NPM_PKG_GITHUB_COM_DEETLY_PLOTLY_VIEW_TOKEN}}"
 
+registries:
+    npm-github:
+        type: npm-registry
+        url: https://npm.pkg.github.com
+        token: ${{ secrets.READER_TOKEN }}
 updates:
-- package-ecosystem: npm
-  directory: "/"
-  schedule:
-    interval: weekly
-    time: "04:00"
-  open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: "@navikt/ds-icons"
-    versions:
-    - 0.2.0
-    - 0.2.1
-  - dependency-name: "@storybook/addon-actions"
-    versions:
-    - 6.1.21
-    - 6.2.2
-    - 6.2.7
-    - 6.2.9
-  - dependency-name: "@storybook/addon-storysource"
-    versions:
-    - 6.1.21
-    - 6.2.2
-    - 6.2.7
-    - 6.2.9
-  - dependency-name: "@storybook/addon-knobs"
-    versions:
-    - 6.1.21
-    - 6.2.2
-    - 6.2.7
-    - 6.2.9
-  - dependency-name: nav-frontend-typografi
-    versions:
-    - 3.0.4
-    - 3.1.1
-  - dependency-name: openid-client
-    versions:
-    - 4.7.1
-    - 4.7.2
-  - dependency-name: nav-frontend-lenker-style
-    versions:
-    - 1.1.1
-  - dependency-name: nav-frontend-alertstriper
-    versions:
-    - 3.1.1
-  - dependency-name: dayjs
-    versions:
-    - 1.10.4
-  - dependency-name: nav-frontend-toggle
-    versions:
-    - 1.0.3
-    - 1.1.1
-  - dependency-name: nav-frontend-popover
-    versions:
-    - 1.0.4
-    - 1.1.1
-  - dependency-name: y18n
-    versions:
-    - 4.0.1
-  - dependency-name: react-dom
-    versions:
-    - 17.0.1
-    - 17.0.2
-  - dependency-name: eslint
-    versions:
-    - 7.21.0
-    - 7.22.0
-  - dependency-name: eslint-config-prettier
-    versions:
-    - 8.1.0
-  - dependency-name: typescript
-    versions:
-    - 4.2.3
-  - dependency-name: eslint-plugin-prettier
-    versions:
-    - 3.3.1
-  - dependency-name: webpack-cli
-    versions:
-    - 4.5.0
-  - dependency-name: ts-loader
-    versions:
-    - 8.0.17
-  - dependency-name: framer-motion
-    versions:
-    - 3.9.1
-  - dependency-name: "@types/express"
-    versions:
-    - 4.17.11
-  registries:
-  - npm-registry-npm-pkg-github-com-navikt-data-catalog-components
-  - npm-registry-npm-pkg-github-com-deetly-plotly-view
+    -   package-ecosystem: npm
+        directory: "/"
+        schedule:
+            interval: weekly
+            day: "sunday"
+            time: "04:00"
+        open-pull-requests-limit: 30
+        registries: "*"
+        ignore:
+            -   dependency-name: "*"
+                update-types: [ "version-update:semver-patch" ]
