@@ -34,7 +34,7 @@
     "@navikt/nap-user-panel": "^1.1.0",
     "classnames": "^2.2.6",
     "lodash.throttle": "^4.1.1",
-    "nav-frontend-alertstriper": "^3.1.1",
+    "nav-frontend-alertstriper": "^4.0.1",
     "nav-frontend-alertstriper-style": "^2.1.1",
     "nav-frontend-core": "^6.0.1",
     "nav-frontend-ikoner-assets": "2.0.10",
