@@ -26,7 +26,7 @@
   "dependencies": {
     "@babel/preset-typescript": "^7.15.0",
     "@navikt/boxed-list-with-links": "^1.0.2",
-    "@navikt/ds-icons": "^0.2.1",
+    "@navikt/ds-icons": "^0.8.13",
     "@navikt/familie-form-elements": "^4.0.2",
     "@navikt/familie-ikoner": "^4.0.1",
     "@navikt/familie-typer": "^5.0.0",
