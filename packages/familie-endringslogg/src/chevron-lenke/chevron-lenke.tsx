@@ -27,11 +27,11 @@ const ChevronLenke = (props: ChevronLenkeProps) => {
                     <span className={'chevron-lenke__tekst'} role="button">
                         {tekst}
                     </span>
-                    <Right className={'chevron-right'} />
+                    <Right fr="mask" className={'chevron-right'} />
                 </>
             ) : (
                 <>
-                    <Left className={'chevron-left'} />
+                    <Left fr="mask" className={'chevron-left'} />
                     <span className={'chevron-lenke__tekst'} role="button">
                         {tekst}
                     </span>

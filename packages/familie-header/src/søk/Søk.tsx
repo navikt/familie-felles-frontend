@@ -150,7 +150,7 @@ export const Søk = ({
                             nullstillInput(true);
                         }}
                     >
-                        <Close color={navFarger.navBla} width={32} height={32} />
+                        <Close fr="mask" color={navFarger.navBla} width={32} height={32} />
                     </StyledTømknapp>
                 )}
                 <StyledSøkKnapp
@@ -162,7 +162,7 @@ export const Søk = ({
                     spinner={søkeresultater.status === RessursStatus.HENTER}
                 >
                     {søkeresultater.status !== RessursStatus.HENTER && (
-                        <Search color={navFarger.navBla} width={32} height={32} />
+                        <Search fr="mask" color={navFarger.navBla} width={32} height={32} />
                     )}
                 </StyledSøkKnapp>
             </SøkContainer>

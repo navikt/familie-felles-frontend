@@ -29,13 +29,13 @@
         "@navikt/familie-typer": "^5.0.0",
         "@types/deep-equal": "^1.0.1",
         "deep-equal": "^2.0.5",
-        "hashids": "^2.2.8"
+        "hashids": "^2.2.10"
     },
     "devDependencies": {
         "@navikt/familie-form-elements": "^4.0.2",
         "nav-frontend-skjema": "4.0.5"
     },
     "peerDependencies": {
-        "react": "^17.0.2"
+        "react": "17.x || 18.x"
     }
 }
