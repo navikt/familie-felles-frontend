@@ -3459,27 +3459,20 @@
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.5.4.tgz#5b00f98f84da5cdb01f7b0dac9e4004d7d4bed0a"
   integrity sha512-4lk4CTKZtNkqGJ2wAtJPheaCcwD6hILh6zWICO7071Lu/O+O+qSmxJSGFJmPh4pTAUuPONp6p8jOUqQwTi4yhw==
 
-"@navikt/ds-icons@^0.8.11", "@navikt/ds-icons@^0.8.9":
-  version "0.8.11"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/0.8.11/9d23d99d977655dbf28547b15069539716f76f9dd23239eed7cfdca1f9de9564#b9e2e62d0c6145f86c9688a59c97049657af80cb"
-  integrity sha512-1oO4hp1wnJUgLlw/YqT5w+N2UAhEBNuoOD+ngY3QhoQAyj6MLsIkw/778hD93qZAB5f2msfFvDqLUsYOSCHCdQ==
+"@navikt/ds-icons@^0.8.11", "@navikt/ds-icons@^0.8.19", "@navikt/ds-icons@^0.8.4", "@navikt/ds-icons@^0.8.9":
+  version "0.8.19"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/0.8.19/6b08b984b548ff47591b483ad33e4c268923c6ccb44148d870ffd84bb2aaa8ee#9241e82dfe2704b4b9e56541998472d9b9dfa30f"
+  integrity sha512-gQx6Tt1Xd/oEASroPLx2WcHsY78H0tj0Jl1gQGXQOm0tLs7EU09G/dzITvhHzXDT5t0MPnqg+Wz9NaK9jF12+Q==
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-icons@^0.8.4":
-  version "0.8.6"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/0.8.6/51a9a30e74f2f2cd3849d52132b58d01880840ad8503b41329626bd1f0a604db#d5237b20a086c83291d5fcb02d6d5206c93bde45"
-  integrity sha512-3s3fLI2Pg3xRdeiZdIePZoOoEIK/UuMzafZQHrSg57VhupPlZmf1jLYbR+i0bXmkeRuq7kT3hKdoakRMzDEYLw==
+"@navikt/ds-react-internal@^0.14.23":
+  version "0.14.23"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react-internal/0.14.23/5b0226f72fdd073abae2a5520f214d87694097b63ce571a7cb54d6146e949844#7891b5d020188aef6a89b133154b67ace41de4b7"
+  integrity sha512-uI0yM31uwksXdIx4i6ov3VrDJ9l99alhzxggS9SXKCipZ07EYSjhf5Avs7yl7/bh9RrlHIVNwLKOyRnyr+f4kA==
   dependencies:
-    uuid "^8.3.2"
-
-"@navikt/ds-react-internal@^0.12.8":
-  version "0.12.30"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react-internal/0.12.30/e6c8a6bae861c5a7d19052c8bc9cee8f4abaa3459352633f8cf6341fcc849d2d#ea6bed0727ce8a27c02705bead9549fb0a1999cd"
-  integrity sha512-2rkFqT7cl7N9GA1dkyAnZuaTmsTiHNmSdquJn3fhvr+97JZtGe14hd5Bt7XwoPu+TGtLQUzsMna1SrXf1cm/nQ==
-  dependencies:
-    "@navikt/ds-icons" "^0.8.11"
-    "@navikt/ds-react" "^0.17.27"
+    "@navikt/ds-icons" "^0.8.19"
+    "@navikt/ds-react" "^0.19.22"
     "@popperjs/core" "^2.10.1"
     classnames "^2.3.1"
     copy-to-clipboard "^3.3.1"
@@ -3503,10 +3496,10 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-react@^0.17.27":
-  version "0.17.27"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/0.17.27/cadcae82d4fb79e1628615597583f09184424cffb63e24eec0e50c899c16a8a6#d826baf51bb8693b30ce0f84de041eb97bb6eeed"
-  integrity sha512-AIB2z+SdK8d/NSsEhuhEsMV1sPFn5em+LcWPdm4nmrPJ3Son7RckKcW2smRkMfrPaaJGzSlqvYTLDkK9z+W3BA==
+"@navikt/ds-react@^0.18.1":
+  version "0.18.2"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/0.18.2/0a741e670b1df89ff820778f8e7f10420492e79b6bae8b23762eb6bc5745bece#23e20b2b93df2fd2600a6565f019a0fc44ae22d2"
+  integrity sha512-31b8cf5NWTebgqXucjXa+/iAyqnlN4P99sW0QRA1JOXDCkrByeVDrZeSNwFNK4J/IXpYlq6pvWGwWDtFQFVWbQ==
   dependencies:
     "@floating-ui/react-dom" "0.6.0"
     "@material-ui/core" "^4.12.3"
@@ -3521,14 +3514,14 @@
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
-"@navikt/ds-react@^0.18.1":
-  version "0.18.2"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/0.18.2/0a741e670b1df89ff820778f8e7f10420492e79b6bae8b23762eb6bc5745bece#23e20b2b93df2fd2600a6565f019a0fc44ae22d2"
-  integrity sha512-31b8cf5NWTebgqXucjXa+/iAyqnlN4P99sW0QRA1JOXDCkrByeVDrZeSNwFNK4J/IXpYlq6pvWGwWDtFQFVWbQ==
+"@navikt/ds-react@^0.19.22":
+  version "0.19.22"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/0.19.22/93ac731b933ca4bbc98cc57a8e6a5d3f1cf0b1f592ae1361c595a9cc9c1f128f#686b137059c2833f5a375ec89aabd82c562ec5a2"
+  integrity sha512-FouYilES1yA5n28w9pYx0ZkwZhMq792PzjqYVcVAVqFic9erCA2sgsl6F1R8nnp8e80QrpYnA1twJl2Ya+gsug==
   dependencies:
     "@floating-ui/react-dom" "0.6.0"
     "@material-ui/core" "^4.12.3"
-    "@navikt/ds-icons" "^0.8.11"
+    "@navikt/ds-icons" "^0.8.19"
     "@popperjs/core" "^2.10.1"
     "@radix-ui/react-tabs" "0.1.5"
     "@radix-ui/react-toggle-group" "0.1.5"
@@ -3735,20 +3728,10 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@popperjs/core@^2.10.1":
+"@popperjs/core@^2.10.1", "@popperjs/core@^2.5.4", "@popperjs/core@^2.6.0":
   version "2.11.5"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
-
-"@popperjs/core@^2.5.4":
-  version "2.5.4"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.5.4.tgz#de25b5da9f727985a3757fd59b5d028aba75841a"
-  integrity sha512-ZpKr+WTb8zsajqgDkvCEWgp6d5eJT6Q63Ng2neTbzBO76Lbe91vX/iVIW9dikq+Fs3yEo+ls4cxeXABD2LtcbQ==
-
-"@popperjs/core@^2.6.0":
-  version "2.9.2"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
-  integrity sha512-VZMYa7+fXHdwIq1TDhSXoVmSPEGM/aa+6Aiq3nVVJ9bXr24zScr+NlKFKC3iPljA7ho/GAZr+d2jOf5GIRC30Q==
 
 "@radix-ui/primitive@0.1.0":
   version "0.1.0"
@@ -8011,12 +7994,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.5, classnames@^2.2.6:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
-  integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
-
-classnames@^2.3.1:
+classnames@^2.2.5, classnames@^2.2.6, classnames@^2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.1.tgz#dfcfa3891e306ec1dad105d0e88f4417b8535e8e"
   integrity sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
