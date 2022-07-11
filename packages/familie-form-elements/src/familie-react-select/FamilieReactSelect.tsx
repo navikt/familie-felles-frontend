@@ -104,21 +104,8 @@ export const FamilieReactSelect: React.FC<IProps> = ({
     const propsWithoutStyles:Omit<StateManagerProps, "styles"> = props;
 
     const id = `react-select-${label}`;
-    // const hentSelectProps = () => ({
-    //     styles: {
-    //         ...navSelectStyles(feil, erLesevisning),
-    //         ...propSelectStyles,
-    //     },
-    //     id: id,
-    //     isDisabled: erLesevisning,
-    //     isClearable: !erLesevisning,
-    //     value,
-    //     placeholder: 'Velg',
-    //     noOptionsMessage: () => 'Ingen valg',
-    //     ...props,
-    // });
-
     const stylesCombined:StylesConfig = {...navSelectStyles(feil, erLesevisning), ...propSelectStyles};
+
     return (
         <Container>
             {typeof label === 'string' ? <Label htmlFor={id}>{label}</Label> : label}
