@@ -10,7 +10,6 @@ import React, {
 import classNames from 'classnames';
 import { Tooltip } from './Tooltip';
 import { PositionedPeriod } from '../types.internal';
-import { ClassValue } from 'classnames/types';
 import styled, { css } from 'styled-components';
 
 const fellesPeriodeStyle = css`
@@ -212,10 +211,12 @@ const ClickablePeriod = React.memo(
         };
 
         const enableHoverLabel = () => {
+            // tslint:disable-next-line:no-unused-expression
             period.hoverLabel && setShowHoverLabel(true);
         };
 
         const disableHoverLabel = () => {
+            // tslint:disable-next-line:no-unused-expression
             period.hoverLabel && setShowHoverLabel(false);
         };
 
@@ -257,20 +258,20 @@ const finnClassnames = (
     period: PositionedPeriod,
     active: boolean | undefined,
     isMini: boolean,
-): ClassValue[] => {
-    const classNames = [];
+): string[] => {
+    const newClassNames: string[] = [];
 
     switch (period.cropped) {
         case 'both':
-            classNames.push('croppedBegge');
+            newClassNames.push('croppedBegge');
             break;
         case 'left':
-            if (period.direction === 'left') classNames.push('croppedVenstre');
-            else classNames.push('croppedHøyre');
+            if (period.direction === 'left') { newClassNames.push('croppedVenstre'); }
+            else { newClassNames.push('croppedHøyre'); }
             break;
         case 'right':
-            if (period.direction === 'left') classNames.push('croppedHøyre');
-            else classNames.push('croppedVenstre');
+            if (period.direction === 'left') { newClassNames.push('croppedHøyre'); }
+            else { newClassNames.push('croppedVenstre'); }
             break;
         default:
             break;
@@ -278,24 +279,24 @@ const finnClassnames = (
 
     switch (period.connectingEdge) {
         case 'both':
-            classNames.push('sammenhengendeFraBegge');
+            newClassNames.push('sammenhengendeFraBegge');
             break;
         case 'left':
-            if (period.direction === 'left') classNames.push('sammenhengendeFraVenstre');
-            else classNames.push('sammenhengendeFraHøyre');
+            if (period.direction === 'left') { newClassNames.push('sammenhengendeFraVenstre'); }
+            else { newClassNames.push('sammenhengendeFraHøyre'); }
             break;
         case 'right':
-            if (period.direction === 'left') classNames.push('sammenhengendeFraHøyre');
-            else classNames.push('sammenhengendeFraVenstre');
+            if (period.direction === 'left') { newClassNames.push('sammenhengendeFraHøyre'); }
+            else { newClassNames.push('sammenhengendeFraVenstre'); }
             break;
         default:
             break;
     }
 
-    if (active) classNames.push('active');
-    if (isMini) classNames.push('mini');
+    if (active) { newClassNames.push('active'); }
+    if (isMini) { newClassNames.push('mini'); }
 
-    return classNames;
+    return newClassNames;
 };
 
 export const TimelinePeriod = React.memo(
@@ -317,7 +318,7 @@ export const TimelinePeriod = React.memo(
         }, [ref.current]);
 
         useEffect(() => {
-            if (active) ref.current?.focus();
+            if (active) { ref.current?.focus(); }
         }, [active]);
 
         return onSelectPeriod ? (

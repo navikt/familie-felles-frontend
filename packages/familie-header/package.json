@@ -32,6 +32,7 @@
     "@navikt/familie-typer": "^5.0.0",
     "@navikt/familie-validering": "^2.0.1",
     "@navikt/nap-user-panel": "^1.1.0",
+    "@types/react-dom": "^18.x",
     "classnames": "^2.3.1",
     "lodash.throttle": "^4.1.1",
     "nav-frontend-alertstriper": "^4.0.1",
@@ -63,6 +64,7 @@
   },
   "peerDependencies": {
     "react": "17.x || 18.x",
+    "react-dom": "17.x || 18.x",
     "styled-components": "^5.x"
   }
 }
