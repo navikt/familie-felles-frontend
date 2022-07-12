@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.5](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@4.0.4...@navikt/familie-header@4.0.5) (2022-07-12)
+
+
+### Reverts
+
+* Revert "chore(familie-header): tar i bruk dropdown fra designsystemet. Vil unngå å bruke deprecated pakke "@" (#460) ([c6981f3](https://github.com/navikt/familie-felles-frontend/commit/c6981f30bc07179a65dcc2804e02b7bd3a718dfb)), closes [#460](https://github.com/navikt/familie-felles-frontend/issues/460)
+
+
+
+
+
 ## [4.0.4](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@4.0.3...@navikt/familie-header@4.0.4) (2022-04-26)
 
 **Note:** Version bump only for package @navikt/familie-header
