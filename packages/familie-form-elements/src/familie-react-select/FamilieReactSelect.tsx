@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import navFarger from 'nav-frontend-core';
 import { Label } from 'nav-frontend-skjema';
 import { Feilmelding } from 'nav-frontend-typografi';
-import { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
+import { omit } from 'nav-frontend-js-utils';
 
 export interface IProps extends Props<{ label: string; value: string }, true | false> {
     erLesevisning?: boolean;
@@ -100,8 +100,7 @@ export const FamilieReactSelect: React.FC<IProps> = ({
     ...props
 }) => {
 
-    // @ts-ignore
-    const propsWithoutStyles:Omit<StateManagerProps, "styles"> = props;
+    const propsWithoutStyles = omit(props, "styles");
 
     const id = `react-select-${label}`;
     const stylesCombined:StylesConfig = {...navSelectStyles(feil, erLesevisning), ...propSelectStyles};
