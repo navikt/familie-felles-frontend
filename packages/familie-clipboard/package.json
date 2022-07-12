@@ -25,18 +25,18 @@
     },
     "dependencies": {
         "@types/react-tooltip": "^4.2.4",
-        "framer-motion": "4.1.10",
+        "framer-motion": "^6.3.16",
         "nav-frontend-core": "^6.0.1",
         "nav-frontend-knapper": "^3.1.2",
         "nav-frontend-knapper-style": "^2.1.1",
         "react-tooltip": "^4.2.21"
     },
     "devDependencies": {
-        "@types/styled-components": "^5.1.24",
+        "@types/styled-components": "^5.1.25",
         "styled-components": "^5.3.5"
     },
     "peerDependencies": {
-        "react": "^17.0.2",
-        "styled-components": "^5.3.5"
+        "react": "^17.x || 18.x",
+        "styled-components": "^5.x"
     }
 }

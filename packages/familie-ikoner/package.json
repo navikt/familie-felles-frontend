@@ -27,6 +27,6 @@
         "@navikt/familie-typer": "^5.0.0"
     },
     "peerDependencies": {
-        "react": "^17.0.2"
+        "react": "17.x || 18.x"
     }
 }

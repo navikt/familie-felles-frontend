@@ -58,8 +58,8 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
     };
 
     const handleGlobalKeydown = (event: KeyboardEvent) => {
-        if (ankerRef.current === undefined) return;
-        if (event.key === 'Escape') nullstillInput(true);
+        if (ankerRef.current === undefined) { return; }
+        if (event.key === 'Escape') { nullstillInput(true); }
     };
 
     const handleGlobalClick = () => {

@@ -1,14 +1,15 @@
 import React, { ReactNode } from 'react';
 
-import ReactSelect, { NamedProps, StylesConfig } from 'react-select';
+import ReactSelect, { Props, StylesConfig } from 'react-select';
 import Creatable from 'react-select/creatable';
 import styled from 'styled-components';
 
 import navFarger from 'nav-frontend-core';
 import { Label } from 'nav-frontend-skjema';
 import { Feilmelding } from 'nav-frontend-typografi';
+import { omit } from 'nav-frontend-js-utils';
 
-export interface IProps extends NamedProps<{ label: string; value: string }, true | false> {
+export interface IProps extends Props<{ label: string; value: string }, true | false> {
     erLesevisning?: boolean;
     creatable?: boolean;
     label: ReactNode;
@@ -31,8 +32,8 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
         boxShadow: state.isFocused
             ? `0 0 0 3px ${navFarger.fokusFarge}`
             : feil
-            ? `0 0 0 1px ${navFarger.redError}`
-            : '',
+                ? `0 0 0 1px ${navFarger.redError}`
+                : '',
         ':hover': {
             border: `1px solid ${navFarger.navBla}`,
         },
@@ -43,22 +44,22 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
     }),
     dropdownIndicator: provided => (
         erLesevisning ? { display: 'none' }
-        : {
-        ...provided,
-        color: 'initial',
-        ':hover': {
-            color: 'initial',
-        },
-    }),
+            : {
+                ...provided,
+                color: 'initial',
+                ':hover': {
+                    color: 'initial',
+                },
+            }),
     clearIndicator: provided => (
         erLesevisning ? { display: 'none' }
-        : {
-        ...provided,
-        color: navFarger.navGra60,
-        ':hover': {
-            color: navFarger.navMorkGra,
-        },
-    }),
+            : {
+                ...provided,
+                color: navFarger.navGra60,
+                ':hover': {
+                    color: navFarger.navMorkGra,
+                },
+            }),
     multiValue: (provided, _) => ({
         ...provided,
         backgroundColor: navFarger.navBlaLighten80,
@@ -66,13 +67,13 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
     }),
     multiValueRemove: provided => (
         erLesevisning ? { display: 'none' }
-        : {
-        ...provided,
-        ':hover': {
-            backgroundColor: navFarger.navBla,
-            color: 'white',
-        },
-    }),
+            : {
+                ...provided,
+                ':hover': {
+                    backgroundColor: navFarger.navBla,
+                    color: 'white',
+                },
+            }),
 });
 
 const StyledFeilmelding = styled(Feilmelding)`
@@ -98,32 +99,38 @@ export const FamilieReactSelect: React.FC<IProps> = ({
     propSelectStyles,
     ...props
 }) => {
-    const id = `react-select-${label}`;
 
-    const hentSelectProps = () => ({
-        styles: {
-            ...navSelectStyles(feil, erLesevisning),
-            ...propSelectStyles,
-        },
-        id: id,
-        isDisabled: erLesevisning,
-        isClearable: !erLesevisning,
-        value,
-        placeholder: 'Velg',
-        noOptionsMessage: () => 'Ingen valg',
-        ...props,
-    });
+    const propsWithoutStyles = omit(props, "styles");
+
+    const id = `react-select-${label}`;
+    const stylesCombined:StylesConfig = {...navSelectStyles(feil, erLesevisning), ...propSelectStyles};
 
     return (
         <Container>
             {typeof label === 'string' ? <Label htmlFor={id}>{label}</Label> : label}
             {creatable ? (
                 <Creatable
-                    formatCreateLabel={value => `Opprett "${value}"`}
-                    {...hentSelectProps()}
+                    formatCreateLabel={() => `Opprett`}
+                    styles={stylesCombined}
+                    id={id}
+                    isDisabled={erLesevisning}
+                    isClearable={!erLesevisning}
+                    value={value}
+                    placeholder={'Velg'}
+                    noOptionsMessage={() => 'Ingen valg'}
+                    {...propsWithoutStyles}
                 />
             ) : (
-                <ReactSelect {...hentSelectProps()} />
+                <ReactSelect
+                    styles={stylesCombined}
+                    id={id}
+                    isDisabled={erLesevisning}
+                    isClearable={!erLesevisning}
+                    value={value}
+                    placeholder={'Velg'}
+                    noOptionsMessage={() => 'Ingen valg'}
+                    {...propsWithoutStyles}
+                />
             )}
 
             {feil && <StyledFeilmelding>{feil}</StyledFeilmelding>}

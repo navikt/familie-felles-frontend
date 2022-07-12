@@ -87,7 +87,7 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
                     settAnker(anker === undefined ? e.currentTarget : undefined);
                 }}
             >
-                <System color={navFarger.white} />
+                <System fr="mask" color={navFarger.white} />
             </button>
             {lenker && (
                 <Popover

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { useFocus } from './hooks/use-focus';
 import './endringslogg.css';
 import './collapse-container-transition.css';
 import classNames from 'classnames';
+import { TransitionGroupProps } from 'react-transition-group/TransitionGroup';
+import { CSSTransitionProps } from 'react-transition-group/CSSTransition';
 
 interface CollapseContainerProps {
     children?: React.ReactNode;
@@ -15,10 +17,17 @@ interface TransitionProps extends CollapseContainerProps {
     alignLeft?: boolean;
 }
 
+/**
+ * Overrider props ettersom transition-group ikke er oppgradert til React 18.
+ * Disse to linjene kan fjernes når dette skjer
+ */
+const TransitionGroupWithChildren = TransitionGroup as unknown as React.FC<PropsWithChildren<TransitionGroupProps>>
+const CSSTransitionWithChildren = CSSTransition as unknown as React.FC<PropsWithChildren<CSSTransitionProps>>
+
 const TransitionContainer = (props: TransitionProps) => (
-    <TransitionGroup component={null}>
+    <TransitionGroupWithChildren component={null}>
         {props.visible && (
-            <CSSTransition
+            <CSSTransitionWithChildren
                 classNames={{
                     enter: 'collapse-container-enter',
                     enterActive: 'collapse-container-enter-active',
@@ -28,9 +37,9 @@ const TransitionContainer = (props: TransitionProps) => (
                 timeout={400}
             >
                 <CollapseContainer alignLeft={props.alignLeft}>{props.children}</CollapseContainer>
-            </CSSTransition>
+            </CSSTransitionWithChildren>
         )}
-    </TransitionGroup>
+    </TransitionGroupWithChildren>
 );
 
 const CollapseContainer = (props: CollapseContainerProps) => {
