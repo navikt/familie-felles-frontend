@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@2.0.3...@navikt/familie-endringslogg@3.0.0) (2022-07-15)
+
+
+### Features
+
+* **endringslogg:** viser antall uleste endringsmeldinger. Endrer farge. ([#521](https://github.com/navikt/familie-felles-frontend/issues/521)) ([c56d693](https://github.com/navikt/familie-felles-frontend/commit/c56d69329068bbaed0ed0ad391ee70b71d0e042f))
+
+
+### BREAKING CHANGES
+
+* **endringslogg:** Endrer utseende
+
+
+
+
+
 ## [2.0.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@2.0.2...@navikt/familie-endringslogg@2.0.3) (2022-07-12)
 
 **Note:** Version bump only for package @navikt/familie-endringslogg
