@@ -22,7 +22,7 @@ interface EndringsloggContainerProps {
 
 export const EndringsloggContainer = (props: EndringsloggContainerProps) => {
     const [endringsloggApen, setEndringsloggApen] = useState(false);
-    const overordnetNotifikasjon = props.content.some(element => !element.seen);
+    const ulesteNotifikasjoner = props.content.filter(element => !element.seen).length;
 
     const loggNode = useRef<HTMLDivElement>(null); // Referanse til omsluttende div rundt loggen
     const buttonRef = useRef<HTMLButtonElement>(null);
@@ -77,7 +77,7 @@ export const EndringsloggContainer = (props: EndringsloggContainerProps) => {
             <EndringsloggIconButton
                 onClick={click}
                 open={endringsloggApen}
-                newNotifications={overordnetNotifikasjon}
+                newNotifications={ulesteNotifikasjoner}
                 buttonRef={buttonRef}
                 name={props.appName}
                 stil={props.stil}
@@ -96,7 +96,7 @@ export const EndringsloggContainer = (props: EndringsloggContainerProps) => {
 interface EndringsloggIconButtonProps {
     buttonRef: RefObject<HTMLButtonElement>;
     open: boolean;
-    newNotifications: boolean;
+    newNotifications: number;
     onClick: (e?: any) => void;
     name: string;
     stil?: StilType;
@@ -116,10 +116,12 @@ const EndringsloggIconButton = (props: EndringsloggIconButtonProps) => {
             data-testid="endringslogg-knapp"
         >
             <EndringsloggIkon stil={props.stil} />
-            {props.newNotifications && (
+            {props.newNotifications > 0 && (
                 <div className={'ring-container'}>
                     <div className={'ringring'} />
-                    <div className={'circle'} data-testid="endringslogg_nye-notifikasjoner" />
+                    <div className={'circle'} data-testid="endringslogg_nye-notifikasjoner">
+                        <div className={'antall-notifikasjoner'}>{props.newNotifications}</div>
+                    </div>
                 </div>
             )}
         </button>
