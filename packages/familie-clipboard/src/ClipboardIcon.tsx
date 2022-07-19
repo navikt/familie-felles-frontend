@@ -1,6 +1,5 @@
 import React from 'react';
-import CheckIcon from './CheckIcon';
-import CopyIcon from './CopyIcon';
+import { Copy, SuccessColored } from "@navikt/ds-icons";
 
 interface IProps {
     type: 'check' | 'copy';
@@ -9,9 +8,9 @@ interface IProps {
 
 const ClipboardIcon = ({ type, size = 20 }: IProps) => {
     return type === 'check' ? (
-        <CheckIcon height={size} width={size} />
+        <SuccessColored fr="mask" height={size} width={size} />
     ) : (
-        <CopyIcon height={size} width={size} />
+        <Copy fr="mask" height={size} width={size} />
     );
 };
 
