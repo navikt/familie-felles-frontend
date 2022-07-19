@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import * as React from 'react';
 import { ILogiskVedlegg } from '@navikt/familie-typer';
-import { Undertekst } from 'nav-frontend-typografi';
+import { Detail } from '@navikt/ds-react';
+
 
 const LogiskVedleggWrapper = styled.ul`
     grid-area: vedlegg;
@@ -15,9 +16,9 @@ export const LogiskeVedlegg: React.FC<{ logiskeVedlegg: ILogiskVedlegg[] | undef
         {logiskeVedlegg &&
             logiskeVedlegg.map((logiskVedlegg, index) => (
                 <li>
-                    <Undertekst key={logiskVedlegg.tittel + index}>
+                    <Detail key={logiskVedlegg.tittel + index}>
                         {logiskVedlegg.tittel}
-                    </Undertekst>
+                    </Detail>
                 </li>
             ))}
     </LogiskVedleggWrapper>

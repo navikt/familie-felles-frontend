@@ -3653,7 +3653,7 @@
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-icons@^0.8.x":
+"@navikt/ds-icons@^0.8.20", "@navikt/ds-icons@^0.8.x":
   version "0.8.20"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/0.8.20/ba6319506a1be93bdcf630eab40a8daade25347c87bb3f69d4ca14af3de37cec#b3c52f1839929d2e755b1ce6da44b4e02caf6f7e"
   integrity sha512-ftX5GHpH8WdGXfw94P5M3Nn1Bma/MI3TaL1zlMnXBoqs/lFo6V3BeKNTcGoFTE7mJLJDE8qrcvewCWK2E6pkgw==
@@ -3687,6 +3687,24 @@
     react-collapse "^5.1.0"
     react-merge-refs "^1.1.0"
     react-modal "3.14.3"
+    react-popper "^2.2.5"
+    uuid "^8.3.2"
+
+"@navikt/ds-react@^0.19.x":
+  version "0.19.25"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/0.19.25/6cc4b49e3eee98dabda9ed67ad60ecab339972c65ece87056284ca4f12c0c30d#db43b172eab1c6efe62c6d00690b1d2ac5d33ea5"
+  integrity sha512-PAA06TEWnfbXJJGxC77eyCN/QfDiKoVFD163F6AGedT58icJQBkqtTcPC0HSpsxbtvJL6Z/ophgeD4LnCsSLhw==
+  dependencies:
+    "@floating-ui/react-dom" "0.6.0"
+    "@material-ui/core" "^4.12.3"
+    "@navikt/ds-icons" "^0.8.20"
+    "@popperjs/core" "^2.10.1"
+    "@radix-ui/react-tabs" "0.1.5"
+    "@radix-ui/react-toggle-group" "0.1.5"
+    classnames "^2.2.6"
+    react-collapse "^5.1.0"
+    react-merge-refs "^1.1.0"
+    react-modal "3.15.1"
     react-popper "^2.2.5"
     uuid "^8.3.2"
 
@@ -17123,7 +17141,7 @@ react-modal@3.14.3:
     react-lifecycles-compat "^3.0.0"
     warning "^4.0.3"
 
-react-modal@^3.15.1:
+react-modal@3.15.1, react-modal@^3.15.1:
   version "3.15.1"
   resolved "https://registry.yarnpkg.com/react-modal/-/react-modal-3.15.1.tgz#950ce67bfef80971182dd0ed38f2d9b1a681288b"
   integrity sha512-duB9bxOaYg7Zt6TMFldIFxQRtSP+Dg3F1ZX3FXxSUn+3tZZ/9JCgeAQKDg7rhZSAqopq8TFRw3yIbnx77gyFTw==
