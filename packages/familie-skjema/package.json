@@ -33,8 +33,7 @@
     },
     "devDependencies": {
         "@navikt/familie-form-elements": "^4.0.3",
-        "@navikt/ds-react": "^0.19.x",
-        "nav-frontend-skjema": "4.0.5"
+        "@navikt/ds-react": "^0.19.x"
     },
     "peerDependencies": {
         "react": "17.x || 18.x"

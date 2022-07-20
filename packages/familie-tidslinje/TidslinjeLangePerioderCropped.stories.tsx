@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { ToggleKnapp } from 'nav-frontend-toggle';
-
 import { Success, Error, Warning } from '@navikt/ds-icons';
 
 import { Periode, Tidslinje, TidslinjeProps } from './src';
+import { Switch } from '@navikt/ds-react';
 
 const StyledContainer = styled.div(
     (props: { kompakt: boolean }) => `
@@ -168,9 +167,9 @@ export const LongPeriodClickable = (args: TidslinjeProps) => {
     return (
         <>
             <div>
-                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                <Switch checked={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
-                </ToggleKnapp>
+                </Switch>
             </div>
             <StyledContainer kompakt={kompakt}>
                 <h2>Klikkbare perioder</h2>
@@ -204,9 +203,9 @@ export const LongPeriodNotClickable = (args: TidslinjeProps) => {
     return (
         <>
             <div>
-                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                <Switch checked={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
-                </ToggleKnapp>
+                </Switch>
             </div>
             <StyledContainer kompakt={kompakt}>
                 <h2>Perioder ikke klikkbare</h2>
