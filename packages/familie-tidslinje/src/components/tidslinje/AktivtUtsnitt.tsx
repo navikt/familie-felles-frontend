@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import navFarger from 'nav-frontend-core';
 import classNames from 'classnames';
+import '@navikt/ds-css';
 import { Dayjs } from 'dayjs';
 import { EnkelPeriode } from '../types.external';
 import { usePositionAndSize } from './usePositionAndSize';
@@ -39,8 +39,8 @@ const AktivPeriode = styled.div`
         width: 3px;
         height: 3px;
         border-radius: 50%;
-        background: ${navFarger.navBla};
-        box-shadow: 0 0 0 1px ${navFarger.navBla};
+        background: var(--navds-global-color-blue-500);
+        box-shadow: 0 0 0 1px var(--navds-global-color-blue-500);
         left: -1px;
     }
 
@@ -51,14 +51,15 @@ const AktivPeriode = styled.div`
         width: 3px;
         height: 3px;
         border-radius: 50%;
-        background: ${navFarger.navBla};
-        box-shadow: 0 0 0 1px ${navFarger.navBla};
+        background: var(--navds-global-color-blue-500);
+        box-shadow: 0 0 0 1px var(--navds-global-color-blue-500);
         right: -1px;
     }
 `;
 
 const AktivPeriodeBorder = styled(AktivPeriode)`
-    box-shadow: inset 2px 0 0 -1px ${navFarger.navBla}, inset -2px 0 0 -1px ${navFarger.navBla};
+    box-shadow: inset 2px 0 0 -1px var(--navds-global-color-blue-500),
+        inset -2px 0 0 -1px var(--navds-global-color-blue-500);
 `;
 
 const AktivPeriodeBakgrunn = styled(AktivPeriode)`
