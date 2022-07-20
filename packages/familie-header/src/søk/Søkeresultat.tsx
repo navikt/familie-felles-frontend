@@ -1,16 +1,13 @@
 import React from 'react';
 
 import styled from 'styled-components';
-
-import navFarger from 'nav-frontend-core';
-import { Normaltekst } from 'nav-frontend-typografi';
-
 import { adressebeskyttelsestyper } from '@navikt/familie-typer';
 
 import { inputId } from '.';
 import { ISøkeresultat } from '..';
 import { formaterPersonIdent } from './formatter';
 import { StyledAlertStripe } from './Søkeresultater';
+import { BodyShort } from '@navikt/ds-react';
 
 interface Props {
     formaterResultat?: (
@@ -32,10 +29,10 @@ const ResultatListe = styled.ul`
 const ResultatListeElement = styled.li<{ fokus: boolean }>`
     list-style-type: none;
     padding: 0.5rem;
-    outline: ${({ fokus }) => (fokus ? `3px solid ${navFarger.navOransjeLighten40}` : '')};
+    outline: ${({ fokus }) => (fokus ? `3px solid var(--navds-global-color-orange-300)` : '')};
 
     &:hover {
-        background-color: ${navFarger.navLysGra};
+        background-color: var(--navds-global-color-gray-100);
         cursor: pointer;
     }
 `;
@@ -46,6 +43,7 @@ const ResultatIkonOgRolle = styled.div`
     padding-right: 1rem;
     align-items: center;
     min-width: 3.5rem;
+    font-size: var(--navds-font-size-small);
 
     svg {
         text-align: center;
@@ -90,7 +88,7 @@ const Søkeresultat: React.FC<Props> = ({
                                     {søkeresultat.rolle ? søkeresultat.rolle : ''}
                                 </ResultatIkonOgRolle>
                                 <div>
-                                    <Normaltekst>
+                                    <BodyShort size={'small'}>
                                         {søkeresultat.harTilgang
                                             ? `${søkeresultat.navn} (${formaterPersonIdent(
                                                   søkeresultat.ident,
@@ -102,16 +100,16 @@ const Søkeresultat: React.FC<Props> = ({
                                                         ]
                                                       : 'ukjent'
                                               }`}
-                                    </Normaltekst>
+                                    </BodyShort>
 
                                     {!søkeresultat.fagsakId && søkeresultat.harTilgang && (
-                                        <Normaltekst>
+                                        <BodyShort size={'small'}>
                                             {`Ingen fagsak. ${
                                                 !søkeresultat.fagsakId
                                                     ? 'Trykk for å opprette >'
                                                     : ''
                                             }`}
-                                        </Normaltekst>
+                                        </BodyShort>
                                     )}
                                 </div>
                             </ResultatListeElementKnapp>
@@ -121,7 +119,7 @@ const Søkeresultat: React.FC<Props> = ({
             })}
         </ResultatListe>
     ) : (
-        <StyledAlertStripe type={'info'}>Beklager, ingen treff</StyledAlertStripe>
+        <StyledAlertStripe variant={'info'}>Beklager, ingen treff</StyledAlertStripe>
     );
 };
 

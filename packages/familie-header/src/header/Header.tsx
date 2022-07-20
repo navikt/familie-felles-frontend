@@ -1,14 +1,8 @@
-import './Header.less';
-
-import navFarger from 'nav-frontend-core';
-import Popover, { PopoverOrientering } from 'nav-frontend-popover';
 import React from 'react';
-
-import BoxedListWithLinks from '@navikt/boxed-list-with-links';
-import UserPanel from '@navikt/nap-user-panel';
-
+import '@navikt/ds-css';
+import '@navikt/ds-css-internal';
+import { Dropdown, Header as NavHeader } from '@navikt/ds-react-internal';
 import { System } from '@navikt/ds-icons';
-import { Systemtittel } from 'nav-frontend-typografi';
 
 export interface Brukerinfo {
     navn: string;
@@ -37,76 +31,69 @@ interface BrukerProps {
     enhet?: string;
     popoverItems?: PopoverItem[];
 }
+
 interface LenkePopoverProps {
     lenker: PopoverItem[];
 }
 
 export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
-    const [anker, settAnker] = React.useState<HTMLElement | undefined>(undefined);
-
     return (
-        <div>
-            <UserPanel
+        <Dropdown>
+            <NavHeader.UserButton
+                as={Dropdown.Toggle}
                 name={navn}
-                unit={enhet ? `Enhet: ${enhet}` : 'Ukjent enhet'}
-                onClick={e => {
-                    settAnker(anker === undefined ? e.currentTarget : undefined);
-                }}
+                description={enhet ? `Enhet: ${enhet}` : 'Ukjent enhet'}
+                className="ml-auto"
             />
             {popoverItems && (
-                <Popover
-                    id={'meny-popover'}
-                    ankerEl={anker}
-                    orientering={PopoverOrientering.Under}
-                    autoFokus={false}
-                    onRequestClose={() => {
-                        settAnker(undefined);
-                    }}
-                    tabIndex={-1}
-                    utenPil
-                >
-                    <BoxedListWithLinks
-                        items={popoverItems}
-                        onClick={(index, e) => popoverItems[index]?.onClick?.(e)}
-                    />
-                </Popover>
+                <Dropdown.Menu>
+                    <Dropdown.Menu.List>
+                        {popoverItems.map((popoverItem, index) => {
+                            return (
+                                <Dropdown.Menu.List.Item key={index}>
+                                    <a
+                                        href={popoverItem.href}
+                                        onClick={e =>
+                                            popoverItem?.onClick && popoverItem?.onClick(e)
+                                        }
+                                    >
+                                        {popoverItem.name}
+                                    </a>
+                                </Dropdown.Menu.List.Item>
+                            );
+                        })}
+                    </Dropdown.Menu.List>
+                </Dropdown.Menu>
             )}
-        </div>
+        </Dropdown>
     );
 };
 
 export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
-    const [anker, settAnker] = React.useState<HTMLElement | undefined>(undefined);
-
     return (
-        <div>
-            <button
-                title={'Andre systemer'}
-                className="systemknapp"
-                onClick={e => {
-                    settAnker(anker === undefined ? e.currentTarget : undefined);
-                }}
-            >
-                <System fr="mask" color={navFarger.white} />
-            </button>
+        <Dropdown>
+            <NavHeader.Button as={Dropdown.Toggle} className="ml-auto">
+                <System fr="mask" style={{ fontSize: '1.5rem' }} title="Andre systemer" />
+            </NavHeader.Button>
             {lenker && (
-                <Popover
-                    id={'this'}
-                    ankerEl={anker}
-                    orientering={PopoverOrientering.UnderHoyre}
-                    autoFokus={false}
-                    onRequestClose={() => {
-                        settAnker(undefined);
-                    }}
-                    tabIndex={-1}
-                >
-                    <BoxedListWithLinks
-                        items={lenker || []}
-                        onClick={(index, e) => lenker[index]?.onClick?.(e)}
-                    />
-                </Popover>
+                <Dropdown.Menu>
+                    <Dropdown.Menu.GroupedList>
+                        {lenker.map((lenke, index) => {
+                            return (
+                                <Dropdown.Menu.GroupedList.Item key={index}>
+                                    <a
+                                        href={lenke.href}
+                                        onClick={e => lenke?.onClick && lenke?.onClick(e)}
+                                    >
+                                        {lenke.name}
+                                    </a>
+                                </Dropdown.Menu.GroupedList.Item>
+                            );
+                        })}
+                    </Dropdown.Menu.GroupedList>
+                </Dropdown.Menu>
             )}
-        </div>
+        </Dropdown>
     );
 };
 
@@ -120,29 +107,21 @@ export const Header = ({
     tittelOnClick,
 }: HeaderProps) => {
     return (
-        <div className="header">
-            <div className="rad">
-                {!tittelOnClick && (
-                    <a href={tittelHref} className="tittel">
-                        <Systemtittel tag={'h1'}>{tittel}</Systemtittel>
-                    </a>
-                )}
-                {tittelOnClick && (
-                    <button className="tittelknapp" onClick={tittelOnClick}>
-                        <Systemtittel tag={'h1'}>{tittel}</Systemtittel>
-                    </button>
-                )}
-            </div>
-            <div className="rad">
-                {children}
-                <LenkePopover lenker={eksterneLenker} />
-                <div className="avdeler" />
-                <Bruker
-                    navn={brukerinfo.navn}
-                    enhet={brukerinfo.enhet}
-                    popoverItems={brukerPopoverItems}
-                />
-            </div>
-        </div>
+        <NavHeader data-theme={''}>
+            {!tittelOnClick && <NavHeader.Title href={tittelHref}>{tittel}</NavHeader.Title>}
+            {tittelOnClick && (
+                <NavHeader.Title onClick={tittelOnClick} style={{ cursor: 'pointer' }}>
+                    {tittel}
+                </NavHeader.Title>
+            )}
+            <div style={{ marginLeft: 'auto' }} />
+            {children}
+            <LenkePopover lenker={eksterneLenker} />
+            <Bruker
+                navn={brukerinfo.navn}
+                enhet={brukerinfo.enhet}
+                popoverItems={brukerPopoverItems}
+            />
+        </NavHeader>
     );
 };

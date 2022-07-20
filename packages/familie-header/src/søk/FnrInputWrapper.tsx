@@ -1,35 +1,60 @@
-import React from 'react';
-import { FnrInput, FnrInputProps } from 'nav-frontend-skjema';
+import React, { KeyboardEventHandler } from 'react';
 import { erIdnr } from '@navikt/familie-validering';
+import { Search } from '@navikt/ds-react';
+import { SearchClearEvent } from '@navikt/ds-react/esm/form/search/Search';
+import { søkKnappId } from './Søk';
 
-interface FnrInputWrapperProps extends FnrInputProps {
+interface FnrInputWrapperProps {
+    id: string;
     acceptSynthNr?: boolean;
+    onEndre?: (nyVerdi: string) => void;
+    onValidate: (isValid: boolean) => void;
+    onKeyDown?: KeyboardEventHandler;
+    placeholder?: string;
+    label?: string;
+    value?: string;
+    onClear?: (e: SearchClearEvent) => void;
+    laster: boolean;
+    utløserSøk: () => void;
+    size: 'small' | 'medium';
 }
 
-// support synthID for FnrInput
 export const FnrInputWrapper: React.FC<FnrInputWrapperProps> = ({
     id,
-    onChange,
+    onEndre,
     onKeyDown,
     onValidate,
     value,
     acceptSynthNr,
-    ...props
+    placeholder,
+    onClear,
+    laster,
+    label,
+    utløserSøk,
+    size,
 }: FnrInputWrapperProps) => {
     return (
-        <FnrInput
-            autoComplete={'off'}
-            aria-label={props.placeholder}
+        <Search
             id={id}
-            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                const nyVerdi = event.target.value;
-                onChange && onChange(event);
-                onValidate && onValidate(erIdnr(nyVerdi, acceptSynthNr));
+            size={size}
+            autoComplete={'off'}
+            aria-label={placeholder}
+            placeholder={placeholder}
+            onChange={nyVerdi => {
+                if (onEndre) {
+                    onEndre(nyVerdi);
+                }
+                if (onValidate) {
+                    onValidate(erIdnr(nyVerdi, acceptSynthNr));
+                }
             }}
-            onValidate={() => void 0}
+            onClear={onClear}
+            label={label}
             onKeyDown={onKeyDown}
             value={value}
-            {...props}
-        />
+            variant={'secondary'}
+        >
+            <Search.Button loading={laster} id={søkKnappId} onClick={utløserSøk} />
+        </Search>
     );
 };

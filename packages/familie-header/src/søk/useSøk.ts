@@ -13,12 +13,12 @@ export interface Props {
 }
 
 const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkeresultater }: Props) => {
-    const [ident, settIdent] = useState('');
+    const [ident, settIdent] = useState<string>('');
     const [identSistSøktPå, settIdentSistSøktPå] = useState('');
-    const [anker, settAnker] = useState<HTMLElement | undefined>(undefined);
+    const [anker, settAnker] = useState<Element | null>(null);
     const [valgtSøkeresultat, settValgtSøkeresultat] = useState(-1);
     const [erGyldig, settErGyldig] = useState(false);
-    const ankerRef = useRef<HTMLElement>();
+    const ankerRef = useRef<Element>();
 
     useEffect(() => {
         if (erGyldig) {
@@ -40,12 +40,14 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
         settIdent('');
         settIdentSistSøktPå('');
         settErGyldig(false);
-        lukkPopover && settAnker(undefined);
+        if (lukkPopover) {
+            settAnker(null);
+        }
         nullstillSøkeresultater();
     };
 
     const settAnkerPåInput = () => {
-        const ankerElement = document.getElementById(inputId) as HTMLElement;
+        const ankerElement = document.getElementById(inputId) as Element;
         settAnker(ankerElement);
         ankerRef.current = ankerElement;
     };
@@ -58,8 +60,12 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
     };
 
     const handleGlobalKeydown = (event: KeyboardEvent) => {
-        if (ankerRef.current === undefined) { return; }
-        if (event.key === 'Escape') { nullstillInput(true); }
+        if (ankerRef.current === undefined) {
+            return;
+        }
+        if (event.key === 'Escape') {
+            nullstillInput(true);
+        }
     };
 
     const handleGlobalClick = () => {
@@ -73,13 +79,12 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
         }
     };
 
-    const onInputChange = (event: React.ChangeEvent) => {
-        const nyVerdi = (event.target as HTMLInputElement).value;
+    const onInputChange = (nyVerdi: string) => {
         settIdent(nyVerdi);
 
         if (nyVerdi === '') {
             nullstillSøkeresultater();
-            settAnker(undefined);
+            settAnker(null);
         }
     };
 
@@ -120,6 +125,8 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
                 } else {
                     utløserSøk();
                 }
+                break;
+            default:
                 break;
         }
     };

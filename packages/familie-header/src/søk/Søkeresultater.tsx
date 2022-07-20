@@ -1,14 +1,10 @@
 import React from 'react';
-
 import styled from 'styled-components';
-
-import AlertStripe from 'nav-frontend-alertstriper';
-
 import { Ressurs, RessursStatus } from '@navikt/familie-typer';
-
 import { inputId } from '.';
 import { ISøkeresultat } from '../types';
 import Søkeresultat from './Søkeresultat';
+import { Alert, BodyShort } from '@navikt/ds-react';
 
 interface Props {
     formaterResultat?: (
@@ -21,7 +17,7 @@ interface Props {
     settValgtSøkeresultat: (søkeresultatIndex: number) => void;
 }
 
-export const StyledAlertStripe = styled(AlertStripe)`
+export const StyledAlertStripe = styled(Alert)`
     width: 20rem;
 `;
 
@@ -47,20 +43,22 @@ const Søkeresultater: React.FC<Props> = ({
         case RessursStatus.FUNKSJONELL_FEIL:
         case RessursStatus.IKKE_TILGANG:
             return (
-                <StyledAlertStripe aria-labelledby={inputId} type="feil">
-                    {søkeresultater.frontendFeilmelding}
+                <StyledAlertStripe aria-labelledby={inputId} variant="error">
+                    <BodyShort size={'small'}>{søkeresultater.frontendFeilmelding}</BodyShort>
                 </StyledAlertStripe>
             );
         case RessursStatus.HENTER:
             return (
-                <StyledAlertStripe aria-labelledby={inputId} type={'info'}>
-                    Søker...
+                <StyledAlertStripe aria-labelledby={inputId} variant={'info'}>
+                    <BodyShort size={'small'}>Søker...</BodyShort>
                 </StyledAlertStripe>
             );
         default:
             return (
-                <StyledAlertStripe aria-labelledby={inputId} type={'info'}>
-                    Tast inn fødselsnummer eller d-nummer. Trykk 'enter' for å søke.
+                <StyledAlertStripe aria-labelledby={inputId} variant={'info'}>
+                    <BodyShort size={'small'}>
+                        Tast inn fødselsnummer eller d-nummer. Trykk 'enter' for å søke.
+                    </BodyShort>
                 </StyledAlertStripe>
             );
     }
