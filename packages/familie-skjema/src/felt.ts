@@ -117,6 +117,7 @@ export function useFelt<Verdi = string>({
     const hentNavInputProps = useCallback(
         (visFeilmelding: boolean): NavInputProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
+            error: visFeilmelding ? feltState.feilmelding : undefined,
             id,
             onChange,
             value: feltState.verdi,
@@ -127,6 +128,7 @@ export function useFelt<Verdi = string>({
     const hentNavBaseSkjemaProps = useCallback(
         (visFeilmelding: boolean): NavBaseSkjemaProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
+            error: visFeilmelding ? feltState.feilmelding : undefined,
             id,
             value: feltState.verdi,
         }),

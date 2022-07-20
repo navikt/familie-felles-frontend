@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useFelt, useSkjema, ok, FeltState, feil, Avhengigheter } from './src';
 import { FamilieInput, FamilieKnapp } from '@navikt/familie-form-elements';
-import { Feiloppsummering, Select, SkjemaGruppe } from 'nav-frontend-skjema';
 import { RessursStatus } from '@navikt/familie-typer';
+import { ErrorSummary, Select } from '@navikt/ds-react';
 
 export default {
     parameters: {
@@ -80,13 +80,7 @@ export const EnkeltSkjema = () => {
 
     console.log(skjema);
     return (
-        <SkjemaGruppe
-            feil={
-                skjema.submitRessurs.status === RessursStatus.FEILET
-                    ? skjema.submitRessurs.frontendFeilmelding
-                    : undefined
-            }
-        >
+        <>
             <FamilieInput
                 {...skjema.felter.navn.hentNavInputProps(skjema.visFeilmeldinger)}
                 bredde={'L'}
@@ -126,10 +120,18 @@ export const EnkeltSkjema = () => {
             {skjema.visFeilmeldinger && (
                 <>
                     <br />
-                    <Feiloppsummering
-                        tittel={'Du må rette følgende for å gå videre:'}
-                        feil={hentFeilTilOppsummering()}
-                    />
+                    <ErrorSummary size={'small'} heading={'Du må rette følgende for å gå videre:'}>
+                        {hentFeilTilOppsummering().map((feilTilOppsummering, index) => {
+                            return (
+                                <ErrorSummary.Item
+                                    key={index}
+                                    href={`#${feilTilOppsummering.skjemaelementId}`}
+                                >
+                                    {feilTilOppsummering.feilmelding}
+                                </ErrorSummary.Item>
+                            );
+                        })}
+                    </ErrorSummary>
                     <br />
                 </>
             )}
@@ -150,6 +152,6 @@ export const EnkeltSkjema = () => {
             >
                 Send inn
             </FamilieKnapp>
-        </SkjemaGruppe>
+        </>
     );
 };

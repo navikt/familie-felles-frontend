@@ -33,7 +33,8 @@ export interface Felt<Verdi> {
 
 export interface NavBaseSkjemaProps<Verdi> {
     id: string;
-    feil: ReactNode | undefined;
+    feil: ReactNode | undefined; // Deprecated i nytt designsystem
+    error: ReactNode | undefined; // Støtte nytt designsystem
     value: Verdi;
 }
 
