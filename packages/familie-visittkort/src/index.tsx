@@ -1,10 +1,10 @@
 import Clipboard from '@navikt/familie-clipboard';
 import { FamilieIkonVelger } from '@navikt/familie-ikoner';
 import { kjønnType } from '@navikt/familie-typer';
-import Element, { Normaltekst } from 'nav-frontend-typografi';
 import * as React from 'react';
-
-import './index.less';
+import styled from 'styled-components';
+import { BodyShort, Label } from '@navikt/ds-react';
+import '@navikt/ds-css';
 
 export interface IkonProps {
     className?: string;
@@ -19,6 +19,20 @@ export interface IProps {
     ValgfrittIkon?: React.ComponentType<IkonProps>;
 }
 
+const StyledVisittkort = styled.div`
+    border-bottom: 1px solid var(--navds-global-color-gray-700);
+    height: 3rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .visittkort__ikon {
+        padding-right: 0.5rem;
+    }
+    .visittkort__pipe {
+        padding: 0 1rem;
+    }
+`;
+
 export const Visittkort: React.FunctionComponent<IProps> = ({
     alder,
     children,
@@ -28,22 +42,22 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
     ValgfrittIkon,
 }) => {
     return (
-        <div className={'visittkort'}>
+        <StyledVisittkort>
             {ValgfrittIkon ? (
                 <ValgfrittIkon className={'visittkort__ikon'} width={32} heigth={32} />
             ) : (
                 <FamilieIkonVelger className={'visittkort__ikon'} alder={alder} kjønn={kjønn} />
             )}
-            {typeof navn === 'string' ? <Element type={'element'}>{navn}</Element> : navn}
+            {typeof navn === 'string' ? <Label size={'small'}>{navn}</Label> : navn}
 
             <div className={'visittkort__pipe'}>|</div>
 
             <Clipboard>
-                <Normaltekst>{ident}</Normaltekst>
+                <BodyShort size={'small'}>{ident}</BodyShort>
             </Clipboard>
 
             {children}
-        </div>
+        </StyledVisittkort>
     );
 };
 
