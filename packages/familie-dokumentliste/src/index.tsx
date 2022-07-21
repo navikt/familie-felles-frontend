@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import navFarger from 'nav-frontend-core';
-import { Element, Undertekst } from 'nav-frontend-typografi';
 import PilVenstre from '@navikt/familie-ikoner/dist/utils/PilVenstre';
 import PilNed from '@navikt/familie-ikoner/dist/utils/PilNed';
 import PilHøyre from '@navikt/familie-ikoner/dist/utils/PilHøyre';
 import { ILogiskVedlegg, Journalposttype } from '@navikt/familie-typer';
 import { LogiskeVedlegg } from './LogiskeVedlegg';
+import { Detail, Label } from '@navikt/ds-react';
+import '@navikt/ds-css';
 
 const StyledDokumentListe = styled.ul`
     padding: 0;
@@ -29,7 +29,7 @@ const StyledKnapp = styled.button`
     border: none;
 
     :hover {
-        background-color: ${navFarger.navLysGra};
+        background-color: var(--navds-global-color-gray-100);
         cursor: pointer;
     }
 `;
@@ -38,16 +38,16 @@ const JournalpostIkon = styled.span`
     grid-area: ikon;
     padding-top: 0.3rem;
 `;
-const StyledUndertekst = styled(Undertekst)`
+const StyledUndertekst = styled(Detail)`
     grid-area: dato;
     display: flex;
 `;
 
-const StyledDokumentnavn = styled(Element)`
+const StyledDokumentnavn = styled(Label)`
     text-overflow: ellipsis;
     max-width: 100%;
     overflow: hidden;
-    color: ${navFarger.navBla};
+    color: var(--navds-global-color-blue-500);
     grid-area: tittel;
     display: flex;
 `;
@@ -97,7 +97,7 @@ export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onCl
                 <JournalpostIkon>
                     <Journalpostikon journalposttype={dokument.journalposttype} />
                 </JournalpostIkon>
-                <StyledDokumentnavn>{dokument.tittel}</StyledDokumentnavn>
+                <StyledDokumentnavn size={'small'}>{dokument.tittel}</StyledDokumentnavn>
                 <LogiskeVedlegg logiskeVedlegg={dokument.logiskeVedlegg} />
                 <StyledUndertekst>{dokument.dato}</StyledUndertekst>
             </StyledKnapp>

@@ -3,7 +3,7 @@ import React, { ReactChild, useEffect, useRef, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import ClipboardIcon from './ClipboardIcon';
 import { copyContentsToClipboard } from './util';
-import navFarger from 'nav-frontend-core';
+import '@navikt/ds-css';
 import styled from 'styled-components';
 
 export interface IProps {
@@ -31,7 +31,7 @@ const StyledButton = styled.button`
 
     :focus,
     :active {
-        outline: 0.1875rem solid ${navFarger.fokusFarge};
+        outline: 0.1875rem solid var(--navds-global-color-blue-800);
     }
 `;
 
