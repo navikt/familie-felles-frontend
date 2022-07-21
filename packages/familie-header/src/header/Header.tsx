@@ -48,19 +48,8 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
             {popoverItems && (
                 <Dropdown.Menu>
                     <Dropdown.Menu.List>
-                        {popoverItems.map((popoverItem, index) => {
-                            return (
-                                <Dropdown.Menu.List.Item key={index}>
-                                    <a
-                                        href={popoverItem.href}
-                                        onClick={e =>
-                                            popoverItem?.onClick && popoverItem?.onClick(e)
-                                        }
-                                    >
-                                        {popoverItem.name}
-                                    </a>
-                                </Dropdown.Menu.List.Item>
-                            );
+                        {popoverItems.map((lenke, index) => {
+                            return <DropdownLenke key={index} lenke={lenke} />;
                         })}
                     </Dropdown.Menu.List>
                 </Dropdown.Menu>
@@ -77,23 +66,27 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
             </NavHeader.Button>
             {lenker && (
                 <Dropdown.Menu>
-                    <Dropdown.Menu.GroupedList>
+                    <Dropdown.Menu.List>
                         {lenker.map((lenke, index) => {
-                            return (
-                                <Dropdown.Menu.GroupedList.Item key={index}>
-                                    <a
-                                        href={lenke.href}
-                                        onClick={e => lenke?.onClick && lenke?.onClick(e)}
-                                    >
-                                        {lenke.name}
-                                    </a>
-                                </Dropdown.Menu.GroupedList.Item>
-                            );
+                            return <DropdownLenke lenke={lenke} key={index} />;
                         })}
-                    </Dropdown.Menu.GroupedList>
+                    </Dropdown.Menu.List>
                 </Dropdown.Menu>
             )}
         </Dropdown>
+    );
+};
+
+const DropdownLenke: React.FC<{ lenke: PopoverItem }> = ({ lenke }) => {
+    return (
+        <a
+            href={lenke.href}
+            target={lenke.isExternal ? '_blank' : ''}
+            rel={lenke.isExternal ? 'noopener' : ''}
+            onClick={e => lenke?.onClick && lenke?.onClick(e)}
+        >
+            <Dropdown.Menu.List.Item>{lenke.name}</Dropdown.Menu.List.Item>
+        </a>
     );
 };
 
