@@ -80,7 +80,6 @@ export const Søk = ({
                     utløserSøk={utløserSøk}
                     size={size}
                     onClear={() => {
-                        // document.getElementById(inputId)?.focus();
                         nullstillInput(true);
                     }}
                 />
