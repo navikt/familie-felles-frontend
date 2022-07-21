@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-clipboard@4.0.2...@navikt/familie-clipboard@5.0.0) (2022-07-21)
+
+
+* Nytt designbibliotek - clipboard, header og dokumentliste (#525) ([84197be](https://github.com/navikt/familie-felles-frontend/commit/84197bee616f261053d8379a2551c7aad8ebb19f)), closes [#525](https://github.com/navikt/familie-felles-frontend/issues/525)
+
+
+### BREAKING CHANGES
+
+* familie-clipboard
+
+* feat(familie-dokumentliste): byttet til NAVs nye designsystem for familie-dokumentliste
+
+affects: @navikt/familie-dokumentliste
+* familie-dokumentliste
+
+* feat(familie-header): bytte til NAVs nye designbibliotek for familie-header
+
+affects: @navikt/familie-form-elements, @navikt/familie-header
+* familie-header
+
+* fix(familie-header): isExternal-lenker skal åpnes i ny fane. Samlet kode som er lik til egen kompone
+
+affects: @navikt/familie-header
+
+* Fjern utkommentert kode
+
+
+
+
+
 ## [4.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-clipboard@4.0.1...@navikt/familie-clipboard@4.0.2) (2022-07-12)
 
 **Note:** Version bump only for package @navikt/familie-clipboard
