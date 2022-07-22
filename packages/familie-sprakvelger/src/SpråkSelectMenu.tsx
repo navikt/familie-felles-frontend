@@ -1,10 +1,9 @@
 import React, { FC } from 'react';
 import { Menu, MenuItem } from 'react-aria-menubutton';
 import styled from 'styled-components';
-import navFarger from 'nav-frontend-core';
 
 import { LocaleType, sprakTittel } from './typer';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 
 const StyledListe = styled.ul`
     padding-left: 0;
@@ -26,14 +25,14 @@ const StyledListe = styled.ul`
 const StyledMenuItem = styled(MenuItem)`
     padding: 0.5rem 1rem;
     background-color: #ffffff;
-    border-bottom: 1px solid ${navFarger.navGra20};
-    border-left: 1px solid ${navFarger.navGra20};
-    border-right: 1px solid ${navFarger.navGra20};
+    border-bottom: 1px solid var(--navds-global-color-gray-300);
+    border-left: 1px solid var(--navds-global-color-gray-300);
+    border-right: 1px solid var(--navds-global-color-gray-300);
 
     :hover,
     :focus {
         outline: none;
-        background-color: ${navFarger.navBla};
+        background-color: var(--navds-global-color-blue-500);
         color: #fff;
     }
 
@@ -46,7 +45,9 @@ const SelectMenuItem: FC<{ locale: LocaleType }> = ({ locale }) => {
     return (
         <li value={locale}>
             <StyledMenuItem>
-                <Normaltekst key={locale}>{sprakTittel[locale]}</Normaltekst>
+                <BodyShort size={'small'} key={locale}>
+                    {sprakTittel[locale]}
+                </BodyShort>
             </StyledMenuItem>
         </li>
     );

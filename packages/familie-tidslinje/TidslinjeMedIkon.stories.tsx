@@ -4,8 +4,7 @@ import styled from 'styled-components';
 
 import '@navikt/ds-css';
 import { Eu, NorwegianFlag } from '@navikt/ds-icons';
-import { Detail } from '@navikt/ds-react';
-import { ToggleKnapp } from 'nav-frontend-toggle';
+import { Detail, Switch } from '@navikt/ds-react';
 
 const TidlinjeContainer = styled.div`
     & div.tidslinje .eøs {
@@ -126,9 +125,9 @@ export const ClickableWithIcon = (args: TidslinjeProps) => {
     return (
         <>
             <div>
-                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                <Switch checked={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
-                </ToggleKnapp>
+                </Switch>
             </div>
             <TidlinjeContainer>
                 <h2>Klikkbare perioder</h2>
@@ -155,9 +154,9 @@ export const NotClickableWithIcon = (args: TidslinjeProps) => {
     return (
         <>
             <div>
-                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                <Switch checked={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
-                </ToggleKnapp>
+                </Switch>
             </div>
             <h2>Perioder ikke klikkbare</h2>
             <p>

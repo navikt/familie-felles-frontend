@@ -1,5 +1,6 @@
-import { Element, Normaltekst } from 'nav-frontend-typografi';
 import React from 'react';
+import { BodyShort, Label } from '@navikt/ds-react';
+import '@navikt/ds-css';
 
 export interface ILesefeltProps {
     className?: string;
@@ -10,8 +11,8 @@ export interface ILesefeltProps {
 export const FamilieLesefelt: React.FC<ILesefeltProps> = ({ className, label, verdi }) => {
     return (
         <div className={className}>
-            {label !== undefined && <Element children={label} />}
-            <Normaltekst children={verdi} />
+            {label !== undefined && <Label size={'small'} children={label} />}
+            <BodyShort size={'small'} children={verdi} />
         </div>
     );
 };

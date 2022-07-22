@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
-import { ToggleKnapp } from 'nav-frontend-toggle';
-
 import { Periode, Tidslinje, TidslinjeProps } from './src';
+import { Switch } from '@navikt/ds-react';
 
 export default {
     title: 'Komponenter/Tidslinje',
@@ -107,15 +106,15 @@ export const BasicClickable = (args: TidslinjeProps) => {
     return (
         <>
             <div>
-                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                <Switch checked={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
-                </ToggleKnapp>
-                <ToggleKnapp
-                    pressed={retningSynkende}
+                </Switch>
+                <Switch
+                    checked={retningSynkende}
                     onClick={() => settRetningSynkende(!retningSynkende)}
                 >
                     Synkende
-                </ToggleKnapp>
+                </Switch>
             </div>
             <div>
                 <h2>Klikkbare perioder</h2>
@@ -144,15 +143,15 @@ export const BasicNotClickable = (args: TidslinjeProps) => {
     return (
         <>
             <div>
-                <ToggleKnapp pressed={kompakt} onClick={() => settKompakt(!kompakt)}>
+                <Switch checked={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
-                </ToggleKnapp>
-                <ToggleKnapp
-                    pressed={retningSynkende}
+                </Switch>
+                <Switch
+                    checked={retningSynkende}
                     onClick={() => settRetningSynkende(!retningSynkende)}
                 >
                     Synkende
-                </ToggleKnapp>
+                </Switch>
             </div>
             <div>
                 <h2>Perioder ikke klikkbare</h2>

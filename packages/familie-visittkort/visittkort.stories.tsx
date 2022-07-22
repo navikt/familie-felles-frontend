@@ -10,7 +10,7 @@ export default {
     title: 'Komponenter/Visittkort',
 };
 
-export const visittkort = ({...args}) => {
+export const visittkort = ({ ...args }) => {
     return (
         <Visittkort
             alder={30}
@@ -22,10 +22,9 @@ export const visittkort = ({...args}) => {
     );
 };
 
-
 visittkort.args = {
     alder: 30,
     kjønn: kjønnType.KVINNE,
     navn: 'Mock McMockface',
     ident: '12345678910',
-}
+};

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { Normaltekst } from 'nav-frontend-typografi';
 import { SpråkSelectMenu } from './SpråkSelectMenu';
-import navFarger from 'nav-frontend-core';
 import { Button, Wrapper } from 'react-aria-menubutton';
 import { useSprakContext } from './SprakContext';
 import { LocaleType, sprakTittel } from './typer';
 import { Globe, Expand, Collapse } from '@navikt/ds-icons';
 import { SkjultLabel } from '@navikt/familie-form-elements';
 import { hentSprakvelgerLabelTekst } from './utils';
+import { BodyShort } from '@navikt/ds-react';
 
 const StyledWrapper = styled(Wrapper)`
     position: relative;
@@ -21,14 +20,14 @@ const StyledButton = styled(Button)`
     align-items: center;
     outline: none;
     border-radius: 0.25rem;
-    border: 3px solid ${navFarger.navGra40};
+    border: 3px solid var(--navds-global-color-gray-400);
 
     &:focus {
-        border: solid 3px ${navFarger.fokusFarge};
+        border: solid 3px var(--navds-global-color-blue-800);
     }
 `;
 
-const StyledNormalTekst = styled(Normaltekst)`
+const StyledNormalTekst = styled(BodyShort)`
     padding: 0 1.22rem;
     flex-grow: 1;
 `;
@@ -66,7 +65,9 @@ export const Sprakvelger: React.FC<{ støttedeSprak: LocaleType[]; className?: s
             </SkjultLabel>
             <StyledButton id="språkvelger" value={valgtLocale}>
                 <Globe role="img" focusable={false} aria-hidden={true} />
-                <StyledNormalTekst>{sprakTittel[valgtLocale as LocaleType]}</StyledNormalTekst>
+                <StyledNormalTekst size={'small'}>
+                    {sprakTittel[valgtLocale as LocaleType]}
+                </StyledNormalTekst>
                 {erÅpen ? (
                     <StyledCollapse role="img" focusable={false} aria-hidden={true} />
                 ) : (

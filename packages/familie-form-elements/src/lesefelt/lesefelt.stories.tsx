@@ -9,10 +9,10 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieLesefelt',
 };
 
-export const FamilieLesefeltStory: React.FC = ({...args}) => {
+export const FamilieLesefeltStory: React.FC = ({ ...args }) => {
     return (
         <div className={'story-elements'}>
-            <FamilieLesefelt label={'Label'} verdi={'Verdi'} {...args}/>
+            <FamilieLesefelt label={'Label'} verdi={'Verdi'} {...args} />
         </div>
     );
 };

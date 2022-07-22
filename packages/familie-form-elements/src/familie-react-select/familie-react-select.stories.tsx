@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../stories.less';
 import { FamilieReactSelect, ISelectOption } from './FamilieReactSelect';
-import { ToggleKnapp } from 'nav-frontend-toggle';
+import { Switch } from '@navikt/ds-react';
 
 export default {
     component: FamilieReactSelect,
@@ -16,7 +16,7 @@ const options: ISelectOption[] = [
     { value: 'SVERIGE', label: 'Sverige' },
 ];
 
-export const FamilieReactSelectStory: React.FC = ({...args}) => {
+export const FamilieReactSelectStory: React.FC = ({ ...args }) => {
     const [land, settLand] = useState<ISelectOption[]>([]);
     const [lesevisning, settLesevisning] = useState(false);
     const [multi, settMulti] = useState(true);
@@ -25,19 +25,19 @@ export const FamilieReactSelectStory: React.FC = ({...args}) => {
 
     return (
         <>
-            <div className={'story-elements'}>
-                <ToggleKnapp pressed={lesevisning} onClick={() => settLesevisning(!lesevisning)}>
+            <div className={'story-elements switch-gruppe'}>
+                <Switch checked={lesevisning} onClick={() => settLesevisning(!lesevisning)}>
                     Lesevisning
-                </ToggleKnapp>
-                <ToggleKnapp pressed={feil} onClick={() => settFeil(!feil)}>
+                </Switch>
+                <Switch checked={feil} onClick={() => settFeil(!feil)}>
                     Feil
-                </ToggleKnapp>
-                <ToggleKnapp pressed={multi} onClick={() => settMulti(!multi)}>
+                </Switch>
+                <Switch checked={multi} onClick={() => settMulti(!multi)}>
                     Multiselect
-                </ToggleKnapp>
-                <ToggleKnapp pressed={creatable} onClick={() => settCreatable(!creatable)}>
+                </Switch>
+                <Switch checked={creatable} onClick={() => settCreatable(!creatable)}>
                     Creatable
-                </ToggleKnapp>
+                </Switch>
             </div>
             <div className={'story-elements'}>
                 <FamilieReactSelect
