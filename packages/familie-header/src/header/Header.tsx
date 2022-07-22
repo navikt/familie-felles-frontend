@@ -48,7 +48,6 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
             {popoverItems && (
                 <Dropdown.Menu>
                     <Dropdown.Menu.List>
-
                         {popoverItems.map((lenke, index) => {
                             return <DropdownLenke key={index} lenke={lenke} />;
                         })}
