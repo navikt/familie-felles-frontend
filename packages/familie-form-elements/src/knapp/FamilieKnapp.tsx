@@ -1,30 +1,31 @@
-import { Knapp, KnappBaseProps } from 'nav-frontend-knapper';
 import React from 'react';
+import { Button, ButtonProps } from '@navikt/ds-react';
+import '@navikt/ds-css';
 
-export interface IKnappProps extends KnappBaseProps {
+export interface IKnappProps extends ButtonProps {
     erLesevisning: boolean;
+    spinner?: boolean;
 }
 
 export const FamilieKnapp: React.FC<IKnappProps> = ({
     children,
     className,
     erLesevisning,
-    mini,
+    loading,
     onClick,
     spinner,
     type,
     ...props
 }) => {
     return !erLesevisning ? (
-        <Knapp
+        <Button
             className={className}
-            mini={mini}
             onClick={onClick}
-            spinner={spinner}
+            loading={spinner || loading}
             type={type}
             {...props}
         >
             {children}
-        </Knapp>
+        </Button>
     ) : null;
 };

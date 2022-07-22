@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
 import { ISODateString } from 'nav-datovelger/lib/types';
-import { Normaltekst } from 'nav-frontend-typografi';
-import { ToggleKnapp } from 'nav-frontend-toggle';
 
 import '../../stories.less';
 import { FamilieDatovelger } from '..';
+import { BodyShort, Switch } from '@navikt/ds-react';
 
 export default {
     component: FamilieDatovelger,
@@ -22,13 +21,13 @@ export const FamilieDatovelgerStory: React.FC = ({ ...args }) => {
 
     return (
         <>
-            <div className={'story-elements'}>
-                <ToggleKnapp pressed={lesevisning} onClick={() => settLesevisning(!lesevisning)}>
+            <div className={'story-elements switch-gruppe'}>
+                <Switch checked={lesevisning} onClick={() => settLesevisning(!lesevisning)}>
                     Lesevisning
-                </ToggleKnapp>
-                <ToggleKnapp pressed={medFeil} onClick={() => settMedFeil(!medFeil)}>
+                </Switch>
+                <Switch checked={medFeil} onClick={() => settMedFeil(!medFeil)}>
                     Feil
-                </ToggleKnapp>
+                </Switch>
             </div>
             <div className={'story-elements'}>
                 <FamilieDatovelger
@@ -39,9 +38,9 @@ export const FamilieDatovelgerStory: React.FC = ({ ...args }) => {
                     }}
                     feil={medFeil ? 'Denne har feil' : undefined}
                     description={
-                        <Normaltekst>
+                        <BodyShort size={'small'}>
                             Dette er en beskrivelse, f.eks. (format: dd.mm.åååå)
-                        </Normaltekst>
+                        </BodyShort>
                     }
                     valgtDato={valgtDato}
                     erLesesvisning={lesevisning}

@@ -3,11 +3,8 @@ import React, { ReactNode } from 'react';
 import ReactSelect, { Props, StylesConfig } from 'react-select';
 import Creatable from 'react-select/creatable';
 import styled from 'styled-components';
-
-import navFarger from 'nav-frontend-core';
-import { Label } from 'nav-frontend-skjema';
-import { Feilmelding } from 'nav-frontend-typografi';
-import { omit } from 'nav-frontend-js-utils';
+import '@navikt/ds-css';
+import { ErrorMessage, Label, omit } from '@navikt/ds-react';
 
 export interface IProps extends Props<{ label: string; value: string }, true | false> {
     erLesevisning?: boolean;
@@ -26,57 +23,60 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
         ...provided,
         border:
             feil && !state.isFocused
-                ? `1px solid ${navFarger.redError}`
-                : `1px solid ${navFarger.navGra60}`,
+                ? `1px solid var(--navds-global-color-red-500)`
+                : `1px solid var(--navds-global-color-gray-600)`,
         borderRadius: '4px',
         boxShadow: state.isFocused
-            ? `0 0 0 3px ${navFarger.fokusFarge}`
+            ? `0 0 0 3px var(--navds-global-color-blue-800)`
             : feil
-                ? `0 0 0 1px ${navFarger.redError}`
-                : '',
+            ? `0 0 0 1px var(--navds-global-color-red-500)`
+            : '',
         ':hover': {
-            border: `1px solid ${navFarger.navBla}`,
+            border: `1px solid var(--navds-global-color-blue-500)`,
         },
     }),
     placeholder: provided => ({
         ...provided,
-        color: navFarger.navGra60,
+        color: 'var(--navds-global-color-gray-600)',
     }),
-    dropdownIndicator: provided => (
-        erLesevisning ? { display: 'none' }
+    dropdownIndicator: provided =>
+        erLesevisning
+            ? { display: 'none' }
             : {
-                ...provided,
-                color: 'initial',
-                ':hover': {
-                    color: 'initial',
-                },
-            }),
-    clearIndicator: provided => (
-        erLesevisning ? { display: 'none' }
+                  ...provided,
+                  color: 'initial',
+                  ':hover': {
+                      color: 'initial',
+                  },
+              },
+    clearIndicator: provided =>
+        erLesevisning
+            ? { display: 'none' }
             : {
-                ...provided,
-                color: navFarger.navGra60,
-                ':hover': {
-                    color: navFarger.navMorkGra,
-                },
-            }),
+                  ...provided,
+                  color: 'var(--navds-global-color-gray-600)',
+                  ':hover': {
+                      color: 'var(--navds-global-color-gray-900)',
+                  },
+              },
     multiValue: (provided, _) => ({
         ...provided,
-        backgroundColor: navFarger.navBlaLighten80,
+        backgroundColor: 'var(--navds-global-color-blue-100)',
         maxWidth: '18rem',
     }),
-    multiValueRemove: provided => (
-        erLesevisning ? { display: 'none' }
+    multiValueRemove: provided =>
+        erLesevisning
+            ? { display: 'none' }
             : {
-                ...provided,
-                ':hover': {
-                    backgroundColor: navFarger.navBla,
-                    color: 'white',
-                },
-            }),
+                  ...provided,
+                  ':hover': {
+                      backgroundColor: 'var(--navds-global-color-blue-500)',
+                      color: 'white',
+                  },
+              },
 });
 
-const StyledFeilmelding = styled(Feilmelding)`
+const StyledFeilmelding = styled(ErrorMessage)`
     margin-top: 0.5rem;
 `;
 
@@ -99,15 +99,25 @@ export const FamilieReactSelect: React.FC<IProps> = ({
     propSelectStyles,
     ...props
 }) => {
-
-    const propsWithoutStyles = omit(props, "styles");
+    const propsWithoutStyles = omit(props, ['styles']);
 
     const id = `react-select-${label}`;
-    const stylesCombined:StylesConfig = {...navSelectStyles(feil, erLesevisning), ...propSelectStyles};
+    const stylesCombined: StylesConfig = {
+        ...navSelectStyles(feil, erLesevisning),
+        ...propSelectStyles,
+    };
 
     return (
         <Container>
-            {typeof label === 'string' ? <Label htmlFor={id}>{label}</Label> : label}
+            {typeof label === 'string' ? (
+                <label htmlFor={id}>
+                    <Label size={'small'} spacing={true}>
+                        {label}
+                    </Label>
+                </label>
+            ) : (
+                label
+            )}
             {creatable ? (
                 <Creatable
                     formatCreateLabel={() => `Opprett`}
@@ -133,7 +143,7 @@ export const FamilieReactSelect: React.FC<IProps> = ({
                 />
             )}
 
-            {feil && <StyledFeilmelding>{feil}</StyledFeilmelding>}
+            {feil && <StyledFeilmelding size={'small'}>{feil}</StyledFeilmelding>}
         </Container>
     );
 };

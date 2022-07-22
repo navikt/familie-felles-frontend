@@ -1,17 +1,13 @@
 import { Datepicker as NavDatovelger } from 'nav-datovelger';
-
+import '@navikt/ds-css';
+import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import dayjs from 'dayjs';
 import styled from 'styled-components';
-import classNames from 'classnames';
-
 import { ISODateString } from 'nav-datovelger/lib/types';
 import { DatepickerProps } from 'nav-datovelger/lib/Datepicker';
-import navFarger from 'nav-frontend-core';
-import { Label } from 'nav-frontend-skjema';
-import { Feilmelding } from 'nav-frontend-typografi';
-
 import { FamilieLesefelt } from '../lesefelt';
+import { ErrorMessage, Label } from '@navikt/ds-react';
 
 export interface IDatovelgerProps {
     className?: string;
@@ -30,13 +26,13 @@ export interface IDatovelgerProps {
 const Container = styled.div`
     &.harfeilifelt {
         .nav-datovelger__input {
-            border: 1px solid ${navFarger.redError};
-            box-shadow: 0 0 0 1px ${navFarger.redError};
+            border: 1px solid var(--navds-global-color-red-500);
+            box-shadow: 0 0 0 1px var(--navds-global-color-red-500);
         }
         .nav-datovelger__kalenderknapp {
-            border-top: 1px solid ${navFarger.redError};
-            border-right: 1px solid ${navFarger.redError};
-            border-bottom: 1px solid ${navFarger.redError};
+            border-top: 1px solid var(--navds-global-color-red-500);
+            border-right: 1px solid var(--navds-global-color-red-500);
+            border-bottom: 1px solid var(--navds-global-color-red-500);
         }
     }
 `;
@@ -46,7 +42,7 @@ const DescriptionContainer = styled.div`
     margin-top: -0.3rem;
 `;
 
-const StyledFeilmelding = styled(Feilmelding)`
+const StyledFeilmelding = styled(ErrorMessage)`
     margin-top: 0.5rem;
 `;
 
@@ -76,7 +72,11 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
     } else {
         return (
             <Container className={classNames(className, feil ? 'harfeilifelt' : '')}>
-                <Label children={label} htmlFor={id} />
+                <label htmlFor={id}>
+                    <Label size={'small'} spacing={true}>
+                        {label}
+                    </Label>
+                </label>
                 {description && <DescriptionContainer>{description}</DescriptionContainer>}
                 <NavDatovelger
                     {...props}
@@ -90,7 +90,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
                     value={valgtDato}
                     onChange={onChange}
                 />
-                {feil && <StyledFeilmelding>{feil}</StyledFeilmelding>}
+                {feil && <StyledFeilmelding size={'small'}>{feil}</StyledFeilmelding>}
             </Container>
         );
     }
