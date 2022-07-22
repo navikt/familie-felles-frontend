@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-form-elements",
-    "version": "4.0.3",
+    "version": "5.0.0",
     "main": "dist/index.js",
     "author": "NAV",
     "license": "MIT",
@@ -31,6 +31,7 @@
         "nav-frontend-knapper-style": "^2.1.1",
         "nav-frontend-lenker": "^2.0.1",
         "nav-frontend-lenker-style": "^2.0.1",
+        "nav-frontend-paneler-style": "^2.0.1",
         "nav-frontend-skjema": "^4.0.5",
         "nav-frontend-skjema-style": "^3.0.2",
         "nav-frontend-paneler-style": "^2.0.1",

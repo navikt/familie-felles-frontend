@@ -1,5 +1,5 @@
 {
-    "version": "3.0.2",
+    "version": "3.0.3",
     "name": "@navikt/familie-skjema",
     "type": "module",
     "author": "NAV",
@@ -32,8 +32,8 @@
         "hashids": "^2.2.10"
     },
     "devDependencies": {
-        "@navikt/familie-form-elements": "^4.0.3",
-        "@navikt/ds-react": "^0.19.x"
+        "@navikt/familie-form-elements": "^5.0.0",
+        "nav-frontend-skjema": "4.0.5"
     },
     "peerDependencies": {
         "react": "17.x || 18.x"

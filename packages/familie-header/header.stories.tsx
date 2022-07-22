@@ -16,6 +16,9 @@ export default {
         componentSubtitle: 'Header for team familie.',
     },
     title: 'Komponenter/Header',
+    onClick: () => {
+        alert('Du har klikket på tittelknappen');
+    },
 };
 
 const saksbehandler: Brukerinfo = {
@@ -26,6 +29,9 @@ const saksbehandler: Brukerinfo = {
 const popover: PopoverItem = {
     name: 'Logg ut',
     href: '#',
+    onClick: () => {
+        alert('Du har nå logget ut');
+    },
 };
 
 const eksterneLenkerForStory = [
