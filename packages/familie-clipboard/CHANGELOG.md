@@ -3,6 +3,57 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-clipboard@5.0.0...@navikt/familie-clipboard@6.0.0) (2022-07-22)
+
+
+* Nytt designbibliotek form-elements mm.  (#526) ([38f2cfc](https://github.com/navikt/familie-felles-frontend/commit/38f2cfcb05744c7fb8b509186c4b7e95dc9172e1)), closes [#526](https://github.com/navikt/familie-felles-frontend/issues/526)
+
+
+### BREAKING CHANGES
+
+* familie-clipboard
+
+* feat(familie-dokumentliste): byttet til NAVs nye designsystem for familie-dokumentliste
+
+affects: @navikt/familie-dokumentliste
+* familie-dokumentliste
+
+* feat(familie-header): bytte til NAVs nye designbibliotek for familie-header
+
+affects: @navikt/familie-form-elements, @navikt/familie-header
+* familie-header
+
+* feat(familie-visittkort): byttet til NAVs nye designbibliotek for familie-visittkort
+
+affects: @navikt/familie-visittkort
+
+* style(failie-tidslinje): fjern bruk av gammelt designbibliotek i familie-tidslinje
+
+affects: @navikt/familie-tidslinje
+
+* style(familie-sprakvelger): byttet til å bruke NAVs nye designbibliotek i familie-sprakvelger
+
+affects: @navikt/familie-sprakvelger
+
+* feat(familie-skjema): bruke NAVs nye designsystem i familie-skjema
+
+affects: @navikt/familie-skjema
+
+* refactor(familie-tidslinje): fjern avhengighet til gammelt designsystem i devdependencies for famili
+
+affects: @navikt/familie-skjema, @navikt/familie-tidslinje
+
+* feat(familie-form-elements): oppdatert lesefelt, knapp, datovelger og react-select til nyeste design
+
+affects: @navikt/familie-form-elements
+* familie-form-elements
+
+* Fjern unødig space
+
+
+
+
+
 # [5.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-clipboard@4.0.2...@navikt/familie-clipboard@5.0.0) (2022-07-21)
 
 
