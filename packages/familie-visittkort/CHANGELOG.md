@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@4.0.0...@navikt/familie-visittkort@4.0.1) (2022-08-04)
+
+
+### Bug Fixes
+
+* **visittkort:** sender med klassenavn så style kan overskrives ([#529](https://github.com/navikt/familie-felles-frontend/issues/529)) ([43b9ad4](https://github.com/navikt/familie-felles-frontend/commit/43b9ad42508611c5a2977549acf204f5bdb1dc4e))
+
+
+
+
+
 # [4.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@3.0.5...@navikt/familie-visittkort@4.0.0) (2022-07-22)
 
 
