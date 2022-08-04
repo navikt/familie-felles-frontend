@@ -42,7 +42,7 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
     ValgfrittIkon,
 }) => {
     return (
-        <StyledVisittkort>
+        <StyledVisittkort className={'visittkort'}>
             {ValgfrittIkon ? (
                 <ValgfrittIkon className={'visittkort__ikon'} width={32} heigth={32} />
             ) : (
