@@ -1,5 +1,4 @@
 import { Datepicker as NavDatovelger } from 'nav-datovelger';
-import '@navikt/ds-css';
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import dayjs from 'dayjs';

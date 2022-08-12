@@ -3,7 +3,6 @@ import React, { ReactNode } from 'react';
 import ReactSelect, { Props, StylesConfig } from 'react-select';
 import Creatable from 'react-select/creatable';
 import styled from 'styled-components';
-import '@navikt/ds-css';
 import { ErrorMessage, Label, omit } from '@navikt/ds-react';
 
 export interface IProps extends Props<{ label: string; value: string }, true | false> {
