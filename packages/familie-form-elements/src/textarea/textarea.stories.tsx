@@ -12,9 +12,10 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieTextarea',
 };
 
-export const FamilieTextareaStory: React.FC = ({...args}) => {
-    const [lesevisning, settLesevisning] = useState(true);
-    const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
+export const FamilieTextareaStory: React.FC = ({ ...args }) => {
+    const [lesevisning, settLesevisning] = useState(false);
+    const [knappTekst, settKnappTekst] = useState('Vis med lesevisning');
+    const [kontrollertVerdi, settKontrollertVerdi] = useState('Eksempelverdi');
 
     const onClickToggleKnapp = () => {
         if (lesevisning) {
@@ -25,6 +26,7 @@ export const FamilieTextareaStory: React.FC = ({...args}) => {
             settKnappTekst('Fjern lesevisning');
         }
     };
+    console.log({ kontrollertVerdi });
 
     return (
         <>
@@ -32,7 +34,23 @@ export const FamilieTextareaStory: React.FC = ({...args}) => {
                 <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
             </div>
             <div className={'story-elements'}>
-                <FamilieTextarea erLesevisning={lesevisning} value={'value'} onChange={() => {}} {...args}/>
+                <FamilieTextarea
+                    label={'Eksempel med kontrollert verdi'}
+                    erLesevisning={lesevisning}
+                    value={kontrollertVerdi}
+                    onChange={event => settKontrollertVerdi(event.target.value)}
+                    {...args}
+                />
+            </div>
+            <div className={'story-elements'}>
+                <FamilieTextarea
+                    label={'Eksempel uten kontrollert verdi'}
+                    erLesevisning={lesevisning}
+                    onBlur={event => {
+                        console.log(event.target.value);
+                    }}
+                    {...args}
+                />
             </div>
         </>
     );
