@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../../stories.less';
 import { FamilieReactSelect, ISelectOption } from './FamilieReactSelect';
 import { Switch } from '@navikt/ds-react';
+import '@navikt/ds-css';
 
 export default {
     component: FamilieReactSelect,
