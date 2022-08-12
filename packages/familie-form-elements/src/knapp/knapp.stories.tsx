@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FamilieKnapp } from '..';
 import '../../stories.less';
 import { Switch } from '@navikt/ds-react';
+//import '@navikt/ds-css';
 
 export default {
     component: FamilieKnapp,
