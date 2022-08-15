@@ -1,4 +1,5 @@
 import React from 'react';
+import '@navikt/ds-css';
 import { FamilieLesefelt } from './FamilieLesefelt';
 
 export default {

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Switch } from '@navikt/ds-react';
+import '@navikt/ds-css';
 import { FamilieKnapp } from '..';
 import '../../stories.less';
-import { Switch } from '@navikt/ds-react';
 
 export default {
     component: FamilieKnapp,

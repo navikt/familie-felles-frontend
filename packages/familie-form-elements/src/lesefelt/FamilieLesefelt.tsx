@@ -1,6 +1,5 @@
 import React from 'react';
 import { BodyShort, Label } from '@navikt/ds-react';
-import '@navikt/ds-css';
 
 export interface ILesefeltProps {
     className?: string;

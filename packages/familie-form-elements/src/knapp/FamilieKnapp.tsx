@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, ButtonProps } from '@navikt/ds-react';
-import '@navikt/ds-css';
 
 export interface IKnappProps extends ButtonProps {
     erLesevisning: boolean;

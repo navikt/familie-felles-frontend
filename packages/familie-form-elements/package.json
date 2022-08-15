@@ -21,6 +21,7 @@
     "dependencies": {
         "@navikt/ds-css": "^0.18.x",
         "@navikt/ds-react": "^0.19.x",
+        "@navikt/ds-tokens": "^0.9.x",
         "@navikt/fnrvalidator": "^1.3.0",
         "@types/classnames": "^2.3.1",
         "@types/react-select": "^5.0.1",

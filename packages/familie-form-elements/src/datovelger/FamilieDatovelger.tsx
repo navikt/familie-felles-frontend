@@ -1,5 +1,4 @@
 import { Datepicker as NavDatovelger } from 'nav-datovelger';
-import '@navikt/ds-css';
 import classNames from 'classnames';
 import React, { ReactNode } from 'react';
 import dayjs from 'dayjs';
@@ -8,6 +7,7 @@ import { ISODateString } from 'nav-datovelger/lib/types';
 import { DatepickerProps } from 'nav-datovelger/lib/Datepicker';
 import { FamilieLesefelt } from '../lesefelt';
 import { ErrorMessage, Label } from '@navikt/ds-react';
+import { NavdsSemanticColorInteractionDanger } from '@navikt/ds-tokens/dist/tokens';
 
 export interface IDatovelgerProps {
     className?: string;
@@ -26,13 +26,13 @@ export interface IDatovelgerProps {
 const Container = styled.div`
     &.harfeilifelt {
         .nav-datovelger__input {
-            border: 1px solid var(--navds-global-color-red-500);
-            box-shadow: 0 0 0 1px var(--navds-global-color-red-500);
+            border: 1px solid ${NavdsSemanticColorInteractionDanger};
+            box-shadow: 0 0 0 1px ${NavdsSemanticColorInteractionDanger};
         }
         .nav-datovelger__kalenderknapp {
-            border-top: 1px solid var(--navds-global-color-red-500);
-            border-right: 1px solid var(--navds-global-color-red-500);
-            border-bottom: 1px solid var(--navds-global-color-red-500);
+            border-top: 1px solid ${NavdsSemanticColorInteractionDanger};
+            border-right: 1px solid ${NavdsSemanticColorInteractionDanger};
+            border-bottom: 1px solid ${NavdsSemanticColorInteractionDanger};
         }
     }
 `;
