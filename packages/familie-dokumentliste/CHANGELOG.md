@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@3.0.0...@navikt/familie-dokumentliste@3.0.1) (2022-08-17)
+
+
+### Bug Fixes
+
+* **dokumentliste:** Venstrejusterer tekst i dokumentlisten ([#541](https://github.com/navikt/familie-felles-frontend/issues/541)) ([ce99c86](https://github.com/navikt/familie-felles-frontend/commit/ce99c86febed3da70df8a138217d97062dc7b7f0))
+
+
+
+
+
 # [3.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@2.1.2...@navikt/familie-dokumentliste@3.0.0) (2022-07-21)
 
 
