@@ -31,7 +31,7 @@ const dokumenterForStory: DokumentProps[] = [
     {
         dokumentinfoId: '12344',
         journalpostId: '23454',
-        tittel: 'Dokument 2',
+        tittel: 'Et litt lengre navn på et dokument som går over to linjer',
         journalposttype: Journalposttype.U,
         dato: '2020-12-05',
         logiskeVedlegg: [

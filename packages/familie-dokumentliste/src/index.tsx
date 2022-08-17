@@ -50,6 +50,7 @@ const StyledDokumentnavn = styled(Label)`
     color: var(--navds-global-color-blue-500);
     grid-area: tittel;
     display: flex;
+    text-align: left;
 `;
 
 interface JournalpostikonProps {
