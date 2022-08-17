@@ -3,11 +3,11 @@ import * as React from 'react';
 import { ILogiskVedlegg } from '@navikt/familie-typer';
 import { Detail } from '@navikt/ds-react';
 
-
 const LogiskVedleggWrapper = styled.ul`
     grid-area: vedlegg;
     padding-left: 16px;
     list-style-type: circle;
+    text-align: left;
 `;
 export const LogiskeVedlegg: React.FC<{ logiskeVedlegg: ILogiskVedlegg[] | undefined }> = ({
     logiskeVedlegg,
@@ -16,9 +16,7 @@ export const LogiskeVedlegg: React.FC<{ logiskeVedlegg: ILogiskVedlegg[] | undef
         {logiskeVedlegg &&
             logiskeVedlegg.map((logiskVedlegg, index) => (
                 <li>
-                    <Detail key={logiskVedlegg.tittel + index}>
-                        {logiskVedlegg.tittel}
-                    </Detail>
+                    <Detail key={logiskVedlegg.tittel + index}>{logiskVedlegg.tittel}</Detail>
                 </li>
             ))}
     </LogiskVedleggWrapper>
