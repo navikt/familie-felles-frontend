@@ -24,7 +24,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/ds-css": "^0.18.x",
+        "@navikt/ds-css": "^1.0.x",
         "@navikt/ds-icons": "^0.8.x",
         "@navikt/ds-react": "^0.19.x",
         "@navikt/familie-ikoner": "^4.0.2",
