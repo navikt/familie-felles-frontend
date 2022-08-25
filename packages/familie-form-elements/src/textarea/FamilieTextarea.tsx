@@ -14,16 +14,17 @@ export const FamilieTextarea: React.FC<IFamilieTextareaProps> = ({
     label,
     tekstLesevisning = 'Ingen opplysninger oppgitt.',
     value,
+    size,
     ...props
 }) => {
     return erLesevisning ? (
         value === '' ? (
             <BodyShort className={className} children={tekstLesevisning} />
         ) : (
-            <FamilieLesefelt className={className} label={label} verdi={value} />
+            <FamilieLesefelt className={className} label={label} verdi={value} size={size} />
         )
     ) : (
-        <Textarea className={className} label={label} value={value} {...props}>
+        <Textarea className={className} label={label} value={value} size={size} {...props}>
             {children}
         </Textarea>
     );

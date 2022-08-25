@@ -1,5 +1,5 @@
-import { Checkbox, CheckboxProps } from 'nav-frontend-skjema';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort, Checkbox, CheckboxProps } from '@navikt/ds-react';
+
 import React from 'react';
 import classNames from 'classnames';
 
@@ -11,24 +11,17 @@ export const FamilieCheckbox: React.FC<ICheckboxProps> = ({
     checked,
     className,
     erLesevisning,
-    label,
-    onChange,
+    children,
     ...props
 }) => {
     return erLesevisning ? (
         checked ? (
-            <Normaltekst
+            <BodyShort
                 className={classNames('skjemaelement', 'lese-felt', className)}
-                children={label}
+                children={children}
             />
         ) : null
     ) : (
-        <Checkbox
-            className={className}
-            label={label}
-            onChange={onChange}
-            checked={checked}
-            {...props}
-        />
+        <Checkbox className={className} children={children} checked={checked} {...props} />
     );
 };

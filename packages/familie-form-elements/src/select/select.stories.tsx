@@ -1,4 +1,4 @@
-import { Knapp } from 'nav-frontend-knapper';
+import { Button } from '@navikt/ds-react';
 import React, { useState } from 'react';
 import '../../stories.less';
 import { FamilieSelect } from './FamilieSelect';
@@ -11,35 +11,35 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieSelect',
 };
 
-export const FamilieSelectStory: React.FC = ({...args}) => {
-    const [lesevisning, settLesevisning] = useState(true);
-    const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
+export const FamilieSelectStory: React.FC = ({ ...args }) => {
+    const [lesevisning, settLesevisning] = useState(false);
     const [valgtOption, settValgtOption] = useState('');
+
+    const knappTekst = lesevisning ? 'Fjern lesevisning' : 'Vis med lesevisning';
 
     const onClickToggleKnapp = () => {
         if (lesevisning) {
             settLesevisning(false);
-            settKnappTekst('Vis med lesevisning');
         } else {
             settLesevisning(true);
-            settKnappTekst('Fjern lesevisning');
         }
     };
 
     return (
         <>
             <div className={'story-elements'}>
-                <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
+                <Button onClick={onClickToggleKnapp}>{knappTekst}</Button>
             </div>
             <div className={'story-elements'}>
                 <FamilieSelect
+                    label="Eksempel"
                     erLesevisning={lesevisning}
                     lesevisningVerdi={valgtOption}
-                    bredde={'l'}
                     onChange={e => settValgtOption(e.target.value)}
                     value={valgtOption}
                     {...args}
                 >
+                    <option value="">Velg</option>
                     <option>Valg1</option>
                     <option>Valg2</option>
                 </FamilieSelect>

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Knapp } from 'nav-frontend-knapper';
+import { Button } from '@navikt/ds-react';
 import React, { useState } from 'react';
 import '../../stories.less';
 import { FamilieTextarea } from './FamilieTextarea';
@@ -14,16 +14,15 @@ export default {
 
 export const FamilieTextareaStory: React.FC = ({ ...args }) => {
     const [lesevisning, settLesevisning] = useState(false);
-    const [knappTekst, settKnappTekst] = useState('Vis med lesevisning');
     const [kontrollertVerdi, settKontrollertVerdi] = useState('Eksempelverdi');
+
+    const knappTekst = lesevisning ? 'Fjern lesevisning' : 'Vis med lesevisning';
 
     const onClickToggleKnapp = () => {
         if (lesevisning) {
             settLesevisning(false);
-            settKnappTekst('Vis med lesevisning');
         } else {
             settLesevisning(true);
-            settKnappTekst('Fjern lesevisning');
         }
     };
     console.log({ kontrollertVerdi });
@@ -31,7 +30,7 @@ export const FamilieTextareaStory: React.FC = ({ ...args }) => {
     return (
         <>
             <div className={'story-elements'}>
-                <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
+                <Button onClick={onClickToggleKnapp}>{knappTekst}</Button>
             </div>
             <div className={'story-elements'}>
                 <FamilieTextarea

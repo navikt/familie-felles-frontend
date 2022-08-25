@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { Label, SkjemaelementFeilmelding } from 'nav-frontend-skjema';
+import { Label, ErrorMessage } from '@navikt/ds-react';
 import { Årvelger } from './ÅrVelger';
 import { MånedVelger } from './MånedVelger';
 
@@ -13,7 +13,6 @@ export interface IMånedÅrProps {
     feilmelding?: string;
     erLesevisning?: boolean;
     disabled?: boolean;
-    id: string;
 }
 
 const StyledMånedvelger = styled.div`
@@ -28,7 +27,6 @@ export const FlexDiv = styled.div`
     flex-wrap: wrap;
 `;
 
-
 export const MånedÅrVelger: React.FC<IMånedÅrProps> = ({
     label,
     årMånedInitiell,
@@ -38,13 +36,12 @@ export const MånedÅrVelger: React.FC<IMånedÅrProps> = ({
     feilmelding,
     erLesevisning = false,
     disabled = false,
-    id
 }) => {
     const [år, settÅr] = useState(
-        årMånedInitiell ? parseInt(årMånedInitiell.split('-')[0], 10) : undefined
+        årMånedInitiell ? parseInt(årMånedInitiell.split('-')[0], 10) : undefined,
     );
     const [måned, settMåned] = useState(
-        årMånedInitiell ? årMånedInitiell.split('-')[1] : undefined
+        årMånedInitiell ? årMånedInitiell.split('-')[1] : undefined,
     );
 
     // Får uendelig loop hvis onEndret blir en del av effekten
@@ -54,28 +51,28 @@ export const MånedÅrVelger: React.FC<IMånedÅrProps> = ({
         } else {
             onEndret(undefined);
         }
-    }, [år, måned]); // eslint-disable-line react-hooks/exhaustive-deps
-
-    const idForInput = `mnd-år-velger-${id}`
+    }, [år, måned]);
 
     return (
         <>
-            <div>
-                {typeof label === 'string' ? <Label htmlFor={idForInput}>{label}</Label> : label}
-            </div>
+            <div>{typeof label === 'string' ? <Label>{label}</Label> : label}</div>
             <FlexDiv>
                 <StyledMånedvelger>
                     <MånedVelger
+                        label="Velg måned"
+                        hideLabel
                         value={måned}
-                        onChange={(e) => settMåned(e.currentTarget.value)}
+                        onChange={e => settMåned(e.currentTarget.value)}
                         erLesevisning={erLesevisning}
                         disabled={disabled}
                     />
                 </StyledMånedvelger>
                 <StyledÅrvelger>
                     <Årvelger
+                        label="Velg år"
+                        hideLabel
                         value={år}
-                        onChange={(e) => settÅr(parseInt(e.currentTarget.value, 10))}
+                        onChange={e => settÅr(parseInt(e.currentTarget.value, 10))}
                         antallÅrTilbake={antallÅrTilbake}
                         antallÅrFrem={antallÅrFrem}
                         erLesevisning={erLesevisning}
@@ -83,7 +80,7 @@ export const MånedÅrVelger: React.FC<IMånedÅrProps> = ({
                     />
                 </StyledÅrvelger>
             </FlexDiv>
-            {feilmelding && <SkjemaelementFeilmelding>{feilmelding}</SkjemaelementFeilmelding>}
+            {feilmelding && <ErrorMessage>{feilmelding}</ErrorMessage>}
         </>
     );
 };

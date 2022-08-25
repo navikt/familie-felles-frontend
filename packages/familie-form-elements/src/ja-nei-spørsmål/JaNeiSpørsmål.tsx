@@ -1,5 +1,5 @@
 import React, { ReactNode, useState, Ref } from 'react';
-import { RadioPanelGruppe } from 'nav-frontend-skjema';
+import { Radio, RadioGroup, RadioGroupProps } from '@navikt/ds-react';
 import styled from 'styled-components';
 import { ESvar } from './typer';
 
@@ -9,16 +9,13 @@ type LabelTekstForJaNei = {
     vetikke?: ReactNode;
 };
 
-export interface JaNeiSpørsmålProps {
+export interface JaNeiSpørsmålProps extends Omit<RadioGroupProps, 'children'> {
     onChange: (value: ESvar) => void;
-    legend: ReactNode;
-    name: string;
     labelTekstForRadios: LabelTekstForJaNei;
     initiellVerdi: ESvar | null;
-    feil?: ReactNode;
 }
 
-const StyledRadioPanelGruppe = styled(RadioPanelGruppe)`
+const StyledRadioPanelGruppe = styled(RadioGroup)`
     && label:not(:last-child) {
         margin-bottom: 1rem;
     }
@@ -31,8 +28,18 @@ const Capitalized = styled.span`
 `;
 
 export const JaNeiSpørsmål = React.forwardRef(
-    (props: JaNeiSpørsmålProps, ref: Ref<RadioPanelGruppe> | undefined) => {
-        const { legend, name, onChange, labelTekstForRadios, feil, initiellVerdi } = props;
+    (props: JaNeiSpørsmålProps, ref: Ref<HTMLFieldSetElement> | undefined) => {
+        const {
+            legend,
+            name,
+            onChange,
+            labelTekstForRadios,
+            error,
+            initiellVerdi,
+            size,
+            required,
+            description,
+        } = props;
 
         const [checked, setChecked] = useState<ESvar | null>(initiellVerdi);
 
@@ -60,15 +67,21 @@ export const JaNeiSpørsmål = React.forwardRef(
             <StyledRadioPanelGruppe
                 legend={legend}
                 name={name}
-                radios={radios}
-                checked={checked ?? undefined}
-                onChange={(_event, value) => {
+                value={checked ?? undefined}
+                onChange={value => {
                     setChecked(value);
                     onChange(value);
                 }}
-                feil={feil}
+                error={error}
                 ref={ref}
-            />
+                size={size}
+                required={required}
+                description={description}
+            >
+                {radios.map(radio => (
+                    <Radio value={radio.value}>{radio.label}</Radio>
+                ))}
+            </StyledRadioPanelGruppe>
         );
     },
 );

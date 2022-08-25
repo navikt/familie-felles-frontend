@@ -1,8 +1,8 @@
 import React from 'react';
 import { FamilieSelect } from '../select';
-import { SelectProps } from 'nav-frontend-skjema';
+import { SelectProps } from '@navikt/ds-react';
 
-export interface IMånedProps extends Omit<SelectProps, 'children'>{
+export interface IMånedProps extends Omit<SelectProps, 'children'> {
     value: string | undefined;
     erLesevisning?: boolean;
 }
@@ -23,14 +23,10 @@ const månedValg = [
 ];
 
 const månedsnavnForNummer = (value: string | undefined) => {
-    return value ? månedValg.find((mnd) => mnd.mndNr === value)?.verdi : '';
-}
+    return value ? månedValg.find(mnd => mnd.mndNr === value)?.verdi : '';
+};
 
-export const MånedVelger: React.FC<IMånedProps> = ({
-    value,
-    erLesevisning = false,
-    ...props
-}) => {
+export const MånedVelger: React.FC<IMånedProps> = ({ value, erLesevisning = false, ...props }) => {
     return (
         <FamilieSelect
             erLesevisning={erLesevisning}
@@ -39,7 +35,7 @@ export const MånedVelger: React.FC<IMånedProps> = ({
             {...props}
         >
             <option value="">Måned</option>
-            {månedValg.map((mnd) => (
+            {månedValg.map(mnd => (
                 <option value={mnd.mndNr} key={mnd.mndNr}>
                     {mnd.verdi}
                 </option>
@@ -47,4 +43,3 @@ export const MånedVelger: React.FC<IMånedProps> = ({
         </FamilieSelect>
     );
 };
-

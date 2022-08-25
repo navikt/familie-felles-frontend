@@ -2,7 +2,7 @@ import React from 'react';
 
 import styled from 'styled-components';
 
-import { Label } from 'nav-frontend-skjema';
+import { Label } from '@navikt/ds-react';
 
 const StyledLabel = styled(Label)`
     position: absolute;
@@ -11,6 +11,7 @@ const StyledLabel = styled(Label)`
 
 export interface SkjultLabelProps {
     htmlFor: string;
+    children: React.ReactNode;
 }
 
 export const SkjultLabel: React.FC<SkjultLabelProps> = ({ htmlFor, children }) => (

@@ -1,5 +1,5 @@
-import { Select, SelectProps } from 'nav-frontend-skjema';
 import React from 'react';
+import { Select, SelectProps } from '@navikt/ds-react';
 import { FamilieLesefelt } from '../lesefelt';
 
 export interface IFamilieSelectProps extends SelectProps {
@@ -8,31 +8,30 @@ export interface IFamilieSelectProps extends SelectProps {
 }
 
 export const FamilieSelect: React.FC<IFamilieSelectProps> = ({
-    bredde,
     children,
     className,
     erLesevisning = false,
     label,
     lesevisningVerdi,
-    name,
-    onChange,
     value,
+    size,
+    hideLabel,
     ...props
 }) => {
     return erLesevisning ? (
         <FamilieLesefelt
-            label={label}
+            label={!hideLabel && label}
             verdi={lesevisningVerdi ? lesevisningVerdi : value}
             className={className}
+            size={size}
         />
     ) : (
         <Select
-            bredde={bredde}
             className={className}
             label={label}
-            name={name}
-            onChange={onChange}
             value={value}
+            size={size}
+            hideLabel={hideLabel}
             {...props}
         >
             {children}
