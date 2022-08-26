@@ -1,6 +1,5 @@
-import { Knapp } from 'nav-frontend-knapper';
-import { Radio } from 'nav-frontend-skjema';
 import React, { useState } from 'react';
+import { Button, Radio } from '@navikt/ds-react';
 import '../../stories.less';
 import { FamilieRadioGruppe } from './FamilieRadioGruppe';
 
@@ -12,9 +11,9 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieRadioGruppe',
 };
 
-export const FamilieRadioGruppeStory: React.FC = ({...args}) => {
-    const [lesevisning, settLesevisning] = useState(true);
-    const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
+export const FamilieRadioGruppeStory: React.FC = ({ ...args }) => {
+    const [lesevisning, settLesevisning] = useState(false);
+    const [knappTekst, settKnappTekst] = useState('Vis med lesevisning');
 
     const onClickToggleKnapp = () => {
         if (lesevisning) {
@@ -29,12 +28,16 @@ export const FamilieRadioGruppeStory: React.FC = ({...args}) => {
     return (
         <>
             <div className={'story-elements'}>
-                <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
+                <Button onClick={onClickToggleKnapp}>{knappTekst}</Button>
             </div>
             <div className={'story-elements'}>
-                <FamilieRadioGruppe erLesevisning={lesevisning} {...args}>
-                    <Radio label={'Radio1'} name={'radio1'} />
-                    <Radio label={'Radio2'} name={'radio2'} />
+                <FamilieRadioGruppe
+                    legend={'Eksempel på radiogruppe'}
+                    erLesevisning={lesevisning}
+                    {...args}
+                >
+                    <Radio children={'Radio1'} value={'Radio1'} name={'radio1'} />
+                    <Radio children={'Radio2'} value={'Radio2'} name={'radio2'} />
                 </FamilieRadioGruppe>
             </div>
         </>

@@ -1,42 +1,31 @@
-import { Input, InputProps } from 'nav-frontend-skjema';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort, TextField, TextFieldProps } from '@navikt/ds-react';
 import React from 'react';
 import { FamilieLesefelt } from '../lesefelt';
 
-export interface IFamilieInputProps extends InputProps {
+export interface IFamilieInputProps extends TextFieldProps {
     erLesevisning?: boolean;
     tekstLesevisning?: string;
 }
 
 export const FamilieInput: React.FC<IFamilieInputProps> = ({
-    bredde,
+    size,
     className,
     children,
     erLesevisning = false,
     label,
-    onChange,
-    placeholder,
     tekstLesevisning = 'Ingen opplysninger oppgitt.',
     value,
     ...props
 }) => {
     return erLesevisning ? (
         value === '' ? (
-            <Normaltekst className={className} children={tekstLesevisning} />
+            <BodyShort className={className} children={tekstLesevisning} />
         ) : (
-            <FamilieLesefelt className={className} label={label} verdi={value} />
+            <FamilieLesefelt size={size} className={className} label={label} verdi={value} />
         )
     ) : (
-        <Input
-            bredde={bredde}
-            className={className}
-            label={label}
-            onChange={onChange}
-            placeholder={placeholder}
-            value={value}
-            {...props}
-        >
+        <TextField size={size} className={className} label={label} value={value} {...props}>
             {children}
-        </Input>
+        </TextField>
     );
 };

@@ -1,8 +1,8 @@
 import React from 'react';
 import { FamilieSelect } from '../select';
-import { SelectProps } from 'nav-frontend-skjema';
+import { SelectProps } from '@navikt/ds-react';
 
-export interface IÅrProps extends Omit<SelectProps, 'children'>{
+export interface IÅrProps extends Omit<SelectProps, 'children'> {
     value: number | undefined;
     antallÅrFrem: number;
     antallÅrTilbake: number;
@@ -12,11 +12,15 @@ export interface IÅrProps extends Omit<SelectProps, 'children'>{
 const range = (start: number, end: number): number[] =>
     Array.from({ length: end - start }, (_, k) => k + start);
 
-const lagÅrOptions = (år: number | undefined, antallÅrFrem: number, antallÅrTilbake: number): number[] => {
+const lagÅrOptions = (
+    år: number | undefined,
+    antallÅrFrem: number,
+    antallÅrTilbake: number,
+): number[] => {
     const gjeldendeÅr = new Date().getFullYear();
     const start = år ? Math.min(år, gjeldendeÅr - antallÅrTilbake) : gjeldendeÅr - antallÅrTilbake;
     const slutt = år ? Math.max(år, gjeldendeÅr + antallÅrFrem) : gjeldendeÅr + antallÅrFrem;
-    return range(start, slutt)
+    return range(start, slutt);
 };
 
 export const Årvelger: React.FC<IÅrProps> = ({
@@ -24,7 +28,7 @@ export const Årvelger: React.FC<IÅrProps> = ({
     antallÅrFrem,
     antallÅrTilbake,
     erLesevisning = false,
-    bredde = 'xs',
+    size = 'small',
     ...props
 }) => {
     const årOptions = lagÅrOptions(value, antallÅrFrem, antallÅrTilbake);
@@ -36,7 +40,7 @@ export const Årvelger: React.FC<IÅrProps> = ({
             {...props}
         >
             <option value="">År</option>
-            {årOptions.map((verdi) => (
+            {årOptions.map(verdi => (
                 <option value={verdi} key={verdi}>
                     {verdi}
                 </option>
@@ -44,4 +48,3 @@ export const Årvelger: React.FC<IÅrProps> = ({
         </FamilieSelect>
     );
 };
-

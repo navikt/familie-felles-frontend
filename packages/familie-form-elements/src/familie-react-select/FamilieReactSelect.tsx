@@ -3,7 +3,17 @@ import React, { ReactNode } from 'react';
 import ReactSelect, { Props, StylesConfig } from 'react-select';
 import Creatable from 'react-select/creatable';
 import styled from 'styled-components';
-import '@navikt/ds-css';
+import {
+    NavdsSemanticColorInteractionDanger,
+    NavdsSemanticColorInteractionPrimaryHover,
+    NavdsSemanticColorBorder,
+    NavdsSemanticColorFocus,
+    NavdsSemanticColorText,
+    NavdsSemanticColorTextMuted,
+    NavdsSemanticColorTextInverted,
+    NavdsGlobalColorBlue100,
+    NavdsGlobalColorBlue500,
+} from '@navikt/ds-tokens/dist/tokens';
 import { ErrorMessage, Label, omit } from '@navikt/ds-react';
 
 export interface IProps extends Props<{ label: string; value: string }, true | false> {
@@ -23,21 +33,21 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
         ...provided,
         border:
             feil && !state.isFocused
-                ? `1px solid var(--navds-global-color-red-500)`
-                : `1px solid var(--navds-global-color-gray-600)`,
+                ? `1px solid ${NavdsSemanticColorInteractionDanger}`
+                : `1px solid ${NavdsSemanticColorBorder}`,
         borderRadius: '4px',
         boxShadow: state.isFocused
-            ? `0 0 0 3px var(--navds-global-color-blue-800)`
+            ? `0 0 0 3px ${NavdsSemanticColorFocus}`
             : feil
-            ? `0 0 0 1px var(--navds-global-color-red-500)`
+            ? `0 0 0 1px ${NavdsSemanticColorInteractionDanger}`
             : '',
         ':hover': {
-            border: `1px solid var(--navds-global-color-blue-500)`,
+            border: `1px solid ${NavdsSemanticColorInteractionPrimaryHover}`,
         },
     }),
     placeholder: provided => ({
         ...provided,
-        color: 'var(--navds-global-color-gray-600)',
+        color: NavdsSemanticColorTextMuted,
     }),
     dropdownIndicator: provided =>
         erLesevisning
@@ -54,14 +64,14 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
             ? { display: 'none' }
             : {
                   ...provided,
-                  color: 'var(--navds-global-color-gray-600)',
+                  color: NavdsSemanticColorTextMuted,
                   ':hover': {
-                      color: 'var(--navds-global-color-gray-900)',
+                      color: NavdsSemanticColorText,
                   },
               },
     multiValue: (provided, _) => ({
         ...provided,
-        backgroundColor: 'var(--navds-global-color-blue-100)',
+        backgroundColor: NavdsGlobalColorBlue100,
         maxWidth: '18rem',
     }),
     multiValueRemove: provided =>
@@ -70,8 +80,8 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
             : {
                   ...provided,
                   ':hover': {
-                      backgroundColor: 'var(--navds-global-color-blue-500)',
-                      color: 'white',
+                      backgroundColor: NavdsGlobalColorBlue500,
+                      color: NavdsSemanticColorTextInverted,
                   },
               },
 });

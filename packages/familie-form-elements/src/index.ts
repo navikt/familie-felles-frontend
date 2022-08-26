@@ -8,6 +8,5 @@ export * from './radiogruppe';
 export * from './select';
 export * from './familie-react-select';
 export * from './textarea';
-export * from './textareacontrolled';
 export * from './skjultLabel';
 export * from './ja-nei-spørsmål';

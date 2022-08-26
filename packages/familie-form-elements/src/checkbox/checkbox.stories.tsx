@@ -1,4 +1,4 @@
-import { Knapp } from 'nav-frontend-knapper';
+import { Button } from '@navikt/ds-react';
 import React, { useState } from 'react';
 import { FamilieCheckbox } from '..';
 import '../../stories.less';
@@ -11,34 +11,34 @@ export default {
     title: 'Komponenter/Form-elementer/FamilieCheckbox',
 };
 
-export const FamilieCheckboxStory = ({...args}) => {
+export const FamilieCheckboxStory = ({ ...args }) => {
     const [lesevisning, settLesevisning] = useState(true);
-    const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
     const [checked, settChecked] = useState(false);
+
+    const knappTekst = lesevisning ? 'Fjern lesevisning' : 'Vis med lesevisning';
 
     const onClickToggleKnapp = () => {
         if (lesevisning) {
             settLesevisning(false);
-            settKnappTekst('Vis med lesevisning');
         } else {
             settLesevisning(true);
-            settKnappTekst('Fjern lesevisning');
         }
     };
 
     return (
         <>
             <div className={'story-elements'}>
-                <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
+                <Button onClick={onClickToggleKnapp}>{knappTekst}</Button>
             </div>
             <div className={'story-elements'}>
                 <FamilieCheckbox
-                    label={'FamilieCheckbox'}
                     checked={checked}
                     erLesevisning={lesevisning}
                     onChange={() => settChecked(prevState => !prevState)}
                     {...args}
-                />
+                >
+                    FamilieCheckbox
+                </FamilieCheckbox>
             </div>
         </>
     );

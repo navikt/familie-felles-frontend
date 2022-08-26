@@ -1,4 +1,4 @@
-import { Knapp } from 'nav-frontend-knapper';
+import { Button } from '@navikt/ds-react';
 import React, { useState } from 'react';
 import '../../stories.less';
 import { MånedÅrVelger } from './MånedÅrVelger';
@@ -6,12 +6,13 @@ import { MånedÅrVelger } from './MånedÅrVelger';
 export default {
     component: MånedÅrVelger,
     parameters: {
-        componentSubtitle: 'En måned-år-velger som kun vises dersom man ikke er i lesevisningsmodus',
+        componentSubtitle:
+            'En måned-år-velger som kun vises dersom man ikke er i lesevisningsmodus',
     },
     title: 'Komponenter/Form-elementer/MånedÅrVelger',
 };
 
-export const MånedårVelgerStory: React.FC = ({...args}) => {
+export const MånedårVelgerStory: React.FC = ({ ...args }) => {
     const [lesevisning, settLesevisning] = useState(true);
     const [knappTekst, settKnappTekst] = useState('Fjern lesevisning');
 
@@ -32,8 +33,8 @@ export const MånedårVelgerStory: React.FC = ({...args}) => {
         <>
             <div className={'story-elements'}>
                 <div>Formatet på initiell verdi og verdi som endres er 'mm-yyyy'</div>
-                <Knapp onClick={onClickToggleKnapp}>{knappTekst}</Knapp>
-                <Knapp onClick={() => settDisabled(!disabled)}>Toggle disabled</Knapp>
+                <Button onClick={onClickToggleKnapp}>{knappTekst}</Button>
+                <Button onClick={() => settDisabled(!disabled)}>Toggle disabled</Button>
             </div>
             <div className={'story-elements'}>
                 <MånedÅrVelger
@@ -42,11 +43,11 @@ export const MånedårVelgerStory: React.FC = ({...args}) => {
                     årMånedInitiell={årMånedVerdi}
                     antallÅrFrem={5}
                     antallÅrTilbake={5}
-                    id={'årMånedVelger-1'}
                     feilmelding={'Ugyldig verdi'}
                     label={'Velg år og måned'}
                     disabled={disabled}
-                    {...args}/>
+                    {...args}
+                />
             </div>
         </>
     );

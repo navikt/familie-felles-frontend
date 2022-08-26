@@ -19,7 +19,7 @@ const DivMedBredde = styled.div<{ bredde: string }>`
 `;
 
 interface Props {
-    bredde: number
+    bredde: number;
 }
 export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }) => {
     return (
@@ -43,7 +43,7 @@ export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }
                     legend={'Denne har feilmelding'}
                     name={'felt.medfeil'}
                     labelTekstForRadios={{ ja: 'Yes sir', nei: 'Nåneidu' }}
-                    feil={'Dette var ikke bra'}
+                    error={'Dette var ikke bra'}
                     initiellVerdi={null}
                 />
             </DivMedBredde>
@@ -58,15 +58,14 @@ export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }
                     initiellVerdi={null}
                 />
             </DivMedBredde>
-            <div>Du kan begrense bredde via knobs</div>
         </>
     );
 };
 
 // @ts-ignore
 FamilieJaNeiSpørsmålStory.args = {
-    bredde: 100
-}
+    bredde: 100,
+};
 
 // @ts-ignore
 FamilieJaNeiSpørsmålStory.argTypes = {
@@ -75,7 +74,7 @@ FamilieJaNeiSpørsmålStory.argTypes = {
             type: 'range',
             min: 10,
             max: 100,
-            step: 1
-        }
-    }
-}
+            step: 1,
+        },
+    },
+};

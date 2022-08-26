@@ -5,6 +5,7 @@ import { ISODateString } from 'nav-datovelger/lib/types';
 import '../../stories.less';
 import { FamilieDatovelger } from '..';
 import { BodyShort, Switch } from '@navikt/ds-react';
+import '@navikt/ds-css';
 
 export default {
     component: FamilieDatovelger,

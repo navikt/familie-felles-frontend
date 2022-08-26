@@ -1,32 +1,23 @@
-import { RadioGruppe, SkjemaGruppeProps } from 'nav-frontend-skjema';
 import React from 'react';
+import { RadioGroup, RadioGroupProps } from '@navikt/ds-react';
 import { FamilieLesefelt } from '../lesefelt';
 
-export interface IRadioGruppeProps extends SkjemaGruppeProps {
-    verdi?: string;
+export interface IRadioGruppeProps extends RadioGroupProps {
     erLesevisning: boolean;
 }
 export const FamilieRadioGruppe: React.FC<IRadioGruppeProps> = ({
     children,
     className,
     erLesevisning,
-    feil,
-    feilmeldingId,
     legend,
-    verdi,
+    value,
     ...props
 }) => {
     return erLesevisning ? (
-        <FamilieLesefelt className={className} label={legend} verdi={verdi} {...props} />
+        <FamilieLesefelt className={className} label={legend} verdi={value} {...props} />
     ) : (
-        <RadioGruppe
-            className={className}
-            feil={feil}
-            feilmeldingId={feilmeldingId}
-            legend={legend}
-            {...props}
-        >
+        <RadioGroup className={className} value={value} legend={legend} {...props}>
             {children}
-        </RadioGruppe>
+        </RadioGroup>
     );
 };
