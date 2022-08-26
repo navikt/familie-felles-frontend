@@ -21,30 +21,17 @@
     "dependencies": {
         "@navikt/ds-css": "^0.18.x",
         "@navikt/ds-react": "^0.19.x",
-        "@navikt/fnrvalidator": "^1.3.0",
+        "@navikt/ds-tokens": "^0.9.x",
         "@types/classnames": "^2.3.1",
         "@types/react-select": "^5.0.1",
         "classnames": "^2.3.1",
         "dayjs": "^1.11.3",
         "nav-datovelger": "^12.5.0",
-        "nav-frontend-core": "^6.0.1",
-        "nav-frontend-js-utils": "^1.0.20",
-        "nav-frontend-knapper": "^3.1.2",
-        "nav-frontend-knapper-style": "^2.1.1",
-        "nav-frontend-lenker": "^2.0.1",
-        "nav-frontend-lenker-style": "^2.0.1",
-        "nav-frontend-paneler-style": "^2.0.1",
-        "nav-frontend-skjema": "^4.0.5",
-        "nav-frontend-skjema-style": "^3.0.2",
-        "nav-frontend-toggle": "^2.1.2",
-        "nav-frontend-toggle-style": "^2.1.1",
-        "nav-frontend-typografi": "^4.0.1",
-        "nav-frontend-typografi-style": "^2.0.1",
         "react-select": "^5.4.0"
     },
     "devDependencies": {
         "@types/styled-components": "^5.1.25",
-        "react-day-picker": "7.4.10",
+        "react-day-picker": "8.1.3",
         "styled-components": "^5.3.5"
     },
     "peerDependencies": {
