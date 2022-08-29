@@ -8,6 +8,7 @@
         "bootstrap": "lerna bootstrap --use-workspaces --no-ci",
         "build": "lerna run build",
         "storybook": "start-storybook -p 8000",
+        "build-storybook": "build-storybook",
         "deploy-storybook": "storybook-to-ghpages",
         "lint": "eslint './packages/**/*.{js,ts,tsx}'",
         "lint:fix": "eslint './packages/**/*.{js,ts,tsx}' --fix",
