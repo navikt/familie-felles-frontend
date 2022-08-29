@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.0.0...@navikt/familie-form-elements@6.0.1) (2022-08-29)
+
+
+### Bug Fixes
+
+* **familie-form-elements:** inkluder fjernede avhengigheter som datovelgeren trenger ([#565](https://github.com/navikt/familie-felles-frontend/issues/565)) ([0e725fb](https://github.com/navikt/familie-felles-frontend/commit/0e725fbf98ec962d79a33781e82d9bfe538810a1))
+* **familie-form-elements:** legg tilbake enda flere avhengigheter som datovelger trenger ([#568](https://github.com/navikt/familie-felles-frontend/issues/568)) ([58d83a1](https://github.com/navikt/familie-felles-frontend/commit/58d83a118add66d35e52ee5d6318734399da07ed))
+
+
+
+
+
 # [6.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@5.0.0...@navikt/familie-form-elements@6.0.0) (2022-07-22)
 
 
