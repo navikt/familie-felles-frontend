@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.0.1...@navikt/familie-form-elements@6.1.0) (2022-08-29)
+
+
+### Features
+
+* **familie-form-elements:** oppgrader til v1 av designsystemet ([#569](https://github.com/navikt/familie-felles-frontend/issues/569)) ([ad04b4a](https://github.com/navikt/familie-felles-frontend/commit/ad04b4a9808f326de54f4097ac8dafbff8c9c690))
+
+
+
+
+
 ## [6.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.0.0...@navikt/familie-form-elements@6.0.1) (2022-08-29)
 
 
