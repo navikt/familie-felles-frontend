@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import { Periode, Tidslinje, TidslinjeProps } from './src';
 import { Switch } from '@navikt/ds-react';
+import '@navikt/ds-css';
 
 export default {
     title: 'Komponenter/Tidslinje',

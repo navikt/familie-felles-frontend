@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
-import '@navikt/ds-css';
 import { Dayjs } from 'dayjs';
 import { EnkelPeriode } from '../types.external';
 import { usePositionAndSize } from './usePositionAndSize';

@@ -1,5 +1,6 @@
 import React from 'react';
 import Clipboard from './src';
+import '@navikt/ds-css';
 
 export default {
     component: Clipboard,
@@ -9,7 +10,7 @@ export default {
     title: 'Komponenter/Clipboard',
 };
 
-export const standard = ({...args}) => {
+export const standard = ({ ...args }) => {
     return (
         <Clipboard {...args}>
             <div>12345678910</div>
