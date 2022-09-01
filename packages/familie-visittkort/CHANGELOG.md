@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@4.0.1...@navikt/familie-visittkort@4.0.2) (2022-09-01)
+
+
+### Bug Fixes
+
+* **tidslinje, skjema:** fikset import av ds-css i familie-tidslinje o… ([#575](https://github.com/navikt/familie-felles-frontend/issues/575)) ([fe821a2](https://github.com/navikt/familie-felles-frontend/commit/fe821a2083a47f68a517f94dd519f98dfae5d3b0))
+
+
+
+
+
 ## [4.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@4.0.0...@navikt/familie-visittkort@4.0.1) (2022-08-04)
 
 

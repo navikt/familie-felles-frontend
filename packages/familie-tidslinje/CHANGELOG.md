@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-tidslinje@2.0.0...@navikt/familie-tidslinje@2.0.1) (2022-09-01)
+
+
+### Bug Fixes
+
+* **tidslinje, skjema:** fikset import av ds-css i familie-tidslinje o… ([#575](https://github.com/navikt/familie-felles-frontend/issues/575)) ([fe821a2](https://github.com/navikt/familie-felles-frontend/commit/fe821a2083a47f68a517f94dd519f98dfae5d3b0))
+
+
+
+
+
 # [2.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-tidslinje@1.1.3...@navikt/familie-tidslinje@2.0.0) (2022-07-22)
 
 
