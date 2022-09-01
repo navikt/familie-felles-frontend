@@ -1,6 +1,7 @@
 import { kjønnType } from '@navikt/familie-typer';
 import React from 'react';
 import Visittkort from './src';
+import '@navikt/ds-css';
 
 export default {
     component: Visittkort,

@@ -4,7 +4,6 @@ import { kjønnType } from '@navikt/familie-typer';
 import * as React from 'react';
 import styled from 'styled-components';
 import { BodyShort, Label } from '@navikt/ds-react';
-import '@navikt/ds-css';
 import {
     NavdsGlobalColorGray700,
     NavdsSpacing2,

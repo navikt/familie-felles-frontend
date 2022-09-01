@@ -3,7 +3,6 @@ import React, { ReactChild, useEffect, useRef, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import ClipboardIcon from './ClipboardIcon';
 import { copyContentsToClipboard } from './util';
-import '@navikt/ds-css';
 import styled from 'styled-components';
 import { NavdsGlobalColorBlue800 } from '@navikt/ds-tokens/dist/tokens';
 
