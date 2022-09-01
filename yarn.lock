@@ -3661,6 +3661,11 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css/0.18.27/09aef1ba9b86cb9ca987e4f9427beb008f0ff9d44f670537e5afbf38f3aca761#77a464d3dc1299e8b64329d8e18f43a05a70c6f2"
   integrity sha512-JK+EqtuUcehxSRI6YqyZuVeDLXotoZLYmED6DM77+atCRvphpPDc9fQuzXkByI25s9crNdXaS0sRCXSYSS62yA==
 
+"@navikt/ds-icons@1.2.x":
+  version "1.2.4"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/1.2.4/7ab9697fb6d133c674b9c59aa16de15d7d2dd206#7ab9697fb6d133c674b9c59aa16de15d7d2dd206"
+  integrity sha512-5iJKhhEsHARrq82IwVPG5Ii9HAM2qyXB5wIcZVFCM+x2tav8aDkil5Ov1cP6CtqAao9M1qbyi3/t6BYyhSaXUQ==
+
 "@navikt/ds-icons@^0.5.4":
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.5.4.tgz#5b00f98f84da5cdb01f7b0dac9e4004d7d4bed0a"
@@ -3709,7 +3714,19 @@
     copy-to-clipboard "^3.3.1"
     react-merge-refs "^1.1.0"
 
-"@navikt/ds-react@0.19.19", "@navikt/ds-react@^0.19.19":
+"@navikt/ds-react@1.2.x":
+  version "1.2.3"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/1.2.3/fe3676fea3cc147b87725d89dfada9f0ffad52ff#fe3676fea3cc147b87725d89dfada9f0ffad52ff"
+  integrity sha512-yr/aNukIlVzzCOuGH5Z8srDQu44NapLnYPFEaUHyxpmWpAr4Xj9FKMom0dMY78mAEWW52ZwKDy7xsojAGQ751A==
+  dependencies:
+    "@floating-ui/react-dom-interactions" "0.9.2"
+    "@navikt/ds-icons" "^1.2.3"
+    "@radix-ui/react-tabs" "1.0.0"
+    "@radix-ui/react-toggle-group" "1.0.0"
+    clsx "^1.1.1"
+    react-modal "3.15.1"
+
+"@navikt/ds-react@^0.19.19":
   version "0.19.19"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-react/0.19.19/c963f8ab2058bcae1f4aada1173eeb751e94548b4ff85ff8561e9bf60e7295b4#642bfae05ce3cd1f3b6cbe023f63b05b172bd7ef"
   integrity sha512-dFLdHaFvpoRG3kDmm0fxHhDc2IBZkE1R7xDL72E1TqNjvJFgfqo5AuGFBmEbBqRxCswsICFVxvObMjx1LJCY3w==
@@ -3726,18 +3743,6 @@
     react-modal "3.14.3"
     react-popper "^2.2.5"
     uuid "^8.3.2"
-
-"@navikt/ds-react@1.2.x":
-  version "1.2.3"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/1.2.3/fe3676fea3cc147b87725d89dfada9f0ffad52ff#fe3676fea3cc147b87725d89dfada9f0ffad52ff"
-  integrity sha512-yr/aNukIlVzzCOuGH5Z8srDQu44NapLnYPFEaUHyxpmWpAr4Xj9FKMom0dMY78mAEWW52ZwKDy7xsojAGQ751A==
-  dependencies:
-    "@floating-ui/react-dom-interactions" "0.9.2"
-    "@navikt/ds-icons" "^1.2.3"
-    "@radix-ui/react-tabs" "1.0.0"
-    "@radix-ui/react-toggle-group" "1.0.0"
-    clsx "^1.1.1"
-    react-modal "3.15.1"
 
 "@navikt/ds-react@^0.19.25", "@navikt/ds-react@^0.19.x":
   version "0.19.25"
@@ -15280,11 +15285,6 @@ nav-frontend-skjema-style@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/nav-frontend-skjema-style/-/nav-frontend-skjema-style-3.0.3.tgz#ecb3ca762b7c04d603a3772f5dcf910c6715a7f5"
   integrity sha512-YCSQ+4M3tdg9wC1jgwABvi2CFQw5DD/I49LGuYGy1v8CPqZeuaoRIzbJr91kpdWxfyXaZM/eZdhTwPOsJlCkew==
-
-nav-frontend-skjema@4.0.5:
-  version "4.0.5"
-  resolved "https://registry.yarnpkg.com/nav-frontend-skjema/-/nav-frontend-skjema-4.0.5.tgz#ad2b569e4aba0ff2eaed69ec3c5fc9c4459ae531"
-  integrity sha512-rY/PycRYqBSpUk9rnePAJ9fd+QRBC3vbE8e5d9YKmxKeF5Q73azbb3hoHWjm0CfpeEgRttRDfbIWRFH2SPwvCw==
 
 nav-frontend-skjema@^4.0.x:
   version "4.0.6"

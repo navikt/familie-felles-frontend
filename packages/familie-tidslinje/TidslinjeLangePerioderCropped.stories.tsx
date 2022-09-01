@@ -5,6 +5,7 @@ import { Success, Error, Warning } from '@navikt/ds-icons';
 
 import { Periode, Tidslinje, TidslinjeProps } from './src';
 import { Switch } from '@navikt/ds-react';
+import '@navikt/ds-css';
 
 const StyledContainer = styled.div(
     (props: { kompakt: boolean }) => `
@@ -140,8 +141,8 @@ export default {
         },
         aktivtUtsnitt: {
             defaultValue: {
-                fom: new Date('2020-02-01'),
-                tom: new Date('2020-02-29'),
+                fom: new Date('2021-04-01'),
+                tom: new Date('2021-04-30'),
             },
         },
     },
