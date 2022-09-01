@@ -5,6 +5,7 @@ import ClipboardIcon from './ClipboardIcon';
 import { copyContentsToClipboard } from './util';
 import '@navikt/ds-css';
 import styled from 'styled-components';
+import { NavdsGlobalColorBlue800 } from '@navikt/ds-tokens/dist/tokens';
 
 export interface IProps {
     children: ReactChild;
@@ -31,7 +32,7 @@ const StyledButton = styled.button`
 
     :focus,
     :active {
-        outline: 0.1875rem solid var(--navds-global-color-blue-800);
+        outline: 0.1875rem solid ${NavdsGlobalColorBlue800};
     }
 `;
 

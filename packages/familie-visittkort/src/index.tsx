@@ -5,6 +5,11 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { BodyShort, Label } from '@navikt/ds-react';
 import '@navikt/ds-css';
+import {
+    NavdsGlobalColorGray700,
+    NavdsSpacing2,
+    NavdsSpacing4,
+} from '@navikt/ds-tokens/dist/tokens';
 
 export interface IkonProps {
     className?: string;
@@ -20,16 +25,16 @@ export interface IProps {
 }
 
 const StyledVisittkort = styled.div`
-    border-bottom: 1px solid var(--navds-global-color-gray-700);
+    border-bottom: 1px solid ${NavdsGlobalColorGray700};
     height: 3rem;
     width: 100%;
     display: flex;
     align-items: center;
     .visittkort__ikon {
-        padding-right: 0.5rem;
+        padding-right: ${NavdsSpacing2};
     }
     .visittkort__pipe {
-        padding: 0 1rem;
+        padding: 0 ${NavdsSpacing4};
     }
 `;
 
