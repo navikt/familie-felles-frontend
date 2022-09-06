@@ -1,4 +1,4 @@
-import { Button } from '@navikt/ds-react';
+import { BodyShort, Button } from '@navikt/ds-react';
 import React, { useState } from 'react';
 import { FamilieCheckbox } from '..';
 import '../../stories.less';
@@ -27,6 +27,11 @@ export const FamilieCheckboxStory = ({ ...args }) => {
 
     return (
         <>
+            <BodyShort>
+                OBS: prøv å unngå å bruke denne. Bruken av kontrollert <em>checked</em>-verdi er
+                deprecated. Bruk enten FamilieCheckboxGroup eller designsystemkomponenten Checkbox
+                direkte.
+            </BodyShort>
             <div className={'story-elements'}>
                 <Button onClick={onClickToggleKnapp}>{knappTekst}</Button>
             </div>
