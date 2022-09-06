@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.1.0...@navikt/familie-form-elements@6.2.0) (2022-09-06)
+
+
+### Features
+
+* **familie-form-elements:** legg til FamilieCheckboxGroup med lesevisning ([#580](https://github.com/navikt/familie-felles-frontend/issues/580)) ([2cb8a39](https://github.com/navikt/familie-felles-frontend/commit/2cb8a3996d4dbc654aa1c004a65b1b72e03c9700))
+
+
+
+
+
 # [6.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.0.1...@navikt/familie-form-elements@6.1.0) (2022-08-29)
 
 
