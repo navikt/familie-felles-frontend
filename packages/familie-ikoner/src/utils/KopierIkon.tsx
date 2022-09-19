@@ -7,12 +7,7 @@ interface IKopierIkon {
     width?: number;
 }
 
-export const KopierIkon: React.StatelessComponent<IKopierIkon> = ({
-    className,
-    heigth,
-    onClick,
-    width,
-}) => {
+export const KopierIkon: React.FC<IKopierIkon> = ({ className, heigth, onClick, width }) => {
     return (
         <svg
             aria-labelledby={'kopier'}
