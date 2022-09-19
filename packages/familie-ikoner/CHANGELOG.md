@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-ikoner@4.0.2...@navikt/familie-ikoner@4.0.3) (2022-09-19)
+
+
+### Bug Fixes
+
+* **ikoner:** fjerner bruk av StatelessComponent så typescript ikke skal klage ([#600](https://github.com/navikt/familie-felles-frontend/issues/600)) ([f6a7b35](https://github.com/navikt/familie-felles-frontend/commit/f6a7b35d978ded8dbf51c0afae20496e6e910479))
+
+
+
+
+
 ## [4.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-ikoner@4.0.1...@navikt/familie-ikoner@4.0.2) (2022-07-12)
 
 **Note:** Version bump only for package @navikt/familie-ikoner
