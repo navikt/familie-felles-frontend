@@ -2854,10 +2854,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@navikt/ds-css-internal@^0.7.x":
-  version "0.7.7"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-css-internal/0.7.7/ff5df8ad05bf734863dec441178200b680a41c41#ff5df8ad05bf734863dec441178200b680a41c41"
-  integrity sha512-GiWQ4m9ksagS8GN/ifCgVksOttiOW2eSfqnsuL9GNQaDbRQLpxSvmej2c2uTkgj3+fgpJi7f9rHdcQfDplOL0A==
+"@navikt/ds-css-internal@^1.3.x":
+  version "1.3.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css-internal/1.3.1/0d2fe05b8de6d2ef1807664a484b256bf44c5b22#0d2fe05b8de6d2ef1807664a484b256bf44c5b22"
+  integrity sha512-rrSFkqEUttTtEyjUPFIziEc7UPeuEwdZ0hXcImj1GkavMc3yfyfE/E2PiUT+n4ibHQwyl/mHqZa+Bx59NMzDBw==
 
 "@navikt/ds-css@1.2.x", "@navikt/ds-css@^1.2.6":
   version "1.2.6"
