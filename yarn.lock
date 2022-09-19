@@ -2864,7 +2864,7 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css/1.2.6/6f4f8571301674fe5f27e0531f4c78fad89d4ffb#6f4f8571301674fe5f27e0531f4c78fad89d4ffb"
   integrity sha512-5DJsDpzB56Fbnlg8hd7GqT55i0FxKazMCNYrIAbBx7LTZf/89ypSyUeZ+dJ9YVDHE3lXNByrIfocfVdIpNAwdA==
 
-"@navikt/ds-css@^0.18.26", "@navikt/ds-css@^0.18.x":
+"@navikt/ds-css@^0.18.x":
   version "0.18.29"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css/0.18.29/c8727d6240f87bdc41d83d1306b34ab892afbd96#c8727d6240f87bdc41d83d1306b34ab892afbd96"
   integrity sha512-nzJvSI5AYEYJhWqvYuWqnDWDpMkaPAfY/uL/4LLkdpsgyOnOfcLbZu3jrXMVrKMvpD2AKYNSDSG7f/r6bA+jpg==
@@ -2881,14 +2881,14 @@
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-icons@^0.8.18", "@navikt/ds-icons@^0.8.20", "@navikt/ds-icons@^0.8.x":
+"@navikt/ds-icons@^0.8.20", "@navikt/ds-icons@^0.8.x":
   version "0.8.20"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/0.8.20/b3c52f1839929d2e755b1ce6da44b4e02caf6f7e#b3c52f1839929d2e755b1ce6da44b4e02caf6f7e"
   integrity sha512-ftX5GHpH8WdGXfw94P5M3Nn1Bma/MI3TaL1zlMnXBoqs/lFo6V3BeKNTcGoFTE7mJLJDE8qrcvewCWK2E6pkgw==
   dependencies:
     uuid "^8.3.2"
 
-"@navikt/ds-react-internal@^0.14.20", "@navikt/ds-react-internal@^0.14.x":
+"@navikt/ds-react-internal@^0.14.x":
   version "0.14.28"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-react-internal/0.14.28/e0d8c27dee0b0d2ee0c85310f21941d602d6ffb2#e0d8c27dee0b0d2ee0c85310f21941d602d6ffb2"
   integrity sha512-aEld4Env9kZHmGD+SH+fia59RdHT7NiO+oMzh3Q26ML28UIpbiNM72bLmcu/6mkyBjxlUQD09T8JoiYxczUejQ==
@@ -2912,7 +2912,7 @@
     clsx "^1.1.1"
     react-modal "3.15.1"
 
-"@navikt/ds-react@^0.19.19", "@navikt/ds-react@^0.19.27", "@navikt/ds-react@^0.19.x":
+"@navikt/ds-react@^0.19.27", "@navikt/ds-react@^0.19.x":
   version "0.19.27"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-react/0.19.27/b04406abd8a5669841638c1fdc01db0962dcfb03#b04406abd8a5669841638c1fdc01db0962dcfb03"
   integrity sha512-CqiS6Lqhe2IaWTaZ8b4ZNx6lOAZ1+GcY1o2dh0xHUgjo9PGd3iHfSHevuekOxs/nHXHuvBWjne6bqZtBZ3JRUQ==
