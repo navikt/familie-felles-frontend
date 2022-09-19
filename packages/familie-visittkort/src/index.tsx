@@ -21,6 +21,7 @@ export interface IProps {
     kjønn: kjønnType;
     navn: string | React.ReactNode;
     ValgfrittIkon?: React.ComponentType<IkonProps>;
+    children?: React.ReactNode;
 }
 
 const StyledVisittkort = styled.div`
