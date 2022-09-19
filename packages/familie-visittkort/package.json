@@ -24,7 +24,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/ds-css": "1.2.x",
+        "@navikt/ds-css": "1.3.x",
         "@navikt/ds-react": "1.2.x",
         "@navikt/ds-tokens": "1.2.x",
         "@navikt/familie-clipboard": "^6.0.1",
