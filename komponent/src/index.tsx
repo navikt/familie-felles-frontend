@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const Komponent: React.SFC = () => {
+const Komponent: React.FC = () => {
     return <div>Hello world</div>;
 };
 
