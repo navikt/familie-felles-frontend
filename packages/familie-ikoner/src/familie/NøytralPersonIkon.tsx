@@ -6,11 +6,7 @@ interface INøytralPersonIkon {
     width?: number;
 }
 
-export const NøytralPersonIkon: React.StatelessComponent<INøytralPersonIkon> = ({
-    className,
-    heigth,
-    width,
-}) => {
+export const NøytralPersonIkon: React.FC<INøytralPersonIkon> = ({ className, heigth, width }) => {
     return (
         <svg
             aria-labelledby={'nøytralPerson'}
