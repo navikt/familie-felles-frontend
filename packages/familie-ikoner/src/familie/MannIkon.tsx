@@ -6,7 +6,7 @@ interface IMannIkon {
     width?: number;
 }
 
-export const MannIkon: React.StatelessComponent<IMannIkon> = ({ className, heigth, width }) => {
+export const MannIkon: React.FC<IMannIkon> = ({ className, heigth, width }) => {
     return (
         <svg
             aria-labelledby={'mann'}

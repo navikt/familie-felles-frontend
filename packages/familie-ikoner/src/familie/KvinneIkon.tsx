@@ -6,7 +6,7 @@ interface IKvinneIkon {
     width?: number;
 }
 
-export const KvinneIkon: React.StatelessComponent<IKvinneIkon> = ({ className, heigth, width }) => {
+export const KvinneIkon: React.FC<IKvinneIkon> = ({ className, heigth, width }) => {
     return (
         <svg
             aria-labelledby={'kvinne'}

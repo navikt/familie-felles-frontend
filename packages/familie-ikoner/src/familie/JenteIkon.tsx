@@ -6,7 +6,7 @@ interface IJenteIkon {
     width?: number;
 }
 
-export const JenteIkon: React.StatelessComponent<IJenteIkon> = ({ className, heigth, width }) => {
+export const JenteIkon: React.FC<IJenteIkon> = ({ className, heigth, width }) => {
     return (
         <svg
             aria-labelledby={'jente'}

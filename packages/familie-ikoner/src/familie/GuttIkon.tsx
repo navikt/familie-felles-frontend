@@ -6,7 +6,7 @@ interface IGuttIkon {
     width?: number;
 }
 
-export const GuttIkon: React.StatelessComponent<IGuttIkon> = ({ className, heigth, width }) => {
+export const GuttIkon: React.FC<IGuttIkon> = ({ className, heigth, width }) => {
     return (
         <svg
             aria-labelledby={'gutt'}
