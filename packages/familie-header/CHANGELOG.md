@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@5.0.1...@navikt/familie-header@6.0.0) (2022-09-20)
+
+
+### chore
+
+* **header:** tar i bruk versjon 1 av designsystemet ([#612](https://github.com/navikt/familie-felles-frontend/issues/612)) ([7fa3e1b](https://github.com/navikt/familie-felles-frontend/commit/7fa3e1b43a2007f0c9589ddf9bfc3458088ec77a))
+
+
+### BREAKING CHANGES
+
+* **header:** Ny versjon av designsystem. Vil dra inn ny styling som også treffer andre pakker
+
+
+
+
+
 ## [5.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@5.0.0...@navikt/familie-header@5.0.1) (2022-09-19)
 
 **Note:** Version bump only for package @navikt/familie-header
