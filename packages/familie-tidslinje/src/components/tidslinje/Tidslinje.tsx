@@ -9,6 +9,7 @@ import { EnkelPeriode, Etikett, Periode, Pin } from '../types.external';
 import { AxisLabel, InternalSimpleTimeline, PositionedPeriod } from '../types.internal';
 import { useSenesteDato, useTidligsteDato, useTidslinjerader } from './useTidslinjerader';
 import { Pins } from './Pins';
+import { NavdsSpacing3, NavdsSpacing4 } from '@navikt/ds-tokens/dist/tokens';
 
 export interface TidslinjeProps {
     /**
@@ -57,8 +58,8 @@ export interface TidslinjeProps {
 
 const TidslinjeStyle = styled.div`
     position: relative;
-    padding: 0.75rem 0;
-    margin: 0 1rem;
+    padding: ${NavdsSpacing3} 0;
+    margin: 0 ${NavdsSpacing4};
     display: flex;
     flex-direction: column;
     flex: 1;

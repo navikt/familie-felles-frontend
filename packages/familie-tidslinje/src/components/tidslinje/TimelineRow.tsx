@@ -3,15 +3,22 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 import { TimelinePeriod } from './TimelinePeriod';
 import { PositionedPeriod } from '../types.internal';
+import {
+    NavdsGlobalColorBlue50,
+    NavdsGlobalColorGray50,
+    NavdsSpacing4,
+    NavdsSpacing6,
+    NavdsSpacing8,
+} from '@navikt/ds-tokens/dist/tokens';
 
 const TimelineRowStyle = styled.div(
     (props: { kompakt?: boolean }) => `
     flex: 1;
-    height: ${props.kompakt ? 1.5 : 2}rem;
+    height: ${props.kompakt ? NavdsSpacing6 : NavdsSpacing8};
     display: flex;
     align-items: center;
     position: relative;
-    margin-bottom: ${props.kompakt ? 1 : 1.5}rem;
+    margin-bottom: ${props.kompakt ? NavdsSpacing4 : NavdsSpacing6};
 `,
 );
 
@@ -19,14 +26,14 @@ const EmptyRowHr = styled.hr(
     (props: { kompakt: boolean }) =>
         `
     flex: 1;
-    height: ${props.kompakt ? 1.5 : 2}rem;
+    height: ${props.kompakt ? NavdsSpacing6 : NavdsSpacing8};
     width: 100%;
     border: none;
-    background-color: #f8f8f8;
-    margin-bottom: ${props.kompakt ? 1 : 1.5}rem;
+    background-color: ${NavdsGlobalColorGray50};
+    margin-bottom: ${props.kompakt ? NavdsSpacing4 : NavdsSpacing6};
 
     &.aktivRad {
-        background-color: #e5f3ff;
+        background-color: ${NavdsGlobalColorBlue50};
     }
     `,
 );
