@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.2.1...@navikt/familie-form-elements@6.3.0) (2022-09-30)
+
+
+### Features
+
+* **familie-form-elements:** støtt ref forwarding i FamilieInput ([#628](https://github.com/navikt/familie-felles-frontend/issues/628)) ([a14100e](https://github.com/navikt/familie-felles-frontend/commit/a14100e93dd7553e1e4c2822f4832bc3480ce1e2))
+
+
+
+
+
 ## [6.2.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.2.0...@navikt/familie-form-elements@6.2.1) (2022-09-20)
 
 **Note:** Version bump only for package @navikt/familie-form-elements
