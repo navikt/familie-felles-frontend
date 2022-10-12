@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.3.1...@navikt/familie-form-elements@6.3.2) (2022-10-12)
+
+### Bug Fixes
+
+-   **Fikser warning om at 'Each child in a list should have a unique key':** fikser warning om at 'Eac ([#648](https://github.com/navikt/familie-felles-frontend/issues/648)) ([7393556](https://github.com/navikt/familie-felles-frontend/commit/739355664c8a130612eb7f42a1fd33af89a36170))
+
 ## [6.3.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.3.0...@navikt/familie-form-elements@6.3.1) (2022-10-12)
 
 **Note:** Version bump only for package @navikt/familie-form-elements
