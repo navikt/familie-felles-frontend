@@ -79,7 +79,7 @@ export const JaNeiSpørsmål = React.forwardRef(
                 description={description}
             >
                 {radios.map(radio => (
-                    <Radio value={radio.value}>{radio.label}</Radio>
+                    <Radio key={radio.value} value={radio.value}>{radio.label}</Radio>
                 ))}
             </StyledRadioPanelGruppe>
         );
