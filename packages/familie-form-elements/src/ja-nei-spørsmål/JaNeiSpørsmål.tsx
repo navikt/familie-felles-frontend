@@ -41,7 +41,7 @@ export const JaNeiSpørsmål = React.forwardRef(
             description,
         } = props;
 
-        const [checked, setChecked] = useState<ESvar | null>(initiellVerdi);
+        const [checked, setChecked] = useState<ESvar | ''>(initiellVerdi ?? '');
 
         let radios = [
             { label: <Capitalized>{labelTekstForRadios.ja}</Capitalized>, value: ESvar.JA },
