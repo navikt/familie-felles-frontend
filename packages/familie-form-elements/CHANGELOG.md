@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.3.2...@navikt/familie-form-elements@6.3.3) (2022-10-20)
+
+### Bug Fixes
+
+-   **FamilieInput,FamilieTextarea:** sikre at label vises i lesevisning… ([#656](https://github.com/navikt/familie-felles-frontend/issues/656)) ([f91e1e4](https://github.com/navikt/familie-felles-frontend/commit/f91e1e44d5a6f4dac3226d0b47099a59c2601f68))
+
 ## [6.3.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.3.1...@navikt/familie-form-elements@6.3.2) (2022-10-12)
 
 ### Bug Fixes
