@@ -21,7 +21,12 @@ export const FamilieInput: React.ForwardRefExoticComponent<
         ...restProps
     } = props;
     return erLesevisning ? (
-        <FamilieLesefelt size={size} className={className} label={label} verdi={value === '' ? tekstLesevisning : value} />
+        <FamilieLesefelt
+            size={size}
+            className={className}
+            label={label}
+            verdi={value === '' ? tekstLesevisning : value}
+        />
     ) : (
         <TextField
             size={size}

@@ -18,7 +18,12 @@ export const FamilieTextarea: React.FC<IFamilieTextareaProps> = ({
     ...props
 }) => {
     return erLesevisning ? (
-        <FamilieLesefelt className={className} label={label} verdi={value === '' ? tekstLesevisning : value} size={size} />
+        <FamilieLesefelt
+            className={className}
+            label={label}
+            verdi={value === '' ? tekstLesevisning : value}
+            size={size}
+        />
     ) : (
         <Textarea className={className} label={label} value={value} size={size} {...props}>
             {children}
