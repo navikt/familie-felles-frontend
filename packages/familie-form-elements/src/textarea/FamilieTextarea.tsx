@@ -1,5 +1,5 @@
 import React from 'react';
-import { BodyShort, Textarea, TextareaProps } from '@navikt/ds-react';
+import { Textarea, TextareaProps } from '@navikt/ds-react';
 import { FamilieLesefelt } from '../lesefelt';
 
 export interface IFamilieTextareaProps extends TextareaProps {
@@ -18,11 +18,12 @@ export const FamilieTextarea: React.FC<IFamilieTextareaProps> = ({
     ...props
 }) => {
     return erLesevisning ? (
-        value === '' ? (
-            <BodyShort className={className} children={tekstLesevisning} />
-        ) : (
-            <FamilieLesefelt className={className} label={label} verdi={value} size={size} />
-        )
+        <FamilieLesefelt
+            className={className}
+            label={label}
+            verdi={value === '' ? tekstLesevisning : value}
+            size={size}
+        />
     ) : (
         <Textarea className={className} label={label} value={value} size={size} {...props}>
             {children}

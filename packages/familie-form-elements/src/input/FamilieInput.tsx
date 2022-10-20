@@ -1,4 +1,4 @@
-import { BodyShort, TextField, TextFieldProps } from '@navikt/ds-react';
+import { TextField, TextFieldProps } from '@navikt/ds-react';
 import React, { forwardRef } from 'react';
 import { FamilieLesefelt } from '../lesefelt';
 
@@ -21,11 +21,12 @@ export const FamilieInput: React.ForwardRefExoticComponent<
         ...restProps
     } = props;
     return erLesevisning ? (
-        value === '' ? (
-            <BodyShort className={className} children={tekstLesevisning} />
-        ) : (
-            <FamilieLesefelt size={size} className={className} label={label} verdi={value} />
-        )
+        <FamilieLesefelt
+            size={size}
+            className={className}
+            label={label}
+            verdi={value === '' ? tekstLesevisning : value}
+        />
     ) : (
         <TextField
             size={size}
