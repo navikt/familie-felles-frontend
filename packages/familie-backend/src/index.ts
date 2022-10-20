@@ -16,7 +16,7 @@ export * from './config';
 export * from './typer';
 export * from './utils';
 export * from 'openid-client';
-export * from 'prom-client';
+export { Counter } from 'prom-client';
 
 export interface IApp {
     app: Express;
