@@ -24,7 +24,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@sanity/block-content-to-react": "^3.0.0",
+        "@portabletext/react": "^1.0.6",
         "@types/react-modal": "^3.13.1",
         "classnames": "^2.3.1",
         "react-modal": "^3.15.1",

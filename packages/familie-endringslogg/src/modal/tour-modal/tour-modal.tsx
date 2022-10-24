@@ -4,8 +4,8 @@ import ChevronLenke, { Direction } from '../../chevron-lenke/chevron-lenke';
 import Stegviser from '../../stegviser/stegviser';
 import { ModalType } from '../../utils/endringslogg-custom';
 // @ts-ignore
-import BlockContent from '@sanity/block-content-to-react';
 import { Heading, Modal } from '@navikt/ds-react';
+import { PortableText } from "@portabletext/react";
 
 interface TourModalProps {
     modal: ModalType;
@@ -77,7 +77,7 @@ const TourModal = (props: TourModalProps) => {
                         <Heading size="small">{step.slideHeader}</Heading>
                         {step.slideDescription && (
                             <div className={'tour-modal__main--tekst'}>
-                                <BlockContent blocks={step.slideDescription} />
+                                <PortableText value={step.slideDescription} />
                             </div>
                         )}
                     </div>
