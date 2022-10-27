@@ -46,7 +46,7 @@
         "https-proxy-agent": "^5.0.0",
         "openid-client": "^4.7.2",
         "passport": "^0.6.0",
-        "prom-client": "^13.1.0",
+        "prom-client": "^14.1.0",
         "redis": "^3.0.2",
         "request-promise": "^4.2.5",
         "snyk": "^1.473.0"
