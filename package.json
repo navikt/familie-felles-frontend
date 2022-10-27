@@ -44,7 +44,7 @@
         "classnames": "^2.3.2",
         "commitizen": "^4.2.5",
         "copyfiles": "^2.4.1",
-        "css-loader": "^5.0.1",
+        "css-loader": "^6.7.1",
         "cz-lerna-changelog": "^2.0.3",
         "eslint": "^8.25.0",
         "eslint-config-airbnb": "^19.0.4",
