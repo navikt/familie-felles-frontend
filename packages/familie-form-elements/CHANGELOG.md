@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.3.4 (2022-10-27)
+
+**Note:** Version bump only for package @navikt/familie-form-elements
+
 ## [6.3.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@6.3.2...@navikt/familie-form-elements@6.3.3) (2022-10-20)
 
 ### Bug Fixes

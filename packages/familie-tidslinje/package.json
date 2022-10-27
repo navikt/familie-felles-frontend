@@ -1,47 +1,47 @@
 {
-  "name": "@navikt/familie-tidslinje",
-  "version": "2.0.2",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "author": "NAV",
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/navikt/familie-felles-frontend"
-  },
-  "scripts": {
-    "build": "yarn run clean && yarn run copy-less && yarn run tsc",
-    "clean": "rm -rf ./dist",
-    "copy-less": "copyfiles -u 1 src/**/*.less dist",
-    "tsc": "tsc -p tsconfig.json",
-    "test": "jest"
-  },
-  "dependencies": {
-    "classnames": "^2.3.1",
-    "nanoid": "^4.0.0"
-  },
-  "peerDependencies": {
-    "@types/react": "17.x || 18.x",
-    "react": "17.x || 18.x",
-    "styled-components": "^5.x"
-  },
-  "devDependencies": {
-    "@navikt/ds-css": "1.3.x",
-    "@navikt/ds-icons": "1.3.x",
-    "@navikt/ds-react": "1.3.x",
-    "@navikt/ds-tokens": "1.3.x",
-    "css-loader": "^5.2.7",
-    "less-loader": "^11.0.0",
-    "mini-css-extract-plugin": "^2.6.1",
-    "style-loader": "^3.3.1",
-    "ts-loader": "^9.3.1"
-  }
+    "name": "@navikt/familie-tidslinje",
+    "version": "2.0.3",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "author": "NAV",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "dist"
+    ],
+    "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/navikt/familie-felles-frontend"
+    },
+    "scripts": {
+        "build": "yarn run clean && yarn run copy-less && yarn run tsc",
+        "clean": "rm -rf ./dist",
+        "copy-less": "copyfiles -u 1 src/**/*.less dist",
+        "tsc": "tsc -p tsconfig.json",
+        "test": "jest"
+    },
+    "dependencies": {
+        "classnames": "^2.3.1",
+        "nanoid": "^4.0.0"
+    },
+    "peerDependencies": {
+        "@types/react": "17.x || 18.x",
+        "react": "17.x || 18.x",
+        "styled-components": "^5.x"
+    },
+    "devDependencies": {
+        "@navikt/ds-css": "1.3.x",
+        "@navikt/ds-icons": "1.3.x",
+        "@navikt/ds-react": "1.3.x",
+        "@navikt/ds-tokens": "1.3.x",
+        "css-loader": "^5.2.7",
+        "less-loader": "^11.0.0",
+        "mini-css-extract-plugin": "^2.6.1",
+        "style-loader": "^3.3.1",
+        "ts-loader": "^9.3.1"
+    }
 }
