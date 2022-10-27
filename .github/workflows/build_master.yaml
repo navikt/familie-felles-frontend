@@ -12,10 +12,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v1
-      - uses: actions/setup-node@v2
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
+          cache: 'yarn'
           registry-url: "https://npm.pkg.github.com"
       - name: Prepare repository
         run: git checkout "${GITHUB_REF:11}"
