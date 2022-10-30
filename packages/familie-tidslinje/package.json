@@ -35,7 +35,7 @@
     },
     "devDependencies": {
         "@navikt/ds-css": "1.3.x",
-        "@navikt/ds-icons": "1.3.x",
+        "@navikt/ds-icons": "1.4.x",
         "@navikt/ds-react": "1.3.x",
         "@navikt/ds-tokens": "1.3.x",
         "css-loader": "^5.2.7",
