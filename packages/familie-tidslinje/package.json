@@ -38,7 +38,7 @@
         "@navikt/ds-icons": "1.5.x",
         "@navikt/ds-react": "1.5.x",
         "@navikt/ds-tokens": "1.5.x",
-        "css-loader": "^5.2.7",
+        "css-loader": "^6.7.2",
         "less-loader": "^11.0.0",
         "mini-css-extract-plugin": "^2.6.1",
         "style-loader": "^3.3.1",
