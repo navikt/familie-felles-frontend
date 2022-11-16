@@ -1,7 +1,7 @@
 {
     "name": "@navikt/familie-backend",
     "type": "module",
-    "version": "7.0.8",
+    "version": "7.0.9",
     "description": "Skall for familieytelsenes frontend",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -27,7 +27,7 @@
         "prepublish": "npm run snyk-protect"
     },
     "dependencies": {
-        "@navikt/familie-logging": "^3.0.5",
+        "@navikt/familie-logging": "^3.0.6",
         "@types/connect-redis": "~0.0.18",
         "@types/cookie-parser": "^1.4.2",
         "@types/express": "^4.17.11",
