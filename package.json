@@ -40,7 +40,7 @@
         "@storybook/react": "^6.5.12",
         "@storybook/storybook-deployer": "^2.8.12",
         "awesome-typescript-loader": "^5.2.1",
-        "babel-loader": "^8.2.5",
+        "babel-loader": "^9.1.0",
         "classnames": "^2.3.2",
         "commitizen": "^4.2.5",
         "copyfiles": "^2.4.1",
