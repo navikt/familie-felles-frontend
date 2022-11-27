@@ -29,7 +29,7 @@
         "@navikt/ds-css-internal": "^1.5.x",
         "@navikt/ds-icons": "^1.5.x",
         "@navikt/ds-react": "^1.5.x",
-        "@navikt/ds-react-internal": "^1.5.x",
+        "@navikt/ds-react-internal": "^2.0.x",
         "@navikt/familie-ikoner": "^4.0.10",
         "@navikt/familie-typer": "^5.0.7",
         "@navikt/familie-validering": "^2.0.9",
