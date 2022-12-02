@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.0.16 (2022-11-23)
+
+### Bug Fixes
+
+-   **endringslogg:** skal kunne se større bilder i endringsloggen. Øker maksbredden i modalen slik at ([#723](https://github.com/navikt/familie-felles-frontend/issues/723)) ([ba20f31](https://github.com/navikt/familie-felles-frontend/commit/ba20f31e711c9c5612a9a77348ebf35fff245022))
+
+## 4.0.15 (2022-11-16)
+
+### Bug Fixes
+
+-   **familie-form-elements:** familieDatovelger eksponerer value men som ikke blir brukt ([#709](https://github.com/navikt/familie-felles-frontend/issues/709)) ([4797dc7](https://github.com/navikt/familie-felles-frontend/commit/4797dc7ad939d2492a3330916dca0f42d0a3177d))
+
+## 4.0.14 (2022-11-16)
+
+**Note:** Version bump only for package @navikt/familie-skjema
+
+## 4.0.13 (2022-11-15)
+
+**Note:** Version bump only for package @navikt/familie-skjema
+
+## 4.0.12 (2022-11-11)
+
+### Bug Fixes
+
+-   **dokumentliste:** skal legge key direkte på li-elementet for logiske vedlegg. Ønsker å unngå feil ([#697](https://github.com/navikt/familie-felles-frontend/issues/697)) ([aae3526](https://github.com/navikt/familie-felles-frontend/commit/aae3526aa59256c6290ef2d97c52c3383407bf0e))
+
+## 4.0.11 (2022-11-09)
+
+**Note:** Version bump only for package @navikt/familie-skjema
+
+## 4.0.10 (2022-10-27)
+
+**Note:** Version bump only for package @navikt/familie-skjema
+
+## [4.0.9](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@4.0.8...@navikt/familie-skjema@4.0.9) (2022-10-20)
+
+**Note:** Version bump only for package @navikt/familie-skjema
+
+## [4.0.8](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@4.0.7...@navikt/familie-skjema@4.0.8) (2022-10-12)
+
+**Note:** Version bump only for package @navikt/familie-skjema
+
 ## [4.0.7](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@4.0.6...@navikt/familie-skjema@4.0.7) (2022-10-12)
 
 **Note:** Version bump only for package @navikt/familie-skjema

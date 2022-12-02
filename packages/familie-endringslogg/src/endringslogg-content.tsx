@@ -2,12 +2,11 @@ import classNames from 'classnames/dedupe';
 import React from 'react';
 import { EndringsloggEntryWithSeenStatus } from './utils/endringslogg-custom';
 import './endringslogg.css';
-// @ts-ignore
-import BlockContent from '@sanity/block-content-to-react';
 import { TourModalButton } from './modal/tour-modal/tour-modal-button';
 import { trackLinkClick } from './utils/utils';
 import { Heading, Label, Link } from '@navikt/ds-react';
 import { ExternalLink } from '@navikt/ds-icons';
+import { PortableText } from '@portabletext/react';
 
 interface EndringsloggContentProps {
     innleggsListe: EndringsloggEntryWithSeenStatus[];
@@ -82,7 +81,7 @@ const EndringsloggEntry = (props: EndringsloggEntryWithSeenStatus) => {
                 </Heading>
                 {props.description && (
                     <div className={'endringslogg-block-content'}>
-                        <BlockContent blocks={props.description} />
+                        <PortableText value={props.description} />
                     </div>
                 )}
                 {props.modal && (

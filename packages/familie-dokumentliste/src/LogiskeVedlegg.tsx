@@ -15,8 +15,8 @@ export const LogiskeVedlegg: React.FC<{ logiskeVedlegg: ILogiskVedlegg[] | undef
     <LogiskVedleggWrapper>
         {logiskeVedlegg &&
             logiskeVedlegg.map((logiskVedlegg, index) => (
-                <li>
-                    <Detail key={logiskVedlegg.tittel + index}>{logiskVedlegg.tittel}</Detail>
+                <li key={logiskVedlegg.tittel + index}>
+                    <Detail>{logiskVedlegg.tittel}</Detail>
                 </li>
             ))}
     </LogiskVedleggWrapper>

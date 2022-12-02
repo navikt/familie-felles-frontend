@@ -55,6 +55,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
     onChange,
     placeholder,
     valgtDato,
+    value,
     lesevisningFormat = 'DD.MM.YYYY',
     description,
     feil,
@@ -87,7 +88,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
                         name: id,
                         placeholder,
                     }}
-                    value={valgtDato}
+                    value={valgtDato || value}
                     onChange={onChange}
                 />
                 {feil && <StyledFeilmelding size={'small'}>{feil}</StyledFeilmelding>}
