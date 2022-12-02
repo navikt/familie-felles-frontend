@@ -3,7 +3,7 @@ import { IntlProvider } from 'react-intl';
 import { LocaleType } from './typer';
 
 interface SprakProviderProps {
-    tekster: Record<string, Record<string, string>>;
+    tekster?: Record<string, Record<string, string>>;
     defaultLocale: LocaleType;
     children?: React.ReactNode;
 }
@@ -19,9 +19,11 @@ const SprakProvider: React.FC<SprakProviderProps> = ({ tekster, defaultLocale, c
 
     return (
         <SprakContext.Provider value={[valgtLocale, setValgtLocale]}>
-            <IntlProvider locale={defaultLocale} messages={tekster[valgtLocale]}>
-                {children}
-            </IntlProvider>
+            {tekster ?
+                (<IntlProvider locale={defaultLocale} messages={tekster[valgtLocale]}>
+                    {children}
+                </IntlProvider>)
+                : children}
         </SprakContext.Provider>
     );
 };
