@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.0.10 (2022-12-06)
+
+**Note:** Version bump only for package @navikt/familie-clipboard
+
 ## 6.0.9 (2022-11-23)
 
 ### Bug Fixes
