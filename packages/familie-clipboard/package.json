@@ -28,7 +28,7 @@
         "@navikt/ds-icons": "1.5.x",
         "@navikt/ds-tokens": "1.5.x",
         "@types/react-tooltip": "^4.2.4",
-        "framer-motion": "^6.3.16",
+        "framer-motion": "^7.6.19",
         "react-tooltip": "^4.2.21"
     },
     "devDependencies": {
