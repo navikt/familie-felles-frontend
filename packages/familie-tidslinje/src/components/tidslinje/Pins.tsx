@@ -4,7 +4,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { position } from './calc';
 import styled from 'styled-components';
 import { Tooltip } from './Tooltip';
-import { NavdsGlobalColorRed500 } from '@navikt/ds-tokens/dist/tokens';
+import { ARed500 } from '@navikt/ds-tokens/dist/tokens';
 
 const StyledTooltip = styled(Tooltip)`
     font-size: 0.8rem;
@@ -45,7 +45,7 @@ const PinStyle = styled.div`
         width: 18px;
         height: 18px;
         background: #ffffff;
-        border: 6px solid ${NavdsGlobalColorRed500};
+        border: 6px solid ${ARed500};
         border-radius: 50%;
         transform: translate(-8.5px, -9.5px);
     }

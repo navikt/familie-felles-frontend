@@ -28,8 +28,8 @@ const SøkContainer = styled.div`
     align-self: center;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    .navds-body-small {
-        font-size: var(--navds-font-size-medium);
+    .a-body-small {
+        font-size: var(--a-font-size-medium);
     }
 `;
 export const inputId = 'sok-input';

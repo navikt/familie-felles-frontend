@@ -29,7 +29,7 @@ const StyledKnapp = styled.button`
     border: none;
 
     :hover {
-        background-color: var(--navds-global-color-gray-100);
+        background-color: var(--a-gray-100);
         cursor: pointer;
     }
 `;
@@ -47,7 +47,7 @@ const StyledDokumentnavn = styled(Label)`
     text-overflow: ellipsis;
     max-width: 100%;
     overflow: hidden;
-    color: var(--navds-global-color-blue-500);
+    color: var(--a-blue-500);
     grid-area: tittel;
     display: flex;
     text-align: left;

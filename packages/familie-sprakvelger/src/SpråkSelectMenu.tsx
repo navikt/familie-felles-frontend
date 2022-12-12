@@ -25,14 +25,14 @@ const StyledListe = styled.ul`
 const StyledMenuItem = styled(MenuItem)`
     padding: 0.5rem 1rem;
     background-color: #ffffff;
-    border-bottom: 1px solid var(--navds-global-color-gray-300);
-    border-left: 1px solid var(--navds-global-color-gray-300);
-    border-right: 1px solid var(--navds-global-color-gray-300);
+    border-bottom: 1px solid var(--a-gray-300);
+    border-left: 1px solid var(--a-gray-300);
+    border-right: 1px solid var(--a-gray-300);
 
     :hover,
     :focus {
         outline: none;
-        background-color: var(--navds-global-color-blue-500);
+        background-color: var(--a-blue-500);
         color: #fff;
     }
 

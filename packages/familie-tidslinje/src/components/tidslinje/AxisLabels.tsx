@@ -6,7 +6,7 @@ import { erSynlig } from './filter';
 import { horizontalPositionAndWidth } from './calc';
 import { AxisLabel } from '../types.internal';
 import 'dayjs/locale/nb';
-import { NavdsGlobalColorGray600, NavdsSpacing4 } from '@navikt/ds-tokens/dist/tokens';
+import { AGray600, ASpacing4 } from '@navikt/ds-tokens/dist/tokens';
 
 dayjs.locale('nb');
 
@@ -117,12 +117,12 @@ const Etiketter = styled.div`
     width: 100%;
     height: 1rem;
     box-sizing: content-box;
-    margin-bottom: ${NavdsSpacing4};
+    margin-bottom: ${ASpacing4};
 
     > * {
         position: absolute;
         font-size: 0.8rem;
-        color: ${NavdsGlobalColorGray600};
+        color: ${AGray600};
     }
 `;
 

@@ -20,10 +20,10 @@ const StyledButton = styled(Button)`
     align-items: center;
     outline: none;
     border-radius: 0.25rem;
-    border: 3px solid var(--navds-global-color-gray-400);
+    border: 3px solid var(--a-gray-400);
 
     &:focus {
-        border: solid 3px var(--navds-global-color-blue-800);
+        border: solid 3px var(--a-blue-800);
     }
 `;
 
