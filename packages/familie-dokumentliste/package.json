@@ -1,5 +1,5 @@
 {
-    "version": "4.0.9",
+    "version": "4.0.10",
     "name": "@navikt/familie-dokumentliste",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -27,8 +27,8 @@
         "@navikt/ds-css": "^1.5.x",
         "@navikt/ds-icons": "^1.5.x",
         "@navikt/ds-react": "^1.5.x",
-        "@navikt/familie-ikoner": "^4.0.11",
-        "@navikt/familie-typer": "^5.0.8"
+        "@navikt/familie-ikoner": "^4.0.12",
+        "@navikt/familie-typer": "^5.0.9"
     },
     "devDependencies": {
         "@types/styled-components": "^5.1.25",
