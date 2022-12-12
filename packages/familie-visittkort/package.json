@@ -26,7 +26,7 @@
     "dependencies": {
         "@navikt/ds-css": "2.0.x",
         "@navikt/ds-react": "2.0.x",
-        "@navikt/ds-tokens": "2.5.x",
+        "@navikt/ds-tokens": "2.0.x",
         "@navikt/familie-clipboard": "^6.0.10",
         "@navikt/familie-ikoner": "^4.0.11",
         "@navikt/familie-typer": "^5.0.8",

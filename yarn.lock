@@ -2706,7 +2706,7 @@
     react-day-picker "8.3.4"
     react-modal "3.15.1"
 
-"@navikt/ds-tokens@2.0.x", "@navikt/ds-tokens@2.5.x":
+"@navikt/ds-tokens@2.0.x":
   version "2.0.8"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/2.0.8/4a79c3cd05737083c37dd84d760511517befd45d#4a79c3cd05737083c37dd84d760511517befd45d"
   integrity sha512-nqRd50hJ5AGOBOVQh6FpWiR0XYwgO0Ybf8Z/r6F5doi+ZX8vOV1DwTboapyMfJsQOEv5ph+oGGSNCDo5nFNRIQ==
