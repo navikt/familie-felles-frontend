@@ -1,7 +1,8 @@
 {
     "extends": [
         "eslint:recommended",
-        "plugin:react-app/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
@@ -15,7 +16,7 @@
         "ecmaVersion": 2020,
         "sourceType": "module"
     },
-    "plugins": ["@typescript-eslint", "react-app", "prettier"],
+    "plugins": ["@typescript-eslint", "react", "prettier","react-hooks"],
     "rules": {
         "import/extensions": [
             "off",
@@ -33,7 +34,7 @@
         "@typescript-eslint/interface-name-prefix": "off",
         "@typescript-eslint/no-var-requires": "warn",
         "@typescript-eslint/explicit-function-return-type": "off",
-        "react-app/react-hooks/exhaustive-deps": "off"
+        "react-hooks/exhaustive-deps": "off"
     },
     "settings": {
         "react": {
