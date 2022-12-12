@@ -64,14 +64,32 @@ export const Sprakvelger: React.FC<{ støttedeSprak: LocaleType[]; className?: s
                 {hentSprakvelgerLabelTekst(valgtLocale)}
             </SkjultLabel>
             <StyledButton id="språkvelger" value={valgtLocale}>
-                <Globe role="img" focusable={false} aria-hidden={true} />
+                <Globe
+                    role="img"
+                    focusable={false}
+                    aria-hidden={true}
+                    onResize={undefined}
+                    onResizeCapture={undefined}
+                />
                 <StyledNormalTekst size={'small'}>
                     {sprakTittel[valgtLocale as LocaleType]}
                 </StyledNormalTekst>
                 {erÅpen ? (
-                    <StyledCollapse role="img" focusable={false} aria-hidden={true} />
+                    <StyledCollapse
+                        role="img"
+                        focusable={false}
+                        aria-hidden={true}
+                        onResize={undefined}
+                        onResizeCapture={undefined}
+                    />
                 ) : (
-                    <StyledExpand role="img" focusable={false} aria-hidden={true} />
+                    <StyledExpand
+                        role="img"
+                        focusable={false}
+                        aria-hidden={true}
+                        onResize={undefined}
+                        onResizeCapture={undefined}
+                    />
                 )}
             </StyledButton>
             <SpråkSelectMenu valgtLocale={valgtLocale} støttedeSprak={støttedeSprak} />
