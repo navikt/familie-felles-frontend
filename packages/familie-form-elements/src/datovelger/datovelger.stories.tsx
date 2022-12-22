@@ -18,7 +18,7 @@ export default {
 export const FamilieDatovelgerStory: React.FC = ({ ...args }) => {
     const [lesevisning, settLesevisning] = useState(false);
     const [medFeil, settMedFeil] = useState(false);
-    const [valgtDato, settValgtDato] = useState<ISODateString | undefined>('01.01.20');
+    const [value, settValue] = useState<ISODateString | undefined>('01.01.20');
 
     return (
         <>
@@ -35,7 +35,7 @@ export const FamilieDatovelgerStory: React.FC = ({ ...args }) => {
                     id={'dato'}
                     label={'Datovelger'}
                     onChange={(dato?: ISODateString) => {
-                        settValgtDato(dato);
+                        settValue(dato);
                     }}
                     feil={medFeil ? 'Denne har feil' : undefined}
                     description={
@@ -43,7 +43,7 @@ export const FamilieDatovelgerStory: React.FC = ({ ...args }) => {
                             Dette er en beskrivelse, f.eks. (format: dd.mm.åååå)
                         </BodyShort>
                     }
-                    valgtDato={valgtDato}
+                    value={value}
                     erLesesvisning={lesevisning}
                     {...args}
                 />

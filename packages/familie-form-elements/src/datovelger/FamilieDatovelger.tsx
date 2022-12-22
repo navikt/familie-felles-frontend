@@ -18,7 +18,6 @@ export interface IDatovelgerProps {
     label: ReactNode;
     onChange: (dato?: ISODateString) => void;
     placeholder?: string;
-    valgtDato?: string;
     description?: ReactNode;
     feil?: ReactNode;
 }
@@ -54,19 +53,19 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
     label,
     onChange,
     placeholder,
-    valgtDato,
+    value,
     lesevisningFormat = 'DD.MM.YYYY',
     description,
     feil,
     ...props
 }) => {
     if (erLesesvisning) {
-        const verdiDayjs = dayjs(valgtDato);
+        const verdiDayjs = value && dayjs(value);
         return (
             <FamilieLesefelt
                 className={className}
                 label={label}
-                verdi={verdiDayjs.isValid() ? verdiDayjs.format(lesevisningFormat) : valgtDato}
+                verdi={verdiDayjs && verdiDayjs.isValid() ? verdiDayjs.format(lesevisningFormat) : value}
             />
         );
     } else {
@@ -87,7 +86,7 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
                         name: id,
                         placeholder,
                     }}
-                    value={valgtDato}
+                    value={value}
                     onChange={onChange}
                 />
                 {feil && <StyledFeilmelding size={'small'}>{feil}</StyledFeilmelding>}
