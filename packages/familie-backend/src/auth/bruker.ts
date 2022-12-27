@@ -36,7 +36,6 @@ const håndterFeil = (req: Request, err: Error, next: NextFunction) => {
 
 /**
  * Funksjon som henter brukerprofil fra graph.
- * Bruker node-fetch da axios ikke bryr seg om proxy agent som sendes inn.
  */
 export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
     return new Promise((_, _reject) => {
