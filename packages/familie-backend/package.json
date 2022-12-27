@@ -44,7 +44,7 @@
         "prom-client": "^14.1.0",
         "redis": "^4.5.1",
         "node-fetch": "^3.3.0",
-        "snyk": "^1.1076.0"
+        "snyk": "^1.1077.0"
     },
     "snyk": true
 }
