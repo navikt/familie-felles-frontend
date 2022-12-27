@@ -4,7 +4,6 @@ import fetch from 'node-fetch';
 import { envVar, logRequest } from '../utils';
 import { LOG_LEVEL } from '@navikt/familie-logging';
 import { getOnBehalfOfAccessToken, getTokenSetsFromSession, tokenSetSelfId } from './tokenUtils';
-import httpProxy from './proxy/http-proxy';
 
 // Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {
@@ -15,6 +14,24 @@ export const hentBrukerprofil = () => {
 
         res.status(200).send(req.session.user);
     };
+};
+
+const håndterFeil = (req: Request, err: Error, next: NextFunction) => {
+    if (!req.session) {
+        throw new Error('Mangler sesjon på kall');
+    }
+
+    req.session.user = {
+        ...req.session.user,
+        enhet: '9999',
+    };
+
+    logRequest(
+        req,
+        `Feilet mot ms graph: ${err.message}. Fortsetter uten data fra bruker.`,
+        LOG_LEVEL.ERROR,
+    );
+    return next();
 };
 
 /**
@@ -40,17 +57,18 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
                 fetch(graphUrl, {
                     headers: {
                         Authorization: `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json',
                     },
-                    agent: httpProxy.agent,
                 }),
             )
-            .then((response: any) => {
+            .then(res => res.json())
+            .then((data: any) => {
                 if (!req.session) {
                     throw new Error('Mangler sesjon på kall');
                 }
-                const data = JSON.parse(response);
 
                 const tokenSet: TokenSet | undefined = getTokenSetsFromSession(req)[tokenSetSelfId];
+
                 req.session.user = {
                     displayName: data.displayName,
                     email: data.userPrincipalName,
@@ -73,21 +91,7 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
                 });
             })
             .catch((err: Error) => {
-                if (!req.session) {
-                    throw new Error('Mangler sesjon på kall');
-                }
-
-                req.session.user = {
-                    ...req.session.user,
-                    enhet: '9999',
-                };
-
-                logRequest(
-                    req,
-                    `Feilet mot ms graph: ${err.message}. Fortsetter uten data fra bruker.`,
-                    LOG_LEVEL.ERROR,
-                );
-                return next();
+                return håndterFeil(req, err, next);
             });
     });
 };
