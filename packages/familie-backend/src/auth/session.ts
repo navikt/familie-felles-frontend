@@ -4,7 +4,7 @@ import session from 'express-session';
 import { PassportStatic } from 'passport';
 import redis from 'redis';
 import { appConfig } from '../config';
-import { logInfo } from '@navikt/familie-logging';
+import { logError, logInfo } from '@navikt/familie-logging';
 import { ISessionKonfigurasjon } from '../typer';
 
 import RedisStore from 'connect-redis';
@@ -21,17 +21,21 @@ export default (
     if (sessionKonfigurasjon.redisUrl) {
         logInfo('Setter opp redis for session');
 
-        const client = redis.createClient({
-            db: 1,
-            host: sessionKonfigurasjon.redisUrl,
+        const redisClient = redis.createClient({
+            legacyMode: true,
+            database: 1,
+            socket: {
+                host: sessionKonfigurasjon.redisUrl,
+                port: 6379,
+            },
             password: sessionKonfigurasjon.redisPassord,
-            port: 6379,
         });
-        client.unref();
+        redisClient.connect().catch(logError);
+        redisClient.unref();
 
         const store = new redisStore({
-            client,
             disableTouch: true,
+            client: redisClient,
             ttl: sessionKonfigurasjon.sessionMaxAgeSekunder,
         });
 

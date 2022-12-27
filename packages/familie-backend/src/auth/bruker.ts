@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import { Client, TokenSet } from 'openid-client';
-import request from 'request-promise';
+import fetch from 'node-fetch';
 import { envVar, logRequest } from '../utils';
 import { LOG_LEVEL } from '@navikt/familie-logging';
 import { getOnBehalfOfAccessToken, getTokenSetsFromSession, tokenSetSelfId } from './tokenUtils';
+import httpProxy from './proxy/http-proxy';
 
 // Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {
@@ -36,17 +37,12 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
         const graphUrl = `${envVar('GRAPH_API')}?$select=${query}`;
         getOnBehalfOfAccessToken(authClient, req, api)
             .then(accessToken =>
-                request.get(
-                    {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`,
-                        },
-                        url: graphUrl,
+                fetch(graphUrl, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
                     },
-                    (_err, _httpResponse, body) => {
-                        return body;
-                    },
-                ),
+                    agent: httpProxy.agent,
+                }),
             )
             .then((response: any) => {
                 if (!req.session) {

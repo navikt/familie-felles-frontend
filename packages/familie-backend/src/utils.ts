@@ -1,5 +1,5 @@
-import {Request} from 'express';
-import {LOG_LEVEL, logDebug, logError, logInfo, logWarn} from '@navikt/familie-logging';
+import { Request } from 'express';
+import { LOG_LEVEL, logDebug, logError, logInfo, logWarn } from '@navikt/familie-logging';
 
 export const envVar = (navn: string, påkrevd = true, defaultValue?: string): string => {
     const envVariable = process.env[navn];
@@ -24,7 +24,7 @@ export const logRequest = (req: Request, message: string, level: LOG_LEVEL) => {
     const melding = `${prefix(req)}: ${message}`;
     const callId = req.header('nav-call-id');
     const requestId = req.header('x-request-id');
-    // eslint-disable-next-line @typescript-eslint/camelcase
+
     const meta = {
         ...(callId ? { x_callId: callId } : {}),
         ...(requestId ? { x_requestId: requestId } : {}),

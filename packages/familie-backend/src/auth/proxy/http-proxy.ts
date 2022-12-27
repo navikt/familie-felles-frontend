@@ -10,7 +10,7 @@ const agent = () => {
         /**
          * Stygg cast for å fikse kompileringsfeil: https://github.com/TooTallNate/node-https-proxy-agent/issues/108
          */
-        return createHttpsProxyAgent(proxyUri) as any;
+        return createHttpsProxyAgent(proxyUri);
     } else {
         logInfo(
             `Environment variable HTTP_PROXY is not set, not proxying requests for openid-client`,
