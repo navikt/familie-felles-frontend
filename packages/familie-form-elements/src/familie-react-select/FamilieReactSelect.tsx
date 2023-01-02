@@ -4,15 +4,15 @@ import ReactSelect, { Props, StylesConfig } from 'react-select';
 import Creatable from 'react-select/creatable';
 import styled from 'styled-components';
 import {
-    NavdsSemanticColorInteractionDanger,
-    NavdsSemanticColorInteractionPrimaryHover,
-    NavdsSemanticColorBorder,
-    NavdsSemanticColorFocus,
-    NavdsSemanticColorText,
-    NavdsSemanticColorTextMuted,
-    NavdsSemanticColorTextInverted,
-    NavdsGlobalColorBlue100,
-    NavdsGlobalColorBlue500,
+    ASurfaceDanger,
+    ASurfaceActionHover,
+    ABorderStrong,
+    ABorderFocus,
+    ATextDefault,
+    ATextSubtle,
+    ATextOnInverted,
+    ABlue100,
+    ABlue500,
 } from '@navikt/ds-tokens/dist/tokens';
 import { ErrorMessage, Label, omit } from '@navikt/ds-react';
 
@@ -33,21 +33,21 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
         ...provided,
         border:
             feil && !state.isFocused
-                ? `1px solid ${NavdsSemanticColorInteractionDanger}`
-                : `1px solid ${NavdsSemanticColorBorder}`,
+                ? `1px solid ${ASurfaceDanger}`
+                : `1px solid ${ABorderStrong}`,
         borderRadius: '4px',
         boxShadow: state.isFocused
-            ? `0 0 0 3px ${NavdsSemanticColorFocus}`
+            ? `0 0 0 3px ${ABorderFocus}`
             : feil
-            ? `0 0 0 1px ${NavdsSemanticColorInteractionDanger}`
+            ? `0 0 0 1px ${ASurfaceDanger}`
             : '',
         ':hover': {
-            border: `1px solid ${NavdsSemanticColorInteractionPrimaryHover}`,
+            border: `1px solid ${ASurfaceActionHover}`,
         },
     }),
     placeholder: provided => ({
         ...provided,
-        color: NavdsSemanticColorTextMuted,
+        color: ATextSubtle,
     }),
     dropdownIndicator: provided =>
         erLesevisning
@@ -64,14 +64,14 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
             ? { display: 'none' }
             : {
                   ...provided,
-                  color: NavdsSemanticColorTextMuted,
+                  color: ATextSubtle,
                   ':hover': {
-                      color: NavdsSemanticColorText,
+                      color: ATextDefault,
                   },
               },
     multiValue: (provided, _) => ({
         ...provided,
-        backgroundColor: NavdsGlobalColorBlue100,
+        backgroundColor: ABlue100,
         maxWidth: '18rem',
     }),
     multiValueRemove: provided =>
@@ -80,8 +80,8 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
             : {
                   ...provided,
                   ':hover': {
-                      backgroundColor: NavdsGlobalColorBlue500,
-                      color: NavdsSemanticColorTextInverted,
+                      backgroundColor: ABlue500,
+                      color: ATextOnInverted,
                   },
               },
 });

@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-tidslinje",
-    "version": "2.0.12",
+    "version": "3.0.0",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -34,10 +34,10 @@
         "styled-components": "^5.x"
     },
     "devDependencies": {
-        "@navikt/ds-css": "1.5.x",
-        "@navikt/ds-icons": "1.5.x",
-        "@navikt/ds-react": "1.5.x",
-        "@navikt/ds-tokens": "1.5.x",
+        "@navikt/ds-css": "2.0.x",
+        "@navikt/ds-icons": "2.0.x",
+        "@navikt/ds-react": "2.0.x",
+        "@navikt/ds-tokens": "2.0.x",
         "css-loader": "^5.2.7",
         "less-loader": "^11.0.0",
         "mini-css-extract-plugin": "^2.6.1",

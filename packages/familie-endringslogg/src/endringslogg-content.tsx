@@ -25,7 +25,12 @@ export const EndringsloggLink = (props: {
             onClick={props.onClick}
         >
             {props.linkText ? props.linkText : props.link}
-            <ExternalLink fr="mask" className={'linkikon'} />
+            <ExternalLink
+                fr="mask"
+                className={'linkikon'}
+                onResize={undefined}
+                onResizeCapture={undefined}
+            />
         </Link>
     );
 };

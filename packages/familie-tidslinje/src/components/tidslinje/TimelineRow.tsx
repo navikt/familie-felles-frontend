@@ -4,21 +4,21 @@ import classNames from 'classnames';
 import { TimelinePeriod } from './TimelinePeriod';
 import { PositionedPeriod } from '../types.internal';
 import {
-    NavdsGlobalColorBlue50,
-    NavdsGlobalColorGray50,
-    NavdsSpacing4,
-    NavdsSpacing6,
-    NavdsSpacing8,
+    ABlue50,
+    AGray50,
+    ASpacing4,
+    ASpacing6,
+    ASpacing8,
 } from '@navikt/ds-tokens/dist/tokens';
 
 const TimelineRowStyle = styled.div(
     (props: { kompakt?: boolean }) => `
     flex: 1;
-    height: ${props.kompakt ? NavdsSpacing6 : NavdsSpacing8};
+    height: ${props.kompakt ? ASpacing6 : ASpacing8};
     display: flex;
     align-items: center;
     position: relative;
-    margin-bottom: ${props.kompakt ? NavdsSpacing4 : NavdsSpacing6};
+    margin-bottom: ${props.kompakt ? ASpacing4 : ASpacing6};
 `,
 );
 
@@ -26,14 +26,14 @@ const EmptyRowHr = styled.hr(
     (props: { kompakt: boolean }) =>
         `
     flex: 1;
-    height: ${props.kompakt ? NavdsSpacing6 : NavdsSpacing8};
+    height: ${props.kompakt ? ASpacing6 : ASpacing8};
     width: 100%;
     border: none;
-    background-color: ${NavdsGlobalColorGray50};
-    margin-bottom: ${props.kompakt ? NavdsSpacing4 : NavdsSpacing6};
+    background-color: ${AGray50};
+    margin-bottom: ${props.kompakt ? ASpacing4 : ASpacing6};
 
     &.aktivRad {
-        background-color: ${NavdsGlobalColorBlue50};
+        background-color: ${ABlue50};
     }
     `,
 );

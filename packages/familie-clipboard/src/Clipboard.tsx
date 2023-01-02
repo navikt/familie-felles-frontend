@@ -4,7 +4,7 @@ import ReactTooltip from 'react-tooltip';
 import ClipboardIcon from './ClipboardIcon';
 import { copyContentsToClipboard } from './util';
 import styled from 'styled-components';
-import { NavdsGlobalColorBlue800 } from '@navikt/ds-tokens/dist/tokens';
+import { ABlue800 } from '@navikt/ds-tokens/dist/tokens';
 
 export interface IProps {
     children: ReactChild;
@@ -31,7 +31,7 @@ const StyledButton = styled.button`
 
     :focus,
     :active {
-        outline: 0.1875rem solid ${NavdsGlobalColorBlue800};
+        outline: 0.1875rem solid ${ABlue800};
     }
 `;
 
