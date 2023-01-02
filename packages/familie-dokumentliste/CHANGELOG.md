@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 5.0.0 (2023-01-02)
+
+### chore
+
+-   **root:** skal ta i bruk v2 av designsystemet ([#751](https://github.com/navikt/familie-felles-frontend/issues/751)) ([37dc86c](https://github.com/navikt/familie-felles-frontend/commit/37dc86c804a0237d79ce9986642f6a15ff40168b))
+
+### BREAKING CHANGES
+
+-   **root:** Oppgradering medfører at vi må bytte fra --navds prefix til --a der vi importerer styling/tokens
+
+-   Fix. Skal ha riktig verjsonsnummer
+
+-   Midlertidig fiks. Skal ha med props pga. typefeil i material-ui
+
+-   Må te med props for at bygg ikke skal feile
+
 ## 4.0.11 (2022-12-22)
 
 ### Bug Fixes

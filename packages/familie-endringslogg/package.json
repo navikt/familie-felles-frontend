@@ -1,5 +1,5 @@
 {
-    "version": "3.0.12",
+    "version": "4.0.0",
     "name": "@navikt/familie-endringslogg",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -24,9 +24,9 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@portabletext/react": "^1.0.6",
         "@navikt/ds-icons": "^2.0.x",
         "@navikt/ds-react": "^2.0.x",
+        "@portabletext/react": "^1.0.6",
         "@types/react-modal": "^3.13.1",
         "classnames": "^2.3.1",
         "react-modal": "^3.15.1",
