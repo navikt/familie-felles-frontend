@@ -68,7 +68,7 @@ export default {
                                     height="24"
                                     width="24"
                                     style={{
-                                        color: 'var(--navds-global-color-orange-600)',
+                                        color: 'var(--a-orange-600)',
                                         position: 'relative',
                                         top: '-1px',
                                     }}

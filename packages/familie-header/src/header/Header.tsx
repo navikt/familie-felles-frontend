@@ -62,7 +62,13 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
     return (
         <Dropdown>
             <NavHeader.Button as={Dropdown.Toggle} className="ml-auto">
-                <System fr="mask" style={{ fontSize: '1.5rem' }} title="Andre systemer" />
+                <System
+                    fr="mask"
+                    style={{ fontSize: '1.5rem' }}
+                    title="Andre systemer"
+                    onResize={undefined}
+                    onResizeCapture={undefined}
+                />
             </NavHeader.Button>
             {lenker && (
                 <Dropdown.Menu>

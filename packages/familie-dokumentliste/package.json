@@ -24,11 +24,11 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/ds-css": "^1.5.x",
-        "@navikt/ds-icons": "^1.5.x",
-        "@navikt/ds-react": "^1.5.x",
+        "@navikt/ds-css": "^2.0.x",
+        "@navikt/ds-icons": "^2.0.x",
+        "@navikt/ds-react": "^2.0.x",
         "@navikt/familie-ikoner": "^4.0.13",
-        "@navikt/familie-typer": "^5.0.10"
+        "@navikt/familie-typer": "^5.0.8"
     },
     "devDependencies": {
         "@types/styled-components": "^5.1.25",

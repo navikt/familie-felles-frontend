@@ -27,11 +27,21 @@ const ChevronLenke = (props: ChevronLenkeProps) => {
                     <span className={'chevron-lenke__tekst'} role="button">
                         {tekst}
                     </span>
-                    <Right fr="mask" className={'chevron-right'} />
+                    <Right
+                        fr="mask"
+                        className={'chevron-right'}
+                        onResize={undefined}
+                        onResizeCapture={undefined}
+                    />
                 </>
             ) : (
                 <>
-                    <Left fr="mask" className={'chevron-left'} />
+                    <Left
+                        fr="mask"
+                        className={'chevron-left'}
+                        onResize={undefined}
+                        onResizeCapture={undefined}
+                    />
                     <span className={'chevron-lenke__tekst'} role="button">
                         {tekst}
                     </span>

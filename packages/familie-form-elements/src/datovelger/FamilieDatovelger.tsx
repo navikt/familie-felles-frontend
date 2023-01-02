@@ -7,7 +7,7 @@ import { ISODateString } from 'nav-datovelger/lib/types';
 import { DatepickerProps } from 'nav-datovelger/lib/Datepicker';
 import { FamilieLesefelt } from '../lesefelt';
 import { ErrorMessage, Label } from '@navikt/ds-react';
-import { NavdsSemanticColorInteractionDanger } from '@navikt/ds-tokens/dist/tokens';
+import { ASurfaceDanger } from '@navikt/ds-tokens/dist/tokens';
 
 export interface IDatovelgerProps {
     className?: string;
@@ -26,13 +26,13 @@ export interface IDatovelgerProps {
 const Container = styled.div`
     &.harfeilifelt {
         .nav-datovelger__input {
-            border: 1px solid ${NavdsSemanticColorInteractionDanger};
-            box-shadow: 0 0 0 1px ${NavdsSemanticColorInteractionDanger};
+            border: 1px solid ${ASurfaceDanger};
+            box-shadow: 0 0 0 1px ${ASurfaceDanger};
         }
         .nav-datovelger__kalenderknapp {
-            border-top: 1px solid ${NavdsSemanticColorInteractionDanger};
-            border-right: 1px solid ${NavdsSemanticColorInteractionDanger};
-            border-bottom: 1px solid ${NavdsSemanticColorInteractionDanger};
+            border-top: 1px solid ${ASurfaceDanger};
+            border-right: 1px solid ${ASurfaceDanger};
+            border-bottom: 1px solid ${ASurfaceDanger};
         }
     }
 `;

@@ -20,10 +20,10 @@ const StyledButton = styled(Button)`
     align-items: center;
     outline: none;
     border-radius: 0.25rem;
-    border: 3px solid var(--navds-global-color-gray-400);
+    border: 3px solid var(--a-gray-400);
 
     &:focus {
-        border: solid 3px var(--navds-global-color-blue-800);
+        border: solid 3px var(--a-blue-800);
     }
 `;
 
@@ -64,14 +64,32 @@ export const Sprakvelger: React.FC<{ støttedeSprak: LocaleType[]; className?: s
                 {hentSprakvelgerLabelTekst(valgtLocale)}
             </SkjultLabel>
             <StyledButton id="språkvelger" value={valgtLocale}>
-                <Globe role="img" focusable={false} aria-hidden={true} />
+                <Globe
+                    role="img"
+                    focusable={false}
+                    aria-hidden={true}
+                    onResize={undefined}
+                    onResizeCapture={undefined}
+                />
                 <StyledNormalTekst size={'small'}>
                     {sprakTittel[valgtLocale as LocaleType]}
                 </StyledNormalTekst>
                 {erÅpen ? (
-                    <StyledCollapse role="img" focusable={false} aria-hidden={true} />
+                    <StyledCollapse
+                        role="img"
+                        focusable={false}
+                        aria-hidden={true}
+                        onResize={undefined}
+                        onResizeCapture={undefined}
+                    />
                 ) : (
-                    <StyledExpand role="img" focusable={false} aria-hidden={true} />
+                    <StyledExpand
+                        role="img"
+                        focusable={false}
+                        aria-hidden={true}
+                        onResize={undefined}
+                        onResizeCapture={undefined}
+                    />
                 )}
             </StyledButton>
             <SpråkSelectMenu valgtLocale={valgtLocale} støttedeSprak={støttedeSprak} />

@@ -1,5 +1,5 @@
 import { BodyShort, CheckboxGroup, CheckboxGroupProps, Label } from '@navikt/ds-react';
-import { NavdsSpacing5 } from '@navikt/ds-tokens/dist/tokens';
+import { ASpacing5 } from '@navikt/ds-tokens/dist/tokens';
 import styled from 'styled-components';
 
 import React from 'react';
@@ -10,7 +10,7 @@ export interface ICheckboxGroupProps extends CheckboxGroupProps {
 
 const LesevisningContainer = styled.div`
     p:first-of-type {
-        margin-top: ${NavdsSpacing5};
+        margin-top: ${ASpacing5};
     }
 `;
 
