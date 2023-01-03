@@ -22,10 +22,7 @@ const metadata: ClientMetadata = {
 const hentClient = (): Promise<Client> => {
     if (httpProxy.agent) {
         custom.setHttpOptionsDefaults({
-            agent: {
-                http: httpProxy.agent,
-                https: httpProxy.agent,
-            },
+            agent: httpProxy.agent,
         });
     }
     return Issuer.discover(appConfig.discoveryUrl).then((issuer: Issuer<Client>) => {

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { Client, TokenSet } from 'openid-client';
-import request from 'request-promise';
+import fetch from 'node-fetch';
 import { envVar, logRequest } from '../utils';
 import { LOG_LEVEL } from '@navikt/familie-logging';
 import { getOnBehalfOfAccessToken, getTokenSetsFromSession, tokenSetSelfId } from './tokenUtils';
@@ -16,9 +16,26 @@ export const hentBrukerprofil = () => {
     };
 };
 
+const håndterFeil = (req: Request, err: Error, next: NextFunction) => {
+    if (!req.session) {
+        throw new Error('Mangler sesjon på kall');
+    }
+
+    req.session.user = {
+        ...req.session.user,
+        enhet: '9999',
+    };
+
+    logRequest(
+        req,
+        `Feilet mot ms graph: ${err.message}. Fortsetter uten data fra bruker.`,
+        LOG_LEVEL.ERROR,
+    );
+    return next();
+};
+
 /**
  * Funksjon som henter brukerprofil fra graph.
- * Bruker node-fetch da axios ikke bryr seg om proxy agent som sendes inn.
  */
 export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
     return new Promise((_, _reject) => {
@@ -36,25 +53,21 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
         const graphUrl = `${envVar('GRAPH_API')}?$select=${query}`;
         getOnBehalfOfAccessToken(authClient, req, api)
             .then(accessToken =>
-                request.get(
-                    {
-                        headers: {
-                            Authorization: `Bearer ${accessToken}`,
-                        },
-                        url: graphUrl,
+                fetch(graphUrl, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json',
                     },
-                    (_err, _httpResponse, body) => {
-                        return body;
-                    },
-                ),
+                }),
             )
-            .then((response: any) => {
+            .then(res => res.json())
+            .then((data: any) => {
                 if (!req.session) {
                     throw new Error('Mangler sesjon på kall');
                 }
-                const data = JSON.parse(response);
 
                 const tokenSet: TokenSet | undefined = getTokenSetsFromSession(req)[tokenSetSelfId];
+
                 req.session.user = {
                     displayName: data.displayName,
                     email: data.userPrincipalName,
@@ -77,21 +90,7 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
                 });
             })
             .catch((err: Error) => {
-                if (!req.session) {
-                    throw new Error('Mangler sesjon på kall');
-                }
-
-                req.session.user = {
-                    ...req.session.user,
-                    enhet: '9999',
-                };
-
-                logRequest(
-                    req,
-                    `Feilet mot ms graph: ${err.message}. Fortsetter uten data fra bruker.`,
-                    LOG_LEVEL.ERROR,
-                );
-                return next();
+                return håndterFeil(req, err, next);
             });
     });
 };
