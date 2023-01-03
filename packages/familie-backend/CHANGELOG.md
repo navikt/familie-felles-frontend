@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 9.0.0 (2023-01-03)
+
+-   Oppgrader familie felles frontend backend (#771) ([7c7199d](https://github.com/navikt/familie-felles-frontend/commit/7c7199d65e3843864a630ce180bf9fa37670d97d)), closes [#771](https://github.com/navikt/familie-felles-frontend/issues/771)
+
+### BREAKING CHANGES
+
+-   familie-backend
+
+-   chore(familie-backend): skal pakke ut responsen på riktig måte fra node-fetch
+
+affects: @navikt/familie-backend
+
+-   familie-backend
+
+-   chore(bygg-og-deploy-branch): skal hente ut hele historikken ved bygg av brancher for å kunne sette
+
+-   chore(familie-backend): oppgradere snyk
+
+affects: @navikt/familie-backend
+
+-   chore(familie-backend): må commite yarn.lock
+
+affects: @navikt/familie-backend
+
+-   chore(familie-backend): fjern unødvendige kommentarer
+
+affects: @navikt/familie-backend
+
 # 8.0.0 (2023-01-02)
 
 ### chore
