@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@10.0.0...@navikt/familie-backend@10.0.1) (2023-01-06)
+
+### Bug Fixes
+
+-   **csp for å laste fronts fra nav:** designsystem v2 henter fonts fra ny url ([#781](https://github.com/navikt/familie-felles-frontend/issues/781)) ([156177c](https://github.com/navikt/familie-felles-frontend/commit/156177c9bc2d3407fb5aa0f46a3c0d54fdb6745d))
+
 # 10.0.0 (2023-01-05)
 
 ### Features
