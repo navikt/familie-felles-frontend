@@ -28,7 +28,7 @@ const SøkContainer = styled.div`
     align-self: center;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    .a-body-small {
+    .navds-body-small {
         font-size: var(--a-font-size-medium);
     }
 `;
