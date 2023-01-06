@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@9.0.0...@navikt/familie-header@9.0.1) (2023-01-06)
+
+### Bug Fixes
+
+-   **Fikset ds2 override av css class:** endrer tilbake til navds for css-classname ([#782](https://github.com/navikt/familie-felles-frontend/issues/782)) ([b2e23bd](https://github.com/navikt/familie-felles-frontend/commit/b2e23bd192234b72dff825e9b154156f8b2d2aea))
+
 # 9.0.0 (2023-01-05)
 
 ### Features
