@@ -24,9 +24,6 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/ds-css": "2.0.x",
-        "@navikt/ds-react": "2.0.x",
-        "@navikt/ds-tokens": "2.0.x",
         "@navikt/familie-clipboard": "^9.0.0",
         "@navikt/familie-ikoner": "^7.0.0",
         "@navikt/familie-typer": "^8.0.0",
@@ -38,6 +35,9 @@
     },
     "peerDependencies": {
         "react": "^17.x || 18.x",
-        "styled-components": "^5.x"
+        "styled-components": "^5.x",
+        "@navikt/ds-css": "2.0.x",
+        "@navikt/ds-react": "2.0.x",
+        "@navikt/ds-tokens": "2.0.x"
     }
 }
