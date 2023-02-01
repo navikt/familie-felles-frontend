@@ -35,6 +35,11 @@
         "styled-components": "^5.3.5"
     },
     "devDependencies": {
+        "@navikt/ds-css": "^2.0.x",
+        "@navikt/ds-css-internal": "^2.0.x",
+        "@navikt/ds-icons": "^2.0.x",
+        "@navikt/ds-react": "^2.0.x",
+        "@navikt/ds-react-internal": "^2.0.x",
         "css-loader": "^6.7.1",
         "less-loader": "^11.0.0",
         "mini-css-extract-plugin": "^2.6.1",

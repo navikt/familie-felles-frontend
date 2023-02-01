@@ -30,6 +30,9 @@
         "react-aria-menubutton": "^7.0.3"
     },
     "devDependencies": {
+        "@navikt/ds-css": "^2.0.x",
+        "@navikt/ds-icons": "^2.0.x",
+        "@navikt/ds-react": "^2.0.x",
         "@types/styled-components": "^5.1.25",
         "react-intl": "^5.20.12",
         "styled-components": "^5.3.5"

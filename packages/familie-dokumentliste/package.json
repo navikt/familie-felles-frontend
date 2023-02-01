@@ -28,6 +28,9 @@
         "@navikt/familie-typer": "^8.0.0"
     },
     "devDependencies": {
+        "@navikt/ds-css": "^2.0.x",
+        "@navikt/ds-icons": "^2.0.x",
+        "@navikt/ds-react": "^2.0.x",
         "@types/styled-components": "^5.1.25",
         "styled-components": "^5.3.5"
     },
