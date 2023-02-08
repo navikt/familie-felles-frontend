@@ -34,6 +34,8 @@
     },
     "peerDependencies": {
         "@types/react": "17.x || 18.x",
-        "react": "17.x || 18.x"
+        "react": "17.x || 18.x",
+        "@navikt/ds-icons": "^2.0.x",
+        "@navikt/ds-react": "^2.0.x"
     }
 }
