@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-tidslinje@5.0.0...@navikt/familie-tidslinje@5.1.0) (2023-02-20)
+
+### Features
+
+-   tillat alle v2-minors av @navikt/ds-pakker ([#853](https://github.com/navikt/familie-felles-frontend/issues/853)) ([6d11715](https://github.com/navikt/familie-felles-frontend/commit/6d117151f282db3a5149fb9706c097884b72666e))
+
 # 5.0.0 (2023-01-05)
 
 ### Features
