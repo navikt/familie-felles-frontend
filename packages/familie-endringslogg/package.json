@@ -31,12 +31,12 @@
         "react-transition-group": "^4.4.2"
     },
     "devDependencies": {
-        "@navikt/ds-icons": "^2.0.x",
-        "@navikt/ds-react": "^2.0.x"
+        "@navikt/ds-icons": "2.x",
+        "@navikt/ds-react": "2.x"
     },
     "peerDependencies": {
-        "@navikt/ds-icons": "^2.0.x",
-        "@navikt/ds-react": "^2.0.x",
+        "@navikt/ds-icons": "2.x",
+        "@navikt/ds-react": "2.x",
         "@types/react": "17.x || 18.x",
         "react": "17.x || 18.x"
     }
