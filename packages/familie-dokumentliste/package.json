@@ -1,5 +1,5 @@
 {
-    "version": "7.0.0",
+    "version": "8.0.0",
     "name": "@navikt/familie-dokumentliste",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -35,10 +35,10 @@
         "styled-components": "^5.3.5"
     },
     "peerDependencies": {
-        "react": "^17.x || 18.x",
-        "styled-components": "^5.x",
         "@navikt/ds-css": "^2.0.x",
         "@navikt/ds-icons": "^2.0.x",
-        "@navikt/ds-react": "^2.0.x"
+        "@navikt/ds-react": "^2.0.x",
+        "react": "^17.x || 18.x",
+        "styled-components": "^5.x"
     }
 }

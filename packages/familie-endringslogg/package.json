@@ -1,5 +1,5 @@
 {
-    "version": "6.0.0",
+    "version": "7.0.0",
     "name": "@navikt/familie-endringslogg",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -33,9 +33,9 @@
         "react-transition-group": "^4.4.2"
     },
     "peerDependencies": {
-        "@types/react": "17.x || 18.x",
-        "react": "17.x || 18.x",
         "@navikt/ds-icons": "^2.0.x",
-        "@navikt/ds-react": "^2.0.x"
+        "@navikt/ds-react": "^2.0.x",
+        "@types/react": "17.x || 18.x",
+        "react": "17.x || 18.x"
     }
 }

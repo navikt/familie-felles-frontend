@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@6.0.0...@navikt/familie-endringslogg@7.0.0) (2023-02-20)
+
+### chore
+
+-   flytter @navikt/ds-... pakker til peerDependencies for å unngå… ([#822](https://github.com/navikt/familie-felles-frontend/issues/822)) ([e63254f](https://github.com/navikt/familie-felles-frontend/commit/e63254fa6ac58ca64fbdd118008656db05e58d6e))
+
+### BREAKING CHANGES
+
+-   @navikt/ds-... pakker må manuelt legges inn som en dependency i ef-sak-frontend/ba-sak-frontend osv.
+    dersom de ikke allerede er det
+
+-   Må ha med pakkene i devDeps for at bygging og utvikling lokalt skal fungere
+
 # 6.0.0 (2023-01-05)
 
 ### Features
