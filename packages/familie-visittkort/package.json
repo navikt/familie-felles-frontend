@@ -31,15 +31,15 @@
         "prop-types": "^15.8.1"
     },
     "devDependencies": {
-        "@navikt/ds-css": "2.0.x",
-        "@navikt/ds-react": "2.0.x",
-        "@navikt/ds-tokens": "2.0.x",
+        "@navikt/ds-css": "2.x",
+        "@navikt/ds-react": "2.x",
+        "@navikt/ds-tokens": "2.x",
         "styled-components": "^5.3.5"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "2.0.x",
-        "@navikt/ds-react": "2.0.x",
-        "@navikt/ds-tokens": "2.0.x",
+        "@navikt/ds-css": "2.x",
+        "@navikt/ds-react": "2.x",
+        "@navikt/ds-tokens": "2.x",
         "react": "^17.x || 18.x",
         "styled-components": "^5.x"
     }
