@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@7.0.0...@navikt/familie-endringslogg@8.0.0) (2023-02-20)
+
+### chore
+
+-   **endringslogg:** flytt @navikt/ds-pakker til devdeps ([#852](https://github.com/navikt/familie-felles-frontend/issues/852)) ([8df5649](https://github.com/navikt/familie-felles-frontend/commit/8df5649ca96d7966b36eef51315d679c33b453d6))
+
+### BREAKING CHANGES
+
+-   **endringslogg:** @navikt/ds-pakker må installeres i konsumenten
+
 # [7.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@6.0.0...@navikt/familie-endringslogg@7.0.0) (2023-02-20)
 
 ### chore
