@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@10.1.0...@navikt/familie-header@10.1.1) (2023-02-21)
+
+### Bug Fixes
+
+-   **header-søk:** bruk dark mode-variant av søk i headeren ([#855](https://github.com/navikt/familie-felles-frontend/issues/855)) ([29777b3](https://github.com/navikt/familie-felles-frontend/commit/29777b384986efa1d15713054bd530db83b3accb))
+
 # [10.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@10.0.0...@navikt/familie-header@10.1.0) (2023-02-20)
 
 ### Features
