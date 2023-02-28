@@ -126,7 +126,7 @@ export interface UseSkjemaVerdi<Felter, SkjemaRespons> {
               }
         >
     >;
-    settVisfeilmeldinger: import('react').Dispatch<import('react').SetStateAction<boolean>>;
+    settVisfeilmeldinger: Dispatch<SetStateAction<boolean>>;
     skjema: ISkjema<Felter, SkjemaRespons>;
     validerAlleSynligeFelter: () => FeltState<unknown>[];
     valideringErOk: () => boolean;

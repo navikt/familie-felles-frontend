@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import { byggHenterRessurs, byggTomRessurs, Ressurs, RessursStatus } from '@navikt/familie-typer';
+import { FamilieRequestConfig, useHttp } from '@navikt/familie-http';
 import {
     FeiloppsummeringFeil,
     Felt,
@@ -9,13 +11,6 @@ import {
     UseSkjemaVerdi,
     Valideringsstatus,
 } from './typer';
-import {
-    byggHenterRessurs,
-    byggTomRessurs,
-    Ressurs,
-    RessursStatus,
-} from '@navikt/familie-typer/src';
-import { FamilieRequestConfig, useHttp } from '@navikt/familie-http/src';
 
 export const useSkjema = <Felter, SkjemaRespons>({
     felter,
