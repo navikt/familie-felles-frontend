@@ -1,16 +1,21 @@
 import { useState } from 'react';
 
-import { byggHenterRessurs, byggTomRessurs, Ressurs, RessursStatus } from '@navikt/familie-typer';
-import { useHttp, FamilieRequestConfig } from '@navikt/familie-http';
-
 import {
     FeiloppsummeringFeil,
     Felt,
     FeltState,
     FieldDictionary,
     ISkjema,
+    UseSkjemaVerdi,
     Valideringsstatus,
 } from './typer';
+import {
+    byggHenterRessurs,
+    byggTomRessurs,
+    Ressurs,
+    RessursStatus,
+} from '@navikt/familie-typer/src';
+import { FamilieRequestConfig, useHttp } from '@navikt/familie-http/src';
 
 export const useSkjema = <Felter, SkjemaRespons>({
     felter,
@@ -18,7 +23,7 @@ export const useSkjema = <Felter, SkjemaRespons>({
 }: {
     felter: FieldDictionary<Felter>;
     skjemanavn: string;
-}) => {
+}): UseSkjemaVerdi<Felter, SkjemaRespons> => {
     const { request } = useHttp();
     const [visFeilmeldinger, settVisfeilmeldinger] = useState(false);
     const [submitRessurs, settSubmitRessurs] = useState(byggTomRessurs<SkjemaRespons>());
