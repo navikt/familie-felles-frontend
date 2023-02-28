@@ -1,6 +1,7 @@
-import { ChangeEvent, ReactNode } from 'react';
+import { ChangeEvent, Dispatch, ReactNode, SetStateAction } from 'react';
 
-import { Ressurs } from '@navikt/familie-typer';
+import { FamilieRequestConfig } from '@navikt/familie-http';
+import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 
 export interface FeltState<Verdi> {
     feilmelding: ReactNode;
@@ -88,4 +89,45 @@ export interface ISkjema<Felter, SkjemaRespons> {
     submitRessurs: Ressurs<SkjemaRespons>;
     skjemanavn: string;
     visFeilmeldinger: boolean;
+}
+
+export interface UseSkjemaVerdi<Felter, SkjemaRespons> {
+    hentFeilTilOppsummering: () => FeiloppsummeringFeil[];
+    kanSendeSkjema: () => boolean;
+    nullstillSkjema: () => void;
+    onSubmit: <SkjemaData>(
+        familieAxiosRequestConfig: FamilieRequestConfig<SkjemaData>,
+        onSuccess: (ressurs: Ressurs<SkjemaRespons>) => void,
+        onError?: ((ressurs: Ressurs<SkjemaRespons>) => void) | undefined,
+    ) => void;
+    settSubmitRessurs: Dispatch<
+        SetStateAction<
+            | {
+                  status: RessursStatus.IKKE_HENTET;
+              }
+            | {
+                  status: RessursStatus.HENTER;
+              }
+            | {
+                  frontendFeilmelding: string;
+                  status: RessursStatus.IKKE_TILGANG;
+              }
+            | {
+                  frontendFeilmelding: string;
+                  status: RessursStatus.FEILET;
+              }
+            | {
+                  frontendFeilmelding: string;
+                  status: RessursStatus.FUNKSJONELL_FEIL;
+              }
+            | {
+                  data: SkjemaRespons;
+                  status: RessursStatus.SUKSESS;
+              }
+        >
+    >;
+    settVisfeilmeldinger: Dispatch<SetStateAction<boolean>>;
+    skjema: ISkjema<Felter, SkjemaRespons>;
+    validerAlleSynligeFelter: () => FeltState<unknown>[];
+    valideringErOk: () => boolean;
 }
