@@ -1,6 +1,5 @@
 import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 import { useState, useRef, useEffect } from 'react';
-import ReactDOM from 'react-dom';
 import { inputId } from '.';
 import { ISøkeresultat } from '..';
 import { søkKnappId, tømKnappId } from './Søk';
@@ -15,10 +14,9 @@ export interface Props {
 const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkeresultater }: Props) => {
     const [ident, settIdent] = useState<string>('');
     const [identSistSøktPå, settIdentSistSøktPå] = useState('');
-    const [anker, settAnker] = useState<Element | null>(null);
     const [valgtSøkeresultat, settValgtSøkeresultat] = useState(-1);
     const [erGyldig, settErGyldig] = useState(false);
-    const ankerRef = useRef<Element>();
+    const ankerRef = useRef<Element | null>(null);
 
     useEffect(() => {
         if (erGyldig) {
@@ -41,14 +39,14 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
         settIdentSistSøktPå('');
         settErGyldig(false);
         if (lukkPopover) {
-            settAnker(null);
+            ankerRef.current = null;
         }
         nullstillSøkeresultater();
     };
 
     const settAnkerPåInput = () => {
         const ankerElement = document.getElementById(inputId) as Element;
-        settAnker(ankerElement);
+
         ankerRef.current = ankerElement;
     };
 
@@ -71,7 +69,7 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
     const handleGlobalClick = () => {
         if (
             ankerRef.current !== undefined &&
-            !ReactDOM.findDOMNode(ankerRef.current)?.contains(document.activeElement) &&
+            !ankerRef.current?.contains(document.activeElement) &&
             !document.getElementById(søkKnappId)?.contains(document.activeElement) &&
             !document.getElementById(tømKnappId)?.contains(document.activeElement)
         ) {
@@ -84,7 +82,7 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
 
         if (nyVerdi === '') {
             nullstillSøkeresultater();
-            settAnker(null);
+            ankerRef.current = null;
         }
     };
 
@@ -132,7 +130,7 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
     };
 
     return {
-        anker,
+        ankerRef,
         ident,
         nullstillInput,
         onInputChange,

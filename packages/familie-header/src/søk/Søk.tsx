@@ -48,7 +48,7 @@ export const Søk = ({
     size = 'small',
 }: SøkProps) => {
     const {
-        anker,
+        ankerRef,
         ident,
         nullstillInput,
         onInputChange,
@@ -87,7 +87,7 @@ export const Søk = ({
 
             <Popover
                 id={'søkeresultat'}
-                anchorEl={anker}
+                anchorEl={ankerRef.current}
                 arrow={false}
                 placement="bottom"
                 tabIndex={-1}
