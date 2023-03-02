@@ -88,7 +88,7 @@ const DropdownLenke: React.FC<{ lenke: PopoverItem }> = ({ lenke }) => {
         <a
             href={lenke.href}
             target={lenke.isExternal ? '_blank' : ''}
-            rel={lenke.isExternal ? 'noopener' : ''}
+            rel={lenke.isExternal ? 'noopener noreferrer' : ''}
             onClick={e => lenke?.onClick && lenke?.onClick(e)}
         >
             <Dropdown.Menu.List.Item>{lenke.name}</Dropdown.Menu.List.Item>
