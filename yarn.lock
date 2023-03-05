@@ -2685,10 +2685,10 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css/2.2.0/d7625c3de971f9100542f4a19e7e4880252b378c#d7625c3de971f9100542f4a19e7e4880252b378c"
   integrity sha512-b1CpbA11YhEzO/cwhTZUqlL2AuiSjNtmJ/beNN23ghDeWD+Shzz+cbYDEYLCFGU4o4wU4NejElxSCF9fBokTOQ==
 
-"@navikt/ds-icons@2.x", "@navikt/ds-icons@^2.2.0":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/2.2.0/3bcfc2145b897a7c36c6ca4ce20ba3b991d64a90#3bcfc2145b897a7c36c6ca4ce20ba3b991d64a90"
-  integrity sha512-86vmaBIwdk8THOOYqHusiSKZ8e7imaog7EdHsJz+9CCt7uKE+as+c/aVCyz1LUJjjXhdt7ify4mq4MzPuHK9MQ==
+"@navikt/ds-icons@2.x", "@navikt/ds-icons@^2.2.0", "@navikt/ds-icons@^2.6.0":
+  version "2.6.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/2.6.0/0b6155d61669d9817708bfb703c4b57b23e1754b#0b6155d61669d9817708bfb703c4b57b23e1754b"
+  integrity sha512-//0sXWPL8TmjP4pcfcPn+tzm4t0gafLhUqs0WRGf/jCQTWO16yHod4PPEc7jXTJeisZpWkcjjsGlasIU5wMMdg==
 
 "@navikt/ds-react-internal@2.x":
   version "2.2.0"
@@ -2701,12 +2701,12 @@
     copy-to-clipboard "^3.3.1"
 
 "@navikt/ds-react@2.x", "@navikt/ds-react@^2.2.0":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/2.2.0/c20718a93e97f6d9e9346665ef301aa844e9ba24#c20718a93e97f6d9e9346665ef301aa844e9ba24"
-  integrity sha512-nWcr/ISwuKFtOD9GsBEdq/J+qKHuuPB4VZhvuxI1UCTEXYFxamBpb+ZaCi8/WLRPJ72cSyBUV9rUBESHzK8yBw==
+  version "2.6.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/2.6.0/e086a6763da9890fc99c69f14b9b80e1c964bf42#e086a6763da9890fc99c69f14b9b80e1c964bf42"
+  integrity sha512-wRf8SzP2b84FM8nZmsQJWWpclG0EVH4m6YaptUoU+KurAuVkLnIPMf0PYL+NqUVxG+9Q08WInzy2tn46f7NJ/A==
   dependencies:
     "@floating-ui/react" "0.17.0"
-    "@navikt/ds-icons" "^2.2.0"
+    "@navikt/ds-icons" "^2.6.0"
     "@radix-ui/react-tabs" "1.0.0"
     "@radix-ui/react-toggle-group" "1.0.0"
     clsx "^1.2.1"
