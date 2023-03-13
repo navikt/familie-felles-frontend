@@ -20,8 +20,7 @@
     },
     "dependencies": {
         "@types/classnames": "^2.3.1",
-        "@types/react-select": "^5.0.1",
-        "classnames": "^2.3.1",
+        "classnames": "^2.3.2",
         "dayjs": "^1.11.3",
         "nav-datovelger": "^12.6.0",
         "nav-frontend-core": "^6.0.x",
@@ -31,7 +30,7 @@
         "nav-frontend-skjema-style": "^3.0.2",
         "nav-frontend-typografi": "^4.0.x",
         "nav-frontend-typografi-style": "^2.0.1",
-        "react-select": "^5.4.0"
+        "react-select": "^5.7.0"
     },
     "devDependencies": {
         "@navikt/ds-css": "2.x",

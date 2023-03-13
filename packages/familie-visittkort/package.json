@@ -27,7 +27,7 @@
         "@navikt/familie-clipboard": "^10.1.0",
         "@navikt/familie-ikoner": "^7.0.0",
         "@navikt/familie-typer": "^8.0.0",
-        "classnames": "^2.3.1",
+        "classnames": "^2.3.2",
         "prop-types": "^15.8.1"
     },
     "devDependencies": {
