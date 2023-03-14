@@ -28,7 +28,7 @@
         "@navikt/familie-http": "^6.0.0",
         "@navikt/familie-typer": "^8.0.0",
         "@types/deep-equal": "^1.0.1",
-        "deep-equal": "^2.0.5",
+        "deep-equal": "^2.2.0",
         "hashids": "^2.2.10"
     },
     "devDependencies": {
