@@ -4,11 +4,7 @@ import { kjønnType } from '@navikt/familie-typer';
 import * as React from 'react';
 import styled from 'styled-components';
 import { BodyShort, Label } from '@navikt/ds-react';
-import {
-    AGray700,
-    ASpacing2,
-    ASpacing4,
-} from '@navikt/ds-tokens/dist/tokens';
+import { AGray700, ASpacing2, ASpacing4 } from '@navikt/ds-tokens/dist/tokens';
 
 export interface IkonProps {
     className?: string;
@@ -53,7 +49,13 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
             ) : (
                 <FamilieIkonVelger className={'visittkort__ikon'} alder={alder} kjønn={kjønn} />
             )}
-            {typeof navn === 'string' ? <Label size={'small'}>{navn}</Label> : navn}
+            {typeof navn === 'string' ? (
+                <Label size={'small'}>
+                    {navn} ({alder} år)
+                </Label>
+            ) : (
+                navn
+            )}
 
             <div className={'visittkort__pipe'}>|</div>
 
