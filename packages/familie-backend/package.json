@@ -1,7 +1,7 @@
 {
     "name": "@navikt/familie-backend",
     "type": "module",
-    "version": "10.0.3",
+    "version": "10.0.4",
     "description": "Skall for familieytelsenes frontend",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -42,9 +42,9 @@
         "node-fetch": "^3.3.0",
         "openid-client": "^5.3.1",
         "passport": "^0.6.0",
-        "prom-client": "^14.1.0",
-        "redis": "^4.5.1",
-        "snyk": "^1.1077.0"
+        "prom-client": "^14.2.0",
+        "redis": "^4.6.5",
+        "snyk": "^1.1117.0"
     },
     "snyk": true
 }

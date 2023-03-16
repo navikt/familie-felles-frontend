@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-tidslinje",
-    "version": "5.1.0",
+    "version": "5.1.1",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -25,7 +25,7 @@
         "test": "jest"
     },
     "dependencies": {
-        "classnames": "^2.3.1",
+        "classnames": "^2.3.2",
         "nanoid": "^4.0.0"
     },
     "peerDependencies": {
@@ -40,7 +40,7 @@
         "@navikt/ds-tokens": "2.x",
         "css-loader": "^5.2.7",
         "less-loader": "^11.0.0",
-        "mini-css-extract-plugin": "^2.6.1",
+        "mini-css-extract-plugin": "^2.7.3",
         "style-loader": "^3.3.1",
         "ts-loader": "^9.3.1"
     }
