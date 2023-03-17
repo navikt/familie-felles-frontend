@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@8.1.1...@navikt/familie-visittkort@9.0.0) (2023-03-17)
+
+### Features
+
+-   **Lagt inn alder på visittkort:** lagt inn alder på visittkort etter navn ([#889](https://github.com/navikt/familie-felles-frontend/issues/889)) ([b25dd06](https://github.com/navikt/familie-felles-frontend/commit/b25dd0653d2c6ae443dad022a8adbd1e58e9ab3e))
+
+### BREAKING CHANGES
+
+-   **Lagt inn alder på visittkort:** familie-visittkort
+
 ## [8.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@8.1.0...@navikt/familie-visittkort@8.1.1) (2023-03-14)
 
 **Note:** Version bump only for package @navikt/familie-visittkort
