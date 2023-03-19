@@ -2760,9 +2760,9 @@
     glob-to-regexp "^0.3.0"
 
 "@navikt/ds-css-internal@2.x":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-css-internal/2.2.0/15ec6e265d2570d9bde61873592a453dd0cc968e#15ec6e265d2570d9bde61873592a453dd0cc968e"
-  integrity sha512-gHVMGP3NGHXNK//l3rWZHedcgfMKFNM/+NIMDOJ9H0z+ySTp8jcAiVuBTgYTzVmYRaHd6IJfgGLZF6xw2Ejr/A==
+  version "2.8.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css-internal/2.8.1/525d70b46d2614fec6ba90868cd5fb0e5b509723#525d70b46d2614fec6ba90868cd5fb0e5b509723"
+  integrity sha512-d8z9VkH1qe3YrCIqNoIr/Rl2WtlzYD1lUH7vzyEESRZAK/ioCBjATwfb6xu8zXw8Bz6yfXKbTBZ9ENVF/lCUug==
 
 "@navikt/ds-css@2.x":
   version "2.2.0"
