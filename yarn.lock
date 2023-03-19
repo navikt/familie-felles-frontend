@@ -2759,6 +2759,11 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
+"@navikt/aksel-icons@^2.8.1":
+  version "2.8.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/2.8.1/e7ee2c004da9515cb5ddca2cf6f9cede2be7dda2#e7ee2c004da9515cb5ddca2cf6f9cede2be7dda2"
+  integrity sha512-L7HSZ0Q9+j5lgXU2+deNNNYNJffPRMK3ZA8H3ZJRPdkvwF5+xzNXeySgQKdk+81QzO/rTqvfj6vF84fLgwlG9A==
+
 "@navikt/ds-css-internal@2.x":
   version "2.2.0"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css-internal/2.2.0/15ec6e265d2570d9bde61873592a453dd0cc968e#15ec6e265d2570d9bde61873592a453dd0cc968e"
@@ -2769,10 +2774,10 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css/2.2.0/d7625c3de971f9100542f4a19e7e4880252b378c#d7625c3de971f9100542f4a19e7e4880252b378c"
   integrity sha512-b1CpbA11YhEzO/cwhTZUqlL2AuiSjNtmJ/beNN23ghDeWD+Shzz+cbYDEYLCFGU4o4wU4NejElxSCF9fBokTOQ==
 
-"@navikt/ds-icons@2.x", "@navikt/ds-icons@^2.2.0":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/2.2.0/3bcfc2145b897a7c36c6ca4ce20ba3b991d64a90#3bcfc2145b897a7c36c6ca4ce20ba3b991d64a90"
-  integrity sha512-86vmaBIwdk8THOOYqHusiSKZ8e7imaog7EdHsJz+9CCt7uKE+as+c/aVCyz1LUJjjXhdt7ify4mq4MzPuHK9MQ==
+"@navikt/ds-icons@2.x", "@navikt/ds-icons@^2.2.0", "@navikt/ds-icons@^2.8.1":
+  version "2.8.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/2.8.1/08bde498cbd490f325e2f56ae19e08e9b402908d#08bde498cbd490f325e2f56ae19e08e9b402908d"
+  integrity sha512-ak4rDF2pSqln7L9fB/cTdmwWh+UVEZxQMZpG3cj7HmV8kVakowT0/pAiD6RP6C0Kz5zGk1QF3KSNXl6Jevm0RQ==
 
 "@navikt/ds-react-internal@2.x":
   version "2.2.0"
@@ -2785,12 +2790,13 @@
     copy-to-clipboard "^3.3.1"
 
 "@navikt/ds-react@2.x", "@navikt/ds-react@^2.2.0":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/2.2.0/c20718a93e97f6d9e9346665ef301aa844e9ba24#c20718a93e97f6d9e9346665ef301aa844e9ba24"
-  integrity sha512-nWcr/ISwuKFtOD9GsBEdq/J+qKHuuPB4VZhvuxI1UCTEXYFxamBpb+ZaCi8/WLRPJ72cSyBUV9rUBESHzK8yBw==
+  version "2.8.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/2.8.1/51e29d72b87f5e8734078ec1b811745208a68306#51e29d72b87f5e8734078ec1b811745208a68306"
+  integrity sha512-QabDFudxbVeXbBZVM/KnHzplXovM7hDAY4YAl9SY0YRUeY29CXAhcQnf0OANPYpwLs7HwFgWDbb7u8Yu45fDLQ==
   dependencies:
     "@floating-ui/react" "0.17.0"
-    "@navikt/ds-icons" "^2.2.0"
+    "@navikt/aksel-icons" "^2.8.1"
+    "@navikt/ds-icons" "^2.8.1"
     "@radix-ui/react-tabs" "1.0.0"
     "@radix-ui/react-toggle-group" "1.0.0"
     clsx "^1.2.1"
