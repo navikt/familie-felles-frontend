@@ -2799,9 +2799,9 @@
     react-modal "3.15.1"
 
 "@navikt/ds-tokens@2.x":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/2.2.0/aa5998899fbb35f8d9a6b42e7f64a01a33064302#aa5998899fbb35f8d9a6b42e7f64a01a33064302"
-  integrity sha512-GCN90vyhxFxqwZiCBx0H/OMcz8tW4qdoEfsHIAaIyLuOzeW98aW75rP17ZJA+FtlmIkFvy6NShogQPpYppJAsA==
+  version "2.8.4"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/2.8.4/8b8e1591406738c119e086b07460e29ea4634872#8b8e1591406738c119e086b07460e29ea4634872"
+  integrity sha512-EaRMNLOosnYoZ9FOvYck63qXWlZxGnnjDCZa288fOdjWpPlLF3M1fSDkR0RKTf+xxI7UNn/3NEMGmz+DPGM5sQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
