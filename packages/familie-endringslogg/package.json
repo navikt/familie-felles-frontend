@@ -24,7 +24,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@portabletext/react": "^1.0.6",
+        "@portabletext/react": "^3.0.4",
         "classnames": "^2.3.2",
         "react-transition-group": "^4.4.2"
     },
