@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@10.1.1...@navikt/familie-form-elements@10.1.2) (2023-07-04)
+
+### Bug Fixes
+
+-   skal kunne ta inn className for å kunne style ytre container med styled components ([#1116](https://github.com/navikt/familie-felles-frontend/issues/1116)) ([f8dc59a](https://github.com/navikt/familie-felles-frontend/commit/f8dc59a12876763a230aaa20f71517bf0cbdcf3c))
+
 ## [10.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@10.1.0...@navikt/familie-form-elements@10.1.1) (2023-03-14)
 
 **Note:** Version bump only for package @navikt/familie-form-elements
