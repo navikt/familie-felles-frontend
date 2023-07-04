@@ -22,6 +22,7 @@ export interface IProps extends Props<{ label: string; value: string }, true | f
     label: ReactNode;
     feil?: ReactNode;
     propSelectStyles?: StylesConfig;
+    className?: string;
 }
 
 const Container = styled.div`
@@ -32,9 +33,7 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
     control: (provided, state) => ({
         ...provided,
         border:
-            feil && !state.isFocused
-                ? `1px solid ${ASurfaceDanger}`
-                : `1px solid ${ABorderStrong}`,
+            feil && !state.isFocused ? `1px solid ${ASurfaceDanger}` : `1px solid ${ABorderStrong}`,
         borderRadius: '4px',
         boxShadow: state.isFocused
             ? `0 0 0 3px ${ABorderFocus}`
@@ -107,6 +106,7 @@ export const FamilieReactSelect: React.FC<IProps> = ({
     value,
     feil,
     propSelectStyles,
+    className,
     ...props
 }) => {
     const propsWithoutStyles = omit(props, ['styles']);
@@ -118,7 +118,7 @@ export const FamilieReactSelect: React.FC<IProps> = ({
     };
 
     return (
-        <Container>
+        <Container className={className}>
             {typeof label === 'string' ? (
                 <label htmlFor={id}>
                     <Label size={'small'} spacing={true}>
