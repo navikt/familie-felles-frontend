@@ -7,81 +7,75 @@ import '@navikt/ds-css';
 export default {
     title: 'Komponenter/Tidslinje',
     component: Tidslinje,
-    argTypes: {
-        rader: {
-            defaultValue: [
-                [
-                    {
-                        id: '123',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2020-01-31'),
-                        status: 'suksess',
-                        infoPin: false,
-                    },
-                    {
-                        id: '234',
-                        fom: new Date('2020-02-01'),
-                        tom: new Date('2020-02-29'),
-                        status: 'feil',
-                    },
-                    {
-                        id: '345',
-                        fom: new Date('2020-03-01'),
-                        tom: new Date('2020-03-31'),
-                        status: 'suksess',
-                    },
-                    {
-                        id: '456',
-                        fom: new Date('2020-07-01'),
-                        tom: new Date('2020-07-31'),
-                        status: 'suksess',
-                    },
-                    {
-                        id: '567',
-                        fom: new Date('2020-08-01'),
-                        tom: new Date('2020-08-31'),
-                        status: 'advarsel',
-                    },
-                ],
-                [
-                    {
-                        id: '678',
-                        fom: new Date('2020-02-01'),
-                        tom: new Date('2020-02-29'),
-                        status: 'inaktiv',
-                    },
-                    {
-                        id: '789',
-                        fom: new Date('2020-03-01'),
-                        tom: new Date('2020-03-31'),
-                        status: 'inaktiv',
-                    },
-                ],
-                [
-                    {
-                        id: 'test678',
-                        fom: new Date('2020-02-01'),
-                        tom: new Date('2020-02-29'),
-                        status: 'feil',
-                    },
-                    {
-                        id: 'test789',
-                        fom: new Date('2020-03-01'),
-                        tom: new Date('2020-03-31'),
-                        status: 'suksess',
-                        infoPin: true,
-                    },
-                ],
+    args: {
+        rader: [
+            [
+                {
+                    id: '123',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2020-01-31'),
+                    status: 'suksess',
+                    infoPin: false,
+                },
+                {
+                    id: '234',
+                    fom: new Date('2020-02-01'),
+                    tom: new Date('2020-02-29'),
+                    status: 'feil',
+                },
+                {
+                    id: '345',
+                    fom: new Date('2020-03-01'),
+                    tom: new Date('2020-03-31'),
+                    status: 'suksess',
+                },
+                {
+                    id: '456',
+                    fom: new Date('2020-07-01'),
+                    tom: new Date('2020-07-31'),
+                    status: 'suksess',
+                },
+                {
+                    id: '567',
+                    fom: new Date('2020-08-01'),
+                    tom: new Date('2020-08-31'),
+                    status: 'advarsel',
+                },
             ],
-        },
-        pins: {
-            defaultValue: [{ date: new Date('2020-03-15'), render: 'Dette er en pin' }],
-        },
+            [
+                {
+                    id: '678',
+                    fom: new Date('2020-02-01'),
+                    tom: new Date('2020-02-29'),
+                    status: 'inaktiv',
+                },
+                {
+                    id: '789',
+                    fom: new Date('2020-03-01'),
+                    tom: new Date('2020-03-31'),
+                    status: 'inaktiv',
+                },
+            ],
+            [
+                {
+                    id: 'test678',
+                    fom: new Date('2020-02-01'),
+                    tom: new Date('2020-02-29'),
+                    status: 'feil',
+                },
+                {
+                    id: 'test789',
+                    fom: new Date('2020-03-01'),
+                    tom: new Date('2020-03-31'),
+                    status: 'suksess',
+                    infoPin: true,
+                },
+            ],
+        ],
+        pins: [{ date: new Date('2020-03-15'), render: 'Dette er en pin' }],
         aktivtUtsnitt: {
-            defaultValue: {
-                fom: new Date('2020-02-01'),
-                tom: new Date('2020-02-29'),
-            },
+            fom: new Date('2020-02-01'),
+            tom: new Date('2020-02-29'),
         },
     },
 };

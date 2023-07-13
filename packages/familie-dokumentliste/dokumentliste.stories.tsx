@@ -9,7 +9,7 @@ export default {
             'Dokumentliste-komponenten brukes til å vise informasjon om dokumenter fra journalposter.',
     },
     title: 'Komponenter/Dokumentliste',
-    argTypes: {
+    args: {
         dokumenter: {
             description: 'Liste av dokumenter',
         },

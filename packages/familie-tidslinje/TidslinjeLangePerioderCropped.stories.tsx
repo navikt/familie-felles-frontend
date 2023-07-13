@@ -27,123 +27,119 @@ const StyledContainer = styled.div(
 export default {
     title: 'Komponenter/Tidslinje',
     component: Tidslinje,
-    argTypes: {
-        rader: {
-            defaultValue: [
-                [
-                    {
-                        id: '123',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2022-12-31'),
-                        status: 'suksess',
-                        children: <Success />,
-                    },
-                ],
-                [
-                    {
-                        id: '678',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2021-12-31'),
-                        status: 'inaktiv',
-                    },
-                ],
-                [
-                    {
-                        id: 'test678',
-                        fom: new Date('2021-01-01'),
-                        tom: new Date('2022-12-31'),
-                        status: 'feil',
-                        children: <Error />,
-                    },
-                ],
-                [
-                    {
-                        id: '123',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2022-12-31'),
-                        status: 'advarsel',
-                        children: <Warning />,
-                    },
-                ],
-                [],
-                [
-                    {
-                        id: '123',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2022-12-31'),
-                        status: 'inaktiv',
-                    },
-                ],
-                [
-                    {
-                        id: '123',
-                        fom: new Date('2021-01-01'),
-                        tom: new Date('2022-12-31'),
-                        status: 'advarsel',
-                        children: <Warning />,
-                    },
-                ],
-                [
-                    {
-                        id: '678',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2021-12-31'),
-                        status: 'feil',
-                        children: <Error />,
-                    },
-                ],
-                [
-                    {
-                        id: 'test678',
-                        fom: new Date('2021-01-01'),
-                        tom: new Date('2022-12-31'),
-                        status: 'suksess',
-                        children: <Success />,
-                    },
-                ],
-                [],
-                [
-                    {
-                        id: '123',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2021-12-31'),
-                        status: 'advarsel',
-                        children: <Warning />,
-                    },
-                ],
-                [
-                    {
-                        id: '123',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2022-12-31'),
-                        status: 'feil',
-                        children: <Error />,
-                    },
-                ],
-                [
-                    {
-                        id: '678',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2021-12-31'),
-                        status: 'suksess',
-                        children: <Success />,
-                    },
-                ],
-                [
-                    {
-                        id: 'test678',
-                        fom: new Date('2021-01-01'),
-                        tom: new Date('2022-12-31'),
-                        status: 'inaktiv',
-                    },
-                ],
+    args: {
+        rader: [
+            [
+                {
+                    id: '123',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2022-12-31'),
+                    status: 'suksess',
+                    children: <Success />,
+                },
             ],
-        },
+            [
+                {
+                    id: '678',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2021-12-31'),
+                    status: 'inaktiv',
+                },
+            ],
+            [
+                {
+                    id: 'test678',
+                    fom: new Date('2021-01-01'),
+                    tom: new Date('2022-12-31'),
+                    status: 'feil',
+                    children: <Error />,
+                },
+            ],
+            [
+                {
+                    id: '123',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2022-12-31'),
+                    status: 'advarsel',
+                    children: <Warning />,
+                },
+            ],
+            [],
+            [
+                {
+                    id: '123',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2022-12-31'),
+                    status: 'inaktiv',
+                },
+            ],
+            [
+                {
+                    id: '123',
+                    fom: new Date('2021-01-01'),
+                    tom: new Date('2022-12-31'),
+                    status: 'advarsel',
+                    children: <Warning />,
+                },
+            ],
+            [
+                {
+                    id: '678',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2021-12-31'),
+                    status: 'feil',
+                    children: <Error />,
+                },
+            ],
+            [
+                {
+                    id: 'test678',
+                    fom: new Date('2021-01-01'),
+                    tom: new Date('2022-12-31'),
+                    status: 'suksess',
+                    children: <Success />,
+                },
+            ],
+            [],
+            [
+                {
+                    id: '123',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2021-12-31'),
+                    status: 'advarsel',
+                    children: <Warning />,
+                },
+            ],
+            [
+                {
+                    id: '123',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2022-12-31'),
+                    status: 'feil',
+                    children: <Error />,
+                },
+            ],
+            [
+                {
+                    id: '678',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2021-12-31'),
+                    status: 'suksess',
+                    children: <Success />,
+                },
+            ],
+            [
+                {
+                    id: 'test678',
+                    fom: new Date('2021-01-01'),
+                    tom: new Date('2022-12-31'),
+                    status: 'inaktiv',
+                },
+            ],
+        ],
         aktivtUtsnitt: {
-            defaultValue: {
-                fom: new Date('2021-04-01'),
-                tom: new Date('2021-04-30'),
-            },
+            fom: new Date('2021-04-01'),
+            tom: new Date('2021-04-30'),
         },
     },
 };
