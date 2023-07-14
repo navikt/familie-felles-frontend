@@ -151,7 +151,9 @@ export const LongPeriodClickable = (args: TidslinjeProps) => {
 
     const onSelectPeriode = (periode: Periode) => {
         setAktivPeriode(periode);
-        setRader(rader => rader.map(rad => rad.map(p => ({ ...p, active: periode.id === p.id }))));
+        setRader(prevRader =>
+            prevRader.map(rad => rad.map(p => ({ ...p, active: periode.id === p.id }))),
+        );
     };
 
     const aktivRad =
