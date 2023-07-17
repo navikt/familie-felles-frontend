@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-tidslinje@5.1.1...@navikt/familie-tidslinje@5.1.2) (2023-07-17)
+
+**Note:** Version bump only for package @navikt/familie-tidslinje
+
 ## [5.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-tidslinje@5.1.0...@navikt/familie-tidslinje@5.1.1) (2023-03-14)
 
 **Note:** Version bump only for package @navikt/familie-tidslinje

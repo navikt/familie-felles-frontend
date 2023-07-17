@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@8.1.0...@navikt/familie-dokumentliste@8.1.1) (2023-07-17)
+
+**Note:** Version bump only for package @navikt/familie-dokumentliste
+
 # [8.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@8.0.0...@navikt/familie-dokumentliste@8.1.0) (2023-02-20)
 
 ### Features
