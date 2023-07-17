@@ -8,7 +8,6 @@ import { logError, logInfo } from '@navikt/familie-logging';
 import { ISessionKonfigurasjon } from '../typer';
 
 import RedisStore from 'connect-redis';
-const redisStore = RedisStore(session);
 
 export default (
     app: Express,
@@ -22,7 +21,6 @@ export default (
         logInfo('Setter opp redis for session');
 
         const redisClient = redis.createClient({
-            legacyMode: true,
             database: 1,
             socket: {
                 host: sessionKonfigurasjon.redisUrl,
@@ -33,7 +31,7 @@ export default (
         redisClient.connect().catch(logError);
         redisClient.unref();
 
-        const store = new redisStore({
+        const store = new RedisStore({
             disableTouch: true,
             client: redisClient,
             ttl: sessionKonfigurasjon.sessionMaxAgeSekunder,

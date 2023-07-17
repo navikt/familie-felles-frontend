@@ -23,85 +23,81 @@ const StyledNorwegian = styled(NorwegianFlag)`
 export default {
     title: 'Komponenter/Tidslinje',
     component: Tidslinje,
-    argTypes: {
-        rader: {
-            defaultValue: [
-                [
-                    {
-                        id: '123',
-                        fom: new Date('2020-01-01'),
-                        tom: new Date('2020-01-31'),
-                        status: 'suksess',
-                        infoPin: false,
-                        className: 'eøs',
-                        children: (
-                            <>
-                                <StyledEu
-                                    height="24"
-                                    width="24"
-                                    style={{ position: 'relative', top: '-1px' }}
-                                />
-                                <span style={{ position: 'relative', top: '-6px' }}>
-                                    Dette er ein lang tekst for testing
-                                </span>
-                            </>
-                        ),
-                        hoverLabel: 'Dette er ein lang tekst for testing',
-                    },
-                    {
-                        id: '234',
-                        fom: new Date('2020-02-01'),
-                        tom: new Date('2020-02-29'),
-                        status: 'feil',
-                        className: 'eøs',
-                        children: <StyledEu />,
-                    },
-                    {
-                        id: '345',
-                        fom: new Date('2020-03-01'),
-                        tom: new Date('2020-03-31'),
-                        status: 'suksess',
-                        className: 'norge',
-                        children: (
-                            <>
-                                <StyledNorwegian
-                                    height="24"
-                                    width="24"
-                                    style={{
-                                        color: 'var(--a-orange-600)',
-                                        position: 'relative',
-                                        top: '-1px',
-                                    }}
-                                />
-                                <Detail
-                                    size="small"
-                                    style={{ display: 'inline', position: 'relative', top: '-8px' }}
-                                >
-                                    Dette er ein lang tekst for testing
-                                </Detail>
-                            </>
-                        ),
-                    },
-                    {
-                        id: '456',
-                        fom: new Date('2020-07-01'),
-                        tom: new Date('2020-07-31'),
-                        status: 'suksess',
-                        className: 'norge',
-                        children: <StyledNorwegian height="24" width="24" />,
-                    },
-                    {
-                        id: '567',
-                        fom: new Date('2020-08-01'),
-                        tom: new Date('2020-08-31'),
-                        status: 'advarsel',
-                    },
-                ],
+    args: {
+        rader: [
+            [
+                {
+                    id: '123',
+                    fom: new Date('2020-01-01'),
+                    tom: new Date('2020-01-31'),
+                    status: 'suksess',
+                    infoPin: false,
+                    className: 'eøs',
+                    children: (
+                        <>
+                            <StyledEu
+                                height="24"
+                                width="24"
+                                style={{ position: 'relative', top: '-1px' }}
+                            />
+                            <span style={{ position: 'relative', top: '-6px' }}>
+                                Dette er ein lang tekst for testing
+                            </span>
+                        </>
+                    ),
+                    hoverLabel: 'Dette er ein lang tekst for testing',
+                },
+                {
+                    id: '234',
+                    fom: new Date('2020-02-01'),
+                    tom: new Date('2020-02-29'),
+                    status: 'feil',
+                    className: 'eøs',
+                    children: <StyledEu />,
+                },
+                {
+                    id: '345',
+                    fom: new Date('2020-03-01'),
+                    tom: new Date('2020-03-31'),
+                    status: 'suksess',
+                    className: 'norge',
+                    children: (
+                        <>
+                            <StyledNorwegian
+                                height="24"
+                                width="24"
+                                style={{
+                                    color: 'var(--a-orange-600)',
+                                    position: 'relative',
+                                    top: '-1px',
+                                }}
+                            />
+                            <Detail
+                                size="small"
+                                style={{ display: 'inline', position: 'relative', top: '-8px' }}
+                            >
+                                Dette er ein lang tekst for testing
+                            </Detail>
+                        </>
+                    ),
+                },
+                {
+                    id: '456',
+                    fom: new Date('2020-07-01'),
+                    tom: new Date('2020-07-31'),
+                    status: 'suksess',
+                    className: 'norge',
+                    children: <StyledNorwegian height="24" width="24" />,
+                },
+                {
+                    id: '567',
+                    fom: new Date('2020-08-01'),
+                    tom: new Date('2020-08-31'),
+                    status: 'advarsel',
+                },
             ],
-        },
-        pins: {
-            defaultValue: [{ date: new Date('2020-03-15'), render: 'Dette er en pin' }],
-        },
+        ],
+        pins: [{ date: new Date('2020-03-15'), render: 'Dette er en pin' }],
     },
 };
 
