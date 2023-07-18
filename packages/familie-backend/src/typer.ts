@@ -5,6 +5,8 @@ export interface IApi {
 
 export interface ISessionKonfigurasjon {
     redisUrl?: string;
+    redisFullUrl?: string;
+    redisBrukernavn?: string;
     redisPassord?: string;
     navn: string;
     secureCookie: boolean;

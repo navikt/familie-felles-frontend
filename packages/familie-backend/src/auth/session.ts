@@ -4,10 +4,47 @@ import session from 'express-session';
 import { PassportStatic } from 'passport';
 import redis from 'redis';
 import { appConfig } from '../config';
-import { logError, logInfo } from '@navikt/familie-logging';
+import { logError, logInfo, logSecure } from '@navikt/familie-logging';
 import { ISessionKonfigurasjon } from '../typer';
 
 import RedisStore from 'connect-redis';
+
+const redisClientForAiven = (sessionKonfigurasjon: ISessionKonfigurasjon) => {
+    const redisClient = redis.createClient({
+        database: 1,
+        url: sessionKonfigurasjon.redisFullUrl,
+        username: sessionKonfigurasjon.redisBrukernavn,
+        password: sessionKonfigurasjon.redisPassord,
+    });
+    return redisClient;
+};
+
+const redisClientForStandalone = (sessionKonfigurasjon: ISessionKonfigurasjon) => {
+    const redisClient = redis.createClient({
+        database: 1,
+        socket: {
+            host: sessionKonfigurasjon.redisUrl,
+            port: 6379,
+        },
+        password: sessionKonfigurasjon.redisPassord,
+    });
+    return redisClient;
+};
+
+const lagRedisClient = (sessionKonfigurasjon: ISessionKonfigurasjon) => {
+    if (sessionKonfigurasjon.redisFullUrl) {
+        logInfo('Setter opp redis mot aiven for sesjoner');
+        return redisClientForAiven(sessionKonfigurasjon);
+    } else if (sessionKonfigurasjon.redisUrl) {
+        logInfo('Setter opp redis for session');
+        return redisClientForStandalone(sessionKonfigurasjon);
+    } else {
+        logSecure(
+            `Mangler redisUrl eller redisFullUrl i sesjonskonfigurasjonen ${sessionKonfigurasjon}`,
+        );
+        throw Error('Kan ikke konfigurerer redis uten sesjonsconfigurasjon');
+    }
+};
 
 export default (
     app: Express,
@@ -17,17 +54,9 @@ export default (
     app.use(cookieParser(sessionKonfigurasjon.cookieSecret));
     app.set('trust proxy', 1);
 
-    if (sessionKonfigurasjon.redisUrl) {
-        logInfo('Setter opp redis for session');
+    if (sessionKonfigurasjon.redisFullUrl || sessionKonfigurasjon.redisUrl) {
+        const redisClient = lagRedisClient(sessionKonfigurasjon);
 
-        const redisClient = redis.createClient({
-            database: 1,
-            socket: {
-                host: sessionKonfigurasjon.redisUrl,
-                port: 6379,
-            },
-            password: sessionKonfigurasjon.redisPassord,
-        });
         redisClient.connect().catch(logError);
         redisClient.unref();
 
