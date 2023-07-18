@@ -57,6 +57,16 @@ export default (
     if (sessionKonfigurasjon.redisFullUrl || sessionKonfigurasjon.redisUrl) {
         const redisClient = lagRedisClient(sessionKonfigurasjon);
 
+        /**
+         * Logge hendelser i redisclient for å debugge merkelige sockettimeouts
+         */
+        redisClient.on('error', err => logError(`Redis Error: ${err}`));
+        redisClient.on('connect', () => logInfo('Redis connected'));
+        redisClient.on('reconnecting', () => logInfo('Redis reconnecting'));
+        redisClient.on('ready', () => {
+            logInfo('Redis ready!');
+        });
+
         redisClient.connect().catch(logError);
         redisClient.unref();
 
