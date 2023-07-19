@@ -10,11 +10,13 @@ import { ISessionKonfigurasjon } from '../typer';
 import RedisStore from 'connect-redis';
 
 const redisClientForAiven = (sessionKonfigurasjon: ISessionKonfigurasjon) => {
+    const pingHvertFjerdeMinutt = 1000 * 60 * 4; // Connection blir ugyldig etter fem minutter, pinger derfor hvert fjerde minutt
     const redisClient = redis.createClient({
         database: 1,
         url: sessionKonfigurasjon.redisFullUrl,
         username: sessionKonfigurasjon.redisBrukernavn,
         password: sessionKonfigurasjon.redisPassord,
+        pingInterval: pingHvertFjerdeMinutt,
     });
     return redisClient;
 };
