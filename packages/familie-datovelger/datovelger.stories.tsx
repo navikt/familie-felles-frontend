@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 
 import { ISODateString } from 'nav-datovelger/lib/types';
 
-import '../../stories.less';
-import { FamilieDatovelger } from '..';
 import { BodyShort, Switch } from '@navikt/ds-react';
 import '@navikt/ds-css';
+import { FamilieDatovelger } from './src';
 
 export default {
     component: FamilieDatovelger,
     parameters: {
         componentSubtitle: 'En datovelger med støtte for lesevisning.',
     },
-    title: 'Komponenter/Form-elementer/FamilieDatovelger',
+    title: 'Komponenter/FamilieDatovelger',
 };
 
 export const FamilieDatovelgerStory: React.FC = ({ ...args }) => {
@@ -22,7 +21,7 @@ export const FamilieDatovelgerStory: React.FC = ({ ...args }) => {
 
     return (
         <>
-            <div className={'story-elements switch-gruppe'}>
+            <div>
                 <Switch checked={lesevisning} onClick={() => settLesevisning(!lesevisning)}>
                     Lesevisning
                 </Switch>
@@ -30,7 +29,7 @@ export const FamilieDatovelgerStory: React.FC = ({ ...args }) => {
                     Feil
                 </Switch>
             </div>
-            <div className={'story-elements'}>
+            <div>
                 <FamilieDatovelger
                     id={'dato'}
                     label={'Datovelger'}

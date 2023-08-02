@@ -5,9 +5,9 @@ import dayjs from 'dayjs';
 import styled from 'styled-components';
 import { ISODateString } from 'nav-datovelger/lib/types';
 import { DatepickerProps } from 'nav-datovelger/lib/Datepicker';
-import { FamilieLesefelt } from '../lesefelt';
 import { ErrorMessage, Label } from '@navikt/ds-react';
 import { ASurfaceDanger } from '@navikt/ds-tokens/dist/tokens';
+import { FamilieLesefelt } from '@navikt/familie-form-elements';
 
 export interface IDatovelgerProps {
     className?: string;
@@ -65,7 +65,11 @@ export const FamilieDatovelger: React.FC<IDatovelgerProps & DatepickerProps> = (
             <FamilieLesefelt
                 className={className}
                 label={label}
-                verdi={verdiDayjs && verdiDayjs.isValid() ? verdiDayjs.format(lesevisningFormat) : value}
+                verdi={
+                    verdiDayjs && verdiDayjs.isValid()
+                        ? verdiDayjs.format(lesevisningFormat)
+                        : value
+                }
             />
         );
     } else {

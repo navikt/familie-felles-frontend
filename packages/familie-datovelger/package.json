@@ -1,6 +1,6 @@
 {
-    "name": "@navikt/familie-form-elements",
-    "version": "10.1.2",
+    "name": "@navikt/familie-datovelger",
+    "version": "0.0.0",
     "main": "dist/index.js",
     "author": "NAV",
     "license": "MIT",
@@ -21,13 +21,24 @@
     "dependencies": {
         "@types/classnames": "^2.3.1",
         "classnames": "^2.3.2",
-        "react-select": "^5.7.0"
+        "dayjs": "^1.11.3",
+        "nav-datovelger": "^12.6.0",
+        "nav-frontend-core": "^6.0.x",
+        "nav-frontend-js-utils": "^1.0.x",
+        "nav-frontend-knapper-style": "^2.1.1",
+        "nav-frontend-skjema": "^4.0.x",
+        "nav-frontend-skjema-style": "^3.0.2",
+        "nav-frontend-typografi": "^4.0.x",
+        "nav-frontend-typografi-style": "^2.0.1",
+        "react-select": "^5.7.0",
+        "@navikt/familie-form-elements": "^10.1.2"
     },
     "devDependencies": {
         "@navikt/ds-css": "2.x",
         "@navikt/ds-react": "2.x",
         "@navikt/ds-tokens": "2.x",
         "@types/styled-components": "^5.1.25",
+        "react-day-picker": "7.4.10",
         "styled-components": "^5.3.5"
     },
     "peerDependencies": {
