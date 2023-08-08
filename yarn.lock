@@ -2097,6 +2097,13 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.3.tgz#327a2c11e6570b7d64368ad74a3ac12786c9f751"
   integrity sha512-upVRtrNZuYNsw+EoxkiBFRPROnU8UTy/u/dZ9U0W14BlemPYODwhhxYXSR2Y9xOnvr1XtptJRWx7gL8Te1qaog==
 
+"@floating-ui/core@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.4.1.tgz#0d633f4b76052668afb932492ac452f7ebe97f17"
+  integrity sha512-jk3WqquEJRlcyu7997NtR5PibI+y5bi+LS3hPmguVClypenMsCY3CBa3LAQnozRCtCrYWSEtAdiskpamuJRFOQ==
+  dependencies:
+    "@floating-ui/utils" "^0.1.1"
+
 "@floating-ui/dom@^1.0.1":
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.2.4.tgz#e2eb2674f57fc182c425587e48ea43e336f4b8f8"
@@ -2111,12 +2118,27 @@
   dependencies:
     "@floating-ui/core" "^1.2.1"
 
+"@floating-ui/dom@^1.3.0":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.5.1.tgz#88b70defd002fe851f17b4a25efb2d3c04d7a8d7"
+  integrity sha512-KwvVcPSXg6mQygvA1TjbN/gh///36kKtllIF8SUm0qpFj8+rvYrpvlYdL1JoA71SHpDqgSSdGOSoQ0Mp3uY5aw==
+  dependencies:
+    "@floating-ui/core" "^1.4.1"
+    "@floating-ui/utils" "^0.1.1"
+
 "@floating-ui/react-dom@^1.2.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-1.3.0.tgz#4d35d416eb19811c2b0e9271100a6aa18c1579b3"
   integrity sha512-htwHm67Ji5E/pROEAr7f8IKFShuiCKHwUC/UY4vC3I5jiSvGFAYnSYiZO5MlGmads+QqvUkR9ANHEguGrDv72g==
   dependencies:
     "@floating-ui/dom" "^1.2.1"
+
+"@floating-ui/react-dom@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react-dom/-/react-dom-2.0.1.tgz#7972a4fc488a8c746cded3cfe603b6057c308a91"
+  integrity sha512-rZtAmSht4Lry6gdhAJDrCp/6rKN7++JnL1/Anbr/DdeyYXQPxvg/ivrbYvJulbRf4vL8b212suwMM2lxbv+RQA==
+  dependencies:
+    "@floating-ui/dom" "^1.3.0"
 
 "@floating-ui/react@0.17.0":
   version "0.17.0"
@@ -2126,6 +2148,20 @@
     "@floating-ui/react-dom" "^1.2.0"
     aria-hidden "^1.1.3"
     tabbable "^6.0.1"
+
+"@floating-ui/react@0.24.1":
+  version "0.24.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/react/-/react-0.24.1.tgz#9ef81c78045c4b88ac062755826a3daf7cbe23d6"
+  integrity sha512-qjCKUZDEz/4bnJmu4gn66TqsoX912/re8JGEi3pXazsphmyh327l0UpTgpBAT3WkNbnzAH7Adt3wKlLMNtfupw==
+  dependencies:
+    "@floating-ui/react-dom" "^2.0.0"
+    aria-hidden "^1.1.3"
+    tabbable "^6.0.1"
+
+"@floating-ui/utils@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/utils/-/utils-0.1.1.tgz#1a5b1959a528e374e8037c4396c3e825d6cf4a83"
+  integrity sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==
 
 "@formatjs/ecma402-abstract@1.11.4":
   version "1.11.4"
@@ -3320,32 +3356,27 @@
     hey-listen "^1.0.8"
     tslib "^2.3.1"
 
-"@navikt/ds-css-internal@2.x":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-css-internal/2.2.0/15ec6e265d2570d9bde61873592a453dd0cc968e#15ec6e265d2570d9bde61873592a453dd0cc968e"
-  integrity sha512-gHVMGP3NGHXNK//l3rWZHedcgfMKFNM/+NIMDOJ9H0z+ySTp8jcAiVuBTgYTzVmYRaHd6IJfgGLZF6xw2Ejr/A==
+"@navikt/aksel-icons@4.x", "@navikt/aksel-icons@^4.9.0":
+  version "4.9.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/4.9.0/041744a25684a8cee8c3375c2f9b929ea1cdcb93#041744a25684a8cee8c3375c2f9b929ea1cdcb93"
+  integrity sha512-WOTkelI+W1VR0VvC6DyTznHcgCcYq5BTWIHU3zmPJMi2ImfmOAP768kGW8imxQ600hN9bTwnjBZixAC5pFsM6A==
 
 "@navikt/ds-css@2.x":
   version "2.2.0"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css/2.2.0/d7625c3de971f9100542f4a19e7e4880252b378c#d7625c3de971f9100542f4a19e7e4880252b378c"
   integrity sha512-b1CpbA11YhEzO/cwhTZUqlL2AuiSjNtmJ/beNN23ghDeWD+Shzz+cbYDEYLCFGU4o4wU4NejElxSCF9fBokTOQ==
 
+"@navikt/ds-css@2.x || 3.x || 4.x", "@navikt/ds-css@4.x":
+  version "4.9.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/4.9.0/bbe29245205e41026bebe4bbcfa1e682b1149e81#bbe29245205e41026bebe4bbcfa1e682b1149e81"
+  integrity sha512-jR3cpspyrt2XQVUcu26g0wEKwDEsMZw3BdE02PIiBa9ucULxv92lj/N+nEbzTSl4jK4Xf9waWUhuepvVPJu2tg==
+
 "@navikt/ds-icons@2.x", "@navikt/ds-icons@^2.2.0":
   version "2.2.0"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-icons/2.2.0/3bcfc2145b897a7c36c6ca4ce20ba3b991d64a90#3bcfc2145b897a7c36c6ca4ce20ba3b991d64a90"
   integrity sha512-86vmaBIwdk8THOOYqHusiSKZ8e7imaog7EdHsJz+9CCt7uKE+as+c/aVCyz1LUJjjXhdt7ify4mq4MzPuHK9MQ==
 
-"@navikt/ds-react-internal@2.x":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react-internal/2.2.0/40474832be085a8359214d875cddc4cba677d56d#40474832be085a8359214d875cddc4cba677d56d"
-  integrity sha512-35XpwOGC+AouBKNvlyQJazd3B7IWasb8ZcAkZ7WMfkZKGXrzNArlYvYgTUIV0R1Jl9RoR5QrW2s3SNx1K4qQWQ==
-  dependencies:
-    "@navikt/ds-icons" "^2.2.0"
-    "@navikt/ds-react" "^2.2.0"
-    clsx "^1.1.1"
-    copy-to-clipboard "^3.3.1"
-
-"@navikt/ds-react@2.x", "@navikt/ds-react@^2.2.0":
+"@navikt/ds-react@2.x":
   version "2.2.0"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-react/2.2.0/c20718a93e97f6d9e9346665ef301aa844e9ba24#c20718a93e97f6d9e9346665ef301aa844e9ba24"
   integrity sha512-nWcr/ISwuKFtOD9GsBEdq/J+qKHuuPB4VZhvuxI1UCTEXYFxamBpb+ZaCi8/WLRPJ72cSyBUV9rUBESHzK8yBw==
@@ -3359,10 +3390,29 @@
     react-day-picker "8.3.4"
     react-modal "3.15.1"
 
+"@navikt/ds-react@2.x || 3.x || 4.x", "@navikt/ds-react@4.x":
+  version "4.9.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/4.9.0/15ffd74b3a4cf9edfbf88ae4ed67417bed1d26c1#15ffd74b3a4cf9edfbf88ae4ed67417bed1d26c1"
+  integrity sha512-BlUFXT0AqWpj+SiOEsSujG5zvpZvm2+KIeBAaj7OneVwotaECVi9rkCpdpNQLKlmGIQatDSkSgrpCf4sNEEphw==
+  dependencies:
+    "@floating-ui/react" "0.24.1"
+    "@navikt/aksel-icons" "^4.9.0"
+    "@radix-ui/react-tabs" "1.0.0"
+    "@radix-ui/react-toggle-group" "1.0.0"
+    clsx "^1.2.1"
+    date-fns "2.29.3"
+    react-day-picker "8.3.4"
+    react-modal "3.15.1"
+
 "@navikt/ds-tokens@2.x":
   version "2.2.0"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/2.2.0/aa5998899fbb35f8d9a6b42e7f64a01a33064302#aa5998899fbb35f8d9a6b42e7f64a01a33064302"
   integrity sha512-GCN90vyhxFxqwZiCBx0H/OMcz8tW4qdoEfsHIAaIyLuOzeW98aW75rP17ZJA+FtlmIkFvy6NShogQPpYppJAsA==
+
+"@navikt/ds-tokens@2.x || 3.x || 4.x":
+  version "4.9.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/4.9.0/f93d5c52adb03b266077092b6f4c7d0775af076e#f93d5c52adb03b266077092b6f4c7d0775af076e"
+  integrity sha512-HLH8IJ0QmitthGsoftTWWh33JNsbDT+3AoTlMqwwYignbopfr47YB8EnduraHNBWMFwVDU8TSpkT7boVlEsvnQ==
 
 "@ndelangen/get-tarball@^3.0.7":
   version "3.0.9"
@@ -6883,7 +6933,7 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==
 
-clsx@^1.1.1, clsx@^1.2.1:
+clsx@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
   integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
@@ -7326,13 +7376,6 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
   integrity sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==
-
-copy-to-clipboard@^3.3.1:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.2.tgz#5b263ec2366224b100181dded7ce0579b340c107"
-  integrity sha512-Vme1Z6RUDzrb6xAI7EZlVZ5uvOk2F//GaxKUxajDqm9LhOVM1inxNAD2vy+UZDYsd0uyA9s7b3/FVZPSxqrCfg==
-  dependencies:
-    toggle-selection "^1.0.6"
 
 copyfiles@^2.4.1:
   version "2.4.1"
@@ -16199,11 +16242,6 @@ to-regex@^3.0.1, to-regex@^3.0.2:
     extend-shallow "^3.0.2"
     regex-not "^1.0.2"
     safe-regex "^1.1.0"
-
-toggle-selection@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
-  integrity sha512-BiZS+C1OS8g/q2RRbJmy59xpyghNBqrr6k5L/uKBGRsTfxmu3ffiRnd8mlGPUVayg8pvfi5urfnu8TU7DVOkLQ==
 
 toidentifier@1.0.1:
   version "1.0.1"

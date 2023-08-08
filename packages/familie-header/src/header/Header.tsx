@@ -1,8 +1,7 @@
 import React from 'react';
 import '@navikt/ds-css';
-import '@navikt/ds-css-internal';
-import { Dropdown, Header as NavHeader } from '@navikt/ds-react-internal';
-import { System } from '@navikt/ds-icons';
+import { Dropdown, InternalHeader as NavHeader } from '@navikt/ds-react';
+import { MenuGridIcon } from '@navikt/aksel-icons';
 
 export interface Brukerinfo {
     navn: string;
@@ -62,7 +61,7 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
     return (
         <Dropdown>
             <NavHeader.Button as={Dropdown.Toggle} className="ml-auto">
-                <System
+                <MenuGridIcon
                     fr="mask"
                     style={{ fontSize: '1.5rem' }}
                     title="Andre systemer"

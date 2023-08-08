@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import '@navikt/ds-css';
-import '@navikt/ds-css-internal';
 import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 import Søkeresultater from './Søkeresultater';
 import { ISøkeresultat } from '../types';
