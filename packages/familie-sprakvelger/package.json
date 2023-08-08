@@ -38,9 +38,9 @@
         "styled-components": "^5.3.5"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "2.x",
+        "@navikt/ds-css": "2.x || 3.x || 4.x",
         "@navikt/ds-icons": "2.x",
-        "@navikt/ds-react": "2.x",
+        "@navikt/ds-react": "2.x || 3.x || 4.x",
         "react": "17.x || 18.x",
         "react-intl": "^5.20.12",
         "styled-components": "^5.x"

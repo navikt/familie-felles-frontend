@@ -42,9 +42,9 @@
         "styled-components": "^5.3.5"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "2.x",
-        "@navikt/ds-react": "2.x",
-        "@navikt/ds-tokens": "2.x",
+        "@navikt/ds-css": "2.x || 3.x || 4.x",
+        "@navikt/ds-react": "2.x || 3.x || 4.x",
+        "@navikt/ds-tokens": "2.x || 3.x || 4.x",
         "react": "^17.x || 18.x",
         "styled-components": "^5.x"
     }
