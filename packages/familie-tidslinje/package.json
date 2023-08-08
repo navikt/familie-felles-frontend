@@ -34,10 +34,10 @@
         "styled-components": "^5.x"
     },
     "devDependencies": {
-        "@navikt/ds-css": "2.x",
+        "@navikt/ds-css": "2.x || 3.x || 4.x",
         "@navikt/ds-icons": "2.x",
-        "@navikt/ds-react": "2.x",
-        "@navikt/ds-tokens": "2.x",
+        "@navikt/ds-react": "2.x || 3.x || 4.x",
+        "@navikt/ds-tokens": "2.x || 3.x || 4.x",
         "css-loader": "^5.2.7",
         "less-loader": "^11.0.0",
         "mini-css-extract-plugin": "^2.7.3",
