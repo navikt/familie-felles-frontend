@@ -9,7 +9,9 @@ on:
 jobs:
   build-and-push-to-npm:
     permissions:
-      contents: read
+      contents: write
+      issues: write
+      pull-requests: write
       packages: write
     name: Bygg og push
     runs-on: ubuntu-latest
