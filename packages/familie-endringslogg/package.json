@@ -2,6 +2,7 @@
     "version": "9.0.0",
     "name": "@navikt/familie-endringslogg",
     "author": "NAV",
+    "type": "module",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
     "license": "MIT",
     "repository": {
