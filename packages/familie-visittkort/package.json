@@ -24,22 +24,21 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-clipboard": "^11.0.0",
         "@navikt/familie-ikoner": "^7.0.0",
         "@navikt/familie-typer": "^8.0.0",
         "classnames": "^2.3.2",
         "prop-types": "^15.8.1"
     },
     "devDependencies": {
-        "@navikt/ds-css": "2.x",
-        "@navikt/ds-react": "2.x",
-        "@navikt/ds-tokens": "2.x",
+        "@navikt/ds-css": "4.x",
+        "@navikt/ds-react": "4.x",
+        "@navikt/ds-tokens": "4.x",
         "styled-components": "^5.3.5"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "2.x || 3.x || 4.x",
-        "@navikt/ds-react": "2.x || 3.x || 4.x",
-        "@navikt/ds-tokens": "2.x || 3.x || 4.x",
+        "@navikt/ds-css": "4.x",
+        "@navikt/ds-react": "4.x",
+        "@navikt/ds-tokens": "4.x",
         "react": "^17.x || 18.x",
         "styled-components": "^5.x"
     }
