@@ -8,6 +8,9 @@ on:
 
 jobs:
   build-and-push-to-npm:
+    permissions:
+      contents: read
+      packages: write
     name: Bygg og push
     runs-on: ubuntu-latest
     steps:
