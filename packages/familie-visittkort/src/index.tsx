@@ -33,7 +33,7 @@ const StyledVisittkort = styled.div`
     }
 `;
 
-const IdentOgKopierKnapp = styled.div`
+const FlexBox = styled.div`
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -64,10 +64,10 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
 
             <div className={'visittkort__pipe'}>|</div>
 
-            <IdentOgKopierKnapp>
+            <FlexBox>
                 {ident}
                 <CopyButton copyText={ident} size={'small'} />
-            </IdentOgKopierKnapp>
+            </FlexBox>
 
             {children}
         </StyledVisittkort>
