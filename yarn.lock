@@ -3414,6 +3414,11 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/4.9.0/f93d5c52adb03b266077092b6f4c7d0775af076e#f93d5c52adb03b266077092b6f4c7d0775af076e"
   integrity sha512-HLH8IJ0QmitthGsoftTWWh33JNsbDT+3AoTlMqwwYignbopfr47YB8EnduraHNBWMFwVDU8TSpkT7boVlEsvnQ==
 
+"@navikt/ds-tokens@4.x":
+  version "4.12.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/4.12.1/965d6d0f998cdbe8759d54c47788d67e24240af3#965d6d0f998cdbe8759d54c47788d67e24240af3"
+  integrity sha512-i6kt6D0Zy9/ECRdHw54VoK3bk3oAbY2TsbOiUC0NgBwOOSfR+D/zKCiBXMkbpkQNba8mHrC3RVfNp59pWteAUQ==
+
 "@ndelangen/get-tarball@^3.0.7":
   version "3.0.9"
   resolved "https://registry.yarnpkg.com/@ndelangen/get-tarball/-/get-tarball-3.0.9.tgz#727ff4454e65f34707e742a59e5e6b1f525d8964"

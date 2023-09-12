@@ -1,9 +1,8 @@
-import Clipboard from '@navikt/familie-clipboard';
 import { FamilieIkonVelger } from '@navikt/familie-ikoner';
 import { kjønnType } from '@navikt/familie-typer';
 import * as React from 'react';
 import styled from 'styled-components';
-import { BodyShort, Label } from '@navikt/ds-react';
+import { CopyButton, Label } from '@navikt/ds-react';
 import { AGray700, ASpacing2, ASpacing4 } from '@navikt/ds-tokens/dist/tokens';
 
 export interface IkonProps {
@@ -34,6 +33,12 @@ const StyledVisittkort = styled.div`
     }
 `;
 
+const FlexBox = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+`;
+
 export const Visittkort: React.FunctionComponent<IProps> = ({
     alder,
     children,
@@ -59,9 +64,10 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
 
             <div className={'visittkort__pipe'}>|</div>
 
-            <Clipboard>
-                <BodyShort size={'small'}>{ident}</BodyShort>
-            </Clipboard>
+            <FlexBox>
+                {ident}
+                <CopyButton copyText={ident} size={'small'} />
+            </FlexBox>
 
             {children}
         </StyledVisittkort>
