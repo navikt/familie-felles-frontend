@@ -1,5 +1,5 @@
 {
-    "version": "9.0.0",
+    "version": "9.0.1",
     "name": "@navikt/familie-sprakvelger",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@navikt/familie-form-elements": "^12.0.0",
-        "@navikt/familie-ikoner": "^7.0.0",
+        "@navikt/familie-ikoner": "^7.0.1",
         "@types/react-aria-menubutton": "^6.2.9",
         "react-aria-menubutton": "^7.0.3"
     },

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@9.0.0...@navikt/familie-dokumentliste@9.0.1) (2023-09-13)
+
+**Note:** Version bump only for package @navikt/familie-dokumentliste
+
+
+
+
+
 # [9.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@8.1.1...@navikt/familie-dokumentliste@9.0.0) (2023-08-08)
 
 -   støtt v4 av designsystemet (#1139) ([e100728](https://github.com/navikt/familie-felles-frontend/commit/e100728ed0d09a5bb6f5f4ca4966412af732fc67)), closes [#1139](https://github.com/navikt/familie-felles-frontend/issues/1139)

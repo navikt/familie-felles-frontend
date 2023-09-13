@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@11.0.0...@navikt/familie-visittkort@11.0.1) (2023-09-13)
+
+**Note:** Version bump only for package @navikt/familie-visittkort
+
+
+
+
+
 # [11.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@10.0.0...@navikt/familie-visittkort@11.0.0) (2023-09-12)
 
 -   Gjør familie-clipboard deprecated (#1144) ([bbbcbe8](https://github.com/navikt/familie-felles-frontend/commit/bbbcbe8870da8eda69bf22f19903d6609ea914e5)), closes [#1144](https://github.com/navikt/familie-felles-frontend/issues/1144)
