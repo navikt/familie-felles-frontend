@@ -57,14 +57,15 @@ export const [HttpProvider, useHttp] = createUseContext(
                         ressurs: responsRessurs,
                     });
                 })
-                .catch((error: AxiosError) => {
+                .catch((error: AxiosError<ApiRessurs<SkjemaRespons>>) => {
                     if (error.message.includes('401') && settAutentisert) {
                         settAutentisert(false);
                     }
 
                     config.påvirkerSystemLaster && fjernRessursSomLaster(ressursId);
 
-                    const responsRessurs: ApiRessurs<SkjemaRespons> = error.response?.data;
+                    const responsRessurs: ApiRessurs<SkjemaRespons> | undefined =
+                        error.response?.data;
                     return håndterApiRespons({
                         defaultFeilmelding: config.defaultFeilmelding,
                         error,
