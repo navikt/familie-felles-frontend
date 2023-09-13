@@ -11,9 +11,9 @@
     "deploy-storybook": "storybook-to-ghpages",
     "lint": "eslint './packages/**/*.{ts,tsx}'",
     "lint:fix": "eslint './packages/**/*.{ts,tsx}' --fix",
-    "publish:ci": "lerna publish -y --no-verify-access",
+    "publish:ci": "lerna publish --yes",
     "publish:canary": "lerna publish --canary",
-    "publish:canary:ci": "lerna publish -y --no-verify-access --canary"
+    "publish:canary:ci": "lerna publish --canary --yes"
   },
   "husky": {
     "hooks": {
