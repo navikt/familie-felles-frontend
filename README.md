@@ -4,11 +4,11 @@ Fellesrepo for frontend biblioteker for team familie.\
 [Storybook med dokumentasjon 📖](https://navikt.github.io/familie-felles-frontend)
 
 ## Lokal testing
-Man kan ikke bruke `yarn link` på pakker som ikke er publisert. For å teste lokalt pusher man opp en branch som bygges automatisk. For å få tak i pakkenavnet går man til Actions-fanen, velger rett branch, klikker "Bygg og push" og deretter "Push". Nederst står pakkenavnet under "Successfully published".
+Kjør `yarn build` så skal den bruke den siste versjonen lokalt
 
 ## Lokal utvilking
 For å utvilke lokalt kan man kjøre
-`yarn && yarn build && yarn bootstrap`
+`yarn && yarn build`
 For å sette opp repoet og
 `yarn storybook`
 For å kjøre det.
@@ -21,3 +21,7 @@ Les mer [her](packages/introduksjon.stories.mdx)
 
 # Dokumentasjon
 Besøk [docs](https://navikt.github.io/familie-felles-frontend) for Storybook-dokumentasjon.
+
+## Trøbbel?
+Det kan være nødvendig å slette `node_modules` lokalt for å få satt opp workspaces riktig.
+Dette fordi vi nå bruker `yarn`, og ikke `lerna`, sine workspaces.
