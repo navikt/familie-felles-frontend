@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import './chevron-lenke.css';
-import { Left, Right } from '@navikt/ds-icons';
+import { ArrowLeftIcon, ArrowRightIcon } from '@navikt/aksel-icons';
 
 export enum Direction {
     RIGHT,
@@ -27,7 +27,7 @@ const ChevronLenke = (props: ChevronLenkeProps) => {
                     <span className={'chevron-lenke__tekst'} role="button">
                         {tekst}
                     </span>
-                    <Right
+                    <ArrowRightIcon
                         fr="mask"
                         className={'chevron-right'}
                         onResize={undefined}
@@ -36,7 +36,7 @@ const ChevronLenke = (props: ChevronLenkeProps) => {
                 </>
             ) : (
                 <>
-                    <Left
+                    <ArrowLeftIcon
                         fr="mask"
                         className={'chevron-left'}
                         onResize={undefined}

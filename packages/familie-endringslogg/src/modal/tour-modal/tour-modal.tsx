@@ -3,9 +3,8 @@ import './tour-modal.css';
 import ChevronLenke, { Direction } from '../../chevron-lenke/chevron-lenke';
 import Stegviser from '../../stegviser/stegviser';
 import { ModalType } from '../../utils/endringslogg-custom';
-// @ts-ignore
 import { Heading, Modal } from '@navikt/ds-react';
-import { PortableText } from "@portabletext/react";
+import { PortableText } from '@portabletext/react';
 
 interface TourModalProps {
     modal: ModalType;
@@ -42,18 +41,13 @@ const TourModal = (props: TourModalProps) => {
     const modalTittel = props.modal?.header ? props.modal.header : 'Ny oppdatering';
 
     return (
-        <Modal className={'tour-modal'} open={props.open} onClose={lukkModal}>
-            <Modal.Content>
-                <div
-                    className={'tour-modal__header--wrapper'}
-                    data-testid="endringslogg_tour-modal"
-                >
-                    <header className={'tour-modal__header'}>
-                        <Heading size="medium" level="1">
-                            {modalTittel}
-                        </Heading>
-                    </header>
-                </div>
+        <Modal
+            className={'tour-modal'}
+            open={props.open}
+            onClose={lukkModal}
+            header={{ heading: modalTittel }}
+        >
+            <Modal.Body>
                 <main className={'tour-modal__main'}>
                     <div className={'tour-modal__main--bilde-wrapper'}>
                         {step.slideImage && (
@@ -100,7 +94,7 @@ const TourModal = (props: TourModalProps) => {
                         }
                     />
                 </footer>
-            </Modal.Content>
+            </Modal.Body>
         </Modal>
     );
 };
