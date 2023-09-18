@@ -25,17 +25,17 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@portabletext/react": "^1.0.6",
+        "@portabletext/react": "^3.0.7",
         "classnames": "^2.3.2",
-        "react-transition-group": "^4.4.2"
+        "react-transition-group": "^4.4.5"
     },
     "devDependencies": {
-        "@navikt/ds-icons": "2.x",
-        "@navikt/ds-react": "2.x"
+        "@navikt/aksel-icons": "5.x",
+        "@navikt/ds-react": "5.x"
     },
     "peerDependencies": {
-        "@navikt/ds-icons": "2.x",
-        "@navikt/ds-react": "2.x || 3.x || 4.x",
+        "@navikt/aksel-icons": "5.x",
+        "@navikt/ds-react": "2.x || 3.x || 4.x || 5.x",
         "@types/react": "17.x || 18.x",
         "react": "17.x || 18.x"
     }

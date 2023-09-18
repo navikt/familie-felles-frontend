@@ -2771,6 +2771,11 @@
   resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/4.9.0/041744a25684a8cee8c3375c2f9b929ea1cdcb93#041744a25684a8cee8c3375c2f9b929ea1cdcb93"
   integrity sha512-WOTkelI+W1VR0VvC6DyTznHcgCcYq5BTWIHU3zmPJMi2ImfmOAP768kGW8imxQ600hN9bTwnjBZixAC5pFsM6A==
 
+"@navikt/aksel-icons@5.x", "@navikt/aksel-icons@^5.5.0":
+  version "5.5.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/5.5.0/b382aa387897f3f4850fbc16c3b95d6a57b7ef38#b382aa387897f3f4850fbc16c3b95d6a57b7ef38"
+  integrity sha512-KKq28Ed4lYwnrESIyyOxnBGr7ef1RqTPZoLAJE1YXNGHfVMN/TEZCoZQlPialhZK8g36ngNgvtsZeEm5oCxoxQ==
+
 "@navikt/ds-css@2.x":
   version "2.2.0"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-css/2.2.0/d7625c3de971f9100542f4a19e7e4880252b378c#d7625c3de971f9100542f4a19e7e4880252b378c"
@@ -2814,6 +2819,20 @@
     react-day-picker "8.3.4"
     react-modal "3.15.1"
 
+"@navikt/ds-react@5.x":
+  version "5.5.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/5.5.0/9dd060472b85eaaf0f7cf344a93d20bb0bbd9d42#9dd060472b85eaaf0f7cf344a93d20bb0bbd9d42"
+  integrity sha512-sBX0q7MjkAVBYvE8mrNkb2YwF0Cx/TNLIjN96bnLOnqfHRB8CV2+lkYNR6u+c/8qOuPZXgyH25dqye9kMC4VdQ==
+  dependencies:
+    "@floating-ui/react" "0.24.1"
+    "@navikt/aksel-icons" "^5.5.0"
+    "@navikt/ds-tokens" "^5.5.0"
+    "@radix-ui/react-tabs" "1.0.0"
+    "@radix-ui/react-toggle-group" "1.0.0"
+    clsx "^1.2.1"
+    date-fns "2.29.3"
+    react-day-picker "8.3.4"
+
 "@navikt/ds-tokens@2.x":
   version "2.2.0"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/2.2.0/aa5998899fbb35f8d9a6b42e7f64a01a33064302#aa5998899fbb35f8d9a6b42e7f64a01a33064302"
@@ -2828,6 +2847,11 @@
   version "4.12.1"
   resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/4.12.1/965d6d0f998cdbe8759d54c47788d67e24240af3#965d6d0f998cdbe8759d54c47788d67e24240af3"
   integrity sha512-i6kt6D0Zy9/ECRdHw54VoK3bk3oAbY2TsbOiUC0NgBwOOSfR+D/zKCiBXMkbpkQNba8mHrC3RVfNp59pWteAUQ==
+
+"@navikt/ds-tokens@^5.5.0":
+  version "5.5.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/5.5.0/f963d7872d9b6eb74198f19f107b6073bfa8c6a5#f963d7872d9b6eb74198f19f107b6073bfa8c6a5"
+  integrity sha512-zV9TfGNjiRgpX1Ec11gK8BtgkiR+HN+qwjVbWt5NA6ux8xIQYdaFqLJWQa585vLl6DEOhwrlzb0FhT+KDvG3Rg==
 
 "@ndelangen/get-tarball@^3.0.7":
   version "3.0.9"
@@ -3168,25 +3192,25 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@portabletext/react@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-1.0.6.tgz#508ede0b165a3705db6907a94ff67c791d9ab432"
-  integrity sha512-j6BprLiwFz3zr1Lo6BxM2sQ1b3g1JIjGwePeuxqSfbBiEYbGXn2izEckMJ02hSa1f7+RCEUJ+Bojvtzz6BBUaw==
+"@portabletext/react@^3.0.7":
+  version "3.0.7"
+  resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-3.0.7.tgz#a5f5e9b9fde6ae09409fb70769db7612b7bdecb6"
+  integrity sha512-Hx4rohr3rul/IQMDl07nRhdXLeey2fZPE/3Nbn0I+k8Zr5DsqKdkqMgkla3iBNS8h0a0LTSclS5GKVXoQlzrWg==
   dependencies:
-    "@portabletext/toolkit" "^1.0.5"
-    "@portabletext/types" "^1.0.3"
+    "@portabletext/toolkit" "^2.0.8"
+    "@portabletext/types" "^2.0.6"
 
-"@portabletext/toolkit@^1.0.5":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@portabletext/toolkit/-/toolkit-1.0.6.tgz#783910483c4fbacdb6df7808b90d96e7e24985e3"
-  integrity sha512-u48kRSOyxbOmy0J//bLg1odTcL5dvPDmobSbiTgR11J/k9eIKCdWRiJtddpEyId/aWGP2bkX4ol2RMPCmAPCIg==
+"@portabletext/toolkit@^2.0.8":
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/@portabletext/toolkit/-/toolkit-2.0.8.tgz#15e6382120892ec40e6145e6736633f3e94c3c81"
+  integrity sha512-MI3FKYZiL+/dYsClkkTDRjSvNS7K4j+U2LNZ5XIEoq67qCY0l7CYjvT0fn+lFBEUxjegtEmbxLk6T9nV/iXA+Q==
   dependencies:
-    "@portabletext/types" "^1.0.3"
+    "@portabletext/types" "^2.0.6"
 
-"@portabletext/types@^1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-1.0.3.tgz#b23f832ae5331c1d864195a95eba34abf340597e"
-  integrity sha512-SDDsdury2SaTI2D5Ea6o+Y39SSZMYHRMWJHxkxYl3yzFP0n/0EknOhoXcoaV+bxGr2dTTqZi2TOEj+uWYuavSw==
+"@portabletext/types@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-2.0.6.tgz#334ef469346b168924ce7c2215c88a30d5e778c8"
+  integrity sha512-6iqorcsQ0Z1/4Y7PWLvoknyiUv0DngSPao+q5UIE0+0gT2cZwFdItUyLZRheG85AisSEvacHEEnvN+TT8mxXVg==
 
 "@radix-ui/primitive@1.0.0":
   version "1.0.0"
@@ -14251,7 +14275,7 @@ react-tooltip@*, react-tooltip@^4.2.21:
     prop-types "^15.7.2"
     uuid "^7.0.3"
 
-react-transition-group@^4.3.0, react-transition-group@^4.4.2:
+react-transition-group@^4.3.0, react-transition-group@^4.4.5:
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
   integrity sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==

@@ -5,7 +5,7 @@ import './endringslogg.css';
 import { TourModalButton } from './modal/tour-modal/tour-modal-button';
 import { trackLinkClick } from './utils/utils';
 import { Heading, Label, Link } from '@navikt/ds-react';
-import { ExternalLink } from '@navikt/ds-icons';
+import { ExternalLinkIcon } from '@navikt/aksel-icons';
 import { PortableText } from '@portabletext/react';
 
 interface EndringsloggContentProps {
@@ -25,7 +25,7 @@ export const EndringsloggLink = (props: {
             onClick={props.onClick}
         >
             {props.linkText ? props.linkText : props.link}
-            <ExternalLink
+            <ExternalLinkIcon
                 fr="mask"
                 className={'linkikon'}
                 onResize={undefined}
