@@ -66,7 +66,7 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
 
             <FlexBox>
                 {ident}
-                <CopyButton copyText={ident} size={'small'} />
+                <CopyButton copyText={ident.replace(' ', '')} size={'small'} />
             </FlexBox>
 
             {children}
