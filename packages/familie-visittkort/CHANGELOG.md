@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@11.0.1...@navikt/familie-visittkort@11.0.2) (2023-09-19)
+
+
+### Bug Fixes
+
+* **familie-visittkort:** sørger for at kopiert ident ikke er formattert ([#1171](https://github.com/navikt/familie-felles-frontend/issues/1171)) ([9399d1f](https://github.com/navikt/familie-felles-frontend/commit/9399d1f0a2d4c1ed1fa8c5a660cae18c98152e05))
+
+
+
+
+
 ## [11.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@11.0.0...@navikt/familie-visittkort@11.0.1) (2023-09-13)
 
 **Note:** Version bump only for package @navikt/familie-visittkort
