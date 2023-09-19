@@ -40,7 +40,7 @@ const TourModal = (props: TourModalProps) => {
 
     const modalTittel = props.modal?.header ? props.modal.header : 'Ny oppdatering';
 
-    return (
+    return props.open ? (
         <Modal
             className={'tour-modal'}
             open={props.open}
@@ -96,7 +96,7 @@ const TourModal = (props: TourModalProps) => {
                 </footer>
             </Modal.Body>
         </Modal>
-    );
+    ) : null;
 };
 
 export default TourModal;
