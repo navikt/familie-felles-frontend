@@ -73,7 +73,7 @@ export const Clipboard: React.FC<IProps> = ({ children }) => {
                 data-delay-hide={1750}
                 data-effect={'solid'}
                 onClick={copy}
-                data-class="typo-undertekst"
+                data-class="typo-undertekstrfgtyhujikol"
             >
                 <AnimatePresence initial={false} exitBeforeEnter>
                     <IconContainer {...animation} key={didCopy ? 'check' : 'copy'}>
