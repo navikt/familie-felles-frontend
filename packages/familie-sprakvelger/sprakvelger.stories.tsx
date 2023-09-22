@@ -1,7 +1,7 @@
 import React from 'react';
-import { Sprakvelger, LocaleType, SprakProvider } from './src';
-import { FormattedMessage } from 'react-intl';
+import { Sprakvelger, LocaleType, SprakProvider, useSprakContext } from './src';
 import styled from 'styled-components';
+import { BodyShort } from '@navikt/ds-react';
 
 export default {
     component: Sprakvelger,
@@ -23,31 +23,35 @@ const messages = {
     },
 };
 
-export const FamilieSprakvelger: React.FC = ({ ...args }) => {
-    const Wrapper = styled.div`
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-    `;
+const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+`;
 
-    const StyledSprakvelger = styled(Sprakvelger)`
-        color: green;
-        margin: auto;
-    `;
+const StyledSprakvelger = styled(Sprakvelger)`
+    color: green;
+    margin: auto;
+`;
 
+export const SprakvelgerContainer: React.FC = ({ ...args }) => {
+    const [valgtLocale] = useSprakContext();
     return (
-        <SprakProvider tekster={messages} defaultLocale={LocaleType.en}>
-            <Wrapper>
-                <Sprakvelger
-                    støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]}
-                    {...args}
-                />
-                <p>
-                    <FormattedMessage id={'greeting'} />
-                </p>
-                <p>Den kan styles om ønskelig</p>
-                <StyledSprakvelger støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]} />
-            </Wrapper>
+        <Wrapper>
+            <Sprakvelger støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]} {...args} />
+            <p>
+                <BodyShort>{messages[valgtLocale].greeting}</BodyShort>
+            </p>
+            <p>Den kan styles om ønskelig</p>
+            <StyledSprakvelger støttedeSprak={[LocaleType.en, LocaleType.nn, LocaleType.nb]} />
+        </Wrapper>
+    );
+};
+
+export const FamilieSprakvelger: React.FC = ({ ...args }) => {
+    return (
+        <SprakProvider defaultLocale={LocaleType.en}>
+            <SprakvelgerContainer {...args} />
         </SprakProvider>
     );
 };
