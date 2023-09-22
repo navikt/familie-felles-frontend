@@ -4,7 +4,7 @@ import { SpråkSelectMenu } from './SpråkSelectMenu';
 import { Button, Wrapper } from 'react-aria-menubutton';
 import { useSprakContext } from './SprakContext';
 import { LocaleType, sprakTittel } from './typer';
-import { Globe, Expand, Collapse } from '@navikt/ds-icons';
+import { GlobeIcon, ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
 import { SkjultLabel } from '@navikt/familie-form-elements';
 import { hentSprakvelgerLabelTekst } from './utils';
 import { BodyShort } from '@navikt/ds-react';
@@ -32,11 +32,11 @@ const StyledNormalTekst = styled(BodyShort)`
     flex-grow: 1;
 `;
 
-const StyledCollapse = styled(Collapse)`
+const StyledCollapse = styled(ChevronUpIcon)`
     z-index: -1;
 `;
 
-const StyledExpand = styled(Expand)`
+const StyledExpand = styled(ChevronDownIcon)`
     z-index: -1;
 `;
 
@@ -64,7 +64,7 @@ export const Sprakvelger: React.FC<{ støttedeSprak: LocaleType[]; className?: s
                 {hentSprakvelgerLabelTekst(valgtLocale)}
             </SkjultLabel>
             <StyledButton id="språkvelger" value={valgtLocale}>
-                <Globe
+                <GlobeIcon
                     role="img"
                     focusable={false}
                     aria-hidden={true}

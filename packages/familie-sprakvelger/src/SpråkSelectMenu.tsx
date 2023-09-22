@@ -29,14 +29,14 @@ const StyledMenuItem = styled(MenuItem)`
     border-left: 1px solid var(--a-gray-300);
     border-right: 1px solid var(--a-gray-300);
 
-    :hover,
-    :focus {
+    &:hover,
+    &:focus {
         outline: none;
         background-color: var(--a-blue-500);
         color: #fff;
     }
 
-    :hover {
+    &:hover {
         cursor: pointer;
     }
 `;
