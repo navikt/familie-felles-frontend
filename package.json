@@ -4,7 +4,7 @@
   "repository": "https://github.com/navikt/familie-felles-frontend.git",
   "license": "MIT",
   "scripts": {
-    "ct": "git-cz",
+    "ct": "cz",
     "build": "lerna run build",
     "storybook": "storybook dev -p 8000",
     "build-storybook": "storybook build",
@@ -27,7 +27,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-lerna-changelog"
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "commitizen": "^4.3.0",
     "copyfiles": "^2.4.1",
     "css-loader": "^5.0.1",
-    "cz-lerna-changelog": "^2.0.3",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.36.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.8.0",
