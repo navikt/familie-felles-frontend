@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@9.0.1...@navikt/familie-sprakvelger@10.0.0) (2023-09-22)
+
+
+* familie-sprakvelger: Bytter ut ds-icons og fjerner IntlProvider (#1173) ([36159aa](https://github.com/navikt/familie-felles-frontend/commit/36159aa4ebc1805e3649dbeaff34132b2b030b77)), closes [#1173](https://github.com/navikt/familie-felles-frontend/issues/1173)
+
+
+### BREAKING CHANGES
+
+* IntlProvider er fjernet og må implementeres i konsumenten. Krever aksel v5 og react
+18.
+
+* build(oppdatert yarn.lock etter pakkeendringer i familie-sprakvelger): oppdatert yarn.lock
+
+Oppdatert yarn.lock etter pakkeendringer i familie-sprakvelger
+* Må ha oppdatert yarn.lock for at nye sprakvelger skal funke
+
+* Oppdaterer yarn.lock-filen
+
+
+
+
+
 ## [9.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-sprakvelger@9.0.0...@navikt/familie-sprakvelger@9.0.1) (2023-09-13)
 
 **Note:** Version bump only for package @navikt/familie-sprakvelger
