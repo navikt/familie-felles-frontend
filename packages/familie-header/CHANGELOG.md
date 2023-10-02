@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@11.0.1...@navikt/familie-header@12.0.0) (2023-10-02)
+
+
+* Tillater Aksel v5 i flere pakker (#1188) ([352bfa1](https://github.com/navikt/familie-felles-frontend/commit/352bfa15c80c4d109f87550fea8655660cd07448)), closes [#1188](https://github.com/navikt/familie-felles-frontend/issues/1188)
+
+
+### BREAKING CHANGES
+
+* Funker ikke lenger med aksel v2 og v3
+
+* feat(familie-datovelger, familie-endringslogg, familie-header, familie-visittkort): tillater akselV5
+
+Og fjerner aksel v2 og v3
+* Funker ikke lenger med aksel v2 og v3
+
+
+
+
+
 ## [11.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@11.0.0...@navikt/familie-header@11.0.1) (2023-09-13)
 
 **Note:** Version bump only for package @navikt/familie-header

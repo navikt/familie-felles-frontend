@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-datovelger@0.2.0...@navikt/familie-datovelger@0.3.0) (2023-10-02)
+
+
+* Tillater Aksel v5 i flere pakker (#1188) ([352bfa1](https://github.com/navikt/familie-felles-frontend/commit/352bfa15c80c4d109f87550fea8655660cd07448)), closes [#1188](https://github.com/navikt/familie-felles-frontend/issues/1188)
+
+
+### BREAKING CHANGES
+
+* Funker ikke lenger med aksel v2 og v3
+
+* feat(familie-datovelger, familie-endringslogg, familie-header, familie-visittkort): tillater akselV5
+
+Og fjerner aksel v2 og v3
+* Funker ikke lenger med aksel v2 og v3
+
+
+
+
+
 # [0.2.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-datovelger@0.1.0...@navikt/familie-datovelger@0.2.0) (2023-08-08)
 
 -   støtt v4 av designsystemet (#1139) ([e100728](https://github.com/navikt/familie-felles-frontend/commit/e100728ed0d09a5bb6f5f4ca4966412af732fc67)), closes [#1139](https://github.com/navikt/familie-felles-frontend/issues/1139)
