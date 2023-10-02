@@ -1,18 +1,18 @@
 import React from 'react';
-import { BodyShort, BodyShortProps, Label } from '@navikt/ds-react';
+import { BodyShort, Label } from '@navikt/ds-react';
 
 export interface ILesefeltProps {
     className?: string;
     label?: React.ReactNode;
     verdi?: string | readonly string[] | number;
-    size?: BodyShortProps['size'];
+    size?: undefined | 'small' | 'medium';
 }
 
 export const FamilieLesefelt: React.FC<ILesefeltProps> = ({ className, label, verdi, size }) => {
     return (
         <div className={className}>
-            {label !== undefined && <Label size={size} children={label} />}
-            <BodyShort size={size} children={verdi} />
+            {label !== undefined && <Label size={size}>{label}</Label>}
+            <BodyShort size={size}>{verdi}</BodyShort>
         </div>
     );
 };
