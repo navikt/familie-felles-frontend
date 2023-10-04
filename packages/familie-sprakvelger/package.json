@@ -24,7 +24,7 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-form-elements": "^12.0.0",
+        "@navikt/familie-form-elements": "^13.0.0",
         "@types/react-aria-menubutton": "^6.2.9",
         "react-aria-menubutton": "^7.0.3"
     },
