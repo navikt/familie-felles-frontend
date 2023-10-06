@@ -29,8 +29,9 @@ const storybookConfig: StorybookConfig = {
                         loader: 'css-loader',
                         options: {
                             modules: {
-                                compileType: 'icss',
+                                mode: 'icss',
                             },
+                            importLoaders: 1,
                         },
                     }, {
                         loader: require.resolve('less-loader'),
