@@ -1,4 +1,4 @@
-import createHttpsProxyAgent from 'https-proxy-agent';
+import { HttpsProxyAgent } from 'https-proxy-agent';
 import { envVar } from '../../utils';
 import { logInfo } from '@navikt/familie-logging';
 
@@ -7,7 +7,7 @@ const agent = () => {
     if (proxyUri) {
         logInfo(`Proxying requests via ${proxyUri} for openid-cilent`);
 
-        return createHttpsProxyAgent(proxyUri);
+        return new HttpsProxyAgent(proxyUri);
     } else {
         logInfo(
             `Environment variable HTTP_PROXY is not set, not proxying requests for openid-client`,
