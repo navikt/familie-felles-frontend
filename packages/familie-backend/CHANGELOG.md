@@ -9,7 +9,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+## [10.0.9](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@10.0.6...@navikt/familie-backend@10.0.7) (2023-10-13)
 
+**Note:** Removed snyk for package @navikt/familie-backend
 
 ## [10.0.7](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@10.0.6...@navikt/familie-backend@10.0.7) (2023-07-19)
 
