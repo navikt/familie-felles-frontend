@@ -24,7 +24,7 @@
         "react-select": "^5.7.0"
     },
     "devDependencies": {
-        "@navikt/ds-css": "5.x",
+        "@navikt/ds-css": "4.x",
         "@navikt/ds-react": "5.x",
         "@navikt/ds-tokens": "5.x",
         "@types/styled-components": "^5.1.25",

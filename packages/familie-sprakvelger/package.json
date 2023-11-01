@@ -30,7 +30,7 @@
     },
     "devDependencies": {
         "@navikt/aksel-icons": "^5.x",
-        "@navikt/ds-css": "^5.x",
+        "@navikt/ds-css": "^4.x",
         "@navikt/ds-react": "^5.x",
         "styled-components": "^6.0.8"
     },

@@ -30,7 +30,7 @@
         "prop-types": "^15.8.1"
     },
     "devDependencies": {
-        "@navikt/ds-css": "5.x",
+        "@navikt/ds-css": "4.x",
         "@navikt/ds-react": "5.x",
         "@navikt/ds-tokens": "5.x",
         "styled-components": "^5.3.5"
