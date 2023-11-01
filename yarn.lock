@@ -3155,9 +3155,9 @@
     tslib "^2.3.1"
 
 "@navikt/aksel-icons@5.x", "@navikt/aksel-icons@^5.5.0", "@navikt/aksel-icons@^5.x":
-  version "5.7.6"
-  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/5.7.6/0c3fc6f5044f60eb47358df7412be01365b82622#0c3fc6f5044f60eb47358df7412be01365b82622"
-  integrity sha512-GAQvvfVrS4n6qYIB9dCnzoVf5ZboWVDU8e9gfzQitVqysNFt8X2In9/BPX1eGZa44MCE5tr0mtnzkzLMkHpSHg==
+  version "5.9.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/5.9.0/8df7a1bfb0c064597ae000e6695e31e43e868237#8df7a1bfb0c064597ae000e6695e31e43e868237"
+  integrity sha512-Su1yjjrS5pveo1S2jdqJ8Ih4pR/2AwZVUxjlQ3KTJ09UsF4EappJ8eZQh/6nMjljs+iCSFoVdtz6ItQ0Od2MRQ==
 
 "@navikt/aksel-icons@^4.9.0":
   version "4.9.0"
