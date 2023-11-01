@@ -36,7 +36,7 @@
     "devDependencies": {
         "@navikt/ds-css": "5.x",
         "@navikt/ds-react": "5.x",
-        "@navikt/ds-tokens": "5.x",
+        "@navikt/ds-tokens": "4.x",
         "@types/styled-components": "^5.1.25",
         "react-day-picker": "7.4.10",
         "styled-components": "^5.3.5"

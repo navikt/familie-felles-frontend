@@ -2835,20 +2835,10 @@
     date-fns "2.29.3"
     react-day-picker "8.3.4"
 
-"@navikt/ds-tokens@2.x":
-  version "2.2.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/2.2.0/aa5998899fbb35f8d9a6b42e7f64a01a33064302#aa5998899fbb35f8d9a6b42e7f64a01a33064302"
-  integrity sha512-GCN90vyhxFxqwZiCBx0H/OMcz8tW4qdoEfsHIAaIyLuOzeW98aW75rP17ZJA+FtlmIkFvy6NShogQPpYppJAsA==
-
-"@navikt/ds-tokens@2.x || 3.x || 4.x":
-  version "4.9.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/4.9.0/f93d5c52adb03b266077092b6f4c7d0775af076e#f93d5c52adb03b266077092b6f4c7d0775af076e"
-  integrity sha512-HLH8IJ0QmitthGsoftTWWh33JNsbDT+3AoTlMqwwYignbopfr47YB8EnduraHNBWMFwVDU8TSpkT7boVlEsvnQ==
-
-"@navikt/ds-tokens@5.x":
-  version "5.6.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/5.6.1/f1ab1e8578b07f3fb62fc6458473c9882ccfe26a#f1ab1e8578b07f3fb62fc6458473c9882ccfe26a"
-  integrity sha512-gdg93aLtrPf/fuLXKmtmq/HdZLD/dfk7hbPkeVWi8hC6xetrxIf6ooJOPRX+OG8oW+pofKLStsWOeDutLdbumQ==
+"@navikt/ds-tokens@2.x || 3.x || 4.x", "@navikt/ds-tokens@4.x":
+  version "4.12.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/4.12.1/965d6d0f998cdbe8759d54c47788d67e24240af3#965d6d0f998cdbe8759d54c47788d67e24240af3"
+  integrity sha512-i6kt6D0Zy9/ECRdHw54VoK3bk3oAbY2TsbOiUC0NgBwOOSfR+D/zKCiBXMkbpkQNba8mHrC3RVfNp59pWteAUQ==
 
 "@navikt/ds-tokens@^5.5.0":
   version "5.5.0"
