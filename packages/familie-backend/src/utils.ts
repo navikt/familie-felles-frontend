@@ -16,7 +16,9 @@ export const envVar = (navn: string, påkrevd = true, defaultValue?: string): st
 
 const prefix = (req: Request) => {
     return `${
-        req.session && req.session.user ? `${req.session.user.displayName} -` : 'ugyldig sesjon -'
+        req.session && req.session.user
+            ? `${req.session.user.displayName} -`
+            : 'ugyldig sesjon eller mangler brukers data -'
     } ${req.method} - ${req.originalUrl}`;
 };
 
