@@ -16,24 +16,18 @@ export const hentBrukerprofil = () => {
     };
 };
 
-const håndterGenerellFeil = (req: Request, err: Error) => {
-    logRequest(req, `Noe gikk galt: ${err.message}.`, LOG_LEVEL.ERROR);
-
-    throw new Error('Noe gikk galt ved pålogging i løsningen. Vennligst prøv på nytt.');
+const håndterGenerellFeil = (next: NextFunction, req: Request, err: Error) => {
+    logRequest(req, `Noe gikk galt: ${err?.message}.`, LOG_LEVEL.ERROR);
+    next();
 };
+
 const håndterBrukerdataFeil = (req: Request, err: Error) => {
     logRequest(
         req,
         `Feilet mot ms graph: ${err.message}. Kan ikke fortsette uten brukerdata.`,
         LOG_LEVEL.ERROR,
     );
-    if (req.session) {
-        throw new Error('Noe gikk galt ved pålogging i løsningen. Vennligst prøv på nytt.');
-    } else {
-        throw new Error(
-            'Kunne ikke hente dine brukeropplysninger. Vennligst logg ut og inn på nytt.',
-        );
-    }
+    throw new Error('Kunne ikke hente dine brukeropplysninger. Vennligst logg ut og inn på nytt');
 };
 
 const fetchFraMs = (accessToken: string) => {
@@ -100,7 +94,7 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
                 });
             })
             .catch((err: Error) => {
-                return håndterGenerellFeil(req, err);
+                return håndterGenerellFeil(next, req, err);
             });
     });
 };
