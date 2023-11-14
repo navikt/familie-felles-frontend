@@ -51,7 +51,13 @@ const hentBrukerData = (accessToken: string, req: Request) => {
 /**
  * Funksjon som henter brukerprofil fra graph.
  */
-export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
+export const setBrukerprofilPåSesjonRute = (authClient: Client) => {
+    return async (req: Request, _: Response, next: NextFunction) => {
+        return setBrukerprofilPåSesjon(authClient, req, next);
+    };
+};
+
+const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
     return new Promise((_, _reject) => {
         const api = {
             clientId: 'https://graph.microsoft.com',
