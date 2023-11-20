@@ -16,28 +16,48 @@ export const hentBrukerprofil = () => {
     };
 };
 
-const håndterFeil = (req: Request, err: Error, next: NextFunction) => {
-    if (!req.session) {
-        throw new Error('Mangler sesjon på kall');
-    }
+const håndterGenerellFeil = (next: NextFunction, req: Request, err: Error) => {
+    logRequest(req, `Noe gikk galt: ${err?.message}.`, LOG_LEVEL.ERROR);
+    next();
+};
 
-    req.session.user = {
-        ...req.session.user,
-        enhet: '9999',
-    };
-
+const håndterBrukerdataFeil = (req: Request, err: Error) => {
     logRequest(
         req,
-        `Feilet mot ms graph: ${err.message}. Fortsetter uten data fra bruker.`,
+        `Feilet mot ms graph: ${err.message}. Kan ikke fortsette uten brukerdata.`,
         LOG_LEVEL.ERROR,
     );
-    return next();
+    throw new Error('Kunne ikke hente dine brukeropplysninger. Vennligst logg ut og inn på nytt');
+};
+
+const fetchFraMs = (accessToken: string) => {
+    const query = 'onPremisesSamAccountName,displayName,mail,officeLocation,userPrincipalName,id';
+    const graphUrl = `${envVar('GRAPH_API')}?$select=${query}`;
+
+    return fetch(graphUrl, {
+        headers: {
+            Authorization: `Bearer ${accessToken}`,
+            'Content-Type': 'application/json',
+        },
+    });
+};
+const hentBrukerData = (accessToken: string, req: Request) => {
+    return fetchFraMs(accessToken).catch((e: Error) => {
+        logRequest(req, `Kunne ikke hente brukerdata - prøver på nytt: ${e}`, LOG_LEVEL.WARNING);
+        return fetchFraMs(accessToken).catch((err: Error) => håndterBrukerdataFeil(req, err));
+    });
 };
 
 /**
  * Funksjon som henter brukerprofil fra graph.
  */
-export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
+export const setBrukerprofilPåSesjonRute = (authClient: Client) => {
+    return async (req: Request, _: Response, next: NextFunction) => {
+        return setBrukerprofilPåSesjon(authClient, req, next);
+    };
+};
+
+const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
     return new Promise((_, _reject) => {
         const api = {
             clientId: 'https://graph.microsoft.com',
@@ -48,18 +68,8 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
             return next();
         }
 
-        const query =
-            'onPremisesSamAccountName,displayName,mail,officeLocation,userPrincipalName,id';
-        const graphUrl = `${envVar('GRAPH_API')}?$select=${query}`;
         getOnBehalfOfAccessToken(authClient, req, api)
-            .then(accessToken =>
-                fetch(graphUrl, {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json',
-                    },
-                }),
-            )
+            .then(accessToken => hentBrukerData(accessToken, req))
             .then(res => res.json())
             .then((data: any) => {
                 if (!req.session) {
@@ -90,7 +100,7 @@ export const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next:
                 });
             })
             .catch((err: Error) => {
-                return håndterFeil(req, err, next);
+                return håndterGenerellFeil(next, req, err);
             });
     });
 };

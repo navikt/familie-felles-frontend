@@ -7,7 +7,7 @@ import {
     ensureAuthenticated,
     logout,
 } from './auth/authenticate';
-import { hentBrukerprofil } from './auth/bruker';
+import { hentBrukerprofil, setBrukerprofilPåSesjonRute } from './auth/bruker';
 
 const router = express.Router();
 
@@ -24,7 +24,12 @@ export default (authClient: Client, prometheusTellere?: { [key: string]: Counter
     router.get('/auth/logout', (req: Request, res: Response) => logout(req, res));
 
     // Bruker
-    router.get('/user/profile', ensureAuthenticated(authClient, true), hentBrukerprofil());
+    router.get(
+        '/user/profile',
+        ensureAuthenticated(authClient, true),
+        setBrukerprofilPåSesjonRute(authClient),
+        hentBrukerprofil(),
+    );
 
     return router;
 };

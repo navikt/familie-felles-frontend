@@ -4,7 +4,6 @@ import { appConfig } from '../config';
 import { LOG_LEVEL } from '@navikt/familie-logging';
 import { getTokenSetsFromSession, tokenSetSelfId, hasValidAccessToken } from './tokenUtils';
 import { Client, TokenSet } from 'openid-client';
-import { setBrukerprofilPåSesjon } from './bruker';
 import { logRequest } from '../utils';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
@@ -86,15 +85,14 @@ export const ensureAuthenticated = (authClient: Client, sendUnauthorized: boolea
                         return;
                     });
             }
-
-            return setBrukerprofilPåSesjon(authClient, req, next);
-        }
-
-        const pathname = req.originalUrl;
-        if (sendUnauthorized) {
-            res.status(401).send('Unauthorized');
+            return next();
         } else {
-            res.redirect(`/login?redirectUrl=${pathname}`);
+            const pathname = req.originalUrl;
+            if (sendUnauthorized) {
+                res.status(401).send('Unauthorized');
+            } else {
+                res.redirect(`/login?redirectUrl=${pathname}`);
+            }
         }
     };
 };
