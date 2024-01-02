@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { Success, Error, Warning } from '@navikt/ds-icons';
+import {
+    CheckmarkCircleIcon,
+    XMarkOctagonIcon,
+    ExclamationmarkTriangleIcon,
+} from '@navikt/aksel-icons';
 
 import { Periode, Tidslinje, TidslinjeProps } from './src';
 import { Switch } from '@navikt/ds-react';
@@ -35,7 +39,7 @@ export default {
                     fom: new Date('2020-01-01'),
                     tom: new Date('2022-12-31'),
                     status: 'suksess',
-                    children: <Success />,
+                    children: <CheckmarkCircleIcon />,
                 },
             ],
             [
@@ -52,7 +56,7 @@ export default {
                     fom: new Date('2021-01-01'),
                     tom: new Date('2022-12-31'),
                     status: 'feil',
-                    children: <Error />,
+                    children: <XMarkOctagonIcon />,
                 },
             ],
             [
@@ -61,7 +65,7 @@ export default {
                     fom: new Date('2020-01-01'),
                     tom: new Date('2022-12-31'),
                     status: 'advarsel',
-                    children: <Warning />,
+                    children: <ExclamationmarkTriangleIcon />,
                 },
             ],
             [],
@@ -79,7 +83,7 @@ export default {
                     fom: new Date('2021-01-01'),
                     tom: new Date('2022-12-31'),
                     status: 'advarsel',
-                    children: <Warning />,
+                    children: <ExclamationmarkTriangleIcon />,
                 },
             ],
             [
@@ -88,7 +92,7 @@ export default {
                     fom: new Date('2020-01-01'),
                     tom: new Date('2021-12-31'),
                     status: 'feil',
-                    children: <Error />,
+                    children: <XMarkOctagonIcon />,
                 },
             ],
             [
@@ -97,7 +101,7 @@ export default {
                     fom: new Date('2021-01-01'),
                     tom: new Date('2022-12-31'),
                     status: 'suksess',
-                    children: <Success />,
+                    children: <CheckmarkCircleIcon />,
                 },
             ],
             [],
@@ -107,7 +111,7 @@ export default {
                     fom: new Date('2020-01-01'),
                     tom: new Date('2021-12-31'),
                     status: 'advarsel',
-                    children: <Warning />,
+                    children: <ExclamationmarkTriangleIcon />,
                 },
             ],
             [
@@ -116,7 +120,7 @@ export default {
                     fom: new Date('2020-01-01'),
                     tom: new Date('2022-12-31'),
                     status: 'feil',
-                    children: <Error />,
+                    children: <XMarkOctagonIcon />,
                 },
             ],
             [
@@ -125,7 +129,7 @@ export default {
                     fom: new Date('2020-01-01'),
                     tom: new Date('2021-12-31'),
                     status: 'suksess',
-                    children: <Success />,
+                    children: <CheckmarkCircleIcon />,
                 },
             ],
             [
