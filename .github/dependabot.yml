@@ -41,6 +41,11 @@ updates:
                     - "@navikt/ds-*"
                 exclude-patterns:
                     - "@navikt/ds-icons"
+            storybook:
+                patterns:
+                    - "@storybook/*"
+                exclude-patterns:
+                    - "@storybook/storybook-deployer"
     -   package-ecosystem: github-actions
         directory: "/"
         schedule:
