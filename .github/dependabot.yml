@@ -44,8 +44,12 @@ updates:
             storybook:
                 patterns:
                     - "@storybook/*"
+                    - "storybook"
                 exclude-patterns:
                     - "@storybook/storybook-deployer"
+            commitlint:
+                patterns:
+                    - "@commitlint/*"
     -   package-ecosystem: github-actions
         directory: "/"
         schedule:
