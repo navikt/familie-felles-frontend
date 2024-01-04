@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@9.0.1...@navikt/familie-dokumentliste@10.0.0) (2024-01-04)
+
+
+* Oppgradere ds-icons til aksel-icons for tidslinje (#1347) ([e3e139e](https://github.com/navikt/familie-felles-frontend/commit/e3e139e8da26ca49754d21bd8c4429c2103df2e8)), closes [#1347](https://github.com/navikt/familie-felles-frontend/issues/1347)
+
+
+### BREAKING CHANGES
+
+* Krever siste versjon av designsystemet
+
+
+
+
+
 ## [9.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-dokumentliste@9.0.0...@navikt/familie-dokumentliste@9.0.1) (2023-09-13)
 
 **Note:** Version bump only for package @navikt/familie-dokumentliste
