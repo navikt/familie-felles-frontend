@@ -28,17 +28,14 @@
         "@navikt/familie-typer": "^8.0.1"
     },
     "devDependencies": {
-        "@navikt/ds-css": "2.x",
-        "@navikt/ds-icons": "2.x",
-        "@navikt/ds-react": "2.x",
-        "@types/styled-components": "^5.1.25",
-        "styled-components": "^5.3.5"
+        "@navikt/ds-css": "5.x",
+        "@navikt/ds-react": "5.x",
+        "styled-components": "6.x"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "2.x || 3.x || 4.x",
-        "@navikt/ds-icons": "2.x",
-        "@navikt/ds-react": "2.x || 3.x || 4.x",
+        "@navikt/ds-css": "5.x",
+        "@navikt/ds-react": "5.x",
         "react": "^17.x || 18.x",
-        "styled-components": "^5.x"
+        "styled-components": "5.x | 6.x"
     }
 }

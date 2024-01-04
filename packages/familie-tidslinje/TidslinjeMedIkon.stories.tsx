@@ -3,7 +3,7 @@ import { Periode, Tidslinje, TidslinjeProps } from './src';
 import styled from 'styled-components';
 
 import '@navikt/ds-css';
-import { Eu, NorwegianFlag } from '@navikt/ds-icons';
+import { StarsEuIcon, FlagCrossIcon } from '@navikt/aksel-icons';
 import { Detail, Switch } from '@navikt/ds-react';
 
 const TidlinjeContainer = styled.div`
@@ -12,11 +12,11 @@ const TidlinjeContainer = styled.div`
     }
 `;
 
-const StyledEu = styled(Eu)`
+const StyledEu = styled(StarsEuIcon)`
     margin-right: 0.3rem;
 `;
 
-const StyledNorwegian = styled(NorwegianFlag)`
+const StyledNorwegian = styled(FlagCrossIcon)`
     margin-right: 0.3rem;
 `;
 
