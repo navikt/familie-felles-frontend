@@ -65,17 +65,18 @@ const TidslinjeStyle = styled.div`
     flex: 1;
 `;
 
-const TidslinjeRadStyle = styled.div(
-    (props: { kompakt?: boolean }) => `
+interface TidslinjeRadStyleProps {
+    $kompakt?: boolean
+}
+const TidslinjeRadStyle = styled.div<TidslinjeRadStyleProps>`
     position: relative;
     padding: 0;
-    border-top: ${props.kompakt ? 'none' : '1px solid #e7e9e9'};
+    border-top: ${(props) => `${props.$kompakt ? 'none' : '1px solid #e7e9e9'}`};
 
     .tidslinjerad.førsterad, hr.førsterad {
-        margin-top: ${props.kompakt ? '0rem' : '1.56rem'};
+        margin-top: ${(props) => `${props.$kompakt ? '0rem' : '1.56rem'}`};
     }
-`,
-);
+`;
 
 const EmptyRowsStyle = styled.div`
     position: absolute;
@@ -132,7 +133,7 @@ const Timeline = React.memo(
                     direction={direction}
                     etikettRender={axisLabelRenderer}
                 />
-                <TidslinjeRadStyle kompakt={kompakt} className={classNames('tidslinjerader')}>
+                <TidslinjeRadStyle $kompakt={kompakt} className={classNames('tidslinjerader')}>
                     <EmptyRowsStyle>
                         {rows.map((_, i) => (
                             <EmptyTimelineRow
