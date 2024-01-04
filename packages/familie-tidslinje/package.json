@@ -25,23 +25,18 @@
         "test": "jest"
     },
     "dependencies": {
-        "classnames": "^2.3.2",
-        "nanoid": "^4.0.0"
+        "classnames": "^2.5.1",
+        "nanoid": "^5.0.4"
     },
     "peerDependencies": {
         "@types/react": "17.x || 18.x",
         "react": "17.x || 18.x",
-        "styled-components": "^5.x"
+        "styled-components": "5.x | 6.x"
     },
     "devDependencies": {
-        "@navikt/ds-css": "2.x || 3.x || 4.x || 5.x",
+        "@navikt/ds-css": "5.x",
         "@navikt/aksel-icons": "5.x",
-        "@navikt/ds-react": "2.x || 3.x || 4.x || 5.x",
-        "@navikt/ds-tokens": "2.x || 3.x || 4.x || 5.x",
-        "css-loader": "^5.2.7",
-        "less-loader": "^11.0.0",
-        "mini-css-extract-plugin": "^2.7.3",
-        "style-loader": "^3.3.1",
-        "ts-loader": "^9.3.1"
+        "@navikt/ds-react": "5.x",
+        "@navikt/ds-tokens": "5.x"
     }
 }
