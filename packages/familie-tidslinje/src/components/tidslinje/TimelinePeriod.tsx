@@ -83,9 +83,10 @@ const fellesPeriodeStyle = css`
         border-right: none;
     }
 `;
-
-const InfoPin = styled.div(
-    (props: { påPeriodeKnapp?: boolean }) => `
+interface InfoPinProps {
+    $påPeriodeKnapp?: boolean;
+}
+const InfoPin = styled.div<InfoPinProps>`
     position: absolute;
     background: #0067c5;
     height: 6px;
@@ -101,28 +102,26 @@ const InfoPin = styled.div(
         width: 10px;
         height: 10px;
         background: #0067c5;
-        transform: translate(-${props.påPeriodeKnapp ? 5 : 4}px, -100%);
+        transform: ${(props) => `translate(-${props.$påPeriodeKnapp ? 5 : 4}px, -100%)`};
         border-radius: 50%;
     }
-    `,
-);
+`;
 
-const PeriodeInnhold = styled.div(
-    (props: { kompakt?: boolean }) => `
-    margin: ${props.kompakt ? 0 : 0.3}rem 0.3rem;
+interface PeriodeInnholdProps {
+    $kompakt?: boolean;
+}
+const PeriodeInnhold = styled.div<PeriodeInnholdProps>`
+    margin: ${(props) => `${props.$kompakt ? 0 : 0.3}rem 0.3rem`};
     overflow: hidden;
     white-space: nowrap;
     text-overflow: clip;
     text-align: left;
     position: relative;
-    top: ${props.kompakt ? 0 : -2}px;
-`,
-);
+    top: ${(props) => `${props.$kompakt ? 0 : -2}px`};
+`;
 
-const PeriodeKnapp = styled.button(
-    (props: { kompakt?: boolean }) => `
-    ${fellesPeriodeStyle}
-    height: ${props.kompakt ? 1.5 : 2}rem;
+const PeriodeKnapp = styled.button<PeriodeInnholdProps>`
+    height: ${(props) => `${props.$kompakt ? 1.5 : 2}rem`};
     cursor: pointer;
 
     &.advarsel {
@@ -156,15 +155,13 @@ const PeriodeKnapp = styled.button(
             background: #9bd0b0;
         }
     }
-`,
-);
-
-const PeriodeDiv = styled.div(
-    (props: { kompakt?: boolean }) => `
     ${fellesPeriodeStyle}
-    height: ${props.kompakt ? 1.5 : 2}rem;
-`,
-);
+`;
+
+const PeriodeDiv = styled.div<PeriodeInnholdProps>`
+    height: ${(props) => `${props.$kompakt ? 1.5 : 2}rem`};
+    ${fellesPeriodeStyle}
+`;
 
 interface NonClickablePeriodProps {
     period: PositionedPeriod;
@@ -222,7 +219,7 @@ const ClickablePeriod = React.memo(
 
         return (
             <PeriodeKnapp
-                kompakt={kompakt}
+                $kompakt={kompakt}
                 ref={buttonRef}
                 className={className}
                 onClick={onClick}
@@ -232,9 +229,9 @@ const ClickablePeriod = React.memo(
                 style={style(period)}
             >
                 {period.hoverLabel && showHoverLabel && <Tooltip>{period.hoverLabel}</Tooltip>}
-                {period.infoPin && <InfoPin påPeriodeKnapp className={'infoPin'} />}
+                {period.infoPin && <InfoPin $påPeriodeKnapp className={'infoPin'} />}
                 {period.children && (
-                    <PeriodeInnhold kompakt={kompakt}>{period.children}</PeriodeInnhold>
+                    <PeriodeInnhold $kompakt={kompakt}>{period.children}</PeriodeInnhold>
                 )}
             </PeriodeKnapp>
         );
@@ -243,14 +240,14 @@ const ClickablePeriod = React.memo(
 
 const NonClickablePeriod = ({ divRef, period, className, kompakt }: NonClickablePeriodProps) => (
     <PeriodeDiv
-        kompakt={kompakt}
+        $kompakt={kompakt}
         ref={divRef}
         className={className}
         aria-label={ariaLabel(period)}
         style={style(period)}
     >
         {period.infoPin && <InfoPin className={'infoPin'} />}
-        {period.children && <PeriodeInnhold kompakt={kompakt}>{period.children}</PeriodeInnhold>}
+        {period.children && <PeriodeInnhold $kompakt={kompakt}>{period.children}</PeriodeInnhold>}
     </PeriodeDiv>
 );
 

@@ -27,14 +27,14 @@
     "dependencies": {
         "@navikt/familie-http": "^6.0.4",
         "@navikt/familie-typer": "^8.0.1",
-        "@types/deep-equal": "^1.0.1",
-        "deep-equal": "^2.2.0",
-        "hashids": "^2.2.10"
+        "@types/deep-equal": "^1.0.4",
+        "deep-equal": "^2.2.3",
+        "hashids": "^2.3.0"
     },
     "devDependencies": {
         "@navikt/familie-form-elements": "^13.0.0"
     },
     "peerDependencies": {
-        "react": "17.x || 18.x"
+        "react": "18.x"
     }
 }

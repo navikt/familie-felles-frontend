@@ -32,7 +32,7 @@
         "@navikt/aksel-icons": "^5.x",
         "@navikt/ds-css": "^5.x",
         "@navikt/ds-react": "^5.x",
-        "styled-components": "^6.0.8"
+        "styled-components": "^6.x"
     },
     "peerDependencies": {
         "@navikt/aksel-icons": "^5.x",

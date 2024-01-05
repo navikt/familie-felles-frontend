@@ -26,20 +26,18 @@
     "dependencies": {
         "@navikt/familie-ikoner": "^7.0.1",
         "@navikt/familie-typer": "^8.0.1",
-        "classnames": "^2.3.2",
-        "prop-types": "^15.8.1"
+        "classnames": "^2.5.1"
     },
     "devDependencies": {
         "@navikt/ds-css": "5.x",
         "@navikt/ds-react": "5.x",
         "@navikt/ds-tokens": "5.x",
-        "styled-components": "^5.3.5"
+        "styled-components": "^6.x"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "4.x || 5.x",
-        "@navikt/ds-react": "4.x || 5.x",
-        "@navikt/ds-tokens": "4.x || 5.x",
-        "react": "^17.x || 18.x",
-        "styled-components": "^5.x"
+        "@navikt/ds-css": "5.x",
+        "@navikt/ds-react": "5.x",
+        "react": "18.x",
+        "styled-components": "^5.x || 6.x"
     }
 }

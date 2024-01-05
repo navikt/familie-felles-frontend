@@ -25,6 +25,6 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "winston": "^3.8.1"
+        "winston": "^3.11.0"
     }
 }

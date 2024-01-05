@@ -11,32 +11,32 @@ import {
     ASpacing8,
 } from '@navikt/ds-tokens/dist/tokens';
 
-const TimelineRowStyle = styled.div(
-    (props: { kompakt?: boolean }) => `
+interface TimelineRowStyleProps {
+    $kompakt?: boolean
+}
+
+const TimelineRowStyle = styled.div<TimelineRowStyleProps>`
     flex: 1;
-    height: ${props.kompakt ? ASpacing6 : ASpacing8};
+    height: ${(props) => `${props.$kompakt ? ASpacing6 : ASpacing8}`};
     display: flex;
     align-items: center;
     position: relative;
-    margin-bottom: ${props.kompakt ? ASpacing4 : ASpacing6};
-`,
-);
+    margin-bottom: ${(props) => `${props.$kompakt ? ASpacing4 : ASpacing6}`};
+`;
 
-const EmptyRowHr = styled.hr(
-    (props: { kompakt: boolean }) =>
-        `
+
+const EmptyRowHr = styled.hr<TimelineRowStyleProps>`
     flex: 1;
-    height: ${props.kompakt ? ASpacing6 : ASpacing8};
+    height: ${(props) => `${props.$kompakt ? ASpacing6 : ASpacing8}`};
     width: 100%;
     border: none;
     background-color: ${AGray50};
-    margin-bottom: ${props.kompakt ? ASpacing4 : ASpacing6};
+    margin-bottom: ${(props) => `${props.$kompakt ? ASpacing4 : ASpacing6}`};
 
     &.aktivRad {
         background-color: ${ABlue50};
     }
-    `,
-);
+`;
 
 interface EmptyTimelineRowProps {
     active?: boolean;
@@ -57,7 +57,7 @@ export const EmptyTimelineRow = ({
     kompakt = false,
     className,
 }: EmptyTimelineRowProps) => (
-    <EmptyRowHr kompakt={kompakt} className={classNames(active && 'aktivRad', className)} />
+    <EmptyRowHr $kompakt={kompakt} className={classNames(active && 'aktivRad', className)} />
 );
 
 export const TimelineRow = ({
@@ -68,7 +68,7 @@ export const TimelineRow = ({
     className,
 }: TimelineRowProps) => (
     <TimelineRowStyle
-        kompakt={kompakt}
+        $kompakt={kompakt}
         className={classNames('tidslinjerad', active && 'aktivRad', className)}
     >
         {periods.map(period => (

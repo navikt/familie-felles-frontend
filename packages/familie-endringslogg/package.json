@@ -25,8 +25,8 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@portabletext/react": "^3.0.7",
-        "classnames": "^2.3.2",
+        "@portabletext/react": "^3.0.11",
+        "classnames": "^2.5.1",
         "react-transition-group": "^4.4.5"
     },
     "devDependencies": {
@@ -35,8 +35,8 @@
     },
     "peerDependencies": {
         "@navikt/aksel-icons": "5.x",
-        "@navikt/ds-react": "4.x || 5.x",
-        "@types/react": "17.x || 18.x",
-        "react": "17.x || 18.x"
+        "@navikt/ds-react": "5.x",
+        "@types/react": "18.x",
+        "react": "18.x"
     }
 }
