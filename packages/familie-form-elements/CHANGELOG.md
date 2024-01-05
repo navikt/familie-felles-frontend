@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@13.0.0...@navikt/familie-form-elements@14.0.0) (2024-01-05)
+
+
+### chore
+
+* **alle komponenter:** oppdatert avhengigheter til alle komponenter ([#1352](https://github.com/navikt/familie-felles-frontend/issues/1352)) ([571a7af](https://github.com/navikt/familie-felles-frontend/commit/571a7af3a2da19d3365869a276a43339a1e34581))
+
+
+### BREAKING CHANGES
+
+* **alle komponenter:** Fjernet støtte for react 17 og nav ds <=4
+
+* familie-tidslinje må ha devDependency til dayjs - foreløpig går dette bra fordi familie-datovelger har denne dependencien, men det er ikke en bra løsning på sikt
+
+
+
+
+
 # [13.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@12.0.0...@navikt/familie-form-elements@13.0.0) (2023-10-02)
 
 

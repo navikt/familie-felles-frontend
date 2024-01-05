@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-tidslinje",
-    "version": "7.0.0",
+    "version": "8.0.0",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -29,12 +29,12 @@
         "nanoid": "^5.0.4"
     },
     "peerDependencies": {
-        "@types/react": "18.x",
-        "react": "18.x",
-        "styled-components": "5.x || 6.x",
         "@navikt/ds-css": "5.x",
         "@navikt/ds-react": "5.x",
-        "dayjs": "1.x"
+        "@types/react": "18.x",
+        "dayjs": "1.x",
+        "react": "18.x",
+        "styled-components": "5.x || 6.x"
     },
     "devDependencies": {
         "@navikt/aksel-icons": "5.x",

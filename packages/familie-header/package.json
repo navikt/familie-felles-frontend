@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-header",
-    "version": "12.0.0",
+    "version": "13.0.0",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -23,9 +23,9 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-ikoner": "^7.0.1",
+        "@navikt/familie-ikoner": "^8.0.0",
         "@navikt/familie-typer": "^8.0.1",
-        "@navikt/familie-validering": "^5.0.2"
+        "@navikt/familie-validering": "^6.0.0"
     },
     "devDependencies": {
         "@navikt/aksel-icons": "5.x",
