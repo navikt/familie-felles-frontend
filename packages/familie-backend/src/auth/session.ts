@@ -16,6 +16,16 @@ const redisClientForAiven = (sessionKonfigurasjon: ISessionKonfigurasjon) => {
         url: sessionKonfigurasjon.redisFullUrl,
         username: sessionKonfigurasjon.redisBrukernavn,
         password: sessionKonfigurasjon.redisPassord,
+        socket: {
+            reconnectStrategy : (attempts) => {
+                if (attempts > 100) {
+                    throw Error('Kan ikke koble til redis etter 100 forsøk');
+                }
+
+                // Reconnect after
+                return Math.min(attempts * 100, 3000);
+            }
+        },
         pingInterval: pingHvertFjerdeMinutt,
     });
     return redisClient;
