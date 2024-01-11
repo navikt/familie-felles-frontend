@@ -9,6 +9,7 @@ import konfigurerRouter from './router';
 import { ISessionKonfigurasjon } from './typer';
 import { Client } from 'openid-client';
 import { logError } from '@navikt/familie-logging';
+import {hentErforbindelsenTilRedisTilgjengelig} from "./utils";
 
 export * from './auth/authenticate';
 export * from './auth/tokenUtils';
@@ -35,7 +36,14 @@ export default async (
 
     headers.setup(app);
 
-    app.get('/isAlive', (_req: Request, res: Response) => res.status(200).end());
+    app.get('/isAlive', (_req: Request, res: Response) =>  {
+
+        if (hentErforbindelsenTilRedisTilgjengelig()) {
+            res.status(200).end();
+        } else {
+            res.status(500).end();
+        }
+    });
     app.get('/isReady', (_req: Request, res: Response) => res.status(200).end());
     const prometheusRegistry: Registry = konfigurerMetrikker(app, prometheusTellere);
 

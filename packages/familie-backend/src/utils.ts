@@ -1,6 +1,18 @@
 import { Request } from 'express';
 import { LOG_LEVEL, logDebug, logError, logInfo, logWarn } from '@navikt/familie-logging';
 
+
+let erForbindelsenTilRedisTilgjengelig = true;
+
+export const settErforbindelsenTilRedisTilgjengelig = (verdi: boolean) => {
+  erForbindelsenTilRedisTilgjengelig = verdi;
+}
+
+export const hentErforbindelsenTilRedisTilgjengelig = ():boolean => {
+    return erForbindelsenTilRedisTilgjengelig;
+}
+
+
 export const envVar = (navn: string, påkrevd = true, defaultValue?: string): string => {
     const envVariable = process.env[navn];
     if (!envVariable && påkrevd && !defaultValue) {
