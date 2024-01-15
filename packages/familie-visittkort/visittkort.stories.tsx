@@ -30,6 +30,7 @@ export const visittkort = ({ ...args }) => {
                 kjønn={kjønnType.UKJENT}
                 navn="HEMMELIGHETSFULL BIBLIOTEKAR"
                 ident="123456 78910"
+                dempetKantlinje
             >
                 <HStack justify="space-between" gap="4" align="center">
                     <HStack gap="4" align="center">
@@ -71,6 +72,11 @@ visittkort.argTypes = {
     alder: {
         control: {
             type: 'number',
+        },
+    },
+    dempetKantlinje: {
+        control: {
+            type: 'boolean',
         },
     },
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { CopyButton, HStack, Label } from '@navikt/ds-react';
-import { ABorderStrong } from '@navikt/ds-tokens/dist/tokens';
+import { ABorderStrong, ABorderSubtle } from '@navikt/ds-tokens/dist/tokens';
 import { FamilieIkonVelger } from '@navikt/familie-ikoner';
 import { kjønnType } from '@navikt/familie-typer';
 
@@ -16,10 +16,11 @@ export interface IProps extends React.PropsWithChildren {
     kjønn: kjønnType;
     navn: string | React.ReactNode;
     ValgfrittIkon?: React.ComponentType<IkonProps>;
+    dempetKantlinje?: boolean;
 }
 
-const StyledVisittkort = styled(HStack)`
-    border-bottom: 1px solid ${ABorderStrong};
+const StyledVisittkort = styled(HStack)<{ $dempetKantlinje: boolean }>`
+    border-bottom: 1px solid ${props => (props.$dempetKantlinje ? ABorderSubtle : ABorderStrong)};
     height: 3rem;
 `;
 
@@ -34,9 +35,15 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
     kjønn,
     navn,
     ValgfrittIkon,
+    dempetKantlinje = false,
 }) => {
     return (
-        <StyledVisittkort align="center" justify="space-between" gap="4">
+        <StyledVisittkort
+            align="center"
+            justify="space-between"
+            gap="4"
+            $dempetKantlinje={dempetKantlinje}
+        >
             <HStack align="center" gap="4">
                 {ValgfrittIkon ? (
                     <ValgfrittIkon width={24} height={24} />
