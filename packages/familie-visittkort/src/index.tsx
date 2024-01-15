@@ -15,7 +15,7 @@ export interface IProps extends React.PropsWithChildren {
     ident: string;
     kjønn: kjønnType;
     navn: string | React.ReactNode;
-    ValgfrittIkon?: React.ComponentType<IkonProps>;
+    ikon?: React.ReactElement;
     dempetKantlinje?: boolean;
 }
 
@@ -34,7 +34,7 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
     ident,
     kjønn,
     navn,
-    ValgfrittIkon,
+    ikon,
     dempetKantlinje = false,
 }) => {
     return (
@@ -45,8 +45,8 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
             $dempetKantlinje={dempetKantlinje}
         >
             <HStack align="center" gap="4">
-                {ValgfrittIkon ? (
-                    <ValgfrittIkon width={24} height={24} />
+                {ikon ? (
+                    ikon
                 ) : (
                     <FamilieIkonVelger alder={alder} kjønn={kjønn} width={24} height={24} />
                 )}

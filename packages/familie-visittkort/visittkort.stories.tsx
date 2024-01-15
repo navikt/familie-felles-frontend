@@ -1,10 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
 
+import { Buldings3Icon } from '@navikt/aksel-icons';
 import { BodyShort, Button, Dropdown, HStack, Tag } from '@navikt/ds-react';
+import { AGreen600, ASpacing6 } from '@navikt/ds-tokens/dist/tokens';
 import { kjønnType } from '@navikt/familie-typer';
 
 import Visittkort from './src';
 import '@navikt/ds-css';
+
+const IkonSirkel = styled.span`
+    border-color: ${AGreen600};
+    border-radius: 50%;
+    background-color: ${AGreen600};
+    display: inline-grid;
+    place-items: center;
+    height: ${ASpacing6};
+    width: ${ASpacing6};
+    color: white;
+`;
 
 export default {
     component: Visittkort,
@@ -24,6 +38,17 @@ export const visittkort = ({ ...args }) => {
                 navn="FREDFULL KETSJUP"
                 ident={'123456 78910'}
                 {...args}
+            />
+            <Visittkort
+                alder={12}
+                kjønn={kjønnType.MANN}
+                navn="ROLIG BAJAS"
+                ident={'123456 78910'}
+                ikon={
+                    <IkonSirkel>
+                        <Buldings3Icon width={20} height={20} />
+                    </IkonSirkel>
+                }
             />
             <Visittkort
                 alder={35}
