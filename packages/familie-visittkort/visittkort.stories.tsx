@@ -58,13 +58,11 @@ export const visittkort = ({ ...args }) => {
                 dempetKantlinje
                 padding
             >
-                <HStack gap="4" align="center">
-                    <div>|</div>
-                    <BodyShort>{`Kommunenr: 0181`}</BodyShort>
-                    <Tag variant="neutral-filled" size="small">
-                        Død 01.01.2024
-                    </Tag>
-                </HStack>
+                <div>|</div>
+                <BodyShort>{`Kommunenr: 0181`}</BodyShort>
+                <Tag variant="neutral-filled" size="small">
+                    Død 01.01.2024
+                </Tag>
                 <Spacer />
                 <Tag variant="info" size="small" children={`Migrert 01.01.2024`}></Tag>
                 <BodyShort>Saksoversikt</BodyShort>
