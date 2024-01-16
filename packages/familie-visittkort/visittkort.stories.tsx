@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Buldings3Icon } from '@navikt/aksel-icons';
-import { BodyShort, Button, Dropdown, HStack, Tag } from '@navikt/ds-react';
+import { BodyShort, Button, Dropdown, HStack, Spacer, Tag } from '@navikt/ds-react';
 import { AGreen600, ASpacing6 } from '@navikt/ds-tokens/dist/tokens';
 import { kjønnType } from '@navikt/familie-typer';
 
@@ -58,30 +58,27 @@ export const visittkort = ({ ...args }) => {
                 dempetKantlinje
                 padding
             >
-                <HStack justify="space-between" gap="4" align="center">
-                    <HStack gap="4" align="center">
-                        <div>|</div>
-                        <BodyShort>{`Kommunenr: 0181`}</BodyShort>
-                        <Tag variant="neutral-filled" size="small">
-                            Død 01.01.2024
-                        </Tag>
-                    </HStack>
-                    <HStack gap="4" align="center">
-                        <Tag variant="info" size="small" children={`Migrert 01.01.2024`}></Tag>
-                        <BodyShort>Saksoversikt</BodyShort>
-                        <BodyShort>Dokumenter</BodyShort>
-                        <Dropdown>
-                            <Button
-                                variant="secondary"
-                                size="small"
-                                iconPosition={'right'}
-                                as={Dropdown.Toggle}
-                            >
-                                Behandlingsmeny
-                            </Button>
-                        </Dropdown>
-                    </HStack>
+                <HStack gap="4" align="center">
+                    <div>|</div>
+                    <BodyShort>{`Kommunenr: 0181`}</BodyShort>
+                    <Tag variant="neutral-filled" size="small">
+                        Død 01.01.2024
+                    </Tag>
                 </HStack>
+                <Spacer />
+                <Tag variant="info" size="small" children={`Migrert 01.01.2024`}></Tag>
+                <BodyShort>Saksoversikt</BodyShort>
+                <BodyShort>Dokumenter</BodyShort>
+                <Dropdown>
+                    <Button
+                        variant="secondary"
+                        size="small"
+                        iconPosition={'right'}
+                        as={Dropdown.Toggle}
+                    >
+                        Behandlingsmeny
+                    </Button>
+                </Dropdown>
             </Visittkort>
         </>
     );

@@ -26,7 +26,7 @@ const StyledVisittkort = styled(HStack)<{ $dempetKantlinje: boolean; $padding: b
     padding: ${props => props.$padding && `0 ${ASpacing4}`};
 `;
 
-const GrådigChildrenContainer = styled.div`
+const GrådigChildrenContainer = styled(HStack)`
     flex: 1;
 `;
 
@@ -67,7 +67,9 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
                     <CopyButton copyText={ident.replace(' ', '')} size={'small'} />
                 </HStack>
             </HStack>
-            <GrådigChildrenContainer>{children}</GrådigChildrenContainer>
+            <GrådigChildrenContainer align="center" gap="4">
+                {children}
+            </GrådigChildrenContainer>
         </StyledVisittkort>
     );
 };
