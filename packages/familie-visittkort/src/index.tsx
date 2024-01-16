@@ -4,12 +4,6 @@ import { CopyButton, HStack, Label } from '@navikt/ds-react';
 import { ABorderStrong, ABorderSubtle, ASpacing4 } from '@navikt/ds-tokens/dist/tokens';
 import { FamilieIkonVelger } from '@navikt/familie-ikoner';
 import { kjønnType } from '@navikt/familie-typer';
-
-export interface IkonProps {
-    className?: string;
-    height?: number;
-    width?: number;
-}
 export interface IProps extends React.PropsWithChildren {
     alder: number;
     ident: string;
