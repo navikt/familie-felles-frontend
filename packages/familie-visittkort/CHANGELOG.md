@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@13.0.0...@navikt/familie-visittkort@14.0.0) (2024-01-16)
+
+
+### Features
+
+* **familie-visittkort:** skriv om til å bruke Aksel-primitiver for komponentlayout ([#1367](https://github.com/navikt/familie-felles-frontend/issues/1367)) ([0eea319](https://github.com/navikt/familie-felles-frontend/commit/0eea319576c76dcf8b5d0ffbbeb1d650c3b2c916))
+
+
+### BREAKING CHANGES
+
+* **familie-visittkort:** Layout av children-elementer styres nå av konsumentene og API for prop med valgfritt ikon er endret
+
+
+ValgfrittIkon var tidligere en prop med en komponent som visittkortet gav props til og rendret. For
+å forenkle typingen gjør vi dette ikonet til konsumentens ansvar.  Ser ut til å kun være i bruk i
+ba-sak
+
+* tilby dempet kantlinje som mulighet for FamilieVisittkort
+* gjør ikonet til konsumentens ansvar for å forenkle typing
+* docs: endre det ene ikoneksempelet til å vise ukjent kjønn
+* docs: legg til utvidet eksempel på visittkort i storybook
+
+
+
+
+
 # [13.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@12.0.0...@navikt/familie-visittkort@13.0.0) (2024-01-05)
 
 

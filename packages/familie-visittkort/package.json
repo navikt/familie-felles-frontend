@@ -1,5 +1,5 @@
 {
-    "version": "13.0.0",
+    "version": "14.0.0",
     "name": "@navikt/familie-visittkort",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -24,15 +24,15 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-ikoner": "^8.0.0",
+        "@navikt/familie-ikoner": "^9.0.0",
         "@navikt/familie-typer": "^8.0.1",
         "classnames": "^2.5.1"
     },
     "devDependencies": {
+        "@navikt/aksel-icons": "5.x",
         "@navikt/ds-css": "5.x",
         "@navikt/ds-react": "5.x",
         "@navikt/ds-tokens": "5.x",
-        "@navikt/aksel-icons": "5.x",
         "styled-components": "^6.x"
     },
     "peerDependencies": {
