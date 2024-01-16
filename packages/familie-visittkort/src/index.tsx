@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { CopyButton, HStack, Label } from '@navikt/ds-react';
-import { ABorderStrong, ABorderSubtle } from '@navikt/ds-tokens/dist/tokens';
+import { ABorderStrong, ABorderSubtle, ASpacing4 } from '@navikt/ds-tokens/dist/tokens';
 import { FamilieIkonVelger } from '@navikt/familie-ikoner';
 import { kjønnType } from '@navikt/familie-typer';
 
@@ -17,11 +17,13 @@ export interface IProps extends React.PropsWithChildren {
     navn: string | React.ReactNode;
     ikon?: React.ReactElement;
     dempetKantlinje?: boolean;
+    padding?: boolean;
 }
 
-const StyledVisittkort = styled(HStack)<{ $dempetKantlinje: boolean }>`
+const StyledVisittkort = styled(HStack)<{ $dempetKantlinje: boolean; $padding: boolean }>`
     border-bottom: 1px solid ${props => (props.$dempetKantlinje ? ABorderSubtle : ABorderStrong)};
     height: 3rem;
+    padding: ${props => props.$padding && `0 ${ASpacing4}`};
 `;
 
 const GrådigChildrenContainer = styled.div`
@@ -36,6 +38,7 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
     navn,
     ikon,
     dempetKantlinje = false,
+    padding = false,
 }) => {
     return (
         <StyledVisittkort
@@ -43,6 +46,7 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
             justify="space-between"
             gap="4"
             $dempetKantlinje={dempetKantlinje}
+            $padding={padding}
         >
             <HStack align="center" gap="4">
                 {ikon ? (

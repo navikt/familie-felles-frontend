@@ -56,6 +56,7 @@ export const visittkort = ({ ...args }) => {
                 navn="HEMMELIGHETSFULL BIBLIOTEKAR"
                 ident="123456 78910"
                 dempetKantlinje
+                padding
             >
                 <HStack justify="space-between" gap="4" align="center">
                     <HStack gap="4" align="center">
@@ -100,6 +101,11 @@ visittkort.argTypes = {
         },
     },
     dempetKantlinje: {
+        control: {
+            type: 'boolean',
+        },
+    },
+    padding: {
         control: {
             type: 'boolean',
         },
