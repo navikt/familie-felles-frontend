@@ -13,6 +13,7 @@ export interface IJournalpost {
     dokumenter?: IDokumentInfo[];
     tittel?: string;
     relevanteDatoer: IJournalpostRelevantDato[];
+    utsendingsinfo?: Utsendingsinfo;
 }
 
 export interface IJournalpostRelevantDato {
@@ -115,4 +116,23 @@ export const journalpoststatus: Record<Journalstatus, string> = {
     RESERVERT: 'Reservert',
     OPPLASTING_DOKUMENT: 'Opplasting dokument',
     UKJENT: 'Ukjent',
+};
+
+export type Utsendingsinfo = {
+    varselSendt: VarselSendt[];
+    fysiskpostSendt?: FysiskpostSendt;
+    digitalpostSendt?: DigitalpostSendt;
+};
+
+type FysiskpostSendt = {
+    adressetekstKonvolutt: string;
+};
+
+type DigitalpostSendt = {
+    adresse: string;
+};
+
+type VarselSendt = {
+    type: 'SMS' | 'EPOST';
+    varslingstidspunkt?: string;
 };
