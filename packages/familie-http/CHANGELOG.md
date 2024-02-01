@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@6.0.7...@navikt/familie-http@7.0.0) (2024-02-01)
+
+
+### Features
+
+* **familie-http:** oppdaterer til axios v1 i familie-http ([#1386](https://github.com/navikt/familie-felles-frontend/issues/1386)) ([cdd839d](https://github.com/navikt/familie-felles-frontend/commit/cdd839d486bcc2aebcdbb2feca056465631da8b8))
+
+
+### BREAKING CHANGES
+
+* **familie-http:** Oppgraderer axios fra v0 til v1
+
+
+
+
+
 ## [6.0.7](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@6.0.6...@navikt/familie-http@6.0.7) (2024-02-01)
 
 **Note:** Version bump only for package @navikt/familie-http
