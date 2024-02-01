@@ -1,6 +1,6 @@
 import React from 'react';
 import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-import createUseContext from 'constate';
+import constate from 'constate';
 import { Ressurs, ApiRessurs, ISaksbehandler } from '@navikt/familie-typer';
 import { preferredAxios, håndterApiRespons } from './axios';
 
@@ -21,7 +21,7 @@ interface IProps {
     settAutentisert?: (autentisert: boolean) => void;
 }
 
-export const [HttpProvider, useHttp] = createUseContext(
+export const [HttpProvider, useHttp] = constate(
     ({ innloggetSaksbehandler, settAutentisert, fjernRessursSomLasterTimeout = 300 }: IProps) => {
         const [ressurserSomLaster, settRessurserSomLaster] = React.useState<string[]>([]);
 
