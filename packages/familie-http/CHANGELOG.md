@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@7.0.0...@navikt/familie-http@7.0.1) (2024-02-01)
+
+
+### Bug Fixes
+
+* **familie-http:** retter opp måten vi bruker constate på slik at det stemmer med doc ([#1387](https://github.com/navikt/familie-felles-frontend/issues/1387)) ([cd722ed](https://github.com/navikt/familie-felles-frontend/commit/cd722edc1b88a0a81331378f5c6e30a18423a642))
+
+
+
+
+
 # [7.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@6.0.7...@navikt/familie-http@7.0.0) (2024-02-01)
 
 
