@@ -75,7 +75,10 @@ export default (
         /**
          * Logge hendelser i redisclient for å debugge merkelige sockettimeouts
          */
-        redisClient.on('error', err => logError(`Redis Error: ${err}`));
+        redisClient.on('error', (err) => {
+            logError(`Redis Error: ${err}`)
+            settErforbindelsenTilRedisTilgjengelig(false);
+        });
         redisClient.on('connect', () => logInfo('Redis connected'));
         redisClient.on('reconnecting', () => logInfo('Redis reconnecting'));
         redisClient.on('ready', () => {
