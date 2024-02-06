@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.14](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@10.0.13...@navikt/familie-backend@10.0.14) (2024-02-06)
+
+
+### Bug Fixes
+
+* **familie-backend:** feilhåndtering når det er vedlikehold på Redis … ([#1389](https://github.com/navikt/familie-felles-frontend/issues/1389)) ([b51a8fd](https://github.com/navikt/familie-felles-frontend/commit/b51a8fd2a20a8be74a7601df80df6cf2b2ac7f00))
+
+
+
+
+
 ## [10.0.13](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@10.0.12...@navikt/familie-backend@10.0.13) (2024-01-15)
 
 **Note:** Version bump only for package @navikt/familie-backend
