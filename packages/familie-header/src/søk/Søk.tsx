@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '@navikt/ds-css';
-import { Ressurs, RessursStatus } from '@navikt/familie-typer';
+import { Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
 import Søkeresultater from './Søkeresultater';
 import { ISøkeresultat } from '../types';
 import useSøk from './useSøk';
@@ -18,7 +18,6 @@ export interface SøkProps {
     søk: (value: string) => void;
     søkeresultater: Ressurs<ISøkeresultat[]>;
     søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
-    acceptSynthNr?: boolean;
     placeholder?: string;
     size?: 'small' | 'medium';
 }
@@ -41,7 +40,6 @@ export const Søk = ({
     søk,
     søkeresultatOnClick,
     søkeresultater,
-    acceptSynthNr,
     placeholder,
     label,
     size = 'small',
@@ -74,7 +72,6 @@ export const Søk = ({
                     onEndre={onInputChange}
                     onKeyDown={onInputKeyDown}
                     onValidate={(isValid: boolean) => settErGyldig(isValid)}
-                    acceptSynthNr={acceptSynthNr}
                     value={ident}
                     utløserSøk={utløserSøk}
                     size={size}

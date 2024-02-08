@@ -1,4 +1,4 @@
-import { Ressurs, RessursStatus } from '@navikt/familie-typer';
+import { Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
 import { useState, useRef, useEffect } from 'react';
 import { inputId } from '.';
 import { ISøkeresultat } from '..';

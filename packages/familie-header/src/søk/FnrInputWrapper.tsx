@@ -1,12 +1,13 @@
 import React, { KeyboardEventHandler } from 'react';
-import { erIdnr } from '@navikt/familie-validering';
 import { Search } from '@navikt/ds-react';
 import { SearchClearEvent } from '@navikt/ds-react/esm/form/search/Search';
 import { søkKnappId } from './Søk';
 
+// tslint:disable-next-line
+const validator = require('@navikt/fnrvalidator');
+
 interface FnrInputWrapperProps {
     id: string;
-    acceptSynthNr?: boolean;
     onEndre?: (nyVerdi: string) => void;
     onValidate: (isValid: boolean) => void;
     onKeyDown?: KeyboardEventHandler;
@@ -25,7 +26,6 @@ export const FnrInputWrapper: React.FC<FnrInputWrapperProps> = ({
     onKeyDown,
     onValidate,
     value,
-    acceptSynthNr,
     placeholder,
     onClear,
     laster,
@@ -45,7 +45,7 @@ export const FnrInputWrapper: React.FC<FnrInputWrapperProps> = ({
                     onEndre(nyVerdi);
                 }
                 if (onValidate) {
-                    onValidate(erIdnr(nyVerdi, acceptSynthNr));
+                    onValidate(validator.idnr(nyVerdi).status === 'valid');
                 }
             }}
             onClear={onClear}

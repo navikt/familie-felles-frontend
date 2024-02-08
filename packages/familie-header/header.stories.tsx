@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ikoner, Brukerinfo, Header, PopoverItem, Søk, ISøkeresultat } from './src';
-import { erIdnr } from '../familie-validering/dist';
 import {
     Adressebeskyttelsegradering,
     byggDataRessurs,
@@ -10,6 +9,10 @@ import {
     Ressurs,
 } from '@navikt/familie-typer';
 import { BodyShort } from '@navikt/ds-react';
+
+// tslint:disable-next-line
+const validator = require('@navikt/fnrvalidator');
+
 export default {
     component: Header,
     parameters: {
@@ -101,7 +104,7 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
         } else {
             settSøkeresultat(byggHenterRessurs());
             setTimeout(() => {
-                if (erIdnr(personIdent, true)) {
+                if (validator.idnr(personIdent).status === 'valid') {
                     const resultat: ISøkeresultat[] | undefined = søkeResultater[personIdent];
                     settSøkeresultat(
                         byggDataRessurs<ISøkeresultat[]>(
@@ -140,7 +143,6 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
                         settValgtResultat(x);
                         console.log('Du har klikket på et av resultatene', x);
                     }}
-                    acceptSynthNr={true}
                 />
             </Header>
 
