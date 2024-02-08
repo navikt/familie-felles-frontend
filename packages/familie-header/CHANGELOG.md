@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@13.0.2...@navikt/familie-header@13.1.0) (2024-02-08)
+
+
+### Bug Fixes
+
+* **familie-header:** fikser opp styled-components error fra konsollen ([c9c6140](https://github.com/navikt/familie-felles-frontend/commit/c9c61408d762ac1c77de920e1b7f7d4bd74ebea7))
+
+
+### Features
+
+* **familie-header:** bytter ut bruk av familie-validering med navikt/fnrvalidator ([5922550](https://github.com/navikt/familie-felles-frontend/commit/5922550d38dc8f1aacf580b455060f74ed29fcae))
+
+
+
+
+
 ## [13.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@13.0.1...@navikt/familie-header@13.0.2) (2024-01-30)
 
 **Note:** Version bump only for package @navikt/familie-header
