@@ -63,7 +63,7 @@ export const Søk = ({
 
     return (
         <>
-            <SøkContainer alt-text={'søk'} data-theme="dark">
+            <SøkContainer title={'søk'} data-theme="dark">
                 <FnrInputWrapper
                     id={inputId}
                     laster={søkeresultater.status === RessursStatus.HENTER}

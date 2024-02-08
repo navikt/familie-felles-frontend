@@ -26,10 +26,10 @@ const ResultatListe = styled.ul`
     margin: 0;
 `;
 
-const ResultatListeElement = styled.li<{ fokus: boolean }>`
+const ResultatListeElement = styled.li<{ $fokus: boolean }>`
     list-style-type: none;
     padding: 0.5rem;
-    outline: ${({ fokus }) => (fokus ? `3px solid var(--a-orange-300)` : '')};
+    outline: ${({ $fokus }) => ($fokus ? `3px solid var(--a-orange-300)` : '')};
 
     &:hover {
         background-color: var(--a-gray-100);
@@ -69,7 +69,7 @@ const Søkeresultat: React.FC<Props> = ({
                     return formaterResultat(søkeresultat, index === valgtSøkeresultat);
                 } else {
                     return (
-                        <ResultatListeElement key={index} fokus={index === valgtSøkeresultat}>
+                        <ResultatListeElement key={index} $fokus={index === valgtSøkeresultat}>
                             <ResultatListeElementKnapp
                                 aria-label={
                                     søkeresultat.harTilgang
