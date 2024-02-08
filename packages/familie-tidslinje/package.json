@@ -41,6 +41,8 @@
         "@navikt/ds-css": "5.x",
         "@navikt/ds-react": "5.x",
         "@navikt/ds-tokens": "5.x",
-        "dayjs": "1.x"
+        "@types/jest": "^29.5.12",
+        "dayjs": "1.x",
+        "jest": "^29.7.0"
     }
 }
