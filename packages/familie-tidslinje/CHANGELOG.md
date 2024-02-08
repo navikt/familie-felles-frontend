@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-tidslinje@8.0.0...@navikt/familie-tidslinje@9.0.0) (2024-02-08)
+
+
+### Features
+
+* **familie-validering:** sletter familie-validering ([#1390](https://github.com/navikt/familie-felles-frontend/issues/1390)) ([a2dbed3](https://github.com/navikt/familie-felles-frontend/commit/a2dbed35a1a615f4d86a8bd71b20515e942cd046))
+
+
+### BREAKING CHANGES
+
+* **familie-validering:** sletter familie-validering som ikke brukes lenger
+
+* fix(familie-tidslinje): legger til jest som avhengighet som før ble lastet inn av annet repo
+
+
+
+
+
 # [8.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-tidslinje@7.0.0...@navikt/familie-tidslinje@8.0.0) (2024-01-05)
 
 
