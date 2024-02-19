@@ -3,7 +3,7 @@ import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const storybookConfig: StorybookConfig = {
         stories: ['../packages/familie-*/src/**/*.stories.@(tsx|mdx)', '../packages/familie-*/*.stories.@(tsx|mdx)'],
-        addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-storysource', '@storybook/addon-mdx-gfm'],
+        addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-storysource'],
         typescript: {
             check: true,
             checkOptions: {},
