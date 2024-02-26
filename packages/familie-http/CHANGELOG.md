@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@7.0.2...@navikt/familie-http@7.0.3) (2024-02-26)
+
+**Note:** Version bump only for package @navikt/familie-http
+
+
+
+
+
 ## [7.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@7.0.1...@navikt/familie-http@7.0.2) (2024-02-12)
 
 **Note:** Version bump only for package @navikt/familie-http
