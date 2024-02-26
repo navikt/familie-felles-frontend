@@ -30,12 +30,12 @@
         "react-transition-group": "^4.4.5"
     },
     "devDependencies": {
-        "@navikt/aksel-icons": "5.x",
-        "@navikt/ds-react": "5.x"
+        "@navikt/aksel-icons": "6.x",
+        "@navikt/ds-react": "6.x"
     },
     "peerDependencies": {
-        "@navikt/aksel-icons": "5.x",
-        "@navikt/ds-react": "5.x",
+        "@navikt/aksel-icons": "6.x",
+        "@navikt/ds-react": "6.x",
         "@types/react": "18.x",
         "react": "18.x"
     }

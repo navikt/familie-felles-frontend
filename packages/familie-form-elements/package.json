@@ -23,14 +23,14 @@
         "react-select": "^5.8.0"
     },
     "devDependencies": {
-        "@navikt/ds-css": "5.x",
-        "@navikt/ds-react": "5.x",
-        "@navikt/ds-tokens": "5.x",
+        "@navikt/ds-css": "6.x",
+        "@navikt/ds-react": "6.x",
+        "@navikt/ds-tokens": "6.x",
         "styled-components": "^6.x"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "5.x",
-        "@navikt/ds-react": "5.x",
+        "@navikt/ds-css": "6.x",
+        "@navikt/ds-react": "6.x",
         "react": "18.x",
         "styled-components": "5.x || 6.x"
     }
