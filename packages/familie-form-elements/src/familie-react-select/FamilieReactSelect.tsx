@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import ReactSelect, { Props, StylesConfig } from 'react-select';
+import ReactSelect, {GroupBase, Props, StylesConfig} from 'react-select';
 import Creatable from 'react-select/creatable';
 import styled from 'styled-components';
 import {
@@ -21,7 +21,7 @@ export interface IProps extends Props<{ label: string; value: string }, true | f
     creatable?: boolean;
     label: ReactNode;
     feil?: ReactNode;
-    propSelectStyles?: StylesConfig;
+    propSelectStyles?: StylesConfig<ISelectOption, boolean, GroupBase<ISelectOption>>;
     className?: string;
 }
 
@@ -29,7 +29,7 @@ const Container = styled.div`
     margin-bottom: 1rem;
 `;
 
-const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfig => ({
+const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfig<ISelectOption, boolean, GroupBase<ISelectOption>> => ({
     control: (provided, state) => ({
         ...provided,
         border:
@@ -112,7 +112,7 @@ export const FamilieReactSelect: React.FC<IProps> = ({
     const propsWithoutStyles = omit(props, ['styles']);
 
     const id = `react-select-${label}`;
-    const stylesCombined: StylesConfig = {
+    const stylesCombined: StylesConfig<ISelectOption, boolean, GroupBase<ISelectOption>> = {
         ...navSelectStyles(feil, erLesevisning),
         ...propSelectStyles,
     };
