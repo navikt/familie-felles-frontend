@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@13.1.0...@navikt/familie-header@14.0.0) (2024-02-27)
+
+
+### chore
+
+* **deps-dev:** bump the aksel group with 4 updates ([#1400](https://github.com/navikt/familie-felles-frontend/issues/1400)) ([0133662](https://github.com/navikt/familie-felles-frontend/commit/01336628654de61e7ba6ca7031633007a38feda9))
+
+
+### BREAKING CHANGES
+
+* **deps-dev:** Krever Aksel v6
+
+* chore(deps-dev): bump the aksel group with 4 updates
+
+Bumps the aksel group with 4 updates: [@navikt/ds-css](https://github.com/navikt/aksel), [@navikt/ds-react](https://github.com/navikt/aksel), [@navikt/aksel-icons](https://github.com/navikt/aksel/tree/HEAD/@navikt/aksel-icons) and [@navikt/ds-tokens](https://github.com/navikt/aksel/tree/HEAD/@navikt/core/tokens).
+
+
+Updates `@navikt/ds-css` from 5.18.0 to 6.1.0
+- [Release notes](https://github.com/navikt/aksel/releases)
+- [Changelog](https://github.com/navikt/aksel/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/navikt/aksel/compare/@navikt/ds-css@5.18.0...@navikt/ds-css@6.1.0)
+
+Updates `@navikt/ds-react` from 5.18.0 to 6.1.0
+- [Release notes](https://github.com/navikt/aksel/releases)
+- [Changelog](https://github.com/navikt/aksel/blob/main/CHANGELOG.md)
+- [Commits](https://github.com/navikt/aksel/compare/@navikt/ds-react@5.18.0...@navikt/ds-react@6.1.0)
+
+Updates `@navikt/aksel-icons` from 5.18.0 to 6.1.0
+- [Release notes](https://github.com/navikt/aksel/releases)
+- [Changelog](https://github.com/navikt/aksel/blob/main/@navikt/aksel-icons/CHANGELOG.md)
+- [Commits](https://github.com/navikt/aksel/commits/@navikt/aksel-icons@6.1.0/@navikt/aksel-icons)
+
+Updates `@navikt/ds-tokens` from 5.18.0 to 6.1.0
+- [Release notes](https://github.com/navikt/aksel/releases)
+- [Changelog](https://github.com/navikt/aksel/blob/main/@navikt/core/tokens/CHANGELOG.md)
+- [Commits](https://github.com/navikt/aksel/commits/@navikt/ds-tokens@6.1.0/@navikt/core/tokens)
+
+
+
+
+
 # [13.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@13.0.2...@navikt/familie-header@13.1.0) (2024-02-08)
 
 
