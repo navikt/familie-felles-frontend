@@ -2719,10 +2719,12 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/6.1.0/dfb285dbce15ebc8f3c164a53ee7346d91dfa276#dfb285dbce15ebc8f3c164a53ee7346d91dfa276"
   integrity sha512-UQj0UJhkRFgS59l53SiF6fh4QM9PdFPM7nPKf+TOqq398WREgJUWMyzOl9335XgfKtoxwjMm7UZyCyMMaAfUsQ==
 
-"@navikt/fnrvalidator@^1.3.1":
-  version "1.3.3"
-  resolved "https://npm.pkg.github.com/download/@navikt/fnrvalidator/1.3.3/8414963a30e59e3056c9befea7bb022498a2a742#8414963a30e59e3056c9befea7bb022498a2a742"
-  integrity sha512-GsLa9ioYPGsDMBHcgKUNoYbZor09KyFIqSaWy8jy1I7f06q6DgUhdpZuRTHLVRCPjWqF2aLzKtvAfrw5dSeakg==
+"@navikt/fnrvalidator@^2.0.7":
+  version "2.0.7"
+  resolved "https://npm.pkg.github.com/download/@navikt/fnrvalidator/2.0.7/89ceb6a448fbd068e4ad8ff7a414705bd0ea6315#89ceb6a448fbd068e4ad8ff7a414705bd0ea6315"
+  integrity sha512-3TQ2NLUk1rstZEoF65r9dr4RZxvmBEcXNKfA1dcZNpLw0SAb89WwcRpUrZMhd+7UdrfmKvfoTBvsfBwMoP9cyw==
+  dependencies:
+    typescript "^5.4.2"
 
 "@ndelangen/get-tarball@^3.0.7":
   version "3.0.9"
@@ -14446,20 +14448,15 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-"typescript@>=3 < 6":
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.2.2.tgz#5ebb5e5a5b75f085f22bc3f8460fba308310fa78"
-  integrity sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==
+"typescript@>=3 < 6", typescript@^5.3.3, typescript@^5.4.2:
+  version "5.4.2"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.2.tgz#0ae9cebcfae970718474fe0da2c090cad6577372"
+  integrity sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==
 
 typescript@^4.6.4:
   version "4.8.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.8.3.tgz#d59344522c4bc464a65a730ac695007fdb66dd88"
   integrity sha512-goMHfm00nWPa8UvR/CPSvykqf6dVV8x/dp0c5mFTMTIu0u0FlGWRioyy7Nn0PGAdHxpJZnuO/ut+PpQ8UiHAig==
-
-typescript@^5.3.3:
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.3.3.tgz#b3ce6ba258e72e6305ba66f5c9b452aaee3ffe37"
-  integrity sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==
 
 uglify-js@^3.1.4:
   version "3.17.1"
