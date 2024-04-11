@@ -8,10 +8,17 @@ import {
     logout,
 } from './auth/authenticate';
 import { hentBrukerprofil, setBrukerprofilPåSesjonRute } from './auth/bruker';
+import { rateLimit } from 'express-rate-limit';
 
 const router = express.Router();
 
 export default (authClient: Client, prometheusTellere?: { [key: string]: Counter<string> }) => {
+    const limiter = rateLimit({
+        windowMs: 15 * 60 * 1000, // 15 minutter
+        limit: 100, // Max antall per 'vindu' (her 15 minutter)
+    });
+    router.use(limiter);
+
     // Authentication
     router.get('/login', (req: Request, res: Response, next: NextFunction) => {
         if (prometheusTellere && prometheusTellere.login_route) {
