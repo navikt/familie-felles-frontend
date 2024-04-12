@@ -22,6 +22,7 @@ const StyledListe = styled.ul`
     }
 `;
 
+// @ts-ignore
 const StyledMenuItem = styled(MenuItem)`
     padding: 0.5rem 1rem;
     background-color: #ffffff;
@@ -58,6 +59,7 @@ export const SpråkSelectMenu: FC<{
     valgtLocale: LocaleType;
 }> = ({ støttedeSprak, valgtLocale }) => {
     return (
+        // @ts-ignore
         <Menu>
             <StyledListe>
                 {støttedeSprak.map(locale => {

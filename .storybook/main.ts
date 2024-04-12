@@ -1,9 +1,16 @@
+import { dirname, join } from "path";
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 
 const storybookConfig: StorybookConfig = {
-        stories: ['../packages/familie-*/src/**/*.stories.@(tsx|mdx)', '../packages/familie-*/*.stories.@(tsx|mdx)'],
-        addons: ['@storybook/addon-essentials', '@storybook/addon-a11y', '@storybook/addon-storysource'],
+        stories: ['../packages/familie-*/src/**/*.@(mdx|stories.@(tsx))', '../packages/familie-*/*.@(mdx|stories.@(tsx))'],
+        addons: [
+            getAbsolutePath("@storybook/addon-essentials"),
+            getAbsolutePath("@storybook/addon-a11y"),
+            getAbsolutePath("@storybook/addon-storysource"),
+            getAbsolutePath("@storybook/addon-mdx-gfm"),
+            '@storybook/addon-webpack5-compiler-babel'
+        ],
         typescript: {
             check: true,
             checkOptions: {},
@@ -13,7 +20,7 @@ const storybookConfig: StorybookConfig = {
             },
         },
         framework: {
-            name: '@storybook/react-webpack5',
+            name: getAbsolutePath("@storybook/react-webpack5"),
             options: {},
         },
         docs: {
@@ -54,3 +61,7 @@ const storybookConfig: StorybookConfig = {
 ;
 
 export default storybookConfig;
+
+function getAbsolutePath(value: string): any {
+    return dirname(require.resolve(join(value, "package.json")));
+}
