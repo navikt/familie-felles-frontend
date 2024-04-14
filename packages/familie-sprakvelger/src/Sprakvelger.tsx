@@ -9,11 +9,13 @@ import { SkjultLabel } from '@navikt/familie-form-elements';
 import { hentSprakvelgerLabelTekst } from './utils';
 import { BodyShort } from '@navikt/ds-react';
 
+// @ts-ignore
 const StyledWrapper = styled(Wrapper)`
     position: relative;
     outline: none;
 `;
 
+// @ts-ignore
 const StyledButton = styled(Button)`
     display: flex;
     padding: 0.5rem 1rem;
@@ -57,6 +59,7 @@ export const Sprakvelger: React.FC<{ støttedeSprak: LocaleType[]; className?: s
     return (
         <StyledWrapper
             onSelection={(value: JSX.Element) => handleSelection(value)}
+            // @ts-ignore
             onMenuToggle={wrapperState => setErÅpen(wrapperState.isOpen)}
             className={className}
         >
