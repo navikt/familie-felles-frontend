@@ -9,9 +9,7 @@ import {
     Ressurs,
 } from '@navikt/familie-typer';
 import { BodyShort } from '@navikt/ds-react';
-
-// tslint:disable-next-line
-const validator = require('@navikt/fnrvalidator');
+import { idnr } from '@navikt/fnrvalidator';
 
 export default {
     component: Header,
@@ -104,7 +102,7 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
         } else {
             settSøkeresultat(byggHenterRessurs());
             setTimeout(() => {
-                if (validator.idnr(personIdent).status === 'valid') {
+                if (idnr(personIdent).status === 'valid') {
                     const resultat: ISøkeresultat[] | undefined = søkeResultater[personIdent];
                     settSøkeresultat(
                         byggDataRessurs<ISøkeresultat[]>(
