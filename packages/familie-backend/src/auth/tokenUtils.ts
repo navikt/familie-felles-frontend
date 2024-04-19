@@ -1,16 +1,61 @@
 import { Request } from 'express';
 import { Client, TokenSet } from 'openid-client';
-import { logError, LOG_LEVEL } from '@navikt/familie-logging';
+import { logInfo, logError, LOG_LEVEL } from '@navikt/familie-logging';
 import { IApi } from '../typer';
 import { logRequest } from '../utils';
-import { logInfo } from '../../../familie-logging/dist';
 
 export const tokenSetSelfId = 'self';
+
+function utledAccessToken(
+    authClient: Client,
+    req: Request,
+    api: IApi,
+    resolve: (value: string) => void,
+    reject: (reason: string | Error) => void,
+    retryCount: number,
+) {
+    authClient
+        .grant({
+            assertion: req.session.passport.user.tokenSets[tokenSetSelfId].access_token,
+            client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
+            grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
+            requested_token_use: 'on_behalf_of',
+            scope: createOnBehalfOfScope(api),
+        })
+        .then((tokenSet: TokenSet) => {
+            if (!req.session) {
+                throw Error('Mangler session på request.');
+            }
+
+            req.session.passport.user.tokenSets[api.clientId] = tokenSet;
+
+            if (tokenSet.access_token) {
+                resolve(tokenSet.access_token);
+            } else {
+                reject('Token ikke tilgjengelig');
+            }
+        })
+        .catch((err: Error) => {
+            const message = err.message;
+            if (message.includes('invalid_grant')) {
+                logInfo(`Bruker har ikke tilgang: ${message}`);
+                reject(err);
+            } else if (retryCount > 0) {
+                // Kjører retry på uthenting av access token hvis vi får en "uventet feil"
+                utledAccessToken(authClient, req, api, resolve, reject, retryCount - 1);
+            } else {
+                logError('Feil ved henting av obo token', err);
+                reject(err);
+            }
+        });
+}
+
 export const getOnBehalfOfAccessToken = (
     authClient: Client,
     req: Request,
     api: IApi,
 ): Promise<string> => {
+    const retryCount = 1;
     return new Promise((resolve, reject) => {
         if (hasValidAccessToken(req, api.clientId)) {
             const tokenSets = getTokenSetsFromSession(req);
@@ -19,37 +64,7 @@ export const getOnBehalfOfAccessToken = (
             if (!req.session) {
                 throw Error('Session på request mangler.');
             }
-
-            authClient
-                .grant({
-                    assertion: req.session.passport.user.tokenSets[tokenSetSelfId].access_token,
-                    client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
-                    grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-                    requested_token_use: 'on_behalf_of',
-                    scope: createOnBehalfOfScope(api),
-                })
-                .then((tokenSet: TokenSet) => {
-                    if (!req.session) {
-                        throw Error('Mangler session på request.');
-                    }
-
-                    req.session.passport.user.tokenSets[api.clientId] = tokenSet;
-
-                    if (tokenSet.access_token) {
-                        resolve(tokenSet.access_token);
-                    } else {
-                        reject('Token ikke tilgjengelig');
-                    }
-                })
-                .catch((err: Error) => {
-                    const message = err.message;
-                    if (message.includes('invalid_grant')) {
-                        logInfo(`Bruker har ikke tilgang: ${message}`);
-                    } else {
-                        logError('Feil ved henting av obo token', err);
-                    }
-                    reject(err);
-                });
+            utledAccessToken(authClient, req, api, resolve, reject, retryCount);
         }
     });
 };
