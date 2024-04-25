@@ -12,10 +12,11 @@ export interface IProps extends React.PropsWithChildren {
     ikon?: React.ReactElement;
     dempetKantlinje?: boolean;
     padding?: boolean;
+    borderBottom?: boolean;
 }
 
 const StyledVisittkort = styled(HStack)<{ $dempetKantlinje: boolean; $padding: boolean }>`
-    border-bottom: 1px solid ${props => (props.$dempetKantlinje ? ABorderSubtle : ABorderStrong)};
+    ${props => props.$borderBottom && `border-bottom: 1px solid ${props.$dempetKantlinje ? ABorderSubtle : ABorderStrong}`};
     height: 3rem;
     padding: ${props => props.$padding && `0 ${ASpacing4}`};
 `;
@@ -33,6 +34,7 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
     ikon,
     dempetKantlinje = false,
     padding = false,
+    borderBottom = true,
 }) => {
     return (
         <StyledVisittkort
@@ -41,6 +43,7 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
             gap="4"
             $dempetKantlinje={dempetKantlinje}
             $padding={padding}
+            $borderBottom={borderBottom}
         >
             <HStack align="center" gap="4">
                 {ikon ? (
