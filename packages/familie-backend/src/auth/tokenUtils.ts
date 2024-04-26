@@ -41,7 +41,7 @@ function utledAccessToken(
                 logInfo(`Bruker har ikke tilgang: ${message}`);
                 reject(err);
             } else if (retryCount > 0) {
-                // Kjører retry på uthenting av access token hvis vi får en "uventet feil"
+                logInfo(`Kjører retry for uthenting av access token: ${message}`);
                 utledAccessToken(authClient, req, api, resolve, reject, retryCount - 1);
             } else {
                 logError('Feil ved henting av obo token', err);
