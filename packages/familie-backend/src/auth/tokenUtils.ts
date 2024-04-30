@@ -6,14 +6,18 @@ import { logRequest } from '../utils';
 
 export const tokenSetSelfId = 'self';
 
-function utledAccessToken(
-    authClient: Client,
-    req: Request,
-    api: IApi,
-    resolve: (value: string) => void,
-    reject: (reason: string | Error) => void,
-    retryCount: number,
-) {
+export interface UtledAccessTokenProps {
+    authClient: Client;
+    req: Request;
+    api: IApi;
+    promise: {
+        resolve: (value: string) => void;
+        reject: (reason: string | Error) => void;
+    };
+}
+
+function utledAccessToken(props: UtledAccessTokenProps, retryCount: number) {
+    const { authClient, req, api, promise } = props;
     authClient
         .grant({
             assertion: req.session.passport.user.tokenSets[tokenSetSelfId].access_token,
@@ -30,22 +34,22 @@ function utledAccessToken(
             req.session.passport.user.tokenSets[api.clientId] = tokenSet;
 
             if (tokenSet.access_token) {
-                resolve(tokenSet.access_token);
+                promise.resolve(tokenSet.access_token);
             } else {
-                reject('Token ikke tilgjengelig');
+                promise.reject('Token ikke tilgjengelig');
             }
         })
         .catch((err: Error) => {
             const message = err.message;
             if (message.includes('invalid_grant')) {
                 logInfo(`Bruker har ikke tilgang: ${message}`);
-                reject(err);
+                promise.reject(err);
             } else if (retryCount > 0) {
                 logInfo(`Kjører retry for uthenting av access token: ${message}`);
-                utledAccessToken(authClient, req, api, resolve, reject, retryCount - 1);
+                utledAccessToken(props, retryCount - 1);
             } else {
                 logError('Feil ved henting av obo token', err);
-                reject(err);
+                promise.reject(err);
             }
         });
 }
@@ -64,7 +68,7 @@ export const getOnBehalfOfAccessToken = (
             if (!req.session) {
                 throw Error('Session på request mangler.');
             }
-            utledAccessToken(authClient, req, api, resolve, reject, retryCount);
+            utledAccessToken({ authClient, req, api, promise: { resolve, reject } }, retryCount);
         }
     });
 };
