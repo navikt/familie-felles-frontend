@@ -74,7 +74,7 @@ export const ensureAuthenticated = (authClient: Client, sendUnauthorized: boolea
                         logRequest(
                             req,
                             `Feilet ved refresh av tokenset: ${error.message}`,
-                            LOG_LEVEL.ERROR,
+                            LOG_LEVEL.WARNING,
                         );
                         const pathname = req.originalUrl;
                         if (sendUnauthorized) {
