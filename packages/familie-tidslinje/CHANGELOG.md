@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-tidslinje@10.0.0...@navikt/familie-tidslinje@10.0.1) (2024-05-16)
+
+
+### Bug Fixes
+
+* **fmailie-tidslinje:** en bug gjør at tidslinjer setter fokus ved re… ([#1473](https://github.com/navikt/familie-felles-frontend/issues/1473)) ([c4575dc](https://github.com/navikt/familie-felles-frontend/commit/c4575dc5b18e8168fcd8ee1e159cad498cb21618))
+
+
+
+
+
 # [10.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-tidslinje@9.0.0...@navikt/familie-tidslinje@10.0.0) (2024-02-27)
 
 
