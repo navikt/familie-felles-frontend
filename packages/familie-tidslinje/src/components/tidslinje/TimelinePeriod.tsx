@@ -2,7 +2,6 @@ import React, {
     CSSProperties,
     ReactNode,
     RefObject,
-    useEffect,
     useLayoutEffect,
     useRef,
     useState,
@@ -102,7 +101,7 @@ const InfoPin = styled.div<InfoPinProps>`
         width: 10px;
         height: 10px;
         background: #0067c5;
-        transform: ${(props) => `translate(-${props.$påPeriodeKnapp ? 5 : 4}px, -100%)`};
+        transform: ${props => `translate(-${props.$påPeriodeKnapp ? 5 : 4}px, -100%)`};
         border-radius: 50%;
     }
 `;
@@ -111,17 +110,17 @@ interface PeriodeInnholdProps {
     $kompakt?: boolean;
 }
 const PeriodeInnhold = styled.div<PeriodeInnholdProps>`
-    margin: ${(props) => `${props.$kompakt ? 0 : 0.3}rem 0.3rem`};
+    margin: ${props => `${props.$kompakt ? 0 : 0.3}rem 0.3rem`};
     overflow: hidden;
     white-space: nowrap;
     text-overflow: clip;
     text-align: left;
     position: relative;
-    top: ${(props) => `${props.$kompakt ? 0 : -2}px`};
+    top: ${props => `${props.$kompakt ? 0 : -2}px`};
 `;
 
 const PeriodeKnapp = styled.button<PeriodeInnholdProps>`
-    height: ${(props) => `${props.$kompakt ? 1.5 : 2}rem`};
+    height: ${props => `${props.$kompakt ? 1.5 : 2}rem`};
     cursor: pointer;
 
     &.advarsel {
@@ -159,7 +158,7 @@ const PeriodeKnapp = styled.button<PeriodeInnholdProps>`
 `;
 
 const PeriodeDiv = styled.div<PeriodeInnholdProps>`
-    height: ${(props) => `${props.$kompakt ? 1.5 : 2}rem`};
+    height: ${props => `${props.$kompakt ? 1.5 : 2}rem`};
     ${fellesPeriodeStyle}
 `;
 
@@ -263,12 +262,18 @@ const finnClassnames = (
             newClassNames.push('croppedBegge');
             break;
         case 'left':
-            if (period.direction === 'left') { newClassNames.push('croppedVenstre'); }
-            else { newClassNames.push('croppedHøyre'); }
+            if (period.direction === 'left') {
+                newClassNames.push('croppedVenstre');
+            } else {
+                newClassNames.push('croppedHøyre');
+            }
             break;
         case 'right':
-            if (period.direction === 'left') { newClassNames.push('croppedHøyre'); }
-            else { newClassNames.push('croppedVenstre'); }
+            if (period.direction === 'left') {
+                newClassNames.push('croppedHøyre');
+            } else {
+                newClassNames.push('croppedVenstre');
+            }
             break;
         default:
             break;
@@ -279,19 +284,29 @@ const finnClassnames = (
             newClassNames.push('sammenhengendeFraBegge');
             break;
         case 'left':
-            if (period.direction === 'left') { newClassNames.push('sammenhengendeFraVenstre'); }
-            else { newClassNames.push('sammenhengendeFraHøyre'); }
+            if (period.direction === 'left') {
+                newClassNames.push('sammenhengendeFraVenstre');
+            } else {
+                newClassNames.push('sammenhengendeFraHøyre');
+            }
             break;
         case 'right':
-            if (period.direction === 'left') { newClassNames.push('sammenhengendeFraHøyre'); }
-            else { newClassNames.push('sammenhengendeFraVenstre'); }
+            if (period.direction === 'left') {
+                newClassNames.push('sammenhengendeFraHøyre');
+            } else {
+                newClassNames.push('sammenhengendeFraVenstre');
+            }
             break;
         default:
             break;
     }
 
-    if (active) { newClassNames.push('active'); }
-    if (isMini) { newClassNames.push('mini'); }
+    if (active) {
+        newClassNames.push('active');
+    }
+    if (isMini) {
+        newClassNames.push('mini');
+    }
 
     return newClassNames;
 };
@@ -313,10 +328,6 @@ export const TimelinePeriod = React.memo(
                 setIsMini(true);
             }
         }, [ref.current]);
-
-        useEffect(() => {
-            if (active) { ref.current?.focus(); }
-        }, [active]);
 
         return onSelectPeriod ? (
             <ClickablePeriod
