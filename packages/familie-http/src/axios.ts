@@ -1,4 +1,4 @@
-import { captureException, configureScope, withScope } from '@sentry/core';
+import Sentry, { captureException, withScope } from '@sentry/core';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 import { Ressurs, RessursStatus, ApiRessurs, ISaksbehandler } from '@navikt/familie-typer';
@@ -76,12 +76,8 @@ export const loggFeil = (
     feilmelding?: string,
 ): void => {
     if (process.env.NODE_ENV !== 'development') {
-        configureScope(scope => {
-            scope.setUser({
-                username: innloggetSaksbehandler
-                    ? innloggetSaksbehandler.displayName
-                    : 'Ukjent bruker',
-            });
+        Sentry.getCurrentScope().setUser({
+            username: innloggetSaksbehandler ? innloggetSaksbehandler.displayName : 'Ukjent bruker',
         });
 
         const response: AxiosResponse | undefined = error ? error.response : undefined;
