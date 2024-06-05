@@ -50,7 +50,8 @@
 .endringslogg-content {
   overflow: hidden;
   box-shadow: 0 2px 4px 0 rgba(183, 177, 169, 0.5);
-  background-color: white;
+  background-color: var(--a-bg-default);
+    color: var(--a-text-default);
   border-radius: 6px;
   max-width: 27rem;
 }
