@@ -2044,33 +2044,33 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
-"@navikt/aksel-icons@6.x", "@navikt/aksel-icons@^6.8.0":
-  version "6.8.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/6.8.0/2644182b35d898d068d9978cf1620a0405770a70#2644182b35d898d068d9978cf1620a0405770a70"
-  integrity sha512-XiEr0Xb0BDaStrpGCuEPvNgvHalbL4dPh6HAA7jGV7cHnW6Zsb54Hsaq6dLMXIDYEpPQv2T27j25UvoRxVuk8g==
+"@navikt/aksel-icons@6.x", "@navikt/aksel-icons@^6.10.1":
+  version "6.10.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/6.10.1/9ed7d24b6ecdea45f30e98fb86ca64cb91caaab5#9ed7d24b6ecdea45f30e98fb86ca64cb91caaab5"
+  integrity sha512-gAI1FDJJCfSJhZUgo0k98wrrLZLymcFhYXyHF0VgY9O6QCIUz4s1EiW0gGgkv7CA9EGYF2081jq7/Y00dBMKuw==
 
 "@navikt/ds-css@6.x":
-  version "6.8.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/6.8.0/017d4c13ef3140df2509b0c4a6b1e25ad40ee20d#017d4c13ef3140df2509b0c4a6b1e25ad40ee20d"
-  integrity sha512-qHXpJL2TZTv3MELLTY+o16X+iqPsrKzZhVwI2obnDJUIYTMvZfwR7BQCofL7nj9pDm5Y/jvUeTxdvIxzDHnUtg==
+  version "6.10.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/6.10.1/4d4c458f7de7e8836f96b06119e44b4a3c2b23a2#4d4c458f7de7e8836f96b06119e44b4a3c2b23a2"
+  integrity sha512-LF7npnRCy2MM97snyA5J+HViw2wm1iL7IwwuX4SKjPeenF4pGulljCdnRXb06RkcqwxdLlTwG+nfhRc558b+kQ==
 
 "@navikt/ds-react@6.x":
-  version "6.8.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/6.8.0/86f903a76ac9f7ee9c3e2aa0c339932fc6dbb063#86f903a76ac9f7ee9c3e2aa0c339932fc6dbb063"
-  integrity sha512-FW2NndVzdVUTBselUzRa1vrkqpJDmHF6cG5A9bg5Y3Y4Aq2uQ07KvDUBzLP+rZz0i4bJ/gkrtoFF74nQRtmKkg==
+  version "6.10.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/6.10.1/0bbb741134b2a1233ba54f9f494b294eeab8991c#0bbb741134b2a1233ba54f9f494b294eeab8991c"
+  integrity sha512-KnpjLXwPNhAfkmU+2MnPJr740bpy+uDVgb5ZLuajT1g+gCe7Fv3yy1f8oSrGW1DW5YOXKY2FmeEX+a0Ii6ak0Q==
   dependencies:
     "@floating-ui/react" "0.25.4"
     "@floating-ui/react-dom" "^2.0.9"
-    "@navikt/aksel-icons" "^6.8.0"
-    "@navikt/ds-tokens" "^6.8.0"
+    "@navikt/aksel-icons" "^6.10.1"
+    "@navikt/ds-tokens" "^6.10.1"
     clsx "^2.1.0"
     date-fns "^3.0.0"
     react-day-picker "8.10.0"
 
-"@navikt/ds-tokens@6.x", "@navikt/ds-tokens@^6.8.0":
-  version "6.8.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/6.8.0/01e24b0e8ed89349aeb5d4482dec14b5fb1a5df9#01e24b0e8ed89349aeb5d4482dec14b5fb1a5df9"
-  integrity sha512-KK2RMX5yCnw8NdwmX5ZSA5LoFX0hQlkpba9CopUGOPxHdC0vOz0CfYwNqJgUhP/HPy2E2GHN37HOWkonqv7BCw==
+"@navikt/ds-tokens@6.x", "@navikt/ds-tokens@^6.10.1":
+  version "6.10.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/6.10.1/edde2f97afeb90b5d2912d8c98ff6f56457b9e3b#edde2f97afeb90b5d2912d8c98ff6f56457b9e3b"
+  integrity sha512-1asuPD+yxyo5h60AQKOFIPZ0STou7BAsSXIKD8SEhbHs/EV79OxR9DeLxdtv9uVjS8Rf94tfkf1BLwRjKtM3tA==
 
 "@navikt/fnrvalidator@^2.0.7":
   version "2.0.7"
@@ -11814,7 +11814,7 @@ prelude-ls@^1.2.1:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.2.1.tgz#debc6489d7a6e6b0e7611888cec880337d316396"
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
-"prettier-fallback@npm:prettier@^3", prettier@^3.1.1, prettier@^3.2.5:
+"prettier-fallback@npm:prettier@^3":
   version "3.2.5"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.2.5.tgz#e52bc3090586e824964a8813b09aba6233b28368"
   integrity sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==
@@ -11825,6 +11825,11 @@ prettier-linter-helpers@^1.0.0:
   integrity sha512-GbK2cP9nraSSUF9N2XwUwqfzlAFlMNYYl+ShE/V+H8a9uNl/oUqB1w2EL54Jh0OlyRSd8RfWYJ3coVS4TROP2w==
   dependencies:
     fast-diff "^1.1.2"
+
+prettier@^3.1.1, prettier@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.2.5.tgz#e52bc3090586e824964a8813b09aba6233b28368"
+  integrity sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==
 
 pretty-error@^4.0.0:
   version "4.0.0"
@@ -13115,7 +13120,16 @@ string-length@^4.0.1:
     char-regex "^1.0.2"
     strip-ansi "^6.0.0"
 
-"string-width-cjs@npm:string-width@^4.2.0", "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+"string-width-cjs@npm:string-width@^4.2.0":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
+  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
+  dependencies:
+    emoji-regex "^8.0.0"
+    is-fullwidth-code-point "^3.0.0"
+    strip-ansi "^6.0.1"
+
+"string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -13221,7 +13235,14 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+  dependencies:
+    ansi-regex "^5.0.1"
+
+strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -14407,7 +14428,7 @@ wordwrap@^1.0.0:
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
   integrity sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -14420,6 +14441,15 @@ wrap-ansi@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-6.2.0.tgz#e9393ba07102e6c91a3b221478f0257cd2856e53"
   integrity sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+
+wrap-ansi@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
+  integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
   dependencies:
     ansi-styles "^4.0.0"
     string-width "^4.1.0"
