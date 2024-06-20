@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@12.0.1...@navikt/familie-endringslogg@12.0.2) (2024-06-20)
+
+**Note:** Version bump only for package @navikt/familie-endringslogg
+
+
+
+
+
 ## [12.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@12.0.0...@navikt/familie-endringslogg@12.0.1) (2024-06-05)
 
 **Note:** Version bump only for package @navikt/familie-endringslogg
