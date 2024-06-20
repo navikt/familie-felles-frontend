@@ -2072,12 +2072,10 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/6.10.1/edde2f97afeb90b5d2912d8c98ff6f56457b9e3b#edde2f97afeb90b5d2912d8c98ff6f56457b9e3b"
   integrity sha512-1asuPD+yxyo5h60AQKOFIPZ0STou7BAsSXIKD8SEhbHs/EV79OxR9DeLxdtv9uVjS8Rf94tfkf1BLwRjKtM3tA==
 
-"@navikt/fnrvalidator@^2.0.7":
-  version "2.0.7"
-  resolved "https://npm.pkg.github.com/download/@navikt/fnrvalidator/2.0.7/89ceb6a448fbd068e4ad8ff7a414705bd0ea6315#89ceb6a448fbd068e4ad8ff7a414705bd0ea6315"
-  integrity sha512-3TQ2NLUk1rstZEoF65r9dr4RZxvmBEcXNKfA1dcZNpLw0SAb89WwcRpUrZMhd+7UdrfmKvfoTBvsfBwMoP9cyw==
-  dependencies:
-    typescript "^5.4.2"
+"@navikt/fnrvalidator@^2.1.0":
+  version "2.1.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/fnrvalidator/2.1.0/22070c4d38d3c928b1b5f75d5f0d786a5587e7d7#22070c4d38d3c928b1b5f75d5f0d786a5587e7d7"
+  integrity sha512-j+G00pgz1oe/+yjlv/CcsfZbLF6VYsNGDbP1GHXKWK0jpO1/CKdoMa4vU/NOESEaDTxkMhfPKb1RsOYMKu3FoA==
 
 "@ndelangen/get-tarball@^3.0.7":
   version "3.0.9"
@@ -13871,7 +13869,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-"typescript@>=3 < 6", typescript@^5.4.2, typescript@^5.4.3:
+"typescript@>=3 < 6", typescript@^5.4.3:
   version "5.4.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.3.tgz#5c6fedd4c87bee01cd7a528a30145521f8e0feff"
   integrity sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==
