@@ -81,33 +81,35 @@ export const Søk = ({
                 />
             </SøkContainer>
 
-            <Popover
-                id={'søkeresultat'}
-                anchorEl={ankerRef.current}
-                arrow={false}
-                placement="bottom"
-                tabIndex={-1}
-                open={true}
-                onClose={() => {
-                    return;
-                }}
-            >
-                <Popover.Content
-                    style={{
-                        padding: '0px',
+            {ankerRef.current && (
+                <Popover
+                    id={'søkeresultat'}
+                    anchorEl={ankerRef.current}
+                    arrow={false}
+                    placement="bottom"
+                    tabIndex={-1}
+                    open={true}
+                    onClose={() => {
+                        return;
                     }}
                 >
-                    <Søkeresultater
-                        formaterResultat={formaterResultat}
-                        settValgtSøkeresultat={søkeresultatIndex =>
-                            settValgtSøkeresultat(søkeresultatIndex)
-                        }
-                        søkeresultatOnClick={søkeresultatOnClick}
-                        søkeresultater={søkeresultater}
-                        valgtSøkeresultat={valgtSøkeresultat}
-                    />
-                </Popover.Content>
-            </Popover>
+                    <Popover.Content
+                        style={{
+                            padding: '0px',
+                        }}
+                    >
+                        <Søkeresultater
+                            formaterResultat={formaterResultat}
+                            settValgtSøkeresultat={søkeresultatIndex =>
+                                settValgtSøkeresultat(søkeresultatIndex)
+                            }
+                            søkeresultatOnClick={søkeresultatOnClick}
+                            søkeresultater={søkeresultater}
+                            valgtSøkeresultat={valgtSøkeresultat}
+                        />
+                    </Popover.Content>
+                </Popover>
+            )}
         </>
     );
 };
