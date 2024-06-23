@@ -76,7 +76,7 @@
     "ts-loader": "^9.5.1",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^5.4.3",
+    "typescript": "^5.5.2",
     "webpack": "^5.92.0"
   },
   "workspaces": [
