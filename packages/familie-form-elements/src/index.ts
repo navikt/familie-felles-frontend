@@ -1,5 +1,3 @@
-export * from './checkbox';
-export * from './checkboxgroup';
 export * from './knapp';
 export * from './lesefelt';
 export * from './måned-år-velger';
