@@ -50,5 +50,10 @@ interface Props {
     dokumenter: DokumentProps[];
 }
 export const Dokumentlistekomponent = (args: Props) => {
-    return <Dokumentliste onClick={lastNedDokument} {...args} />;
+    return (
+        <>
+            <Dokumentliste onClick={lastNedDokument} {...args} />
+            <Dokumentliste onClick={lastNedDokument} skalBrukePiler={false} {...args} />
+        </>
+    );
 };

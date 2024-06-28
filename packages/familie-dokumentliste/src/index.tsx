@@ -5,7 +5,7 @@ import PilNed from '@navikt/familie-ikoner/dist/utils/PilNed';
 import PilHøyre from '@navikt/familie-ikoner/dist/utils/PilHøyre';
 import { ILogiskVedlegg, Journalposttype } from '@navikt/familie-typer';
 import { LogiskeVedlegg } from './LogiskeVedlegg';
-import { Detail, Label } from '@navikt/ds-react';
+import { BodyShort, Detail, Label } from '@navikt/ds-react';
 import '@navikt/ds-css';
 
 const StyledDokumentListe = styled.ul`
@@ -83,20 +83,30 @@ export interface DokumentProps {
 export interface DokumentElementProps {
     dokument: DokumentProps;
     onClick: (dokument: DokumentProps) => void;
+    skalBrukePiler?: boolean;
 }
 
 export interface DokumentlisteProps {
     dokumenter: DokumentProps[];
     onClick: (dokument: DokumentProps) => void;
     className?: string;
+    skalBrukePiler?: boolean;
 }
 
-export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onClick }) => {
+export const DokumentElement: React.FC<DokumentElementProps> = ({
+    dokument,
+    onClick,
+    skalBrukePiler,
+}) => {
     return (
         <li>
             <StyledKnapp onClick={() => onClick(dokument)}>
                 <JournalpostIkon>
-                    <Journalpostikon journalposttype={dokument.journalposttype} />
+                    {skalBrukePiler ? (
+                        <Journalpostikon journalposttype={dokument.journalposttype} />
+                    ) : (
+                        <BodyShort>{dokument.journalposttype}</BodyShort>
+                    )}
                 </JournalpostIkon>
                 <StyledDokumentnavn size={'small'}>{dokument.tittel}</StyledDokumentnavn>
                 <LogiskeVedlegg logiskeVedlegg={dokument.logiskeVedlegg} />
@@ -106,11 +116,23 @@ export const DokumentElement: React.FC<DokumentElementProps> = ({ dokument, onCl
     );
 };
 
-export const Dokumentliste: React.FC<DokumentlisteProps> = ({ dokumenter, onClick, className }) => {
+export const Dokumentliste: React.FC<DokumentlisteProps> = ({
+    dokumenter,
+    onClick,
+    className,
+    skalBrukePiler = true,
+}) => {
     return (
         <StyledDokumentListe className={className}>
             {dokumenter.map((dokument: DokumentProps, indeks: number) => {
-                return <DokumentElement dokument={dokument} onClick={onClick} key={indeks} />;
+                return (
+                    <DokumentElement
+                        dokument={dokument}
+                        onClick={onClick}
+                        key={indeks}
+                        skalBrukePiler={skalBrukePiler}
+                    />
+                );
             })}
         </StyledDokumentListe>
     );
