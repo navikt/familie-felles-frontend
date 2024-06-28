@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@15.0.0...@navikt/familie-form-elements@15.1.0) (2024-06-28)
+
+
+### Features
+
+* **checkbox, checkboxgroup:** sletter checkbox og checkbouxgroup ([#1509](https://github.com/navikt/familie-felles-frontend/issues/1509)) ([7aab67e](https://github.com/navikt/familie-felles-frontend/commit/7aab67e5be3aa8888db32663300cd0ca2b90d6f8))
+
+
+
+
+
 # [15.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@14.0.0...@navikt/familie-form-elements@15.0.0) (2024-02-27)
 
 
