@@ -18,8 +18,7 @@ export const SkjultLabelStory: React.FC = ({ ...args }) => {
                 synlig til hvert form-element. Likevel er det viktig at koden har en label, slik at
                 de som bruker skjermleser får opp form-elements i riktig kontekst. Denne komponenten
                 legger på en skjult label, som du vil se hvis du åpner inspect. Merk at NAVs
-                skjemaelementer i hovedsak krever tilhørende label som prop. TextField
-                (FamilieInput) har{' '}
+                skjemaelementer i hovedsak krever tilhørende label som prop. TextField har{' '}
                 <Link href="https://aksel.nav.no/designsystem/komponenter/textfield">
                     innebygget støtte
                 </Link>{' '}

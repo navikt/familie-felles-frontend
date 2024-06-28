@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useFelt, useSkjema, ok, FeltState, feil, Avhengigheter } from './src';
-import { FamilieInput, FamilieKnapp } from '@navikt/familie-form-elements';
+import { FamilieKnapp } from '@navikt/familie-form-elements';
 import { RessursStatus } from '@navikt/familie-typer';
-import { ErrorSummary, Select } from '@navikt/ds-react';
+import { ErrorSummary, Select, TextField } from '@navikt/ds-react';
 
 export default {
     parameters: {
@@ -81,29 +81,33 @@ export const EnkeltSkjema = () => {
     console.log(skjema);
     return (
         <>
-            <FamilieInput
+            <TextField
                 {...skjema.felter.navn.hentNavInputProps(skjema.visFeilmeldinger)}
-                bredde={'L'}
                 label={'Navn'}
+                style={{ width: 'max-content' }}
             />
 
-            <FamilieInput
+            <TextField
                 {...skjema.felter.land.hentNavInputProps(skjema.visFeilmeldinger)}
-                bredde={'L'}
                 label={'Land'}
+                style={{ width: 'max-content' }}
             />
 
             {skjema.felter.by.erSynlig && (
-                <FamilieInput
+                <TextField
                     {...skjema.felter.by.hentNavInputProps(skjema.visFeilmeldinger)}
-                    bredde={'L'}
                     label={'By (kun Oslo når Norge er valgt som land)'}
+                    style={{ width: 'max-content' }}
                 />
             )}
 
             <p>{eksempelMelding}</p>
 
-            <Select {...skjemaType.hentNavInputProps(false)} label={'Hva søker du om?'}>
+            <Select
+                {...skjemaType.hentNavInputProps(false)}
+                label={'Hva søker du om?'}
+                style={{ width: 'max-content' }}
+            >
                 <option
                     value={undefined}
                     label={'Velg søknadstype'}
