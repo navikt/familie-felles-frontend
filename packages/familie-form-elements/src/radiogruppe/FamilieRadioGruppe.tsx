@@ -1,6 +1,5 @@
 import React from 'react';
-import { RadioGroup, RadioGroupProps } from '@navikt/ds-react';
-import { FamilieLesefelt } from '../lesefelt';
+import { BodyShort, Label, RadioGroup, RadioGroupProps } from '@navikt/ds-react';
 
 export interface IRadioGruppeProps extends RadioGroupProps {
     erLesevisning: boolean;
@@ -14,7 +13,10 @@ export const FamilieRadioGruppe: React.FC<IRadioGruppeProps> = ({
     ...props
 }) => {
     return erLesevisning ? (
-        <FamilieLesefelt className={className} label={legend} verdi={value} {...props} />
+        <div className={className}>
+            {legend && <Label>{legend}</Label>}
+            <BodyShort>{value}</BodyShort>
+        </div>
     ) : (
         <RadioGroup className={className} value={value} legend={legend} {...props}>
             {children}
