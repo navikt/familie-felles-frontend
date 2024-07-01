@@ -27,5 +27,4 @@ Det kan være nødvendig å slette `node_modules` lokalt for å få satt opp wor
 Dette fordi vi nå bruker `yarn`, og ikke `lerna`, sine workspaces.
 
 ## Kode generert av GitHub Copilot
-
 Dette repoet bruker GitHub Copilot til å generere kode.
