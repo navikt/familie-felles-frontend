@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@15.2.0...@navikt/familie-form-elements@16.0.0) (2024-07-01)
+
+
+### Features
+
+* **familielesefelt, familieradiogruppe, familieselect, familietextarea:** sletter FamilieLesefelt ([#1514](https://github.com/navikt/familie-felles-frontend/issues/1514)) ([b3a6daf](https://github.com/navikt/familie-felles-frontend/commit/b3a6daf21cb4e22d10966513bfcba218904c6653))
+
+
+### BREAKING CHANGES
+
+* **familielesefelt, familieradiogruppe, familieselect, familietextarea:** sletter FamilieLesefelt, bruk Label og Bodyshort fra designsystemet i stedet
+
+
+
+
+
 # [15.2.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@15.0.0...@navikt/familie-form-elements@15.2.0) (2024-07-01)
 
 
