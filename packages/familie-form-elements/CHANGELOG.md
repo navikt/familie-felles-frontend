@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@17.0.0...@navikt/familie-form-elements@17.1.0) (2024-07-02)
+
+
+### Features
+
+* **skjultlabel:** sletter SkjultLabel. Bruk designsystemet istedet ([1e55343](https://github.com/navikt/familie-felles-frontend/commit/1e55343da5df7c4fd575761ee5e16391ce13c669))
+
+
+
+
+
 # [17.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@16.0.0...@navikt/familie-form-elements@17.0.0) (2024-07-02)
 
 
