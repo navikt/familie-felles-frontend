@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-form-elements",
-    "version": "16.0.0",
+    "version": "17.0.0",
     "main": "dist/index.js",
     "author": "NAV",
     "license": "MIT",

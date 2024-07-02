@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@16.0.0...@navikt/familie-form-elements@17.0.0) (2024-07-02)
+
+
+### Features
+
+* **familietextarea:** sletter FamilieTextArea. Bruk TextArea fra designsystemet i stedet ([#1516](https://github.com/navikt/familie-felles-frontend/issues/1516)) ([523c32a](https://github.com/navikt/familie-felles-frontend/commit/523c32ae65166b76527512877c541c0b86a711bc))
+
+
+### BREAKING CHANGES
+
+* **familietextarea:** Sletter FamilieTextArea. Bruk TextArea fra designsystemet i stedet
+
+
+
+
+
 # [16.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@15.2.0...@navikt/familie-form-elements@16.0.0) (2024-07-01)
 
 
