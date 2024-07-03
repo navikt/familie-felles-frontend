@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [19.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@18.0.0...@navikt/familie-form-elements@19.0.0) (2024-07-03)
+
+
+### Features
+
+* **familieselect:** sletter FamilieSelect, bruk Select fra designsystemet i stedet ([#1519](https://github.com/navikt/familie-felles-frontend/issues/1519)) ([1b4cbac](https://github.com/navikt/familie-felles-frontend/commit/1b4cbaccaf76f775d7d09e807930c61c54080398))
+
+
+### BREAKING CHANGES
+
+* **familieselect:** sletter FamilieSelect, bruk Select fra designsystemet i stedet
+
+
+
+
+
 # [18.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@17.1.0...@navikt/familie-form-elements@18.0.0) (2024-07-03)
 
 
