@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@19.0.0...@navikt/familie-form-elements@20.0.0) (2024-07-03)
+
+
+### Features
+
+* **familieradiogruppe:** sletter FamilieRadioGruppe, bruk RadioGroup fra designsystemet i stedet ([#1520](https://github.com/navikt/familie-felles-frontend/issues/1520)) ([0ebe6a1](https://github.com/navikt/familie-felles-frontend/commit/0ebe6a1e7f908f8c2922ce388f2c2c91e1440033))
+
+
+### BREAKING CHANGES
+
+* **familieradiogruppe:** sletter FamilieRadioGruppe, bruk RadioGroup fra designsystemet i stedet
+
+
+
+
+
 # [19.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@18.0.0...@navikt/familie-form-elements@19.0.0) (2024-07-03)
 
 
