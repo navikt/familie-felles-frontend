@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@17.1.0...@navikt/familie-form-elements@18.0.0) (2024-07-03)
+
+
+### Code Refactoring
+
+* **slette år måned velger:** sletter år måned velger da den ikke er i bruk ([#1518](https://github.com/navikt/familie-felles-frontend/issues/1518)) ([d5a14c4](https://github.com/navikt/familie-felles-frontend/commit/d5a14c4341553c14efacef157c21274a862f2e03))
+
+
+### BREAKING CHANGES
+
+* **slette år måned velger:** Sletter år måned velger
+
+
+
+
+
 # [17.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@17.0.0...@navikt/familie-form-elements@17.1.0) (2024-07-02)
 
 
