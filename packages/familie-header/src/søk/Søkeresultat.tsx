@@ -30,10 +30,9 @@ const ResultatListeElement = styled.li<{ $fokus: boolean }>`
     list-style-type: none;
     padding: 0.5rem;
     outline: ${({ $fokus }) => ($fokus ? `3px solid var(--a-orange-300)` : '')};
-
+    border-radius: 8px;
     &:hover {
         background-color: var(--a-gray-100);
-        cursor: pointer;
     }
 `;
 
