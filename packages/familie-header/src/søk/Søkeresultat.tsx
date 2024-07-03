@@ -33,6 +33,7 @@ const ResultatListeElement = styled.li<{ $fokus: boolean }>`
     border-radius: 8px;
     &:hover {
         background-color: var(--a-gray-100);
+        cursor: pointer;
     }
 `;
 
