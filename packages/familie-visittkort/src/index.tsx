@@ -7,7 +7,7 @@ import { kjønnType } from '@navikt/familie-typer';
 export interface IProps extends React.PropsWithChildren {
     alder: number;
     ident: string;
-    kjønn: kjønnType;
+    kjønn: Kjønn | kjønnType;
     navn: string | React.ReactNode;
     ikon?: React.ReactElement;
     dempetKantlinje?: boolean;
@@ -15,8 +15,22 @@ export interface IProps extends React.PropsWithChildren {
     borderBottom?: boolean;
 }
 
+/* Vi ønsker å fase ut familie-typer som dependency men vi ønsker også å være bakoverkompatible.
+ * Må derfor definere Kjønn som egen enum her.
+ * */
+
+enum Kjønn {
+    KVINNE = 'KVINNE',
+    MANN = 'MANN',
+    UKJENT = 'UKJENT',
+}
+
+const kjønnTilKjønnType = (kjønn: Kjønn | kjønnType) => kjønn as kjønnType;
+
 const StyledVisittkort = styled(HStack)<{ $dempetKantlinje: boolean; $padding: boolean }>`
-    ${props => props.$borderBottom && `border-bottom: 1px solid ${props.$dempetKantlinje ? ABorderSubtle : ABorderStrong}`};
+    ${props =>
+        props.$borderBottom &&
+        `border-bottom: 1px solid ${props.$dempetKantlinje ? ABorderSubtle : ABorderStrong}`};
     height: 3rem;
     padding: ${props => props.$padding && `0 ${ASpacing4}`};
 `;
@@ -36,6 +50,8 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
     padding = false,
     borderBottom = true,
 }) => {
+    const typeKjønn = kjønnTilKjønnType(kjønn);
+
     return (
         <StyledVisittkort
             align="center"
@@ -49,7 +65,7 @@ export const Visittkort: React.FunctionComponent<IProps> = ({
                 {ikon ? (
                     ikon
                 ) : (
-                    <FamilieIkonVelger alder={alder} kjønn={kjønn} width={24} height={24} />
+                    <FamilieIkonVelger alder={alder} kjønn={typeKjønn} width={24} height={24} />
                 )}
                 {typeof navn === 'string' ? (
                     <Label size={'small'}>
