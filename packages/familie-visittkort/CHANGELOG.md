@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@15.0.1...@navikt/familie-visittkort@15.1.0) (2024-07-07)
+
+
+### Features
+
+* **familievisittkort:** skal kunne sende inn egen enum, Kjønn, til FamilieVisittkort ([#1524](https://github.com/navikt/familie-felles-frontend/issues/1524)) ([3e66b09](https://github.com/navikt/familie-felles-frontend/commit/3e66b09cd45911c65d4b65bb9fa9c3802bd43878))
+
+
+
+
+
 ## [15.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-visittkort@15.0.0...@navikt/familie-visittkort@15.0.1) (2024-04-25)
 
 **Note:** Version bump only for package @navikt/familie-visittkort
