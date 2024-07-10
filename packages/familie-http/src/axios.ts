@@ -1,4 +1,4 @@
-import Sentry, { captureException, withScope } from '@sentry/core';
+import * as Sentry from '@sentry/core';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 
 import { Ressurs, RessursStatus, ApiRessurs, ISaksbehandler } from '@navikt/familie-typer';
@@ -82,13 +82,13 @@ export const loggFeil = (
 
         const response: AxiosResponse | undefined = error ? error.response : undefined;
         if (response) {
-            withScope(scope => {
+            Sentry.withScope(scope => {
                 scope.setExtra('nav-call-id', response.headers['nav-call-id']);
                 scope.setExtra('status text', response.statusText);
                 scope.setExtra('status', response.status);
                 scope.setExtra('feilmelding', feilmelding);
 
-                captureException(error);
+                Sentry.captureException(error);
             });
         }
     }
