@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.14](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@7.0.13...@navikt/familie-http@7.0.14) (2024-07-11)
+
+
+### Bug Fixes
+
+* **familie-http, familie-skjema:** fikser syntaks på sentry-bruk så vi ikke får byggfeil ([#1525](https://github.com/navikt/familie-felles-frontend/issues/1525)) ([40f178a](https://github.com/navikt/familie-felles-frontend/commit/40f178a41d2e3c627b6af9571efe21f1a1dc5d28))
+
+
+
+
+
 ## [7.0.13](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@7.0.12...@navikt/familie-http@7.0.13) (2024-06-25)
 
 **Note:** Version bump only for package @navikt/familie-http
