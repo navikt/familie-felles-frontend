@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@20.0.0...@navikt/familie-form-elements@21.0.0) (2024-07-15)
+
+
+### Features
+
+* **familie-form-elements:** sletter FamilieKnapp ([#1530](https://github.com/navikt/familie-felles-frontend/issues/1530)) ([a70b720](https://github.com/navikt/familie-felles-frontend/commit/a70b7201f396d160bc477ce915d26fa17e52cdea))
+
+
+### BREAKING CHANGES
+
+* **familie-form-elements:** Sletter FamilieKnapp, bruk Button fra Aksel
+
+* fix(familie-form-elements): sletter import av slettet mappe
+
+
+
+
+
 # [20.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@19.0.0...@navikt/familie-form-elements@20.0.0) (2024-07-03)
 
 
