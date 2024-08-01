@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@13.0.0...@navikt/familie-endringslogg@13.1.0) (2024-08-01)
+
+
+### Features
+
+* **familie-endringslogg:** skal fjerne unødig analysekall mot endrin… ([#1540](https://github.com/navikt/familie-felles-frontend/issues/1540)) ([ec682ea](https://github.com/navikt/familie-felles-frontend/commit/ec682eab779809002afa0c9979dbce1a31de5acd))
+
+
+
+
+
 # [13.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@12.0.2...@navikt/familie-endringslogg@13.0.0) (2024-08-01)
 
 
