@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { default as TourModal } from './tour-modal';
 import '../../endringslogg.css';
-import { trackModalOpen } from '../../utils/utils';
 import { Button } from '@navikt/ds-react';
 import { ModalType } from '../../utils/endringslogg-custom';
 
@@ -25,7 +24,6 @@ export const TourModalButton = (props: ModalStepperProps) => {
                 size="small"
                 onClick={() => {
                     setOpen(true);
-                    trackModalOpen(props.id);
                 }}
             >
                 <b>{props.buttonText ? props.buttonText : 'Se hvordan'}</b>

@@ -3,7 +3,6 @@ import React from 'react';
 import { EndringsloggEntryWithSeenStatus } from './utils/endringslogg-custom';
 import './endringslogg.css';
 import { TourModalButton } from './modal/tour-modal/tour-modal-button';
-import { trackLinkClick } from './utils/utils';
 import { Heading, Label, Link } from '@navikt/ds-react';
 import { ExternalLinkIcon } from '@navikt/aksel-icons';
 import { PortableText } from '@portabletext/react';
@@ -13,18 +12,9 @@ interface EndringsloggContentProps {
     dataset: string;
 }
 
-export const EndringsloggLink = (props: {
-    linkText: string;
-    link: string;
-    onClick: () => void;
-}) => {
+export const EndringsloggLink = (props: { linkText: string; link: string }) => {
     return (
-        <Link
-            className={'endringslogg-link'}
-            target="_blank"
-            href={props.link}
-            onClick={props.onClick}
-        >
+        <Link className={'endringslogg-link'} target="_blank" href={props.link}>
             {props.linkText ? props.linkText : props.link}
             <ExternalLinkIcon
                 fr="mask"
@@ -90,11 +80,7 @@ const EndringsloggEntry = (props: EndringsloggEntryProps) => {
                     />
                 )}
                 {endring.link && endring.linkText && (
-                    <EndringsloggLink
-                        linkText={endring.linkText}
-                        link={endring.link}
-                        onClick={() => trackLinkClick(endring._id)}
-                    />
+                    <EndringsloggLink linkText={endring.linkText} link={endring.link} />
                 )}
             </div>
         </div>
