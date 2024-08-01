@@ -10,9 +10,7 @@ import {
     setBackendUrl,
     trackSeenForcedModal,
     trackSeenStatus,
-    trackSessionDuration,
 } from './utils/utils';
-import { useTimer } from './hooks/use-timer';
 import TourModal from './modal/tour-modal/tour-modal';
 import { StilType } from './icons/endringslogg-icon';
 
@@ -32,7 +30,6 @@ export interface EndringsloggProps {
 }
 
 export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggProps) => {
-    const { startTimer, stopTimer } = useTimer();
     const [loadData, setLoadData] = useState(true);
     const [endringsloggEntries, setEndringsloggEntries] = useState<
         EndringsloggEntryWithSeenStatus[]
@@ -91,7 +88,6 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
         const ulesteFelter = endringsloggEntries.filter(
             endringsloggEntry => !endringsloggEntry.seen,
         );
-        trackSessionDuration(props.userId, props.appId, stopTimer(), ulesteFelter.length);
         if (ulesteFelter.length > 0) {
             const newList = setAllEntriesSeen(endringsloggEntries);
             setEndringsloggEntries(newList);
@@ -99,7 +95,6 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
     };
 
     const onOpen = () => {
-        startTimer();
         const ulesteFelter = endringsloggEntries.filter(
             endringsloggEntry => !endringsloggEntry.seen,
         );
