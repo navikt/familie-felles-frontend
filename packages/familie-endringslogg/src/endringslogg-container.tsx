@@ -15,6 +15,7 @@ interface EndringsloggContainerProps {
     userId: string;
     appId: string;
     appName: string;
+    dataset: string;
     stil?: StilType;
     alignLeft?: boolean;
     errorMessage?: string;
@@ -85,7 +86,7 @@ export const EndringsloggContainer = (props: EndringsloggContainerProps) => {
             <TransitionContainer visible={endringsloggApen} alignLeft={props.alignLeft}>
                 <EndringsloggHeader appName={props.appName} />
                 <div className={'innhold-container'} data-testid="endringslogg-innhold">
-                    <EndringsloggContent innleggsListe={props.content} />
+                    <EndringsloggContent innleggsListe={props.content} dataset={props.dataset} />
                     {props.errorMessage && <Label>{props.errorMessage}</Label>}
                 </div>
             </TransitionContainer>

@@ -7,13 +7,26 @@ export const hentEndringsLoggEntries = async (
     dataset: string,
     maxEntries: number,
 ): Promise<Response> =>
-    fetch(`${backendUrl}/endringslogg`, {
+    fetch(`${backendUrl}/endringslogg/text`, {
         method: 'POST',
         mode: 'cors',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ userId, appId, dataset, maxEntries }),
+    });
+
+export const hentEndringsloggSlideImage = async (
+    slideImageRef: string,
+    dataset: string,
+): Promise<Response> =>
+    fetch(`${backendUrl}/endringslogg/image`, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ slideImageRef, dataset }),
     });
 
 export const trackSeenStatus = async (

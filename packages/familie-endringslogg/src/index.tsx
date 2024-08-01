@@ -41,6 +41,7 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
     const [forcedEndringsloggEntries, setForcedEndringsloggEntries] = useState<
         EndringsloggEntryWithSeenStatus[]
     >([]);
+    const dataset = props.dataset || 'production';
 
     const fetchData = useCallback(() => {
         if (loadData) {
@@ -51,7 +52,7 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
                 hentEndringsLoggEntries(
                     props.userId,
                     props.appId,
-                    props.dataset || 'production',
+                    dataset,
                     props.maxEntries || DEFAULT_MAX_ENTRIES,
                 ).then(response =>
                     response
@@ -130,9 +131,11 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
                 appName={props.appName || props.appId}
                 alignLeft={props.alignLeft}
                 errorMessage={errorMessage}
+                dataset={dataset}
             />
             {forcedEndringsloggEntries.length > 0 && (
                 <TourModal
+                    dataset={dataset}
                     open={true}
                     modal={forcedEndringsloggEntries[forcedEndringsloggEntries.length - 1].modal!}
                     onClose={() => onCloseForcedModal()}

@@ -1,19 +1,59 @@
-import { default as React, useState } from 'react';
+import { default as React, useEffect, useState } from 'react';
 import './tour-modal.css';
 import ChevronLenke, { Direction } from '../../chevron-lenke/chevron-lenke';
 import Stegviser from '../../stegviser/stegviser';
 import { ModalType } from '../../utils/endringslogg-custom';
-import { Heading, Modal } from '@navikt/ds-react';
+import { Heading, Loader, Modal } from '@navikt/ds-react';
 import { PortableText } from '@portabletext/react';
+import { hentEndringsloggSlideImage } from '../../utils/utils';
 
 interface TourModalProps {
     modal: ModalType;
     open: boolean;
     onClose: (e: boolean) => void;
+    dataset: string;
+}
+
+interface SlideImage {
+    slideImage: string;
+}
+
+interface ImageFetching {
+    image?: SlideImage;
+    loading: boolean;
+    error?: string;
 }
 
 const TourModal = (props: TourModalProps) => {
+    const initialImageState = { loading: true };
     const [stepIndex, setStepIndex] = useState(0);
+    const [imageFetching, setImageFetching] = useState<ImageFetching>(initialImageState);
+
+    useEffect(() => {
+        setImageFetching(initialImageState);
+        if (
+            props.modal.slides &&
+            props.modal.slides[stepIndex] &&
+            props.modal.slides[stepIndex].slideImageRef
+        ) {
+            hentEndringsloggSlideImage(props.modal.slides[stepIndex].slideImageRef, props.dataset)
+                .then(response =>
+                    response.json().then(jsonResponse => {
+                        setImageFetching({
+                            loading: false,
+                            image: jsonResponse,
+                        });
+                    }),
+                )
+                .catch(() => {
+                    setImageFetching({
+                        loading: false,
+                        error: 'Kunne ikke hente data for endringslogg',
+                    });
+                });
+        }
+    }, [stepIndex]);
+
     const lukkModal = () => {
         setStepIndex(0);
         props.onClose(isFinalStep);
@@ -50,22 +90,15 @@ const TourModal = (props: TourModalProps) => {
             <Modal.Body>
                 <main className={'tour-modal__main'}>
                     <div className={'tour-modal__main--bilde-wrapper'}>
-                        {step.slideImage && (
+                        {imageFetching.image && (
                             <img
                                 alt={step.altText}
-                                src={`data:image/jpeg;base64,${step.slideImage}`}
+                                src={`data:image/jpeg;base64,${imageFetching.image.slideImage}`}
                                 className={'tour-modal__main--bilde'}
-                                onClick={() => {
-                                    const data = `data:image/png;base64,${step.slideImage}`;
-                                    const newWindow = window.open('about:blank');
-                                    const image = new Image();
-                                    image.src = data;
-                                    setTimeout(() => {
-                                        newWindow?.document?.write(image.outerHTML);
-                                    }, 0);
-                                }}
                             />
                         )}
+                        {imageFetching.error && <span>Noe gikk galt ved uthenting av bilde</span>}
+                        {imageFetching.loading && <Loader size="3xlarge" title="Laster bilde..." />}
                     </div>
                     <div className={'tour-modal__main--beskrivelse'}>
                         <Heading size="small">{step.slideHeader}</Heading>

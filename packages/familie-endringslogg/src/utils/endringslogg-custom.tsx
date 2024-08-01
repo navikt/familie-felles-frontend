@@ -10,7 +10,7 @@ type Step = {
     slideHeader: string;
     slideDescription?: BlockContentType;
     altText?: string;
-    slideImage?: any;
+    slideImageRef?: string;
 };
 export interface EndringsloggEntry {
     title: string;

@@ -10,6 +10,7 @@ interface ModalStepperProps {
     id: string;
     buttonText?: string;
     forced?: boolean;
+    dataset: string;
 }
 
 export const TourModalButton = (props: ModalStepperProps) => {
@@ -29,7 +30,14 @@ export const TourModalButton = (props: ModalStepperProps) => {
             >
                 <b>{props.buttonText ? props.buttonText : 'Se hvordan'}</b>
             </Button>
-            <TourModal open={open} modal={props.modal} onClose={() => setOpen(false)} />
+            {open && (
+                <TourModal
+                    dataset={props.dataset}
+                    open={open}
+                    modal={props.modal}
+                    onClose={() => setOpen(false)}
+                />
+            )}
         </>
     );
 };

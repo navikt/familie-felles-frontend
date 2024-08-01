@@ -10,6 +10,7 @@ import { PortableText } from '@portabletext/react';
 
 interface EndringsloggContentProps {
     innleggsListe: EndringsloggEntryWithSeenStatus[];
+    dataset: string;
 }
 
 export const EndringsloggLink = (props: {
@@ -37,22 +38,7 @@ export const EndringsloggLink = (props: {
 
 export const EndringsloggContent = (props: EndringsloggContentProps) => {
     const content = props.innleggsListe.map((endring, index) => {
-        return (
-            <EndringsloggEntry
-                key={index}
-                _id={endring._id}
-                date={endring.date}
-                description={endring.description}
-                title={endring.title}
-                seen={endring.seen}
-                children={endring.children}
-                linkText={endring.linkText}
-                link={endring.link}
-                modal={endring.modal}
-                forced={endring.forced}
-                seenForced={endring.seenForced}
-            />
-        );
+        return <EndringsloggEntry key={index} endring={endring} dataset={props.dataset} />;
     });
 
     return <>{content}</>;
@@ -67,41 +53,47 @@ const isoTimeStringToDate = (dateString: string) => {
     );
 };
 
-const EndringsloggEntry = (props: EndringsloggEntryWithSeenStatus) => {
+export interface EndringsloggEntryProps {
+    endring: EndringsloggEntryWithSeenStatus;
+    dataset: string;
+}
+const EndringsloggEntry = (props: EndringsloggEntryProps) => {
+    const { dataset, endring } = props;
     return (
         <div className={classNames('endringslogg-rad', 'endringslogg-skille')}>
             <div className={'endringslogg-datolinje'}>
                 <div
-                    role={props.seen ? 'alert' : ''}
-                    aria-label={props.seen ? 'Nye endringer i Arbeidsrettet oppfølging' : ''}
+                    role={endring.seen ? 'alert' : ''}
+                    aria-label={endring.seen ? 'Nye endringer i Arbeidsrettet oppfølging' : ''}
                     className={classNames('endringslogg-info-kolonne', {
-                        'endringslogg-info-nye-notifikasjoner': !props.seen,
+                        'endringslogg-info-nye-notifikasjoner': !endring.seen,
                     })}
                 />
-                <Label size={'small'}>{isoTimeStringToDate(props.date!)}</Label>
+                <Label size={'small'}>{isoTimeStringToDate(endring.date!)}</Label>
             </div>
             <div className={classNames('endringslogg-innhold', 'endringslogg-kolonne')}>
                 <Heading size="small" level="2">
-                    {props.title}
+                    {endring.title}
                 </Heading>
-                {props.description && (
+                {endring.description && (
                     <div className={'endringslogg-block-content'}>
-                        <PortableText value={props.description} />
+                        <PortableText value={endring.description} />
                     </div>
                 )}
-                {props.modal && (
+                {endring.modal && (
                     <TourModalButton
-                        id={props._id}
-                        modal={props.modal}
+                        dataset={dataset}
+                        id={endring._id}
+                        modal={endring.modal}
                         buttonText="Se hvordan"
-                        forced={props.forced}
+                        forced={endring.forced}
                     />
                 )}
-                {props.link && props.linkText && (
+                {endring.link && endring.linkText && (
                     <EndringsloggLink
-                        linkText={props.linkText}
-                        link={props.link}
-                        onClick={() => trackLinkClick(props._id)}
+                        linkText={endring.linkText}
+                        link={endring.link}
+                        onClick={() => trackLinkClick(endring._id)}
                     />
                 )}
             </div>
