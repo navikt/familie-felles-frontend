@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@12.0.2...@navikt/familie-endringslogg@13.0.0) (2024-08-01)
+
+
+### Features
+
+* **familie-endringslogg:** skal kun hente tekst fra endringsloggen i… ([#1539](https://github.com/navikt/familie-felles-frontend/issues/1539)) ([07564af](https://github.com/navikt/familie-felles-frontend/commit/07564af6ff48d06aa9ccc375ae88d59d882ca8a9))
+
+
+### BREAKING CHANGES
+
+* **familie-endringslogg:** Går mot nye endepunkter
+
+
+
+
+
 ## [12.0.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@12.0.1...@navikt/familie-endringslogg@12.0.2) (2024-06-20)
 
 **Note:** Version bump only for package @navikt/familie-endringslogg
