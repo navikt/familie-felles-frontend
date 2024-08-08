@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useFelt, useSkjema, ok, FeltState, feil, Avhengigheter } from './src';
-import { FamilieKnapp } from '@navikt/familie-form-elements';
 import { RessursStatus } from '@navikt/familie-typer';
-import { ErrorSummary, Select, TextField } from '@navikt/ds-react';
+import { Button, ErrorSummary, Select, TextField } from '@navikt/ds-react';
 
 export default {
     parameters: {
@@ -144,7 +143,7 @@ export const EnkeltSkjema = () => {
                 </>
             )}
 
-            <FamilieKnapp
+            <Button
                 onClick={() => {
                     console.log(skjema);
                     if (kanSendeSkjema()) {
@@ -155,11 +154,10 @@ export const EnkeltSkjema = () => {
                         settEksempelMelding('Eksempelet har feil!');
                     }
                 }}
-                spinner={skjema.submitRessurs.status === RessursStatus.HENTER}
-                erLesevisning={false}
+                loading={skjema.submitRessurs.status === RessursStatus.HENTER}
             >
                 Send inn
-            </FamilieKnapp>
+            </Button>
         </>
     );
 };
