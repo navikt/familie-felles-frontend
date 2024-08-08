@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-tidslinje",
-    "version": "10.0.2",
+    "version": "10.0.3",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
