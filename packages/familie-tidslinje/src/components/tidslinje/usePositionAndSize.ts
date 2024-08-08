@@ -33,8 +33,8 @@ export const usePositionAndSize = ({
         adjustedHorizontalPosition + width >= 100
             ? 100 - adjustedHorizontalPosition
             : adjustedHorizontalPosition + width !== horizontalPosition + width
-            ? width + horizontalPosition
-            : width;
+              ? width + horizontalPosition
+              : width;
 
     if (horizontalPosition >= 100 || adjustedWidth <= 0) {
         return {

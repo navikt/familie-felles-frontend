@@ -1,4 +1,5 @@
-export const logEvent = (logTag: string, fields?: {}, tags?: {}): void => {
+export const logEvent = (logTag: string, fields?: object, tags?: object): void => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const frontendlogger = (window as any).frontendlogger;
 
     if (process.env.REACT_APP_MOCK) {

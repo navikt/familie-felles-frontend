@@ -62,12 +62,12 @@ export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }
     );
 };
 
-// @ts-ignore
+// @ts-expect-error Storybookspesifikk kode
 FamilieJaNeiSpørsmålStory.args = {
     bredde: 100,
 };
 
-// @ts-ignore
+// @ts-expect-error Storybookspesifikk kode
 FamilieJaNeiSpørsmålStory.argTypes = {
     bredde: {
         control: {

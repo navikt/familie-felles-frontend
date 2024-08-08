@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export const useEventListener = (eventName: string, handleEvent: (event?: any) => void) => {
+export const useEventListener = (eventName: string, handleEvent: (event?: unknown) => void) => {
     useEffect(() => {
         document.addEventListener(eventName, handleEvent, false);
         return () => {

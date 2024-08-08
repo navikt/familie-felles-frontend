@@ -1,4 +1,4 @@
-import { genererId } from './utils';
+import { genererId, isChangeEvent } from './utils';
 import deepEqual from 'deep-equal';
 
 import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
@@ -13,7 +13,6 @@ import {
     Avhengigheter,
     Valideringsstatus,
 } from './typer';
-import { isChangeEvent } from './utils';
 
 /**
  * Konfigurasjon for å opprette et felt.
@@ -33,14 +32,14 @@ export interface FeltConfig<Verdi> {
     nullstillVedAvhengighetEndring?: boolean;
 }
 
-export function useFelt<Verdi = string>({
+export const useFelt = <Verdi = string>({
     avhengigheter = {},
     feltId,
     skalFeltetVises,
     valideringsfunksjon = defaultValidator,
     verdi,
     nullstillVedAvhengighetEndring = true,
-}: FeltConfig<Verdi>): Felt<Verdi> {
+}: FeltConfig<Verdi>): Felt<Verdi> => {
     const [id] = useState(feltId ? feltId : genererId());
     const initialFeltState = {
         feilmelding: '',
@@ -58,6 +57,7 @@ export function useFelt<Verdi = string>({
         settFeltState(initialFeltState);
     };
 
+    // tslint:disable-next-line:no-shadowed-variable
     const validerOgSettFelt = (verdi: Verdi = feltState.verdi): FeltState<Verdi> => {
         const validertFelt: FeltState<Verdi> = feltState.valider(
             {
@@ -76,7 +76,7 @@ export function useFelt<Verdi = string>({
 
     const hentAvhengighetArray = () => {
         return avhengigheter
-            ? Object.values(avhengigheter).reduce((acc: [], avhengighet: any) => {
+            ? Object.values(avhengigheter).reduce((acc: [], avhengighet: unknown) => {
                   if (avhengighet instanceof Object && 'valideringsstatus' in avhengighet) {
                       return [...acc, (avhengighet as Felt<unknown>).verdi];
                   } else {
@@ -103,14 +103,17 @@ export function useFelt<Verdi = string>({
         } else {
             validerOgSettFelt();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...hentAvhengighetArray()]);
 
     const onChange = useCallback(
+        // tslint:disable-next-line:no-shadowed-variable
         (verdi: Verdi | ChangeEvent) => {
             const normalisertVerdi = isChangeEvent(verdi) ? verdi.target.value : verdi;
 
             validerOgSettFelt(normalisertVerdi as Verdi);
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [validerOgSettFelt, settFeltState],
     );
 
@@ -122,6 +125,7 @@ export function useFelt<Verdi = string>({
             onChange,
             value: feltState.verdi,
         }),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [validerOgSettFelt, settFeltState],
     );
 
@@ -132,6 +136,7 @@ export function useFelt<Verdi = string>({
             id,
             value: feltState.verdi,
         }),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [validerOgSettFelt, settFeltState],
     );
 
@@ -146,6 +151,7 @@ export function useFelt<Verdi = string>({
             onChange,
             validerOgSettFelt,
         }),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [feltState, hentNavInputProps, validerOgSettFelt, nullstill, onChange],
     );
-}
+};

@@ -3,35 +3,28 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 import { TimelinePeriod } from './TimelinePeriod';
 import { PositionedPeriod } from '../types.internal';
-import {
-    ABlue50,
-    AGray50,
-    ASpacing4,
-    ASpacing6,
-    ASpacing8,
-} from '@navikt/ds-tokens/dist/tokens';
+import { ABlue50, AGray50, ASpacing4, ASpacing6, ASpacing8 } from '@navikt/ds-tokens/dist/tokens';
 
 interface TimelineRowStyleProps {
-    $kompakt?: boolean
+    $kompakt?: boolean;
 }
 
 const TimelineRowStyle = styled.div<TimelineRowStyleProps>`
     flex: 1;
-    height: ${(props) => `${props.$kompakt ? ASpacing6 : ASpacing8}`};
+    height: ${props => `${props.$kompakt ? ASpacing6 : ASpacing8}`};
     display: flex;
     align-items: center;
     position: relative;
-    margin-bottom: ${(props) => `${props.$kompakt ? ASpacing4 : ASpacing6}`};
+    margin-bottom: ${props => `${props.$kompakt ? ASpacing4 : ASpacing6}`};
 `;
-
 
 const EmptyRowHr = styled.hr<TimelineRowStyleProps>`
     flex: 1;
-    height: ${(props) => `${props.$kompakt ? ASpacing6 : ASpacing8}`};
+    height: ${props => `${props.$kompakt ? ASpacing6 : ASpacing8}`};
     width: 100%;
     border: none;
     background-color: ${AGray50};
-    margin-bottom: ${(props) => `${props.$kompakt ? ASpacing4 : ASpacing6}`};
+    margin-bottom: ${props => `${props.$kompakt ? ASpacing4 : ASpacing6}`};
 
     &.aktivRad {
         background-color: ${ABlue50};

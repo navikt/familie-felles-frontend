@@ -29,6 +29,7 @@ export interface User {
     enhet: string;
     identifier: string;
     navIdent: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     groups: any;
 }
 

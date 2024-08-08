@@ -37,6 +37,7 @@ export const EndringsloggContainer = (props: EndringsloggContainerProps) => {
         setEndringsloggApen(setOpenTo);
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleClickOutside = (event: any) => {
         if (
             loggNode.current?.contains(event.target) ||
@@ -51,6 +52,7 @@ export const EndringsloggContainer = (props: EndringsloggContainerProps) => {
         }
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const escHandler = (event: any) => {
         if (event.keyCode === 27 && endringsloggApen) {
             requestSetOpenStatus(false);
@@ -60,6 +62,7 @@ export const EndringsloggContainer = (props: EndringsloggContainerProps) => {
         }
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const click = (event: any) => {
         event.stopPropagation();
         requestSetOpenStatus(!endringsloggApen);
@@ -98,6 +101,7 @@ interface EndringsloggIconButtonProps {
     buttonRef: RefObject<HTMLButtonElement>;
     open: boolean;
     newNotifications: number;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onClick: (e?: any) => void;
     name: string;
     stil?: StilType;

@@ -72,7 +72,6 @@ export const useSkjema = <Felter, SkjemaRespons>({
     };
 
     const nullstillSkjema = () => {
-        // eslint-disable-next-line
         alleSynligeFelter().forEach((felt: unknown) => (felt as Felt<unknown>).nullstill());
         settVisfeilmeldinger(false);
     };

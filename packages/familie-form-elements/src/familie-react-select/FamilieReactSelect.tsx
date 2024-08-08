@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import ReactSelect, {GroupBase, Props, StylesConfig} from 'react-select';
+import ReactSelect, { GroupBase, Props, StylesConfig } from 'react-select';
 import Creatable from 'react-select/creatable';
 import styled from 'styled-components';
 import {
@@ -29,7 +29,10 @@ const Container = styled.div`
     margin-bottom: 1rem;
 `;
 
-const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfig<ISelectOption, boolean, GroupBase<ISelectOption>> => ({
+const navSelectStyles = (
+    feil?: ReactNode,
+    erLesevisning?: boolean,
+): StylesConfig<ISelectOption, boolean, GroupBase<ISelectOption>> => ({
     control: (provided, state) => ({
         ...provided,
         border:
@@ -38,8 +41,8 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
         boxShadow: state.isFocused
             ? `0 0 0 3px ${ABorderFocus}`
             : feil
-            ? `0 0 0 1px ${ASurfaceDanger}`
-            : '',
+              ? `0 0 0 1px ${ASurfaceDanger}`
+              : '',
         ':hover': {
             border: `1px solid ${ASurfaceActionHover}`,
         },
@@ -68,6 +71,7 @@ const navSelectStyles = (feil?: ReactNode, erLesevisning?: boolean): StylesConfi
                       color: ATextDefault,
                   },
               },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     multiValue: (provided, _) => ({
         ...provided,
         backgroundColor: ABlue100,

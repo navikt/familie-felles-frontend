@@ -8,9 +8,10 @@ import { logError, logInfo, logSecure } from '@navikt/familie-logging';
 import { ISessionKonfigurasjon } from '../typer';
 
 import RedisStore from 'connect-redis';
-import {hentErforbindelsenTilRedisTilgjengelig, settErforbindelsenTilRedisTilgjengelig} from "../utils";
-
-
+import {
+    hentErforbindelsenTilRedisTilgjengelig,
+    settErforbindelsenTilRedisTilgjengelig,
+} from '../utils';
 
 const redisClientForAiven = (sessionKonfigurasjon: ISessionKonfigurasjon) => {
     const pingHvertFjerdeMinutt = 1000 * 60 * 4; // Connection blir ugyldig etter fem minutter, pinger derfor hvert fjerde minutt
@@ -20,14 +21,14 @@ const redisClientForAiven = (sessionKonfigurasjon: ISessionKonfigurasjon) => {
         username: sessionKonfigurasjon.redisBrukernavn,
         password: sessionKonfigurasjon.redisPassord,
         socket: {
-            reconnectStrategy : (attempts) => {
+            reconnectStrategy: attempts => {
                 if (attempts >= 100 && hentErforbindelsenTilRedisTilgjengelig()) {
                     settErforbindelsenTilRedisTilgjengelig(false);
                 }
 
                 // Reconnect after
                 return Math.min(attempts * 100, 1000);
-            }
+            },
         },
         pingInterval: pingHvertFjerdeMinutt,
     });
@@ -75,8 +76,8 @@ export default (
         /**
          * Logge hendelser i redisclient for å debugge merkelige sockettimeouts
          */
-        redisClient.on('error', (err) => {
-            logError(`Redis Error: ${err}`)
+        redisClient.on('error', err => {
+            logError(`Redis Error: ${err}`);
             settErforbindelsenTilRedisTilgjengelig(false);
         });
         redisClient.on('connect', () => logInfo('Redis connected'));

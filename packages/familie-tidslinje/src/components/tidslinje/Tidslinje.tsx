@@ -66,15 +66,16 @@ const TidslinjeStyle = styled.div`
 `;
 
 interface TidslinjeRadStyleProps {
-    $kompakt?: boolean
+    $kompakt?: boolean;
 }
 const TidslinjeRadStyle = styled.div<TidslinjeRadStyleProps>`
     position: relative;
     padding: 0;
-    border-top: ${(props) => `${props.$kompakt ? 'none' : '1px solid #e7e9e9'}`};
+    border-top: ${props => `${props.$kompakt ? 'none' : '1px solid #e7e9e9'}`};
 
-    .tidslinjerad.førsterad, hr.førsterad {
-        margin-top: ${(props) => `${props.$kompakt ? '0rem' : '1.56rem'}`};
+    .tidslinjerad.førsterad,
+    hr.førsterad {
+        margin-top: ${props => `${props.$kompakt ? '0rem' : '1.56rem'}`};
     }
 `;
 
@@ -97,6 +98,7 @@ export interface TimelineProps {
     kompakt?: boolean;
 }
 
+// eslint-disable-next-line react/display-name
 const Timeline = React.memo(
     ({
         pins,
@@ -112,6 +114,7 @@ const Timeline = React.memo(
     }: TimelineProps) => {
         const onSelectPeriodeWrapper =
             onSelectPeriod &&
+            // eslint-disable-next-line react-hooks/rules-of-hooks
             useCallback(
                 (periode: PositionedPeriod) => {
                     onSelectPeriod?.({
@@ -187,6 +190,7 @@ const Timeline = React.memo(
 /**
  * Viser perioder i en tidslinje.
  */
+// eslint-disable-next-line react/display-name
 export const Tidslinje = React.memo(
     ({
         pins,

@@ -4,7 +4,10 @@ import { Period, PositionedPeriod } from '../types.internal';
 
 const enDato = ({ plussDager = 0 } = {}): Dayjs => dayjs('2020-01-01').add(plussDager, 'day');
 
-const enPeriode = ({ start = enDato(), endInclusive = enDato() } = {}): Period => ({ start, endInclusive });
+const enPeriode = ({ start = enDato(), endInclusive = enDato() } = {}): Period => ({
+    start,
+    endInclusive,
+});
 
 const enPosisjonertPeriode = ({ horizontalPosition = 50 } = {}): PositionedPeriod => ({
     id: 'id',
@@ -13,7 +16,7 @@ const enPosisjonertPeriode = ({ horizontalPosition = 50 } = {}): PositionedPerio
     endInclusive: dayjs(),
     width: 123,
     horizontalPosition: horizontalPosition,
-    direction: 'left'
+    direction: 'left',
 });
 
 test('sisteDato', () => {
@@ -22,7 +25,7 @@ test('sisteDato', () => {
         enDato(),
         enDato({ plussDager: 2 }),
         enDato(),
-        enDato({ plussDager: 3 })
+        enDato({ plussDager: 3 }),
     ];
 
     const sortert = [
@@ -30,7 +33,7 @@ test('sisteDato', () => {
         enDato({ plussDager: 2 }),
         enDato({ plussDager: 1 }),
         enDato(),
-        enDato()
+        enDato(),
     ];
 
     expect(usortert.sort(sisteDato)).toEqual(sortert);
@@ -42,7 +45,7 @@ test('sistePeriode', () => {
         enPosisjonertPeriode({ horizontalPosition: 0 }),
         enPosisjonertPeriode({ horizontalPosition: 12 }),
         enPosisjonertPeriode({ horizontalPosition: 80 }),
-        enPosisjonertPeriode({ horizontalPosition: 33 })
+        enPosisjonertPeriode({ horizontalPosition: 33 }),
     ];
 
     const sortert = [
@@ -50,7 +53,7 @@ test('sistePeriode', () => {
         enPosisjonertPeriode({ horizontalPosition: 12 }),
         enPosisjonertPeriode({ horizontalPosition: 33 }),
         enPosisjonertPeriode({ horizontalPosition: 50 }),
-        enPosisjonertPeriode({ horizontalPosition: 80 })
+        enPosisjonertPeriode({ horizontalPosition: 80 }),
     ];
     expect(usortert.sort(sistePeriode)).toEqual(sortert);
 });
@@ -61,14 +64,14 @@ test('sisteEnklePeriode', () => {
         enPeriode({ start: enDato({ plussDager: 1 }), endInclusive: enDato({ plussDager: 3 }) }),
         enPeriode({ start: enDato({ plussDager: 10 }), endInclusive: enDato({ plussDager: 15 }) }),
         enPeriode({ endInclusive: enDato({ plussDager: 1 }) }),
-        enPeriode({ start: enDato({ plussDager: 8 }), endInclusive: enDato({ plussDager: 20 }) })
+        enPeriode({ start: enDato({ plussDager: 8 }), endInclusive: enDato({ plussDager: 20 }) }),
     ];
     const sortert = [
         enPeriode({ start: enDato({ plussDager: 8 }), endInclusive: enDato({ plussDager: 20 }) }),
         enPeriode({ start: enDato({ plussDager: 10 }), endInclusive: enDato({ plussDager: 15 }) }),
         enPeriode({ start: enDato({ plussDager: 1 }), endInclusive: enDato({ plussDager: 3 }) }),
         enPeriode({ endInclusive: enDato({ plussDager: 1 }) }),
-        enPeriode()
+        enPeriode(),
     ];
 
     expect(usortert.sort(sisteEnklePeriode)).toEqual(sortert);

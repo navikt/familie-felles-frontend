@@ -58,7 +58,8 @@ const AktivPeriode = styled.div`
 `;
 
 const AktivPeriodeBorder = styled(AktivPeriode)`
-    box-shadow: inset 2px 0 0 -1px ${ABlue500},
+    box-shadow:
+        inset 2px 0 0 -1px ${ABlue500},
         inset -2px 0 0 -1px ${ABlue500};
 `;
 

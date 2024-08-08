@@ -1,13 +1,7 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import styled from 'styled-components';
-import {
-    AGray400,
-    AGray600,
-    AGray800,
-    ASpacing2,
-    ASpacing4,
-} from '@navikt/ds-tokens/dist/tokens';
+import { AGray400, AGray600, AGray800, ASpacing2, ASpacing4 } from '@navikt/ds-tokens/dist/tokens';
 
 const TooltipContainer = styled.div`
     position: absolute;

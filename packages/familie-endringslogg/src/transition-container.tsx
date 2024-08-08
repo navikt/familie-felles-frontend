@@ -21,8 +21,12 @@ interface TransitionProps extends CollapseContainerProps {
  * Overrider props ettersom transition-group ikke er oppgradert til React 18.
  * Disse to linjene kan fjernes når dette skjer
  */
-const TransitionGroupWithChildren = TransitionGroup as unknown as React.FC<PropsWithChildren<TransitionGroupProps>>
-const CSSTransitionWithChildren = CSSTransition as unknown as React.FC<PropsWithChildren<CSSTransitionProps>>
+const TransitionGroupWithChildren = TransitionGroup as unknown as React.FC<
+    PropsWithChildren<TransitionGroupProps>
+>;
+const CSSTransitionWithChildren = CSSTransition as unknown as React.FC<
+    PropsWithChildren<CSSTransitionProps>
+>;
 
 const TransitionContainer = (props: TransitionProps) => (
     <TransitionGroupWithChildren component={null}>

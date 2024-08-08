@@ -3,13 +3,11 @@ import dayjs, { Dayjs } from 'dayjs';
 import { Positioned } from '../types.internal';
 
 const enDato = ({ plussDager = 0, plussTimer = 0 } = {}): Dayjs =>
-    dayjs('2020-01-01')
-        .add(plussDager, 'day')
-        .add(plussTimer, 'hour');
+    dayjs('2020-01-01').add(plussDager, 'day').add(plussTimer, 'hour');
 
 const etPosisjonertElement = (horizontalPosition = 50): Positioned => ({
     horizontalPosition,
-    direction: 'left'
+    direction: 'left',
 });
 
 test('innenEtDøgn', () => {

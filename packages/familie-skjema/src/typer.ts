@@ -80,7 +80,7 @@ export const defaultValidator = <Verdi>(felt: FeltState<Verdi>) => ({
     valideringsstatus: Valideringsstatus.OK,
 });
 
-export type FieldDictionary<Record extends unknown> = {
+export type FieldDictionary<Record> = {
     [Key in keyof Record]: Felt<Record[Key]>;
 };
 

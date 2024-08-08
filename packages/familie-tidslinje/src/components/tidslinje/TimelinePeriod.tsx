@@ -196,6 +196,7 @@ const style = (period: PositionedPeriod): CSSProperties => ({
     width: `${period.width}%`,
 });
 
+// eslint-disable-next-line react/display-name
 const ClickablePeriod = React.memo(
     ({ buttonRef, period, className, onSelectPeriod, kompakt }: ClickablePeriodProps) => {
         const [showHoverLabel, setShowHoverLabel] = useState(false);
@@ -311,6 +312,7 @@ const finnClassnames = (
     return newClassNames;
 };
 
+// eslint-disable-next-line react/display-name
 export const TimelinePeriod = React.memo(
     ({ period, onSelectPeriod, active, kompakt }: TimelinePeriodProps) => {
         const ref = useRef<HTMLButtonElement | HTMLDivElement>(null);
@@ -327,6 +329,7 @@ export const TimelinePeriod = React.memo(
             if (currentWidth && currentWidth < 30) {
                 setIsMini(true);
             }
+            // eslint-disable-next-line react-hooks/exhaustive-deps
         }, [ref.current]);
 
         return onSelectPeriod ? (

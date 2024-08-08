@@ -15,19 +15,24 @@ export const horizontalPositionAndWidth = (
     start: Dayjs,
     endInclusive: Dayjs,
     timelineStart: Dayjs,
-    timelineEndInclusive: Dayjs
+    timelineEndInclusive: Dayjs,
 ) => {
     const horizontalPosition = position(start, timelineStart, timelineEndInclusive);
     const width = position(endInclusive, timelineStart, timelineEndInclusive) - horizontalPosition;
     return {
         horizontalPosition: horizontalPosition,
-        width: width
+        width: width,
     };
 };
 
-export const isOutOfBounds = (position: Percentage, width: number): boolean => position >= 100 || position + width < 0;
+export const isOutOfBounds = (position: Percentage, width: number): boolean =>
+    position >= 100 || position + width < 0;
 
-export const breddeMellomDatoer = (start: Dayjs, slutt: Dayjs, totaltAntallDatoer: number): Percentage => {
+export const breddeMellomDatoer = (
+    start: Dayjs,
+    slutt: Dayjs,
+    totaltAntallDatoer: number,
+): Percentage => {
     const dagerMellomDatoer = slutt.diff(start, 'minute') / 60 / 24;
     return (dagerMellomDatoer / totaltAntallDatoer) * 100;
 };
