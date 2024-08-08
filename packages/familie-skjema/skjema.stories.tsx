@@ -116,7 +116,11 @@ export const EnkeltSkjema = () => {
                 />
                 {Object.entries(SkjemaTyper).map(entry => {
                     const [verdi, label] = entry;
-                    return <option value={verdi}>{label}</option>;
+                    return (
+                        <option key={verdi} value={verdi}>
+                            {label}
+                        </option>
+                    );
                 })}
             </Select>
             {skjemaType.verdi && <p>Du har valgt: {skjemaType.verdi}</p>}

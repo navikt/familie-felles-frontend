@@ -21,11 +21,11 @@ export const KopierIkon: React.FC<IKopierIkon> = ({ className, heigth, onClick, 
             <title id={'kopier'}>Kopier</title>
             <g
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 stroke="#0067C5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
             >
                 <path d="M1.5 20.673V6.01h10.257v14.662z" />
                 <path d="M7.198 3.7V1.5h10.258v14.662H14.89" />

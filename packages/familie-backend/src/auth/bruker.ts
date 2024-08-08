@@ -58,6 +58,7 @@ export const setBrukerprofilPåSesjonRute = (authClient: Client) => {
 };
 
 const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return new Promise((_, _reject) => {
         const api = {
             clientId: 'https://graph.microsoft.com',
@@ -71,6 +72,7 @@ const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFu
         getOnBehalfOfAccessToken(authClient, req, api)
             .then(accessToken => hentBrukerData(accessToken, req))
             .then(res => res.json())
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             .then((data: any) => {
                 if (!req.session) {
                     throw new Error('Mangler sesjon på kall');

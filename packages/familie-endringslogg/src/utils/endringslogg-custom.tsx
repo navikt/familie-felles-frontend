@@ -1,5 +1,6 @@
 import React from 'react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type BlockContentType = any;
 export type ModalType = {
     header?: string;
@@ -36,6 +37,7 @@ export const setAllEntriesSeen = (endringsloggEntries: EndringsloggEntryWithSeen
         return { ...el, seen: true };
     });
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const mapRemoteToState = (remotestorage: any[]): EndringsloggEntryWithSeenStatus[] =>
     remotestorage
         .map(endring => {

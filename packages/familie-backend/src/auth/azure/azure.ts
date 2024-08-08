@@ -32,6 +32,7 @@ const hentClient = (): Promise<Client> => {
 };
 
 const strategy = (client: Client) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const verify = (tokenSet: TokenSet, done: (err: any, _: any) => void) => {
         logDebug(`verify. expired=${tokenSet.expired()}`);
         if (tokenSet.expired()) {

@@ -9,8 +9,8 @@
     "storybook": "storybook dev -p 8000",
     "build-storybook": "storybook build",
     "deploy-storybook": "storybook-to-ghpages",
-    "lint": "eslint './packages/**/*.{ts,tsx}'",
-    "lint:fix": "eslint './packages/**/*.{ts,tsx}' --fix",
+    "lint": "eslint './packages/**/*.{ts,tsx}' --ignore-pattern '**/dist/*'",
+    "lint:fix": "eslint './packages/**/*.{ts,tsx}' --ignore-pattern '**/dist/*' --fix",
     "publish:ci": "lerna publish --yes",
     "publish:canary": "lerna publish --canary",
     "publish:canary:ci": "lerna publish --canary --yes"

@@ -54,6 +54,7 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
                 ).then(response =>
                     response
                         .json()
+                        // eslint-disable-next-line @typescript-eslint/no-explicit-any
                         .then((jsonResponse: any) => {
                             const entries = mapRemoteToState(jsonResponse);
                             setEndringsloggEntries(entries);
@@ -72,6 +73,7 @@ export const Endringslogg: React.FC<EndringsloggProps> = (props: EndringsloggPro
                 );
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props, loadData, endringsloggEntries]);
 
     useEffect(() => {

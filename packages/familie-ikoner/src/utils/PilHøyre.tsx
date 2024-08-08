@@ -7,7 +7,12 @@ interface IPilHøyre {
     onClick?: React.MouseEventHandler;
 }
 
-const PilHøyre: React.FunctionComponent<IPilHøyre> = ({ className, heigth = 24, width = 24, onClick }) => {
+const PilHøyre: React.FunctionComponent<IPilHøyre> = ({
+    className,
+    heigth = 24,
+    width = 24,
+    onClick,
+}) => {
     return (
         <svg
             aria-labelledby={'pilhøyre'}

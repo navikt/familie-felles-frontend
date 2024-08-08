@@ -27,6 +27,7 @@ const Capitalized = styled.span`
     }
 `;
 
+// eslint-disable-next-line react/display-name
 export const JaNeiSpørsmål = React.forwardRef(
     (props: JaNeiSpørsmålProps, ref: Ref<HTMLFieldSetElement> | undefined) => {
         const {
@@ -79,7 +80,9 @@ export const JaNeiSpørsmål = React.forwardRef(
                 description={description}
             >
                 {radios.map(radio => (
-                    <Radio key={radio.value} value={radio.value}>{radio.label}</Radio>
+                    <Radio key={radio.value} value={radio.value}>
+                        {radio.label}
+                    </Radio>
                 ))}
             </StyledRadioPanelGruppe>
         );

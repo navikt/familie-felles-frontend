@@ -11,7 +11,7 @@ const PilVenstre: React.FunctionComponent<IPilVenstre> = ({
     className,
     heigth = 24,
     width = 24,
-    onClick
+    onClick,
 }) => {
     return (
         <svg

@@ -50,10 +50,10 @@ const adjustedEdges = (
     return left && right
         ? { ...period, connectingEdge: 'both' }
         : left
-        ? { ...period, connectingEdge: 'left' }
-        : right
-        ? { ...period, connectingEdge: 'right' }
-        : period;
+          ? { ...period, connectingEdge: 'left' }
+          : right
+            ? { ...period, connectingEdge: 'right' }
+            : period;
 };
 
 const trimmedPeriods = (period: PositionedPeriod): PositionedPeriod => {
@@ -101,7 +101,7 @@ export const useTidslinjerader = (
                     periods: direction === 'left' ? tidslinjeperioder : tidslinjeperioder.reverse(),
                 };
             }),
-        [rader, startDato, sluttDato],
+        [rader, startDato, sluttDato, direction],
     );
 
 const tidligsteDato = (tidligst: Date, periode: Periode) =>
@@ -110,10 +110,10 @@ const tidligsteDato = (tidligst: Date, periode: Periode) =>
 const tidligsteFomDato = (rader: Periode[][]) => rader.flat().reduce(tidligsteDato, new Date());
 
 export const useTidligsteDato = ({ startDato, rader }: TidslinjeProps) =>
-    useMemo(() => (startDato ? dayjs(startDato) : dayjs(tidligsteFomDato(rader))), [
-        startDato,
-        rader,
-    ]);
+    useMemo(
+        () => (startDato ? dayjs(startDato) : dayjs(tidligsteFomDato(rader))),
+        [startDato, rader],
+    );
 
 const senesteDato = (senest: Date, periode: Periode) =>
     periode.tom > senest ? periode.tom : senest;
@@ -121,7 +121,7 @@ const senesteDato = (senest: Date, periode: Periode) =>
 const senesteTomDato = (rader: Periode[][]) => rader.flat().reduce(senesteDato, new Date(0));
 
 export const useSenesteDato = ({ sluttDato, rader }: TidslinjeProps) =>
-    useMemo(() => (sluttDato ? dayjs(sluttDato) : dayjs(senesteTomDato(rader)).add(1, 'day')), [
-        sluttDato,
-        rader,
-    ]);
+    useMemo(
+        () => (sluttDato ? dayjs(sluttDato) : dayjs(senesteTomDato(rader)).add(1, 'day')),
+        [sluttDato, rader],
+    );

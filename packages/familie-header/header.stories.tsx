@@ -156,7 +156,7 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
     );
 };
 
-// @ts-ignore
+// @ts-expect-error storybook-spesifikk type
 HeaderOgSøk.args = {
     tittel: 'tittel',
     brukerinfo: saksbehandler,

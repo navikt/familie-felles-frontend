@@ -22,11 +22,11 @@ export const familievelger: React.FC = ({ ...args }) => {
     );
 };
 
-// @ts-ignore
+// @ts-expect-error storybook-spesifikk kode
 familievelger.args = {
     alder: 30,
 };
-// @ts-ignore
+// @ts-expect-error storybook-spesifikk kode
 familievelger.argTypes = {
     alder: {
         control: {

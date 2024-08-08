@@ -52,6 +52,7 @@ const TourModal = (props: TourModalProps) => {
                     });
                 });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [stepIndex]);
 
     const lukkModal = () => {

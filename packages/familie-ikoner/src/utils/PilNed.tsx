@@ -7,7 +7,12 @@ interface IPilNed {
     onClick?: React.MouseEventHandler;
 }
 
-const PilNed: React.FunctionComponent<IPilNed> = ({ className, heigth = 24, width = 24 , onClick}) => {
+const PilNed: React.FunctionComponent<IPilNed> = ({
+    className,
+    heigth = 24,
+    width = 24,
+    onClick,
+}) => {
     return (
         <svg
             aria-labelledby={'pilned'}
