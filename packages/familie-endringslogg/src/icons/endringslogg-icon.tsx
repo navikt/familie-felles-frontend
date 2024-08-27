@@ -18,8 +18,8 @@ const EndringsloggIkon: React.FC<Props> = ({ className, height, width, stil = 'm
     <svg
         data-name="Layer 1"
         className={className}
-        height={height || '40'}
-        width={width || '40'}
+        height={height || '32'}
+        width={width || '32'}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 32"
     >

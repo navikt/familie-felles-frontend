@@ -1,6 +1,7 @@
 .endringslogg {
-  width: fit-content;
-  position: relative;
+  display: flex;
+  align-self: center;
+  margin-right: 1.25rem;
 }
 
 .collapse-header {
@@ -137,12 +138,10 @@
   float: left;
 }
 .endringslogg-dropDown {
-  padding: 0.2rem;
   outline: transparent;
   border: none;
   cursor: pointer;
   background-color: transparent;
-  margin-top: 0.2rem;
 }
 .endringslogg-dropDown:focus {
   fill: var(--a-surface-action);
@@ -211,8 +210,8 @@
 }
 .ring-container {
   position: relative;
-  bottom: 46px;
-  left: 31px;
+  bottom: 460px;
+  left: 22px;
 }
 .circle {
   width: 1.2rem;
