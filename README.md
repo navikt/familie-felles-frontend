@@ -14,7 +14,7 @@ For å sette opp repoet og
 For å kjøre det.
 
 ## Endringer
-For å commite anbefales det å bruke `yarn ct` for god historikk.
+For å commite oprettes det en branch som vanlig `git checkout -b navnet-på-branchen`, deretter anbefales det å bruke `yarn ct` for god historikk.
 
 Les mer [her](packages/introduksjon.stories.mdx)
 
