@@ -19,29 +19,17 @@ updates:
             -   dependency-name: "*"
                 update-types: [ "version-update:semver-patch" ]
         groups:
-            react:
+            minor-and-patch-dependencies:
                 patterns:
-                    - "react"
-                    - "@types/react"
-                    - "react-dom"
-            babel:
+                    - '*'
+                update-types:
+                    - 'minor'
+                    - 'patch'
+            major-dependencies:
                 patterns:
-                    - "@babel/*"
-            aksel:
-                patterns:
-                    - "@navikt/aksel-icons"
-                    - "@navikt/ds-*"
-                exclude-patterns:
-                    - "@navikt/ds-icons"
-            storybook:
-                patterns:
-                    - "@storybook/*"
-                    - "storybook"
-                exclude-patterns:
-                    - "@storybook/storybook-deployer"
-            commitlint:
-                patterns:
-                    - "@commitlint/*"
+                    - '*'
+                update-types:
+                    - 'major'
     -   package-ecosystem: github-actions
         directory: "/"
         schedule:
