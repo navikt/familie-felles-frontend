@@ -114,7 +114,7 @@ export const Header = ({
             )}
             <div style={{ marginLeft: 'auto' }} />
             {children}
-            <LenkePopover lenker={eksterneLenker} />
+            {eksterneLenker.length > 0 && <LenkePopover lenker={eksterneLenker} />}
             <Bruker
                 navn={brukerinfo.navn}
                 enhet={brukerinfo.enhet}
