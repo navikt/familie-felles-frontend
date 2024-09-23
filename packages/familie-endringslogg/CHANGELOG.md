@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@13.1.2...@navikt/familie-endringslogg@13.1.3) (2024-09-23)
+
+
+### Bug Fixes
+
+* **familie-endringslogg:** den rød dotten med uleste meldinger hadde … ([#1579](https://github.com/navikt/familie-felles-frontend/issues/1579)) ([f1dee6e](https://github.com/navikt/familie-felles-frontend/commit/f1dee6ee36b4b7396af6d046bdfa33b47265a0fb))
+
+
+
+
+
 ## [13.1.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@13.1.1...@navikt/familie-endringslogg@13.1.2) (2024-08-27)
 
 **Note:** Version bump only for package @navikt/familie-endringslogg
