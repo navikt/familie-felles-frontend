@@ -210,8 +210,8 @@
 }
 .ring-container {
   position: relative;
-  bottom: 460px;
-  left: 22px;
+  bottom: 40px;
+  left: 20px;
 }
 .circle {
   width: 1.2rem;
@@ -237,6 +237,7 @@
   font-size: 14px;
   color: white;
   font-weight: bold;
+  padding-top: 2px;
 }
 
 @keyframes pulsate {
