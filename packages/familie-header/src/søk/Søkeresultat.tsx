@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import styled from 'styled-components';
 import { adressebeskyttelsestyper } from '@navikt/familie-typer';
@@ -18,6 +18,7 @@ interface Props {
     søkeresultater: ISøkeresultat[];
     valgtSøkeresultat: number;
     settValgtSøkeresultat: (søkeresultatIndex: number) => void;
+    ingenFagsakKomponent?: ReactNode;
 }
 
 const ResultatListe = styled.ul`
@@ -31,6 +32,7 @@ const ResultatListeElement = styled.li<{ $fokus: boolean }>`
     padding: 0.5rem;
     outline: ${({ $fokus }) => ($fokus ? `3px solid var(--a-orange-300)` : '')};
     border-radius: 8px;
+
     &:hover {
         background-color: var(--a-gray-100);
         cursor: pointer;
@@ -61,6 +63,7 @@ const Søkeresultat: React.FC<Props> = ({
     søkeresultatOnClick,
     søkeresultater,
     valgtSøkeresultat,
+    ingenFagsakKomponent,
 }) => {
     return søkeresultater.length > 0 ? (
         <ResultatListe aria-labelledby={inputId}>
@@ -103,13 +106,9 @@ const Søkeresultat: React.FC<Props> = ({
                                     </BodyShort>
 
                                     {!søkeresultat.fagsakId && søkeresultat.harTilgang && (
-                                        <BodyShort size={'small'}>
-                                            {`Ingen fagsak. ${
-                                                !søkeresultat.fagsakId
-                                                    ? 'Trykk for å opprette >'
-                                                    : ''
-                                            }`}
-                                        </BodyShort>
+                                        <ResultatVisningUtenFagsak
+                                            ingenFagsakKomponent={ingenFagsakKomponent}
+                                        />
                                     )}
                                 </div>
                             </ResultatListeElementKnapp>
@@ -121,6 +120,16 @@ const Søkeresultat: React.FC<Props> = ({
     ) : (
         <StyledAlertStripe variant={'info'}>Beklager, ingen treff</StyledAlertStripe>
     );
+};
+
+const ResultatVisningUtenFagsak: React.FC<{ ingenFagsakKomponent?: ReactNode }> = ({
+    ingenFagsakKomponent,
+}) => {
+    if (ingenFagsakKomponent) {
+        return ingenFagsakKomponent;
+    }
+
+    return <BodyShort size={'small'}>{`Ingen fagsak. Trykk for å opprette.`}</BodyShort>;
 };
 
 export default Søkeresultat;

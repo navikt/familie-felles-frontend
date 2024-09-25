@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Ressurs, RessursStatus } from '@navikt/familie-typer';
 import { inputId } from '.';
@@ -15,6 +15,7 @@ interface Props {
     søkeresultater: Ressurs<ISøkeresultat[]>;
     valgtSøkeresultat: number;
     settValgtSøkeresultat: (søkeresultatIndex: number) => void;
+    ingenFagsakKomponent?: ReactNode;
 }
 
 export const StyledAlertStripe = styled(Alert)`
@@ -27,6 +28,7 @@ const Søkeresultater: React.FC<Props> = ({
     søkeresultatOnClick,
     søkeresultater,
     valgtSøkeresultat,
+    ingenFagsakKomponent,
 }) => {
     switch (søkeresultater.status) {
         case RessursStatus.SUKSESS:
@@ -37,6 +39,7 @@ const Søkeresultater: React.FC<Props> = ({
                     settValgtSøkeresultat={settValgtSøkeresultat}
                     formaterResultat={formaterResultat}
                     søkeresultatOnClick={søkeresultatOnClick}
+                    ingenFagsakKomponent={ingenFagsakKomponent}
                 />
             );
         case RessursStatus.FEILET:
