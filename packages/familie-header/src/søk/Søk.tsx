@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import '@navikt/ds-css';
 import { Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
@@ -20,6 +20,7 @@ export interface SøkProps {
     søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
     placeholder?: string;
     size?: 'small' | 'medium';
+    ingenFagsakKomponent?: ReactNode;
 }
 
 const SøkContainer = styled.div`
@@ -43,6 +44,7 @@ export const Søk = ({
     placeholder,
     label,
     size = 'small',
+    ingenFagsakKomponent,
 }: SøkProps) => {
     const {
         ankerRef,
@@ -106,6 +108,7 @@ export const Søk = ({
                             søkeresultatOnClick={søkeresultatOnClick}
                             søkeresultater={søkeresultater}
                             valgtSøkeresultat={valgtSøkeresultat}
+                            ingenFagsakKomponent={ingenFagsakKomponent}
                         />
                     </Popover.Content>
                 </Popover>
