@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { Buldings3Icon } from '@navikt/aksel-icons';
+import { Buildings3Icon } from '@navikt/aksel-icons';
 import { BodyShort, Button, Dropdown, Spacer, Tag } from '@navikt/ds-react';
 import { AGreen600, ASpacing6 } from '@navikt/ds-tokens/dist/tokens';
 import { kjønnType } from '@navikt/familie-typer';
@@ -46,7 +46,7 @@ export const visittkort = ({ ...args }) => {
                 ident={'123456 78910'}
                 ikon={
                     <IkonSirkel>
-                        <Buldings3Icon width={20} height={20} />
+                        <Buildings3Icon width={20} height={20} />
                     </IkonSirkel>
                 }
             />
