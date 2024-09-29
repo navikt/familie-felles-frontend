@@ -2440,33 +2440,33 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
-"@navikt/aksel-icons@7.x", "@navikt/aksel-icons@^7.0.1":
-  version "7.0.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/7.0.1/e577737bb8025322cbe3a147cd33ad0e1ce35732#e577737bb8025322cbe3a147cd33ad0e1ce35732"
-  integrity sha512-5atdxy8VCgGTG5t1j5niaR/xLH9Z/sghvVQdeUjEOqF/6FQYbYsQdwGWa3UCkExWQk6n1yHuj2mFbM756adZfg==
+"@navikt/aksel-icons@7.x", "@navikt/aksel-icons@^7.1.0":
+  version "7.1.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/7.1.0/01f80ff249d8a5ea0158c737026860fd4b59c08b#01f80ff249d8a5ea0158c737026860fd4b59c08b"
+  integrity sha512-1dwuT6KraLJyfeNQDVjzzZAPy/bBWlAP+ufHcrPGoTMuZHTWYj9db8wKgwqesZkHRwUCmqzOMDPk9lr+0Pczng==
 
 "@navikt/ds-css@7.x":
-  version "7.0.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/7.0.1/aa975b0014976ba552205e4fbd5ff68b886d6b93#aa975b0014976ba552205e4fbd5ff68b886d6b93"
-  integrity sha512-IAgJ2AessJbul3JE3DWq2AIfn7MgaF+sZg6W6+ren/S/X5o88KwrqWMqYCxcSf0xaRd9ceVLmJ6W5QOt9fJ4wQ==
+  version "7.1.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/7.1.0/a4f5f25784152646f450c5518563f1e89f667a6a#a4f5f25784152646f450c5518563f1e89f667a6a"
+  integrity sha512-Qlf3fl/EpAs5bvfIICbPWQwmQEHQf/uowN6ggNXJ5o4jcQafY02AwztNTujb0B4zfVdCqbLhjBet+9Ttvd9/MA==
 
 "@navikt/ds-react@7.x":
-  version "7.0.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/7.0.1/fe247ebc8a957b2b677e25a019ba9a9831f4e704#fe247ebc8a957b2b677e25a019ba9a9831f4e704"
-  integrity sha512-6pAccYY5Tww59Vd3sraHNAqGdB03ugcDc1g8UIfohyxVkKaXImJ5mLLwzD/O5NewO0xdD0Lne692fN/rGz+xog==
+  version "7.1.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/7.1.0/b1bb093a8a5fc78f57b4e1bc671bf40de85eae4c#b1bb093a8a5fc78f57b4e1bc671bf40de85eae4c"
+  integrity sha512-xhmVRIIaR+rs8PIdXqRHVT6WueC4yjuCx9V2qCDN8C1mDausWDRZMRjTEVO+CXNrwUN1pBMTrEPGkCgps5F0xQ==
   dependencies:
     "@floating-ui/react" "0.25.4"
     "@floating-ui/react-dom" "^2.0.9"
-    "@navikt/aksel-icons" "^7.0.1"
-    "@navikt/ds-tokens" "^7.0.1"
+    "@navikt/aksel-icons" "^7.1.0"
+    "@navikt/ds-tokens" "^7.1.0"
     clsx "^2.1.0"
     date-fns "^3.0.0"
     react-day-picker "8.10.0"
 
-"@navikt/ds-tokens@7.x", "@navikt/ds-tokens@^7.0.1":
-  version "7.0.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/7.0.1/476acfd2558df6284de7915317e227afbe3176c0#476acfd2558df6284de7915317e227afbe3176c0"
-  integrity sha512-aMi9G/vIwqAQRX2fwnFehmzNnEfMjuTkzc55nVR50fw0QKa0NXgjuAnIYZGLdNmE4y+fvxCx1uOY+cUBccqFQQ==
+"@navikt/ds-tokens@7.x", "@navikt/ds-tokens@^7.1.0":
+  version "7.1.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/7.1.0/c03dd5e1c9656faf78474c65c9d2c9ee76143695#c03dd5e1c9656faf78474c65c9d2c9ee76143695"
+  integrity sha512-ThLWiis1lU7TxJutwsF33f6CxPKNFEnMHidV35Yoe/bF93ebLJEdSSwcdhtJ+CMJizpKZOXw1AMXh4ADVfj+dA==
 
 "@navikt/fnrvalidator@^2.1.0":
   version "2.1.0"
@@ -2944,25 +2944,25 @@
   resolved "https://registry.yarnpkg.com/@redis/time-series/-/time-series-1.1.0.tgz#cba454c05ec201bd5547aaf55286d44682ac8eb5"
   integrity sha512-c1Q99M5ljsIuc4YdaCwfUEXsofakb9c8+Zse2qxTadu8TalLXuAESzLvFAvNVbkmSlvlzIQOLpBCmWI9wTOt+g==
 
-"@sentry/core@^8.30.0":
-  version "8.30.0"
-  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-8.30.0.tgz#f929e42e9a537bfa3eb6024082714e9ab98d822b"
-  integrity sha512-CJ/FuWLw0QEKGKXGL/nm9eaOdajEcmPekLuHAuOCxID7N07R9l9laz3vFbAkUZ97GGDv3sYrJZgywfY3Moropg==
+"@sentry/core@^8.32.0":
+  version "8.32.0"
+  resolved "https://registry.yarnpkg.com/@sentry/core/-/core-8.32.0.tgz#7c4b74afa7a15bd31f5e6881aac82ccfd753e1d6"
+  integrity sha512-+xidTr0lZ0c755tq4k75dXPEb8PA+qvIefW3U9+dQMORLokBrYoKYMf5zZTG2k/OfSJS6OSxatUj36NFuCs3aA==
   dependencies:
-    "@sentry/types" "8.30.0"
-    "@sentry/utils" "8.30.0"
+    "@sentry/types" "8.32.0"
+    "@sentry/utils" "8.32.0"
 
-"@sentry/types@8.30.0":
-  version "8.30.0"
-  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-8.30.0.tgz#5f5011f5b16bafd30a039ca5e8c337e948c703fb"
-  integrity sha512-kgWW2BCjBmVlSQRG32GonHEVyeDbys74xf9mLPvynwHTgw3+NUlNAlEdu05xnb2ow4bCTHfbkS5G1zRgyv5k4Q==
+"@sentry/types@8.32.0":
+  version "8.32.0"
+  resolved "https://registry.yarnpkg.com/@sentry/types/-/types-8.32.0.tgz#dfd8aa9449a5f793b9c720888819a74a11f1790d"
+  integrity sha512-hxckvN2MzS5SgGDgVQ0/QpZXk13Vrq4BtZLwXhPhyeTmZtUiUfWvcL5TFQqLinfKdTKPe9q2MxeAJ0D4LalhMg==
 
-"@sentry/utils@8.30.0":
-  version "8.30.0"
-  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-8.30.0.tgz#2343dd8593ea83890b3e0d792ed3fa257955a26b"
-  integrity sha512-wZxU2HWlzsnu8214Xy7S7cRIuD6h8Z5DnnkojJfX0i0NLooepZQk2824el1Q13AakLb7/S8CHSHXOMnCtoSduw==
+"@sentry/utils@8.32.0":
+  version "8.32.0"
+  resolved "https://registry.yarnpkg.com/@sentry/utils/-/utils-8.32.0.tgz#99a4298ee8fd7208ade470931c19d71c571dfce8"
+  integrity sha512-t1WVERhgmYURxbBj9J4/H2P2X+VKqm7B3ce9iQyrZbdf5NekhcU4jHIecPUWCPHjQkFIqkVTorqeBmDTlg/UmQ==
   dependencies:
-    "@sentry/types" "8.30.0"
+    "@sentry/types" "8.32.0"
 
 "@sigstore/bundle@^2.3.2":
   version "2.3.2"
@@ -11990,7 +11990,16 @@ string-length@^4.0.1:
     char-regex "^1.0.2"
     strip-ansi "^6.0.0"
 
-"string-width-cjs@npm:string-width@^4.2.0", "string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+"string-width-cjs@npm:string-width@^4.2.0":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
+  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
+  dependencies:
+    emoji-regex "^8.0.0"
+    is-fullwidth-code-point "^3.0.0"
+    strip-ansi "^6.0.1"
+
+"string-width@^1.0.2 || 2 || 3 || 4", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -12143,7 +12152,14 @@ string_decoder@~1.1.1:
   dependencies:
     safe-buffer "~5.1.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
+  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
+  dependencies:
+    ansi-regex "^5.0.1"
+
+strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -13274,7 +13290,7 @@ wordwrap@^1.0.0:
   resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-1.0.0.tgz#27584810891456a4171c8d0226441ade90cbcaeb"
   integrity sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==
 
-"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0", wrap-ansi@^7.0.0:
+"wrap-ansi-cjs@npm:wrap-ansi@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
   integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
@@ -13287,6 +13303,15 @@ wrap-ansi@^6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-6.2.0.tgz#e9393ba07102e6c91a3b221478f0257cd2856e53"
   integrity sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+
+wrap-ansi@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
+  integrity sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==
   dependencies:
     ansi-styles "^4.0.0"
     string-width "^4.1.0"
