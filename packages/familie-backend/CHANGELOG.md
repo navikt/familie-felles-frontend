@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@10.0.24...@navikt/familie-backend@10.1.0) (2024-11-04)
+
+
+### Features
+
+* **familie-backend/headers.ts:** legg til Nav telemetry URL-er i CSP headers ([#1586](https://github.com/navikt/familie-felles-frontend/issues/1586)) ([b5b978c](https://github.com/navikt/familie-felles-frontend/commit/b5b978cba270bed82b575f3207ec2a432a923585))
+
+
+
+
+
 ## [10.0.24](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-backend@10.0.23...@navikt/familie-backend@10.0.24) (2024-09-19)
 
 **Note:** Version bump only for package @navikt/familie-backend
