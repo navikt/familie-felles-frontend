@@ -53,7 +53,7 @@ const hentBrukerData = (accessToken: string, req: Request) => {
  */
 export const setBrukerprofilPåSesjonRute = (authClient: Client) => {
     return async (req: Request, _: Response, next: NextFunction) => {
-        return setBrukerprofilPåSesjon(authClient, req, next);
+        setBrukerprofilPåSesjon(authClient, req, next);
     };
 };
 
