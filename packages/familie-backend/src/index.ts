@@ -43,7 +43,9 @@ export default async (
             res.status(500).end();
         }
     });
-    app.get('/isReady', (_req: Request, res: Response) => res.status(200).end());
+    app.get('/isReady', (_req: Request, res: Response) => {
+        res.status(200).end();
+    });
     const prometheusRegistry: Registry = konfigurerMetrikker(app, prometheusTellere);
 
     konfigurerSession(app, passport, sessionKonfigurasjon);

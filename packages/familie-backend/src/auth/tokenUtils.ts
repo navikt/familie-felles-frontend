@@ -16,7 +16,7 @@ export interface UtledAccessTokenProps {
     };
 }
 
-function utledAccessToken(props: UtledAccessTokenProps, retryCount: number) {
+const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
     const { authClient, req, api, promise } = props;
     authClient
         .grant({
@@ -52,7 +52,7 @@ function utledAccessToken(props: UtledAccessTokenProps, retryCount: number) {
                 promise.reject(err);
             }
         });
-}
+};
 
 export const getOnBehalfOfAccessToken = (
     authClient: Client,
