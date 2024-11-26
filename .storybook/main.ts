@@ -10,7 +10,8 @@ const storybookConfig: StorybookConfig = {
         getAbsolutePath('@storybook/addon-essentials'),
         getAbsolutePath('@storybook/addon-a11y'),
         getAbsolutePath('@storybook/addon-storysource'),
-        '@storybook/addon-webpack5-compiler-babel',
+        getAbsolutePath('@storybook/addon-mdx-gfm'),
+        getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
     ],
     typescript: {
         check: true,
@@ -21,12 +22,10 @@ const storybookConfig: StorybookConfig = {
         },
     },
     framework: {
-        name: getAbsolutePath('@storybook/react-webpack5'),
+        name: '@storybook/react-webpack5',
         options: {},
     },
-    docs: {
-        autodocs: true,
-    },
+    docs: {},
     async webpackFinal(config) {
         if (config.module && config.module.rules) {
             config.module.rules.push({
