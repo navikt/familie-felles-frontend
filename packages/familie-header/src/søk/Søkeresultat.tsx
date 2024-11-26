@@ -126,7 +126,7 @@ const ResultatVisningUtenFagsak: React.FC<{ ingenFagsakKomponent?: ReactNode }> 
     ingenFagsakKomponent,
 }) => {
     if (ingenFagsakKomponent) {
-        return ingenFagsakKomponent;
+        return <>ingenFagsakKomponent</>;
     }
 
     return <BodyShort size={'small'}>{`Ingen fagsak. Trykk for å opprette.`}</BodyShort>;
