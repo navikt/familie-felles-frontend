@@ -1,7 +1,7 @@
 {
     "name": "@navikt/familie-backend",
     "type": "module",
-    "version": "10.1.1",
+    "version": "10.1.2",
     "description": "Skall for familieytelsenes frontend",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -25,7 +25,7 @@
         "compile": "tsc -b tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-logging": "^7.0.2",
+        "@navikt/familie-logging": "^7.0.3",
         "@types/cookie-parser": "^1.4.7",
         "@types/express": "^5.0.0",
         "@types/express-session": "^1.18.0",
