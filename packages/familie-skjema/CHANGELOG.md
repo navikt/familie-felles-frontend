@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.18](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@8.2.17...@navikt/familie-skjema@8.2.18) (2024-12-02)
+
+**Note:** Version bump only for package @navikt/familie-skjema
+
+
+
+
+
 ## [8.2.17](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-skjema@8.2.16...@navikt/familie-skjema@8.2.17) (2024-11-26)
 
 **Note:** Version bump only for package @navikt/familie-skjema
