@@ -8,7 +8,7 @@ import {
     byggTomRessurs,
     Ressurs,
 } from '@navikt/familie-typer';
-import { BodyShort } from '@navikt/ds-react';
+import { BodyShort, Detail } from '@navikt/ds-react';
 import { idnr } from '@navikt/fnrvalidator';
 import { Endringslogg } from '@navikt/familie-endringslogg';
 
@@ -35,6 +35,15 @@ const popover: PopoverItem = {
         alert('Du har nå logget ut');
     },
 };
+
+const PopoverDetail = () => (
+    <dl>
+        <BodyShort as="dt" size="small">
+            Mer info til saksbehandler
+        </BodyShort>
+        <Detail as="dd">En ekstra detalj her</Detail>
+    </dl>
+);
 
 const eksterneLenkerForStory = [
     { name: 'Google', href: 'https://www.google.com', isExternal: true },
@@ -124,6 +133,7 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
             <Header
                 tittel={'tittel'}
                 brukerinfo={saksbehandler}
+                brukerPopoverDetail={<PopoverDetail />}
                 brukerPopoverItems={[popover]}
                 tittelHref={'#'}
                 eksterneLenker={eksterneLenkerForStory}
