@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@14.1.2...@navikt/familie-header@14.2.0) (2024-12-16)
+
+
+### Features
+
+* **header.tsx:** kan vise ekstra info i brukers dropdown før lenkene ([#1595](https://github.com/navikt/familie-felles-frontend/issues/1595)) ([85753bb](https://github.com/navikt/familie-felles-frontend/commit/85753bbe3f0cfa67fe0112bed83e19f7255b69b9))
+
+
+
+
+
 ## [14.1.2](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@14.1.1...@navikt/familie-header@14.1.2) (2024-11-26)
 
 **Note:** Version bump only for package @navikt/familie-header
