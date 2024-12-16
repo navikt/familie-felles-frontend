@@ -20,6 +20,7 @@ export interface HeaderProps {
     brukerinfo: Brukerinfo;
     tittelHref?: string;
     children?: React.ReactNode | React.ReactNode[];
+    brukerPopoverDetail?: React.ReactNode;
     brukerPopoverItems?: PopoverItem[];
     eksterneLenker: PopoverItem[];
     tittelOnClick?: () => void;
@@ -28,6 +29,7 @@ export interface HeaderProps {
 interface BrukerProps {
     navn: string;
     enhet?: string;
+    popoverDetail?: React.ReactNode;
     popoverItems?: PopoverItem[];
 }
 
@@ -35,7 +37,7 @@ interface LenkePopoverProps {
     lenker: PopoverItem[];
 }
 
-export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
+export const Bruker = ({ navn, enhet, popoverItems, popoverDetail }: BrukerProps) => {
     return (
         <Dropdown>
             <NavHeader.UserButton
@@ -44,13 +46,17 @@ export const Bruker = ({ navn, enhet, popoverItems }: BrukerProps) => {
                 description={enhet ? `Enhet: ${enhet}` : 'Ukjent enhet'}
                 className="ml-auto"
             />
-            {popoverItems && (
+            {(popoverItems || popoverDetail) && (
                 <Dropdown.Menu>
-                    <Dropdown.Menu.List>
-                        {popoverItems.map((lenke, index) => {
-                            return <DropdownLenke key={index} lenke={lenke} />;
-                        })}
-                    </Dropdown.Menu.List>
+                    {popoverDetail}
+                    {popoverDetail && popoverItems && <Dropdown.Menu.Divider />}
+                    {popoverItems && (
+                        <Dropdown.Menu.List>
+                            {popoverItems.map((lenke, index) => {
+                                return <DropdownLenke key={index} lenke={lenke} />;
+                            })}
+                        </Dropdown.Menu.List>
+                    )}
                 </Dropdown.Menu>
             )}
         </Dropdown>
@@ -84,14 +90,16 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
 
 const DropdownLenke: React.FC<{ lenke: PopoverItem }> = ({ lenke }) => {
     return (
-        <a
-            href={lenke.href}
-            target={lenke.isExternal ? '_blank' : ''}
-            rel={lenke.isExternal ? 'noopener noreferrer' : ''}
-            onClick={e => lenke?.onClick && lenke?.onClick(e)}
-        >
-            <Dropdown.Menu.List.Item>{lenke.name}</Dropdown.Menu.List.Item>
-        </a>
+        <Dropdown.Menu.List.Item>
+            <a
+                href={lenke.href}
+                target={lenke.isExternal ? '_blank' : ''}
+                rel={lenke.isExternal ? 'noopener noreferrer' : ''}
+                onClick={e => lenke?.onClick && lenke?.onClick(e)}
+            >
+                {lenke.name}
+            </a>
+        </Dropdown.Menu.List.Item>
     );
 };
 
@@ -100,6 +108,7 @@ export const Header = ({
     children,
     brukerinfo,
     tittelHref = '/',
+    brukerPopoverDetail,
     brukerPopoverItems,
     eksterneLenker = [],
     tittelOnClick,
@@ -118,6 +127,7 @@ export const Header = ({
             <Bruker
                 navn={brukerinfo.navn}
                 enhet={brukerinfo.enhet}
+                popoverDetail={brukerPopoverDetail}
                 popoverItems={brukerPopoverItems}
             />
         </NavHeader>
