@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "classnames": "^2.5.1",
-        "react-select": "^5.8.0"
+        "react-select": "5.8.0"
     },
     "devDependencies": {
         "@navikt/ds-css": "7.x",
@@ -31,7 +31,7 @@
     "peerDependencies": {
         "@navikt/ds-css": "7.x",
         "@navikt/ds-react": "7.x",
-        "react": "18.x",
+        "react": "18.x || 19.x",
         "styled-components": "5.x || 6.x"
     }
 }
