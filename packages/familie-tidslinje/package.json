@@ -26,14 +26,14 @@
     },
     "dependencies": {
         "classnames": "^2.5.1",
-        "nanoid": "^5.0.7"
+        "nanoid": "^5.0.9"
     },
     "peerDependencies": {
         "@navikt/ds-css": "7.x",
         "@navikt/ds-react": "7.x",
-        "@types/react": "18.x",
+        "@types/react": "18.x || 19.x",
         "dayjs": "1.x",
-        "react": "18.x",
+        "react": "18.x || 19.x",
         "styled-components": "5.x || 6.x"
     },
     "devDependencies": {

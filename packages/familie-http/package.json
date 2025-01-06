@@ -26,11 +26,11 @@
     },
     "dependencies": {
         "@navikt/familie-typer": "^8.0.2",
-        "@sentry/core": "^8.41.0",
+        "@sentry/core": "^8.47.0",
         "constate": "^3.3.2"
     },
     "peerDependencies": {
         "axios": "1.x",
-        "react": "17.x || 18.x"
+        "react": "18.x || 19.x"
     }
 }
