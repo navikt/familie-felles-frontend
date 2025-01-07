@@ -1,5 +1,5 @@
 {
-    "version": "13.1.5",
+    "version": "14.0.0",
     "name": "@navikt/familie-endringslogg",
     "author": "NAV",
     "type": "module",
