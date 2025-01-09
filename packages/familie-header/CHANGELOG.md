@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@14.2.1...@navikt/familie-header@15.0.0) (2025-01-09)
+
+
+### Bug Fixes
+
+* **familie-header:** endre fra DropdownMenu til ActionMenu ([#1599](https://github.com/navikt/familie-felles-frontend/issues/1599)) ([35fa1ed](https://github.com/navikt/familie-felles-frontend/commit/35fa1ed1c297ec0b5b382875e41dda28cc4638b5))
+
+
+### BREAKING CHANGES
+
+* **familie-header:** Må endre på hvordan vi sender med popoverItems
+
+
+
+
+
 ## [14.2.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@14.2.0...@navikt/familie-header@14.2.1) (2025-01-06)
 
 **Note:** Version bump only for package @navikt/familie-header
