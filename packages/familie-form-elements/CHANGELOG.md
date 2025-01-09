@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.0.4](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@21.0.3...@navikt/familie-form-elements@21.0.4) (2025-01-09)
+
+
+### Bug Fixes
+
+* **familie-react-select:** fiks type-feil ifm react-select og react 19 ([#1600](https://github.com/navikt/familie-felles-frontend/issues/1600)) ([f20e617](https://github.com/navikt/familie-felles-frontend/commit/f20e61781ca54d68d8fcb9968c44c9a7dccb5060))
+
+
+
+
+
 ## [21.0.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-form-elements@21.0.2...@navikt/familie-form-elements@21.0.3) (2025-01-06)
 
 **Note:** Version bump only for package @navikt/familie-form-elements
