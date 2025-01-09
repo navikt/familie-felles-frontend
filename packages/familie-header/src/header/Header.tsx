@@ -1,6 +1,6 @@
 import React from 'react';
 import '@navikt/ds-css';
-import { Dropdown, InternalHeader as NavHeader } from '@navikt/ds-react';
+import { ActionMenu, InternalHeader as NavHeader } from '@navikt/ds-react';
 import { MenuGridIcon } from '@navikt/aksel-icons';
 
 export interface Brukerinfo {
@@ -8,12 +8,14 @@ export interface Brukerinfo {
     enhet?: string;
 }
 
-export interface PopoverItem {
-    name: string;
-    href: string;
-    isExternal?: boolean;
-    onClick?: (e: React.SyntheticEvent) => void;
-}
+export type PopoverItem =
+    | {
+          name: string;
+          href: string;
+          isExternal?: boolean;
+          onSelect?: never;
+      }
+    | { name: string; href?: never; isExternal?: never; onSelect: (e: Event) => void };
 
 export interface HeaderProps {
     tittel: string;
@@ -39,67 +41,66 @@ interface LenkePopoverProps {
 
 export const Bruker = ({ navn, enhet, popoverItems, popoverDetail }: BrukerProps) => {
     return (
-        <Dropdown>
-            <NavHeader.UserButton
-                as={Dropdown.Toggle}
-                name={navn}
-                description={enhet ? `Enhet: ${enhet}` : 'Ukjent enhet'}
-                className="ml-auto"
-            />
+        <ActionMenu>
+            <ActionMenu.Trigger>
+                <NavHeader.UserButton
+                    name={navn}
+                    description={enhet ? `Enhet: ${enhet}` : 'Ukjent enhet'}
+                    className="ml-auto"
+                />
+            </ActionMenu.Trigger>
             {(popoverItems || popoverDetail) && (
-                <Dropdown.Menu>
+                <ActionMenu.Content>
                     {popoverDetail}
-                    {popoverDetail && popoverItems && <Dropdown.Menu.Divider />}
+                    {popoverDetail && popoverItems && <ActionMenu.Divider />}
                     {popoverItems && (
-                        <Dropdown.Menu.List>
+                        <ActionMenu.Group label={''}>
                             {popoverItems.map((lenke, index) => {
-                                return <DropdownLenke key={index} lenke={lenke} />;
+                                return <ActionMenuLenke key={index} lenke={lenke} />;
                             })}
-                        </Dropdown.Menu.List>
+                        </ActionMenu.Group>
                     )}
-                </Dropdown.Menu>
+                </ActionMenu.Content>
             )}
-        </Dropdown>
+        </ActionMenu>
     );
 };
 
 export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
     return (
-        <Dropdown>
-            <NavHeader.Button as={Dropdown.Toggle} className="ml-auto">
-                <MenuGridIcon
-                    fr="mask"
-                    style={{ fontSize: '1.5rem' }}
-                    title="Andre systemer"
-                    onResize={undefined}
-                    onResizeCapture={undefined}
-                />
-            </NavHeader.Button>
+        <ActionMenu>
+            <ActionMenu.Trigger>
+                <NavHeader.Button className="ml-auto">
+                    <MenuGridIcon fontSize={'1.5rem'} title="Andre systemer" />
+                </NavHeader.Button>
+            </ActionMenu.Trigger>
             {lenker && (
-                <Dropdown.Menu>
-                    <Dropdown.Menu.List>
+                <ActionMenu.Content>
+                    <ActionMenu.Group label={''}>
                         {lenker.map((lenke, index) => {
-                            return <DropdownLenke lenke={lenke} key={index} />;
+                            return <ActionMenuLenke lenke={lenke} key={index} />;
                         })}
-                    </Dropdown.Menu.List>
-                </Dropdown.Menu>
+                    </ActionMenu.Group>
+                </ActionMenu.Content>
             )}
-        </Dropdown>
+        </ActionMenu>
     );
 };
 
-const DropdownLenke: React.FC<{ lenke: PopoverItem }> = ({ lenke }) => {
-    return (
-        <Dropdown.Menu.List.Item>
-            <a
-                href={lenke.href}
-                target={lenke.isExternal ? '_blank' : ''}
-                rel={lenke.isExternal ? 'noopener noreferrer' : ''}
-                onClick={e => lenke?.onClick && lenke?.onClick(e)}
-            >
-                {lenke.name}
-            </a>
-        </Dropdown.Menu.List.Item>
+const ActionMenuLenke: React.FC<{ lenke: PopoverItem }> = ({ lenke }) => {
+    return lenke.onSelect ? (
+        <ActionMenu.Item onSelect={e => lenke?.onSelect && lenke?.onSelect(e)}>
+            {lenke.name}
+        </ActionMenu.Item>
+    ) : (
+        <ActionMenu.Item
+            as={'a'}
+            href={lenke.href}
+            target={lenke.isExternal ? '_blank' : ''}
+            rel={lenke.isExternal ? 'noopener noreferrer' : ''}
+        >
+            {lenke.name}
+        </ActionMenu.Item>
     );
 };
 
