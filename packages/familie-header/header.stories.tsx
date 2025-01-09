@@ -30,8 +30,7 @@ const saksbehandler: Brukerinfo = {
 
 const popover: PopoverItem = {
     name: 'Logg ut',
-    href: '#',
-    onClick: () => {
+    onSelect: () => {
         alert('Du har nå logget ut');
     },
 };
@@ -45,9 +44,16 @@ const PopoverDetail = () => (
     </dl>
 );
 
-const eksterneLenkerForStory = [
-    { name: 'Google', href: 'https://www.google.com', isExternal: true },
+const eksterneLenkerForStory: PopoverItem[] = [
+    {
+        name: 'Side med onClick',
+        onSelect: () => {
+            // tslint:disable-next-line:no-console
+            console.log('ekstern lenke med klikk');
+        },
+    },
     { name: 'NAV forside', href: 'https://www.nav.no' },
+    { name: 'Google', href: 'https://www.google.com', isExternal: true },
 ];
 
 const defaultIdent = '12345678910';
@@ -150,6 +156,7 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
                     søkeresultater={søkeresultat}
                     søkeresultatOnClick={x => {
                         settValgtResultat(x);
+                        // tslint:disable-next-line:no-console
                         console.log('Du har klikket på et av resultatene', x);
                     }}
                 />
