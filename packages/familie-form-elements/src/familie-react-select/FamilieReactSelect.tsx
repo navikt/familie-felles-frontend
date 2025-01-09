@@ -16,7 +16,7 @@ import {
 } from '@navikt/ds-tokens/dist/tokens';
 import { ErrorMessage, Label, omit } from '@navikt/ds-react';
 
-export interface IProps extends Props<{ label: string; value: string }, true | false> {
+export interface IProps {
     erLesevisning?: boolean;
     creatable?: boolean;
     label: ReactNode;
@@ -103,7 +103,9 @@ export interface ISelectOption extends OptionType {
     label: string;
 }
 
-export const FamilieReactSelect: React.FC<IProps> = ({
+export const FamilieReactSelect: React.FC<
+    IProps | Props<ISelectOption, boolean, GroupBase<ISelectOption>>
+> = ({
     erLesevisning,
     creatable = false,
     label,
