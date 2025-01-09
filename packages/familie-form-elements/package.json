@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "classnames": "^2.5.1",
-        "react-select": "5.8.0"
+        "react-select": "5.9.0"
     },
     "devDependencies": {
         "@navikt/ds-css": "7.x",

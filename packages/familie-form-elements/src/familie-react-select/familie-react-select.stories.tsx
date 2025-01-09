@@ -47,7 +47,7 @@ export const FamilieReactSelectStory: React.FC = ({ ...args }) => {
                     feil={feil ? 'Denne har feil' : undefined}
                     erLesevisning={lesevisning}
                     value={land}
-                    onChange={valgteOptions => {
+                    onChange={(valgteOptions: ISelectOption[]) => {
                         settLand(valgteOptions === null ? [] : (valgteOptions as ISelectOption[]));
                     }}
                     isMulti={multi}
