@@ -1,7 +1,7 @@
 {
     "name": "@navikt/familie-backend",
     "type": "module",
-    "version": "10.1.3",
+    "version": "10.1.4",
     "description": "Skall for familieytelsenes frontend",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
