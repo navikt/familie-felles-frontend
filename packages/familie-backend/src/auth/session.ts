@@ -7,7 +7,7 @@ import { appConfig } from '../config';
 import { logError, logInfo, logSecure } from '@navikt/familie-logging';
 import { ISessionKonfigurasjon } from '../typer';
 
-import RedisStore from 'connect-redis';
+import { RedisStore } from 'connect-redis';
 import {
     hentErforbindelsenTilRedisTilgjengelig,
     settErforbindelsenTilRedisTilgjengelig,
