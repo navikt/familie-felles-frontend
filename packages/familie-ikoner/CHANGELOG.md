@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-ikoner@9.0.3...@navikt/familie-ikoner@9.1.0) (2025-02-14)
+
+
+### Features
+
+* **header:** mulighet for visning av label og ikon på header ([#1605](https://github.com/navikt/familie-felles-frontend/issues/1605)) ([27cfe9d](https://github.com/navikt/familie-felles-frontend/commit/27cfe9ddcd611019d7000ae7272d39aaea9fff83))
+
+
+
+
+
 ## [9.0.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-ikoner@9.0.2...@navikt/familie-ikoner@9.0.3) (2025-01-06)
 
 **Note:** Version bump only for package @navikt/familie-ikoner

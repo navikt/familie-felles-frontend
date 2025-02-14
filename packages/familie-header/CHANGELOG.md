@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@15.0.0...@navikt/familie-header@15.1.0) (2025-02-14)
+
+
+### Features
+
+* **header:** mulighet for visning av label og ikon på header ([#1605](https://github.com/navikt/familie-felles-frontend/issues/1605)) ([27cfe9d](https://github.com/navikt/familie-felles-frontend/commit/27cfe9ddcd611019d7000ae7272d39aaea9fff83))
+
+
+
+
+
 # [15.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@14.2.1...@navikt/familie-header@15.0.0) (2025-01-09)
 
 
