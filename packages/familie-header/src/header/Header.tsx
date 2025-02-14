@@ -2,6 +2,7 @@ import React from 'react';
 import '@navikt/ds-css';
 import { ActionMenu, InternalHeader as NavHeader } from '@navikt/ds-react';
 import { MenuGridIcon } from '@navikt/aksel-icons';
+import { EksternLinkIkon } from '@navikt/familie-ikoner';
 
 export interface Brukerinfo {
     navn: string;
@@ -26,6 +27,7 @@ export interface HeaderProps {
     brukerPopoverItems?: PopoverItem[];
     eksterneLenker: PopoverItem[];
     tittelOnClick?: () => void;
+    skalViseLabelsOgIkonPåLenker?: boolean;
 }
 
 interface BrukerProps {
@@ -69,11 +71,7 @@ export const Bruker = ({ navn, enhet, popoverItems, popoverDetail }: BrukerProps
 export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
     return (
         <ActionMenu>
-            <ActionMenu.Trigger>
-                <NavHeader.Button className="ml-auto">
-                    <MenuGridIcon fontSize={'1.5rem'} title="Andre systemer" />
-                </NavHeader.Button>
-            </ActionMenu.Trigger>
+            <ActionMenuTrigger />
             {lenker && (
                 <ActionMenu.Content>
                     <ActionMenu.Group label={''}>
@@ -87,9 +85,50 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
     );
 };
 
-const ActionMenuLenke: React.FC<{ lenke: PopoverItem }> = ({ lenke }) => {
-    return lenke.onSelect ? (
-        <ActionMenu.Item onSelect={e => lenke?.onSelect && lenke?.onSelect(e)}>
+const ActionMenuMedLabelOgIkoner: React.FC<{
+    lenker: PopoverItem[];
+}> = ({ lenker }) => {
+    const interneLenker = lenker.filter(lenke => !lenke.isExternal);
+    const eksterneLenker = lenker.filter(lenke => lenke.isExternal);
+    return (
+        <ActionMenu>
+            <ActionMenuTrigger />
+            {lenker && (
+                <ActionMenu.Content>
+                    {interneLenker.length > 0 && (
+                        <ActionMenu.Group label="">
+                            {interneLenker.map((lenke, index) => (
+                                <ActionMenuLenke
+                                    lenke={lenke}
+                                    skalHaIkonPåLenke={true}
+                                    key={index}
+                                />
+                            ))}
+                        </ActionMenu.Group>
+                    )}
+                    {eksterneLenker.length > 0 && (
+                        <ActionMenu.Group label="Lenker">
+                            {eksterneLenker.map((lenke, index) => (
+                                <ActionMenuLenke
+                                    lenke={lenke}
+                                    skalHaIkonPåLenke={true}
+                                    key={index + interneLenker.length}
+                                />
+                            ))}
+                        </ActionMenu.Group>
+                    )}
+                </ActionMenu.Content>
+            )}
+        </ActionMenu>
+    );
+};
+
+const ActionMenuLenke: React.FC<{
+    lenke: PopoverItem;
+    skalHaIkonPåLenke?: boolean;
+}> = ({ lenke, skalHaIkonPåLenke }) =>
+    lenke.onSelect ? (
+        <ActionMenu.Item onSelect={e => lenke.onSelect && lenke.onSelect(e)}>
             {lenke.name}
         </ActionMenu.Item>
     ) : (
@@ -99,10 +138,10 @@ const ActionMenuLenke: React.FC<{ lenke: PopoverItem }> = ({ lenke }) => {
             target={lenke.isExternal ? '_blank' : ''}
             rel={lenke.isExternal ? 'noopener noreferrer' : ''}
         >
+            {skalHaIkonPåLenke && lenke.isExternal && <EksternLinkIkon width={16} height={16} />}
             {lenke.name}
         </ActionMenu.Item>
     );
-};
 
 export const Header = ({
     tittel,
@@ -113,6 +152,7 @@ export const Header = ({
     brukerPopoverItems,
     eksterneLenker = [],
     tittelOnClick,
+    skalViseLabelsOgIkonPåLenker: skalViseOverskrifterOgIkonPåLenker,
 }: HeaderProps) => {
     return (
         <NavHeader data-theme={''}>
@@ -124,7 +164,13 @@ export const Header = ({
             )}
             <div style={{ marginLeft: 'auto' }} />
             {children}
-            {eksterneLenker.length > 0 && <LenkePopover lenker={eksterneLenker} />}
+            {eksterneLenker.length > 0 &&
+                (skalViseOverskrifterOgIkonPåLenker ? (
+                    <ActionMenuMedLabelOgIkoner lenker={eksterneLenker} />
+                ) : (
+                    <LenkePopover lenker={eksterneLenker} />
+                ))}
+
             <Bruker
                 navn={brukerinfo.navn}
                 enhet={brukerinfo.enhet}
@@ -132,5 +178,15 @@ export const Header = ({
                 popoverItems={brukerPopoverItems}
             />
         </NavHeader>
+    );
+};
+
+const ActionMenuTrigger = () => {
+    return (
+        <ActionMenu.Trigger>
+            <NavHeader.Button className="ml-auto">
+                <MenuGridIcon fontSize={'1.5rem'} title="Andre systemer" />
+            </NavHeader.Button>
+        </ActionMenu.Trigger>
     );
 };

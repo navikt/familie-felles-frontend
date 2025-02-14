@@ -45,6 +45,7 @@ const PopoverDetail = () => (
 );
 
 const eksterneLenkerForStory: PopoverItem[] = [
+    { name: 'NRK', href: 'https://www.nrk.no', isExternal: true },
     {
         name: 'Side med onClick',
         onSelect: () => {
@@ -146,6 +147,7 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
                 tittelOnClick={() => {
                     alert('du trykket på tittelen');
                 }}
+                skalViseLabelsOgIkonPåLenker={true}
                 {...args}
             >
                 <Søk
