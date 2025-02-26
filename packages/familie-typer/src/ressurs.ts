@@ -13,6 +13,7 @@ export type ApiRessurs<T> = {
     melding: string;
     frontendFeilmelding?: string;
     stacktrace: string;
+    callId?: string;
 };
 
 export type Ressurs<T> =

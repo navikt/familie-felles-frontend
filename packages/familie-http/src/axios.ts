@@ -45,13 +45,21 @@ export const håndterApiRespons = <T>(apiRespons: ApiRespons<T>): Ressurs<T> => 
                 status: RessursStatus.IKKE_TILGANG,
             };
             break;
-        case RessursStatus.FEILET:
+        case RessursStatus.FEILET: {
             loggFeilTilSentry && loggFeil(error, innloggetSaksbehandler, ressurs.melding);
+
+            const frontendFeilmelding = ressurs.frontendFeilmelding ?? defaultFeilmelding;
+            const frontendFeilmeldingMedEllerUtenCallId = ressurs.callId
+                ? `${frontendFeilmelding} (${ressurs.callId})`
+                : frontendFeilmelding;
+
             typetRessurs = {
-                frontendFeilmelding: ressurs.frontendFeilmelding ?? defaultFeilmelding,
+                frontendFeilmelding: frontendFeilmeldingMedEllerUtenCallId,
                 status: RessursStatus.FEILET,
             };
+
             break;
+        }
         case RessursStatus.FUNKSJONELL_FEIL:
             typetRessurs = {
                 frontendFeilmelding:
