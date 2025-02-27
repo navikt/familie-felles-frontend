@@ -138,6 +138,7 @@ const ActionMenuLenke: React.FC<{
 }> = ({ lenke }) =>
     lenke.onSelect ? (
         <ActionMenu.Item onSelect={e => lenke.onSelect && lenke.onSelect(e)}>
+            {utledIkon(lenke.type)}
             {lenke.name}
         </ActionMenu.Item>
     ) : (
