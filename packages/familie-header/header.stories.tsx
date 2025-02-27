@@ -47,7 +47,7 @@ const PopoverDetail = () => (
 const eksterneLenkerForStory: PopoverItem[] = [
     { name: 'NRK', href: 'https://www.nrk.no', type: LenkeType.EKSTERN },
     {
-        name: 'Side med onClick',
+        name: 'Intern side med onClick',
         onSelect: () => {
             // tslint:disable-next-line:no-console
             console.log('intern lenke med klikk');
@@ -56,6 +56,14 @@ const eksterneLenkerForStory: PopoverItem[] = [
     },
     { name: 'NAV forside', href: 'https://www.nav.no', type: LenkeType.INTERN },
     { name: 'Google', href: 'https://www.google.com', type: LenkeType.EKSTERN },
+    {
+        name: 'Ekstern side med onClick',
+        onSelect: () => {
+            // tslint:disable-next-line:no-console
+            console.log('intern lenke med klikk');
+        },
+        type: LenkeType.EKSTERN,
+    },
     {
         name: 'Verktøyside 1',
         href: 'https://www.verktøy.no',
