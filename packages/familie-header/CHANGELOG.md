@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@15.1.1...@navikt/familie-header@16.0.0) (2025-02-27)
+
+
+### Features
+
+* **header.tsx:** lenker i Header skal støtte flere ikoner ([#1610](https://github.com/navikt/familie-felles-frontend/issues/1610)) ([00149a4](https://github.com/navikt/familie-felles-frontend/commit/00149a42ad57f8506ad7730ba3801cc531d9d2d7))
+
+
+### BREAKING CHANGES
+
+* **header.tsx:** Trenger ikke lenger sende inn skalViseLabelsOgIkonPåLenker for å vise ikoner og
+underoverskrifter. Nå angir man dette via den nye propen lenkeType på PopoverItem
+
+
+
+
+
 ## [15.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@15.1.0...@navikt/familie-header@15.1.1) (2025-02-26)
 
 **Note:** Version bump only for package @navikt/familie-header
