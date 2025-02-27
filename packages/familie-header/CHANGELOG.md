@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@16.0.0...@navikt/familie-header@16.0.1) (2025-02-27)
+
+
+### Bug Fixes
+
+* **header.tsx:** lenker med onClick skal også kunne vises med ikoner ([#1611](https://github.com/navikt/familie-felles-frontend/issues/1611)) ([1b452d0](https://github.com/navikt/familie-felles-frontend/commit/1b452d066c4056b54e82924af8a505cfe5d1b612))
+
+
+
+
+
 # [16.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@15.1.1...@navikt/familie-header@16.0.0) (2025-02-27)
 
 
