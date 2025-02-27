@@ -1,7 +1,7 @@
 import React from 'react';
 import '@navikt/ds-css';
 import { ActionMenu, InternalHeader as NavHeader } from '@navikt/ds-react';
-import { MenuGridIcon } from '@navikt/aksel-icons';
+import { MenuGridIcon, WrenchIcon } from '@navikt/aksel-icons';
 import { EksternLinkIkon } from '@navikt/familie-ikoner';
 
 export interface Brukerinfo {
@@ -9,14 +9,27 @@ export interface Brukerinfo {
     enhet?: string;
 }
 
+export enum LenkeType {
+    INTERN = 'INTERN',
+    EKSTERN = 'EKSTERN',
+    ARBEIDSVERKTØY = 'ARBEIDSVERKTØY',
+}
+
 export type PopoverItem =
     | {
           name: string;
           href: string;
+          type?: LenkeType;
           isExternal?: boolean;
           onSelect?: never;
       }
-    | { name: string; href?: never; isExternal?: never; onSelect: (e: Event) => void };
+    | {
+          name: string;
+          href?: never;
+          type?: LenkeType;
+          isExternal?: never;
+          onSelect: (e: Event) => void;
+      };
 
 export interface HeaderProps {
     tittel: string;
@@ -27,7 +40,6 @@ export interface HeaderProps {
     brukerPopoverItems?: PopoverItem[];
     eksterneLenker: PopoverItem[];
     tittelOnClick?: () => void;
-    skalViseLabelsOgIkonPåLenker?: boolean;
 }
 
 interface BrukerProps {
@@ -68,28 +80,27 @@ export const Bruker = ({ navn, enhet, popoverItems, popoverDetail }: BrukerProps
     );
 };
 
-export const LenkePopover = ({ lenker }: LenkePopoverProps) => {
-    return (
-        <ActionMenu>
-            <ActionMenuTrigger />
-            {lenker && (
-                <ActionMenu.Content>
-                    <ActionMenu.Group label={''}>
-                        {lenker.map((lenke, index) => {
-                            return <ActionMenuLenke lenke={lenke} key={index} />;
-                        })}
-                    </ActionMenu.Group>
-                </ActionMenu.Content>
-            )}
-        </ActionMenu>
-    );
-};
+export const LenkePopover = ({ lenker }: LenkePopoverProps) => (
+    <ActionMenu>
+        <ActionMenuTrigger />
+        {lenker && (
+            <ActionMenu.Content>
+                <ActionMenu.Group label={''}>
+                    {lenker.map((lenke, index) => (
+                        <ActionMenuLenke lenke={lenke} key={index} />
+                    ))}
+                </ActionMenu.Group>
+            </ActionMenu.Content>
+        )}
+    </ActionMenu>
+);
 
 const ActionMenuMedLabelOgIkoner: React.FC<{
     lenker: PopoverItem[];
 }> = ({ lenker }) => {
-    const interneLenker = lenker.filter(lenke => !lenke.isExternal);
-    const eksterneLenker = lenker.filter(lenke => lenke.isExternal);
+    const interneLenker = lenker.filter(lenke => lenke.type === LenkeType.INTERN);
+    const eksterneLenker = lenker.filter(lenke => lenke.type === LenkeType.EKSTERN);
+    const arbeidsverktøyLenker = lenker.filter(lenke => lenke.type === LenkeType.ARBEIDSVERKTØY);
     return (
         <ActionMenu>
             <ActionMenuTrigger />
@@ -97,23 +108,22 @@ const ActionMenuMedLabelOgIkoner: React.FC<{
                 <ActionMenu.Content>
                     {interneLenker.length > 0 && (
                         <ActionMenu.Group label="">
-                            {interneLenker.map((lenke, index) => (
-                                <ActionMenuLenke
-                                    lenke={lenke}
-                                    skalHaIkonPåLenke={true}
-                                    key={index}
-                                />
+                            {interneLenker.map(lenke => (
+                                <ActionMenuLenke lenke={lenke} key={lenke.name} />
                             ))}
                         </ActionMenu.Group>
                     )}
                     {eksterneLenker.length > 0 && (
-                        <ActionMenu.Group label="Lenker">
-                            {eksterneLenker.map((lenke, index) => (
-                                <ActionMenuLenke
-                                    lenke={lenke}
-                                    skalHaIkonPåLenke={true}
-                                    key={index + interneLenker.length}
-                                />
+                        <ActionMenu.Group label="Eksterne lenker">
+                            {eksterneLenker.map(lenke => (
+                                <ActionMenuLenke lenke={lenke} key={lenke.name} />
+                            ))}
+                        </ActionMenu.Group>
+                    )}
+                    {arbeidsverktøyLenker.length > 0 && (
+                        <ActionMenu.Group label="Lenker til arbeidsverktøy">
+                            {arbeidsverktøyLenker.map(lenke => (
+                                <ActionMenuLenke lenke={lenke} key={lenke.name} />
                             ))}
                         </ActionMenu.Group>
                     )}
@@ -125,8 +135,7 @@ const ActionMenuMedLabelOgIkoner: React.FC<{
 
 const ActionMenuLenke: React.FC<{
     lenke: PopoverItem;
-    skalHaIkonPåLenke?: boolean;
-}> = ({ lenke, skalHaIkonPåLenke }) =>
+}> = ({ lenke }) =>
     lenke.onSelect ? (
         <ActionMenu.Item onSelect={e => lenke.onSelect && lenke.onSelect(e)}>
             {lenke.name}
@@ -138,10 +147,23 @@ const ActionMenuLenke: React.FC<{
             target={lenke.isExternal ? '_blank' : ''}
             rel={lenke.isExternal ? 'noopener noreferrer' : ''}
         >
-            {skalHaIkonPåLenke && lenke.isExternal && <EksternLinkIkon width={16} height={16} />}
+            {utledIkon(lenke.type)}
             {lenke.name}
         </ActionMenu.Item>
     );
+
+const utledIkon = (lenkeType?: LenkeType) => {
+    switch (lenkeType) {
+        case LenkeType.INTERN:
+            return <></>;
+        case LenkeType.EKSTERN:
+            return <EksternLinkIkon width={16} height={16} />;
+        case LenkeType.ARBEIDSVERKTØY:
+            return <WrenchIcon width={16} height={16} />;
+        default:
+            return <></>;
+    }
+};
 
 export const Header = ({
     tittel,
@@ -152,8 +174,13 @@ export const Header = ({
     brukerPopoverItems,
     eksterneLenker = [],
     tittelOnClick,
-    skalViseLabelsOgIkonPåLenker: skalViseOverskrifterOgIkonPåLenker,
 }: HeaderProps) => {
+    const skalViseLabelOgIkon = (type: LenkeType | undefined) =>
+        type === LenkeType.EKSTERN || type === LenkeType.ARBEIDSVERKTØY;
+    const skalViseLabelsOgIkonPåLenker = eksterneLenker.some(lenke =>
+        skalViseLabelOgIkon(lenke.type),
+    );
+
     return (
         <NavHeader data-theme={''}>
             {!tittelOnClick && <NavHeader.Title href={tittelHref}>{tittel}</NavHeader.Title>}
@@ -165,7 +192,7 @@ export const Header = ({
             <div style={{ marginLeft: 'auto' }} />
             {children}
             {eksterneLenker.length > 0 &&
-                (skalViseOverskrifterOgIkonPåLenker ? (
+                (skalViseLabelsOgIkonPåLenker ? (
                     <ActionMenuMedLabelOgIkoner lenker={eksterneLenker} />
                 ) : (
                     <LenkePopover lenker={eksterneLenker} />

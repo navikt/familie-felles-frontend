@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ikoner, Brukerinfo, Header, PopoverItem, Søk, ISøkeresultat } from './src';
+import { Brukerinfo, Header, ikoner, ISøkeresultat, LenkeType, PopoverItem, Søk } from './src';
 import {
     Adressebeskyttelsegradering,
     byggDataRessurs,
@@ -45,16 +45,27 @@ const PopoverDetail = () => (
 );
 
 const eksterneLenkerForStory: PopoverItem[] = [
-    { name: 'NRK', href: 'https://www.nrk.no', isExternal: true },
+    { name: 'NRK', href: 'https://www.nrk.no', type: LenkeType.EKSTERN },
     {
         name: 'Side med onClick',
         onSelect: () => {
             // tslint:disable-next-line:no-console
-            console.log('ekstern lenke med klikk');
+            console.log('intern lenke med klikk');
         },
+        type: LenkeType.INTERN,
     },
-    { name: 'NAV forside', href: 'https://www.nav.no' },
-    { name: 'Google', href: 'https://www.google.com', isExternal: true },
+    { name: 'NAV forside', href: 'https://www.nav.no', type: LenkeType.INTERN },
+    { name: 'Google', href: 'https://www.google.com', type: LenkeType.EKSTERN },
+    {
+        name: 'Verktøyside 1',
+        href: 'https://www.verktøy.no',
+        type: LenkeType.ARBEIDSVERKTØY,
+    },
+    {
+        name: 'Verktøyside 2',
+        href: 'https://www.verktøy.no',
+        type: LenkeType.ARBEIDSVERKTØY,
+    },
 ];
 
 const defaultIdent = '12345678910';
@@ -147,7 +158,6 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
                 tittelOnClick={() => {
                     alert('du trykket på tittelen');
                 }}
-                skalViseLabelsOgIkonPåLenker={true}
                 {...args}
             >
                 <Søk
