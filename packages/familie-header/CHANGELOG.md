@@ -3,6 +3,69 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@16.0.0...@navikt/familie-header@16.0.1) (2025-02-27)
+
+
+### Bug Fixes
+
+* **header.tsx:** lenker med onClick skal også kunne vises med ikoner ([#1611](https://github.com/navikt/familie-felles-frontend/issues/1611)) ([1b452d0](https://github.com/navikt/familie-felles-frontend/commit/1b452d066c4056b54e82924af8a505cfe5d1b612))
+
+
+
+
+
+# [16.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@15.1.1...@navikt/familie-header@16.0.0) (2025-02-27)
+
+
+### Features
+
+* **header.tsx:** lenker i Header skal støtte flere ikoner ([#1610](https://github.com/navikt/familie-felles-frontend/issues/1610)) ([00149a4](https://github.com/navikt/familie-felles-frontend/commit/00149a42ad57f8506ad7730ba3801cc531d9d2d7))
+
+
+### BREAKING CHANGES
+
+* **header.tsx:** Trenger ikke lenger sende inn skalViseLabelsOgIkonPåLenker for å vise ikoner og
+underoverskrifter. Nå angir man dette via den nye propen lenkeType på PopoverItem
+
+
+
+
+
+## [15.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@15.1.0...@navikt/familie-header@15.1.1) (2025-02-26)
+
+**Note:** Version bump only for package @navikt/familie-header
+
+
+
+
+
+# [15.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@15.0.0...@navikt/familie-header@15.1.0) (2025-02-14)
+
+
+### Features
+
+* **header:** mulighet for visning av label og ikon på header ([#1605](https://github.com/navikt/familie-felles-frontend/issues/1605)) ([27cfe9d](https://github.com/navikt/familie-felles-frontend/commit/27cfe9ddcd611019d7000ae7272d39aaea9fff83))
+
+
+
+
+
+# [15.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@14.2.1...@navikt/familie-header@15.0.0) (2025-01-09)
+
+
+### Bug Fixes
+
+* **familie-header:** endre fra DropdownMenu til ActionMenu ([#1599](https://github.com/navikt/familie-felles-frontend/issues/1599)) ([35fa1ed](https://github.com/navikt/familie-felles-frontend/commit/35fa1ed1c297ec0b5b382875e41dda28cc4638b5))
+
+
+### BREAKING CHANGES
+
+* **familie-header:** Må endre på hvordan vi sender med popoverItems
+
+
+
+
+
 ## [14.2.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@14.2.0...@navikt/familie-header@14.2.1) (2025-01-06)
 
 **Note:** Version bump only for package @navikt/familie-header

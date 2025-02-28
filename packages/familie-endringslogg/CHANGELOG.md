@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@13.1.5...@navikt/familie-endringslogg@14.0.0) (2025-01-07)
+
+
+### Bug Fixes
+
+* **familie-endringslogg:** feilende transition-bibliotek ([#1597](https://github.com/navikt/familie-felles-frontend/issues/1597)) ([8609134](https://github.com/navikt/familie-felles-frontend/commit/8609134861b08693b7678a2663d13e309bb63967))
+
+
+### BREAKING CHANGES
+
+* **familie-endringslogg:** Bumpet til react 19
+
+
+
+
+
 ## [13.1.5](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-endringslogg@13.1.4...@navikt/familie-endringslogg@13.1.5) (2025-01-06)
 
 **Note:** Version bump only for package @navikt/familie-endringslogg

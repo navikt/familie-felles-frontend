@@ -4,3 +4,4 @@ export * from './JenteIkon';
 export * from './KvinneIkon';
 export * from './MannIkon';
 export * from './NøytralPersonIkon';
+export * from './EksternLinkIkon';

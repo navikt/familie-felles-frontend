@@ -1,5 +1,5 @@
 {
-    "version": "7.0.22",
+    "version": "7.0.25",
     "name": "@navikt/familie-http",
     "type": "module",
     "author": "NAV",
@@ -25,8 +25,8 @@
         "tsc": "tsc -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-typer": "^8.0.2",
-        "@sentry/core": "^8.47.0",
+        "@navikt/familie-typer": "^8.0.3",
+        "@sentry/core": "^8.50.0",
         "constate": "^3.3.2"
     },
     "peerDependencies": {
