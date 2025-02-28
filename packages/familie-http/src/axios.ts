@@ -50,7 +50,7 @@ export const håndterApiRespons = <T>(apiRespons: ApiRespons<T>): Ressurs<T> => 
 
             const frontendFeilmelding = ressurs.frontendFeilmelding ?? defaultFeilmelding;
             const frontendFeilmeldingMedEllerUtenCallId = ressurs.callId
-                ? `${frontendFeilmelding} (${ressurs.callId})`
+                ? `${frontendFeilmelding} (CallId: ${ressurs.callId})`
                 : frontendFeilmelding;
 
             typetRessurs = {
