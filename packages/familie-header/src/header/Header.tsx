@@ -98,21 +98,14 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => (
 const ActionMenuMedLabelOgIkoner: React.FC<{
     lenker: PopoverItem[];
 }> = ({ lenker }) => {
-    const interneLenker = lenker.filter(lenke => lenke.type === LenkeType.INTERN);
     const eksterneLenker = lenker.filter(lenke => lenke.type === LenkeType.EKSTERN);
     const arbeidsverktøyLenker = lenker.filter(lenke => lenke.type === LenkeType.ARBEIDSVERKTØY);
+    const interneLenker = lenker.filter(lenke => lenke.type === LenkeType.INTERN);
     return (
         <ActionMenu>
             <ActionMenuTrigger />
             {lenker && (
                 <ActionMenu.Content>
-                    {interneLenker.length > 0 && (
-                        <ActionMenu.Group label="">
-                            {interneLenker.map(lenke => (
-                                <ActionMenuLenke lenke={lenke} key={lenke.name} />
-                            ))}
-                        </ActionMenu.Group>
-                    )}
                     {eksterneLenker.length > 0 && (
                         <ActionMenu.Group label="Eksterne lenker">
                             {eksterneLenker.map(lenke => (
@@ -123,6 +116,13 @@ const ActionMenuMedLabelOgIkoner: React.FC<{
                     {arbeidsverktøyLenker.length > 0 && (
                         <ActionMenu.Group label="Lenker til arbeidsverktøy">
                             {arbeidsverktøyLenker.map(lenke => (
+                                <ActionMenuLenke lenke={lenke} key={lenke.name} />
+                            ))}
+                        </ActionMenu.Group>
+                    )}
+                    {interneLenker.length > 0 && (
+                        <ActionMenu.Group label="Andre funksjoner">
+                            {interneLenker.map(lenke => (
                                 <ActionMenuLenke lenke={lenke} key={lenke.name} />
                             ))}
                         </ActionMenu.Group>
