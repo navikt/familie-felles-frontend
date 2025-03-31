@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@7.0.26...@navikt/familie-http@8.0.0) (2025-03-31)
+
+
+### Bug Fixes
+
+* **familie-http:** Fjerner constate, useHttp må nå alltid brukes inni en HttpProvider ([#1619](https://github.com/navikt/familie-felles-frontend/issues/1619)) ([9db933f](https://github.com/navikt/familie-felles-frontend/commit/9db933f7b0cec09c279c7e004c6fd611156adab1))
+
+
+### BREAKING CHANGES
+
+* **familie-http:** Fjerner constate, useHttp må nå alltid brukes inni en HttpProvider
+
+* Fjerner constate fra yarn.lock
+
+
+
+
+
 ## [7.0.26](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-http@7.0.25...@navikt/familie-http@7.0.26) (2025-02-28)
 
 **Note:** Version bump only for package @navikt/familie-http
