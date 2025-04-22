@@ -10,8 +10,8 @@ updates:
         directory: "/"
         schedule:
             interval: weekly
-            day: "sunday"
-            time: "04:00"
+            day: monday
+            time: "06:00"
         versioning-strategy: increase
         open-pull-requests-limit: 30
         registries: "*"
@@ -34,5 +34,5 @@ updates:
         directory: "/"
         schedule:
             interval: weekly
-            day: "sunday"
-            time: "04:00"
+            day: monday
+            time: "06:00"
