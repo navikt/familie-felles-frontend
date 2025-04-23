@@ -17,11 +17,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # ratchet:actions/checkout@v4
         with:
           persist-credentials: false
           fetch-depth: 0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # ratchet:actions/setup-node@v4
         with:
           node-version: 18
           cache: 'yarn'
@@ -44,7 +44,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create a .npmrc file for the github package repository
-        uses: FerLuisxd/create-npmrc@3
+        uses: FerLuisxd/create-npmrc@6fc58cba3dcf19a4f65330dc93e6026fe234f304 # ratchet:FerLuisxd/create-npmrc@3
         with:
           org_name: navikt
         env:
