@@ -1,5 +1,5 @@
 {
-    "version": "9.1.1",
+    "version": "9.1.2",
     "name": "@navikt/familie-ikoner",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -25,7 +25,7 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-typer": "^8.0.3"
+        "@navikt/familie-typer": "^8.0.4"
     },
     "peerDependencies": {
         "react": "18.x || 19.x"
