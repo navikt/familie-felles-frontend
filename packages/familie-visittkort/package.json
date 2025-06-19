@@ -18,10 +18,11 @@
         "dist"
     ],
     "scripts": {
-        "build": "yarn run clean && yarn run copy-less && yarn run tsc",
+        "build": "yarn run clean && yarn run copy-less && yarn run tsc && yarn run tsc-alias",
         "clean": "rm -rf ./dist",
         "copy-less": "copyfiles -u 1 src/**/*.less dist",
-        "tsc": "tsc -p tsconfig.json"
+        "tsc": "tsc -p tsconfig.json",
+        "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
         "@navikt/familie-ikoner": "^9.1.1",
@@ -33,7 +34,8 @@
         "@navikt/ds-css": "7.x",
         "@navikt/ds-react": "7.x",
         "@navikt/ds-tokens": "7.x",
-        "styled-components": "^6.x"
+        "styled-components": "^6.x",
+        "tsc-alias": "^1.8.16"
     },
     "peerDependencies": {
         "@navikt/ds-css": "7.x",

@@ -22,5 +22,9 @@
     "jsx": "react",
     "esModuleInterop": true,
     "skipLibCheck": true
-  }
+  },
+    "tsc-alias": {
+        "resolveFullPaths": true,
+        "verbose": false
+    }
 }

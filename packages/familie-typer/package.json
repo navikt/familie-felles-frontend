@@ -19,9 +19,13 @@
         "dist"
     ],
     "scripts": {
-        "build": "yarn run clean && yarn run copy-less && yarn run tsc",
+        "build": "yarn run clean && yarn run copy-less && yarn run tsc && yarn run tsc-alias",
         "clean": "rm -rf ./dist",
         "copy-less": "copyfiles -u 1 src/**/*.less dist",
-        "tsc": "tsc -p tsconfig.json"
+        "tsc": "tsc -p tsconfig.json",
+        "tsc-alias": "tsc-alias -p tsconfig.json"
+    },
+    "devDependencies": {
+        "tsc-alias": "^1.8.16"
     }
 }
