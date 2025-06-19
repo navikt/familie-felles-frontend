@@ -4,9 +4,5 @@
     "compilerOptions": {
         "outDir": "./dist",
         "module": "es6",
-    },
-    "tsc-alias": {
-    "resolveFullPaths": true,
-    "verbose": false
-  }
+    }
 }
