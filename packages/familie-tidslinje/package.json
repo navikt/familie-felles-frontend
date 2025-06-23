@@ -42,9 +42,9 @@
         "@navikt/ds-css": "7.x",
         "@navikt/ds-react": "7.x",
         "@navikt/ds-tokens": "7.x",
-        "@types/jest": "^29.5.12",
+        "@types/jest": "^30.0.0",
         "dayjs": "1.x",
-        "jest": "^29.7.0",
+        "jest": "^30.0.2",
         "tsc-alias": "^1.8.16"
     }
 }
