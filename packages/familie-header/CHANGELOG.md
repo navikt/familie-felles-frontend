@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@16.0.3...@navikt/familie-header@16.1.0) (2025-07-02)
+
+
+### Features
+
+* **header - synlig skille mellom dev og prod:** ønsker å gjøre det mer synlig når man er i dev prod ([#1628](https://github.com/navikt/familie-felles-frontend/issues/1628)) ([0a38d1d](https://github.com/navikt/familie-felles-frontend/commit/0a38d1d762703b6261eb243c224df7f3d7e7269e))
+
+
+
+
+
 ## [16.0.3](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@16.0.2...@navikt/familie-header@16.0.3) (2025-06-19)
 
 **Note:** Version bump only for package @navikt/familie-header
