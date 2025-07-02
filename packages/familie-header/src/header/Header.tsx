@@ -3,6 +3,8 @@ import '@navikt/ds-css';
 import { ActionMenu, InternalHeader as NavHeader } from '@navikt/ds-react';
 import { MenuGridIcon, WrenchIcon } from '@navikt/aksel-icons';
 import { EksternLinkIkon } from '@navikt/familie-ikoner';
+import clsx from 'clsx';
+import './header.css';
 
 export interface Brukerinfo {
     navn: string;
@@ -40,6 +42,7 @@ export interface HeaderProps {
     brukerPopoverItems?: PopoverItem[];
     eksterneLenker: PopoverItem[];
     tittelOnClick?: () => void;
+    erDev?: boolean;
 }
 
 interface BrukerProps {
@@ -175,6 +178,7 @@ export const Header = ({
     brukerPopoverItems,
     eksterneLenker = [],
     tittelOnClick,
+    erDev,
 }: HeaderProps) => {
     const skalViseLabelOgIkon = (type: LenkeType | undefined) =>
         type === LenkeType.EKSTERN || type === LenkeType.ARBEIDSVERKTØY;
@@ -183,7 +187,7 @@ export const Header = ({
     );
 
     return (
-        <NavHeader data-theme={''}>
+        <NavHeader data-theme={''} className={clsx({ devHeader: erDev })}>
             {!tittelOnClick && <NavHeader.Title href={tittelHref}>{tittel}</NavHeader.Title>}
             {tittelOnClick && (
                 <NavHeader.Title onClick={tittelOnClick} style={{ cursor: 'pointer' }}>
