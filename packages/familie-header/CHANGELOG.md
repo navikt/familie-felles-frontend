@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.1.1](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@16.1.0...@navikt/familie-header@16.1.1) (2025-07-03)
+
+
+### Bug Fixes
+
+* **header - skal ta med css filer i dist:** vil at css filer skal bli med i bygg ([#1629](https://github.com/navikt/familie-felles-frontend/issues/1629)) ([f7824e3](https://github.com/navikt/familie-felles-frontend/commit/f7824e3a42479ac4ae0a035425d0079cfa2274de))
+
+
+
+
+
 # [16.1.0](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-header@16.0.3...@navikt/familie-header@16.1.0) (2025-07-02)
 
 
