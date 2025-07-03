@@ -8,7 +8,9 @@ import styled from 'styled-components';
 export default {
     component: JaNeiSpørsmål,
     parameters: {
-        componentSubtitle: 'En toggle for å svare på ja- og neispørsmål',
+        docs: {
+            subtitle: 'En toggle for å svare på ja- og neispørsmål',
+        },
     },
     title: 'Komponenter/Form-elementer/JaNeiSpørsmål',
 };

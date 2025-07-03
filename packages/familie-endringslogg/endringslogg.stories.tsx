@@ -3,9 +3,6 @@ import Endringslogg from './src';
 
 export default {
     component: Endringslogg,
-    parameters: {
-        componentSubtitle: 'Kort tekst om komponenten',
-    },
     title: 'Komponenter/Endringslogg',
 };
 

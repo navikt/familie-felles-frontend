@@ -5,7 +5,9 @@ import { Button, ErrorSummary, Select, TextField } from '@navikt/ds-react';
 
 export default {
     parameters: {
-        componentSubtitle: 'Skjema eksempel for team familie.',
+        docs: {
+            subtitle: 'Skjemaeksempel for team familie.',
+        },
         text: 'Test',
     },
     title: 'hooks/skjema',

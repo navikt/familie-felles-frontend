@@ -15,7 +15,9 @@ import { Endringslogg } from '@navikt/familie-endringslogg';
 export default {
     component: Header,
     parameters: {
-        componentSubtitle: 'Header for team familie.',
+        docs: {
+            subtitle: 'Header for team familie',
+        },
     },
     title: 'Komponenter/Header',
     onClick: () => {

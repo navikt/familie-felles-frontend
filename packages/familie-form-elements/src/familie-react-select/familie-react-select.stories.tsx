@@ -7,7 +7,9 @@ import '@navikt/ds-css';
 export default {
     component: FamilieReactSelect,
     parameters: {
-        componentSubtitle: 'En Select som kun vises dersom man ikke er i lesevisningsmodus',
+        docs: {
+            subtitle: 'En Select som kun vises dersom man ikke er i lesevisningsmodus',
+        },
     },
     title: 'Komponenter/Form-elementer/FamilieReactSelect',
 };

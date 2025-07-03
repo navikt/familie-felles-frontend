@@ -23,8 +23,10 @@ const IkonSirkel = styled.span`
 export default {
     component: Visittkort,
     parameters: {
-        componentSubtitle:
-            'Visittkort brukes til å vise enkel informasjon om en bruker. Eksempel nr 2 under er laget for full skjermbredde. ',
+        docs: {
+            subtitle:
+                'Visittkort brukes til å vise enkel informasjon om en bruker. Eksempel nr 2 under er laget for full skjermbredde.',
+        },
     },
     title: 'Komponenter/Visittkort',
 };

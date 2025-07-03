@@ -5,7 +5,9 @@ import { kjønnType } from '@navikt/familie-typer';
 export default {
     component: FamilieIkonVelger,
     parameters: {
-        componentSubtitle: 'Fellesikoner for team familie. Kan inneholde litt logikk.',
+        docs: {
+            subtitle: 'Fellesikoner for team familie. Kan inneholde litt logikk.',
+        },
     },
     title: 'Komponenter/Ikoner',
 };
