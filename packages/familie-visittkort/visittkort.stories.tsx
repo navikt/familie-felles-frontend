@@ -29,7 +29,7 @@ export default {
     title: 'Komponenter/Visittkort',
 };
 
-export const visittkort = ({ ...args }) => {
+export const VisittkortStory = ({ ...args }) => {
     return (
         <>
             <Visittkort
@@ -82,14 +82,14 @@ export const visittkort = ({ ...args }) => {
     );
 };
 
-visittkort.args = {
+VisittkortStory.args = {
     alder: 30,
     kjønn: kjønnType.KVINNE,
     navn: 'FREDFULL KETSJUP',
     ident: '123456 78910',
 };
 
-visittkort.argTypes = {
+VisittkortStory.argTypes = {
     alder: {
         control: {
             type: 'number',

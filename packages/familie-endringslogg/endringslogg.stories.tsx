@@ -9,7 +9,7 @@ export default {
     title: 'Komponenter/Endringslogg',
 };
 
-export const endringslogg: React.FC = ({ ...args }) => {
+export const EndringsloggStory: React.FC = ({ ...args }) => {
     return (
         <div>
             <div>

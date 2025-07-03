@@ -10,7 +10,7 @@ export default {
     title: 'Komponenter/Ikoner',
 };
 
-export const familievelger: React.FC = ({ ...args }) => {
+export const FamilievelgerStory: React.FC = ({ ...args }) => {
     return (
         <>
             <FamilieIkonVelger alder={30} kjønn={kjønnType.UKJENT} {...args} />
@@ -23,11 +23,11 @@ export const familievelger: React.FC = ({ ...args }) => {
 };
 
 // @ts-expect-error storybook-spesifikk kode
-familievelger.args = {
+FamilievelgerStory.args = {
     alder: 30,
 };
 // @ts-expect-error storybook-spesifikk kode
-familievelger.argTypes = {
+FamilievelgerStory.argTypes = {
     alder: {
         control: {
             type: 'number',
