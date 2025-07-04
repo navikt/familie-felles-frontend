@@ -23,13 +23,15 @@ const IkonSirkel = styled.span`
 export default {
     component: Visittkort,
     parameters: {
-        componentSubtitle:
-            'Visittkort brukes til å vise enkel informasjon om en bruker. Eksempel nr 2 under er laget for full skjermbredde. ',
+        docs: {
+            subtitle:
+                'Visittkort brukes til å vise enkel informasjon om en bruker. Eksempel nr 2 under er laget for full skjermbredde.',
+        },
     },
     title: 'Komponenter/Visittkort',
 };
 
-export const visittkort = ({ ...args }) => {
+export const VisittkortStory = ({ ...args }) => {
     return (
         <>
             <Visittkort
@@ -82,14 +84,14 @@ export const visittkort = ({ ...args }) => {
     );
 };
 
-visittkort.args = {
+VisittkortStory.args = {
     alder: 30,
     kjønn: kjønnType.KVINNE,
     navn: 'FREDFULL KETSJUP',
     ident: '123456 78910',
 };
 
-visittkort.argTypes = {
+VisittkortStory.argTypes = {
     alder: {
         control: {
             type: 'number',

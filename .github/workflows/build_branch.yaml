@@ -2,7 +2,7 @@ name: Build-Deploy-Npm-Canary
 on:
   push:
     branches-ignore:
-      - 'main'
+      - "main"
     paths-ignore:
       - package.json
 
@@ -21,8 +21,8 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # ratchet:actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'yarn'
+          node-version: 22
+          cache: "yarn"
           registry-url: "https://npm.pkg.github.com"
       - name: Prepare repository
         run: git checkout "${GITHUB_REF:11}"

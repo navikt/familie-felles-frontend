@@ -7,11 +7,9 @@ const storybookConfig: StorybookConfig = {
         '../packages/familie-*/*.@(mdx|stories.@(tsx))',
     ],
     addons: [
-        getAbsolutePath('@storybook/addon-essentials'),
         getAbsolutePath('@storybook/addon-a11y'),
-        getAbsolutePath('@storybook/addon-storysource'),
-        getAbsolutePath('@storybook/addon-mdx-gfm'),
         getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
+        getAbsolutePath('@storybook/addon-docs'),
     ],
     typescript: {
         check: true,
@@ -22,7 +20,7 @@ const storybookConfig: StorybookConfig = {
         },
     },
     framework: {
-        name: '@storybook/react-webpack5',
+        name: getAbsolutePath('@storybook/react-webpack5'),
         options: {},
     },
     docs: {},
@@ -62,6 +60,7 @@ const storybookConfig: StorybookConfig = {
 };
 export default storybookConfig;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getAbsolutePath(value: string): any {
     return dirname(require.resolve(join(value, 'package.json')));
 }

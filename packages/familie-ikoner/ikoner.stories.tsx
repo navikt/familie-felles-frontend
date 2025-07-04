@@ -5,12 +5,14 @@ import { kjønnType } from '@navikt/familie-typer';
 export default {
     component: FamilieIkonVelger,
     parameters: {
-        componentSubtitle: 'Fellesikoner for team familie. Kan inneholde litt logikk.',
+        docs: {
+            subtitle: 'Fellesikoner for team familie. Kan inneholde litt logikk.',
+        },
     },
     title: 'Komponenter/Ikoner',
 };
 
-export const familievelger: React.FC = ({ ...args }) => {
+export const FamilievelgerStory: React.FC = ({ ...args }) => {
     return (
         <>
             <FamilieIkonVelger alder={30} kjønn={kjønnType.UKJENT} {...args} />
@@ -23,11 +25,11 @@ export const familievelger: React.FC = ({ ...args }) => {
 };
 
 // @ts-expect-error storybook-spesifikk kode
-familievelger.args = {
+FamilievelgerStory.args = {
     alder: 30,
 };
 // @ts-expect-error storybook-spesifikk kode
-familievelger.argTypes = {
+FamilievelgerStory.argTypes = {
     alder: {
         control: {
             type: 'number',

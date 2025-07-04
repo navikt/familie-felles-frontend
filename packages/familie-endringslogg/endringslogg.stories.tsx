@@ -3,13 +3,10 @@ import Endringslogg from './src';
 
 export default {
     component: Endringslogg,
-    parameters: {
-        componentSubtitle: 'Kort tekst om komponenten',
-    },
     title: 'Komponenter/Endringslogg',
 };
 
-export const endringslogg: React.FC = ({ ...args }) => {
+export const EndringsloggStory: React.FC = ({ ...args }) => {
     return (
         <div>
             <div>
