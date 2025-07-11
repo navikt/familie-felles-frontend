@@ -13,7 +13,8 @@
     "lint:fix": "eslint './packages/**/*.{ts,tsx}' --ignore-pattern '**/dist/*' --fix",
     "publish:ci": "lerna publish --yes",
     "publish:canary": "lerna publish --canary",
-    "publish:canary:ci": "lerna publish --canary --yes"
+    "publish:canary:ci": "lerna publish --canary --yes",
+    "prepare": "husky"
   },
   "husky": {
     "hooks": {
@@ -52,6 +53,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-react": "^7.37.3",
     "eslint-plugin-react-hooks": "^5.1.0",
+    "husky": "^9.1.7",
     "lerna": "^8.1.9",
     "less": "^4.2.1",
     "less-loader": "^12.2.0",
