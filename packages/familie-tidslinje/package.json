@@ -23,7 +23,7 @@
         "copy-less": "copyfiles -u 1 src/**/*.less dist",
         "tsc": "tsc -p tsconfig.json",
         "tsc-alias": "tsc-alias -p tsconfig.json",
-        "test": "jest"
+        "test": "vitest"
     },
     "dependencies": {
         "classnames": "^2.5.1",
@@ -42,9 +42,8 @@
         "@navikt/ds-css": "7.x",
         "@navikt/ds-react": "7.x",
         "@navikt/ds-tokens": "7.x",
-        "@types/jest": "^29.5.12",
         "dayjs": "1.x",
-        "jest": "^29.7.0",
-        "tsc-alias": "^1.8.16"
+        "tsc-alias": "^1.8.16",
+        "vitest": "^3.2.4"
     }
 }

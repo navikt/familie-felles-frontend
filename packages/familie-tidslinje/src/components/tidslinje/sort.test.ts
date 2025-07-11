@@ -1,6 +1,7 @@
 import { sisteDato, sisteEnklePeriode, sistePeriode } from './sort';
 import dayjs, { Dayjs } from 'dayjs';
 import { Period, PositionedPeriod } from '../types.internal';
+import { expect, test } from 'vitest';
 
 const enDato = ({ plussDager = 0 } = {}): Dayjs => dayjs('2020-01-01').add(plussDager, 'day');
 
