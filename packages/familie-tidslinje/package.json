@@ -27,7 +27,7 @@
     },
     "dependencies": {
         "classnames": "^2.5.1",
-        "nanoid": "^5.0.9"
+        "nanoid": "^5.1.5"
     },
     "peerDependencies": {
         "@navikt/ds-css": "7.x",
