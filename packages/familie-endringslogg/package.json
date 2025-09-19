@@ -26,7 +26,7 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "@portabletext/react": "^3.2.0",
+        "@portabletext/react": "^4.0.3",
         "classnames": "^2.5.1"
     },
     "devDependencies": {
