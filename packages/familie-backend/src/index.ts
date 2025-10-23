@@ -6,10 +6,11 @@ import konfigurerSession from './auth/session';
 import headers from './headers';
 import { konfigurerMetrikker } from './metrikker';
 import konfigurerRouter from './router';
-import { ISessionKonfigurasjon } from './typer';
+import { IAppConfig, ISessionKonfigurasjon } from './typer';
 import { Client } from 'openid-client';
 import { logError } from '@navikt/familie-logging';
 import { hentErforbindelsenTilRedisTilgjengelig } from './utils';
+import { settAppConfig } from './config';
 
 export * from './auth/authenticate';
 export * from './auth/tokenUtils';
@@ -29,7 +30,10 @@ export interface IApp {
 export default async (
     sessionKonfigurasjon: ISessionKonfigurasjon,
     prometheusTellere?: { [key: string]: Counter<string> },
+    appConfig?: IAppConfig,
 ): Promise<IApp> => {
+    settAppConfig(appConfig);
+
     const app = express();
     let azureAuthClient!: Client;
     let router: Router;

@@ -16,7 +16,7 @@ For å kjøre det.
 ## Endringer
 For å commite oprettes det en branch som vanlig `git checkout -b navnet-på-branchen`, deretter anbefales det å bruke `yarn ct` for god historikk.
 
-Les mer [her](packages/introduksjon.stories.mdx)
+Les mer [her](packages/introduksjon.mdx)
 
 
 # Dokumentasjon

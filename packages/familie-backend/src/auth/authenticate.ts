@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import passport from 'passport';
-import { appConfig } from '../config';
+import { globalAppConfig } from '../index';
 import { LOG_LEVEL } from '@navikt/familie-logging';
 import { getTokenSetsFromSession, tokenSetSelfId, hasValidAccessToken } from './tokenUtils';
 import { Client, TokenSet } from 'openid-client';
@@ -104,7 +104,7 @@ export const logout = (req: Request, res: Response) => {
 
     logRequest(req, `logout.`, LOG_LEVEL.DEBUG);
 
-    res.redirect(appConfig.logoutRedirectUri);
+    res.redirect(globalAppConfig.logoutRedirectUri);
     req.session.destroy((error: Error) => {
         if (error) {
             logRequest(req, `error during logout: ${error}`, LOG_LEVEL.ERROR);

@@ -12,14 +12,14 @@ import { logInfo, logDebug } from '@navikt/familie-logging';
 import httpProxy from '../proxy/http-proxy';
 import { appendDefaultScope, tokenSetSelfId } from '../tokenUtils';
 
-const metadata: ClientMetadata = {
-    client_id: appConfig.clientId,
-    client_secret: appConfig.clientSecret,
-    redirect_uris: [appConfig.redirectUri],
-    token_endpoint_auth_method: 'client_secret_post',
-};
-
 const hentClient = (): Promise<Client> => {
+    const metadata: ClientMetadata = {
+        client_id: appConfig.clientId,
+        client_secret: appConfig.clientSecret,
+        redirect_uris: [appConfig.redirectUri],
+        token_endpoint_auth_method: 'client_secret_post',
+    };
+
     if (httpProxy.agent) {
         custom.setHttpOptionsDefaults({
             agent: httpProxy.agent,
