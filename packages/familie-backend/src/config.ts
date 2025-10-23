@@ -1,6 +1,8 @@
 import { IAppConfig } from './typer';
 import { envVar } from './utils';
 
+export let appConfig: IAppConfig;
+
 export const appConfigFraEnv = (): IAppConfig => ({
     clientId: envVar('CLIENT_ID'),
     clientSecret: envVar('CLIENT_SECRET'),
@@ -9,8 +11,6 @@ export const appConfigFraEnv = (): IAppConfig => ({
     redirectUri: envVar('AAD_REDIRECT_URL'),
     sessionSecret: envVar('SESSION_SECRET'),
 });
-
-export let appConfig: IAppConfig;
 
 export const settAppConfig = (customAppConfig?: IAppConfig) => {
     appConfig = customAppConfig ?? appConfigFraEnv(); // behold original funksjonalitet hvis ingen param
