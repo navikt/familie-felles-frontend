@@ -1,4 +1,4 @@
-import React, { createContext, PropsWithChildren, useContext } from 'react';
+import React, { createContext, PropsWithChildren, useContext, useEffect, useRef } from 'react';
 import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { Ressurs, ApiRessurs, ISaksbehandler } from '@navikt/familie-typer';
 import { preferredAxios, håndterApiRespons } from './axios';
@@ -32,13 +32,28 @@ export function HttpProvider(props: PropsWithChildren<IProps>) {
     const { innloggetSaksbehandler, settAutentisert } = props;
     const fjernRessursSomLasterTimeout = 300;
 
+    const timeoutsRef = useRef<Record<string, NodeJS.Timeout>>({});
+
     const fjernRessursSomLaster = (ressursId: string) => {
-        setTimeout(() => {
-            settRessurserSomLaster((prevState: string[]) => {
-                return prevState.filter((ressurs: string) => ressurs !== ressursId);
-            });
+        if (timeoutsRef.current[ressursId]) {
+            clearTimeout(timeoutsRef.current[ressursId]);
+        }
+
+        const timeout = setTimeout(() => {
+            settRessurserSomLaster(prev => prev.filter(ressurs => ressurs !== ressursId));
+            delete timeoutsRef.current[ressursId];
         }, fjernRessursSomLasterTimeout);
+
+        timeoutsRef.current[ressursId] = timeout;
     };
+
+    useEffect(() => {
+        return () => {
+            Object.values(timeoutsRef.current).forEach(timeoutId => {
+                clearTimeout(timeoutId);
+            });
+        };
+    }, []);
 
     const systemetLaster = () => {
         return ressurserSomLaster.length > 0;
