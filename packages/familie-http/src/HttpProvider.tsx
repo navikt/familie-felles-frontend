@@ -29,10 +29,9 @@ interface IProps {
 
 export function HttpProvider(props: PropsWithChildren<IProps>) {
     const [ressurserSomLaster, settRessurserSomLaster] = React.useState<string[]>([]);
-    const { innloggetSaksbehandler, settAutentisert } = props;
-    const fjernRessursSomLasterTimeout = 300;
+    const { fjernRessursSomLasterTimeout = 300, innloggetSaksbehandler, settAutentisert } = props;
 
-    const timeoutsRef = useRef<Record<string, NodeJS.Timeout>>({});
+    const timeoutsRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
 
     const fjernRessursSomLaster = (ressursId: string) => {
         if (timeoutsRef.current[ressursId]) {
@@ -62,8 +61,8 @@ export function HttpProvider(props: PropsWithChildren<IProps>) {
     const request: FamilieRequest = async <SkjemaData, SkjemaRespons>(
         config: FamilieRequestConfig<SkjemaData>,
     ): Promise<Ressurs<SkjemaRespons>> => {
-        const ressursId = `${config.method}_${config.url}`;
-        config.påvirkerSystemLaster && settRessurserSomLaster([...ressurserSomLaster, ressursId]);
+        const ressursId = `${config.method}_${config.url}_${crypto.randomUUID()}`;
+        config.påvirkerSystemLaster && settRessurserSomLaster(prev => [...prev, ressursId]);
 
         return preferredAxios
             .request(config)
