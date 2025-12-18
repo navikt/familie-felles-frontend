@@ -38,6 +38,11 @@ export function HttpProvider(props: PropsWithChildren<IProps>) {
             clearTimeout(timeoutsRef.current[ressursId]);
         }
 
+        if (fjernRessursSomLasterTimeout === 0) {
+            settRessurserSomLaster(prev => prev.filter(ressurs => ressurs !== ressursId));
+            return;
+        }
+
         const timeout = setTimeout(() => {
             settRessurserSomLaster(prev => prev.filter(ressurs => ressurs !== ressursId));
             delete timeoutsRef.current[ressursId];
