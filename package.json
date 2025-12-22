@@ -38,7 +38,7 @@
     "@babel/preset-typescript": "^7.28.5",
     "@commitlint/cli": "^20.2.0",
     "@commitlint/config-conventional": "^20.2.0",
-    "@storybook/addon-a11y": "^9.1.0",
+    "@storybook/addon-a11y": "^10.1.10",
     "@storybook/react-webpack5": "^9.1.0",
     "@storybook/addon-webpack5-compiler-swc": "^4.0.1",
     "@storybook/storybook-deployer": "^2.8.16",
