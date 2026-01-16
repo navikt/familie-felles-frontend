@@ -26,13 +26,13 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "@portabletext/react": "^6.0.0",
-        "classnames": "^2.5.1"
+        "@portabletext/react": "6.0.0",
+        "classnames": "2.5.1"
     },
     "devDependencies": {
         "@navikt/aksel-icons": "7.x",
         "@navikt/ds-react": "7.x",
-        "tsc-alias": "^1.8.16"
+        "tsc-alias": "1.8.16"
     },
     "peerDependencies": {
         "@navikt/aksel-icons": "7.x",
