@@ -26,8 +26,8 @@
         "test": "vitest"
     },
     "dependencies": {
-        "classnames": "^2.5.1",
-        "nanoid": "^5.1.5"
+        "classnames": "2.5.1",
+        "nanoid": "5.1.5"
     },
     "peerDependencies": {
         "@navikt/ds-css": "7.x",
@@ -43,7 +43,7 @@
         "@navikt/ds-react": "7.x",
         "@navikt/ds-tokens": "7.x",
         "dayjs": "1.x",
-        "tsc-alias": "^1.8.16",
-        "vitest": "^4.0.16"
+        "tsc-alias": "1.8.16",
+        "vitest": "4.0.16"
     }
 }
