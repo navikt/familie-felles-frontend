@@ -20,7 +20,6 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "classnames": "2.5.1",
         "react-select": "5.10.2"
     },
     "devDependencies": {
