@@ -1,5 +1,5 @@
 {
-    "version": "8.2.41",
+    "version": "8.2.42",
     "name": "@navikt/familie-skjema",
     "type": "module",
     "author": "NAV",
@@ -26,14 +26,14 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-http": "8.0.15",
-        "@navikt/familie-typer": "8.0.4",
+        "@navikt/familie-http": "^8.0.16",
+        "@navikt/familie-typer": "^8.0.5",
         "@types/deep-equal": "1.0.4",
         "deep-equal": "2.2.3",
         "hashids": "2.3.0"
     },
     "devDependencies": {
-        "@navikt/familie-form-elements": "21.0.7",
+        "@navikt/familie-form-elements": "^21.0.8",
         "tsc-alias": "1.8.16"
     },
     "peerDependencies": {
