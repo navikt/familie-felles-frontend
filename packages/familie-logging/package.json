@@ -26,9 +26,9 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "winston": "^3.19.0"
+        "winston": "3.19.0"
     },
     "devDependencies": {
-        "tsc-alias": "^1.8.16"
+        "tsc-alias": "1.8.16"
     }
 }
