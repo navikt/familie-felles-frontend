@@ -1,5 +1,5 @@
 {
-    "version": "8.0.4",
+    "version": "8.0.5",
     "name": "@navikt/familie-typer",
     "type": "module",
     "author": "NAV",
@@ -26,6 +26,6 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "devDependencies": {
-        "tsc-alias": "^1.8.16"
+        "tsc-alias": "1.8.16"
     }
 }

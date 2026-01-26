@@ -1,5 +1,5 @@
 {
-    "version": "8.0.15",
+    "version": "8.0.16",
     "name": "@navikt/familie-http",
     "type": "module",
     "author": "NAV",
@@ -26,14 +26,14 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-typer": "^8.0.4",
-        "@sentry/core": "^10.33.0"
+        "@navikt/familie-typer": "^8.0.5",
+        "@sentry/core": "10.33.0"
     },
     "peerDependencies": {
         "axios": "1.x",
         "react": "18.x || 19.x"
     },
     "devDependencies": {
-        "tsc-alias": "^1.8.16"
+        "tsc-alias": "1.8.16"
     }
 }
