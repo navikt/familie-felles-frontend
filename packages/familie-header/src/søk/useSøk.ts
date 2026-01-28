@@ -1,4 +1,4 @@
-import { Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
+import { Ressurs, RessursStatus } from '@navikt/familie-typer/src';
 import { useState, useRef, useEffect } from 'react';
 import { inputId } from '.';
 import { ISøkeresultat } from '..';
@@ -9,9 +9,16 @@ export interface Props {
     søk: (value: string) => void;
     søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
     søkeresultater: Ressurs<ISøkeresultat[]>;
+    setAnchorEl?: (el: Element | null) => void;
 }
 
-const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkeresultater }: Props) => {
+const useSøk = ({
+    nullstillSøkeresultater,
+    søk,
+    søkeresultatOnClick,
+    søkeresultater,
+    setAnchorEl,
+}: Props) => {
     const [ident, settIdent] = useState<string>('');
     const [identSistSøktPå, settIdentSistSøktPå] = useState('');
     const [valgtSøkeresultat, settValgtSøkeresultat] = useState(-1);
@@ -42,14 +49,15 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
         settErGyldig(false);
         if (lukkPopover) {
             ankerRef.current = null;
+            if (setAnchorEl) setAnchorEl(null); // Clear anchorEl state
         }
         nullstillSøkeresultater();
     };
 
     const settAnkerPåInput = () => {
         const ankerElement = document.getElementById(inputId) as Element;
-
         ankerRef.current = ankerElement;
+        if (setAnchorEl) setAnchorEl(ankerElement); // Set anchorEl state
     };
 
     const utløserSøk = () => {
@@ -85,6 +93,7 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
         if (nyVerdi === '') {
             nullstillSøkeresultater();
             ankerRef.current = null;
+            if (setAnchorEl) setAnchorEl(null); // Clear anchorEl state
         }
     };
 

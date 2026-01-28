@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import '@navikt/ds-css';
-import { Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
+import { Ressurs, RessursStatus } from '@navikt/familie-typer/src';
 import Søkeresultater from './Søkeresultater';
 import { ISøkeresultat } from '../types';
 import useSøk from './useSøk';
@@ -46,8 +46,8 @@ export const Søk = ({
     size = 'small',
     ingenFagsakKomponent,
 }: SøkProps) => {
+    const [anchorEl, setAnchorEl] = useState<Element | null>(null);
     const {
-        ankerRef,
         ident,
         nullstillInput,
         onInputChange,
@@ -61,6 +61,7 @@ export const Søk = ({
         søk,
         søkeresultatOnClick,
         søkeresultater,
+        setAnchorEl,
     });
 
     return (
@@ -83,10 +84,10 @@ export const Søk = ({
                 />
             </SøkContainer>
 
-            {ankerRef.current && (
+            {anchorEl && (
                 <Popover
                     id={'søkeresultat'}
-                    anchorEl={ankerRef.current}
+                    anchorEl={anchorEl}
                     arrow={false}
                     placement="bottom"
                     tabIndex={-1}
@@ -102,8 +103,8 @@ export const Søk = ({
                     >
                         <Søkeresultater
                             formaterResultat={formaterResultat}
-                            settValgtSøkeresultat={søkeresultatIndex =>
-                                settValgtSøkeresultat(søkeresultatIndex)
+                            settValgtSøkeresultat={søkeresøkeresultatIndex =>
+                                settValgtSøkeresultat(søkeresøkeresultatIndex)
                             }
                             søkeresultatOnClick={søkeresultatOnClick}
                             søkeresultater={søkeresultater}
