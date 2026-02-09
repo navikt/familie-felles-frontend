@@ -27,7 +27,7 @@
     },
     "dependencies": {
         "@navikt/familie-typer": "^8.0.5",
-        "@sentry/core": "10.37.0"
+        "@sentry/core": "10.38.0"
     },
     "peerDependencies": {
         "axios": "1.x",
