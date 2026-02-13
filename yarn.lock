@@ -2074,9 +2074,9 @@
   integrity sha512-1xuhplMhKCEPn2iMFypMVgkRNxUd5iupQ7HP2itdQCkK3K2mm2b8HsDwL9d7YDWcxowq5ff7ewpKgQFPn6o1UQ==
 
 "@navikt/ds-css@7.x":
-  version "7.38.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/7.38.0/a150b0a282f19f2ba5c583406635fda7f4e4924a#a150b0a282f19f2ba5c583406635fda7f4e4924a"
-  integrity sha512-51dvtPgFHcfkKpnJ9fcwHJsfiyZuRsWaawSHxxv7jyXQkDTl8YEsZ0a31gAozgp2CW3wHJBDCSehC89Z9X4x8A==
+  version "7.40.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/7.40.0/267682132732537194904a0498ce8971bf8b4922#267682132732537194904a0498ce8971bf8b4922"
+  integrity sha512-DPxoESUbmPImfbYrmcrOIL1XVsxqqFITgNCZ3cXQgv2xRHP9G6LTEdiYjwHecffHb6L/7mEPJ929MZ50o1fZNA==
 
 "@navikt/ds-react@7.x":
   version "7.38.0"
