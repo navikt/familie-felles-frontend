@@ -41,7 +41,7 @@
         "@navikt/aksel-icons": "7.x",
         "@navikt/ds-css": "7.x",
         "@navikt/ds-react": "7.x",
-        "@navikt/ds-tokens": "7.x",
+        "@navikt/ds-tokens": "8.x",
         "dayjs": "1.x",
         "tsc-alias": "1.8.16",
         "vitest": "4.0.16"
