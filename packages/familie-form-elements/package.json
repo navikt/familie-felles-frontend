@@ -25,7 +25,7 @@
     "devDependencies": {
         "@navikt/ds-css": "7.x",
         "@navikt/ds-react": "7.x",
-        "@navikt/ds-tokens": "7.x",
+        "@navikt/ds-tokens": "8.x",
         "styled-components": "6.x",
         "tsc-alias": "1.8.16"
     },
