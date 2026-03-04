@@ -3,7 +3,7 @@ import { Periode, Tidslinje, TidslinjeProps } from './src';
 import styled from 'styled-components';
 
 import '@navikt/ds-css';
-import { StarsEuIcon, FlagCrossIcon } from '@navikt/aksel-icons';
+import { FlagCrossIcon, StarsEuIcon } from '@navikt/aksel-icons';
 import { Detail, Switch } from '@navikt/ds-react';
 
 const TidlinjeContainer = styled.div`
@@ -67,7 +67,7 @@ export default {
                                 height="24"
                                 width="24"
                                 style={{
-                                    color: 'var(--a-orange-600)',
+                                    color: 'var(--ax-warning-500)',
                                     position: 'relative',
                                     top: '-1px',
                                 }}

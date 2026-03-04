@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Dayjs } from 'dayjs';
 import { EnkelPeriode } from '../types.external';
 import { usePositionAndSize } from './usePositionAndSize';
-import { ABlue50, ABlue500 } from '@navikt/ds-tokens/dist/tokens';
+import { BgAccentSoft, BgAccentStrong } from '@navikt/ds-tokens/dist/tokens';
 
 const AktivtUtsnittContainer = styled.div`
     position: absolute;
@@ -39,8 +39,8 @@ const AktivPeriode = styled.div`
         width: 3px;
         height: 3px;
         border-radius: 50%;
-        background: ${ABlue500};
-        box-shadow: 0 0 0 1px ${ABlue500};
+        background: ${BgAccentStrong};
+        box-shadow: 0 0 0 1px ${BgAccentStrong};
         left: -1px;
     }
 
@@ -51,20 +51,20 @@ const AktivPeriode = styled.div`
         width: 3px;
         height: 3px;
         border-radius: 50%;
-        background: ${ABlue500};
-        box-shadow: 0 0 0 1px ${ABlue500};
+        background: ${BgAccentStrong};
+        box-shadow: 0 0 0 1px ${BgAccentStrong};
         right: -1px;
     }
 `;
 
 const AktivPeriodeBorder = styled(AktivPeriode)`
     box-shadow:
-        inset 2px 0 0 -1px ${ABlue500},
-        inset -2px 0 0 -1px ${ABlue500};
+        inset 2px 0 0 -1px ${BgAccentStrong},
+        inset -2px 0 0 -1px ${BgAccentStrong};
 `;
 
 const AktivPeriodeBakgrunn = styled(AktivPeriode)`
-    background: ${ABlue50};
+    background: ${BgAccentSoft};
 `;
 
 interface IntervallProps {
