@@ -30,11 +30,11 @@ const ResultatListe = styled.ul`
 const ResultatListeElement = styled.li<{ $fokus: boolean }>`
     list-style-type: none;
     padding: 0.5rem;
-    outline: ${({ $fokus }) => ($fokus ? `3px solid var(--a-orange-300)` : '')};
+    outline: ${({ $fokus }) => ($fokus ? `3px solid var(--ax-border-warning-subtle)` : '')};
     border-radius: 8px;
 
     &:hover {
-        background-color: var(--a-gray-100);
+        background-color: var(--ax-bg-neutral-soft);
         cursor: pointer;
     }
 `;
@@ -45,7 +45,7 @@ const ResultatIkonOgRolle = styled.div`
     padding-right: 1rem;
     align-items: center;
     min-width: 3.5rem;
-    font-size: var(--a-font-size-small);
+    font-size: var(--ax-font-size-small);
 
     svg {
         text-align: center;
