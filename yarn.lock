@@ -2123,6 +2123,13 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/8.6.0/acac1517c2bc4c4eda259f1bc591db24656f102f#acac1517c2bc4c4eda259f1bc591db24656f102f"
   integrity sha512-MdnPFvi7wPF0N5ms6psNqW0IevlHhoswUCOYFQl7hFwL+uRcqFna6rT8fm/co04z/HDUKKfadbrW0yodzDxj1w==
 
+"@navikt/familie-form-elements@^21.0.8":
+  version "21.0.8"
+  resolved "https://npm.pkg.github.com/download/@navikt/familie-form-elements/21.0.8/4ea8a352134c4d30e1ce0f16f54fd19a4ffd8dc7#4ea8a352134c4d30e1ce0f16f54fd19a4ffd8dc7"
+  integrity sha512-HDqE6AU12nFM5e/e5hQsdOOsTSjxhColeiEVcopVm9f/GiECgw0lksj8kw4VsFxDohbl3+cYCx6rbDzMGeaJAA==
+  dependencies:
+    react-select "5.10.2"
+
 "@navikt/fnrvalidator@2.2.0":
   version "2.2.0"
   resolved "https://npm.pkg.github.com/download/@navikt/fnrvalidator/2.2.0/4886b1ab78dabbca087adf379b81ba0ef27ebbd9#4886b1ab78dabbca087adf379b81ba0ef27ebbd9"

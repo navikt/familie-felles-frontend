@@ -23,13 +23,14 @@ const DivMedBredde = styled.div<{ bredde: string }>`
 interface Props {
     bredde: number;
 }
+
 export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }) => {
     return (
         <>
             <DivMedBredde bredde={bredde.toString(10) + '%'} {...args}>
                 <JaNeiSpørsmål
-                    labelTekstForRadios={{ ja: 'Ja', nei: 'Nei' }}
                     legend={'Har du det bra?'}
+                    labelTekstForRadios={{ ja: 'Ja', nei: 'Nei' }}
                     name={'person.hardudetbra'}
                     onChange={value => {
                         alert(value === ESvar.NEI ? 'So sad' : 'Yayy, hurra!');
