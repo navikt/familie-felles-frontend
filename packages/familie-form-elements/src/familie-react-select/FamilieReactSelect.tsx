@@ -4,15 +4,14 @@ import ReactSelect, { GroupBase, Props, StylesConfig } from 'react-select';
 import Creatable from 'react-select/creatable';
 import styled from 'styled-components';
 import {
-    ASurfaceDanger,
-    ASurfaceActionHover,
-    ABorderStrong,
-    ABorderFocus,
-    ATextDefault,
-    ATextSubtle,
-    ATextOnInverted,
-    ABlue100,
-    ABlue500,
+    BgAccentModerate,
+    BgAccentStrong,
+    BorderAccentStrong,
+    BorderDanger,
+    BorderNeutralStrong,
+    TextNeutral,
+    TextNeutralContrast,
+    TextNeutralSubtle,
 } from '@navikt/ds-tokens/dist/tokens';
 import { ErrorMessage, Label, omit } from '@navikt/ds-react';
 
@@ -36,20 +35,22 @@ const navSelectStyles = (
     control: (provided, state) => ({
         ...provided,
         border:
-            feil && !state.isFocused ? `1px solid ${ASurfaceDanger}` : `1px solid ${ABorderStrong}`,
+            feil && !state.isFocused
+                ? `1px solid ${BorderDanger}`
+                : `1px solid ${BorderNeutralStrong}`,
         borderRadius: '4px',
         boxShadow: state.isFocused
-            ? `0 0 0 3px ${ABorderFocus}`
+            ? `0 0 0 3px ${BorderAccentStrong}`
             : feil
-              ? `0 0 0 1px ${ASurfaceDanger}`
+              ? `0 0 0 1px ${BorderDanger}`
               : '',
         ':hover': {
-            border: `1px solid ${ASurfaceActionHover}`,
+            border: `1px solid ${BorderAccentStrong}`,
         },
     }),
     placeholder: provided => ({
         ...provided,
-        color: ATextSubtle,
+        color: TextNeutralSubtle,
     }),
     dropdownIndicator: provided =>
         erLesevisning
@@ -66,15 +67,15 @@ const navSelectStyles = (
             ? { display: 'none' }
             : {
                   ...provided,
-                  color: ATextSubtle,
+                  color: TextNeutralSubtle,
                   ':hover': {
-                      color: ATextDefault,
+                      color: TextNeutral,
                   },
               },
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     multiValue: (provided, _) => ({
         ...provided,
-        backgroundColor: ABlue100,
+        backgroundColor: BgAccentModerate,
         maxWidth: '18rem',
     }),
     multiValueRemove: provided =>
@@ -83,8 +84,8 @@ const navSelectStyles = (
             : {
                   ...provided,
                   ':hover': {
-                      backgroundColor: ABlue500,
-                      color: ATextOnInverted,
+                      backgroundColor: BgAccentStrong,
+                      color: TextNeutralContrast,
                   },
               },
 });

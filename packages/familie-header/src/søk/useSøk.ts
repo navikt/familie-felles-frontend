@@ -1,5 +1,5 @@
 import { Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
-import { useState, useRef, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { inputId } from '.';
 import { ISøkeresultat } from '..';
 import { søkKnappId, tømKnappId } from './Søk';
@@ -132,7 +132,7 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
     };
 
     return {
-        ankerRef,
+        ankerElement: ankerRef.current,
         ident,
         nullstillInput,
         onInputChange,

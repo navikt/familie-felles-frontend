@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-form-elements",
-    "version": "21.0.8",
+    "version": "22.0.0",
     "main": "dist/index.js",
     "author": "NAV",
     "license": "MIT",
@@ -23,15 +23,15 @@
         "react-select": "5.10.2"
     },
     "devDependencies": {
-        "@navikt/ds-css": "7.x",
-        "@navikt/ds-react": "7.x",
-        "@navikt/ds-tokens": "7.x",
+        "@navikt/ds-css": "8.x",
+        "@navikt/ds-react": "8.x",
+        "@navikt/ds-tokens": "8.x",
         "styled-components": "6.x",
         "tsc-alias": "1.8.16"
     },
     "peerDependencies": {
-        "@navikt/ds-css": "7.x",
-        "@navikt/ds-react": "7.x",
+        "@navikt/ds-css": "8.x",
+        "@navikt/ds-react": "8.x",
         "react": "18.x || 19.x",
         "styled-components": "5.x || 6.x"
     }

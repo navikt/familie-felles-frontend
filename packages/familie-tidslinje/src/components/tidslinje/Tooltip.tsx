@@ -1,19 +1,25 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 import styled from 'styled-components';
-import { AGray400, AGray600, AGray800, ASpacing2, ASpacing4 } from '@navikt/ds-tokens/dist/tokens';
+import {
+    BorderNeutral,
+    BorderNeutralSubtle,
+    Space16,
+    Space8,
+    TextNeutralSubtle,
+} from '@navikt/ds-tokens/dist/tokens';
 
 const TooltipContainer = styled.div`
     position: absolute;
-    padding: ${ASpacing2} ${ASpacing4};
+    padding: ${Space8} ${Space16};
     background: #ffffff;
     border-radius: 4px;
-    border: 1px solid ${AGray600};
-    color: ${AGray800};
+    border: 1px solid ${BorderNeutral};
+    color: ${TextNeutralSubtle};
     top: 0;
     left: 50%;
     transform: translateX(-50%) translateY(calc(-100% - 10px));
-    box-shadow: 0 2px 2px 0 ${AGray400};
+    box-shadow: 0 2px 2px 0 ${BorderNeutralSubtle};
     animation-timing-function: ease-out;
     animation-duration: 0.05s;
     animation-name: fadeIn;
@@ -28,9 +34,9 @@ const TooltipContainer = styled.div`
         background: #ffffff;
         left: 50%;
         bottom: -1px;
-        border-bottom: 1px solid ${AGray600};
-        border-right: 1px solid ${AGray600};
-        box-shadow: 2px 2px 2px ${AGray400};
+        border-bottom: 1px solid ${BorderNeutral};
+        border-right: 1px solid ${BorderNeutral};
+        box-shadow: 2px 2px 2px ${BorderNeutralSubtle};
         transform: translateX(-50%) translateY(50%) rotate(45deg);
     }
 

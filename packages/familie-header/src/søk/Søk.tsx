@@ -27,8 +27,9 @@ const SøkContainer = styled.div`
     align-self: center;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    .navds-body-small {
-        font-size: var(--a-font-size-medium);
+
+    .aksel-body-short {
+        font-size: var(--ax-font-size-medium);
     }
 `;
 export const inputId = 'sok-input';
@@ -47,7 +48,7 @@ export const Søk = ({
     ingenFagsakKomponent,
 }: SøkProps) => {
     const {
-        ankerRef,
+        ankerElement,
         ident,
         nullstillInput,
         onInputChange,
@@ -82,11 +83,10 @@ export const Søk = ({
                     }}
                 />
             </SøkContainer>
-
-            {ankerRef.current && (
+            {ankerElement && (
                 <Popover
                     id={'søkeresultat'}
-                    anchorEl={ankerRef.current}
+                    anchorEl={ankerElement}
                     arrow={false}
                     placement="bottom"
                     tabIndex={-1}

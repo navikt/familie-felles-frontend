@@ -9,7 +9,7 @@ import { EnkelPeriode, Etikett, Periode, Pin } from '../types.external';
 import { AxisLabel, InternalSimpleTimeline, PositionedPeriod } from '../types.internal';
 import { useSenesteDato, useTidligsteDato, useTidslinjerader } from './useTidslinjerader';
 import { Pins } from './Pins';
-import { ASpacing3, ASpacing4 } from '@navikt/ds-tokens/dist/tokens';
+import { Space12, Space16 } from '@navikt/ds-tokens/dist/tokens';
 
 export interface TidslinjeProps {
     /**
@@ -58,8 +58,8 @@ export interface TidslinjeProps {
 
 const TidslinjeStyle = styled.div`
     position: relative;
-    padding: ${ASpacing3} 0;
-    margin: 0 ${ASpacing4};
+    padding: ${Space12} 0;
+    margin: 0 ${Space16};
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -204,7 +204,9 @@ export const Tidslinje = React.memo(
         retning = 'stigende',
         kompakt = false,
     }: TidslinjeProps) => {
-        if (!rader) throw new Error('Tidslinjen mangler rader.');
+        if (!rader) {
+            throw new Error('Tidslinjen mangler rader.');
+        }
 
         const direction = retning === 'stigende' ? 'left' : 'right';
         const start = useTidligsteDato({ startDato, rader }).startOf('day');
