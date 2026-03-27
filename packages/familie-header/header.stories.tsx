@@ -10,7 +10,6 @@ import {
 } from '@navikt/familie-typer';
 import { BodyShort, Detail } from '@navikt/ds-react';
 import { idnr } from '@navikt/fnrvalidator';
-import { Endringslogg } from '@navikt/familie-endringslogg';
 
 export default {
     component: Header,
@@ -181,13 +180,6 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
                         // tslint:disable-next-line:no-console
                         console.log('Du har klikket på et av resultatene', x);
                     }}
-                />
-                <Endringslogg
-                    userId={'23452345fdbsssssh1234' + new Date()}
-                    appId={'EF'}
-                    backendUrl={'https://familie-endringslogg.intern.dev.nav.no/'}
-                    appName={'Enslig forsørger'}
-                    stil="lys"
                 />
             </Header>
 
