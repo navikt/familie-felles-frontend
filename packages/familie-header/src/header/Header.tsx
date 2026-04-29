@@ -3,7 +3,6 @@ import '@navikt/ds-css';
 import { ActionMenu, InternalHeader as NavHeader } from '@navikt/ds-react';
 import { MenuGridIcon, WrenchIcon } from '@navikt/aksel-icons';
 import { EksternLinkIkon } from '@navikt/familie-ikoner';
-import clsx from 'clsx';
 import './header.css';
 
 export interface Brukerinfo {
@@ -187,7 +186,7 @@ export const Header = ({
     );
 
     return (
-        <NavHeader data-theme={''} className={clsx({ devHeader: erDev })}>
+        <NavHeader data-theme={''} className={erDev ? 'devHeader' : undefined}>
             {!tittelOnClick && <NavHeader.Title href={tittelHref}>{tittel}</NavHeader.Title>}
             {tittelOnClick && (
                 <NavHeader.Title onClick={tittelOnClick} style={{ cursor: 'pointer' }}>
