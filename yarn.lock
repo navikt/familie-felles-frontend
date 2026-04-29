@@ -1994,9 +1994,9 @@
     react-day-picker "9.7.0"
 
 "@navikt/ds-tokens@8.x", "@navikt/ds-tokens@^8.6.0":
-  version "8.6.0"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/8.6.0/acac1517c2bc4c4eda259f1bc591db24656f102f#acac1517c2bc4c4eda259f1bc591db24656f102f"
-  integrity sha512-MdnPFvi7wPF0N5ms6psNqW0IevlHhoswUCOYFQl7hFwL+uRcqFna6rT8fm/co04z/HDUKKfadbrW0yodzDxj1w==
+  version "8.10.2"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/8.10.2/8e24eb9d5b3b087d8d95cf5f4c06b96076da04c2#8e24eb9d5b3b087d8d95cf5f4c06b96076da04c2"
+  integrity sha512-/yn3qMlQx43659pwOUfH2Gqy6GsQxGmst9sfx5MEJkAAvr2WlD6h1NJ8yQ4xnzUHSMOIg+hwxckPT/go8vWEBQ==
 
 "@navikt/familie-form-elements@^21.0.8":
   version "21.0.8"
