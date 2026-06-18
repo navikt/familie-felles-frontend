@@ -22,14 +22,19 @@ export const authenticateAzure = (req: Request, res: Response, next: NextFunctio
     }
 
     req.session.redirectUrl = successRedirect;
-    try {
-        passport.authenticate('azureOidc', {
-            failureRedirect: '/error',
-            successRedirect,
-        })(req, res, next);
-    } catch (err) {
-        throw new Error(`Error during authentication: ${err}`);
-    }
+    req.session.save(err => {
+        if (err) {
+            return next(err);
+        }
+        try {
+            passport.authenticate('azureOidc', {
+                failureRedirect: '/error',
+                successRedirect,
+            })(req, res, next);
+        } catch (err) {
+            throw new Error(`Error during authentication: ${err}`);
+        }
+    });
 };
 
 export const authenticateAzureCallback = () => {
