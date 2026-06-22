@@ -32,7 +32,7 @@ export const authenticateAzure = (req: Request, res: Response, next: NextFunctio
                 successRedirect,
             })(req, res, next);
         } catch (err) {
-            throw new Error(`Error during authentication: ${err}`);
+            throw new Error(`Autentiseringsfeil: ${err}`);
         }
     });
 };
