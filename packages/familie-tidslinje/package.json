@@ -43,7 +43,7 @@
         "@navikt/ds-react": "8.x",
         "@navikt/ds-tokens": "8.x",
         "dayjs": "1.x",
-        "tsc-alias": "1.8.16",
+        "tsc-alias": "1.9.0",
         "vitest": "4.1.4"
     }
 }
