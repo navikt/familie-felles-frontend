@@ -1,5 +1,5 @@
 {
-    "version": "8.2.48",
+    "version": "8.2.49",
     "name": "@navikt/familie-skjema",
     "type": "module",
     "author": "NAV",
@@ -26,8 +26,8 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-http": "^8.0.22",
-        "@navikt/familie-typer": "^8.0.5",
+        "@navikt/familie-http": "^8.0.23",
+        "@navikt/familie-typer": "^8.0.6",
         "@types/deep-equal": "1.0.4",
         "deep-equal": "2.2.3",
         "hashids": "2.3.0"
