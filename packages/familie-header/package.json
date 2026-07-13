@@ -34,7 +34,7 @@
         "@navikt/ds-css": "8.x",
         "@navikt/ds-react": "8.x",
         "styled-components": "6.x",
-        "tsc-alias": "1.8.16"
+        "tsc-alias": "1.9.0"
     },
     "peerDependencies": {
         "@navikt/aksel-icons": "8.x",
