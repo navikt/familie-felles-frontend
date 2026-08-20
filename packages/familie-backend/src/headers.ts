@@ -4,14 +4,13 @@ const styleSource = 'https://fonts.googleapis.com';
 const fontSource = 'https://fonts.gstatic.com';
 const navFontSource = 'https://cdn.nav.no';
 const amplitude = 'https://amplitude.nav.no';
-const sentry = 'https://sentry.gc.nav.no';
 const navTelemetry = 'https://telemetry.nav.no';
 const navTelemetryDev = 'https://telemetry.ekstern.dev.nav.no';
 const navCdn = 'https://cdn.nav.no';
 const navUmami = 'https://reops-event-proxy.nav.no';
 const navUmamiDev = 'https://reops-event-proxy.ekstern.dev.nav.no';
 
-const cspString = `default-src 'self' data: ${amplitude} ${sentry} ${navTelemetry} ${navTelemetryDev} ${navCdn} ${navUmami} ${navUmamiDev}; style-src 'self' ${styleSource} data: 'unsafe-inline'; font-src 'self' ${fontSource} ${navFontSource} data:; frame-src 'self' blob:;`;
+const cspString = `default-src 'self' data: ${amplitude} ${navTelemetry} ${navTelemetryDev} ${navCdn} ${navUmami} ${navUmamiDev}; style-src 'self' ${styleSource} data: 'unsafe-inline'; font-src 'self' ${fontSource} ${navFontSource} data:; frame-src 'self' blob:;`;
 
 const setup = (app: Express) => {
     app.disable('x-powered-by');

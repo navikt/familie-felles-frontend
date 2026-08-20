@@ -29,7 +29,7 @@ interface IProps {
 
 export function HttpProvider(props: PropsWithChildren<IProps>) {
     const [ressurserSomLaster, settRessurserSomLaster] = React.useState<string[]>([]);
-    const { fjernRessursSomLasterTimeout = 300, innloggetSaksbehandler, settAutentisert } = props;
+    const { fjernRessursSomLasterTimeout = 300, settAutentisert } = props;
 
     const timeoutsRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({});
 
@@ -77,8 +77,6 @@ export function HttpProvider(props: PropsWithChildren<IProps>) {
                 config.påvirkerSystemLaster && fjernRessursSomLaster(ressursId);
                 return håndterApiRespons({
                     defaultFeilmelding: config.defaultFeilmelding,
-                    innloggetSaksbehandler,
-                    loggFeilTilSentry: config.loggFeilTilSentry,
                     ressurs: responsRessurs,
                 });
             })
@@ -92,9 +90,6 @@ export function HttpProvider(props: PropsWithChildren<IProps>) {
                 const responsRessurs: ApiRessurs<SkjemaRespons> | undefined = error.response?.data;
                 return håndterApiRespons({
                     defaultFeilmelding: config.defaultFeilmelding,
-                    error,
-                    innloggetSaksbehandler,
-                    loggFeilTilSentry: true,
                     ressurs: responsRessurs,
                 });
             });

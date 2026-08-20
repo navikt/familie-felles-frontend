@@ -26,8 +26,7 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-typer": "^8.0.6",
-        "@sentry/core": "10.64.0"
+        "@navikt/familie-typer": "^8.0.6"
     },
     "peerDependencies": {
         "axios": "1.x",
