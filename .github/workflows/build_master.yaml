@@ -15,44 +15,48 @@ jobs:
       packages: write
     name: Bygg og push
     runs-on: ubuntu-latest
+    env:
+      # Husky installerer git-hooks via 'prepare' ved pnpm install; hooks skal ikke
+      # kjøre på release-committen lerna lager (yarn --ignore-scripts hoppet over dette).
+      HUSKY: 0
     steps:
       - name: Checkout repo
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # ratchet:actions/checkout@v4
         with:
           persist-credentials: false
           fetch-depth: 0
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # ratchet:actions/setup-node@v4
+      - name: Set up node and install pnpm packages
+        uses: navikt/familie-baks-gha-workflows/.github/actions/setup-node-pnpm@main # ratchet:exclude
         with:
-          node-version: 24
-          cache: "yarn"
-          registry-url: "https://npm.pkg.github.com"
+          node-version: '24'
+          reader-token: ${{ secrets.READER_TOKEN }}
       - name: Prepare repository
         run: git checkout "${GITHUB_REF:11}"
 
-      - name: Installer dependencies
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
-        run: |
-          yarn --prefer-offline --frozen-lockfile --ignore-scripts
-          yarn build
+      - name: Bygg
+        run: pnpm build
+
       - name: Login
         run: |
           git config user.email "teamfamilie@nav.no"
           git config user.name "Team familie"
-          git remote set-url origin https://github-actions[bot]:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git
+          git remote set-url origin "https://github-actions[bot]:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Create a .npmrc file for the github package repository
-        uses: FerLuisxd/create-npmrc@6fc58cba3dcf19a4f65330dc93e6026fe234f304 # ratchet:FerLuisxd/create-npmrc@3
-        with:
-          org_name: navikt
+      # Versjonering (bump, CHANGELOG, commit, tag, push) er skilt fra publisering:
+      # lerna oppdaterer pnpm-lock.yaml med 'pnpm install --lockfile-only', som må
+      # kunne lese @navikt-pakker fra GitHub Packages (READER_TOKEN). Selve
+      # publiseringen bruker GITHUB_TOKEN (packages: write).
+      - name: Versjoner og push
+        run: pnpm run version:ci
         env:
-          AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.READER_TOKEN }}
 
       - name: Push
         run: |
-          yarn deploy-storybook
-          npm run publish:ci
+          pnpm run deploy-storybook
+          pnpm run publish:ci
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

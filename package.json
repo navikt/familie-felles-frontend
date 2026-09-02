@@ -11,7 +11,8 @@
     "deploy-storybook": "storybook-to-ghpages",
     "lint": "eslint './packages/**/*.{ts,tsx}' --ignore-pattern '**/dist/*'",
     "lint:fix": "eslint './packages/**/*.{ts,tsx}' --ignore-pattern '**/dist/*' --fix",
-    "publish:ci": "lerna publish --yes",
+    "version:ci": "lerna version --yes",
+    "publish:ci": "lerna publish from-git --yes",
     "publish:canary": "lerna publish --canary",
     "publish:canary:ci": "lerna publish --canary --yes",
     "prepare": "husky"
@@ -71,11 +72,5 @@
     "eslint-plugin-storybook": "9.1.0",
     "@storybook/addon-docs": "9.1.0"
   },
-  "resolutions": {
-    "csstype": "3.1.2"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "packageManager": "pnpm@11.15.0"
 }
