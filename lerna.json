@@ -3,12 +3,11 @@
         "publish": {
             "registry": "https://npm.pkg.github.com",
             "conventionalCommits": true,
-            "ignoreChanges": ["ignored-file", "*.{md|mdx}"],
+            "ignoreChanges": ["ignored-file", "*.{md,mdx}"],
             "message": "chore(release): publish"
         }
     },
-    "packages": ["packages/*"],
     "version": "independent",
-    "npmClient": "yarn",
+    "npmClient": "pnpm",
     "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }

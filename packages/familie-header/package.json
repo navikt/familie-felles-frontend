@@ -18,7 +18,7 @@
         "url": "https://github.com/navikt/familie-felles-frontend"
     },
     "scripts": {
-        "build": "yarn run clean && yarn run tsc && yarn run tsc-alias && yarn run copy-css",
+        "build": "pnpm run clean && pnpm run tsc && pnpm run tsc-alias && pnpm run copy-css",
         "copy-css": "copyfiles -u 1 \"src/**/*.css\" dist",
         "clean": "rm -rf ./dist",
         "tsc": "tsc -p tsconfig.json",

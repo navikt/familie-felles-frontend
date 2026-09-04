@@ -20,9 +20,9 @@
         "dist"
     ],
     "scripts": {
-        "build": "yarn run clean && yarn run compile",
+        "build": "pnpm run clean && pnpm run compile",
         "clean": "rm -rf ./dist && rm -rf tsconfig.tsbuildinfo",
-        "compile": "tsc -b tsconfig.json && yarn run tsc-alias",
+        "compile": "tsc -b tsconfig.json && pnpm run tsc-alias",
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {

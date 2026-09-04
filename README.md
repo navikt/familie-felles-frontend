@@ -4,17 +4,17 @@ Fellesrepo for frontend biblioteker for team familie.\
 [Storybook med dokumentasjon 📖](https://navikt.github.io/familie-felles-frontend)
 
 ## Lokal testing
-Kjør `yarn build` så skal den bruke den siste versjonen lokalt
+Kjør `pnpm build` så skal den bruke den siste versjonen lokalt
 
-## Lokal utvilking
-For å utvilke lokalt kan man kjøre
-`yarn && yarn build`
-For å sette opp repoet og
-`yarn storybook`
-For å kjøre det.
+## Lokal utvikling
+* Kjør `nvm use` (Node-versjonen ligger i `.nvmrc`)
+* Aktiver riktig pnpm-versjon med `corepack enable` (henter versjonen fra `packageManager` i package.json)
+* Installer avhengigheter med `pnpm install`
+* Bygg pakkene med `pnpm build`
+* Start Storybook med `pnpm storybook`
 
 ## Endringer
-For å commite oprettes det en branch som vanlig `git checkout -b navnet-på-branchen`, deretter anbefales det å bruke `yarn ct` for god historikk.
+For å commite oprettes det en branch som vanlig `git checkout -b navnet-på-branchen`, deretter anbefales det å bruke `pnpm ct` for god historikk.
 
 Les mer [her](packages/introduksjon.mdx)
 
@@ -23,8 +23,7 @@ Les mer [her](packages/introduksjon.mdx)
 Besøk [docs](https://navikt.github.io/familie-felles-frontend) for Storybook-dokumentasjon.
 
 ## Trøbbel?
-Det kan være nødvendig å slette `node_modules` lokalt for å få satt opp workspaces riktig.
-Dette fordi vi nå bruker `yarn`, og ikke `lerna`, sine workspaces.
+Har du en gammel `node_modules` fra før pnpm-migreringen, slett den og kjør `pnpm install` på nytt.
 
 ## Kode generert av GitHub Copilot
 Dette repoet bruker GitHub Copilot til å generere kode.
