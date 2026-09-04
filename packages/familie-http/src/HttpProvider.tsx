@@ -6,7 +6,6 @@ import { preferredAxios, håndterApiRespons } from './axios';
 export type FamilieRequestConfig<SkjemaData> = AxiosRequestConfig & {
     data?: SkjemaData;
     defaultFeilmelding?: string;
-    loggFeilTilSentry?: boolean;
     påvirkerSystemLaster?: boolean;
 };
 

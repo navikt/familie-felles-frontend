@@ -6,7 +6,7 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 Http provider for familie for henting av data. Bruker konseptet ressurs. Se @navikt/familie-typer, ressurs for mer informasjon.
 
-Sett opp provideren rundt appen din. `innloggetSaksbehandler` og `loggFeilTilSentry` beholdes for bakoverkompatibilitet, men feil sendes ikke til Sentry.
+Sett opp provideren rundt appen din. `innloggetSaksbehandler` beholdes for bakoverkompatibilitet, men brukes ikke.
 Ved 401 fra backend kalles sett autentisert for å sette state til false.
 
 ```js
