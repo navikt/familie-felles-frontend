@@ -9,7 +9,6 @@ export interface ApiRespons<T> {
     defaultFeilmelding?: string;
     error?: AxiosError;
     innloggetSaksbehandler?: ISaksbehandler;
-    loggFeilTilSentry?: boolean;
     ressurs?: ApiRessurs<T>;
 }
 
