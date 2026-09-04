@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 
-import { Ressurs, RessursStatus, ApiRessurs, ISaksbehandler } from '@navikt/familie-typer';
+import { Ressurs, RessursStatus, ApiRessurs } from '@navikt/familie-typer';
 
 axios.defaults.baseURL = window.location.origin;
 export const preferredAxios = axios;
@@ -8,7 +8,6 @@ export const preferredAxios = axios;
 export interface ApiRespons<T> {
     defaultFeilmelding?: string;
     error?: AxiosError;
-    innloggetSaksbehandler?: ISaksbehandler;
     ressurs?: ApiRessurs<T>;
 }
 
