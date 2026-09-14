@@ -27,7 +27,7 @@
     },
     "dependencies": {
         "classnames": "2.5.1",
-        "nanoid": "5.1.5"
+        "nanoid": "6.0.1"
     },
     "peerDependencies": {
         "@navikt/ds-css": "8.x",
@@ -44,6 +44,6 @@
         "@navikt/ds-tokens": "8.x",
         "dayjs": "1.x",
         "tsc-alias": "1.9.0",
-        "vitest": "4.1.4"
+        "vitest": "5.0.0"
     }
 }
