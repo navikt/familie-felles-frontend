@@ -1,12 +1,11 @@
 import React, { createContext, PropsWithChildren, useContext, useEffect, useRef } from 'react';
 import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-import { Ressurs, ApiRessurs, ISaksbehandler } from '@navikt/familie-typer';
+import { Ressurs, ApiRessurs } from '@navikt/familie-typer';
 import { preferredAxios, håndterApiRespons } from './axios';
 
 export type FamilieRequestConfig<SkjemaData> = AxiosRequestConfig & {
     data?: SkjemaData;
     defaultFeilmelding?: string;
-    loggFeilTilSentry?: boolean;
     påvirkerSystemLaster?: boolean;
 };
 
@@ -23,7 +22,6 @@ const HttpContext = createContext<HttpContext | undefined>(undefined);
 
 interface IProps {
     fjernRessursSomLasterTimeout?: number;
-    innloggetSaksbehandler?: ISaksbehandler;
     settAutentisert?: (autentisert: boolean) => void;
 }
 
