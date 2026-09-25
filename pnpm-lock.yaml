@@ -237,7 +237,7 @@ importers:
         specifier: ^8.0.7
         version: link:../familie-typer
       axios:
-        specifier: '>=1.18.0'
+        specifier: '>=1.18.0 <2.0.0'
         version: 1.18.1(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       react:
         specifier: 18.x || 19.x
