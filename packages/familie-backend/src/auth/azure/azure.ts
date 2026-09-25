@@ -1,14 +1,14 @@
+import { logDebug, logInfo } from '@navikt/familie-logging';
 import {
-    Client,
-    ClientMetadata,
+    type Client,
+    type ClientMetadata,
     custom,
     Issuer,
     Strategy,
-    StrategyOptions,
-    TokenSet,
+    type StrategyOptions,
+    type TokenSet,
 } from 'openid-client';
 import { appConfig } from '../../config';
-import { logInfo, logDebug } from '@navikt/familie-logging';
 import httpProxy from '../proxy/http-proxy';
 import { appendDefaultScope, tokenSetSelfId } from '../tokenUtils';
 

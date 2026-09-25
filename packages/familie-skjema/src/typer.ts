@@ -1,7 +1,6 @@
-import { ChangeEvent, Dispatch, ReactNode, SetStateAction } from 'react';
-
-import { FamilieRequestConfig } from '@navikt/familie-http';
-import { Ressurs, RessursStatus } from '@navikt/familie-typer';
+import type { FamilieRequestConfig } from '@navikt/familie-http';
+import type { Ressurs, RessursStatus } from '@navikt/familie-typer';
+import type { ChangeEvent, Dispatch, ReactNode, SetStateAction } from 'react';
 
 export interface FeltState<Verdi> {
     feilmelding: ReactNode;
@@ -11,11 +10,7 @@ export interface FeltState<Verdi> {
 }
 
 export type FeltOnChange<Verdi> = (
-    verdi:
-        | Verdi
-        | ChangeEvent<HTMLInputElement>
-        | ChangeEvent<HTMLTextAreaElement>
-        | ChangeEvent<HTMLSelectElement>,
+    verdi: Verdi | ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>,
 ) => void;
 
 export interface Felt<Verdi> {
@@ -65,15 +60,9 @@ export enum Valideringsstatus {
 
 // eslint-disable-next-line
 export type Avhengigheter = { [key: string]: any };
-export type ValiderFelt<Verdi> = (
-    felt: FeltState<Verdi>,
-    avhengigheter?: Avhengigheter,
-) => FeltState<Verdi>;
+export type ValiderFelt<Verdi> = (felt: FeltState<Verdi>, avhengigheter?: Avhengigheter) => FeltState<Verdi>;
 
-export type ValiderOgSettFelt<Verdi> = (
-    verdi: Verdi,
-    avhengigheter?: Avhengigheter,
-) => FeltState<Verdi>;
+export type ValiderOgSettFelt<Verdi> = (verdi: Verdi, avhengigheter?: Avhengigheter) => FeltState<Verdi>;
 
 export const defaultValidator = <Verdi>(felt: FeltState<Verdi>) => ({
     ...felt,

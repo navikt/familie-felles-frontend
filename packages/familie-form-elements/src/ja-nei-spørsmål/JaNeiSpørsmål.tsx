@@ -1,5 +1,5 @@
-import React, { ReactNode, useState, Ref } from 'react';
-import { Radio, RadioGroup, RadioGroupProps } from '@navikt/ds-react';
+import { Radio, RadioGroup, type RadioGroupProps } from '@navikt/ds-react';
+import React, { type ReactNode, type Ref, useState } from 'react';
 import styled from 'styled-components';
 import { ESvar } from './typer';
 
@@ -30,17 +30,8 @@ const Capitalized = styled.span`
 // eslint-disable-next-line react/display-name
 export const JaNeiSpørsmål = React.forwardRef(
     (props: JaNeiSpørsmålProps, ref: Ref<HTMLFieldSetElement> | undefined) => {
-        const {
-            legend,
-            name,
-            onChange,
-            labelTekstForRadios,
-            error,
-            initiellVerdi,
-            size,
-            required,
-            description,
-        } = props;
+        const { legend, name, onChange, labelTekstForRadios, error, initiellVerdi, size, required, description } =
+            props;
 
         const [checked, setChecked] = useState<ESvar | ''>(initiellVerdi ?? '');
 

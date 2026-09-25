@@ -1,7 +1,7 @@
-import React from 'react';
+import type React from 'react';
 import '@navikt/ds-css';
-import { ActionMenu, InternalHeader as NavHeader } from '@navikt/ds-react';
 import { MenuGridIcon, WrenchIcon } from '@navikt/aksel-icons';
+import { ActionMenu, InternalHeader as NavHeader } from '@navikt/ds-react';
 import { EksternLinkIkon } from '@navikt/familie-ikoner';
 import './header.css';
 
@@ -181,9 +181,7 @@ export const Header = ({
 }: HeaderProps) => {
     const skalViseLabelOgIkon = (type: LenkeType | undefined) =>
         type === LenkeType.EKSTERN || type === LenkeType.ARBEIDSVERKTØY;
-    const skalViseLabelsOgIkonPåLenker = eksterneLenker.some(lenke =>
-        skalViseLabelOgIkon(lenke.type),
-    );
+    const skalViseLabelsOgIkonPåLenker = eksterneLenker.some(lenke => skalViseLabelOgIkon(lenke.type));
 
     return (
         <NavHeader data-theme={''} className={erDev ? 'devHeader' : undefined}>

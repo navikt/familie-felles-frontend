@@ -1,18 +1,16 @@
-import React, { ReactNode } from 'react';
+import type React from 'react';
+import type { ReactNode } from 'react';
 import styled from 'styled-components';
 import '@navikt/ds-css';
-import { Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
-import Søkeresultater from './Søkeresultater';
-import { ISøkeresultat } from '../types';
-import useSøk from './useSøk';
-import { FnrInputWrapper } from './FnrInputWrapper';
 import { Popover } from '@navikt/ds-react';
+import { type Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
+import type { ISøkeresultat } from '../types';
+import { FnrInputWrapper } from './FnrInputWrapper';
+import Søkeresultater from './Søkeresultater';
+import useSøk from './useSøk';
 
 export interface SøkProps {
-    formaterResultat?: (
-        søkeresultat: ISøkeresultat,
-        erSøkeresultatValgt: boolean,
-    ) => React.ReactNode;
+    formaterResultat?: (søkeresultat: ISøkeresultat, erSøkeresultatValgt: boolean) => React.ReactNode;
     label: string;
     nullstillSøkeresultater: () => void;
     søk: (value: string) => void;
@@ -102,9 +100,7 @@ export const Søk = ({
                     >
                         <Søkeresultater
                             formaterResultat={formaterResultat}
-                            settValgtSøkeresultat={søkeresultatIndex =>
-                                settValgtSøkeresultat(søkeresultatIndex)
-                            }
+                            settValgtSøkeresultat={søkeresultatIndex => settValgtSøkeresultat(søkeresultatIndex)}
                             søkeresultatOnClick={søkeresultatOnClick}
                             søkeresultater={søkeresultater}
                             valgtSøkeresultat={valgtSøkeresultat}

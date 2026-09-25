@@ -1,7 +1,7 @@
-import { Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
+import { type Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
 import { useEffect, useRef, useState } from 'react';
+import type { ISøkeresultat } from '..';
 import { inputId } from '.';
-import { ISøkeresultat } from '..';
 import { søkKnappId, tømKnappId } from './Søk';
 
 export interface Props {
@@ -102,20 +102,14 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
             case 'ArrowDown':
                 settValgtSøkeresultat(
                     valgtSøkeresultat <
-                        (søkeresultater.status === RessursStatus.SUKSESS
-                            ? søkeresultater.data.length - 1
-                            : -1)
+                        (søkeresultater.status === RessursStatus.SUKSESS ? søkeresultater.data.length - 1 : -1)
                         ? valgtSøkeresultat + 1
                         : -1,
                 );
                 break;
             case 'Enter':
                 if (søkeresultater.status === RessursStatus.SUKSESS) {
-                    if (
-                        identSistSøktPå === ident &&
-                        valgtSøkeresultat === -1 &&
-                        søkeresultater.data.length === 1
-                    ) {
+                    if (identSistSøktPå === ident && valgtSøkeresultat === -1 && søkeresultater.data.length === 1) {
                         søkeresultatOnClick(søkeresultater.data[0]);
                     } else if (valgtSøkeresultat !== -1) {
                         søkeresultatOnClick(søkeresultater.data[valgtSøkeresultat]);

@@ -1,5 +1,5 @@
-import { Request } from 'express';
 import { LOG_LEVEL, logDebug, logError, logInfo, logWarn } from '@navikt/familie-logging';
+import type { Request } from 'express';
 
 let erForbindelsenTilRedisTilgjengelig = true;
 

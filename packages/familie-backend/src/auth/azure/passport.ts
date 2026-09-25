@@ -1,5 +1,5 @@
-import { Client, UserinfoResponse } from 'openid-client';
 import { logInfo } from '@navikt/familie-logging';
+import type { Client, UserinfoResponse } from 'openid-client';
 import azure from './azure';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -10,13 +10,11 @@ export default async (passport: any): Promise<Client> => {
 
     passport.serializeUser(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) =>
-            done(undefined, user),
+        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) => done(undefined, user),
     );
     passport.deserializeUser(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) =>
-            done(undefined, user),
+        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) => done(undefined, user),
     );
     passport.use('azureOidc', azureOidcStrategy);
 

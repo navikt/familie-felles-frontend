@@ -1,18 +1,16 @@
-import { genererId, isChangeEvent } from './utils';
 import deepEqual from 'deep-equal';
-
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
-
+import { type ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import {
+    type Avhengigheter,
     defaultValidator,
-    Felt,
-    FeltState,
-    NavBaseSkjemaProps,
-    NavInputProps,
-    ValiderFelt,
-    Avhengigheter,
+    type Felt,
+    type FeltState,
+    type NavBaseSkjemaProps,
+    type NavInputProps,
+    type ValiderFelt,
     Valideringsstatus,
 } from './typer';
+import { genererId, isChangeEvent } from './utils';
 
 /**
  * Konfigurasjon for å opprette et felt.
@@ -49,9 +47,7 @@ export const useFelt = <Verdi = string>({
     };
 
     const [feltState, settFeltState] = useState<FeltState<Verdi>>(initialFeltState);
-    const [erSynlig, settErSynlig] = useState(
-        skalFeltetVises ? skalFeltetVises(avhengigheter) : true,
-    );
+    const [erSynlig, settErSynlig] = useState(skalFeltetVises ? skalFeltetVises(avhengigheter) : true);
 
     const nullstill = () => {
         settFeltState(initialFeltState);
@@ -92,10 +88,7 @@ export const useFelt = <Verdi = string>({
      */
     useEffect(() => {
         if (skalFeltetVises) {
-            if (
-                nullstillVedAvhengighetEndring &&
-                feltState.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT
-            ) {
+            if (nullstillVedAvhengighetEndring && feltState.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT) {
                 nullstill();
             }
 

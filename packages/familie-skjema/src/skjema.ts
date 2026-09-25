@@ -1,14 +1,14 @@
-import { useState } from 'react';
+import { type FamilieRequestConfig, useHttp } from '@navikt/familie-http';
 
-import { byggHenterRessurs, byggTomRessurs, Ressurs, RessursStatus } from '@navikt/familie-typer';
-import { FamilieRequestConfig, useHttp } from '@navikt/familie-http';
+import { byggHenterRessurs, byggTomRessurs, type Ressurs, RessursStatus } from '@navikt/familie-typer';
+import { useState } from 'react';
 import {
-    FeiloppsummeringFeil,
-    Felt,
-    FeltState,
-    FieldDictionary,
-    ISkjema,
-    UseSkjemaVerdi,
+    type FeiloppsummeringFeil,
+    type Felt,
+    type FeltState,
+    type FieldDictionary,
+    type ISkjema,
+    type UseSkjemaVerdi,
     Valideringsstatus,
 } from './typer';
 
@@ -28,15 +28,12 @@ export const useSkjema = <Felter, SkjemaRespons>({
     };
 
     const validerAlleSynligeFelter = (): FeltState<unknown>[] => {
-        const synligeFelter: Felt<unknown>[] = alleSynligeFelter().map(
-            felt => felt as Felt<unknown>,
-        );
+        const synligeFelter: Felt<unknown>[] = alleSynligeFelter().map(felt => felt as Felt<unknown>);
 
         return [
             ...synligeFelter
                 .filter(
-                    (unknownFelt: Felt<unknown>) =>
-                        unknownFelt.valideringsstatus === Valideringsstatus.IKKE_VALIDERT,
+                    (unknownFelt: Felt<unknown>) => unknownFelt.valideringsstatus === Valideringsstatus.IKKE_VALIDERT,
                 )
                 .map((unknownFelt: Felt<unknown>) => {
                     return unknownFelt.validerOgSettFelt(unknownFelt.verdi, {
@@ -44,8 +41,7 @@ export const useSkjema = <Felter, SkjemaRespons>({
                     });
                 }),
             ...synligeFelter.filter(
-                (unknownFelt: Felt<unknown>) =>
-                    unknownFelt.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT,
+                (unknownFelt: Felt<unknown>) => unknownFelt.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT,
             ),
         ];
     };
@@ -84,17 +80,15 @@ export const useSkjema = <Felter, SkjemaRespons>({
         if (kanSendeSkjema()) {
             settSubmitRessurs(byggHenterRessurs());
 
-            request<SkjemaData, SkjemaRespons>(familieAxiosRequestConfig).then(
-                (response: Ressurs<SkjemaRespons>) => {
-                    settSubmitRessurs(response);
-                    if (response.status === RessursStatus.SUKSESS) {
-                        nullstillSkjema();
-                        onSuccess(response);
-                    } else {
-                        onError && onError(response);
-                    }
-                },
-            );
+            request<SkjemaData, SkjemaRespons>(familieAxiosRequestConfig).then((response: Ressurs<SkjemaRespons>) => {
+                settSubmitRessurs(response);
+                if (response.status === RessursStatus.SUKSESS) {
+                    nullstillSkjema();
+                    onSuccess(response);
+                } else {
+                    onError && onError(response);
+                }
+            });
         }
     };
 
@@ -106,8 +100,7 @@ export const useSkjema = <Felter, SkjemaRespons>({
 
                 return {
                     skjemaelementId: typetFelt.id,
-                    feilmelding:
-                        typeof typetFelt.feilmelding === 'string' ? typetFelt.feilmelding : '',
+                    feilmelding: typeof typetFelt.feilmelding === 'string' ? typetFelt.feilmelding : '',
                 };
             });
     };

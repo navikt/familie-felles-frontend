@@ -1,5 +1,6 @@
-import { ChangeEvent } from 'react';
 import Hashids from 'hashids';
+import type { ChangeEvent } from 'react';
+
 const hashid = new Hashids();
 
 // eslint-disable-next-line

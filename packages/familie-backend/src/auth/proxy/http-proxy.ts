@@ -1,6 +1,6 @@
+import { logInfo } from '@navikt/familie-logging';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 import { envVar } from '../../utils';
-import { logInfo } from '@navikt/familie-logging';
 
 const agent = () => {
     const proxyUri = envVar('HTTP_PROXY', false);
@@ -9,9 +9,7 @@ const agent = () => {
 
         return new HttpsProxyAgent(proxyUri);
     } else {
-        logInfo(
-            `Environment variable HTTP_PROXY is not set, not proxying requests for openid-client`,
-        );
+        logInfo(`Environment variable HTTP_PROXY is not set, not proxying requests for openid-client`);
         return undefined;
     }
 };

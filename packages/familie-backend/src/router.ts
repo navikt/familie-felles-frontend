@@ -1,12 +1,7 @@
-import express, { NextFunction, Request, Response } from 'express';
-import { Client } from 'openid-client';
-import { Counter } from 'prom-client';
-import {
-    authenticateAzure,
-    authenticateAzureCallback,
-    ensureAuthenticated,
-    logout,
-} from './auth/authenticate';
+import express, { type NextFunction, type Request, type Response } from 'express';
+import type { Client } from 'openid-client';
+import type { Counter } from 'prom-client';
+import { authenticateAzure, authenticateAzureCallback, ensureAuthenticated, logout } from './auth/authenticate';
 import { hentBrukerprofil, setBrukerprofilPåSesjonRute } from './auth/bruker';
 
 const router = express.Router();
