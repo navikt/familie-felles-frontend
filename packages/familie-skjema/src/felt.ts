@@ -86,6 +86,7 @@ export const useFelt = <Verdi = string>({
      * Basert på avhengighetene til feltet håndterer vi vis/skjul
      * og nullstilling på feltet.
      */
+    // biome-ignore lint/correctness/useExhaustiveDependencies: skal kun kjøre på nytt når avhengighetsverdiene faktisk endrer seg, ikke ved enhver re-render av funksjonene/propsene rundt
     useEffect(() => {
         if (skalFeltetVises) {
             if (nullstillVedAvhengighetEndring && feltState.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT) {
@@ -96,9 +97,9 @@ export const useFelt = <Verdi = string>({
         } else {
             validerOgSettFelt();
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...hentAvhengighetArray()]);
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: validerOgSettFelt lages på nytt for hver render og skal bevisst ikke være med i avhengighetslisten
     const onChange = useCallback(
         // tslint:disable-next-line:no-shadowed-variable
         (verdi: Verdi | ChangeEvent) => {
@@ -106,10 +107,11 @@ export const useFelt = <Verdi = string>({
 
             validerOgSettFelt(normalisertVerdi as Verdi);
         },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // biome-ignore lint/correctness/useExhaustiveDependencies: validerOgSettFelt lages på nytt for hver render og skal bevisst ikke være med i avhengighetslisten
         [validerOgSettFelt, settFeltState],
     );
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: skal kun oppdateres når validerOgSettFelt endres, ikke ved enhver render
     const hentNavInputProps = useCallback(
         (visFeilmelding: boolean): NavInputProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
@@ -118,10 +120,10 @@ export const useFelt = <Verdi = string>({
             onChange,
             value: feltState.verdi,
         }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [validerOgSettFelt, settFeltState],
     );
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: skal kun oppdateres når validerOgSettFelt endres, ikke ved enhver render
     const hentNavBaseSkjemaProps = useCallback(
         (visFeilmelding: boolean): NavBaseSkjemaProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
@@ -129,10 +131,10 @@ export const useFelt = <Verdi = string>({
             id,
             value: feltState.verdi,
         }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [validerOgSettFelt, settFeltState],
     );
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: validerOgSettFelt og nullstill lages på nytt for hver render og vil gi en uendelig oppdateringsløkke om de tas med i avhengighetslisten
     return useMemo(
         () => ({
             ...feltState,
@@ -144,7 +146,7 @@ export const useFelt = <Verdi = string>({
             onChange,
             validerOgSettFelt,
         }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // biome-ignore lint/correctness/useExhaustiveDependencies: validerOgSettFelt og nullstill lages på nytt for hver render og vil gi en uendelig oppdateringsløkke om de tas med i avhengighetslisten
         [feltState, hentNavInputProps, validerOgSettFelt, nullstill, onChange],
     );
 };

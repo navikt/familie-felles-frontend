@@ -305,12 +305,12 @@ export const TimelinePeriod = React.memo(({ period, onSelectPeriod, active, komp
     const [isMini, setIsMini] = useState(false);
 
     const className = classNames('periode', finnClassnames(period, active, isMini), period.status, period.className);
+    // biome-ignore lint/correctness/useExhaustiveDependencies: skal kjøre på nytt når ref.current settes for å måle bredden på elementet
     useLayoutEffect(() => {
         const currentWidth = ref.current?.offsetWidth;
         if (currentWidth && currentWidth < 30) {
             setIsMini(true);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ref.current]);
 
     return onSelectPeriod ? (
