@@ -61,7 +61,7 @@ const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFu
             scopes: ['https://graph.microsoft.com/.default'],
         };
 
-        if (req.session && req.session.user) {
+        if (req.session?.user) {
             return next();
         }
 

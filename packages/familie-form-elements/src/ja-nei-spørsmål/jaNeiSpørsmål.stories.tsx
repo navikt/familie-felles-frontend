@@ -27,7 +27,7 @@ interface Props {
 export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }) => {
     return (
         <>
-            <DivMedBredde bredde={bredde.toString(10) + '%'} {...args}>
+            <DivMedBredde bredde={`${bredde.toString(10)}%`} {...args}>
                 <JaNeiSpørsmål
                     legend={'Har du det bra?'}
                     labelTekstForRadios={{ ja: 'Ja', nei: 'Nei' }}
@@ -38,7 +38,7 @@ export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }
                     initiellVerdi={null}
                 />
             </DivMedBredde>
-            <DivMedBredde bredde={bredde.toString(10) + '%'}>
+            <DivMedBredde bredde={`${bredde.toString(10)}%`}>
                 <JaNeiSpørsmål
                     onChange={() => {
                         alert('feil');
@@ -50,7 +50,7 @@ export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }
                     initiellVerdi={null}
                 />
             </DivMedBredde>
-            <DivMedBredde bredde={bredde.toString(10) + '%'}>
+            <DivMedBredde bredde={`${bredde.toString(10)}%`}>
                 <JaNeiSpørsmål
                     labelTekstForRadios={{ ja: 'Ja', nei: 'Nei', vetikke: 'Vet ikke' }}
                     legend={'Har du det bra? Her kan du også svare vet ikke'}

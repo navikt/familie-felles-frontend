@@ -82,7 +82,7 @@ const createOnBehalfOfScope = (api: IApi) => {
 };
 
 export const getTokenSetsFromSession = (req: Request) => {
-    if (req && req.session && req.session.passport) {
+    if (req?.session?.passport) {
         return req.session.passport.user.tokenSets;
     }
 

@@ -139,7 +139,7 @@ const ActionMenuLenke: React.FC<{
     lenke: PopoverItem;
 }> = ({ lenke }) =>
     lenke.onSelect ? (
-        <ActionMenu.Item onSelect={e => lenke.onSelect && lenke.onSelect(e)}>
+        <ActionMenu.Item onSelect={e => lenke.onSelect?.(e)}>
             {utledIkon(lenke.type)}
             {lenke.name}
         </ActionMenu.Item>
@@ -158,13 +158,13 @@ const ActionMenuLenke: React.FC<{
 const utledIkon = (lenkeType?: LenkeType) => {
     switch (lenkeType) {
         case LenkeType.INTERN:
-            return <></>;
+            return null;
         case LenkeType.EKSTERN:
             return <EksternLinkIkon width={16} height={16} />;
         case LenkeType.ARBEIDSVERKTØY:
             return <WrenchIcon width={16} height={16} />;
         default:
-            return <></>;
+            return null;
     }
 };
 

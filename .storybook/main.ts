@@ -1,6 +1,6 @@
 import { createRequire } from 'node:module';
+import { dirname, join } from 'node:path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
-import { dirname, join } from 'path';
 
 const require = createRequire(import.meta.url);
 
@@ -25,7 +25,7 @@ const storybookConfig: StorybookConfig = {
     },
     docs: {},
     async webpackFinal(config) {
-        if (config.module && config.module.rules) {
+        if (config.module?.rules) {
             config.module.rules.push({
                 test: /\.(less)$/,
                 use: [
@@ -52,7 +52,7 @@ const storybookConfig: StorybookConfig = {
                 type: 'javascript/auto',
             });
         }
-        if (config.resolve && config.resolve.extensions) {
+        if (config.resolve?.extensions) {
             config.resolve.extensions.push('.less');
         }
         return config;

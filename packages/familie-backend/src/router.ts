@@ -9,7 +9,7 @@ const router = express.Router();
 export default (authClient: Client, prometheusTellere?: { [key: string]: Counter<string> }) => {
     // Authentication
     router.get('/login', (req: Request, res: Response, next: NextFunction) => {
-        if (prometheusTellere && prometheusTellere.login_route) {
+        if (prometheusTellere?.login_route) {
             prometheusTellere.login_route.inc();
         }
 

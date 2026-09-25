@@ -49,7 +49,7 @@ export const EnkeltSkjema = () => {
         },
         skalFeltetVises: (avhengigheter: Avhengigheter) => {
             const { land } = avhengigheter;
-            return land.verdi !== '' ? true : false;
+            return land.verdi !== '';
         },
         avhengigheter: { land },
     });

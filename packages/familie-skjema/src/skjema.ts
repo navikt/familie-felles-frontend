@@ -68,7 +68,9 @@ export const useSkjema = <Felter, SkjemaRespons>({
     };
 
     const nullstillSkjema = () => {
-        alleSynligeFelter().forEach((felt: unknown) => (felt as Felt<unknown>).nullstill());
+        alleSynligeFelter().forEach((felt: unknown) => {
+            (felt as Felt<unknown>).nullstill();
+        });
         settVisfeilmeldinger(false);
     };
 
@@ -86,7 +88,7 @@ export const useSkjema = <Felter, SkjemaRespons>({
                     nullstillSkjema();
                     onSuccess(response);
                 } else {
-                    onError && onError(response);
+                    onError?.(response);
                 }
             });
         }
