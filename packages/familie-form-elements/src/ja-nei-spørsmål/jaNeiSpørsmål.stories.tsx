@@ -1,7 +1,7 @@
-import React from 'react';
+import type React from 'react';
+import styled from 'styled-components';
 import { JaNeiSpørsmål } from './JaNeiSpørsmål';
 import { ESvar } from './typer';
-import styled from 'styled-components';
 // Det må faktisk være plugin fra workspace her så vidt jeg forstår
 // tslint:disable-next-line:no-implicit-dependencies
 

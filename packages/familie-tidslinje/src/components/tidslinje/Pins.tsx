@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Pin } from '../types.external';
-import dayjs, { Dayjs } from 'dayjs';
-import { position } from './calc';
-import styled from 'styled-components';
-import { Tooltip } from './Tooltip';
 import { BorderDanger } from '@navikt/ds-tokens/dist/tokens';
+import dayjs, { type Dayjs } from 'dayjs';
+import { useState } from 'react';
+import styled from 'styled-components';
+import type { Pin } from '../types.external';
+import { position } from './calc';
+import { Tooltip } from './Tooltip';
 
 const StyledTooltip = styled(Tooltip)`
     font-size: 0.8rem;
@@ -14,11 +14,7 @@ const StyledTooltip = styled(Tooltip)`
 const PinView = ({ render }: Partial<Pin>) => {
     const [showRender, setShowRender] = useState(false);
     return (
-        <PinStyle
-            className={'pin'}
-            onMouseOver={() => setShowRender(true)}
-            onMouseLeave={() => setShowRender(false)}
-        >
+        <PinStyle className={'pin'} onMouseOver={() => setShowRender(true)} onMouseLeave={() => setShowRender(false)}>
             {showRender && render && <StyledTooltip className={'tooltip'}>{render}</StyledTooltip>}
         </PinStyle>
     );

@@ -28,7 +28,7 @@
     },
     "javascript": {
         "formatter": {
-            "trailingCommas": "es5",
+            "trailingCommas": "all",
             "arrowParentheses": "asNeeded",
             "quoteStyle": "single"
         }

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 interface IKopierIkon {
     className?: string;
@@ -8,6 +8,13 @@ interface IKopierIkon {
 }
 
 export const KopierIkon: React.FC<IKopierIkon> = ({ className, heigth, onClick, width }) => {
+    const håndterTastetrykk = (event: React.KeyboardEvent<SVGSVGElement>) => {
+        if (onClick && (event.key === 'Enter' || event.key === ' ')) {
+            event.preventDefault();
+            onClick(event as unknown as React.MouseEvent<SVGSVGElement>);
+        }
+    };
+
     return (
         <svg
             aria-labelledby={'kopier'}
@@ -17,6 +24,9 @@ export const KopierIkon: React.FC<IKopierIkon> = ({ className, heigth, onClick, 
             viewBox="0 0 32 32"
             xmlns="http://www.w3.org/2000/svg"
             onClick={onClick}
+            onKeyDown={onClick ? håndterTastetrykk : undefined}
+            role={onClick ? 'button' : 'img'}
+            tabIndex={onClick ? 0 : undefined}
         >
             <title id={'kopier'}>Kopier</title>
             <g

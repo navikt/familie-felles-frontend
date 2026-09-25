@@ -19,7 +19,7 @@
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
     "traceResolution": false,
-    "jsx": "react",
+    "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true
   },
