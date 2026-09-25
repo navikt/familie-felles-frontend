@@ -71,8 +71,8 @@ export const Bruker = ({ navn, enhet, popoverItems, popoverDetail }: BrukerProps
                     {popoverDetail && popoverItems && <ActionMenu.Divider />}
                     {popoverItems && (
                         <ActionMenu.Group label={''}>
-                            {popoverItems.map((lenke, index) => {
-                                return <ActionMenuLenke key={index} lenke={lenke} />;
+                            {popoverItems.map(lenke => {
+                                return <ActionMenuLenke key={lenke.name} lenke={lenke} />;
                             })}
                         </ActionMenu.Group>
                     )}
@@ -88,8 +88,8 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => (
         {lenker && (
             <ActionMenu.Content>
                 <ActionMenu.Group label={''}>
-                    {lenker.map((lenke, index) => (
-                        <ActionMenuLenke lenke={lenke} key={index} />
+                    {lenker.map(lenke => (
+                        <ActionMenuLenke lenke={lenke} key={lenke.name} />
                     ))}
                 </ActionMenu.Group>
             </ActionMenu.Content>

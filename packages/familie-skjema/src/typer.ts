@@ -58,7 +58,7 @@ export enum Valideringsstatus {
     IKKE_VALIDERT = 'IKKE_VALIDERT',
 }
 
-// eslint-disable-next-line
+// biome-ignore lint/suspicious/noExplicitAny: avhengigheter kan inneholde vilkårlige verditype
 export type Avhengigheter = { [key: string]: any };
 export type ValiderFelt<Verdi> = (felt: FeltState<Verdi>, avhengigheter?: Avhengigheter) => FeltState<Verdi>;
 

@@ -32,7 +32,7 @@ const hentClient = (): Promise<Client> => {
 };
 
 const strategy = (client: Client) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: done-callback-signaturen kommer fra openid-client sitt API
     const verify = (tokenSet: TokenSet, done: (err: any, _: any) => void) => {
         logDebug(`verify. expired=${tokenSet.expired()}`);
         if (tokenSet.expired()) {

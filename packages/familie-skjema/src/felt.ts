@@ -72,13 +72,13 @@ export const useFelt = <Verdi = string>({
 
     const hentAvhengighetArray = () => {
         return avhengigheter
-            ? Object.values(avhengigheter).reduce((acc: [], avhengighet: unknown) => {
+            ? Object.values(avhengigheter).map((avhengighet: unknown) => {
                   if (avhengighet instanceof Object && 'valideringsstatus' in avhengighet) {
-                      return [...acc, (avhengighet as Felt<unknown>).verdi];
+                      return (avhengighet as Felt<unknown>).verdi;
                   } else {
-                      return [...acc, avhengighet];
+                      return avhengighet;
                   }
-              }, [])
+              })
             : [];
     };
 

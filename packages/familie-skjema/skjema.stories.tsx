@@ -122,9 +122,12 @@ export const EnkeltSkjema = () => {
                 <>
                     <br />
                     <ErrorSummary size={'small'} heading={'Du må rette følgende for å gå videre:'}>
-                        {hentFeilTilOppsummering().map((feilTilOppsummering, index) => {
+                        {hentFeilTilOppsummering().map(feilTilOppsummering => {
                             return (
-                                <ErrorSummary.Item key={index} href={`#${feilTilOppsummering.skjemaelementId}`}>
+                                <ErrorSummary.Item
+                                    key={feilTilOppsummering.skjemaelementId}
+                                    href={`#${feilTilOppsummering.skjemaelementId}`}
+                                >
                                     {feilTilOppsummering.feilmelding}
                                 </ErrorSummary.Item>
                             );

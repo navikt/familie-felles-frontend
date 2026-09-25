@@ -68,7 +68,7 @@ const Søkeresultat: React.FC<Props> = ({
                     return formaterResultat(søkeresultat, index === valgtSøkeresultat);
                 } else {
                     return (
-                        <ResultatListeElement key={index} $fokus={index === valgtSøkeresultat}>
+                        <ResultatListeElement key={søkeresultat.ident} $fokus={index === valgtSøkeresultat}>
                             <ResultatListeElementKnapp
                                 aria-label={søkeresultat.harTilgang ? søkeresultat.navn : 'Person har diskresjonskode'}
                                 aria-selected={index === valgtSøkeresultat}

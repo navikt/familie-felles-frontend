@@ -60,7 +60,7 @@ const storybookConfig: StorybookConfig = {
 };
 export default storybookConfig;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: getAbsolutePath fra Storybook-oppsettet returnerer dynamisk verdi
 function getAbsolutePath(value: string): any {
     return dirname(require.resolve(join(value, 'package.json')));
 }

@@ -61,9 +61,9 @@ interface PinsProps {
 
 export const Pins = ({ pins, start, slutt, direction }: PinsProps) => (
     <PinsStyle className={'pins'}>
-        {pins.map(({ date, render }, i) => (
+        {pins.map(({ date, render }) => (
             <PinContainer
-                key={i}
+                key={`${date}`}
                 className={'container'}
                 style={{ [direction]: `${position(dayjs(date), start, slutt)}%` }}
             >

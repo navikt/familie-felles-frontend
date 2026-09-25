@@ -3,7 +3,7 @@ import type { ChangeEvent } from 'react';
 
 const hashid = new Hashids();
 
-// eslint-disable-next-line
+// biome-ignore lint/suspicious/noExplicitAny: type guard må kunne ta imot en vilkårlig verdi
 export function isChangeEvent(value: any): value is ChangeEvent<HTMLInputElement> {
     return (
         typeof value === 'object' &&

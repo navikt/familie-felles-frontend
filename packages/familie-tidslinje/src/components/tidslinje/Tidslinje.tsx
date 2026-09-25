@@ -140,6 +140,7 @@ const Timeline = React.memo(
                             <EmptyTimelineRow
                                 kompakt={kompakt}
                                 className={classNames(i === 0 && 'førsterad')}
+                                // biome-ignore lint/suspicious/noArrayIndexKey: rows er en fast liste med tomme plassholderrader uten egen identitet
                                 key={i}
                                 active={i === activeRow}
                             />

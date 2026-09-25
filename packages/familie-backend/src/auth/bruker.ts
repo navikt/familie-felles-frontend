@@ -68,7 +68,7 @@ const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFu
         getOnBehalfOfAccessToken(authClient, req, api)
             .then(accessToken => hentBrukerData(accessToken, req))
             .then(res => res.json())
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            // biome-ignore lint/suspicious/noExplicitAny: responsen fra Microsoft Graph er ikke typet
             .then((data: any) => {
                 if (!req.session) {
                     throw new Error('Mangler sesjon på kall');
