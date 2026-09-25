@@ -273,7 +273,7 @@ importers:
   packages/familie-skjema:
     dependencies:
       '@navikt/familie-http':
-        specifier: ^8.0.26
+        specifier: ^8.0.27
         version: link:../familie-http
       '@navikt/familie-typer':
         specifier: ^8.0.7
