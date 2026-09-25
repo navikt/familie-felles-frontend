@@ -1,5 +1,8 @@
+import { createRequire } from 'node:module';
 import { dirname, join } from 'path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
+
+const require = createRequire(import.meta.url);
 
 const storybookConfig: StorybookConfig = {
     stories: [
