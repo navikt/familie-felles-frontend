@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { Brukerinfo, Header, ikoner, ISøkeresultat, LenkeType, PopoverItem, Søk } from './src';
+import { BodyShort, Detail } from '@navikt/ds-react';
 import {
     Adressebeskyttelsegradering,
     byggDataRessurs,
     byggFunksjonellFeilRessurs,
     byggHenterRessurs,
     byggTomRessurs,
-    Ressurs,
+    type Ressurs,
 } from '@navikt/familie-typer';
-import { BodyShort, Detail } from '@navikt/ds-react';
 import { idnr } from '@navikt/fnrvalidator';
+import type React from 'react';
+import { useState } from 'react';
+import { type Brukerinfo, Header, type ISøkeresultat, ikoner, LenkeType, type PopoverItem, Søk } from './src';
 
 export default {
     component: Header,
@@ -147,9 +148,7 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
                         ),
                     );
                 } else {
-                    settSøkeresultat(
-                        byggFunksjonellFeilRessurs('Ugyldig fødsels- eller d-nummer (11 siffer)'),
-                    );
+                    settSøkeresultat(byggFunksjonellFeilRessurs('Ugyldig fødsels- eller d-nummer (11 siffer)'));
                 }
             }, 1000);
         }
@@ -186,9 +185,7 @@ export const HeaderOgSøk: React.FC = ({ ...args }) => {
             <div>
                 <BodyShort>Valgt resultat: </BodyShort>
                 <BodyShort>
-                    {valgtResultat
-                        ? `${valgtResultat.ident} - ${valgtResultat.navn}`
-                        : 'Ingen valgt'}
+                    {valgtResultat ? `${valgtResultat.ident} - ${valgtResultat.navn}` : 'Ingen valgt'}
                 </BodyShort>
             </div>
         </div>

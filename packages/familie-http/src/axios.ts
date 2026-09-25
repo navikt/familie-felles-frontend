@@ -1,6 +1,5 @@
-import axios, { AxiosError } from 'axios';
-
-import { Ressurs, RessursStatus, ApiRessurs } from '@navikt/familie-typer';
+import { type ApiRessurs, type Ressurs, RessursStatus } from '@navikt/familie-typer';
+import axios, { type AxiosError } from 'axios';
 
 axios.defaults.baseURL = window.location.origin;
 export const preferredAxios = axios;
@@ -51,8 +50,7 @@ export const håndterApiRespons = <T>(apiRespons: ApiRespons<T>): Ressurs<T> => 
         }
         case RessursStatus.FUNKSJONELL_FEIL:
             typetRessurs = {
-                frontendFeilmelding:
-                    ressurs.frontendFeilmelding ?? 'En funksjonell feil har oppstått!',
+                frontendFeilmelding: ressurs.frontendFeilmelding ?? 'En funksjonell feil har oppstått!',
                 status: RessursStatus.FUNKSJONELL_FEIL,
             };
             break;

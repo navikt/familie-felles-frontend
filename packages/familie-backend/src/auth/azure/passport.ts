@@ -1,22 +1,20 @@
-import { Client, UserinfoResponse } from 'openid-client';
 import { logInfo } from '@navikt/familie-logging';
+import type { Client, UserinfoResponse } from 'openid-client';
 import azure from './azure';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: passport-instansen er ikke typet i passport-biblioteket
 export default async (passport: any): Promise<Client> => {
     logInfo('Konfigurerer passport');
     const azureAuthClient: Client = await azure.hentClient();
     const azureOidcStrategy = azure.strategy(azureAuthClient);
 
     passport.serializeUser(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) =>
-            done(undefined, user),
+        // biome-ignore lint/suspicious/noExplicitAny: done-callback-signaturen kommer fra passport sitt API
+        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) => done(undefined, user),
     );
     passport.deserializeUser(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) =>
-            done(undefined, user),
+        // biome-ignore lint/suspicious/noExplicitAny: done-callback-signaturen kommer fra passport sitt API
+        (user: UserinfoResponse, done: (err: any, user?: UserinfoResponse) => void) => done(undefined, user),
     );
     passport.use('azureOidc', azureOidcStrategy);
 

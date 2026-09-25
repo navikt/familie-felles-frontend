@@ -1,15 +1,15 @@
-import React, { ReactNode, useCallback } from 'react';
+import { Space12, Space16 } from '@navikt/ds-tokens/dist/tokens';
 import classNames from 'classnames';
-import { Dayjs } from 'dayjs';
+import type { Dayjs } from 'dayjs';
+import React, { type ReactNode, useCallback } from 'react';
 import styled from 'styled-components';
+import type { EnkelPeriode, Etikett, Periode, Pin } from '../types.external';
+import type { AxisLabel, InternalSimpleTimeline, PositionedPeriod } from '../types.internal';
 import { AktivtUtsnittBakgrunn, AktivtUtsnittBorder } from './AktivtUtsnitt';
 import { AxisLabels } from './AxisLabels';
-import { EmptyTimelineRow, TimelineRow } from './TimelineRow';
-import { EnkelPeriode, Etikett, Periode, Pin } from '../types.external';
-import { AxisLabel, InternalSimpleTimeline, PositionedPeriod } from '../types.internal';
-import { useSenesteDato, useTidligsteDato, useTidslinjerader } from './useTidslinjerader';
 import { Pins } from './Pins';
-import { Space12, Space16 } from '@navikt/ds-tokens/dist/tokens';
+import { EmptyTimelineRow, TimelineRow } from './TimelineRow';
+import { useSenesteDato, useTidligsteDato, useTidslinjerader } from './useTidslinjerader';
 
 export interface TidslinjeProps {
     /**
@@ -112,21 +112,19 @@ const Timeline = React.memo(
         axisLabelRenderer,
         kompakt = false,
     }: TimelineProps) => {
-        const onSelectPeriodeWrapper =
-            onSelectPeriod &&
-            // eslint-disable-next-line react-hooks/rules-of-hooks
-            useCallback(
-                (periode: PositionedPeriod) => {
-                    onSelectPeriod?.({
-                        id: periode.id,
-                        fom: periode.start.toDate(),
-                        tom: periode.endInclusive.toDate(),
-                        disabled: periode.disabled,
-                        status: periode.status,
-                    });
-                },
-                [onSelectPeriod],
-            );
+        const velgPeriode = useCallback(
+            (periode: PositionedPeriod) => {
+                onSelectPeriod?.({
+                    id: periode.id,
+                    fom: periode.start.toDate(),
+                    tom: periode.endInclusive.toDate(),
+                    disabled: periode.disabled,
+                    status: periode.status,
+                });
+            },
+            [onSelectPeriod],
+        );
+        const onSelectPeriodeWrapper = onSelectPeriod && velgPeriode;
 
         return (
             <TidslinjeStyle className={classNames('tidslinje')}>
@@ -142,19 +140,13 @@ const Timeline = React.memo(
                             <EmptyTimelineRow
                                 kompakt={kompakt}
                                 className={classNames(i === 0 && 'førsterad')}
+                                // biome-ignore lint/suspicious/noArrayIndexKey: rows er en fast liste med tomme plassholderrader uten egen identitet
                                 key={i}
                                 active={i === activeRow}
                             />
                         ))}
                     </EmptyRowsStyle>
-                    {pins && (
-                        <Pins
-                            pins={pins}
-                            start={start}
-                            slutt={endInclusive}
-                            direction={direction}
-                        />
-                    )}
+                    {pins && <Pins pins={pins} start={start} slutt={endInclusive} direction={direction} />}
                     {aktivtUtsnitt && (
                         <AktivtUtsnittBakgrunn
                             tidslinjestart={start}

@@ -1,14 +1,14 @@
+import { logDebug, logInfo } from '@navikt/familie-logging';
 import {
-    Client,
-    ClientMetadata,
+    type Client,
+    type ClientMetadata,
     custom,
     Issuer,
     Strategy,
-    StrategyOptions,
-    TokenSet,
+    type StrategyOptions,
+    type TokenSet,
 } from 'openid-client';
 import { appConfig } from '../../config';
-import { logInfo, logDebug } from '@navikt/familie-logging';
 import httpProxy from '../proxy/http-proxy';
 import { appendDefaultScope, tokenSetSelfId } from '../tokenUtils';
 
@@ -32,7 +32,7 @@ const hentClient = (): Promise<Client> => {
 };
 
 const strategy = (client: Client) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: done-callback-signaturen kommer fra openid-client sitt API
     const verify = (tokenSet: TokenSet, done: (err: any, _: any) => void) => {
         logDebug(`verify. expired=${tokenSet.expired()}`);
         if (tokenSet.expired()) {

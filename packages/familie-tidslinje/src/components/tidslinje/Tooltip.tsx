@@ -1,13 +1,7 @@
-import React, { ReactNode } from 'react';
+import { BorderNeutral, BorderNeutralSubtle, Space8, Space16, TextNeutralSubtle } from '@navikt/ds-tokens/dist/tokens';
 import classNames from 'classnames';
+import type { ReactNode } from 'react';
 import styled from 'styled-components';
-import {
-    BorderNeutral,
-    BorderNeutralSubtle,
-    Space16,
-    Space8,
-    TextNeutralSubtle,
-} from '@navikt/ds-tokens/dist/tokens';
 
 const TooltipContainer = styled.div`
     position: absolute;

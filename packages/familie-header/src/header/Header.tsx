@@ -1,7 +1,7 @@
-import React from 'react';
+import type React from 'react';
 import '@navikt/ds-css';
-import { ActionMenu, InternalHeader as NavHeader } from '@navikt/ds-react';
 import { MenuGridIcon, WrenchIcon } from '@navikt/aksel-icons';
+import { ActionMenu, InternalHeader as NavHeader } from '@navikt/ds-react';
 import { EksternLinkIkon } from '@navikt/familie-ikoner';
 import './header.css';
 
@@ -71,8 +71,8 @@ export const Bruker = ({ navn, enhet, popoverItems, popoverDetail }: BrukerProps
                     {popoverDetail && popoverItems && <ActionMenu.Divider />}
                     {popoverItems && (
                         <ActionMenu.Group label={''}>
-                            {popoverItems.map((lenke, index) => {
-                                return <ActionMenuLenke key={index} lenke={lenke} />;
+                            {popoverItems.map(lenke => {
+                                return <ActionMenuLenke key={lenke.name} lenke={lenke} />;
                             })}
                         </ActionMenu.Group>
                     )}
@@ -88,8 +88,8 @@ export const LenkePopover = ({ lenker }: LenkePopoverProps) => (
         {lenker && (
             <ActionMenu.Content>
                 <ActionMenu.Group label={''}>
-                    {lenker.map((lenke, index) => (
-                        <ActionMenuLenke lenke={lenke} key={index} />
+                    {lenker.map(lenke => (
+                        <ActionMenuLenke lenke={lenke} key={lenke.name} />
                     ))}
                 </ActionMenu.Group>
             </ActionMenu.Content>
@@ -139,7 +139,7 @@ const ActionMenuLenke: React.FC<{
     lenke: PopoverItem;
 }> = ({ lenke }) =>
     lenke.onSelect ? (
-        <ActionMenu.Item onSelect={e => lenke.onSelect && lenke.onSelect(e)}>
+        <ActionMenu.Item onSelect={e => lenke.onSelect?.(e)}>
             {utledIkon(lenke.type)}
             {lenke.name}
         </ActionMenu.Item>
@@ -158,13 +158,13 @@ const ActionMenuLenke: React.FC<{
 const utledIkon = (lenkeType?: LenkeType) => {
     switch (lenkeType) {
         case LenkeType.INTERN:
-            return <></>;
+            return null;
         case LenkeType.EKSTERN:
             return <EksternLinkIkon width={16} height={16} />;
         case LenkeType.ARBEIDSVERKTØY:
             return <WrenchIcon width={16} height={16} />;
         default:
-            return <></>;
+            return null;
     }
 };
 
@@ -181,9 +181,7 @@ export const Header = ({
 }: HeaderProps) => {
     const skalViseLabelOgIkon = (type: LenkeType | undefined) =>
         type === LenkeType.EKSTERN || type === LenkeType.ARBEIDSVERKTØY;
-    const skalViseLabelsOgIkonPåLenker = eksterneLenker.some(lenke =>
-        skalViseLabelOgIkon(lenke.type),
-    );
+    const skalViseLabelsOgIkonPåLenker = eksterneLenker.some(lenke => skalViseLabelOgIkon(lenke.type));
 
     return (
         <NavHeader data-theme={''} className={erDev ? 'devHeader' : undefined}>

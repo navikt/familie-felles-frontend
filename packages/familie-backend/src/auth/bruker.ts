@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from 'express';
-import { Client, TokenSet } from 'openid-client';
-import fetch from 'node-fetch';
-import { envVar, logRequest } from '../utils';
 import { LOG_LEVEL } from '@navikt/familie-logging';
+import type { NextFunction, Request, Response } from 'express';
+import fetch from 'node-fetch';
+import { type Client, TokenSet } from 'openid-client';
+import { envVar, logRequest } from '../utils';
 import { getOnBehalfOfAccessToken, getTokenSetsFromSession, tokenSetSelfId } from './tokenUtils';
 
 // Hent brukerprofil fra sesjon
@@ -22,11 +22,7 @@ const håndterGenerellFeil = (next: NextFunction, req: Request, err: Error) => {
 };
 
 const håndterBrukerdataFeil = (req: Request, err: Error) => {
-    logRequest(
-        req,
-        `Feilet mot ms graph: ${err.message}. Kan ikke fortsette uten brukerdata.`,
-        LOG_LEVEL.ERROR,
-    );
+    logRequest(req, `Feilet mot ms graph: ${err.message}. Kan ikke fortsette uten brukerdata.`, LOG_LEVEL.ERROR);
     throw new Error('Kunne ikke hente dine brukeropplysninger. Vennligst logg ut og inn på nytt');
 };
 
@@ -65,14 +61,14 @@ const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFu
             scopes: ['https://graph.microsoft.com/.default'],
         };
 
-        if (req.session && req.session.user) {
+        if (req.session?.user) {
             return next();
         }
 
         getOnBehalfOfAccessToken(authClient, req, api)
             .then(accessToken => hentBrukerData(accessToken, req))
             .then(res => res.json())
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            // biome-ignore lint/suspicious/noExplicitAny: responsen fra Microsoft Graph er ikke typet
             .then((data: any) => {
                 if (!req.session) {
                     throw new Error('Mangler sesjon på kall');
@@ -91,11 +87,7 @@ const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFu
 
                 req.session.save((error: Error) => {
                     if (error) {
-                        logRequest(
-                            req,
-                            `Feilet ved lagring av bruker på session: ${error}`,
-                            LOG_LEVEL.ERROR,
-                        );
+                        logRequest(req, `Feilet ved lagring av bruker på session: ${error}`, LOG_LEVEL.ERROR);
                     } else {
                         return next();
                     }

@@ -1,10 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import classNames from 'classnames';
-import { Dayjs } from 'dayjs';
-import { EnkelPeriode } from '../types.external';
-import { usePositionAndSize } from './usePositionAndSize';
 import { BgAccentSoft, BgAccentStrong } from '@navikt/ds-tokens/dist/tokens';
+import classNames from 'classnames';
+import type { Dayjs } from 'dayjs';
+import styled from 'styled-components';
+import type { EnkelPeriode } from '../types.external';
+import { usePositionAndSize } from './usePositionAndSize';
 
 const AktivtUtsnittContainer = styled.div`
     position: absolute;
@@ -74,12 +73,7 @@ interface IntervallProps {
     direction: 'left' | 'right';
 }
 
-export const AktivtUtsnittBorder = ({
-    aktivtUtsnitt,
-    tidslinjestart,
-    tidslinjeslutt,
-    direction,
-}: IntervallProps) => {
+export const AktivtUtsnittBorder = ({ aktivtUtsnitt, tidslinjestart, tidslinjeslutt, direction }: IntervallProps) => {
     const style = usePositionAndSize({
         periode: aktivtUtsnitt,
         tidslinjestart,
@@ -93,12 +87,7 @@ export const AktivtUtsnittBorder = ({
     );
 };
 
-export const AktivtUtsnittBakgrunn = ({
-    aktivtUtsnitt,
-    tidslinjestart,
-    tidslinjeslutt,
-    direction,
-}: IntervallProps) => {
+export const AktivtUtsnittBakgrunn = ({ aktivtUtsnitt, tidslinjestart, tidslinjeslutt, direction }: IntervallProps) => {
     const style = usePositionAndSize({
         periode: aktivtUtsnitt,
         tidslinjestart,

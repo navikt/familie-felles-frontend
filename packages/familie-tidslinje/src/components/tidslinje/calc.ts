@@ -1,7 +1,7 @@
-import { Percentage, Period } from '../types.internal';
-import dayjs, { Dayjs } from 'dayjs';
-import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+import dayjs, { type Dayjs } from 'dayjs';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+import type { Percentage, Period } from '../types.internal';
 
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
@@ -25,14 +25,9 @@ export const horizontalPositionAndWidth = (
     };
 };
 
-export const isOutOfBounds = (position: Percentage, width: number): boolean =>
-    position >= 100 || position + width < 0;
+export const isOutOfBounds = (position: Percentage, width: number): boolean => position >= 100 || position + width < 0;
 
-export const breddeMellomDatoer = (
-    start: Dayjs,
-    slutt: Dayjs,
-    totaltAntallDatoer: number,
-): Percentage => {
+export const breddeMellomDatoer = (start: Dayjs, slutt: Dayjs, totaltAntallDatoer: number): Percentage => {
     const dagerMellomDatoer = slutt.diff(start, 'minute') / 60 / 24;
     return (dagerMellomDatoer / totaltAntallDatoer) * 100;
 };

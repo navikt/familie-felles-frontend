@@ -1,5 +1,5 @@
-import { Request } from 'express';
 import { LOG_LEVEL, logDebug, logError, logInfo, logWarn } from '@navikt/familie-logging';
+import type { Request } from 'express';
 
 let erForbindelsenTilRedisTilgjengelig = true;
 
@@ -26,9 +26,7 @@ export const envVar = (navn: string, påkrevd = true, defaultValue?: string): st
 
 const prefix = (req: Request) => {
     return `${
-        req.session && req.session.user
-            ? `${req.session.user.displayName} -`
-            : 'ugyldig sesjon eller mangler brukers data -'
+        req.session?.user ? `${req.session.user.displayName} -` : 'ugyldig sesjon eller mangler brukers data -'
     } ${req.method} - ${req.originalUrl}`;
 };
 

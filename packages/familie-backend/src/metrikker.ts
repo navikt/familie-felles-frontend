@@ -1,10 +1,7 @@
-import { Express, Request } from 'express';
-import client, { Counter } from 'prom-client';
+import type { Express, Request } from 'express';
+import client, { type Counter } from 'prom-client';
 
-export const konfigurerMetrikker = (
-    app: Express,
-    prometheusTellere?: { [key: string]: Counter<string> },
-) => {
+export const konfigurerMetrikker = (app: Express, prometheusTellere?: { [key: string]: Counter<string> }) => {
     const collectDefaultMetrics = client.collectDefaultMetrics;
     const Registry = client.Registry;
     const register = new Registry();

@@ -29,14 +29,14 @@ export interface User {
     enhet: string;
     identifier: string;
     navIdent: string;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // biome-ignore lint/suspicious/noExplicitAny: gruppeclaimen fra Azure AD har ikke en fast form
     groups: any;
 }
 
 declare module 'express-session' {
     interface Session {
         user: User;
-        // eslint-disable-next-line
+        // biome-ignore lint/suspicious/noExplicitAny: passport-objektet på sesjonen er ikke typet i passport-biblioteket
         passport: any;
         redirectUrl: string;
     }

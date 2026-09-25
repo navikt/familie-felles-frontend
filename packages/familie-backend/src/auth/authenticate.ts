@@ -1,10 +1,10 @@
-import { NextFunction, Request, Response } from 'express';
+import { LOG_LEVEL } from '@navikt/familie-logging';
+import type { NextFunction, Request, Response } from 'express';
+import type { Client, TokenSet } from 'openid-client';
 import passport from 'passport';
 import { appConfig } from '../config';
-import { LOG_LEVEL } from '@navikt/familie-logging';
-import { getTokenSetsFromSession, tokenSetSelfId, hasValidAccessToken } from './tokenUtils';
-import { Client, TokenSet } from 'openid-client';
 import { logRequest } from '../utils';
+import { getTokenSetsFromSession, hasValidAccessToken, tokenSetSelfId } from './tokenUtils';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);
@@ -71,11 +71,7 @@ export const ensureAuthenticated = (authClient: Client, sendUnauthorized: boolea
                         req.session.passport.user.tokenSets[tokenSetSelfId] = tokenSet;
                     })
                     .catch((error: Error) => {
-                        logRequest(
-                            req,
-                            `Feilet ved refresh av tokenset: ${error.message}`,
-                            LOG_LEVEL.WARNING,
-                        );
+                        logRequest(req, `Feilet ved refresh av tokenset: ${error.message}`, LOG_LEVEL.WARNING);
                         const pathname = req.originalUrl;
                         if (sendUnauthorized) {
                             res.status(401).send('Unauthorized');
