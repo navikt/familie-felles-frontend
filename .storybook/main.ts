@@ -1,14 +1,11 @@
 import { createRequire } from 'node:module';
-import { dirname, join } from 'path';
+import { dirname, join } from 'node:path';
 import type { StorybookConfig } from '@storybook/react-webpack5';
 
 const require = createRequire(import.meta.url);
 
 const storybookConfig: StorybookConfig = {
-    stories: [
-        '../packages/familie-*/src/**/*.@(mdx|stories.@(tsx))',
-        '../packages/familie-*/*.@(mdx|stories.@(tsx))',
-    ],
+    stories: ['../packages/familie-*/src/**/*.@(mdx|stories.@(tsx))', '../packages/familie-*/*.@(mdx|stories.@(tsx))'],
     addons: [
         getAbsolutePath('@storybook/addon-a11y'),
         getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
@@ -28,7 +25,7 @@ const storybookConfig: StorybookConfig = {
     },
     docs: {},
     async webpackFinal(config) {
-        if (config.module && config.module.rules) {
+        if (config.module?.rules) {
             config.module.rules.push({
                 test: /\.(less)$/,
                 use: [
@@ -55,7 +52,7 @@ const storybookConfig: StorybookConfig = {
                 type: 'javascript/auto',
             });
         }
-        if (config.resolve && config.resolve.extensions) {
+        if (config.resolve?.extensions) {
             config.resolve.extensions.push('.less');
         }
         return config;
@@ -63,7 +60,7 @@ const storybookConfig: StorybookConfig = {
 };
 export default storybookConfig;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint/suspicious/noExplicitAny: getAbsolutePath fra Storybook-oppsettet returnerer dynamisk verdi
 function getAbsolutePath(value: string): any {
     return dirname(require.resolve(join(value, 'package.json')));
 }

@@ -1,12 +1,5 @@
-import React from 'react';
-
-import {
-    MannIkon,
-    KvinneIkon,
-    NøytralPersonIkon,
-    JenteIkon,
-    GuttIkon,
-} from '@navikt/familie-ikoner';
+import { GuttIkon, JenteIkon, KvinneIkon, MannIkon, NøytralPersonIkon } from '@navikt/familie-ikoner';
+import type React from 'react';
 
 type IkonerMap = Record<string, React.ReactNode>;
 

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useFelt, useSkjema, ok, FeltState, feil, Avhengigheter } from './src';
-import { RessursStatus } from '@navikt/familie-typer';
 import { Button, ErrorSummary, Select, TextField } from '@navikt/ds-react';
+import { RessursStatus } from '@navikt/familie-typer';
+import { useState } from 'react';
+import { type Avhengigheter, type FeltState, feil, ok, useFelt, useSkjema } from './src';
 
 export default {
     parameters: {
@@ -29,8 +29,7 @@ export const EnkeltSkjema = () => {
     });
     const land = useFelt<string>({
         verdi: '',
-        valideringsfunksjon: (felt: FeltState<string>) =>
-            felt.verdi ? ok(felt) : feil(felt, 'Du må sette land'),
+        valideringsfunksjon: (felt: FeltState<string>) => (felt.verdi ? ok(felt) : feil(felt, 'Du må sette land')),
     });
     const by = useFelt<string>({
         verdi: '',
@@ -50,7 +49,7 @@ export const EnkeltSkjema = () => {
         },
         skalFeltetVises: (avhengigheter: Avhengigheter) => {
             const { land } = avhengigheter;
-            return land.verdi !== '' ? true : false;
+            return land.verdi !== '';
         },
         avhengigheter: { land },
     });
@@ -58,9 +57,7 @@ export const EnkeltSkjema = () => {
     const skjemaType = useFelt<string | undefined>({
         verdi: undefined,
         valideringsfunksjon: (felt: FeltState<string | undefined>) =>
-            felt.verdi && felt.verdi in SkjemaTyper
-                ? ok(felt)
-                : feil(felt, 'Du må velge blant disse'),
+            felt.verdi && felt.verdi in SkjemaTyper ? ok(felt) : feil(felt, 'Du må velge blant disse'),
     });
 
     const { kanSendeSkjema, nullstillSkjema, hentFeilTilOppsummering, skjema } = useSkjema<
@@ -109,12 +106,7 @@ export const EnkeltSkjema = () => {
                 label={'Hva søker du om?'}
                 style={{ width: 'max-content' }}
             >
-                <option
-                    value={undefined}
-                    label={'Velg søknadstype'}
-                    disabled={true}
-                    selected={true}
-                />
+                <option value={undefined} label={'Velg søknadstype'} disabled={true} selected={true} />
                 {Object.entries(SkjemaTyper).map(entry => {
                     const [verdi, label] = entry;
                     return (
@@ -130,10 +122,10 @@ export const EnkeltSkjema = () => {
                 <>
                     <br />
                     <ErrorSummary size={'small'} heading={'Du må rette følgende for å gå videre:'}>
-                        {hentFeilTilOppsummering().map((feilTilOppsummering, index) => {
+                        {hentFeilTilOppsummering().map(feilTilOppsummering => {
                             return (
                                 <ErrorSummary.Item
-                                    key={index}
+                                    key={feilTilOppsummering.skjemaelementId}
                                     href={`#${feilTilOppsummering.skjemaelementId}`}
                                 >
                                     {feilTilOppsummering.feilmelding}

@@ -1,75 +1,69 @@
 {
-  "name": "familie-felles-frontend",
-  "private": true,
-  "repository": "https://github.com/navikt/familie-felles-frontend.git",
-  "license": "MIT",
-  "scripts": {
-    "ct": "cz",
-    "build": "lerna run build",
-    "storybook": "storybook dev -p 8000",
-    "build-storybook": "storybook build",
-    "deploy-storybook": "storybook-to-ghpages",
-    "lint": "eslint './packages/**/*.{ts,tsx}' --ignore-pattern '**/dist/*'",
-    "lint:fix": "eslint './packages/**/*.{ts,tsx}' --ignore-pattern '**/dist/*' --fix",
-    "version:ci": "lerna version --yes",
-    "publish:ci": "lerna publish from-git --yes",
-    "publish:canary": "lerna publish --canary",
-    "publish:canary:ci": "lerna publish --canary --yes",
-    "prepare": "husky"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
-  },
-  "lint-staged": {
-    "./packages/**/*.{js,ts,tsx}": [
-      "eslint --fix"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
-  "devDependencies": {
-    "@eslint/js": "9.39.0",
-    "@babel/core": "8.0.6",
-    "@babel/preset-env": "8.0.6",
-    "@babel/preset-react": "8.0.1",
-    "@babel/preset-typescript": "8.0.1",
-    "@commitlint/cli": "21.2.3",
-    "@commitlint/config-conventional": "21.2.3",
-    "@storybook/addon-a11y": "10.6.0",
-    "@storybook/react-webpack5": "10.6.0",
-    "@storybook/addon-webpack5-compiler-swc": "4.0.1",
-    "@storybook/storybook-deployer": "2.8.16",
-    "classnames": "2.5.1",
-    "commitizen": "4.3.1",
-    "copyfiles": "2.4.1",
-    "css-loader": "7.1.2",
-    "eslint": "9.39.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-prettier": "5.5.3",
-    "eslint-plugin-react": "7.37.5",
-    "eslint-plugin-react-hooks": "7.1.1",
-    "husky": "9.1.7",
-    "lerna": "10.0.1",
-    "less": "4.9.1",
-    "less-loader": "13.0.0",
-    "lint-staged": "17.5.1",
-    "prettier": "3.9.4",
-    "pretty-quick": "4.2.2",
-    "react": "19.3.0",
-    "react-dom": "19.3.0",
-    "storybook": "10.6.0",
-    "style-loader": "4.0.0",
-    "typescript": "5.9.2",
-    "typescript-eslint": "8.70.0",
-    "webpack": "5.111.1",
-    "eslint-plugin-storybook": "10.6.0",
-    "@storybook/addon-docs": "10.6.0"
-  },
-  "packageManager": "pnpm@11.15.0"
+    "name": "familie-felles-frontend",
+    "private": true,
+    "repository": "https://github.com/navikt/familie-felles-frontend.git",
+    "license": "MIT",
+    "scripts": {
+        "ct": "cz",
+        "build": "lerna run build",
+        "storybook": "storybook dev -p 8000",
+        "build-storybook": "storybook build",
+        "deploy-storybook": "storybook-to-ghpages",
+        "lint": "biome lint .",
+        "lint:fix": "biome lint --write .",
+        "format": "biome format .",
+        "format:fix": "biome format --write .",
+        "check": "biome check .",
+        "check:fix": "biome check --write .",
+        "version:ci": "lerna version --yes",
+        "publish:ci": "lerna publish from-git --yes",
+        "publish:canary": "lerna publish --canary",
+        "publish:canary:ci": "lerna publish --canary --yes",
+        "prepare": "husky"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "./packages/**/*.{js,ts,tsx}": [
+            "biome check --write"
+        ]
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.5.8",
+        "@babel/core": "8.0.6",
+        "@babel/preset-env": "8.0.6",
+        "@babel/preset-react": "8.0.1",
+        "@babel/preset-typescript": "8.0.1",
+        "@commitlint/cli": "21.2.3",
+        "@commitlint/config-conventional": "21.2.3",
+        "@storybook/addon-a11y": "10.6.0",
+        "@storybook/react-webpack5": "10.6.0",
+        "@storybook/addon-webpack5-compiler-swc": "4.0.1",
+        "@storybook/storybook-deployer": "2.8.16",
+        "classnames": "2.5.1",
+        "commitizen": "4.3.1",
+        "copyfiles": "2.4.1",
+        "css-loader": "7.1.2",
+        "husky": "9.1.7",
+        "lerna": "10.0.1",
+        "less": "4.9.1",
+        "less-loader": "13.0.0",
+        "lint-staged": "17.5.1",
+        "react": "19.3.0",
+        "react-dom": "19.3.0",
+        "storybook": "10.6.0",
+        "style-loader": "4.0.0",
+        "typescript": "5.9.2",
+        "webpack": "5.111.1",
+        "@storybook/addon-docs": "10.6.0"
+    },
+    "packageManager": "pnpm@11.15.0"
 }

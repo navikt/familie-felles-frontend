@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import winston from 'winston';
 import { envVar } from './utils';
 
@@ -11,8 +11,7 @@ export enum LOG_LEVEL {
 
 export type Meta = Record<string, unknown>;
 
-const secureLogPath = () =>
-    fs.existsSync('/secure-logs/') ? '/secure-logs/secure.log' : './secure.log';
+const secureLogPath = () => (fs.existsSync('/secure-logs/') ? '/secure-logs/secure.log' : './secure.log');
 
 export const stdoutLogger = winston.createLogger({
     format: winston.format.json(),

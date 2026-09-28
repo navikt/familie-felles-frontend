@@ -1,8 +1,4 @@
-import React, { ReactNode } from 'react';
-
-import ReactSelect, { GroupBase, Props, StylesConfig } from 'react-select';
-import Creatable from 'react-select/creatable';
-import styled from 'styled-components';
+import { ErrorMessage, Label, omit } from '@navikt/ds-react';
 import {
     BgAccentModerate,
     BgAccentStrong,
@@ -13,7 +9,11 @@ import {
     TextNeutralContrast,
     TextNeutralSubtle,
 } from '@navikt/ds-tokens/dist/tokens';
-import { ErrorMessage, Label, omit } from '@navikt/ds-react';
+import type React from 'react';
+import type { ReactNode } from 'react';
+import ReactSelect, { type GroupBase, type Props, type StylesConfig } from 'react-select';
+import Creatable from 'react-select/creatable';
+import styled from 'styled-components';
 
 export interface IProps {
     erLesevisning?: boolean;
@@ -34,16 +34,9 @@ const navSelectStyles = (
 ): StylesConfig<ISelectOption, boolean, GroupBase<ISelectOption>> => ({
     control: (provided, state) => ({
         ...provided,
-        border:
-            feil && !state.isFocused
-                ? `1px solid ${BorderDanger}`
-                : `1px solid ${BorderNeutralStrong}`,
+        border: feil && !state.isFocused ? `1px solid ${BorderDanger}` : `1px solid ${BorderNeutralStrong}`,
         borderRadius: '4px',
-        boxShadow: state.isFocused
-            ? `0 0 0 3px ${BorderAccentStrong}`
-            : feil
-              ? `0 0 0 1px ${BorderDanger}`
-              : '',
+        boxShadow: state.isFocused ? `0 0 0 3px ${BorderAccentStrong}` : feil ? `0 0 0 1px ${BorderDanger}` : '',
         ':hover': {
             border: `1px solid ${BorderAccentStrong}`,
         },
@@ -104,9 +97,7 @@ export interface ISelectOption extends OptionType {
     label: string;
 }
 
-export const FamilieReactSelect: React.FC<
-    IProps | Props<ISelectOption, boolean, GroupBase<ISelectOption>>
-> = ({
+export const FamilieReactSelect: React.FC<IProps | Props<ISelectOption, boolean, GroupBase<ISelectOption>>> = ({
     erLesevisning,
     creatable = false,
     label,

@@ -1,5 +1,5 @@
 import { kjønnType } from '@navikt/familie-typer';
-import * as React from 'react';
+import type * as React from 'react';
 import { GuttIkon } from './GuttIkon';
 import { JenteIkon } from './JenteIkon';
 import { KvinneIkon } from './KvinneIkon';

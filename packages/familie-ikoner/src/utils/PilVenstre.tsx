@@ -1,4 +1,4 @@
-import * as React from 'react';
+import type * as React from 'react';
 
 interface IPilVenstre {
     className?: string;
@@ -7,12 +7,14 @@ interface IPilVenstre {
     onClick?: React.MouseEventHandler;
 }
 
-const PilVenstre: React.FunctionComponent<IPilVenstre> = ({
-    className,
-    heigth = 24,
-    width = 24,
-    onClick,
-}) => {
+const PilVenstre: React.FunctionComponent<IPilVenstre> = ({ className, heigth = 24, width = 24, onClick }) => {
+    const håndterTastetrykk = (event: React.KeyboardEvent<SVGSVGElement>) => {
+        if (onClick && (event.key === 'Enter' || event.key === ' ')) {
+            event.preventDefault();
+            event.currentTarget.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+        }
+    };
+
     return (
         <svg
             aria-labelledby={'pilvenstre'}
@@ -22,8 +24,11 @@ const PilVenstre: React.FunctionComponent<IPilVenstre> = ({
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
             onClick={onClick}
+            onKeyDown={onClick ? håndterTastetrykk : undefined}
+            role={onClick ? 'button' : 'img'}
+            tabIndex={onClick ? 0 : undefined}
         >
-            <title id={'PilVenstre'}>PilVenstre</title>
+            <title id={'pilvenstre'}>PilVenstre</title>
             <polygon
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

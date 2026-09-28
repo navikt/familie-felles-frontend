@@ -1,6 +1,6 @@
-import React from 'react';
-import { FamilieIkonVelger } from './src';
 import { kjønnType } from '@navikt/familie-typer';
+import type React from 'react';
+import { FamilieIkonVelger } from './src';
 
 export default {
     component: FamilieIkonVelger,
