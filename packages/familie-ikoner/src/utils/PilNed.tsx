@@ -11,7 +11,7 @@ const PilNed: React.FunctionComponent<IPilNed> = ({ className, heigth = 24, widt
     const håndterTastetrykk = (event: React.KeyboardEvent<SVGSVGElement>) => {
         if (onClick && (event.key === 'Enter' || event.key === ' ')) {
             event.preventDefault();
-            onClick(event as unknown as React.MouseEvent<SVGSVGElement>);
+            event.currentTarget.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
         }
     };
 

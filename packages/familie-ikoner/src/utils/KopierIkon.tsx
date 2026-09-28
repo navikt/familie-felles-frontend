@@ -11,7 +11,7 @@ export const KopierIkon: React.FC<IKopierIkon> = ({ className, heigth, onClick, 
     const håndterTastetrykk = (event: React.KeyboardEvent<SVGSVGElement>) => {
         if (onClick && (event.key === 'Enter' || event.key === ' ')) {
             event.preventDefault();
-            onClick(event as unknown as React.MouseEvent<SVGSVGElement>);
+            event.currentTarget.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
         }
     };
 
