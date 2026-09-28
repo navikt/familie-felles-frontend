@@ -28,7 +28,7 @@ const PilNed: React.FunctionComponent<IPilNed> = ({ className, heigth = 24, widt
             role={onClick ? 'button' : 'img'}
             tabIndex={onClick ? 0 : undefined}
         >
-            <title id={'PilNed'}>PilNed</title>
+            <title id={'pilned'}>PilNed</title>
             <polygon
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

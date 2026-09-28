@@ -28,7 +28,7 @@ const PilVenstre: React.FunctionComponent<IPilVenstre> = ({ className, heigth = 
             role={onClick ? 'button' : 'img'}
             tabIndex={onClick ? 0 : undefined}
         >
-            <title id={'PilVenstre'}>PilVenstre</title>
+            <title id={'pilvenstre'}>PilVenstre</title>
             <polygon
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
