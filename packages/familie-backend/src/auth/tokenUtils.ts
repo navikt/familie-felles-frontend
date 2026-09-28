@@ -45,9 +45,9 @@ export interface UtledAccessTokenProps {
 }
 
 const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
-    const { authClient, req, api, promise } = props;
+    const { authClient: authConfig, req, api, promise } = props;
     client
-        .genericGrantRequest(authClient, 'urn:ietf:params:oauth:grant-type:jwt-bearer', {
+        .genericGrantRequest(authConfig, 'urn:ietf:params:oauth:grant-type:jwt-bearer', {
             assertion: req.session.passport.user.tokenSets[tokenSetSelfId].access_token,
             requested_token_use: 'on_behalf_of',
             scope: createOnBehalfOfScope(api),
@@ -85,7 +85,7 @@ const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
 };
 
 export const getOnBehalfOfAccessToken = (
-    authClient: client.Configuration,
+    authConfig: client.Configuration,
     req: Request,
     api: IApi,
 ): Promise<string> => {
@@ -98,7 +98,7 @@ export const getOnBehalfOfAccessToken = (
             if (!req.session) {
                 throw Error('Session på request mangler.');
             }
-            utledAccessToken({ authClient, req, api, promise: { resolve, reject } }, retryCount);
+            utledAccessToken({ authClient: authConfig, req, api, promise: { resolve, reject } }, retryCount);
         }
     });
 };

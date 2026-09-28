@@ -5,7 +5,7 @@ import { appConfig } from '../../config';
 import httpProxy from '../proxy/http-proxy';
 import { appendDefaultScope, tilLagretTokenSet, tokenSetSelfId } from '../tokenUtils';
 
-const hentClient = async (): Promise<client.Configuration> => {
+const hentConfig = async (): Promise<client.Configuration> => {
     const discoveryUrl = new URL(appConfig.discoveryUrl);
     const options: client.DiscoveryRequestOptions = {};
 
@@ -53,4 +53,4 @@ const strategy = (config: client.Configuration) => {
     return new Strategy(options, verify);
 };
 
-export default { hentClient, strategy };
+export default { hentConfig, strategy };

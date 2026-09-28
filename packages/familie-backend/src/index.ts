@@ -35,7 +35,7 @@ export default async (
     settAppConfig(appConfig);
 
     const app = express();
-    let azureAuthClient!: Configuration;
+    let azureAuthConfig!: Configuration;
     let router: Router;
 
     headers.setup(app);
@@ -55,13 +55,13 @@ export default async (
     konfigurerSession(app, passport, sessionKonfigurasjon);
 
     return konfigurerPassport(passport)
-        .then((authClient: Configuration) => {
-            azureAuthClient = authClient;
-            router = konfigurerRouter(azureAuthClient, prometheusTellere);
+        .then((authConfig: Configuration) => {
+            azureAuthConfig = authConfig;
+            router = konfigurerRouter(azureAuthConfig, prometheusTellere);
 
             return {
                 app,
-                azureAuthClient,
+                azureAuthClient: azureAuthConfig,
                 router,
                 prometheusRegistry,
             };

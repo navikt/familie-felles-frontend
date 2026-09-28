@@ -55,7 +55,7 @@ export const authenticateAzureCallback = () => {
     };
 };
 
-export const ensureAuthenticated = (authClient: client.Configuration, sendUnauthorized: boolean) => {
+export const ensureAuthenticated = (authConfig: client.Configuration, sendUnauthorized: boolean) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         const validAccessToken = hasValidAccessToken(req);
         logRequest(
@@ -68,7 +68,7 @@ export const ensureAuthenticated = (authClient: client.Configuration, sendUnauth
             if (!validAccessToken) {
                 const tokenSet: LagretTokenSet | undefined = getTokenSetsFromSession(req)?.[tokenSetSelfId];
                 await client
-                    .refreshTokenGrant(authClient, tokenSet?.refresh_token ?? '')
+                    .refreshTokenGrant(authConfig, tokenSet?.refresh_token ?? '')
                     .then(tokens => {
                         if (!req.session) {
                             throw new Error('Mangler sesjon på kall');

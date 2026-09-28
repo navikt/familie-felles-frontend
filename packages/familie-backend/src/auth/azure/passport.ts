@@ -5,8 +5,8 @@ import azure from './azure';
 // biome-ignore lint/suspicious/noExplicitAny: passport-instansen er ikke typet i passport-biblioteket
 export default async (passport: any): Promise<Configuration> => {
     logInfo('Konfigurerer passport');
-    const azureAuthClient: Configuration = await azure.hentClient();
-    const azureOidcStrategy = azure.strategy(azureAuthClient);
+    const azureAuthConfig: Configuration = await azure.hentConfig();
+    const azureOidcStrategy = azure.strategy(azureAuthConfig);
 
     passport.serializeUser(
         // biome-ignore lint/suspicious/noExplicitAny: done-callback-signaturen kommer fra passport sitt API
@@ -18,5 +18,5 @@ export default async (passport: any): Promise<Configuration> => {
     );
     passport.use('azureOidc', azureOidcStrategy);
 
-    return azureAuthClient;
+    return azureAuthConfig;
 };

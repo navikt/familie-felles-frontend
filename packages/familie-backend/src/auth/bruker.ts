@@ -53,13 +53,13 @@ const hentBrukerData = (accessToken: string, req: Request) => {
 /**
  * Funksjon som henter brukerprofil fra graph.
  */
-export const setBrukerprofilPåSesjonRute = (authClient: Configuration) => {
+export const setBrukerprofilPåSesjonRute = (authConfig: Configuration) => {
     return async (req: Request, _: Response, next: NextFunction) => {
-        setBrukerprofilPåSesjon(authClient, req, next);
+        setBrukerprofilPåSesjon(authConfig, req, next);
     };
 };
 
-const setBrukerprofilPåSesjon = (authClient: Configuration, req: Request, next: NextFunction) => {
+const setBrukerprofilPåSesjon = (authConfig: Configuration, req: Request, next: NextFunction) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return new Promise((_, _reject) => {
         const api = {
@@ -71,7 +71,7 @@ const setBrukerprofilPåSesjon = (authClient: Configuration, req: Request, next:
             return next();
         }
 
-        getOnBehalfOfAccessToken(authClient, req, api)
+        getOnBehalfOfAccessToken(authConfig, req, api)
             .then(accessToken => hentBrukerData(accessToken, req))
             .then(res => res.json())
             // biome-ignore lint/suspicious/noExplicitAny: responsen fra Microsoft Graph er ikke typet
