@@ -14,16 +14,7 @@
     "linter": {
         "enabled": true,
         "rules": {
-            "preset": "recommended",
-            "correctness": {
-                "useExhaustiveDependencies": "warn",
-                "useJsxKeyInIterable": "warn"
-            },
-            "suspicious": {
-                "noDoubleEquals": "warn",
-                "noArrayIndexKey": "warn",
-                "useIterableCallbackReturn": "warn"
-            }
+            "preset": "recommended"
         }
     },
     "javascript": {
