@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.0.7](https://github.com/navikt/familie-felles-frontend/compare/%40navikt%2Ffamilie-header%4017.0.6...%40navikt%2Ffamilie-header%4017.0.7) (2026-09-28)
+
+**Note:** Version bump only for package @navikt/familie-header
+
+
+
+
+
 ## [17.0.6](https://github.com/navikt/familie-felles-frontend/compare/%40navikt%2Ffamilie-header%4017.0.5...%40navikt%2Ffamilie-header%4017.0.6) (2026-09-25)
 
 **Note:** Version bump only for package @navikt/familie-header
