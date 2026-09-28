@@ -61,9 +61,10 @@ interface PinsProps {
 
 export const Pins = ({ pins, start, slutt, direction }: PinsProps) => (
     <PinsStyle className={'pins'}>
-        {pins.map(({ date, render }) => (
+        {pins.map(({ date, render }, index) => (
             <PinContainer
-                key={`${date}`}
+                // biome-ignore lint/suspicious/noArrayIndexKey: Vi har ingen god unik id vi kan bruke.
+                key={index}
                 className={'container'}
                 style={{ [direction]: `${position(dayjs(date), start, slutt)}%` }}
             >
