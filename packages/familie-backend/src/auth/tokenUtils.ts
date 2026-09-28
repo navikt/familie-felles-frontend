@@ -1,13 +1,41 @@
 import { LOG_LEVEL, logError, logInfo } from '@navikt/familie-logging';
 import type { Request } from 'express';
-import { type Client, TokenSet } from 'openid-client';
+import * as client from 'openid-client';
 import type { IApi } from '../typer';
 import { logRequest } from '../utils';
 
 export const tokenSetSelfId = 'self';
 
+/**
+ * Serialiserbar versjon av tokenresponsen som lagres på sesjonen.
+ * `expires_at` (sekunder siden epoch) er med for å kunne avgjøre om tokenet er utløpt etter deserialisering.
+ */
+export type LagretTokenSet = client.TokenEndpointResponse & { expires_at?: number };
+
+export const tilLagretTokenSet = (
+    tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers,
+): LagretTokenSet => {
+    const expiresIn = tokens.expiresIn();
+    return {
+        // Hjelpefunksjonene (claims, expiresIn) er ikke-enumerable og blir derfor ikke med her
+        ...(tokens as client.TokenEndpointResponse),
+        expires_at: expiresIn !== undefined ? Math.floor(Date.now() / 1000) + expiresIn : undefined,
+    };
+};
+
+/**
+ * Dekoder claims fra id_token uten validering (tilsvarer `TokenSet.claims()` i openid-client v5).
+ */
+export const hentClaims = (tokenSet?: LagretTokenSet): client.IDToken | undefined => {
+    const payload = tokenSet?.id_token?.split('.')[1];
+    if (!payload) {
+        return undefined;
+    }
+    return JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
+};
+
 export interface UtledAccessTokenProps {
-    authClient: Client;
+    authClient: client.Configuration;
     req: Request;
     api: IApi;
     promise: {
@@ -18,19 +46,18 @@ export interface UtledAccessTokenProps {
 
 const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
     const { authClient, req, api, promise } = props;
-    authClient
-        .grant({
+    client
+        .genericGrantRequest(authClient, 'urn:ietf:params:oauth:grant-type:jwt-bearer', {
             assertion: req.session.passport.user.tokenSets[tokenSetSelfId].access_token,
-            client_assertion_type: 'urn:ietf:params:oauth:client-assertion-type:jwt-bearer',
-            grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
             requested_token_use: 'on_behalf_of',
             scope: createOnBehalfOfScope(api),
         })
-        .then((tokenSet: TokenSet) => {
+        .then(tokens => {
             if (!req.session) {
                 throw Error('Mangler session på request.');
             }
 
+            const tokenSet = tilLagretTokenSet(tokens);
             req.session.passport.user.tokenSets[api.clientId] = tokenSet;
 
             if (tokenSet.access_token) {
@@ -41,7 +68,10 @@ const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
         })
         .catch((err: Error) => {
             const message = err.message;
-            if (message.includes('invalid_grant')) {
+            if (
+                (err instanceof client.ResponseBodyError && err.error === 'invalid_grant') ||
+                message.includes('invalid_grant')
+            ) {
                 logInfo(`Bruker har ikke tilgang: ${message}`);
                 promise.reject(err);
             } else if (retryCount > 0) {
@@ -54,12 +84,16 @@ const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
         });
 };
 
-export const getOnBehalfOfAccessToken = (authClient: Client, req: Request, api: IApi): Promise<string> => {
+export const getOnBehalfOfAccessToken = (
+    authClient: client.Configuration,
+    req: Request,
+    api: IApi,
+): Promise<string> => {
     const retryCount = 1;
     return new Promise((resolve, reject) => {
         if (hasValidAccessToken(req, api.clientId)) {
             const tokenSets = getTokenSetsFromSession(req);
-            resolve(tokenSets[api.clientId].access_token);
+            resolve(tokenSets?.[api.clientId]?.access_token ?? '');
         } else {
             if (!req.session) {
                 throw Error('Session på request mangler.');
@@ -81,7 +115,7 @@ const createOnBehalfOfScope = (api: IApi) => {
     }
 };
 
-export const getTokenSetsFromSession = (req: Request) => {
+export const getTokenSetsFromSession = (req: Request): Record<string, LagretTokenSet> | undefined => {
     if (req?.session?.passport) {
         return req.session.passport.user.tokenSets;
     }
@@ -103,10 +137,10 @@ export const hasValidAccessToken = (req: Request, key = tokenSetSelfId) => {
     if (!tokenSet) {
         return loggOgReturnerOmTokenErGyldig(req, key, false);
     }
-    return loggOgReturnerOmTokenErGyldig(req, key, erUtgått(new TokenSet(tokenSet)) === false);
+    return loggOgReturnerOmTokenErGyldig(req, key, erUtgått(tokenSet) === false);
 };
 
 // kallkjedene kan ta litt tid, og tokenet kan i corner-case gå ut i løpet av kjeden. Så innfører et buffer
 // på 2 minutter.
-const erUtgått = (tokenSet: TokenSet): boolean =>
-    tokenSet.expired() || (tokenSet.expires_in !== undefined && tokenSet.expires_in < 120);
+const erUtgått = (tokenSet: LagretTokenSet): boolean =>
+    tokenSet.expires_at !== undefined && tokenSet.expires_at - Math.floor(Date.now() / 1000) < 120;

@@ -1,10 +1,16 @@
 import { LOG_LEVEL } from '@navikt/familie-logging';
 import type { NextFunction, Request, Response } from 'express';
-import type { Client, TokenSet } from 'openid-client';
+import * as client from 'openid-client';
 import passport from 'passport';
 import { appConfig } from '../config';
 import { logRequest } from '../utils';
-import { getTokenSetsFromSession, hasValidAccessToken, tokenSetSelfId } from './tokenUtils';
+import {
+    getTokenSetsFromSession,
+    hasValidAccessToken,
+    type LagretTokenSet,
+    tilLagretTokenSet,
+    tokenSetSelfId,
+} from './tokenUtils';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);
@@ -49,7 +55,7 @@ export const authenticateAzureCallback = () => {
     };
 };
 
-export const ensureAuthenticated = (authClient: Client, sendUnauthorized: boolean) => {
+export const ensureAuthenticated = (authClient: client.Configuration, sendUnauthorized: boolean) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         const validAccessToken = hasValidAccessToken(req);
         logRequest(
@@ -60,15 +66,15 @@ export const ensureAuthenticated = (authClient: Client, sendUnauthorized: boolea
 
         if (req.isAuthenticated()) {
             if (!validAccessToken) {
-                const tokenSet: TokenSet = getTokenSetsFromSession(req)[tokenSetSelfId];
-                await authClient
-                    .refresh(tokenSet.refresh_token ?? '')
-                    .then((tokenSet: TokenSet) => {
+                const tokenSet: LagretTokenSet | undefined = getTokenSetsFromSession(req)?.[tokenSetSelfId];
+                await client
+                    .refreshTokenGrant(authClient, tokenSet?.refresh_token ?? '')
+                    .then(tokens => {
                         if (!req.session) {
                             throw new Error('Mangler sesjon på kall');
                         }
 
-                        req.session.passport.user.tokenSets[tokenSetSelfId] = tokenSet;
+                        req.session.passport.user.tokenSets[tokenSetSelfId] = tilLagretTokenSet(tokens);
                     })
                     .catch((error: Error) => {
                         logRequest(req, `Feilet ved refresh av tokenset: ${error.message}`, LOG_LEVEL.WARNING);
