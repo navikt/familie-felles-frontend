@@ -1,18 +1,16 @@
-import { genererId, isChangeEvent } from './utils';
 import deepEqual from 'deep-equal';
-
-import { ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
-
+import { type ChangeEvent, useCallback, useEffect, useMemo, useState } from 'react';
 import {
+    type Avhengigheter,
     defaultValidator,
-    Felt,
-    FeltState,
-    NavBaseSkjemaProps,
-    NavInputProps,
-    ValiderFelt,
-    Avhengigheter,
+    type Felt,
+    type FeltState,
+    type NavBaseSkjemaProps,
+    type NavInputProps,
+    type ValiderFelt,
     Valideringsstatus,
 } from './typer';
+import { genererId, isChangeEvent } from './utils';
 
 /**
  * Konfigurasjon for å opprette et felt.
@@ -49,9 +47,7 @@ export const useFelt = <Verdi = string>({
     };
 
     const [feltState, settFeltState] = useState<FeltState<Verdi>>(initialFeltState);
-    const [erSynlig, settErSynlig] = useState(
-        skalFeltetVises ? skalFeltetVises(avhengigheter) : true,
-    );
+    const [erSynlig, settErSynlig] = useState(skalFeltetVises ? skalFeltetVises(avhengigheter) : true);
 
     const nullstill = () => {
         settFeltState(initialFeltState);
@@ -76,13 +72,13 @@ export const useFelt = <Verdi = string>({
 
     const hentAvhengighetArray = () => {
         return avhengigheter
-            ? Object.values(avhengigheter).reduce((acc: [], avhengighet: unknown) => {
+            ? Object.values(avhengigheter).map((avhengighet: unknown) => {
                   if (avhengighet instanceof Object && 'valideringsstatus' in avhengighet) {
-                      return [...acc, (avhengighet as Felt<unknown>).verdi];
+                      return (avhengighet as Felt<unknown>).verdi;
                   } else {
-                      return [...acc, avhengighet];
+                      return avhengighet;
                   }
-              }, [])
+              })
             : [];
     };
 
@@ -90,12 +86,10 @@ export const useFelt = <Verdi = string>({
      * Basert på avhengighetene til feltet håndterer vi vis/skjul
      * og nullstilling på feltet.
      */
+    // biome-ignore lint/correctness/useExhaustiveDependencies: skal kun kjøre på nytt når avhengighetsverdiene faktisk endrer seg, ikke ved enhver re-render av funksjonene/propsene rundt
     useEffect(() => {
         if (skalFeltetVises) {
-            if (
-                nullstillVedAvhengighetEndring &&
-                feltState.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT
-            ) {
+            if (nullstillVedAvhengighetEndring && feltState.valideringsstatus !== Valideringsstatus.IKKE_VALIDERT) {
                 nullstill();
             }
 
@@ -103,9 +97,9 @@ export const useFelt = <Verdi = string>({
         } else {
             validerOgSettFelt();
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...hentAvhengighetArray()]);
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: validerOgSettFelt lages på nytt for hver render og skal bevisst ikke være med i avhengighetslisten
     const onChange = useCallback(
         // tslint:disable-next-line:no-shadowed-variable
         (verdi: Verdi | ChangeEvent) => {
@@ -113,10 +107,11 @@ export const useFelt = <Verdi = string>({
 
             validerOgSettFelt(normalisertVerdi as Verdi);
         },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // biome-ignore lint/correctness/useExhaustiveDependencies: validerOgSettFelt lages på nytt for hver render og skal bevisst ikke være med i avhengighetslisten
         [validerOgSettFelt, settFeltState],
     );
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: skal kun oppdateres når validerOgSettFelt endres, ikke ved enhver render
     const hentNavInputProps = useCallback(
         (visFeilmelding: boolean): NavInputProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
@@ -125,10 +120,10 @@ export const useFelt = <Verdi = string>({
             onChange,
             value: feltState.verdi,
         }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [validerOgSettFelt, settFeltState],
     );
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: skal kun oppdateres når validerOgSettFelt endres, ikke ved enhver render
     const hentNavBaseSkjemaProps = useCallback(
         (visFeilmelding: boolean): NavBaseSkjemaProps<Verdi> => ({
             feil: visFeilmelding ? feltState.feilmelding : undefined,
@@ -136,10 +131,10 @@ export const useFelt = <Verdi = string>({
             id,
             value: feltState.verdi,
         }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [validerOgSettFelt, settFeltState],
     );
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: validerOgSettFelt og nullstill lages på nytt for hver render og vil gi en uendelig oppdateringsløkke om de tas med i avhengighetslisten
     return useMemo(
         () => ({
             ...feltState,
@@ -151,7 +146,7 @@ export const useFelt = <Verdi = string>({
             onChange,
             validerOgSettFelt,
         }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+        // biome-ignore lint/correctness/useExhaustiveDependencies: validerOgSettFelt og nullstill lages på nytt for hver render og vil gi en uendelig oppdateringsløkke om de tas med i avhengighetslisten
         [feltState, hentNavInputProps, validerOgSettFelt, nullstill, onChange],
     );
 };

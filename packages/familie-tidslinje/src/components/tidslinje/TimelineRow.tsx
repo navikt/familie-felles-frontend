@@ -1,15 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import { BgAccentModerate, BgNeutralModerate, Space16, Space24, Space32 } from '@navikt/ds-tokens/dist/tokens';
 import classNames from 'classnames';
+import styled from 'styled-components';
+import type { PositionedPeriod } from '../types.internal';
 import { TimelinePeriod } from './TimelinePeriod';
-import { PositionedPeriod } from '../types.internal';
-import {
-    BgAccentModerate,
-    BgNeutralModerate,
-    Space16,
-    Space24,
-    Space32,
-} from '@navikt/ds-tokens/dist/tokens';
 
 interface TimelineRowStyleProps {
     $kompakt?: boolean;
@@ -51,11 +44,7 @@ interface TimelineRowProps {
     className: string;
 }
 
-export const EmptyTimelineRow = ({
-    active = false,
-    kompakt = false,
-    className,
-}: EmptyTimelineRowProps) => (
+export const EmptyTimelineRow = ({ active = false, kompakt = false, className }: EmptyTimelineRowProps) => (
     <EmptyRowHr $kompakt={kompakt} className={classNames(active && 'aktivRad', className)} />
 );
 
@@ -66,10 +55,7 @@ export const TimelineRow = ({
     kompakt = false,
     className,
 }: TimelineRowProps) => (
-    <TimelineRowStyle
-        $kompakt={kompakt}
-        className={classNames('tidslinjerad', active && 'aktivRad', className)}
-    >
+    <TimelineRowStyle $kompakt={kompakt} className={classNames('tidslinjerad', active && 'aktivRad', className)}>
         {periods.map(period => (
             <TimelinePeriod
                 key={period.id}

@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-
-import {
-    CheckmarkCircleIcon,
-    XMarkOctagonIcon,
-    ExclamationmarkTriangleIcon,
-} from '@navikt/aksel-icons';
-
-import { Periode, Tidslinje, TidslinjeProps } from './src';
+import { CheckmarkCircleIcon, ExclamationmarkTriangleIcon, XMarkOctagonIcon } from '@navikt/aksel-icons';
 import { Switch } from '@navikt/ds-react';
+import { useState } from 'react';
+import styled from 'styled-components';
+import { type Periode, Tidslinje, type TidslinjeProps } from './src';
 import '@navikt/ds-css';
 
 const StyledContainer = styled.div(
@@ -155,9 +149,7 @@ export const LongPeriodClickable = (args: TidslinjeProps) => {
 
     const onSelectPeriode = (periode: Periode) => {
         setAktivPeriode(periode);
-        setRader(prevRader =>
-            prevRader.map(rad => rad.map(p => ({ ...p, active: periode.id === p.id }))),
-        );
+        setRader(prevRader => prevRader.map(rad => rad.map(p => ({ ...p, active: periode.id === p.id }))));
     };
 
     const aktivRad =
@@ -177,12 +169,12 @@ export const LongPeriodClickable = (args: TidslinjeProps) => {
             <StyledContainer kompakt={kompakt}>
                 <h2>Klikkbare perioder</h2>
                 <p>
-                    Eksempel på visning av perioder, som strekker seg utanfor startDato og sluttDato
-                    for tidslinjen. Start- og sluttdato for visning er 01.01.2021 og 31.12.2021.
+                    Eksempel på visning av perioder, som strekker seg utanfor startDato og sluttDato for tidslinjen.
+                    Start- og sluttdato for visning er 01.01.2021 og 31.12.2021.
                 </p>
                 <p>
-                    De ulike periodene kan gå fra 01.01.2020 til 31.12.2022, 01.01.2021 til
-                    31.12.2022 og 01.01.2020 til 31.12.2021
+                    De ulike periodene kan gå fra 01.01.2020 til 31.12.2022, 01.01.2021 til 31.12.2022 og 01.01.2020 til
+                    31.12.2021
                 </p>
                 <p>Eksempelet viser også hvordan det er mulig å bruke ikon i periodene.</p>
                 <Tidslinje
@@ -213,12 +205,12 @@ export const LongPeriodNotClickable = (args: TidslinjeProps) => {
             <StyledContainer kompakt={kompakt}>
                 <h2>Perioder ikke klikkbare</h2>
                 <p>
-                    Eksempel på visning av perioder, som strekker seg utanfor startDato og sluttDato
-                    for tidslinjen. Start- og sluttdato for visning er 01.01.2021 og 31.12.2021.
+                    Eksempel på visning av perioder, som strekker seg utanfor startDato og sluttDato for tidslinjen.
+                    Start- og sluttdato for visning er 01.01.2021 og 31.12.2021.
                 </p>
                 <p>
-                    De ulike periodene kan gå fra 01.01.2020 til 31.12.2022, 01.01.2021 til
-                    31.12.2022 og 01.01.2020 til 31.12.2021
+                    De ulike periodene kan gå fra 01.01.2020 til 31.12.2022, 01.01.2021 til 31.12.2022 og 01.01.2020 til
+                    31.12.2021
                 </p>
                 <p>Eksempelet viser også hvordan det er mulig å bruke ikon i periodene.</p>
                 <Tidslinje

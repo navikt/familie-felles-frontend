@@ -1,19 +1,15 @@
-import React, { ReactNode } from 'react';
-
-import styled from 'styled-components';
+import { BodyShort } from '@navikt/ds-react';
 import { adressebeskyttelsestyper } from '@navikt/familie-typer';
-
+import type React from 'react';
+import type { ReactNode } from 'react';
+import styled from 'styled-components';
+import type { ISøkeresultat } from '..';
 import { inputId } from '.';
-import { ISøkeresultat } from '..';
 import { formaterPersonIdent } from './formatter';
 import { StyledAlertStripe } from './Søkeresultater';
-import { BodyShort } from '@navikt/ds-react';
 
 interface Props {
-    formaterResultat?: (
-        søkeresultat: ISøkeresultat,
-        erSøkeresultatValgt: boolean,
-    ) => React.ReactNode;
+    formaterResultat?: (søkeresultat: ISøkeresultat, erSøkeresultatValgt: boolean) => React.ReactNode;
     søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
     søkeresultater: ISøkeresultat[];
     valgtSøkeresultat: number;
@@ -72,13 +68,9 @@ const Søkeresultat: React.FC<Props> = ({
                     return formaterResultat(søkeresultat, index === valgtSøkeresultat);
                 } else {
                     return (
-                        <ResultatListeElement key={index} $fokus={index === valgtSøkeresultat}>
+                        <ResultatListeElement key={søkeresultat.ident} $fokus={index === valgtSøkeresultat}>
                             <ResultatListeElementKnapp
-                                aria-label={
-                                    søkeresultat.harTilgang
-                                        ? søkeresultat.navn
-                                        : 'Person har diskresjonskode'
-                                }
+                                aria-label={søkeresultat.harTilgang ? søkeresultat.navn : 'Person har diskresjonskode'}
                                 aria-selected={index === valgtSøkeresultat}
                                 role={'option'}
                                 onClick={() => {
@@ -93,9 +85,7 @@ const Søkeresultat: React.FC<Props> = ({
                                 <div>
                                     <BodyShort size={'small'}>
                                         {søkeresultat.harTilgang
-                                            ? `${søkeresultat.navn} (${formaterPersonIdent(
-                                                  søkeresultat.ident,
-                                              )})`
+                                            ? `${søkeresultat.navn} (${formaterPersonIdent(søkeresultat.ident)})`
                                             : `Personen har diskresjonskode ${
                                                   søkeresultat.adressebeskyttelseGradering
                                                       ? adressebeskyttelsestyper[
@@ -106,9 +96,7 @@ const Søkeresultat: React.FC<Props> = ({
                                     </BodyShort>
 
                                     {!søkeresultat.fagsakId && søkeresultat.harTilgang && (
-                                        <ResultatVisningUtenFagsak
-                                            ingenFagsakKomponent={ingenFagsakKomponent}
-                                        />
+                                        <ResultatVisningUtenFagsak ingenFagsakKomponent={ingenFagsakKomponent} />
                                     )}
                                 </div>
                             </ResultatListeElementKnapp>
@@ -122,9 +110,7 @@ const Søkeresultat: React.FC<Props> = ({
     );
 };
 
-const ResultatVisningUtenFagsak: React.FC<{ ingenFagsakKomponent?: ReactNode }> = ({
-    ingenFagsakKomponent,
-}) => {
+const ResultatVisningUtenFagsak: React.FC<{ ingenFagsakKomponent?: ReactNode }> = ({ ingenFagsakKomponent }) => {
     if (ingenFagsakKomponent) {
         return <>ingenFagsakKomponent</>;
     }

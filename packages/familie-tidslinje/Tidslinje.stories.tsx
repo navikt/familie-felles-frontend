@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-
-import { Periode, Tidslinje, TidslinjeProps } from './src';
 import { Switch } from '@navikt/ds-react';
+import { useState } from 'react';
+import { type Periode, Tidslinje, type TidslinjeProps } from './src';
 import '@navikt/ds-css';
 
 export default {
@@ -104,18 +103,15 @@ export const BasicClickable = (args: TidslinjeProps) => {
                 <Switch checked={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
                 </Switch>
-                <Switch
-                    checked={retningSynkende}
-                    onClick={() => settRetningSynkende(!retningSynkende)}
-                >
+                <Switch checked={retningSynkende} onClick={() => settRetningSynkende(!retningSynkende)}>
                     Synkende
                 </Switch>
             </div>
             <div>
                 <h2>Klikkbare perioder</h2>
                 <p>
-                    Eksempel på klikkbar familie-tidslinje med default styling. Tilgjengelige
-                    classnames på perioder er: 'success', 'advarsel', 'feil' og 'inaktiv'
+                    Eksempel på klikkbar familie-tidslinje med default styling. Tilgjengelige classnames på perioder er:
+                    'success', 'advarsel', 'feil' og 'inaktiv'
                 </p>
                 <Tidslinje
                     kompakt={kompakt}
@@ -141,24 +137,17 @@ export const BasicNotClickable = (args: TidslinjeProps) => {
                 <Switch checked={kompakt} onClick={() => settKompakt(!kompakt)}>
                     Kompakt
                 </Switch>
-                <Switch
-                    checked={retningSynkende}
-                    onClick={() => settRetningSynkende(!retningSynkende)}
-                >
+                <Switch checked={retningSynkende} onClick={() => settRetningSynkende(!retningSynkende)}>
                     Synkende
                 </Switch>
             </div>
             <div>
                 <h2>Perioder ikke klikkbare</h2>
                 <p>
-                    Eksempel på uklikkbar familie-tidslinje med default styling. Tilgjengelige
-                    classnames på perioder er: 'success', 'advarsel', 'feil' og 'inaktiv'
+                    Eksempel på uklikkbar familie-tidslinje med default styling. Tilgjengelige classnames på perioder
+                    er: 'success', 'advarsel', 'feil' og 'inaktiv'
                 </p>
-                <Tidslinje
-                    kompakt={kompakt}
-                    retning={retningSynkende ? 'synkende' : undefined}
-                    {...args}
-                />
+                <Tidslinje kompakt={kompakt} retning={retningSynkende ? 'synkende' : undefined} {...args} />
             </div>
         </>
     );

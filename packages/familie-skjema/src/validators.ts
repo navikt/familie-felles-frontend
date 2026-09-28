@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { FeltState, Valideringsstatus } from './typer';
+import type { ReactNode } from 'react';
+import { type FeltState, Valideringsstatus } from './typer';
 
 export const ok = <T>(felt: FeltState<T>): FeltState<T> => {
     return {

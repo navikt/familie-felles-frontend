@@ -1,7 +1,7 @@
-import React, { createContext, PropsWithChildren, useContext, useEffect, useRef } from 'react';
-import { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-import { Ressurs, ApiRessurs } from '@navikt/familie-typer';
-import { preferredAxios, håndterApiRespons } from './axios';
+import type { ApiRessurs, Ressurs } from '@navikt/familie-typer';
+import type { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import React, { createContext, type PropsWithChildren, useContext, useEffect, useRef } from 'react';
+import { håndterApiRespons, preferredAxios } from './axios';
 
 export type FamilieRequestConfig<SkjemaData> = AxiosRequestConfig & {
     data?: SkjemaData;

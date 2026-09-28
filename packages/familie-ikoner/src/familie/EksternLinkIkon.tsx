@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 
 interface IEksternLinkIkon {
     className?: string;
@@ -6,14 +6,10 @@ interface IEksternLinkIkon {
     width?: number;
 }
 
-export const EksternLinkIkon: React.FC<IEksternLinkIkon> = ({
-    className,
-    height = 32,
-    width = 32,
-}) => {
+export const EksternLinkIkon: React.FC<IEksternLinkIkon> = ({ className, height = 32, width = 32 }) => {
     return (
         <svg
-            aria-labelledby={'ekstern link'}
+            aria-labelledby={'ekstern-link-tittel'}
             xmlns="http://www.w3.org/2000/svg"
             className={className}
             height={height}
@@ -23,6 +19,7 @@ export const EksternLinkIkon: React.FC<IEksternLinkIkon> = ({
             focusable="false"
             role="img"
         >
+            <title id={'ekstern-link-tittel'}>Ekstern lenke</title>
             <path
                 fill="currentColor"
                 fillRule="evenodd"

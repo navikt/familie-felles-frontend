@@ -1,16 +1,14 @@
-import React, { ReactNode } from 'react';
-import styled from 'styled-components';
-import { Ressurs, RessursStatus } from '@navikt/familie-typer';
-import { inputId } from '.';
-import { ISøkeresultat } from '../types';
-import Søkeresultat from './Søkeresultat';
 import { Alert, BodyShort } from '@navikt/ds-react';
+import { type Ressurs, RessursStatus } from '@navikt/familie-typer';
+import type React from 'react';
+import type { ReactNode } from 'react';
+import styled from 'styled-components';
+import type { ISøkeresultat } from '../types';
+import { inputId } from '.';
+import Søkeresultat from './Søkeresultat';
 
 interface Props {
-    formaterResultat?: (
-        søkeresultat: ISøkeresultat,
-        erSøkeresultatValgt: boolean,
-    ) => React.ReactNode;
+    formaterResultat?: (søkeresultat: ISøkeresultat, erSøkeresultatValgt: boolean) => React.ReactNode;
     søkeresultatOnClick: (søkResultat: ISøkeresultat) => void;
     søkeresultater: Ressurs<ISøkeresultat[]>;
     valgtSøkeresultat: number;

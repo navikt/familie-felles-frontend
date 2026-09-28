@@ -1,7 +1,7 @@
-import { Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
+import { type Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
 import { useEffect, useRef, useState } from 'react';
+import type { ISøkeresultat } from '..';
 import { inputId } from '.';
-import { ISøkeresultat } from '..';
 import { søkKnappId, tømKnappId } from './Søk';
 
 export interface Props {
@@ -18,13 +18,14 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
     const [erGyldig, settErGyldig] = useState(false);
     const ankerRef = useRef<Element | null>(null);
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: skal kun trigge nytt søk når erGyldig eller ident endres, ikke ved enhver render av utløserSøk
     useEffect(() => {
         if (erGyldig) {
             utløserSøk();
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [erGyldig, ident]);
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: event-lytterne skal kun settes opp og fjernes én gang, ved mount/unmount
     useEffect(() => {
         window.addEventListener('keydown', handleGlobalKeydown);
         window.addEventListener('click', handleGlobalClick);
@@ -33,7 +34,6 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
             window.removeEventListener('keydown', handleGlobalKeydown);
             window.removeEventListener('click', handleGlobalClick);
         };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const nullstillInput = (lukkPopover = false) => {
@@ -102,20 +102,14 @@ const useSøk = ({ nullstillSøkeresultater, søk, søkeresultatOnClick, søkere
             case 'ArrowDown':
                 settValgtSøkeresultat(
                     valgtSøkeresultat <
-                        (søkeresultater.status === RessursStatus.SUKSESS
-                            ? søkeresultater.data.length - 1
-                            : -1)
+                        (søkeresultater.status === RessursStatus.SUKSESS ? søkeresultater.data.length - 1 : -1)
                         ? valgtSøkeresultat + 1
                         : -1,
                 );
                 break;
             case 'Enter':
                 if (søkeresultater.status === RessursStatus.SUKSESS) {
-                    if (
-                        identSistSøktPå === ident &&
-                        valgtSøkeresultat === -1 &&
-                        søkeresultater.data.length === 1
-                    ) {
+                    if (identSistSøktPå === ident && valgtSøkeresultat === -1 && søkeresultater.data.length === 1) {
                         søkeresultatOnClick(søkeresultater.data[0]);
                     } else if (valgtSøkeresultat !== -1) {
                         søkeresultatOnClick(søkeresultater.data[valgtSøkeresultat]);

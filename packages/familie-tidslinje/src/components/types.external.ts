@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
-import { AxisLabel } from './types.internal';
+import type { ReactNode } from 'react';
+import type { AxisLabel } from './types.internal';
 
 export interface EnkelPeriode {
     /**

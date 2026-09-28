@@ -1,17 +1,13 @@
-import { Express } from 'express';
+import { logError, logInfo, logSecure } from '@navikt/familie-logging';
+import { RedisStore } from 'connect-redis';
 import cookieParser from 'cookie-parser';
+import type { Express } from 'express';
 import session from 'express-session';
-import { PassportStatic } from 'passport';
+import type { PassportStatic } from 'passport';
 import redis from 'redis';
 import { appConfig } from '../config';
-import { logError, logInfo, logSecure } from '@navikt/familie-logging';
-import { ISessionKonfigurasjon } from '../typer';
-
-import { RedisStore } from 'connect-redis';
-import {
-    hentErforbindelsenTilRedisTilgjengelig,
-    settErforbindelsenTilRedisTilgjengelig,
-} from '../utils';
+import type { ISessionKonfigurasjon } from '../typer';
+import { hentErforbindelsenTilRedisTilgjengelig, settErforbindelsenTilRedisTilgjengelig } from '../utils';
 
 const redisClientForAiven = (sessionKonfigurasjon: ISessionKonfigurasjon) => {
     const pingHvertFjerdeMinutt = 1000 * 60 * 4; // Connection blir ugyldig etter fem minutter, pinger derfor hvert fjerde minutt
@@ -55,18 +51,12 @@ const lagRedisClient = (sessionKonfigurasjon: ISessionKonfigurasjon) => {
         logInfo('Setter opp redis for session');
         return redisClientForStandalone(sessionKonfigurasjon);
     } else {
-        logSecure(
-            `Mangler redisUrl eller redisFullUrl i sesjonskonfigurasjonen ${sessionKonfigurasjon}`,
-        );
+        logSecure(`Mangler redisUrl eller redisFullUrl i sesjonskonfigurasjonen ${sessionKonfigurasjon}`);
         throw Error('Kan ikke konfigurerer redis uten sesjonsconfigurasjon');
     }
 };
 
-export default (
-    app: Express,
-    passport: PassportStatic,
-    sessionKonfigurasjon: ISessionKonfigurasjon,
-) => {
+export default (app: Express, passport: PassportStatic, sessionKonfigurasjon: ISessionKonfigurasjon) => {
     app.use(cookieParser(sessionKonfigurasjon.cookieSecret));
     app.set('trust proxy', 1);
 

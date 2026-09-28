@@ -1,7 +1,7 @@
-import { Request } from 'express';
-import { Client, TokenSet } from 'openid-client';
-import { logInfo, logError, LOG_LEVEL } from '@navikt/familie-logging';
-import { IApi } from '../typer';
+import { LOG_LEVEL, logError, logInfo } from '@navikt/familie-logging';
+import type { Request } from 'express';
+import { type Client, TokenSet } from 'openid-client';
+import type { IApi } from '../typer';
 import { logRequest } from '../utils';
 
 export const tokenSetSelfId = 'self';
@@ -54,11 +54,7 @@ const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
         });
 };
 
-export const getOnBehalfOfAccessToken = (
-    authClient: Client,
-    req: Request,
-    api: IApi,
-): Promise<string> => {
+export const getOnBehalfOfAccessToken = (authClient: Client, req: Request, api: IApi): Promise<string> => {
     const retryCount = 1;
     return new Promise((resolve, reject) => {
         if (hasValidAccessToken(req, api.clientId)) {
@@ -75,8 +71,7 @@ export const getOnBehalfOfAccessToken = (
 
 export const appendDefaultScope = (scope: string) => `${scope}/.default`;
 
-const formatClientIdScopeForV2Clients = (clientId: string) =>
-    appendDefaultScope(`api://${clientId}`);
+const formatClientIdScopeForV2Clients = (clientId: string) => appendDefaultScope(`api://${clientId}`);
 
 const createOnBehalfOfScope = (api: IApi) => {
     if (api.scopes && api.scopes.length > 0) {
@@ -87,7 +82,7 @@ const createOnBehalfOfScope = (api: IApi) => {
 };
 
 export const getTokenSetsFromSession = (req: Request) => {
-    if (req && req.session && req.session.passport) {
+    if (req?.session?.passport) {
         return req.session.passport.user.tokenSets;
     }
 
@@ -95,11 +90,7 @@ export const getTokenSetsFromSession = (req: Request) => {
 };
 
 const loggOgReturnerOmTokenErGyldig = (req: Request, key: string, validAccessToken: boolean) => {
-    logRequest(
-        req,
-        `Har ${validAccessToken ? 'gyldig' : 'ikke gyldig'} token for key '${key}'`,
-        LOG_LEVEL.INFO,
-    );
+    logRequest(req, `Har ${validAccessToken ? 'gyldig' : 'ikke gyldig'} token for key '${key}'`, LOG_LEVEL.INFO);
     return validAccessToken;
 };
 

@@ -1,24 +1,24 @@
-import express, { Express, Request, Response, Router } from 'express';
+import { logError } from '@navikt/familie-logging';
+import express, { type Express, type Request, type Response, type Router } from 'express';
+import type { Client } from 'openid-client';
 import passport from 'passport';
-import { Counter, Registry } from 'prom-client';
+import type { Counter, Registry } from 'prom-client';
 import konfigurerPassport from './auth/azure/passport';
 import konfigurerSession from './auth/session';
+import { settAppConfig } from './config';
 import headers from './headers';
 import { konfigurerMetrikker } from './metrikker';
 import konfigurerRouter from './router';
-import { IAppConfig, ISessionKonfigurasjon } from './typer';
-import { Client } from 'openid-client';
-import { logError } from '@navikt/familie-logging';
+import type { IAppConfig, ISessionKonfigurasjon } from './typer';
 import { hentErforbindelsenTilRedisTilgjengelig } from './utils';
-import { settAppConfig } from './config';
 
+export * from 'openid-client';
+export { Counter } from 'prom-client';
 export * from './auth/authenticate';
 export * from './auth/tokenUtils';
 export * from './config';
 export * from './typer';
 export * from './utils';
-export * from 'openid-client';
-export { Counter } from 'prom-client';
 
 export interface IApp {
     app: Express;

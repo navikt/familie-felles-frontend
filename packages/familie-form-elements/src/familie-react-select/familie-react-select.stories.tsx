@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 import '../../stories.less';
-import { FamilieReactSelect, ISelectOption } from './FamilieReactSelect';
 import { Switch } from '@navikt/ds-react';
+import { FamilieReactSelect, type ISelectOption } from './FamilieReactSelect';
 import '@navikt/ds-css';
 
 export default {

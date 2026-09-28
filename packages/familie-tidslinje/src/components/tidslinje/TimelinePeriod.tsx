@@ -1,15 +1,8 @@
-import React, {
-    CSSProperties,
-    ReactNode,
-    RefObject,
-    useLayoutEffect,
-    useRef,
-    useState,
-} from 'react';
 import classNames from 'classnames';
-import { Tooltip } from './Tooltip';
-import { PositionedPeriod } from '../types.internal';
+import React, { type CSSProperties, type ReactNode, type RefObject, useLayoutEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
+import type { PositionedPeriod } from '../types.internal';
+import { Tooltip } from './Tooltip';
 
 const fellesPeriodeStyle = css`
     background: #e7e9e9;
@@ -230,9 +223,7 @@ const ClickablePeriod = React.memo(
             >
                 {period.hoverLabel && showHoverLabel && <Tooltip>{period.hoverLabel}</Tooltip>}
                 {period.infoPin && <InfoPin $påPeriodeKnapp className={'infoPin'} />}
-                {period.children && (
-                    <PeriodeInnhold $kompakt={kompakt}>{period.children}</PeriodeInnhold>
-                )}
+                {period.children && <PeriodeInnhold $kompakt={kompakt}>{period.children}</PeriodeInnhold>}
             </PeriodeKnapp>
         );
     },
@@ -251,11 +242,7 @@ const NonClickablePeriod = ({ divRef, period, className, kompakt }: NonClickable
     </PeriodeDiv>
 );
 
-const finnClassnames = (
-    period: PositionedPeriod,
-    active: boolean | undefined,
-    isMini: boolean,
-): string[] => {
+const finnClassnames = (period: PositionedPeriod, active: boolean | undefined, isMini: boolean): string[] => {
     const newClassNames: string[] = [];
 
     switch (period.cropped) {
@@ -313,40 +300,33 @@ const finnClassnames = (
 };
 
 // eslint-disable-next-line react/display-name
-export const TimelinePeriod = React.memo(
-    ({ period, onSelectPeriod, active, kompakt }: TimelinePeriodProps) => {
-        const ref = useRef<HTMLButtonElement | HTMLDivElement>(null);
-        const [isMini, setIsMini] = useState(false);
+export const TimelinePeriod = React.memo(({ period, onSelectPeriod, active, kompakt }: TimelinePeriodProps) => {
+    const ref = useRef<HTMLButtonElement | HTMLDivElement>(null);
+    const [isMini, setIsMini] = useState(false);
 
-        const className = classNames(
-            'periode',
-            finnClassnames(period, active, isMini),
-            period.status,
-            period.className,
-        );
-        useLayoutEffect(() => {
-            const currentWidth = ref.current?.offsetWidth;
-            if (currentWidth && currentWidth < 30) {
-                setIsMini(true);
-            }
-            // eslint-disable-next-line react-hooks/exhaustive-deps
-        }, [ref.current]);
+    const className = classNames('periode', finnClassnames(period, active, isMini), period.status, period.className);
+    // biome-ignore lint/correctness/useExhaustiveDependencies: skal kjøre på nytt når ref.current settes for å måle bredden på elementet
+    useLayoutEffect(() => {
+        const currentWidth = ref.current?.offsetWidth;
+        if (currentWidth && currentWidth < 30) {
+            setIsMini(true);
+        }
+    }, [ref.current]);
 
-        return onSelectPeriod ? (
-            <ClickablePeriod
-                buttonRef={ref as RefObject<HTMLButtonElement>}
-                period={period}
-                onSelectPeriod={onSelectPeriod}
-                className={className}
-                kompakt={kompakt}
-            />
-        ) : (
-            <NonClickablePeriod
-                divRef={ref as RefObject<HTMLDivElement>}
-                period={period}
-                className={className}
-                kompakt={kompakt}
-            />
-        );
-    },
-);
+    return onSelectPeriod ? (
+        <ClickablePeriod
+            buttonRef={ref as RefObject<HTMLButtonElement>}
+            period={period}
+            onSelectPeriod={onSelectPeriod}
+            className={className}
+            kompakt={kompakt}
+        />
+    ) : (
+        <NonClickablePeriod
+            divRef={ref as RefObject<HTMLDivElement>}
+            period={period}
+            className={className}
+            kompakt={kompakt}
+        />
+    );
+});

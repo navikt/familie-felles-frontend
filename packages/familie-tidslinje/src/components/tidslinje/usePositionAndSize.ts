@@ -1,5 +1,5 @@
-import { EnkelPeriode } from '../types.external';
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
+import type { EnkelPeriode } from '../types.external';
 import { horizontalPositionAndWidth } from './calc';
 
 interface UsePositionAndSizeOptions {
@@ -9,8 +9,7 @@ interface UsePositionAndSizeOptions {
     direction: 'left' | 'right';
 }
 
-const constrain = (value: number, min: number, max: number) =>
-    value >= max ? max : value < min ? min : value;
+const constrain = (value: number, min: number, max: number) => (value >= max ? max : value < min ? min : value);
 
 export const usePositionAndSize = ({
     periode,
@@ -21,12 +20,7 @@ export const usePositionAndSize = ({
     const fom = dayjs(periode.fom).startOf('day');
     const tom = dayjs(periode.tom).endOf('day');
 
-    const { horizontalPosition, width } = horizontalPositionAndWidth(
-        fom,
-        tom,
-        tidslinjestart,
-        tidslinjeslutt,
-    );
+    const { horizontalPosition, width } = horizontalPositionAndWidth(fom, tom, tidslinjestart, tidslinjeslutt);
     const adjustedHorizontalPosition = constrain(horizontalPosition, 0, 100);
 
     const adjustedWidth =

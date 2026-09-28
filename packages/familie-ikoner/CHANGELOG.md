@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.7](https://github.com/navikt/familie-felles-frontend/compare/%40navikt%2Ffamilie-ikoner%409.1.6...%40navikt%2Ffamilie-ikoner%409.1.7) (2026-09-28)
+
+**Note:** Version bump only for package @navikt/familie-ikoner
+
+
+
+
+
 ## [9.1.6](https://github.com/navikt/familie-felles-frontend/compare/@navikt/familie-ikoner@9.1.5...@navikt/familie-ikoner@9.1.6) (2026-09-04)
 
 **Note:** Version bump only for package @navikt/familie-ikoner

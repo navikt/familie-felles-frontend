@@ -1,12 +1,12 @@
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { type Dayjs } from 'dayjs';
 import { nanoid } from 'nanoid';
-import { InternalSimpleTimeline, PositionedPeriod } from '../types.internal';
-import { Periode } from '../types.external';
+import { useMemo } from 'react';
+import type { Periode } from '../types.external';
+import type { InternalSimpleTimeline, PositionedPeriod } from '../types.internal';
 import { horizontalPositionAndWidth } from './calc';
 import { innenEtDøgn, invisiblePeriods } from './filter';
 import { sistePeriode } from './sort';
-import { useMemo } from 'react';
-import { TidslinjeProps } from './Tidslinje';
+import type { TidslinjeProps } from './Tidslinje';
 
 const spatialPeriod = (
     period: Periode,
@@ -39,14 +39,9 @@ const spatialPeriod = (
     };
 };
 
-const adjustedEdges = (
-    period: PositionedPeriod,
-    i: number,
-    allPeriods: PositionedPeriod[],
-): PositionedPeriod => {
+const adjustedEdges = (period: PositionedPeriod, i: number, allPeriods: PositionedPeriod[]): PositionedPeriod => {
     const left = i > 0 && innenEtDøgn(allPeriods[i - 1].endInclusive, period.start);
-    const right =
-        i < allPeriods.length - 1 && innenEtDøgn(period.endInclusive, allPeriods[i + 1].start);
+    const right = i < allPeriods.length - 1 && innenEtDøgn(period.endInclusive, allPeriods[i + 1].start);
     return left && right
         ? { ...period, connectingEdge: 'both' }
         : left
@@ -58,7 +53,7 @@ const adjustedEdges = (
 
 const trimmedPeriods = (period: PositionedPeriod): PositionedPeriod => {
     let { horizontalPosition, width, connectingEdge } = period;
-    let cropped: 'left' | 'right' | 'both' | undefined = undefined;
+    let cropped: 'left' | 'right' | 'both' | undefined;
     if (horizontalPosition + width > 100) {
         width = 100 - horizontalPosition;
         cropped = 'right';
@@ -89,9 +84,7 @@ export const useTidslinjerader = (
         () =>
             rader.map(perioder => {
                 const tidslinjeperioder = perioder
-                    .map((periode: Periode) =>
-                        spatialPeriod(periode, startDato, sluttDato, direction),
-                    )
+                    .map((periode: Periode) => spatialPeriod(periode, startDato, sluttDato, direction))
                     .sort(sistePeriode)
                     .map(adjustedEdges)
                     .map(trimmedPeriods)
@@ -104,24 +97,16 @@ export const useTidslinjerader = (
         [rader, startDato, sluttDato, direction],
     );
 
-const tidligsteDato = (tidligst: Date, periode: Periode) =>
-    periode.fom < tidligst ? periode.fom : tidligst;
+const tidligsteDato = (tidligst: Date, periode: Periode) => (periode.fom < tidligst ? periode.fom : tidligst);
 
 const tidligsteFomDato = (rader: Periode[][]) => rader.flat().reduce(tidligsteDato, new Date());
 
 export const useTidligsteDato = ({ startDato, rader }: TidslinjeProps) =>
-    useMemo(
-        () => (startDato ? dayjs(startDato) : dayjs(tidligsteFomDato(rader))),
-        [startDato, rader],
-    );
+    useMemo(() => (startDato ? dayjs(startDato) : dayjs(tidligsteFomDato(rader))), [startDato, rader]);
 
-const senesteDato = (senest: Date, periode: Periode) =>
-    periode.tom > senest ? periode.tom : senest;
+const senesteDato = (senest: Date, periode: Periode) => (periode.tom > senest ? periode.tom : senest);
 
 const senesteTomDato = (rader: Periode[][]) => rader.flat().reduce(senesteDato, new Date(0));
 
 export const useSenesteDato = ({ sluttDato, rader }: TidslinjeProps) =>
-    useMemo(
-        () => (sluttDato ? dayjs(sluttDato) : dayjs(senesteTomDato(rader)).add(1, 'day')),
-        [sluttDato, rader],
-    );
+    useMemo(() => (sluttDato ? dayjs(sluttDato) : dayjs(senesteTomDato(rader)).add(1, 'day')), [sluttDato, rader]);

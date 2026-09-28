@@ -1,5 +1,5 @@
-import { Dayjs } from 'dayjs';
-import { ReactNode } from 'react';
+import type { Dayjs } from 'dayjs';
+import type { ReactNode } from 'react';
 
 export type PeriodStatus = 'suksess' | 'advarsel' | 'feil' | 'inaktiv' | 'ukjent';
 export type Percentage = number;

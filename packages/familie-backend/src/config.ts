@@ -1,4 +1,4 @@
-import { IAppConfig } from './typer';
+import type { IAppConfig } from './typer';
 import { envVar } from './utils';
 
 export let appConfig: IAppConfig;

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Periode, Tidslinje, TidslinjeProps } from './src';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { type Periode, Tidslinje, type TidslinjeProps } from './src';
 
 import '@navikt/ds-css';
 import { FlagCrossIcon, StarsEuIcon } from '@navikt/aksel-icons';
@@ -35,11 +35,7 @@ export default {
                     className: 'eøs',
                     children: (
                         <>
-                            <StyledEu
-                                height="24"
-                                width="24"
-                                style={{ position: 'relative', top: '-1px' }}
-                            />
+                            <StyledEu height="24" width="24" style={{ position: 'relative', top: '-1px' }} />
                             <span style={{ position: 'relative', top: '-6px' }}>
                                 Dette er ein lang tekst for testing
                             </span>
@@ -72,10 +68,7 @@ export default {
                                     top: '-1px',
                                 }}
                             />
-                            <Detail
-                                size="small"
-                                style={{ display: 'inline', position: 'relative', top: '-8px' }}
-                            >
+                            <Detail size="small" style={{ display: 'inline', position: 'relative', top: '-8px' }}>
                                 Dette er ein lang tekst for testing
                             </Detail>
                         </>
@@ -128,16 +121,11 @@ export const ClickableWithIcon = (args: TidslinjeProps) => {
             <TidlinjeContainer>
                 <h2>Klikkbare perioder</h2>
                 <p>
-                    Eksempel på muligheten for litt mer avansert innhold med blanding av ikon og
-                    tekst. Også eksempel på egne klasser på perioder.
+                    Eksempel på muligheten for litt mer avansert innhold med blanding av ikon og tekst. Også eksempel på
+                    egne klasser på perioder.
                 </p>
                 <p>Styling må tilpasses bruken.</p>
-                <Tidslinje
-                    kompakt={kompakt}
-                    {...args}
-                    aktivRad={aktivRad}
-                    onSelectPeriode={onSelectPeriode}
-                />
+                <Tidslinje kompakt={kompakt} {...args} aktivRad={aktivRad} onSelectPeriode={onSelectPeriode} />
             </TidlinjeContainer>
             {aktivPeriode && <div>{`${aktivPeriode.fom} - ${aktivPeriode.tom}`}</div>}
         </>
@@ -156,8 +144,8 @@ export const NotClickableWithIcon = (args: TidslinjeProps) => {
             </div>
             <h2>Perioder ikke klikkbare</h2>
             <p>
-                Eksempel på muligheten for litt mer avansert innhold med blanding av ikon og tekst.
-                Også eksempel på egne klasser på perioder.
+                Eksempel på muligheten for litt mer avansert innhold med blanding av ikon og tekst. Også eksempel på
+                egne klasser på perioder.
             </p>
             <p>Styling må tilpasses bruken.</p>
             <TidlinjeContainer>
