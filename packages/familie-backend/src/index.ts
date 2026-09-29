@@ -22,7 +22,7 @@ export * from './utils';
 
 export interface IApp {
     app: Express;
-    azureAuthClient: Configuration;
+    azureAuthConfig: Configuration;
     router: Router;
     prometheusRegistry: Registry;
 }
@@ -61,7 +61,7 @@ export default async (
 
             return {
                 app,
-                azureAuthClient: azureAuthConfig,
+                azureAuthConfig,
                 router,
                 prometheusRegistry,
             };
