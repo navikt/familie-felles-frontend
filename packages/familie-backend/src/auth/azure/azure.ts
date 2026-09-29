@@ -12,10 +12,6 @@ const hentConfig = async (): Promise<client.Configuration> => {
     if (httpProxy.fetch) {
         options[client.customFetch] = httpProxy.fetch;
     }
-    if (discoveryUrl.protocol === 'http:') {
-        // Tillater http mot f.eks. lokal mock-oauth2-server
-        options.execute = [client.allowInsecureRequests];
-    }
 
     const config = await client.discovery(
         discoveryUrl,
