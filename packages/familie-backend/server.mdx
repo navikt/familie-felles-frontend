@@ -8,43 +8,66 @@ Node.js backend med express for familie frontend apper.
 Setter opp en express app med azure autentisering og logging.
 Kan konfigureres til å bruke redis gjennom egen konfigurasjon.
 
-```js
-const passportConfig: IOIDCStrategyOptionWithRequest = se interface i oidc-strategy.d.ts
-const sessionConfig: ISessionKonfigurasjon = {
-    cookieSecret: string | string[],
-    navn: string,
-    redisPassord?: string;
-    redisUrl?: string; // Settes denne prøver modulen å koble seg til redis
-    secret?: boolean; // Settes til true dersom man aktiverer secret flagget på sesjonen
-    sessionMaxAgeSekunder?: number;
-    sessionSecret: string | string[],
+```ts
+import type { NextFunction, type Request, type Response } from 'express';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+import familieBackend, {
+    ensureAuthenticated,
+    getOnBehalfOfAccessToken,
+    type IApi,
+    type IAppConfig,
+    type ISessionKonfigurasjon,
+} from '@navikt/familie-backend';
+
+const sessionKonfigurasjon: ISessionKonfigurasjon = {
+    cookieSecret: '<cookie-secret>',
+    navn: 'familie-session',
+    redisUrl: undefined, // Redis-host for standalone Redis
+    redisFullUrl: undefined, // Full Redis-URL; brukes i stedet for redisUrl hvis satt
+    redisBrukernavn: undefined, // Redis-brukernavn, ved behov
+    redisPassord: undefined, // Redis-passord, ved behov
+    secureCookie: true,
+    sessionMaxAgeSekunder: 8 * 60 * 60,
 };
 
-export const saksbehandlerTokenConfig: ITokenRequest = {
-    clientId: '<applikasjon_id fra aad app>',
-    clientSecret: '<SECRET fra aad app>',
-    redirectUrl: redirectUrl,
-    scope: `${'<applikasjon_id fra aad app>'}/.default`,
-    tokenUri: tokenURI,
+const appConfig: IAppConfig = {
+    discoveryUrl: '<Azure OIDC discovery URL>',
+    clientId: '<application-client-id>',
+    clientSecret: '<application-client-secret>',
+    redirectUri: '<application-callback-URL>',
+    logoutRedirectUri: '<URL to redirect to after logout>',
+    sessionSecret: '<session-secret>',
 };
 
-export const oboTokenConfig: ITokenRequest = {
-    clientId: '<applikasjon_id fra aad app>',
-    clientSecret: '<SECRET fra aad app>',
-    redirectUrl: redirectUrl,
-    scope: 'scope mot backend tjenesten',
-    tokenUri: tokenURI,
+const { app, router, azureAuthConfig } = await familieBackend(sessionKonfigurasjon, undefined, appConfig);
+app.use(router);
+
+const backendApi: IApi = {
+    clientId: '<backend-api-client-id>',
+    scopes: ['api://<backend-api-client-id>/.default'],
 };
 
-const backend = new Backend(passportConfig, sessionConfig, saksbehandlerTokenConfig);
+const leggTilBackendToken = async (req: Request, _res: Response, next: NextFunction) => {
+    try {
+        const accessToken = await getOnBehalfOfAccessToken(azureAuthConfig, req, backendApi);
+        req.headers.authorization = `Bearer ${accessToken}`;
+        next();
+    } catch (error) {
+        next(error);
+    }
+};
 
-// Brukes videre f.eks. slik til å sette opp proxy mot backend
-backend
-    .getApp()
-    .use(
-        'proxyUrl',
-        backend.ensureAuthenticated(true, saksbehandlerTokenConfig),
-        attachToken(backend),
-        doProxy()
-    );
+app.use(
+    '/api',
+    ensureAuthenticated(azureAuthConfig, false),
+    leggTilBackendToken,
+    createProxyMiddleware({
+        target: 'https://<backend-api-host>',
+        changeOrigin: true,
+    }),
+);
 ```
+
+`cookieSecret`, `navn` og `secureCookie` er påkrevde. `sessionMaxAgeSekunder` er valgfri. Dersom verken `redisUrl` eller `redisFullUrl` er satt, lagres sesjonene i minnet; bruk Redis når sesjoner skal deles mellom flere appinstanser.
+
+Proxy-eksempelet bruker `http-proxy-middleware`, som må installeres som en avhengighet i konsumentappen (`npm install http-proxy-middleware`). `ensureAuthenticated` sender brukere uten gyldig innlogging til login, token-middleware henter et On-Behalf-Of-token for API-et og setter det som Bearer-token før forespørselen videresendes. Bytt ut klient-ID, scope og target med verdiene for API-et deres; API-et må være konfigurert til å godta scopet.
