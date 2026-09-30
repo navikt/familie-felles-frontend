@@ -1,6 +1,6 @@
 import { LOG_LEVEL } from '@navikt/familie-logging';
 import type { NextFunction, Request, Response } from 'express';
-import * as client from 'openid-client';
+import { type Configuration, refreshTokenGrant } from 'openid-client';
 import passport from 'passport';
 import { appConfig } from '../config';
 import { logRequest } from '../utils';
@@ -55,7 +55,7 @@ export const authenticateAzureCallback = () => {
     };
 };
 
-export const ensureAuthenticated = (authConfig: client.Configuration, sendUnauthorized: boolean) => {
+export const ensureAuthenticated = (authConfig: Configuration, sendUnauthorized: boolean) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         const validAccessToken = hasValidAccessToken(req);
         logRequest(
@@ -67,8 +67,7 @@ export const ensureAuthenticated = (authConfig: client.Configuration, sendUnauth
         if (req.isAuthenticated()) {
             if (!validAccessToken) {
                 const tokenSet: LagretTokenSet | undefined = getTokenSetsFromSession(req)?.[tokenSetSelfId];
-                await client
-                    .refreshTokenGrant(authConfig, tokenSet?.refresh_token ?? '')
+                await refreshTokenGrant(authConfig, tokenSet?.refresh_token ?? '')
                     .then(tokens => {
                         if (!req.session) {
                             throw new Error('Mangler sesjon på kall');

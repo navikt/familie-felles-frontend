@@ -1,6 +1,13 @@
 import { LOG_LEVEL, logError, logInfo } from '@navikt/familie-logging';
 import type { Request } from 'express';
-import * as client from 'openid-client';
+import {
+    type Configuration,
+    genericGrantRequest,
+    type IDToken,
+    ResponseBodyError,
+    type TokenEndpointResponse,
+    type TokenEndpointResponseHelpers,
+} from 'openid-client';
 import type { IApi } from '../typer';
 import { logRequest } from '../utils';
 
@@ -10,23 +17,18 @@ export const tokenSetSelfId = 'self';
  * Serialiserbar versjon av tokenresponsen som lagres på sesjonen.
  * `expires_at` (sekunder siden epoch) er med for å kunne avgjøre om tokenet er utløpt etter deserialisering.
  */
-export type LagretTokenSet = client.TokenEndpointResponse & { expires_at?: number };
+export type LagretTokenSet = TokenEndpointResponse & { expires_at?: number };
 
-export const tilLagretTokenSet = (
-    tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers,
-): LagretTokenSet => {
+export const tilLagretTokenSet = (tokens: TokenEndpointResponse & TokenEndpointResponseHelpers): LagretTokenSet => {
     const expiresIn = tokens.expiresIn();
     return {
-        // Hjelpefunksjonene (claims, expiresIn) er ikke-enumerable og blir derfor ikke med her
-        ...(tokens as client.TokenEndpointResponse),
+        ...(tokens as TokenEndpointResponse),
+        // Vi beregner utløpstidspunkt, da token.expires_in kun er verdien for varighet på tokenet da tokenet ble opprettet. Denne endrer seg ikke så lenge vi holder på tokenet i Redis eller i minnet.
         expires_at: expiresIn !== undefined ? Math.floor(Date.now() / 1000) + expiresIn : undefined,
     };
 };
 
-/**
- * Dekoder claims fra id_token uten validering (tilsvarer `TokenSet.claims()` i openid-client v5).
- */
-export const hentClaims = (tokenSet?: LagretTokenSet): client.IDToken | undefined => {
+export const hentClaims = (tokenSet?: LagretTokenSet): IDToken | undefined => {
     const payload = tokenSet?.id_token?.split('.')[1];
     if (!payload) {
         return undefined;
@@ -35,7 +37,7 @@ export const hentClaims = (tokenSet?: LagretTokenSet): client.IDToken | undefine
 };
 
 export interface UtledAccessTokenProps {
-    authClient: client.Configuration;
+    authClient: Configuration;
     req: Request;
     api: IApi;
     promise: {
@@ -46,12 +48,11 @@ export interface UtledAccessTokenProps {
 
 const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
     const { authClient: authConfig, req, api, promise } = props;
-    client
-        .genericGrantRequest(authConfig, 'urn:ietf:params:oauth:grant-type:jwt-bearer', {
-            assertion: req.session.passport.user.tokenSets[tokenSetSelfId].access_token,
-            requested_token_use: 'on_behalf_of',
-            scope: createOnBehalfOfScope(api),
-        })
+    genericGrantRequest(authConfig, 'urn:ietf:params:oauth:grant-type:jwt-bearer', {
+        assertion: req.session.passport.user.tokenSets[tokenSetSelfId].access_token,
+        requested_token_use: 'on_behalf_of',
+        scope: createOnBehalfOfScope(api),
+    })
         .then(tokens => {
             if (!req.session) {
                 throw Error('Mangler session på request.');
@@ -69,7 +70,7 @@ const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
         .catch((err: Error) => {
             const message = err.message;
             if (
-                (err instanceof client.ResponseBodyError && err.error === 'invalid_grant') ||
+                (err instanceof ResponseBodyError && err.error === 'invalid_grant') ||
                 message.includes('invalid_grant')
             ) {
                 logInfo(`Bruker har ikke tilgang: ${message}`);
@@ -84,11 +85,7 @@ const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
         });
 };
 
-export const getOnBehalfOfAccessToken = (
-    authConfig: client.Configuration,
-    req: Request,
-    api: IApi,
-): Promise<string> => {
+export const getOnBehalfOfAccessToken = (authConfig: Configuration, req: Request, api: IApi): Promise<string> => {
     const retryCount = 1;
     return new Promise((resolve, reject) => {
         if (hasValidAccessToken(req, api.clientId)) {
