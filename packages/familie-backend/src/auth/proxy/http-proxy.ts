@@ -15,7 +15,7 @@ const proxyFetch = (): CustomFetch | undefined => {
                 dispatcher,
             } as UndiciRequestInit);
 
-            return response as Response;
+            return response as unknown as Response;
         };
     } else {
         logInfo(`Environment variable HTTP_PROXY is not set, not proxying requests for openid-client`);
