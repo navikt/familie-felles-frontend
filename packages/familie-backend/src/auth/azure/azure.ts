@@ -1,63 +1,58 @@
 import { logDebug, logInfo } from '@navikt/familie-logging';
 import {
-    type Client,
-    type ClientMetadata,
-    custom,
-    Issuer,
-    Strategy,
-    type StrategyOptions,
-    type TokenSet,
+    ClientSecretPost,
+    type Configuration,
+    customFetch,
+    type DiscoveryRequestOptions,
+    discovery,
 } from 'openid-client';
+import { Strategy, type StrategyOptions, type VerifyFunction } from 'openid-client/passport';
 import { appConfig } from '../../config';
 import httpProxy from '../proxy/http-proxy';
-import { appendDefaultScope, tokenSetSelfId } from '../tokenUtils';
+import { appendDefaultScope, tilLagretTokenSet, tokenSetSelfId } from '../tokenUtils';
 
-const hentClient = (): Promise<Client> => {
-    const metadata: ClientMetadata = {
-        client_id: appConfig.clientId,
-        client_secret: appConfig.clientSecret,
-        redirect_uris: [appConfig.redirectUri],
-        token_endpoint_auth_method: 'client_secret_post',
-    };
+const hentConfig = async (): Promise<Configuration> => {
+    const discoveryUrl = new URL(appConfig.discoveryUrl);
+    const options: DiscoveryRequestOptions = {};
 
-    if (httpProxy.agent) {
-        custom.setHttpOptionsDefaults({
-            agent: httpProxy.agent,
-        });
+    if (httpProxy.fetch) {
+        options[customFetch] = httpProxy.fetch;
     }
-    return Issuer.discover(appConfig.discoveryUrl).then((issuer: Issuer<Client>) => {
-        logInfo(`Discovered issuer ${issuer.issuer}`);
-        return new issuer.Client(metadata);
-    });
+
+    const config = await discovery(
+        discoveryUrl,
+        appConfig.clientId,
+        undefined,
+        ClientSecretPost(appConfig.clientSecret),
+        options,
+    );
+    logInfo(`Discovered issuer ${config.serverMetadata().issuer}`);
+    return config;
 };
 
-const strategy = (client: Client) => {
-    // biome-ignore lint/suspicious/noExplicitAny: done-callback-signaturen kommer fra openid-client sitt API
-    const verify = (tokenSet: TokenSet, done: (err: any, _: any) => void) => {
-        logDebug(`verify. expired=${tokenSet.expired()}`);
-        if (tokenSet.expired()) {
+const strategy = (config: Configuration) => {
+    const verify: VerifyFunction = (tokens, done) => {
+        const expired = tokens.expiresIn() === 0;
+        logDebug(`verify. expired=${expired}`);
+        if (expired) {
             return done(undefined, undefined);
         }
 
         done(undefined, {
-            claims: tokenSet.claims,
+            claims: tokens.claims(),
             tokenSets: {
-                [tokenSetSelfId]: tokenSet,
+                [tokenSetSelfId]: tilLagretTokenSet(tokens),
             },
         });
     };
 
-    const options: StrategyOptions<Client> = {
-        client,
-        params: {
-            response_mode: 'query',
-            response_types: ['code'],
-            scope: `openid offline_access ${appendDefaultScope(appConfig.clientId)}`,
-        },
+    const options: StrategyOptions = {
+        config,
+        callbackURL: appConfig.redirectUri,
+        scope: `openid offline_access ${appendDefaultScope(appConfig.clientId)}`,
         passReqToCallback: false,
-        usePKCE: 'S256',
     };
     return new Strategy(options, verify);
 };
 
-export default { hentClient, strategy };
+export default { hentConfig, strategy };

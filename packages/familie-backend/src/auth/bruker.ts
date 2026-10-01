@@ -1,9 +1,9 @@
 import { LOG_LEVEL } from '@navikt/familie-logging';
 import type { NextFunction, Request, Response } from 'express';
 import fetch from 'node-fetch';
-import { type Client, TokenSet } from 'openid-client';
+import type { Configuration } from 'openid-client';
 import { envVar, logRequest } from '../utils';
-import { getOnBehalfOfAccessToken, getTokenSetsFromSession, tokenSetSelfId } from './tokenUtils';
+import { getOnBehalfOfAccessToken, getTokenSetsFromSession, hentClaims, tokenSetSelfId } from './tokenUtils';
 
 // Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {
@@ -47,13 +47,13 @@ const hentBrukerData = (accessToken: string, req: Request) => {
 /**
  * Funksjon som henter brukerprofil fra graph.
  */
-export const setBrukerprofilPåSesjonRute = (authClient: Client) => {
+export const setBrukerprofilPåSesjonRute = (authConfig: Configuration) => {
     return async (req: Request, _: Response, next: NextFunction) => {
-        setBrukerprofilPåSesjon(authClient, req, next);
+        setBrukerprofilPåSesjon(authConfig, req, next);
     };
 };
 
-const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFunction) => {
+const setBrukerprofilPåSesjon = (authConfig: Configuration, req: Request, next: NextFunction) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     return new Promise((_, _reject) => {
         const api = {
@@ -65,7 +65,7 @@ const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFu
             return next();
         }
 
-        getOnBehalfOfAccessToken(authClient, req, api)
+        getOnBehalfOfAccessToken(authConfig, req, api)
             .then(accessToken => hentBrukerData(accessToken, req))
             .then(res => res.json())
             // biome-ignore lint/suspicious/noExplicitAny: responsen fra Microsoft Graph er ikke typet
@@ -74,7 +74,7 @@ const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFu
                     throw new Error('Mangler sesjon på kall');
                 }
 
-                const tokenSet: TokenSet | undefined = getTokenSetsFromSession(req)[tokenSetSelfId];
+                const tokenSet = getTokenSetsFromSession(req)?.[tokenSetSelfId];
 
                 req.session.user = {
                     displayName: data.displayName,
@@ -82,7 +82,7 @@ const setBrukerprofilPåSesjon = (authClient: Client, req: Request, next: NextFu
                     enhet: data.officeLocation.slice(0, 4),
                     identifier: data.userPrincipalName,
                     navIdent: data.onPremisesSamAccountName,
-                    groups: tokenSet ? new TokenSet(tokenSet).claims().groups : [],
+                    groups: tokenSet ? hentClaims(tokenSet)?.groups : [],
                 };
 
                 req.session.save((error: Error) => {

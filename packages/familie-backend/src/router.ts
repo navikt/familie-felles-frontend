@@ -1,12 +1,12 @@
 import express, { type NextFunction, type Request, type Response } from 'express';
-import type { Client } from 'openid-client';
+import type { Configuration } from 'openid-client';
 import type { Counter } from 'prom-client';
 import { authenticateAzure, authenticateAzureCallback, ensureAuthenticated, logout } from './auth/authenticate';
 import { hentBrukerprofil, setBrukerprofilPåSesjonRute } from './auth/bruker';
 
 const router = express.Router();
 
-export default (authClient: Client, prometheusTellere?: { [key: string]: Counter<string> }) => {
+export default (authConfig: Configuration, prometheusTellere?: { [key: string]: Counter<string> }) => {
     // Authentication
     router.get('/login', (req: Request, res: Response, next: NextFunction) => {
         if (prometheusTellere?.login_route) {
@@ -21,8 +21,8 @@ export default (authClient: Client, prometheusTellere?: { [key: string]: Counter
     // Bruker
     router.get(
         '/user/profile',
-        ensureAuthenticated(authClient, true),
-        setBrukerprofilPåSesjonRute(authClient),
+        ensureAuthenticated(authConfig, true),
+        setBrukerprofilPåSesjonRute(authConfig),
         hentBrukerprofil(),
     );
 

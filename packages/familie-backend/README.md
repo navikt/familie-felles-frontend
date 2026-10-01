@@ -4,6 +4,8 @@ Node.js backend med express for familie frontend apper.
 Setter opp en express app med azure autentisering og logging.
 Kan konfigureres til å bruke redis gjennom egen konfigurasjon.
 
+Krever Node.js 22.19.0 eller nyere (blant annet på grunn av `undici`, som brukes ved HTTP-proxy).
+
 > 💡 Ser du etter [dokumentasjon](https://navikt.github.io/familie-felles-frontend/?path=/story/backend-server--page)?
 
 ## Installasjon
