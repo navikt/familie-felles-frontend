@@ -96,7 +96,7 @@ importers:
   packages/familie-backend:
     dependencies:
       '@navikt/familie-logging':
-        specifier: ^7.0.10
+        specifier: ^7.0.11
         version: link:../familie-logging
       '@types/cookie-parser':
         specifier: 1.4.8
@@ -173,10 +173,10 @@ importers:
   packages/familie-header:
     dependencies:
       '@navikt/familie-ikoner':
-        specifier: ^9.1.7
+        specifier: ^9.1.8
         version: link:../familie-ikoner
       '@navikt/familie-typer':
-        specifier: ^8.0.8
+        specifier: ^8.0.9
         version: link:../familie-typer
       '@navikt/fnrvalidator':
         specifier: 2.2.0
@@ -204,7 +204,7 @@ importers:
   packages/familie-http:
     dependencies:
       '@navikt/familie-typer':
-        specifier: ^8.0.8
+        specifier: ^8.0.9
         version: link:../familie-typer
       axios:
         specifier: '>=1.20.0 <2.0.0'
@@ -220,7 +220,7 @@ importers:
   packages/familie-ikoner:
     dependencies:
       '@navikt/familie-typer':
-        specifier: ^8.0.8
+        specifier: ^8.0.9
         version: link:../familie-typer
       react:
         specifier: 18.x || 19.x
@@ -243,10 +243,10 @@ importers:
   packages/familie-skjema:
     dependencies:
       '@navikt/familie-http':
-        specifier: ^8.0.29
+        specifier: ^8.0.30
         version: link:../familie-http
       '@navikt/familie-typer':
-        specifier: ^8.0.8
+        specifier: ^8.0.9
         version: link:../familie-typer
       '@types/deep-equal':
         specifier: 1.0.4

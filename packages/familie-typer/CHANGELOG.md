@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.9](https://github.com/navikt/familie-felles-frontend/compare/%40navikt%2Ffamilie-typer%408.0.8...%40navikt%2Ffamilie-typer%408.0.9) (2026-10-01)
+
+**Note:** Version bump only for package @navikt/familie-typer
+
+
+
+
+
 ## [8.0.8](https://github.com/navikt/familie-felles-frontend/compare/%40navikt%2Ffamilie-typer%408.0.7...%40navikt%2Ffamilie-typer%408.0.8) (2026-09-28)
 
 **Note:** Version bump only for package @navikt/familie-typer
