@@ -1,17 +1,26 @@
 import { logInfo } from '@navikt/familie-logging';
-import { HttpsProxyAgent } from 'https-proxy-agent';
+import type { CustomFetch } from 'openid-client';
+import { ProxyAgent, type RequestInit as UndiciRequestInit, fetch as undiciFetch } from 'undici';
 import { envVar } from '../../utils';
 
-const agent = () => {
+const proxyFetch = (): CustomFetch | undefined => {
     const proxyUri = envVar('HTTP_PROXY', false);
     if (proxyUri) {
-        logInfo(`Proxying requests via ${proxyUri} for openid-cilent`);
+        logInfo(`Proxying requests via ${proxyUri} for openid-client`);
 
-        return new HttpsProxyAgent(proxyUri);
+        const dispatcher = new ProxyAgent(proxyUri);
+        return async (url, options) => {
+            const response = await undiciFetch(url, {
+                ...options,
+                dispatcher,
+            } as UndiciRequestInit);
+
+            return response as unknown as Response;
+        };
     } else {
         logInfo(`Environment variable HTTP_PROXY is not set, not proxying requests for openid-client`);
         return undefined;
     }
 };
 
-export default { agent: agent() };
+export default { fetch: proxyFetch() };

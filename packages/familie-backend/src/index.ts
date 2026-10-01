@@ -1,6 +1,6 @@
 import { logError } from '@navikt/familie-logging';
 import express, { type Express, type Request, type Response, type Router } from 'express';
-import type { Client } from 'openid-client';
+import type { Configuration } from 'openid-client';
 import passport from 'passport';
 import type { Counter, Registry } from 'prom-client';
 import konfigurerPassport from './auth/azure/passport';
@@ -22,7 +22,7 @@ export * from './utils';
 
 export interface IApp {
     app: Express;
-    azureAuthClient: Client;
+    azureAuthConfig: Configuration;
     router: Router;
     prometheusRegistry: Registry;
 }
@@ -35,7 +35,7 @@ export default async (
     settAppConfig(appConfig);
 
     const app = express();
-    let azureAuthClient!: Client;
+    let azureAuthConfig!: Configuration;
     let router: Router;
 
     headers.setup(app);
@@ -55,13 +55,13 @@ export default async (
     konfigurerSession(app, passport, sessionKonfigurasjon);
 
     return konfigurerPassport(passport)
-        .then((authClient: Client) => {
-            azureAuthClient = authClient;
-            router = konfigurerRouter(azureAuthClient, prometheusTellere);
+        .then((authConfig: Configuration) => {
+            azureAuthConfig = authConfig;
+            router = konfigurerRouter(azureAuthConfig, prometheusTellere);
 
             return {
                 app,
-                azureAuthClient,
+                azureAuthConfig,
                 router,
                 prometheusRegistry,
             };

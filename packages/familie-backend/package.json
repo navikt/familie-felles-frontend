@@ -1,7 +1,7 @@
 {
     "name": "@navikt/familie-backend",
     "type": "module",
-    "version": "10.1.30",
+    "version": "11.0.1",
     "description": "Skall for familieytelsenes frontend",
     "author": "NAV",
     "homepage": "https://github.com/navikt/familie-felles-frontend#readme",
@@ -10,6 +10,9 @@
         "url": "https://github.com/navikt/familie-felles-frontend"
     },
     "license": "MIT",
+    "engines": {
+        "node": ">=22.19.0"
+    },
     "publishConfig": {
         "access": "public"
     },
@@ -26,7 +29,7 @@
         "tsc-alias": "tsc-alias -p tsconfig.json"
     },
     "dependencies": {
-        "@navikt/familie-logging": "^7.0.10",
+        "@navikt/familie-logging": "^7.0.11",
         "@types/cookie-parser": "1.4.8",
         "@types/express": "5.0.6",
         "@types/express-session": "1.19.0",
@@ -35,12 +38,12 @@
         "cookie-parser": "1.4.7",
         "express": "5.2.1",
         "express-session": "1.19.0",
-        "https-proxy-agent": "9.1.0",
         "node-fetch": "3.3.2",
-        "openid-client": "5.7.1",
+        "openid-client": "6.8.8",
         "passport": "0.7.0",
         "prom-client": "15.1.3",
-        "redis": "6.2.1"
+        "redis": "6.2.1",
+        "undici": "8.11.2"
     },
     "devDependencies": {
         "tsc-alias": "1.9.0"
