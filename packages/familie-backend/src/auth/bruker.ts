@@ -3,13 +3,7 @@ import type { NextFunction, Request, Response } from 'express';
 import fetch from 'node-fetch';
 import type { Configuration } from 'openid-client';
 import { envVar, logRequest } from '../utils';
-import {
-    getOnBehalfOfAccessToken,
-    getTokenSetsFromSession,
-    hentClaims,
-    type LagretTokenSet,
-    tokenSetSelfId,
-} from './tokenUtils';
+import { getOnBehalfOfAccessToken, getTokenSetsFromSession, hentClaims, tokenSetSelfId } from './tokenUtils';
 
 // Hent brukerprofil fra sesjon
 export const hentBrukerprofil = () => {
@@ -80,7 +74,7 @@ const setBrukerprofilPåSesjon = (authConfig: Configuration, req: Request, next:
                     throw new Error('Mangler sesjon på kall');
                 }
 
-                const tokenSet: LagretTokenSet | undefined = getTokenSetsFromSession(req)?.[tokenSetSelfId];
+                const tokenSet = getTokenSetsFromSession(req)?.[tokenSetSelfId];
 
                 req.session.user = {
                     displayName: data.displayName,

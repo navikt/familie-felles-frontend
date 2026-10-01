@@ -4,13 +4,7 @@ import { type Configuration, refreshTokenGrant } from 'openid-client';
 import passport from 'passport';
 import { appConfig } from '../config';
 import { logRequest } from '../utils';
-import {
-    getTokenSetsFromSession,
-    hasValidAccessToken,
-    type LagretTokenSet,
-    tilLagretTokenSet,
-    tokenSetSelfId,
-} from './tokenUtils';
+import { getTokenSetsFromSession, hasValidAccessToken, tilLagretTokenSet, tokenSetSelfId } from './tokenUtils';
 
 export const authenticateAzure = (req: Request, res: Response, next: NextFunction) => {
     const regex: RegExpExecArray | null = /redirectUrl=(.*)/.exec(req.url);
@@ -66,7 +60,7 @@ export const ensureAuthenticated = (authConfig: Configuration, sendUnauthorized:
 
         if (req.isAuthenticated()) {
             if (!validAccessToken) {
-                const tokenSet: LagretTokenSet | undefined = getTokenSetsFromSession(req)?.[tokenSetSelfId];
+                const tokenSet = getTokenSetsFromSession(req)?.[tokenSetSelfId];
                 await refreshTokenGrant(authConfig, tokenSet?.refresh_token ?? '')
                     .then(tokens => {
                         if (!req.session) {

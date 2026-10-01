@@ -37,7 +37,7 @@ export const hentClaims = (tokenSet?: LagretTokenSet): IDToken | undefined => {
 };
 
 export interface UtledAccessTokenProps {
-    authClient: Configuration;
+    authConfig: Configuration;
     req: Request;
     api: IApi;
     promise: {
@@ -47,7 +47,7 @@ export interface UtledAccessTokenProps {
 }
 
 const utledAccessToken = (props: UtledAccessTokenProps, retryCount: number) => {
-    const { authClient: authConfig, req, api, promise } = props;
+    const { authConfig, req, api, promise } = props;
     genericGrantRequest(authConfig, 'urn:ietf:params:oauth:grant-type:jwt-bearer', {
         assertion: req.session.passport.user.tokenSets[tokenSetSelfId].access_token,
         requested_token_use: 'on_behalf_of',
@@ -95,7 +95,7 @@ export const getOnBehalfOfAccessToken = (authConfig: Configuration, req: Request
             if (!req.session) {
                 throw Error('Session på request mangler.');
             }
-            utledAccessToken({ authClient: authConfig, req, api, promise: { resolve, reject } }, retryCount);
+            utledAccessToken({ authConfig: authConfig, req, api, promise: { resolve, reject } }, retryCount);
         }
     });
 };

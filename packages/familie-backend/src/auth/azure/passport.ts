@@ -5,7 +5,7 @@ import azure from './azure';
 
 export default async (passport: PassportStatic): Promise<Configuration> => {
     logInfo('Konfigurerer passport');
-    const azureAuthConfig: Configuration = await azure.hentConfig();
+    const azureAuthConfig = await azure.hentConfig();
     const azureOidcStrategy = azure.strategy(azureAuthConfig);
 
     // biome-ignore lint/suspicious/noExplicitAny: done-callback-signaturen kommer fra passport sitt API
