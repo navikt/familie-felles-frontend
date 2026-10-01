@@ -6,6 +6,7 @@
     "scripts": {
         "ct": "cz",
         "build": "lerna run build",
+        "typecheck": "tsc -p tsconfig.json --noEmit",
         "storybook": "storybook dev -p 8000",
         "build-storybook": "storybook build",
         "deploy-storybook": "storybook-to-ghpages",
@@ -61,7 +62,7 @@
         "react-dom": "19.3.0",
         "storybook": "10.6.0",
         "style-loader": "4.0.0",
-        "typescript": "5.9.2",
+        "typescript": "7.0.2",
         "webpack": "5.111.1",
         "@storybook/addon-docs": "10.6.0"
     },
