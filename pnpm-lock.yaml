@@ -72,8 +72,8 @@ importers:
         specifier: 13.0.0
         version: 13.0.0(less@4.9.1(supports-color@7.2.0))(webpack@5.111.1(@swc/core@1.13.5)(clean-css@5.3.3)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.32.0)(postcss@8.5.9)(uglify-js@3.19.3))
       lint-staged:
-        specifier: 17.5.1
-        version: 17.5.1
+        specifier: 17.6.0
+        version: 17.6.0
       react:
         specifier: 19.3.0
         version: 19.3.0
@@ -112,7 +112,7 @@ importers:
         version: 1.0.17
       connect-redis:
         specifier: 10.0.0
-        version: 10.0.0(express-session@1.19.0(supports-color@8.1.1))(redis@6.2.1(@opentelemetry/api@1.7.0))
+        version: 10.0.0(express-session@1.19.0(supports-color@8.1.1))(redis@6.3.0(@opentelemetry/api@1.7.0))
       cookie-parser:
         specifier: 1.4.7
         version: 1.4.7
@@ -135,8 +135,8 @@ importers:
         specifier: 15.1.3
         version: 15.1.3
       redis:
-        specifier: 6.2.1
-        version: 6.2.1(@opentelemetry/api@1.7.0)
+        specifier: 6.3.0
+        version: 6.3.0(@opentelemetry/api@1.7.0)
       undici:
         specifier: 8.11.2
         version: 8.11.2
@@ -156,13 +156,13 @@ importers:
     devDependencies:
       '@navikt/ds-css':
         specifier: 8.x
-        version: 8.16.2
+        version: 8.17.2
       '@navikt/ds-react':
         specifier: 8.x
-        version: 8.16.2(@types/react@18.0.20)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 8.17.2(@types/react@18.0.20)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@navikt/ds-tokens':
         specifier: 8.x
-        version: 8.16.2
+        version: 8.17.2
       styled-components:
         specifier: 6.x
         version: 6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -187,13 +187,13 @@ importers:
     devDependencies:
       '@navikt/aksel-icons':
         specifier: 8.x
-        version: 8.16.2
+        version: 8.17.2
       '@navikt/ds-css':
         specifier: 8.x
-        version: 8.16.2
+        version: 8.17.2
       '@navikt/ds-react':
         specifier: 8.x
-        version: 8.16.2(@types/react@18.0.20)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 8.17.2(@types/react@18.0.20)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       styled-components:
         specifier: 6.x
         version: 6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -285,16 +285,16 @@ importers:
     devDependencies:
       '@navikt/aksel-icons':
         specifier: 8.x
-        version: 8.16.2
+        version: 8.17.2
       '@navikt/ds-css':
         specifier: 8.x
-        version: 8.16.2
+        version: 8.17.2
       '@navikt/ds-react':
         specifier: 8.x
-        version: 8.16.2(@types/react@18.0.20)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+        version: 8.17.2(@types/react@18.0.20)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@navikt/ds-tokens':
         specifier: 8.x
-        version: 8.16.2
+        version: 8.17.2
       dayjs:
         specifier: 1.x
         version: 1.11.10
@@ -1582,21 +1582,27 @@ packages:
       '@emnapi/core': ^1.7.1 || ^2.0.0-alpha.4
       '@emnapi/runtime': ^1.7.1 || ^2.0.0-alpha.4
 
-  '@navikt/aksel-icons@8.16.2':
-    resolution: {integrity: sha512-d2GWooeIEJYq8NYJIJJhMo84Vac6SyCvLJDFWG6RSj8vcgFanQMnKAram1zd48UO/rjuuZZk99p4UZt4jsD0RA==, tarball: https://npm.pkg.github.com/download/@navikt/aksel-icons/8.16.2/8873ba72cb6d59c80e864fb04cf43ca0731dbfa5}
+  '@navikt/aksel-icons@8.17.2':
+    resolution: {integrity: sha512-P4N/SrXu1BFaanvp83AWb58hP2qutfmL5u+wBpoxtcSP5uSXDmNdT0qtsE8E7kvdY+cCPKfetHLlGX5O7xRD5g==, tarball: https://npm.pkg.github.com/download/@navikt/aksel-icons/8.17.2/e10ec442fa1f25b24704b55cc77c02a5d908a0f6}
 
-  '@navikt/ds-css@8.16.2':
-    resolution: {integrity: sha512-RMKKQ1OTXGPwSGPsWEvOXpRTxA+QhnHc4oGG0ePg7AeeGQvYE/VjtySL2ddOYwAR8BygyvuB/sDrjm5AkQQ0cw==, tarball: https://npm.pkg.github.com/download/@navikt/ds-css/8.16.2/a132ee47c528af289b89dd5d806ac1abfc937e44}
+  '@navikt/aksel-icons@8.18.0':
+    resolution: {integrity: sha512-pN15b6dQxDiPdJbXcL7W9xJ0sPUHo5GKM5ltAQ8kLb3Mf5is6Mf6gfON1nwft+aB8WlehDrTTseXVwu1BEfmQA==, tarball: https://npm.pkg.github.com/download/@navikt/aksel-icons/8.18.0/fcb261e25fc2aea91307c75b7429a27a0f5eaef9}
 
-  '@navikt/ds-react@8.16.2':
-    resolution: {integrity: sha512-pJGVltBJT5hNwo+fZee5qaM+Kc+hZZgPU7WoXbUbZxUtTbhHM+5uFo4J5ceMU2KBUhamtqtRGso2dXdztyEiHQ==, tarball: https://npm.pkg.github.com/download/@navikt/ds-react/8.16.2/212af8009cab85a672faa15f0a039eaabec9cbc7}
+  '@navikt/ds-css@8.17.2':
+    resolution: {integrity: sha512-k+xkEVF5ZBSM5UoLjqDsRAn/mBrlLXL3S8JLQj3syW1i4HIu6N6FaIGMveZeobZef5rIBWwhLGsIJ8doWtgyOQ==, tarball: https://npm.pkg.github.com/download/@navikt/ds-css/8.17.2/b0294b41e7004be0e010c409ae4d42c6167c8538}
+
+  '@navikt/ds-react@8.17.2':
+    resolution: {integrity: sha512-gVCKqF0rwlclmwpd3U3vAO1db49RhOpzVw+lCBz05RGCxH4ynmeTakuy2xI7MUsnIbiTB3LeBvnOsA23ynh1Dw==, tarball: https://npm.pkg.github.com/download/@navikt/ds-react/8.17.2/aff1f3f872620b72f91f14126b3169e34821408e}
     peerDependencies:
       '@types/react': ^17.0.30 || ^18 || ^19
       react: ^17 || ^18 || ^19
       react-dom: ^17 || ^18 || ^19
 
-  '@navikt/ds-tokens@8.16.2':
-    resolution: {integrity: sha512-WXtLRb034uUN1SUBEg+AYUrAu0zm+P0xuUheIWABEDpWnVGmfXDng7lIW5JDFbut3rQIa1xfzvUfeL3ghc4eng==, tarball: https://npm.pkg.github.com/download/@navikt/ds-tokens/8.16.2/a22ed996203e7730664ed43d7025c68609c937a8}
+  '@navikt/ds-tokens@8.17.2':
+    resolution: {integrity: sha512-oDKFZxlgt/L2zNPCma03fo1sls5E9bUTybMh8/ELh7btS3Kurv7fvwlF7CMW8mWTa+/yh1oqLXY/ONp4+/mPTg==, tarball: https://npm.pkg.github.com/download/@navikt/ds-tokens/8.17.2/6d44d329afac5ae8d729cdf2f1c83d009dfd2c80}
+
+  '@navikt/ds-tokens@8.18.0':
+    resolution: {integrity: sha512-jX+5Kl2oTMX5e5vRoo9nulv/3dRNXH5+8o/VKeWQaAIsBbFzJavkJkXbfI5wCAsl5vGcTnuHoX2Mifwv3cLwFg==, tarball: https://npm.pkg.github.com/download/@navikt/ds-tokens/8.18.0/ae4c9a33ed7b61d9981a723dcba0a51a6a2a35f4}
 
   '@navikt/fnrvalidator@2.2.0':
     resolution: {integrity: sha512-yz+7YYpTeP1tjdsj/RRZskzf7DMinTT8cUzPSMXGmCdY+rtFHNkJsp9ccfHLAgd9rk2k+ZXc9OEcySVwfq0e9Q==, tarball: https://npm.pkg.github.com/download/@navikt/fnrvalidator/2.2.0/4886b1ab78dabbca087adf379b81ba0ef27ebbd9}
@@ -2054,14 +2060,14 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@redis/bloom@6.2.1':
-    resolution: {integrity: sha512-huQgNLaCIZfQ9SeLn4q9124uOUd8HbZDYHwwUzNcRgHqCHiHKl2dDxMqJCeWh8cMqZAoWuHR8XnWbDMIf+o7ag==}
+  '@redis/bloom@6.3.0':
+    resolution: {integrity: sha512-NQ5poYpZr0jv6zazN1cy6JY5kIipKFZ3R9GTL4kOUTX3a9YAfY29U8bsE4lWhVQEM+G4V0BXVC57mubIdDijeA==}
     engines: {node: '>= 20.0.0'}
     peerDependencies:
-      '@redis/client': ^6.2.1
+      '@redis/client': ^6.3.0
 
-  '@redis/client@6.2.1':
-    resolution: {integrity: sha512-LzxBY7SIBvvJiyCgcaJZZakE3fJrZZ++i24+EDW9fKpCl68D35uJcKFpZZwCfOoG9WZTbyZlMzMeM0gtOAMU9Q==}
+  '@redis/client@6.3.0':
+    resolution: {integrity: sha512-fHrjwGCBvAANGi+TuRuwKi83sIOzgHr8eh+Uf48w3fSX7Hhrz174NrWqfJhAC2vnN0d/tfaZpdr6+o6JC3QHwg==}
     engines: {node: '>= 20.0.0'}
     peerDependencies:
       '@node-rs/xxhash': ^1.1.0
@@ -2072,23 +2078,23 @@ packages:
       '@opentelemetry/api':
         optional: true
 
-  '@redis/json@6.2.1':
-    resolution: {integrity: sha512-AFIUJ8Gj0DaaSBHYuSt8+O0oYWM+50OK1c0OmodB7XERIA8+BbyV3O4v76f9iccWasd1/7qjfZTpuzexUaZtrQ==}
+  '@redis/json@6.3.0':
+    resolution: {integrity: sha512-yt6vRfPBXtW/3qm53cF81TSQpLMjWdW4/2E9WQ2GgbvsKkuCKCFQIcMiKlil1ZMnezK+IQuS795xKU5psbaegw==}
     engines: {node: '>= 20.0.0'}
     peerDependencies:
-      '@redis/client': ^6.2.1
+      '@redis/client': ^6.3.0
 
-  '@redis/search@6.2.1':
-    resolution: {integrity: sha512-2vfOAOyYFE7UUw3sBBlkqqruBtOUS4HRY5MtW4hp83llrwvtrTE4r22CEqXddlV+54zkLxBE4nmsIJ/dpezQrQ==}
+  '@redis/search@6.3.0':
+    resolution: {integrity: sha512-RPXAZmKjZZG7Tm7m1w9keFdXzbL91PiSHQBfQRe9xwW40jNsTRbG0FwhIz4QlHPU4gKDAsCy8IQHj4yZl4H9rw==}
     engines: {node: '>= 20.0.0'}
     peerDependencies:
-      '@redis/client': ^6.2.1
+      '@redis/client': ^6.3.0
 
-  '@redis/time-series@6.2.1':
-    resolution: {integrity: sha512-kiYniph04dJOole+L359B6C9E+jYS2uDP7hca6Onj0xF38ZIpyxARO0Iq0W4ZRn1e8Q6vqW00QFZVSMRA/2Ijw==}
+  '@redis/time-series@6.3.0':
+    resolution: {integrity: sha512-+fJOB8mN1z5WRakCJNh5lVdz1KqvHGSOistsKeitD24QsCtPwyRQXWC0iq6T/i/ubLE/YcguZqPm8F598MKk4A==}
     engines: {node: '>= 20.0.0'}
     peerDependencies:
-      '@redis/client': ^6.2.1
+      '@redis/client': ^6.3.0
 
   '@rolldown/binding-android-arm64@1.0.0-rc.15':
     resolution: {integrity: sha512-YYe6aWruPZDtHNpwu7+qAHEMbQ/yRl6atqb/AhznLTnD3UY99Q1jE7ihLSahNWkF4EqRPVC4SiR4O0UkLK02tA==}
@@ -3124,10 +3130,6 @@ packages:
   clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
-
-  cluster-key-slot@1.1.2:
-    resolution: {integrity: sha512-RMr0FhtfXemyinomL4hrWcYJxmX6deFdCxpJzhDttxgO1+bcCnkk+9drydLVDmAMG7NE6aN/fl4F7ucU/90gAA==}
-    engines: {node: '>=0.10.0'}
 
   cmd-shim@6.0.3:
     resolution: {integrity: sha512-FMabTRlc5t5zjdenF6mS0MBeFZm0XqHqeOkcskKFb/LYCcRQ5fVgLOHVc4Lq9CqABd9zhjwPjMBCJvMCziSVtA==}
@@ -4546,8 +4548,8 @@ packages:
     resolution: {integrity: sha512-cNOjgCnLB+FnvWWtyRTzmB3POJ+cXxTA81LoW7u8JdmhfXzriropYwpjShnz1QLLWsQwY7nIxoDmcPTwphDK9w==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  lint-staged@17.5.1:
-    resolution: {integrity: sha512-7EDuco1xnBMeVpvAbeMq1U5KXwJGLmY8q6l+Ye78r36C4mPc+Vg1Z2SK8gHyRTyvPro90A0q5/FAZ+Au23d6QQ==}
+  lint-staged@17.6.0:
+    resolution: {integrity: sha512-nOhBfYkZEwkFtNzD5pK9s9LkcWoxJ+whLzEnhqi9nl7zTB5n7tg8+9iYgMGx2Wm3VlLu8cbNj0RACzY+nWi5iQ==}
     engines: {node: '>=22.22.1'}
     hasBin: true
 
@@ -5418,8 +5420,8 @@ packages:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}
     engines: {node: '>=8'}
 
-  redis@6.2.1:
-    resolution: {integrity: sha512-Z9VHtgYs48PiQC77X9O2Er8Hj4T+5BtFjT91/vi5Is1D04N72cA946ZslM1ImJw8ZctFBZWAVjM7S5wJNeHMpg==}
+  redis@6.3.0:
+    resolution: {integrity: sha512-XFQbPie1lGpKeUZ8ySYY43yLnQy/iIQtHNvIr/1XdaABpb96rUSdm3Mfl+98FEVbv9ZJIzINMno5s0Nh8E5LEw==}
     engines: {node: '>= 20.0.0'}
 
   regenerate-unicode-properties@10.2.2:
@@ -7817,23 +7819,27 @@ snapshots:
       '@tybys/wasm-util': 0.10.4
     optional: true
 
-  '@navikt/aksel-icons@8.16.2': {}
+  '@navikt/aksel-icons@8.17.2': {}
 
-  '@navikt/ds-css@8.16.2': {}
+  '@navikt/aksel-icons@8.18.0': {}
 
-  '@navikt/ds-react@8.16.2(@types/react@18.0.20)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
+  '@navikt/ds-css@8.17.2': {}
+
+  '@navikt/ds-react@8.17.2(@types/react@18.0.20)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)':
     dependencies:
       '@floating-ui/react': 0.27.20(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@floating-ui/react-dom': 2.1.9(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      '@navikt/aksel-icons': 8.16.2
-      '@navikt/ds-tokens': 8.16.2
+      '@navikt/aksel-icons': 8.18.0
+      '@navikt/ds-tokens': 8.18.0
       '@types/react': 18.0.20
       date-fns: 4.4.0
       react: 19.3.0
       react-day-picker: 10.0.1(@types/react@18.0.20)(react@19.3.0)
       react-dom: 19.3.0(react@19.3.0)
 
-  '@navikt/ds-tokens@8.16.2': {}
+  '@navikt/ds-tokens@8.17.2': {}
+
+  '@navikt/ds-tokens@8.18.0': {}
 
   '@navikt/fnrvalidator@2.2.0': {}
 
@@ -8232,27 +8238,25 @@ snapshots:
   '@oxc-resolver/binding-win32-x64-msvc@11.21.2':
     optional: true
 
-  '@redis/bloom@6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.7.0))':
+  '@redis/bloom@6.3.0(@redis/client@6.3.0(@opentelemetry/api@1.7.0))':
     dependencies:
-      '@redis/client': 6.2.1(@opentelemetry/api@1.7.0)
+      '@redis/client': 6.3.0(@opentelemetry/api@1.7.0)
 
-  '@redis/client@6.2.1(@opentelemetry/api@1.7.0)':
-    dependencies:
-      cluster-key-slot: 1.1.2
+  '@redis/client@6.3.0(@opentelemetry/api@1.7.0)':
     optionalDependencies:
       '@opentelemetry/api': 1.7.0
 
-  '@redis/json@6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.7.0))':
+  '@redis/json@6.3.0(@redis/client@6.3.0(@opentelemetry/api@1.7.0))':
     dependencies:
-      '@redis/client': 6.2.1(@opentelemetry/api@1.7.0)
+      '@redis/client': 6.3.0(@opentelemetry/api@1.7.0)
 
-  '@redis/search@6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.7.0))':
+  '@redis/search@6.3.0(@redis/client@6.3.0(@opentelemetry/api@1.7.0))':
     dependencies:
-      '@redis/client': 6.2.1(@opentelemetry/api@1.7.0)
+      '@redis/client': 6.3.0(@opentelemetry/api@1.7.0)
 
-  '@redis/time-series@6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.7.0))':
+  '@redis/time-series@6.3.0(@redis/client@6.3.0(@opentelemetry/api@1.7.0))':
     dependencies:
-      '@redis/client': 6.2.1(@opentelemetry/api@1.7.0)
+      '@redis/client': 6.3.0(@opentelemetry/api@1.7.0)
 
   '@rolldown/binding-android-arm64@1.0.0-rc.15':
     optional: true
@@ -9316,8 +9320,6 @@ snapshots:
 
   clone@1.0.4: {}
 
-  cluster-key-slot@1.1.2: {}
-
   cmd-shim@6.0.3: {}
 
   cmd-shim@7.0.0: {}
@@ -9394,10 +9396,10 @@ snapshots:
 
   concat-map@0.0.1: {}
 
-  connect-redis@10.0.0(express-session@1.19.0(supports-color@8.1.1))(redis@6.2.1(@opentelemetry/api@1.7.0)):
+  connect-redis@10.0.0(express-session@1.19.0(supports-color@8.1.1))(redis@6.3.0(@opentelemetry/api@1.7.0)):
     dependencies:
       express-session: 1.19.0(supports-color@8.1.1)
-      redis: 6.2.1(@opentelemetry/api@1.7.0)
+      redis: 6.3.0(@opentelemetry/api@1.7.0)
 
   content-disposition@1.0.0:
     dependencies:
@@ -10894,7 +10896,7 @@ snapshots:
 
   lines-and-columns@2.0.3: {}
 
-  lint-staged@17.5.1:
+  lint-staged@17.6.0:
     dependencies:
       picomatch: 4.0.7
       string-argv: 0.3.2
@@ -11983,13 +11985,13 @@ snapshots:
       indent-string: 4.0.0
       strip-indent: 3.0.0
 
-  redis@6.2.1(@opentelemetry/api@1.7.0):
+  redis@6.3.0(@opentelemetry/api@1.7.0):
     dependencies:
-      '@redis/bloom': 6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.7.0))
-      '@redis/client': 6.2.1(@opentelemetry/api@1.7.0)
-      '@redis/json': 6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.7.0))
-      '@redis/search': 6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.7.0))
-      '@redis/time-series': 6.2.1(@redis/client@6.2.1(@opentelemetry/api@1.7.0))
+      '@redis/bloom': 6.3.0(@redis/client@6.3.0(@opentelemetry/api@1.7.0))
+      '@redis/client': 6.3.0(@opentelemetry/api@1.7.0)
+      '@redis/json': 6.3.0(@redis/client@6.3.0(@opentelemetry/api@1.7.0))
+      '@redis/search': 6.3.0(@redis/client@6.3.0(@opentelemetry/api@1.7.0))
+      '@redis/time-series': 6.3.0(@redis/client@6.3.0(@opentelemetry/api@1.7.0))
     transitivePeerDependencies:
       - '@node-rs/xxhash'
       - '@opentelemetry/api'
