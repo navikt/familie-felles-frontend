@@ -53,7 +53,7 @@ const ResultatListeElementKnapp = styled.div`
     flex-direction: row;
 `;
 
-function lagManglerTilgangBegrunnelse(søkeresultat: ISøkeresultat): string {
+const lagManglerTilgangBegrunnelse = (søkeresultat: ISøkeresultat): string => {
     if (søkeresultat.manglerTilgangBegrunnelse) {
         return søkeresultat.manglerTilgangBegrunnelse;
     }
@@ -61,7 +61,7 @@ function lagManglerTilgangBegrunnelse(søkeresultat: ISøkeresultat): string {
         ? adressebeskyttelsestyper[søkeresultat.adressebeskyttelseGradering]
         : 'ukjent';
     return `Personen har diskresjonskode ${adressebeskyttelse}`;
-}
+};
 
 const Søkeresultat: React.FC<Props> = ({
     formaterResultat,
