@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [17.1.0](https://github.com/navikt/familie-felles-frontend/compare/%40navikt%2Ffamilie-header%4017.0.8...%40navikt%2Ffamilie-header%4017.1.0) (2026-10-26)
+
+### Features
+
+* **familie-header:** egen begrunnelse i søkeresultat når saksbehandler mangler tilgang ([#1783](https://github.com/navikt/familie-felles-frontend/issues/1783)) ([11c7025](https://github.com/navikt/familie-felles-frontend/commit/11c7025b446524a9f2b25cd0d3d3a36bb70ff377))
+
+
 ## [17.0.8](https://github.com/navikt/familie-felles-frontend/compare/%40navikt%2Ffamilie-header%4017.0.7...%40navikt%2Ffamilie-header%4017.0.8) (2026-10-01)
 
 **Note:** Version bump only for package @navikt/familie-header
