@@ -116,6 +116,14 @@ const søkeResultater: Record<string, ISøkeresultat[]> = {
             navn: 'Sønn Sønnesen',
             rolle: 'BARN',
         },
+        {
+            adressebeskyttelseGradering: Adressebeskyttelsegradering.UGRADERT,
+            harTilgang: false,
+            ident: '12345678913',
+            ikon: ikoner.FORELDER_MANN,
+            manglerTilgangBegrunnelse: 'Du kan ikke gjøre oppslag på deg selv eller dine nærstående',
+            rolle: 'FAR',
+        },
     ],
     '12345678911': [
         {

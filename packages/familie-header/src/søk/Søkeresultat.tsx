@@ -53,6 +53,16 @@ const ResultatListeElementKnapp = styled.div`
     flex-direction: row;
 `;
 
+const lagManglerTilgangBegrunnelse = (søkeresultat: ISøkeresultat): string => {
+    if (søkeresultat.manglerTilgangBegrunnelse) {
+        return søkeresultat.manglerTilgangBegrunnelse;
+    }
+    const adressebeskyttelse = søkeresultat.adressebeskyttelseGradering
+        ? adressebeskyttelsestyper[søkeresultat.adressebeskyttelseGradering]
+        : 'ukjent';
+    return `Personen har diskresjonskode ${adressebeskyttelse}`;
+};
+
 const Søkeresultat: React.FC<Props> = ({
     formaterResultat,
     settValgtSøkeresultat,
@@ -70,7 +80,11 @@ const Søkeresultat: React.FC<Props> = ({
                     return (
                         <ResultatListeElement key={søkeresultat.ident} $fokus={index === valgtSøkeresultat}>
                             <ResultatListeElementKnapp
-                                aria-label={søkeresultat.harTilgang ? søkeresultat.navn : 'Person har diskresjonskode'}
+                                aria-label={
+                                    søkeresultat.harTilgang
+                                        ? søkeresultat.navn
+                                        : lagManglerTilgangBegrunnelse(søkeresultat)
+                                }
                                 aria-selected={index === valgtSøkeresultat}
                                 role={'option'}
                                 onClick={() => {
@@ -86,13 +100,7 @@ const Søkeresultat: React.FC<Props> = ({
                                     <BodyShort size={'small'}>
                                         {søkeresultat.harTilgang
                                             ? `${søkeresultat.navn} (${formaterPersonIdent(søkeresultat.ident)})`
-                                            : `Personen har diskresjonskode ${
-                                                  søkeresultat.adressebeskyttelseGradering
-                                                      ? adressebeskyttelsestyper[
-                                                            søkeresultat.adressebeskyttelseGradering
-                                                        ]
-                                                      : 'ukjent'
-                                              }`}
+                                            : lagManglerTilgangBegrunnelse(søkeresultat)}
                                     </BodyShort>
 
                                     {!søkeresultat.fagsakId && søkeresultat.harTilgang && (
