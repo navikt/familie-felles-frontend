@@ -83,6 +83,9 @@ importers:
       storybook:
         specifier: 10.6.0
         version: 10.6.0(@types/react@18.0.20)(prettier@3.9.4)(react@19.3.0)
+      storybook-css-modules:
+        specifier: 1.0.8
+        version: 1.0.8
       style-loader:
         specifier: 4.0.0
         version: 4.0.0(webpack@5.111.1(@swc/core@1.13.5)(clean-css@5.3.3)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.32.0)(postcss@8.5.9)(uglify-js@3.19.3))
@@ -5721,6 +5724,10 @@ packages:
   stop-iteration-iterator@1.0.0:
     resolution: {integrity: sha512-iCGQj+0l0HOdZ2AEeBADlsRC+vsnDsZsbdSiH1yNSjcfKM7fdpCMfqAL/dwF5BLiw/XhRft/Wax6zQbhq2BcjQ==}
     engines: {node: '>= 0.4'}
+
+  storybook-css-modules@1.0.8:
+    resolution: {integrity: sha512-anITwllH6nLw0quPElVBLRrE8QDbcRv0Dgl8sKLOc4uiqw+g1GE2l21Stjx3Wyv2O6ZKJScbyOpOuuz3SmeaOQ==}
+    engines: {node: '>=14'}
 
   storybook@10.6.0:
     resolution: {integrity: sha512-H48X6AURAFTpfN2zEux6vNesee5Oq8Gxj1IanYmblPZ218sfKSeyyerF1NC7GD7BrruoC8L4/cU0zII4y+d6zw==}
@@ -12323,6 +12330,8 @@ snapshots:
   stop-iteration-iterator@1.0.0:
     dependencies:
       internal-slot: 1.1.0
+
+  storybook-css-modules@1.0.8: {}
 
   storybook@10.6.0(@types/react@18.0.20)(prettier@3.9.4)(react@19.3.0):
     dependencies:

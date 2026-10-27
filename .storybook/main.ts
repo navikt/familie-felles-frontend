@@ -1,66 +1,88 @@
-import { createRequire } from 'node:module';
-import { dirname, join } from 'node:path';
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import {createRequire} from 'node:module';
+import {dirname, join} from 'node:path';
+import type {StorybookConfig} from '@storybook/react-webpack5';
 
 const require = createRequire(import.meta.url);
 
 const storybookConfig: StorybookConfig = {
-    stories: ['../packages/familie-*/src/**/*.@(mdx|stories.@(tsx))', '../packages/familie-*/*.@(mdx|stories.@(tsx))'],
-    addons: [
-        getAbsolutePath('@storybook/addon-a11y'),
-        getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
-        getAbsolutePath('@storybook/addon-docs'),
-    ],
-    typescript: {
-        check: true,
-        checkOptions: {},
-        reactDocgen: 'react-docgen-typescript',
-        reactDocgenTypescriptOptions: {
-            shouldExtractLiteralValuesFromEnum: true,
-        },
+  stories: ['../packages/familie-*/src/**/*.@(mdx|stories.@(tsx))', '../packages/familie-*/*.@(mdx|stories.@(tsx))'],
+  addons: [
+    getAbsolutePath('@storybook/addon-a11y'),
+    getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
+    getAbsolutePath('@storybook/addon-docs'),
+    'storybook-css-modules',
+  ],
+  typescript: {
+    check: true,
+    checkOptions: {},
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
     },
-    framework: {
-        name: getAbsolutePath('@storybook/react-webpack5'),
-        options: {},
-    },
-    docs: {},
-    async webpackFinal(config) {
-        if (config.module?.rules) {
-            config.module.rules.push({
-                test: /\.(less)$/,
-                use: [
-                    {
-                        loader: 'style-loader',
-                    },
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            modules: {
-                                mode: 'icss',
-                            },
-                            importLoaders: 1,
-                        },
-                    },
-                    {
-                        loader: require.resolve('less-loader'),
-                    },
-                ],
-            });
-            config.module.rules.push({
-                test: /\.mjs$/,
-                include: /node_modules/,
-                type: 'javascript/auto',
-            });
-        }
-        if (config.resolve?.extensions) {
-            config.resolve.extensions.push('.less');
-        }
-        return config;
-    },
+  },
+  framework: {
+    name: getAbsolutePath('@storybook/react-webpack5'),
+    options: {},
+  },
+  docs: {},
+  async webpackFinal(config) {
+    if (config.module?.rules) {
+      config.module.rules.push({
+        test: /\.module\.less$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                namedExport: false,
+              },
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: require.resolve('less-loader'),
+          },
+        ],
+      });
+      config.module.rules.push({
+        test: /\.(less)$/,
+        exclude: /\.module\.less$/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                mode: 'icss',
+              },
+              importLoaders: 2,
+            },
+          },
+          {
+            loader: require.resolve('less-loader'),
+          },
+        ],
+      });
+      config.module.rules.push({
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
+      });
+    }
+    if (config.resolve?.extensions) {
+      config.resolve.extensions.push('.less');
+    }
+    return config;
+  },
 };
 export default storybookConfig;
 
 // biome-ignore lint/suspicious/noExplicitAny: getAbsolutePath fra Storybook-oppsettet returnerer dynamisk verdi
 function getAbsolutePath(value: string): any {
-    return dirname(require.resolve(join(value, 'package.json')));
+  return dirname(require.resolve(join(value, 'package.json')));
 }
