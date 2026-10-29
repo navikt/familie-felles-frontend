@@ -38,7 +38,7 @@
         }
     },
     "devDependencies": {
-        "@biomejs/biome": "2.5.8",
+        "@biomejs/biome": "2.6.3",
         "@babel/core": "8.0.6",
         "@babel/preset-env": "8.0.6",
         "@babel/preset-react": "8.0.1",
@@ -54,16 +54,16 @@
         "copyfiles": "2.4.1",
         "css-loader": "7.1.2",
         "husky": "9.1.7",
-        "lerna": "10.0.1",
+        "lerna": "10.1.1",
         "less": "4.9.1",
         "less-loader": "13.0.0",
-        "lint-staged": "17.5.1",
+        "lint-staged": "17.6.0",
         "react": "19.3.0",
         "react-dom": "19.3.0",
         "storybook": "10.6.0",
         "style-loader": "4.0.0",
         "typescript": "7.0.2",
-        "webpack": "5.111.1",
+        "webpack": "5.112.2",
         "@storybook/addon-docs": "10.6.0"
     },
     "packageManager": "pnpm@11.15.0"
