@@ -1,49 +1,7 @@
-import { BorderNeutral, BorderNeutralSubtle, Space8, Space16, TextNeutralSubtle } from '@navikt/ds-tokens/dist/tokens';
+import { Box } from '@navikt/ds-react';
 import classNames from 'classnames';
 import type { ReactNode } from 'react';
-import styled from 'styled-components';
-
-const TooltipContainer = styled.div`
-    position: absolute;
-    padding: ${Space8} ${Space16};
-    background: #ffffff;
-    border-radius: 4px;
-    border: 1px solid ${BorderNeutral};
-    color: ${TextNeutralSubtle};
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%) translateY(calc(-100% - 10px));
-    box-shadow: 0 2px 2px 0 ${BorderNeutralSubtle};
-    animation-timing-function: ease-out;
-    animation-duration: 0.05s;
-    animation-name: fadeIn;
-    cursor: default;
-    z-index: 1000;
-
-    &:before {
-        content: '';
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background: #ffffff;
-        left: 50%;
-        bottom: -1px;
-        border-bottom: 1px solid ${BorderNeutral};
-        border-right: 1px solid ${BorderNeutral};
-        box-shadow: 2px 2px 2px ${BorderNeutralSubtle};
-        transform: translateX(-50%) translateY(50%) rotate(45deg);
-    }
-
-    &:after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 12px;
-        background: transparent;
-        bottom: -12px;
-        left: 0;
-    }
-`;
+import Styles from './Tooltip.module.less';
 
 interface TooltipProps {
     children: ReactNode | ReactNode[];
@@ -51,5 +9,15 @@ interface TooltipProps {
 }
 
 export const Tooltip = ({ children, className }: TooltipProps) => (
-    <TooltipContainer className={classNames(className)}>{children}</TooltipContainer>
+    <Box
+        position={'absolute'}
+        paddingInline={'space-16'}
+        paddingBlock={'space-8'}
+        borderRadius={'4'}
+        borderWidth={'1'}
+        borderColor={'neutral'}
+        className={classNames(className, Styles.container)}
+    >
+        {children}
+    </Box>
 );

@@ -1,13 +1,13 @@
-import { Space12, Space16 } from '@navikt/ds-tokens/dist/tokens';
+import { Box, VStack } from '@navikt/ds-react';
 import classNames from 'classnames';
 import type { Dayjs } from 'dayjs';
 import React, { type ReactNode, useCallback } from 'react';
-import styled from 'styled-components';
 import type { EnkelPeriode, Etikett, Periode, Pin } from '../types.external';
 import type { AxisLabel, InternalSimpleTimeline, PositionedPeriod } from '../types.internal';
 import { AktivtUtsnittBakgrunn, AktivtUtsnittBorder } from './AktivtUtsnitt';
 import { AxisLabels } from './AxisLabels';
 import { Pins } from './Pins';
+import Styles from './Tidslinje.module.less';
 import { EmptyTimelineRow, TimelineRow } from './TimelineRow';
 import { useSenesteDato, useTidligsteDato, useTidslinjerader } from './useTidslinjerader';
 
@@ -56,35 +56,6 @@ export interface TidslinjeProps {
     kompakt?: boolean;
 }
 
-const TidslinjeStyle = styled.div`
-    position: relative;
-    padding: ${Space12} 0;
-    margin: 0 ${Space16};
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-`;
-
-interface TidslinjeRadStyleProps {
-    $kompakt?: boolean;
-}
-const TidslinjeRadStyle = styled.div<TidslinjeRadStyleProps>`
-    position: relative;
-    padding: 0;
-    border-top: ${props => `${props.$kompakt ? 'none' : '1px solid #e7e9e9'}`};
-
-    .tidslinjerad.førsterad,
-    hr.førsterad {
-        margin-top: ${props => `${props.$kompakt ? '0rem' : '1.56rem'}`};
-    }
-`;
-
-const EmptyRowsStyle = styled.div`
-    position: absolute;
-    height: 100%;
-    width: 100%;
-`;
-
 export interface TimelineProps {
     rows: InternalSimpleTimeline[];
     start: Dayjs;
@@ -127,25 +98,40 @@ const Timeline = React.memo(
         const onSelectPeriodeWrapper = onSelectPeriod && velgPeriode;
 
         return (
-            <TidslinjeStyle className={classNames('tidslinje')}>
+            <VStack
+                position={'relative'}
+                paddingBlock={'space-12'}
+                paddingInline={'space-0'}
+                marginBlock={'space-0'}
+                marginInline={'space-16'}
+                className={classNames('tidslinje')}
+            >
                 <AxisLabels
                     start={start}
                     slutt={endInclusive}
                     direction={direction}
                     etikettRender={axisLabelRenderer}
                 />
-                <TidslinjeRadStyle $kompakt={kompakt} className={classNames('tidslinjerader')}>
-                    <EmptyRowsStyle>
+                <Box
+                    position={'relative'}
+                    padding={'space-0'}
+                    borderWidth={kompakt ? '0' : '1 0 0 0'}
+                    borderColor={'neutral-subtle'}
+                    className={classNames('tidslinjerader')}
+                >
+                    <Box position={'absolute'} height={'100%'} width={'100%'}>
                         {rows.map((_, i) => (
                             <EmptyTimelineRow
                                 kompakt={kompakt}
-                                className={classNames(i === 0 && 'førsterad')}
+                                className={classNames(i === 0 && 'førsterad', {
+                                    [Styles.nonCompactRow]: !kompakt && i === 0,
+                                })}
                                 // biome-ignore lint/suspicious/noArrayIndexKey: rows er en fast liste med tomme plassholderrader uten egen identitet
                                 key={i}
                                 active={i === activeRow}
                             />
                         ))}
-                    </EmptyRowsStyle>
+                    </Box>
                     {pins && <Pins pins={pins} start={start} slutt={endInclusive} direction={direction} />}
                     {aktivtUtsnitt && (
                         <AktivtUtsnittBakgrunn
@@ -158,7 +144,9 @@ const Timeline = React.memo(
                     {rows.map((tidslinje, i) => (
                         <TimelineRow
                             key={tidslinje.id}
-                            className={classNames(i === 0 && 'førsterad')}
+                            className={classNames(i === 0 && 'førsterad', {
+                                [Styles.nonCompactRow]: !kompakt && i === 0,
+                            })}
                             {...tidslinje}
                             onSelectPeriod={onSelectPeriodeWrapper}
                             active={i === activeRow}
@@ -173,8 +161,8 @@ const Timeline = React.memo(
                             direction={direction}
                         />
                     )}
-                </TidslinjeRadStyle>
-            </TidslinjeStyle>
+                </Box>
+            </VStack>
         );
     },
 );

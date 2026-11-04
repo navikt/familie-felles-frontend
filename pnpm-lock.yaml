@@ -282,9 +282,6 @@ importers:
       react:
         specifier: 18.x || 19.x
         version: 19.3.0
-      styled-components:
-        specifier: 5.x || 6.x
-        version: 6.4.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
     devDependencies:
       '@navikt/aksel-icons':
         specifier: 8.x
@@ -5813,22 +5810,6 @@ packages:
     engines: {node: '>= 18.12.0'}
     peerDependencies:
       webpack: ^5.27.0
-
-  styled-components@6.4.1:
-    resolution: {integrity: sha512-ADu2dF53esUzzM4I0ewxhxFtsDd6v4V6dNkg3vG0iFKhnt06sJneTZnRvujAosZwW0XD58IKgGMQoqri4wHRqg==}
-    engines: {node: '>= 16'}
-    peerDependencies:
-      css-to-react-native: '>= 3.2.0'
-      react: '>= 16.8.0'
-      react-dom: '>= 16.8.0'
-      react-native: '>= 0.68.0'
-    peerDependenciesMeta:
-      css-to-react-native:
-        optional: true
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
 
   styled-components@6.5.3:
     resolution: {integrity: sha512-vAX79sfpmUerP9fsTTxoTrBDE0RuO4ahjInyWYoohNgqrdg63Ms4q6FJ/o2Fyity82NU3cujOT8Ewl9TThBdwg==}
@@ -12432,15 +12413,6 @@ snapshots:
   style-loader@4.0.0(webpack@5.111.1(@swc/core@1.13.5)(clean-css@5.3.3)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.32.0)(postcss@8.5.9)(uglify-js@3.19.3)):
     dependencies:
       webpack: 5.111.1(@swc/core@1.13.5)(clean-css@5.3.3)(esbuild@0.28.2)(html-minifier-terser@6.1.0)(lightningcss@1.32.0)(postcss@8.5.9)(uglify-js@3.19.3)
-
-  styled-components@6.4.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
-    dependencies:
-      '@emotion/is-prop-valid': 1.4.0
-      csstype: 3.1.2
-      react: 19.3.0
-      stylis: 4.3.6
-    optionalDependencies:
-      react-dom: 19.3.0(react@19.3.0)
 
   styled-components@6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:

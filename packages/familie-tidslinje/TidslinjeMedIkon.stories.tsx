@@ -1,24 +1,12 @@
+/// <reference path="./types/styles.d.ts" />
+
 import { useState } from 'react';
-import styled from 'styled-components';
 import { type Periode, Tidslinje, type TidslinjeProps } from './src';
+import Styles from './TidslinjeMedIkon.module.less';
 
 import '@navikt/ds-css';
 import { FlagCrossIcon, StarsEuIcon } from '@navikt/aksel-icons';
 import { Detail, Switch } from '@navikt/ds-react';
-
-const TidlinjeContainer = styled.div`
-    & div.tidslinje .eøs {
-        background-color: yellow;
-    }
-`;
-
-const StyledEu = styled(StarsEuIcon)`
-    margin-right: 0.3rem;
-`;
-
-const StyledNorwegian = styled(FlagCrossIcon)`
-    margin-right: 0.3rem;
-`;
 
 export default {
     title: 'Komponenter/Tidslinje',
@@ -35,7 +23,12 @@ export default {
                     className: 'eøs',
                     children: (
                         <>
-                            <StyledEu height="24" width="24" style={{ position: 'relative', top: '-1px' }} />
+                            <StarsEuIcon
+                                className={Styles.icon}
+                                height="24"
+                                width="24"
+                                style={{ position: 'relative', top: '-1px' }}
+                            />
                             <span style={{ position: 'relative', top: '-6px' }}>
                                 Dette er ein lang tekst for testing
                             </span>
@@ -49,7 +42,7 @@ export default {
                     tom: new Date('2020-02-29'),
                     status: 'feil',
                     className: 'eøs',
-                    children: <StyledEu />,
+                    children: <StarsEuIcon className={Styles.icon} />,
                 },
                 {
                     id: '345',
@@ -59,7 +52,8 @@ export default {
                     className: 'norge',
                     children: (
                         <>
-                            <StyledNorwegian
+                            <FlagCrossIcon
+                                className={Styles.icon}
                                 height="24"
                                 width="24"
                                 style={{
@@ -80,7 +74,7 @@ export default {
                     tom: new Date('2020-07-31'),
                     status: 'suksess',
                     className: 'norge',
-                    children: <StyledNorwegian height="24" width="24" />,
+                    children: <FlagCrossIcon className={Styles.icon} height="24" width="24" />,
                 },
                 {
                     id: '567',
@@ -118,7 +112,7 @@ export const ClickableWithIcon = (args: TidslinjeProps) => {
                     Kompakt
                 </Switch>
             </div>
-            <TidlinjeContainer>
+            <div className={Styles.timelineContainer}>
                 <h2>Klikkbare perioder</h2>
                 <p>
                     Eksempel på muligheten for litt mer avansert innhold med blanding av ikon og tekst. Også eksempel på
@@ -126,7 +120,7 @@ export const ClickableWithIcon = (args: TidslinjeProps) => {
                 </p>
                 <p>Styling må tilpasses bruken.</p>
                 <Tidslinje kompakt={kompakt} {...args} aktivRad={aktivRad} onSelectPeriode={onSelectPeriode} />
-            </TidlinjeContainer>
+            </div>
             {aktivPeriode && <div>{`${aktivPeriode.fom} - ${aktivPeriode.tom}`}</div>}
         </>
     );
@@ -148,9 +142,9 @@ export const NotClickableWithIcon = (args: TidslinjeProps) => {
                 egne klasser på perioder.
             </p>
             <p>Styling må tilpasses bruken.</p>
-            <TidlinjeContainer>
+            <div className={Styles.timelineContainer}>
                 <Tidslinje kompakt={kompakt} {...args} />
-            </TidlinjeContainer>
+            </div>
         </>
     );
 };
