@@ -1,5 +1,5 @@
+import { Box } from '@navikt/ds-react';
 import type React from 'react';
-import styled from 'styled-components';
 import { JaNeiSpørsmål } from './JaNeiSpørsmål';
 import { ESvar } from './typer';
 // Det må faktisk være plugin fra workspace her så vidt jeg forstår
@@ -15,11 +15,6 @@ export default {
     title: 'Komponenter/Form-elementer/JaNeiSpørsmål',
 };
 
-const DivMedBredde = styled.div<{ bredde: string }>`
-    width: ${props => props.bredde};
-    margin-bottom: 3rem;
-`;
-
 interface Props {
     bredde: number;
 }
@@ -27,7 +22,7 @@ interface Props {
 export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }) => {
     return (
         <>
-            <DivMedBredde bredde={`${bredde.toString(10)}%`} {...args}>
+            <Box width={`${bredde.toString(10)}%`} marginBlock={'space-0 space-48'} {...args}>
                 <JaNeiSpørsmål
                     legend={'Har du det bra?'}
                     labelTekstForRadios={{ ja: 'Ja', nei: 'Nei' }}
@@ -37,8 +32,8 @@ export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }
                     }}
                     initiellVerdi={null}
                 />
-            </DivMedBredde>
-            <DivMedBredde bredde={`${bredde.toString(10)}%`}>
+            </Box>
+            <Box width={`${bredde.toString(10)}%`} marginBlock={'space-0 space-48'}>
                 <JaNeiSpørsmål
                     onChange={() => {
                         alert('feil');
@@ -49,8 +44,8 @@ export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }
                     error={'Dette var ikke bra'}
                     initiellVerdi={null}
                 />
-            </DivMedBredde>
-            <DivMedBredde bredde={`${bredde.toString(10)}%`}>
+            </Box>
+            <Box width={`${bredde.toString(10)}%`} marginBlock={'space-0 space-48'}>
                 <JaNeiSpørsmål
                     labelTekstForRadios={{ ja: 'Ja', nei: 'Nei', vetikke: 'Vet ikke' }}
                     legend={'Har du det bra? Her kan du også svare vet ikke'}
@@ -60,7 +55,7 @@ export const FamilieJaNeiSpørsmålStory: React.FC<Props> = ({ bredde, ...args }
                     }}
                     initiellVerdi={null}
                 />
-            </DivMedBredde>
+            </Box>
         </>
     );
 };

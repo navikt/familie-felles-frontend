@@ -166,9 +166,6 @@ importers:
       '@navikt/ds-tokens':
         specifier: 8.x
         version: 8.16.2
-      styled-components:
-        specifier: 6.x
-        version: 6.5.3(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       tsc-alias:
         specifier: 1.9.0
         version: 1.9.0
