@@ -1,8 +1,7 @@
-import { Alert, BodyShort } from '@navikt/ds-react';
+import { Alert, BodyShort, Box } from '@navikt/ds-react';
 import { type Ressurs, RessursStatus } from '@navikt/familie-typer';
 import type React from 'react';
 import type { ReactNode } from 'react';
-import styled from 'styled-components';
 import type { ISøkeresultat } from '../types';
 import { inputId } from '.';
 import Søkeresultat from './Søkeresultat';
@@ -15,10 +14,6 @@ interface Props {
     settValgtSøkeresultat: (søkeresultatIndex: number) => void;
     ingenFagsakKomponent?: ReactNode;
 }
-
-export const StyledAlertStripe = styled(Alert)`
-    width: 20rem;
-`;
 
 const Søkeresultater: React.FC<Props> = ({
     formaterResultat,
@@ -44,23 +39,29 @@ const Søkeresultater: React.FC<Props> = ({
         case RessursStatus.FUNKSJONELL_FEIL:
         case RessursStatus.IKKE_TILGANG:
             return (
-                <StyledAlertStripe aria-labelledby={inputId} variant="error">
-                    <BodyShort size={'small'}>{søkeresultater.frontendFeilmelding}</BodyShort>
-                </StyledAlertStripe>
+                <Box asChild width={'20rem'}>
+                    <Alert aria-labelledby={inputId} variant="error">
+                        <BodyShort size={'small'}>{søkeresultater.frontendFeilmelding}</BodyShort>
+                    </Alert>
+                </Box>
             );
         case RessursStatus.HENTER:
             return (
-                <StyledAlertStripe aria-labelledby={inputId} variant={'info'}>
-                    <BodyShort size={'small'}>Søker...</BodyShort>
-                </StyledAlertStripe>
+                <Box asChild width={'20rem'}>
+                    <Alert aria-labelledby={inputId} variant={'info'}>
+                        <BodyShort size={'small'}>Søker...</BodyShort>
+                    </Alert>
+                </Box>
             );
         default:
             return (
-                <StyledAlertStripe aria-labelledby={inputId} variant={'info'}>
-                    <BodyShort size={'small'}>
-                        Tast inn fødselsnummer eller d-nummer. Trykk 'enter' for å søke.
-                    </BodyShort>
-                </StyledAlertStripe>
+                <Box asChild width={'20rem'}>
+                    <Alert aria-labelledby={inputId} variant={'info'}>
+                        <BodyShort size={'small'}>
+                            Tast inn fødselsnummer eller d-nummer. Trykk 'enter' for å søke.
+                        </BodyShort>
+                    </Alert>
+                </Box>
             );
     }
 };

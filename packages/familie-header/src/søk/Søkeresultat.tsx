@@ -1,12 +1,12 @@
-import { BodyShort } from '@navikt/ds-react';
+import { Alert, BodyShort, Box, HStack, VStack } from '@navikt/ds-react';
 import { adressebeskyttelsestyper } from '@navikt/familie-typer';
+import classNames from 'classnames';
 import type React from 'react';
 import type { ReactNode } from 'react';
-import styled from 'styled-components';
 import type { ISøkeresultat } from '..';
 import { inputId } from '.';
 import { formaterPersonIdent } from './formatter';
-import { StyledAlertStripe } from './Søkeresultater';
+import Styles from './Søkeresultat.module.less';
 
 interface Props {
     formaterResultat?: (søkeresultat: ISøkeresultat, erSøkeresultatValgt: boolean) => React.ReactNode;
@@ -16,42 +16,6 @@ interface Props {
     settValgtSøkeresultat: (søkeresultatIndex: number) => void;
     ingenFagsakKomponent?: ReactNode;
 }
-
-const ResultatListe = styled.ul`
-    width: 20rem;
-    padding: 0;
-    margin: 0;
-`;
-
-const ResultatListeElement = styled.li<{ $fokus: boolean }>`
-    list-style-type: none;
-    padding: 0.5rem;
-    outline: ${({ $fokus }) => ($fokus ? `3px solid var(--ax-border-warning-subtle)` : '')};
-    border-radius: 8px;
-
-    &:hover {
-        background-color: var(--ax-bg-neutral-soft);
-        cursor: pointer;
-    }
-`;
-
-const ResultatIkonOgRolle = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding-right: 1rem;
-    align-items: center;
-    min-width: 3.5rem;
-    font-size: var(--ax-font-size-small);
-
-    svg {
-        text-align: center;
-    }
-`;
-
-const ResultatListeElementKnapp = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
 
 const lagManglerTilgangBegrunnelse = (søkeresultat: ISøkeresultat): string => {
     if (søkeresultat.manglerTilgangBegrunnelse) {
@@ -72,49 +36,67 @@ const Søkeresultat: React.FC<Props> = ({
     ingenFagsakKomponent,
 }) => {
     return søkeresultater.length > 0 ? (
-        <ResultatListe aria-labelledby={inputId}>
-            {søkeresultater.map((søkeresultat: ISøkeresultat, index: number) => {
-                if (formaterResultat) {
-                    return formaterResultat(søkeresultat, index === valgtSøkeresultat);
-                } else {
-                    return (
-                        <ResultatListeElement key={søkeresultat.ident} $fokus={index === valgtSøkeresultat}>
-                            <ResultatListeElementKnapp
-                                aria-label={
-                                    søkeresultat.harTilgang
-                                        ? søkeresultat.navn
-                                        : lagManglerTilgangBegrunnelse(søkeresultat)
-                                }
-                                aria-selected={index === valgtSøkeresultat}
-                                role={'option'}
-                                onClick={() => {
-                                    søkeresultatOnClick(søkeresultat);
-                                    settValgtSøkeresultat(index);
-                                }}
-                            >
-                                <ResultatIkonOgRolle>
-                                    {søkeresultat.ikon}
-                                    {søkeresultat.rolle ? søkeresultat.rolle : ''}
-                                </ResultatIkonOgRolle>
-                                <div>
-                                    <BodyShort size={'small'}>
-                                        {søkeresultat.harTilgang
-                                            ? `${søkeresultat.navn} (${formaterPersonIdent(søkeresultat.ident)})`
-                                            : lagManglerTilgangBegrunnelse(søkeresultat)}
-                                    </BodyShort>
+        <Box asChild padding={'space-0'} margin={'space-0'} width={'20rem'}>
+            <ul aria-labelledby={inputId}>
+                {søkeresultater.map((søkeresultat: ISøkeresultat, index: number) => {
+                    if (formaterResultat) {
+                        return formaterResultat(søkeresultat, index === valgtSøkeresultat);
+                    } else {
+                        return (
+                            <Box key={søkeresultat.ident} asChild padding={'space-8'} borderRadius={'8'}>
+                                <li
+                                    className={classNames(Styles.resultItem, {
+                                        [Styles.focusItem]: index === valgtSøkeresultat,
+                                    })}
+                                >
+                                    <HStack
+                                        wrap={false}
+                                        aria-label={
+                                            søkeresultat.harTilgang
+                                                ? søkeresultat.navn
+                                                : lagManglerTilgangBegrunnelse(søkeresultat)
+                                        }
+                                        aria-selected={index === valgtSøkeresultat}
+                                        role={'option'}
+                                        onClick={() => {
+                                            søkeresultatOnClick(søkeresultat);
+                                            settValgtSøkeresultat(index);
+                                        }}
+                                    >
+                                        <VStack
+                                            paddingInline={'space-0 space-16'}
+                                            align={'center'}
+                                            minWidth={'3.5rem'}
+                                            className={Styles.resultIcon}
+                                        >
+                                            {søkeresultat.ikon}
+                                            {søkeresultat.rolle ? søkeresultat.rolle : ''}
+                                        </VStack>
+                                        <div>
+                                            <BodyShort size={'small'}>
+                                                {søkeresultat.harTilgang
+                                                    ? `${søkeresultat.navn} (${formaterPersonIdent(søkeresultat.ident)})`
+                                                    : lagManglerTilgangBegrunnelse(søkeresultat)}
+                                            </BodyShort>
 
-                                    {!søkeresultat.fagsakId && søkeresultat.harTilgang && (
-                                        <ResultatVisningUtenFagsak ingenFagsakKomponent={ingenFagsakKomponent} />
-                                    )}
-                                </div>
-                            </ResultatListeElementKnapp>
-                        </ResultatListeElement>
-                    );
-                }
-            })}
-        </ResultatListe>
+                                            {!søkeresultat.fagsakId && søkeresultat.harTilgang && (
+                                                <ResultatVisningUtenFagsak
+                                                    ingenFagsakKomponent={ingenFagsakKomponent}
+                                                />
+                                            )}
+                                        </div>
+                                    </HStack>
+                                </li>
+                            </Box>
+                        );
+                    }
+                })}
+            </ul>
+        </Box>
     ) : (
-        <StyledAlertStripe variant={'info'}>Beklager, ingen treff</StyledAlertStripe>
+        <Box asChild width={'20rem'}>
+            <Alert variant={'info'}>Beklager, ingen treff</Alert>
+        </Box>
     );
 };
 

@@ -1,11 +1,11 @@
 import type React from 'react';
 import type { ReactNode } from 'react';
-import styled from 'styled-components';
 import '@navikt/ds-css';
 import { Popover } from '@navikt/ds-react';
 import { type Ressurs, RessursStatus } from '@navikt/familie-typer/dist';
 import type { ISøkeresultat } from '../types';
 import { FnrInputWrapper } from './FnrInputWrapper';
+import Styles from './Søk.module.less';
 import Søkeresultater from './Søkeresultater';
 import useSøk from './useSøk';
 
@@ -21,15 +21,6 @@ export interface SøkProps {
     ingenFagsakKomponent?: ReactNode;
 }
 
-const SøkContainer = styled.div`
-    align-self: center;
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-
-    .aksel-body-short {
-        font-size: var(--ax-font-size-medium);
-    }
-`;
 export const inputId = 'sok-input';
 export const søkKnappId = 'søk-knapp';
 export const tømKnappId = 'tøm-knapp';
@@ -64,7 +55,7 @@ export const Søk = ({
 
     return (
         <>
-            <SøkContainer title={'søk'} data-theme="dark">
+            <div title={'søk'} data-theme="dark" className={Styles.sok}>
                 <FnrInputWrapper
                     id={inputId}
                     laster={søkeresultater.status === RessursStatus.HENTER}
@@ -80,7 +71,7 @@ export const Søk = ({
                         nullstillInput(true);
                     }}
                 />
-            </SøkContainer>
+            </div>
             {ankerElement && (
                 <Popover
                     id={'søkeresultat'}
