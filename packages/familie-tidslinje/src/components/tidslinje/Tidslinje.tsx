@@ -99,6 +99,9 @@ const Timeline = React.memo(
 
         return (
             <VStack
+                flexBasis={'0'}
+                flexShrink={'1'}
+                flexGrow={'1'}
                 position={'relative'}
                 paddingBlock={'space-12'}
                 paddingInline={'space-0'}
