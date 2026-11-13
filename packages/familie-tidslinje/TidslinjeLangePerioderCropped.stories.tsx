@@ -1,26 +1,12 @@
+/// <reference path="./types/styles.d.ts" />
+
 import { CheckmarkCircleIcon, ExclamationmarkTriangleIcon, XMarkOctagonIcon } from '@navikt/aksel-icons';
 import { Switch } from '@navikt/ds-react';
 import { useState } from 'react';
-import styled from 'styled-components';
 import { type Periode, Tidslinje, type TidslinjeProps } from './src';
+import Styles from './TidslinjeLangePerioderCropped.module.less';
 import '@navikt/ds-css';
-
-const StyledContainer = styled.div(
-    (props: { kompakt: boolean }) => `
-    & button.periode {
-        & div svg {
-            position: relative;
-            top: ${props.kompakt ? 2 : 3}px;
-        }
-    }
-    & div.periode {
-        & div svg {
-            position: relative;
-            top: ${props.kompakt ? 2 : 3}px;
-        }
-    }
-`,
-);
+import classNames from 'classnames';
 
 export default {
     title: 'Komponenter/Tidslinje',
@@ -154,9 +140,8 @@ export const LongPeriodClickable = (args: TidslinjeProps) => {
 
     const aktivRad =
         aktivPeriode &&
-        rader.reduce(
-            (radIndex: number, rad: Periode[], i: number) =>
-                rad.find(({ id }) => id === aktivPeriode.id) ? i : radIndex,
+        rader.reduce<number | undefined>(
+            (radIndex, rad: Periode[], i: number) => (rad.find(({ id }) => id === aktivPeriode.id) ? i : radIndex),
             undefined,
         );
     return (
@@ -166,7 +151,7 @@ export const LongPeriodClickable = (args: TidslinjeProps) => {
                     Kompakt
                 </Switch>
             </div>
-            <StyledContainer kompakt={kompakt}>
+            <div className={classNames(Styles.container, { [Styles.compact]: kompakt })}>
                 <h2>Klikkbare perioder</h2>
                 <p>
                     Eksempel på visning av perioder, som strekker seg utanfor startDato og sluttDato for tidslinjen.
@@ -185,7 +170,7 @@ export const LongPeriodClickable = (args: TidslinjeProps) => {
                     aktivRad={aktivRad}
                     onSelectPeriode={onSelectPeriode}
                 />
-            </StyledContainer>
+            </div>
             {aktivPeriode && <div>{`${aktivPeriode.fom} - ${aktivPeriode.tom}`}</div>}
         </>
     );
@@ -202,7 +187,7 @@ export const LongPeriodNotClickable = (args: TidslinjeProps) => {
                     Kompakt
                 </Switch>
             </div>
-            <StyledContainer kompakt={kompakt}>
+            <div className={classNames(Styles.container, { [Styles.compact]: kompakt })}>
                 <h2>Perioder ikke klikkbare</h2>
                 <p>
                     Eksempel på visning av perioder, som strekker seg utanfor startDato og sluttDato for tidslinjen.
@@ -219,7 +204,7 @@ export const LongPeriodNotClickable = (args: TidslinjeProps) => {
                     sluttDato={new Date('2021-12-31')}
                     {...args}
                 />
-            </StyledContainer>
+            </div>
         </>
     );
 };

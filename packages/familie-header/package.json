@@ -18,8 +18,9 @@
         "url": "https://github.com/navikt/familie-felles-frontend"
     },
     "scripts": {
-        "build": "pnpm run clean && pnpm run tsc && pnpm run tsc-alias && pnpm run copy-css",
+        "build": "pnpm run clean && pnpm run tsc && pnpm run tsc-alias && pnpm run copy-css && pnpm run copy-less",
         "copy-css": "copyfiles -u 1 \"src/**/*.css\" dist",
+        "copy-less": "copyfiles -u 1 \"src/**/*.less\" dist",
         "clean": "rm -rf ./dist",
         "tsc": "tsc -p tsconfig.json",
         "tsc-alias": "tsc-alias -p tsconfig.json"
@@ -33,14 +34,12 @@
         "@navikt/aksel-icons": "8.x",
         "@navikt/ds-css": "8.x",
         "@navikt/ds-react": "8.x",
-        "styled-components": "6.x",
         "tsc-alias": "1.9.0"
     },
     "peerDependencies": {
         "@navikt/aksel-icons": "8.x",
         "@navikt/ds-css": "8.x",
         "@navikt/ds-react": "8.x",
-        "react": "18.x || 19.x",
-        "styled-components": "5.x || 6.x"
+        "react": "18.x || 19.x"
     }
 }

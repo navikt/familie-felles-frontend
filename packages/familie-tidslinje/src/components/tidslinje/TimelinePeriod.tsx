@@ -1,159 +1,8 @@
 import classNames from 'classnames';
 import React, { type CSSProperties, type ReactNode, type RefObject, useLayoutEffect, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
 import type { PositionedPeriod } from '../types.internal';
+import Styles from './TimelinePeriod.module.less';
 import { Tooltip } from './Tooltip';
-
-const fellesPeriodeStyle = css`
-    background: #e7e9e9;
-    border-top: 1px solid #59514b;
-    border-bottom: 1px solid #59514b;
-
-    border-radius: 1.5rem;
-    position: absolute;
-    transition: box-shadow 0.1s ease;
-    padding: 0;
-
-    &.mini {
-        min-width: 0;
-        padding: 0;
-        &:before {
-            display: none;
-        }
-    }
-    &.mini:before {
-        display: none;
-    }
-
-    &.advarsel {
-        background: #ffe9cc;
-        border: 1px solid #ff9100;
-    }
-
-    &.feil {
-        background: #f1d8d4;
-        border: 1px solid #ba3a26;
-    }
-
-    &.inaktiv {
-        background: #e7e9e9;
-        border: 1px solid #78706a;
-    }
-
-    &.suksess {
-        background: #cde7d8;
-        border: 1px solid #117938;
-    }
-
-    &.sammenhengendeFraHøyre {
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-    }
-
-    &.sammenhengendeFraVenstre {
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-    }
-
-    &.sammenhengendeFraBegge {
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-    }
-
-    &.croppedHøyre {
-        border-right: none;
-    }
-
-    &.croppedVenstre {
-        border-left: none;
-    }
-
-    &.croppedBegge {
-        border-left: none;
-        border-right: none;
-    }
-`;
-interface InfoPinProps {
-    $påPeriodeKnapp?: boolean;
-}
-const InfoPin = styled.div<InfoPinProps>`
-    position: absolute;
-    background: #0067c5;
-    height: 6px;
-    width: 2px;
-    top: 0;
-    left: 50%;
-    transform: translate(-1px, -7px);
-
-    &:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        width: 10px;
-        height: 10px;
-        background: #0067c5;
-        transform: ${props => `translate(-${props.$påPeriodeKnapp ? 5 : 4}px, -100%)`};
-        border-radius: 50%;
-    }
-`;
-
-interface PeriodeInnholdProps {
-    $kompakt?: boolean;
-}
-const PeriodeInnhold = styled.div<PeriodeInnholdProps>`
-    margin: ${props => `${props.$kompakt ? 0 : 0.3}rem 0.3rem`};
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: clip;
-    text-align: left;
-    position: relative;
-    top: ${props => `${props.$kompakt ? 0 : -2}px`};
-`;
-
-const PeriodeKnapp = styled.button<PeriodeInnholdProps>`
-    height: ${props => `${props.$kompakt ? 1.5 : 2}rem`};
-    cursor: pointer;
-
-    &.advarsel {
-        &:hover,
-        &.active,
-        &:focus {
-            background: #fed7a3;
-        }
-    }
-
-    &.feil {
-        &:hover,
-        &.active,
-        &:focus {
-            background: #e3b0a8;
-        }
-    }
-
-    &.inaktiv {
-        &:hover,
-        &.active,
-        &:focus {
-            background: #c3c3c3;
-        }
-    }
-
-    &.suksess {
-        &:hover,
-        &.active,
-        &:focus {
-            background: #9bd0b0;
-        }
-    }
-    ${fellesPeriodeStyle}
-`;
-
-const PeriodeDiv = styled.div<PeriodeInnholdProps>`
-    height: ${props => `${props.$kompakt ? 1.5 : 2}rem`};
-    ${fellesPeriodeStyle}
-`;
 
 interface NonClickablePeriodProps {
     period: PositionedPeriod;
@@ -211,35 +60,35 @@ const ClickablePeriod = React.memo(
         };
 
         return (
-            <PeriodeKnapp
-                $kompakt={kompakt}
+            <button
                 ref={buttonRef}
-                className={className}
+                className={classNames(className, Styles.periodeKnapp)}
                 onClick={onClick}
                 onMouseEnter={enableHoverLabel}
                 onMouseLeave={disableHoverLabel}
                 aria-label={ariaLabel(period)}
+                type={'button'}
                 style={style(period)}
             >
                 {period.hoverLabel && showHoverLabel && <Tooltip>{period.hoverLabel}</Tooltip>}
-                {period.infoPin && <InfoPin $påPeriodeKnapp className={'infoPin'} />}
-                {period.children && <PeriodeInnhold $kompakt={kompakt}>{period.children}</PeriodeInnhold>}
-            </PeriodeKnapp>
+                {period.infoPin && <div className={classNames('infoPin', Styles.infoPin, Styles.paaPeriode)} />}
+                {period.children && (
+                    <div className={classNames(Styles.innhold, { [Styles.innholdKompakt]: kompakt })}>
+                        {period.children}
+                    </div>
+                )}
+            </button>
         );
     },
 );
 
 const NonClickablePeriod = ({ divRef, period, className, kompakt }: NonClickablePeriodProps) => (
-    <PeriodeDiv
-        $kompakt={kompakt}
-        ref={divRef}
-        className={className}
-        aria-label={ariaLabel(period)}
-        style={style(period)}
-    >
-        {period.infoPin && <InfoPin className={'infoPin'} />}
-        {period.children && <PeriodeInnhold $kompakt={kompakt}>{period.children}</PeriodeInnhold>}
-    </PeriodeDiv>
+    <section ref={divRef} className={className} aria-label={ariaLabel(period)} style={style(period)}>
+        {period.infoPin && <div className={classNames('infoPin', Styles.infoPin)} />}
+        {period.children && (
+            <div className={classNames(Styles.innhold, { [Styles.innholdKompakt]: kompakt })}>{period.children}</div>
+        )}
+    </section>
 );
 
 const finnClassnames = (period: PositionedPeriod, active: boolean | undefined, isMini: boolean): string[] => {
@@ -304,7 +153,41 @@ export const TimelinePeriod = React.memo(({ period, onSelectPeriod, active, komp
     const ref = useRef<HTMLButtonElement | HTMLDivElement>(null);
     const [isMini, setIsMini] = useState(false);
 
-    const className = classNames('periode', finnClassnames(period, active, isMini), period.status, period.className);
+    const className = classNames(
+        'periode',
+        finnClassnames(period, active, isMini),
+        period.status,
+        period.className,
+        Styles.periode,
+        {
+            [Styles.mini]: isMini,
+            [Styles.periodeKompakt]: kompakt,
+            [Styles.advarsel]: period.status === 'advarsel',
+            [Styles.feil]: period.status === 'feil',
+            [Styles.inaktiv]: period.status === 'inaktiv',
+            [Styles.suksess]: period.status === 'suksess',
+            [Styles.advarselActive]: period.status === 'advarsel' && active,
+            [Styles.feilActive]: period.status === 'feil' && active,
+            [Styles.inaktivActive]: period.status === 'inaktiv' && active,
+            [Styles.suksessActive]: period.status === 'suksess' && active,
+            [Styles.croppedVenstre]:
+                period.cropped === 'both' ||
+                (period.cropped === 'left' && period.direction === 'left') ||
+                (period.cropped === 'right' && period.direction !== 'left'),
+            [Styles.croppedHøyre]:
+                period.cropped === 'both' ||
+                (period.cropped === 'right' && period.direction === 'left') ||
+                (period.cropped === 'left' && period.direction !== 'left'),
+            [Styles.sammenhengendeFraVenstre]:
+                period.connectingEdge === 'both' ||
+                (period.connectingEdge === 'left' && period.direction === 'left') ||
+                (period.connectingEdge === 'right' && period.direction !== 'left'),
+            [Styles.sammenhengendeFraHøyre]:
+                period.connectingEdge === 'both' ||
+                (period.connectingEdge === 'right' && period.direction === 'left') ||
+                (period.connectingEdge === 'left' && period.direction !== 'left'),
+        },
+    );
     // biome-ignore lint/correctness/useExhaustiveDependencies: skal kjøre på nytt når ref.current settes for å måle bredden på elementet
     useLayoutEffect(() => {
         const currentWidth = ref.current?.offsetWidth;
@@ -325,7 +208,7 @@ export const TimelinePeriod = React.memo(({ period, onSelectPeriod, active, komp
         <NonClickablePeriod
             divRef={ref as RefObject<HTMLDivElement>}
             period={period}
-            className={className}
+            className={classNames(className, Styles.ikkeKlikkbar)}
             kompakt={kompakt}
         />
     );
