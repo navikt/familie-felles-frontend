@@ -1,70 +1,9 @@
-import { BgAccentSoft, BgAccentStrong } from '@navikt/ds-tokens/dist/tokens';
+import { Box } from '@navikt/ds-react';
 import classNames from 'classnames';
 import type { Dayjs } from 'dayjs';
-import styled from 'styled-components';
 import type { EnkelPeriode } from '../types.external';
+import Styles from './AktivtUtsnitt.module.less';
 import { usePositionAndSize } from './usePositionAndSize';
-
-const AktivtUtsnittContainer = styled.div`
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    user-select: none;
-    pointer-events: none;
-`;
-
-const AktivPeriode = styled.div`
-    position: absolute;
-    height: 100%;
-    border: none;
-    background: none;
-    padding: 0;
-
-    &::-moz-focus-inner {
-        border: 0;
-    }
-
-    &:hover,
-    &:focus {
-        outline: none;
-    }
-
-    &:before {
-        content: '';
-        position: absolute;
-        top: -2px;
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: ${BgAccentStrong};
-        box-shadow: 0 0 0 1px ${BgAccentStrong};
-        left: -1px;
-    }
-
-    &:after {
-        content: '';
-        position: absolute;
-        top: -2px;
-        width: 3px;
-        height: 3px;
-        border-radius: 50%;
-        background: ${BgAccentStrong};
-        box-shadow: 0 0 0 1px ${BgAccentStrong};
-        right: -1px;
-    }
-`;
-
-const AktivPeriodeBorder = styled(AktivPeriode)`
-    box-shadow:
-        inset 2px 0 0 -1px ${BgAccentStrong},
-        inset -2px 0 0 -1px ${BgAccentStrong};
-`;
-
-const AktivPeriodeBakgrunn = styled(AktivPeriode)`
-    background: ${BgAccentSoft};
-`;
 
 interface IntervallProps {
     tidslinjestart: Dayjs;
@@ -81,9 +20,22 @@ export const AktivtUtsnittBorder = ({ aktivtUtsnitt, tidslinjestart, tidslinjesl
         direction,
     });
     return (
-        <AktivtUtsnittContainer className={'aktivtUtsnittContainer'}>
-            <AktivPeriodeBorder className={classNames('aktivPeriodeBorder')} style={style} />
-        </AktivtUtsnittContainer>
+        <Box
+            position={'absolute'}
+            bottom={'space-0'}
+            right={'space-0'}
+            width={'100%'}
+            height={'100%'}
+            className={classNames('aktivtUtsnittContainer', Styles.container)}
+        >
+            <Box
+                position={'absolute'}
+                height={'100%'}
+                borderWidth={'0'}
+                className={classNames('aktivPeriodeBorder', Styles.utsnitt, Styles.border)}
+                style={style}
+            />
+        </Box>
     );
 };
 
@@ -95,8 +47,21 @@ export const AktivtUtsnittBakgrunn = ({ aktivtUtsnitt, tidslinjestart, tidslinje
         direction,
     });
     return (
-        <AktivtUtsnittContainer className={'aktivtUtsnittContainer'}>
-            <AktivPeriodeBakgrunn className={classNames('aktivPeriodeBakgrunn')} style={style} />
-        </AktivtUtsnittContainer>
+        <Box
+            position={'absolute'}
+            bottom={'space-0'}
+            right={'space-0'}
+            width={'100%'}
+            height={'100%'}
+            className={classNames('aktivtUtsnittContainer', Styles.container)}
+        >
+            <Box
+                position={'absolute'}
+                height={'100%'}
+                borderWidth={'0'}
+                className={classNames('aktivPeriodeBakgrunn', Styles.utsnitt, Styles.bakgrunn)}
+                style={style}
+            />
+        </Box>
     );
 };

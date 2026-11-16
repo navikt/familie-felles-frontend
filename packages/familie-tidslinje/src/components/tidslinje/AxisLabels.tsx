@@ -1,12 +1,11 @@
 import classNames from 'classnames';
 import dayjs, { type Dayjs } from 'dayjs';
 import type { ReactNode } from 'react';
-import styled from 'styled-components';
 import type { AxisLabel } from '../types.internal';
 import { horizontalPositionAndWidth } from './calc';
 import { erSynlig } from './filter';
 import 'dayjs/locale/nb';
-import { Space16, TextNeutralSubtle } from '@navikt/ds-tokens/dist/tokens';
+import Styles from './AxisLabels.module.less';
 
 dayjs.locale('nb');
 
@@ -89,20 +88,6 @@ const axisLabels = (start: Dayjs, slutt: Dayjs, direction: 'left' | 'right'): Ax
     }
 };
 
-const Etiketter = styled.div`
-    position: relative;
-    width: 100%;
-    height: 1rem;
-    box-sizing: content-box;
-    margin-bottom: ${Space16};
-
-    > * {
-        position: absolute;
-        font-size: 0.8rem;
-        color: ${TextNeutralSubtle};
-    }
-`;
-
 interface AxisLabelsProps {
     start: Dayjs;
     slutt: Dayjs;
@@ -113,7 +98,7 @@ interface AxisLabelsProps {
 export const AxisLabels = ({ start, slutt, direction = 'left', etikettRender }: AxisLabelsProps) => {
     const labels = axisLabels(start, slutt, direction).filter(erSynlig);
     return (
-        <Etiketter className={classNames('etiketter')}>
+        <div className={classNames('etiketter', Styles.container)}>
             {labels.map(etikett => (
                 <div
                     key={etikett.label}
@@ -127,6 +112,6 @@ export const AxisLabels = ({ start, slutt, direction = 'left', etikettRender }: 
                     {etikettRender?.(etikett) ?? etikett.label}
                 </div>
             ))}
-        </Etiketter>
+        </div>
     );
 };

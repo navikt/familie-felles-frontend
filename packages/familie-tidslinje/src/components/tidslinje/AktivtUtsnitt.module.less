@@ -1,0 +1,51 @@
+.container {
+    user-select: none;
+    pointer-events: none;
+}
+
+.utsnitt {
+    background: none;
+    padding: 0;
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
+    &:hover,
+    &:focus {
+        outline: none;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--ax-bg-accent-strong);
+        box-shadow: 0 0 0 1px var(--ax-bg-accent-strong);
+        left: -1px;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: -2px;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--ax-bg-accent-strong);
+        box-shadow: 0 0 0 1px var(--ax-bg-accent-strong);
+        right: -1px;
+    }
+}
+
+.border {
+    box-shadow: inset 2px 0 0 -1px var(--ax-bg-accent-strong),
+        inset -2px 0 0 -1px var(--ax-bg-accent-strong);
+}
+
+.bakgrunn {
+    background: var(--ax-bg-accent-soft);
+}

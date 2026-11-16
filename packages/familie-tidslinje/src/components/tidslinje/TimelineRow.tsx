@@ -1,34 +1,8 @@
-import { BgAccentModerate, BgNeutralModerate, Space16, Space24, Space32 } from '@navikt/ds-tokens/dist/tokens';
+import { Box, HStack } from '@navikt/ds-react';
+import { Space24, Space32 } from '@navikt/ds-tokens/dist/tokens';
 import classNames from 'classnames';
-import styled from 'styled-components';
 import type { PositionedPeriod } from '../types.internal';
 import { TimelinePeriod } from './TimelinePeriod';
-
-interface TimelineRowStyleProps {
-    $kompakt?: boolean;
-}
-
-const TimelineRowStyle = styled.div<TimelineRowStyleProps>`
-    flex: 1;
-    height: ${props => `${props.$kompakt ? Space24 : Space32}`};
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin-bottom: ${props => `${props.$kompakt ? Space16 : Space24}`};
-`;
-
-const EmptyRowHr = styled.hr<TimelineRowStyleProps>`
-    flex: 1;
-    height: ${props => `${props.$kompakt ? Space24 : Space32}`};
-    width: 100%;
-    border: none;
-    background-color: ${BgNeutralModerate};
-    margin-bottom: ${props => `${props.$kompakt ? Space16 : Space24}`};
-
-    &.aktivRad {
-        background-color: ${BgAccentModerate};
-    }
-`;
 
 interface EmptyTimelineRowProps {
     active?: boolean;
@@ -45,7 +19,19 @@ interface TimelineRowProps {
 }
 
 export const EmptyTimelineRow = ({ active = false, kompakt = false, className }: EmptyTimelineRowProps) => (
-    <EmptyRowHr $kompakt={kompakt} className={classNames(active && 'aktivRad', className)} />
+    <Box
+        asChild
+        height={kompakt ? Space24 : Space32}
+        flexBasis={'0'}
+        flexShrink={'1'}
+        flexGrow={'1'}
+        width={'100%'}
+        background={active ? 'accent-moderate' : 'neutral-moderate'}
+        marginBlock={kompakt ? 'space-0 space-16' : 'space-0 space-24'}
+        borderWidth={'0'}
+    >
+        <hr className={classNames(active && 'aktivRad', className)} />
+    </Box>
 );
 
 export const TimelineRow = ({
@@ -55,7 +41,13 @@ export const TimelineRow = ({
     kompakt = false,
     className,
 }: TimelineRowProps) => (
-    <TimelineRowStyle $kompakt={kompakt} className={classNames('tidslinjerad', active && 'aktivRad', className)}>
+    <HStack
+        align={'center'}
+        position={'relative'}
+        height={kompakt ? Space24 : Space32}
+        marginBlock={kompakt ? 'space-0 space-16' : 'space-0 space-24'}
+        className={classNames('tidslinjerad', active && 'aktivRad', className)}
+    >
         {periods.map(period => (
             <TimelinePeriod
                 key={period.id}
@@ -65,5 +57,5 @@ export const TimelineRow = ({
                 kompakt={kompakt}
             />
         ))}
-    </TimelineRowStyle>
+    </HStack>
 );

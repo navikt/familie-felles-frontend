@@ -1,4 +1,4 @@
-import { ErrorMessage, Label, omit } from '@navikt/ds-react';
+import { Box, ErrorMessage, Label, omit } from '@navikt/ds-react';
 import {
     BgAccentModerate,
     BgAccentStrong,
@@ -13,7 +13,6 @@ import type React from 'react';
 import type { ReactNode } from 'react';
 import ReactSelect, { type GroupBase, type Props, type StylesConfig } from 'react-select';
 import Creatable from 'react-select/creatable';
-import styled from 'styled-components';
 
 export interface IProps {
     erLesevisning?: boolean;
@@ -23,10 +22,6 @@ export interface IProps {
     propSelectStyles?: StylesConfig<ISelectOption, boolean, GroupBase<ISelectOption>>;
     className?: string;
 }
-
-const Container = styled.div`
-    margin-bottom: 1rem;
-`;
 
 const navSelectStyles = (
     feil?: ReactNode,
@@ -83,10 +78,6 @@ const navSelectStyles = (
               },
 });
 
-const StyledFeilmelding = styled(ErrorMessage)`
-    margin-top: 0.5rem;
-`;
-
 export type OptionType = {
     value: string;
     label: string;
@@ -116,7 +107,7 @@ export const FamilieReactSelect: React.FC<IProps | Props<ISelectOption, boolean,
     };
 
     return (
-        <Container className={className}>
+        <Box marginBlock={'space-0 space-16'} className={className}>
             {typeof label === 'string' ? (
                 <label htmlFor={id}>
                     <Label size={'small'} spacing={true}>
@@ -151,7 +142,11 @@ export const FamilieReactSelect: React.FC<IProps | Props<ISelectOption, boolean,
                 />
             )}
 
-            {feil && <StyledFeilmelding size={'small'}>{feil}</StyledFeilmelding>}
-        </Container>
+            {feil && (
+                <Box asChild marginBlock={'space-8 space-0'}>
+                    <ErrorMessage size={'small'}>{feil}</ErrorMessage>
+                </Box>
+            )}
+        </Box>
     );
 };

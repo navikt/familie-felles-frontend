@@ -10,6 +10,7 @@ const storybookConfig: StorybookConfig = {
         getAbsolutePath('@storybook/addon-a11y'),
         getAbsolutePath('@storybook/addon-webpack5-compiler-swc'),
         getAbsolutePath('@storybook/addon-docs'),
+        'storybook-css-modules',
     ],
     typescript: {
         check: true,
@@ -27,7 +28,28 @@ const storybookConfig: StorybookConfig = {
     async webpackFinal(config) {
         if (config.module?.rules) {
             config.module.rules.push({
+                test: /\.module\.less$/,
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                namedExport: false,
+                            },
+                            importLoaders: 1,
+                        },
+                    },
+                    {
+                        loader: require.resolve('less-loader'),
+                    },
+                ],
+            });
+            config.module.rules.push({
                 test: /\.(less)$/,
+                exclude: /\.module\.less$/,
                 use: [
                     {
                         loader: 'style-loader',
@@ -38,7 +60,7 @@ const storybookConfig: StorybookConfig = {
                             modules: {
                                 mode: 'icss',
                             },
-                            importLoaders: 1,
+                            importLoaders: 2,
                         },
                     },
                     {
