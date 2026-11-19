@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0](https://github.com/navikt/familie-felles-frontend/compare/%40navikt%2Ffamilie-tidslinje%4011.0.9...%40navikt%2Ffamilie-tidslinje%4012.0.0) (2026-11-19)
+
+* NAV-26302: add less to peer-dependency (#1796) ([4e68880](https://github.com/navikt/familie-felles-frontend/commit/4e688807721e7128bfe3d59302880dbb0afe2a64)), closes [#1796](https://github.com/navikt/familie-felles-frontend/issues/1796)
+
+### BREAKING CHANGES
+
+* familie-header, familie-form-elements og familie-tidslinje importerer nå .module.less. Konsumenter må installere less (pnpm add -D less).
+
+
 ## [11.0.9](https://github.com/navikt/familie-felles-frontend/compare/%40navikt%2Ffamilie-tidslinje%4011.0.8...%40navikt%2Ffamilie-tidslinje%4011.0.9) (2026-11-16)
 
 **Note:** Version bump only for package @navikt/familie-tidslinje

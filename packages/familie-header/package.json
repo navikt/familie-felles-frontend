@@ -1,6 +1,6 @@
 {
     "name": "@navikt/familie-header",
-    "version": "17.1.1",
+    "version": "18.0.0",
     "main": "dist/index.js",
     "module": "dist/index.js",
     "types": "dist/index.d.ts",
@@ -40,7 +40,7 @@
         "@navikt/aksel-icons": "8.x",
         "@navikt/ds-css": "8.x",
         "@navikt/ds-react": "8.x",
-        "react": "18.x || 19.x",
-        "less": "4.x"
+        "less": "4.x",
+        "react": "18.x || 19.x"
     }
 }
