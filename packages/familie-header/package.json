@@ -40,6 +40,7 @@
         "@navikt/aksel-icons": "8.x",
         "@navikt/ds-css": "8.x",
         "@navikt/ds-react": "8.x",
-        "react": "18.x || 19.x"
+        "react": "18.x || 19.x",
+        "less": "4.x"
     }
 }
