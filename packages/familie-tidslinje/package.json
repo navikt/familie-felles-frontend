@@ -44,6 +44,6 @@
         "@navikt/ds-tokens": "8.x",
         "dayjs": "1.x",
         "tsc-alias": "1.9.0",
-        "vitest": "5.0.1"
+        "vitest": "5.1.0"
     }
 }
