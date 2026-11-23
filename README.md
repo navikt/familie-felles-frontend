@@ -8,7 +8,7 @@ Kjør `pnpm build` så skal den bruke den siste versjonen lokalt
 
 ## Lokal utvikling
 * Kjør `nvm use` (Node-versjonen ligger i `.nvmrc`)
-* Aktiver riktig pnpm-versjon med `corepack enable` (henter versjonen fra `packageManager` i package.json)
+* Installer Corepack med `npm install -g corepack` (følger ikke lenger med Node) og aktiver riktig pnpm-versjon med `corepack enable` (henter versjonen fra `packageManager` i package.json)
 * Installer avhengigheter med `pnpm install`
 * Bygg pakkene med `pnpm build`
 * Start Storybook med `pnpm storybook`
